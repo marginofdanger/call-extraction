@@ -1,0 +1,234 @@
+# Broadcom Inc. (AVGO)
+# Company configuration for earnings call extraction pipeline
+
+company:
+  name: "Broadcom Inc."
+  ticker: "AVGO"
+  sector: "Diversified Tech (Semiconductors + Infrastructure Software)"
+  fiscal_year: "offset"  # Fiscal year ends first Sunday after November 2
+  fiscal_year_end_month: 10  # October (FQ4 = Aug-Oct)
+  currency: "USD"
+  reporting_currency: "USD"
+
+branding:
+  primary: "#CC092F"     # Broadcom red
+  dark: "#1a1a2e"        # Dark navy
+  accent: "#16213e"      # Accent navy
+
+quarters:
+  - id: FQ1_2022
+    call_date: "March 3, 2022"
+    reporting_quarter: "Fiscal Q1 2022 (Nov '21 - Jan '22)"
+    bamsec_id: "a591c3b4-5734-428f-944f-9e402c338f74"
+  - id: FQ2_2022
+    call_date: "June 2, 2022"
+    reporting_quarter: "Fiscal Q2 2022 (Feb - Apr '22)"
+    bamsec_id: ""  # Not found on BamSEC
+  - id: FQ3_2022
+    call_date: "September 1, 2022"
+    reporting_quarter: "Fiscal Q3 2022 (May - Jul '22)"
+    bamsec_id: "08bc4dfc-912d-4602-a618-e68e932bc08c"
+  - id: FQ4_2022
+    call_date: "December 8, 2022"
+    reporting_quarter: "Fiscal Q4 2022 (Full Year FY2022)"
+    bamsec_id: "fb679484-bbc6-4df4-8de1-8370a0f891a3"
+  - id: FQ1_2023
+    call_date: "March 2, 2023"
+    reporting_quarter: "Fiscal Q1 2023 (Nov '22 - Jan '23)"
+    bamsec_id: "313d9bb0-3c25-414c-b2b6-7b90c1ae5111"
+  - id: FQ2_2023
+    call_date: "June 1, 2023"
+    reporting_quarter: "Fiscal Q2 2023 (Feb - Apr '23)"
+    bamsec_id: "fd36f888-88f7-48ba-ab5c-1ed202a94442"
+  - id: FQ3_2023
+    call_date: "August 31, 2023"
+    reporting_quarter: "Fiscal Q3 2023 (May - Jul '23)"
+    bamsec_id: "cb556393-5780-494b-b729-c27f9e1794fa"
+  - id: FQ4_2023
+    call_date: "December 7, 2023"
+    reporting_quarter: "Fiscal Q4 2023 (Full Year FY2023)"
+    bamsec_id: "a8dcd26a-0870-4b71-81fb-69ad6be5d144"
+  - id: FQ1_2024
+    call_date: "March 7, 2024"
+    reporting_quarter: "Fiscal Q1 2024 (Nov '23 - Jan '24)"
+    bamsec_id: "f34e7c8b-f183-4510-8496-1e36e083fa28"
+  - id: FQ2_2024
+    call_date: "June 12, 2024"
+    reporting_quarter: "Fiscal Q2 2024 (Feb - Apr '24)"
+    bamsec_id: "7e581d9c-bc93-441b-a8a2-71a545a1b538"
+  - id: FQ3_2024
+    call_date: "September 5, 2024"
+    reporting_quarter: "Fiscal Q3 2024 (May - Jul '24)"
+    bamsec_id: "f09c5b58-98ba-4185-84c9-1e695ac32985"
+  - id: FQ4_2024
+    call_date: "December 12, 2024"
+    reporting_quarter: "Fiscal Q4 2024 (Full Year FY2024)"
+    bamsec_id: "341e81b2-b5d4-4dea-ac8a-3fdec79a14c6"
+  - id: FQ1_2025
+    call_date: "March 6, 2025"
+    reporting_quarter: "Fiscal Q1 2025 (Nov '24 - Jan '25)"
+    bamsec_id: "44027525-e714-4c47-adf0-bce25e1be38d"
+  - id: FQ2_2025
+    call_date: "June 5, 2025"
+    reporting_quarter: "Fiscal Q2 2025 (Feb - Apr '25)"
+    bamsec_id: "83361391-4037-4058-b6d6-9227b40efe00"
+  - id: FQ3_2025
+    call_date: "September 4, 2025"
+    reporting_quarter: "Fiscal Q3 2025 (May - Jul '25)"
+    bamsec_id: "bda34eea-efac-4740-8389-69776452b450"
+  - id: FQ4_2025
+    call_date: "December 11, 2025"
+    reporting_quarter: "Fiscal Q4 2025 (Full Year FY2025)"
+    bamsec_id: "58d0d8fd-10b0-47e5-b02c-61f174cd4285"
+
+# Tracked metrics define what appears in the key metrics card and comparison tables.
+# section_pattern: regex to match the section title in the MD file
+# item_pattern: regex to match the specific item within that section
+# comparison: how to compare across quarters (midpoint_pct, midpoint_delta, text_diff)
+tracked_metrics:
+  guidance_for:
+    label: "Guidance For"
+    section_pattern: "^Quarterly Guidance"
+    extract: "section_suffix"
+    display: "banner"
+
+  revenue:
+    label: "Next-Q Revenue"
+    section_pattern: "^Quarterly Guidance"
+    item_pattern: "^\\*\\*Revenue:?\\*\\*"
+    comparison: "midpoint_pct"
+    midpoint_format: "dollar_billions"
+
+  adj_ebitda_pct:
+    label: "Next-Q Adj. EBITDA % of Rev"
+    section_pattern: "^Quarterly Guidance"
+    item_pattern: "(?i)^\\*\\*Adjusted EBITDA.*(%|percent|of revenue)"
+    comparison: "midpoint_delta"
+    midpoint_format: "percentage"
+
+  semi_revenue:
+    label: "Semiconductor Revenue"
+    section_pattern: "(?i)(quarterly guidance|semiconductor|segment)"
+    item_pattern: "(?i)^\\*\\*Semiconductor (Solutions )?Revenue:?\\*\\*"
+    comparison: "text_diff"
+
+  sw_revenue:
+    label: "Infrastructure Software Revenue"
+    section_pattern: "(?i)(quarterly guidance|infrastructure software|segment|vmware)"
+    item_pattern: "(?i)^\\*\\*(Infrastructure )?Software Revenue:?\\*\\*"
+    comparison: "text_diff"
+
+  ai_revenue:
+    label: "AI Revenue"
+    section_pattern: "(?i)(ai|artificial intelligence|networking|actuals)"
+    item_pattern: "(?i)^\\*\\*AI Revenue:?\\*\\*"
+    comparison: "text_diff"
+
+  fy_revenue:
+    label: "FY Revenue"
+    section_pattern: "^Full Year.*Guidance"
+    item_pattern: "^\\*\\*Revenue:?\\*\\*"
+    comparison: "text_diff"
+
+  capex:
+    label: "CapEx"
+    section_pattern: "(?i)(full year.*guidance|quarterly guidance|capex|capital)"
+    item_pattern: "(?i)^\\*\\*CapEx:?\\*\\*"
+    comparison: "text_diff"
+
+  fcf:
+    label: "Free Cash Flow"
+    section_pattern: "(?i)(full year|free cash flow|capital)"
+    item_pattern: "(?i)^\\*\\*Free Cash Flow:?\\*\\*"
+    comparison: "text_diff"
+
+  vmware_integration:
+    label: "VMware Integration"
+    section_pattern: "(?i)vmware"
+    item_pattern: "(?i)(annualized booking|integration|vmware revenue)"
+    comparison: "text_diff"
+
+# Change detection: patterns for new section detection
+new_section_keywords:
+  - pattern: "(?i)vmware"
+    label: "VMware acquisition/integration discussion"
+  - pattern: "(?i)ai (revenue|demand|accelerat)"
+    label: "AI revenue/demand discussion emerges"
+    first_only: true
+    max_quarter_idx: 8
+  - pattern: "(?i)custom (silicon|accelerat|xpu)"
+    label: "Custom AI accelerator discussion"
+  - pattern: "(?i)tariff"
+    label: "Tariff impact discussion added"
+  - pattern: "(?i)actuals"
+    label: "Full-year actuals reported this quarter"
+  - pattern: "(?i)networking"
+    label: "Networking/switching revenue breakdown"
+  - pattern: "(?i)tomahawk|jericho"
+    label: "Specific product family discussed"
+  - pattern: "(?i)subscription transition|vcf"
+    label: "VMware subscription transition (VCF) metrics"
+
+# Comparison page configuration
+comparison_sections:
+  - title: "Quarterly Revenue Guidance"
+    metric_key: "revenue"
+    columns: ["Quarter", "Revenue Guidance", "Midpoint", "vs Prior"]
+
+  - title: "Adjusted EBITDA Margin Guidance"
+    metric_key: "adj_ebitda_pct"
+    columns: ["Quarter", "Adj. EBITDA % of Rev", "Midpoint", "vs Prior"]
+
+  - title: "Segment Revenue Split"
+    metrics: ["semi_revenue", "sw_revenue"]
+    columns: ["Quarter", "Semiconductor Revenue", "Infrastructure Software Revenue"]
+
+  - title: "AI Revenue"
+    metric_key: "ai_revenue"
+    columns: ["Quarter", "AI Revenue"]
+
+  - title: "Full Year Revenue"
+    metric_key: "fy_revenue"
+    columns: ["Quarter", "FY Revenue"]
+
+  - title: "CapEx & Free Cash Flow"
+    metrics: ["capex", "fcf"]
+    columns: ["Quarter", "CapEx", "Free Cash Flow"]
+
+  - title: "VMware Integration"
+    metric_key: "vmware_integration"
+    columns: ["Quarter", "VMware Integration Metrics"]
+
+# Extraction context: domain-specific hints for Claude during extraction
+extraction_context: |
+  Broadcom is a diversified technology company with two main segments:
+  1. Semiconductor Solutions (~60% of revenue): networking, broadband, server storage/connectivity, wireless, industrial
+  2. Infrastructure Software (~40% of revenue): VMware, CA Technologies, Symantec Enterprise Security
+
+  Key domain knowledge:
+  - VMware acquisition closed November 22, 2023 (during FQ1 FY2024). Pre-acquisition quarters won't have VMware revenue.
+  - Broadcom is transitioning VMware from perpetual licenses to subscriptions (VCF — VMware Cloud Foundation)
+  - Adjusted EBITDA is the primary profitability metric (not GAAP operating income)
+  - AI revenue is primarily from: custom AI accelerators (XPUs for hyperscalers) and networking ASICs
+  - Key networking products: Tomahawk switches (data center), Jericho (service provider), custom XPUs
+  - Key AI product lines: custom XPUs (for Google TPU, Meta MTIA, ByteDance, etc.), networking ASICs, NICs
+  - "Serviceable Addressable Market" (SAM) is frequently referenced for AI
+  - Fiscal year is offset: ends first Sunday after Nov 2. FQ1=Nov-Jan, FQ2=Feb-Apr, FQ3=May-Jul, FQ4=Aug-Oct
+  - FQ4 earnings calls typically include full-year actuals
+  - Revenue is typically guided as a single-point estimate, with Adj. EBITDA as % of projected revenue
+  - Post-VMware, they report "annualized booking value" (ABV) for software
+  - 10:1 stock split occurred July 2024
+  - Pre-VMware, Infrastructure Software segment was much smaller (CA + Symantec + Brocade)
+  - GM = Gross Margin, OM = Operating Margin (less commonly guided than Adj. EBITDA)
+
+topic_hints:
+  - "AI revenue and custom accelerator (XPU) demand from hyperscalers"
+  - "VMware integration progress and subscription transition (VCF)"
+  - "Semiconductor Solutions segment breakdown (networking, broadband, storage, wireless, industrial)"
+  - "Infrastructure Software revenue and margin trajectory"
+  - "Adjusted EBITDA and margin targets"
+  - "Networking revenue (Ethernet switching, NICs, custom silicon for AI clusters)"
+  - "Capital allocation (buybacks, dividends, debt paydown post-VMware)"
+  - "AI serviceable addressable market (SAM) sizing"
+  - "Free cash flow generation and leverage ratio targets"
+  - "Customer concentration and hyperscaler relationships (Google, Meta, ByteDance)"

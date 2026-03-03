@@ -1,0 +1,208 @@
+# TransDigm Group Incorporated
+# Company configuration for earnings call extraction pipeline
+
+company:
+  name: "TransDigm Group Incorporated"
+  ticker: "TDG"
+  sector: "Aerospace / Defense Components"
+  fiscal_year: "offset"
+  fiscal_year_end_month: 9  # September 30
+  currency: "USD"
+  reporting_currency: "USD"
+
+branding:
+  primary: "#002B5C"     # TransDigm dark blue
+  dark: "#1a1a2e"        # Dark navy
+  accent: "#B22234"      # Red accent
+
+quarters:
+  - id: Q1_FY2023
+    call_date: "February 8, 2023"
+    reporting_quarter: "Q1 FY2023 (Oct–Dec 2022)"
+    bamsec_id: "ed84d9bb-abf4-4ef2-b4e1-9175f7a41437"
+  - id: Q2_FY2023
+    call_date: "May 10, 2023"
+    reporting_quarter: "Q2 FY2023 (Jan–Mar 2023)"
+    bamsec_id: "c36646b1-a65e-4daf-86ee-3b3ac9deb6c8"
+  - id: Q3_FY2023
+    call_date: "August 9, 2023"
+    reporting_quarter: "Q3 FY2023 (Apr–Jun 2023)"
+    bamsec_id: "face6363-6ba8-4004-86ca-601682678155"
+  - id: Q4_FY2023
+    call_date: "November 8, 2023"
+    reporting_quarter: "Q4 FY2023 (Jul–Sep 2023, Full Year)"
+    bamsec_id: "0eb25733-a0d0-4702-82b8-3606dfd9869a"
+  - id: Q1_FY2024
+    call_date: "February 7, 2024"
+    reporting_quarter: "Q1 FY2024 (Oct–Dec 2023)"
+    bamsec_id: "8d61ad2a-f151-47fd-adc1-4731cbdf1d16"
+  - id: Q2_FY2024
+    call_date: "May 8, 2024"
+    reporting_quarter: "Q2 FY2024 (Jan–Mar 2024)"
+    bamsec_id: "e379b258-200b-43b0-96d5-4f3889fd6e66"
+  - id: Q3_FY2024
+    call_date: "August 7, 2024"
+    reporting_quarter: "Q3 FY2024 (Apr–Jun 2024)"
+    bamsec_id: "35e7e991-e718-4595-9257-bc20957f0be6"
+  - id: Q4_FY2024
+    call_date: "November 6, 2024"
+    reporting_quarter: "Q4 FY2024 (Jul–Sep 2024, Full Year)"
+    bamsec_id: "a5a56473-68e2-4986-89e6-8523cf64e9e8"
+  - id: Q1_FY2025
+    call_date: "February 5, 2025"
+    reporting_quarter: "Q1 FY2025 (Oct–Dec 2024)"
+    bamsec_id: "a6fe00d2-4086-4325-8e26-e43db9eaaf57"
+  - id: Q2_FY2025
+    call_date: "May 7, 2025"
+    reporting_quarter: "Q2 FY2025 (Jan–Mar 2025)"
+    bamsec_id: "5755f4cf-62a3-435c-a1df-7591c2f57f1d"
+  - id: Q3_FY2025
+    call_date: "August 6, 2025"
+    reporting_quarter: "Q3 FY2025 (Apr–Jun 2025)"
+    bamsec_id: "0b80cb1e-7fed-4d6c-b8f2-644b36dfc72e"
+  - id: Q4_FY2025
+    call_date: "November 5, 2025"
+    reporting_quarter: "Q4 FY2025 (Jul–Sep 2025, Full Year)"
+    bamsec_id: "4c696f15-f858-4943-b869-6092f8b4372d"
+  - id: Q1_FY2026
+    call_date: "February 4, 2026"
+    reporting_quarter: "Q1 FY2026 (Oct–Dec 2025)"
+    bamsec_id: "11670ed0-101c-43b7-b480-c540dea13a55"
+  - id: Q2_FY2026
+    call_date: "May 6, 2026"
+    reporting_quarter: "Q2 FY2026 (Jan–Mar 2026)"
+    bamsec_id: ""
+  - id: Q3_FY2026
+    call_date: "August 5, 2026"
+    reporting_quarter: "Q3 FY2026 (Apr–Jun 2026)"
+    bamsec_id: ""
+  - id: Q4_FY2026
+    call_date: "November 4, 2026"
+    reporting_quarter: "Q4 FY2026 (Jul–Sep 2026, Full Year)"
+    bamsec_id: ""
+
+tracked_metrics:
+  guidance_for:
+    label: "Guidance For"
+    section_pattern: "^(Quarterly Guidance|Full Year)"
+    extract: "section_suffix"
+    display: "banner"
+
+  revenue:
+    label: "Revenue"
+    section_pattern: "(?i)(full year|quarterly guidance|key metrics)"
+    item_pattern: "(?i)^\\*\\*(Net |Total )?Revenue:?\\*\\*"
+    comparison: "midpoint_pct"
+    midpoint_format: "dollar_billions"
+
+  adjusted_ebitda:
+    label: "EBITDA As Defined"
+    section_pattern: "(?i)(full year|quarterly guidance|key metrics)"
+    item_pattern: "(?i)^\\*\\*EBITDA (As Defined|as Defined):?\\*\\*"
+    comparison: "text_diff"
+
+  adjusted_ebitda_margin:
+    label: "EBITDA As Defined Margin"
+    section_pattern: "(?i)(full year|quarterly guidance|key metrics)"
+    item_pattern: "(?i)^\\*\\*EBITDA (As Defined|as Defined) Margin:?\\*\\*"
+    comparison: "midpoint_delta"
+    midpoint_format: "percentage"
+
+  adjusted_eps:
+    label: "Adjusted EPS"
+    section_pattern: "(?i)(full year|quarterly guidance|key metrics)"
+    item_pattern: "(?i)^\\*\\*Adjusted (Diluted )?EPS:?\\*\\*"
+    comparison: "text_diff"
+
+  organic_revenue_growth:
+    label: "Organic Revenue Growth"
+    section_pattern: "(?i)(full year|quarterly guidance|key metrics)"
+    item_pattern: "(?i)^\\*\\*Organic Revenue Growth:?\\*\\*"
+    comparison: "text_diff"
+
+  commercial_aftermarket_revenue:
+    label: "Commercial Aftermarket Revenue"
+    section_pattern: "(?i)(segment|commercial aftermarket|end market)"
+    item_pattern: "(?i)^\\*\\*Commercial Aftermarket( Revenue)?:?\\*\\*"
+    comparison: "text_diff"
+
+  commercial_oem_revenue:
+    label: "Commercial OEM Revenue"
+    section_pattern: "(?i)(segment|commercial oem|end market)"
+    item_pattern: "(?i)^\\*\\*Commercial OEM( Revenue)?:?\\*\\*"
+    comparison: "text_diff"
+
+  defense_revenue:
+    label: "Defense & Space Revenue"
+    section_pattern: "(?i)(segment|defense|end market)"
+    item_pattern: "(?i)^\\*\\*Defense( & Space| and Space)?( Revenue)?:?\\*\\*"
+    comparison: "text_diff"
+
+  free_cash_flow:
+    label: "Free Cash Flow"
+    section_pattern: "(?i)(full year|quarterly guidance|key metrics|cash flow)"
+    item_pattern: "(?i)^\\*\\*Free Cash Flow:?\\*\\*"
+    comparison: "text_diff"
+
+new_section_keywords:
+  - pattern: "(?i)acquisition|acquired"
+    label: "Acquisition activity discussed"
+  - pattern: "(?i)special dividend"
+    label: "Special dividend discussed"
+  - pattern: "(?i)leverage|debt"
+    label: "Leverage and debt structure discussed"
+  - pattern: "(?i)actuals"
+    label: "Full-year actuals reported this quarter"
+  - pattern: "(?i)price increase|pricing"
+    label: "Pricing and price increase strategy discussed"
+  - pattern: "(?i)supply chain"
+    label: "Supply chain conditions discussed"
+
+comparison_sections:
+  - title: "Revenue & Growth Guidance"
+    metrics: ["revenue", "organic_revenue_growth"]
+    columns: ["Quarter", "Revenue", "Organic Growth"]
+
+  - title: "Profitability"
+    metrics: ["adjusted_ebitda", "adjusted_ebitda_margin"]
+    columns: ["Quarter", "EBITDA As Defined", "EBITDA Margin"]
+
+  - title: "End Market Revenue"
+    metrics: ["commercial_aftermarket_revenue", "commercial_oem_revenue", "defense_revenue"]
+    columns: ["Quarter", "Comm. Aftermarket", "Comm. OEM", "Defense & Space"]
+
+  - title: "EPS & Cash Flow"
+    metrics: ["adjusted_eps", "free_cash_flow"]
+    columns: ["Quarter", "Adjusted EPS", "Free Cash Flow"]
+
+extraction_context: |
+  TransDigm Group is a leading manufacturer of highly engineered, proprietary aerospace components. The company operates a unique business model centered on acquiring niche aerospace businesses with proprietary products and significant aftermarket exposure. Key domain knowledge:
+  - "EBITDA As Defined" = TransDigm's adjusted EBITDA metric (their primary profitability measure)
+  - EBITDA margins are exceptionally high (~50%+) due to proprietary product pricing power
+  - Three end markets: Commercial Aftermarket, Commercial OEM, Defense & Space
+  - Commercial Aftermarket = replacement parts and repairs (highest margin, most predictable)
+  - Commercial OEM = parts sold to aircraft manufacturers (Boeing, Airbus) for new builds
+  - Defense & Space = military and space applications
+  - "Sole-source" = TransDigm is the only qualified supplier (most of their products)
+  - "Proprietary" products = ~90% of revenue comes from proprietary/sole-source products
+  - Acquisition strategy = acquire niche aerospace component companies, apply 3 value drivers
+  - Three value drivers: 1) Improve operations, 2) Generate new product ideas, 3) Price appropriately
+  - Highly leveraged capital structure (high debt/EBITDA) — common for their model
+  - Special dividends = TransDigm periodically returns capital via large special dividends
+  - "Organic growth" excludes contribution from recent acquisitions
+  - Bookings / book-to-bill ratio can indicate demand trends
+  - Commercial air travel recovery post-COVID is a major secular driver
+  - OEM production rates (Boeing 737 MAX, Airbus A320neo) directly impact OEM revenue
+  - Fiscal year ends September 30 (FY2026 = Oct 2025 – Sep 2026)
+  - Q4 (Jul-Sep) earnings calls include full-year actuals and next-year guidance
+
+topic_hints:
+  - "Commercial aftermarket growth driven by air traffic recovery"
+  - "EBITDA As Defined margin trends and pricing power"
+  - "Acquisition pipeline and recent deal integration"
+  - "OEM production rates (Boeing, Airbus) and OEM revenue impact"
+  - "Defense & Space revenue trends and government spending"
+  - "Organic vs. acquisition-driven revenue growth"
+  - "Capital allocation: special dividends, debt management, M&A"
+  - "Free cash flow generation and conversion"
+  - "Supply chain conditions and operational performance"

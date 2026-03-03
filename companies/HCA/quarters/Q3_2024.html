@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HCA Q3 2024 Earnings Call Detail</title>
+<style>
+:root {
+    --company-primary: #C8952E;
+    --company-dark: #0D1B2A;
+    --company-accent: #1B365D;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 40px 40px 32px;
+    margin: 0 -24px 0;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .header .meta {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    font-weight: 300;
+  }
+  .header .meta span { margin-right: 24px; }
+
+  .nav-bar {
+    background: var(--company-accent);
+    margin: 0 -24px 32px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    transition: all 0.15s;
+  }
+  .nav-bar a:hover { background: rgba(255,255,255,0.2); }
+  .nav-bar a.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .nav-center {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-center a.qbtn {
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+  }
+  .nav-center a.qbtn.current {
+    background: var(--company-primary);
+    border-color: var(--company-primary);
+  }
+  .nav-center a.qbtn:hover { background: rgba(255,255,255,0.2); }
+  .nav-back {
+    background: rgba(255,255,255,0.15) !important;
+    border-color: rgba(255,255,255,0.35) !important;
+  }
+
+  .metrics-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .metric {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+  .metric-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .metric-value {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+  .metric-delta {
+    font-size: 0.72rem;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+  .delta-up { color: var(--green); }
+  .delta-down { color: var(--red); }
+  .delta-flat { color: var(--text-muted); }
+
+  .changes-box {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 5px solid var(--amber);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .changes-box h3 {
+    font-size: 1rem;
+    color: var(--company-dark);
+    margin-bottom: 10px;
+  }
+  .changes-box ul { list-style: none; padding: 0; }
+  .changes-box li {
+    padding: 5px 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .change-tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .ct-raised { background: #d5f5e3; color: #1e8449; }
+  .ct-lowered { background: #fadbd8; color: #c0392b; }
+  .ct-changed { background: #d6eaf8; color: #2471a3; }
+  .ct-new { background: #e8daef; color: #6c3483; }
+  .ct-maintained { background: #fdebd0; color: #b9770e; }
+
+  .content-section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .content-section h3 {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .content-section ul {
+    padding: 14px 18px 14px 36px;
+    margin: 0;
+  }
+  .content-section li {
+    padding: 3px 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .content-section li strong { color: var(--company-dark); }
+
+  .prior-ref {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 40px;
+    overflow: hidden;
+  }
+  .prior-ref-header {
+    background: var(--light-bg);
+    padding: 12px 18px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--company-dark);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .prior-ref-header:hover { background: #eef2f7; }
+  .prior-ref-body { padding: 18px; display: none; }
+  .prior-ref-body.open { display: block; }
+  .prior-ref-body .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .prior-mini {
+    background: var(--light-bg);
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .prior-mini .pm-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .prior-mini .pm-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border);
+  }
+  .footer-nav a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .footer-nav a:hover { text-decoration: underline; }
+
+  /* Comparison page styles */
+  .toc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .toc a {
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 4px 0;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  .comp-section {
+    margin-bottom: 40px;
+  }
+  .comp-section h2 {
+    font-size: 1.2rem;
+    color: var(--company-dark);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--company-primary);
+  }
+
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+  }
+  .comp-table th {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .comp-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .comp-table tr:nth-child(even) { background: var(--light-bg); }
+  .comp-table tr:hover { background: #e8f4fd; }
+
+  @media (max-width: 768px) {
+    .header h1 { font-size: 1.5rem; }
+    .metrics-card { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .nav-center { display: none; }
+    body { padding: 0 16px 60px; }
+    .header { margin: 0 -16px 0; padding: 28px 24px 20px; }
+    .nav-bar { margin: 0 -16px 24px; }
+    .toc { grid-template-columns: 1fr; }
+    .comp-table { font-size: 0.78rem; }
+    .comp-table th, .comp-table td { padding: 6px 8px; }
+  }
+
+  @media print {
+    .nav-bar { display: none; }
+    .header { background: #333; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>HCA Q3 2024 Earnings Call</h1>
+  <div class="meta">
+    <span>Call Date: October 25, 2024</span>
+    <span>Reporting: Q3 2024</span>
+  </div>
+</div>
+<div class="nav-bar">
+  <a href="Q2_2024.html">&larr; Q2 2024</a>
+  <div class="nav-center">
+    <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="Q4_2025.html" class="qbtn">4Q25</a>
+    <a href="Q3_2025.html" class="qbtn">3Q25</a>
+    <a href="Q2_2025.html" class="qbtn">2Q25</a>
+    <a href="Q1_2025.html" class="qbtn">1Q25</a>
+    <a href="Q4_2024.html" class="qbtn">4Q24</a>
+    <a href="Q3_2024.html" class="qbtn current">3Q24</a>
+    <a href="Q2_2024.html" class="qbtn">2Q24</a>
+    <a href="Q1_2024.html" class="qbtn">1Q24</a>
+    <a href="Q4_2023.html" class="qbtn">4Q23</a>
+    <a href="Q3_2023.html" class="qbtn">3Q23</a>
+    <a href="Q2_2023.html" class="qbtn">2Q23</a>
+    <a href="Q1_2023.html" class="qbtn">1Q23</a>
+    <a href="Q4_2022.html" class="qbtn">4Q22</a>
+    <a href="Q3_2022.html" class="qbtn">3Q22</a>
+    <a href="Q2_2022.html" class="qbtn">2Q22</a>
+    <a href="Q1_2022.html" class="qbtn">1Q22</a>
+  </div>
+  <a href="Q4_2024.html">Q4 2024 &rarr;</a>
+</div>
+
+<div class="metrics-card">
+  <div class="metric">
+    <div class="metric-label">CapEx Guidance</div>
+    <div class="metric-value"><strong>$1.19 billion</strong> in Q3 2024</div>
+    <div class="metric-delta delta-flat">Prior: $1.28 billion</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Adj. EBITDA Margin</div>
+    <div class="metric-value"><strong>+90 basis points</strong> YoY</div>
+  </div>
+</div>
+
+<div class="changes-box">
+  <h3>What Changed vs Q2 2024</h3>
+  <ul>
+    <li><span class="change-tag ct-changed">Changed</span> CapEx Guidance: <strong>$1.19 billion</strong> in Q3 2024 (prior: $1.28 billion)</li>
+    <li><span class="change-tag ct-new">New</span> NEW: Natural disaster impact discussed</li>
+  </ul>
+</div>
+
+<!-- Full Guidance Content -->
+<div class="content-section">
+  <h3>Full Year 2024 Guidance</h3>
+</div>
+<div class="content-section">
+  <h3>Guidance Status: REAFFIRMED (but results expected in lower half of ranges due to hurricanes)</h3>
+  <ul>
+    <li>Management stated: "we reaffirmed our 2024 estimated guidance ranges. Given the ongoing impact of the 2 major hurricanes on the remainder of the year, we estimate that the results are likely to be in the lower half of the ranges provided." | Metric | 2024 Guidance Range | Status | |--------|-------------------|--------| | <strong>Adjusted EBITDA</strong> | ~$14 billion midpoint (per analyst reference of $14B) | Reaffirmed; lower half expected | | <strong>Capital expenditures</strong> | ~<strong>$5 billion</strong> | <strong>LOWERED</strong> from prior estimate (described as "lower estimate due primarily to timing of capital projects") |</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Preliminary 2025 Outlook (Early Look -- Formal Guidance in January)</h3>
+</div>
+<div class="content-section">
+  <h3>Earnings</h3>
+  <ul>
+    <li><strong>Diluted EPS (as adjusted):</strong> $4.90, up <strong>25%</strong> YoY</li>
+    <li><strong>Hurricane Helene impact on Q3 EPS:</strong> ~$0.15 per diluted share (~$50 million pre-tax)</li>
+    <li><strong>Adjusted EBITDA growth:</strong> Over <strong>13%</strong> YoY</li>
+    <li><strong>Adjusted EBITDA margin improvement:</strong> <strong>+90 basis points</strong> YoY</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Revenue</h3>
+  <ul>
+    <li><strong>Revenue growth:</strong> <strong>7.9%</strong> YoY</li>
+    <li><strong>Same-facilities revenue growth:</strong> <strong>7.1%</strong></li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Volume (Same-Facility Basis)</h3>
+  <ul>
+    <li><strong>Inpatient admissions:</strong> <strong>+4.5%</strong> YoY</li>
+    <li><strong>Adjusted admissions:</strong> <strong>+4.5%</strong> YoY</li>
+    <li><strong>Emergency room visits:</strong> <strong>+4.6%</strong> YoY</li>
+    <li><strong>Inpatient surgeries:</strong> <strong>+1.6%</strong> YoY</li>
+    <li><strong>Outpatient surgery:</strong> <strong>-2%</strong> YoY (however, outpatient surgery revenue <strong>+5%</strong> due to acuity/payer mix)</li>
+    <li><strong>Outpatient surgery revenue per surgical case:</strong> <strong>+7%</strong></li>
+    <li><strong>Sequential same-facility admissions increase (Q2 to Q3 2024):</strong> <strong>+1.4%</strong> (described as "in line with past sequential trend")</li>
+    <li><strong>Cardiac procedures, inpatient rehab admissions, obstetric volumes:</strong> "solid growth" (no specific figures provided)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Volume by Payer (Same-Facility Equivalent Admissions, Q3 2024 vs. Prior Year)</h3>
+  <ul>
+    <li><strong>Medicare equivalent admissions:</strong> <strong>+5%</strong></li>
+    <li><strong>Total Medicare admissions (same-facility):</strong> <strong>+5.3%</strong> - <strong>Traditional Medicare admissions:</strong> "basically flat" - <strong>Medicare Advantage admissions:</strong> <strong>+11%</strong> (approximately <strong>2%</strong> of that 11% attributed to two-midnight rule impact, equivalent to ~<strong>50 bps</strong> of overall admission growth)</li>
+    <li><strong>Medicaid equivalent admissions:</strong> <strong>-8.5%</strong></li>
+    <li><strong>Managed care (excluding exchanges) equivalent admissions:</strong> up just short of <strong>4%</strong></li>
+    <li><strong>Exchange volume equivalent admissions:</strong> <strong>+43%</strong> YoY</li>
+    <li><strong>Uninsured equivalent admissions:</strong> <strong>+7.2%</strong></li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Payer Mix</h3>
+  <ul>
+    <li><strong>Medicare Advantage as % of total Medicare volume:</strong> <strong>58%</strong></li>
+    <li><strong>Payer mix improvement noted</strong> across service lines in the quarter</li>
+    <li><strong>Acuity improvement</strong> within inpatient services in the quarter</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Labor & Operating Costs</h3>
+  <ul>
+    <li><strong>Labor costs as % of revenue:</strong> improved <strong>160 basis points</strong> YoY</li>
+    <li><strong>Contract labor:</strong> improved <strong>18%</strong> YoY (declined 18%); represented <strong>4.6%</strong> of total labor cost</li>
+    <li><strong>Supply cost as % of revenue:</strong> increased <strong>30 basis points</strong> YoY; "relatively consistent sequentially"</li>
+    <li><strong>Other operating costs as % of revenue:</strong> increased <strong>40 basis points</strong> YoY</li>
+    <li><strong>Professional fee cost growth:</strong> <strong>+10%</strong> YoY; "flat sequentially to the second quarter" - Context: Q1 2024 pro fee growth was <strong>+20%</strong> YoY; Q2 2024 was <strong>+13%</strong> YoY; Q3 2024 was <strong>+10%</strong> YoY</li>
+    <li><strong>Wage inflation:</strong> generally stable in the <strong>2.5% to 3.5%</strong> range</li>
+    <li><strong>Length of stay reduction (year-to-date via resiliency program):</strong> ~<strong>1.5%</strong> reduction</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Medicaid Supplemental Payment Programs</h3>
+  <ul>
+    <li><strong>Net effect in Q3 2024:</strong> "modest benefit" vs. prior year</li>
+    <li>Components: reduction from <strong>Florida program</strong> (change to accruing basis), offset by <strong>North Carolina benefit</strong> received in Q3 2024 vs. Q4 2023, plus <strong>new Nevada program</strong> kicking in this year</li>
+    <li><strong>Full year 2024 Medicaid supplemental payment program tailwind vs. prior year:</strong> $100 million to $200 million; management "would now lean to the higher end of that range" (i.e., closer to <strong>$200 million</strong>)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Medicare Advantage / Two-Midnight Rule</h3>
+  <ul>
+    <li><strong>Two-midnight rule contribution to MA admission growth:</strong> ~<strong>2 percentage points</strong> of the 11% MA admission growth</li>
+    <li><strong>Equivalent to ~50 bps of overall admission growth;</strong> "remained consistent over the year"</li>
+    <li><strong>Prior authorization denial trends:</strong> "modest reduction" for accounts with two-midnights or greater vs. prior year in 2024</li>
+    <li><strong>Medicare Advantage observation-to-inpatient mix:</strong> "still significantly higher than traditional Medicare" even 9 months post two-midnight rule implementation</li>
+    <li><strong>Medicare Advantage CMI-adjusted length-of-stay ratio:</strong> ~<strong>10% higher</strong> than traditional Medicare, "driven by payer-driven discharge delays"</li>
+    <li><strong>Denial write-offs:</strong> moderated rate of growth in 2024 vs. prior year; "denials were not a material impact to HCA in third quarter of 2024"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Capital Allocation</h3>
+  <ul>
+    <li><strong>Cash flow from operations:</strong> <strong>$3.5 billion</strong> in Q3 2024</li>
+    <li><strong>Capital expenditures:</strong> <strong>$1.19 billion</strong> in Q3 2024</li>
+    <li><strong>Share repurchases:</strong> <strong>$1.79 billion</strong> in Q3 2024</li>
+    <li><strong>Dividends paid:</strong> <strong>$169 million</strong> in Q3 2024</li>
+    <li><strong>Debt-to-adjusted EBITDA leverage:</strong> "at the low end of our stated guidance range"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Network Development</h3>
+  <ul>
+    <li>By end of 2024: expect to have added approximately <strong>600 inpatient beds</strong> and <strong>100 new outpatient facilities</strong></li>
+    <li><strong>Total sites of care:</strong> expected to exceed <strong>2,600</strong> by year-end 2024</li>
+    <li><strong>Projects under development:</strong> ~<strong>$6 billion</strong> currently</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Denials & Revenue Cycle</h3>
+  <ul>
+    <li><strong>Denials:</strong> "not a material impact to HCA in third quarter of 2024"</li>
+    <li><strong>Dispute resolution timeline for two-midnight denials:</strong> "can take a year to 2 years to fully complete"</li>
+    <li><strong>AI/technology embedded in revenue cycle</strong> to manage receivables and mitigate denial pressures</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Valesco (Physician Services)</h3>
+  <ul>
+    <li><strong>Integration of ~5,500 physicians</strong> completed this year</li>
+    <li>Financial performance: "on our plan, maybe slightly ahead of it but it's not material to the company as a whole"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Hurricane Impact Estimates</h3>
+  <ul>
+    <li><strong>Estimated impact:</strong> ~<strong>$50 million</strong> pre-tax / <strong>$0.15 per diluted share</strong></li>
+    <li><strong>29 hospitals</strong> in path of Helene</li>
+    <li><strong>Mission Hospital (Asheville, NC):</strong> continued operations but significant city infrastructure damage (primarily water)</li>
+    <li><strong>Water supply costs at Mission Hospital:</strong> at least <strong>$13 million</strong> through October</li>
+    <li>City potable water supply not projected to be reestablished at Mission Hospital "for several more weeks"</li>
+    <li><strong>Estimated additional expenses and lost revenue:</strong> <strong>$200 million to $300 million</strong> / <strong>$0.60 to $0.90 per diluted share</strong></li>
+    <li>Impact relates "primarily to our hospitals in North Carolina and our Largo Hospital in Florida"</li>
+    <li><strong>These estimates do NOT include any insurance recoveries</strong></li>
+    <li><strong>34+ hospitals</strong> in path of Milton</li>
+    <li><strong>HCA Florida Largo Hospital:</strong> flooded, currently closed; anticipated reopening <strong>late December 2024</strong></li>
+    <li>Company has business interruption coverage as part of property insurance program</li>
+    <li>"Not in a position to provide estimates related to either the timing or the potential recovery"</li>
+    <li>"We do believe that there will be a claim for sure, given the size of these storms"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Volume</h3>
+  <ul>
+    <li><strong>Volume growth assumption for 2025:</strong> <strong>3% to 4%</strong> (elevated vs. long-term demand assumptions of <strong>2% to 3%</strong>)</li>
+    <li>Management stated: "we assume volume growth will continue at elevated levels in the range of 3% to 4% for the year"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Earnings Growth</h3>
+  <ul>
+    <li><strong>Diluted EPS growth:</strong> expected "near or slightly above the upper end of our long-term target ranges"</li>
+    <li><strong>Adjusted EBITDA growth:</strong> expected "near or slightly above the upper end of our long-term target ranges"</li>
+    <li>Long-term EBITDA growth target range referenced by analysts: <strong>4% to 6%</strong></li>
+    <li>Hurricane impact in 2025 "taken into account" in these preliminary comments; described as "manageable" and "primarily in North Carolina"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Revenue / Pricing</h3>
+  <ul>
+    <li><strong>Cash net revenue per adjusted admission growth:</strong> planning for <strong>2% to 3%</strong> growth in 2025 (early look)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Payer Contracting</h3>
+  <ul>
+    <li><strong>2025 commercial contracts:</strong> <strong>80% complete</strong></li>
+    <li><strong>2026 commercial contracts:</strong> <strong>54% complete</strong></li>
+    <li><strong>2027 commercial contracts:</strong> just short of <strong>20% complete</strong></li>
+    <li>Contracting rates: "still tracking in that mid-single-digit update"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Labor & Cost Assumptions</h3>
+  <ul>
+    <li><strong>Wage inflation:</strong> anticipated to be "fairly stable" and "generally consistent with what we've seen...for 2024" (i.e., <strong>2.5% to 3.5%</strong> range)</li>
+    <li><strong>Overall cost environment:</strong> "reasonable assumptions around the rest of our cost to be somewhat stable and in line with 2024"</li>
+    <li><strong>Professional fees:</strong> implied stable ("part of Sam's comment for next year of a stable operating environment")</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Exchange Enrollment</h3>
+  <ul>
+    <li><strong>Exchange enrollment growth assumption for 2025:</strong> <strong>8% to 10%</strong> growth (vs. <strong>30%+</strong> growth in HCA states in 2024)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Medicaid</h3>
+  <ul>
+    <li><strong>Medicaid volumes:</strong> expected to "flatten out a bit in '25 versus '24" as redetermination process sunsets</li>
+    <li><strong>Payer mix impact:</strong> net effect of exchange moderation + Medicaid flattening expected to produce "generally stable payer mix" from 2024 to 2025</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Hurricane Impact in 2025</h3>
+  <ul>
+    <li><strong>Ongoing effects:</strong> "manageable," "primarily in our North Carolina market"</li>
+    <li><strong>Tampa/Largo facility:</strong> expected to be "operational by the end of 2024"</li>
+    <li>Hurricane lingering effects factored into the preliminary outlook of being "near or slightly above the upper end" of long-term growth ranges</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Resiliency Program</h3>
+  <ul>
+    <li><strong>Target savings:</strong> <strong>$600 million to $800 million</strong> (referenced from prior Investor Day)</li>
+    <li>Next 2-3 years: program to "pay for tech and innovation investments"</li>
+    <li>Deeper into the decade: to "support our margins and deal with the challenges that may come"</li>
+    <li>Management "pleased with the current status and the trajectory"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Leverage / Capital Allocation</h3>
+  <ul>
+    <li>Currently at the "bottom" / "lower end" of leverage ratio target</li>
+    <li>Evaluation of financial policies ongoing as part of annual planning/budgeting process; any changes to be announced on Q1 call</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Special Topics</h3>
+</div>
+<div class="content-section">
+  <h3>Hurricane Recovery -- Historical Precedents (Management Commentary)</h3>
+  <ul>
+    <li><strong>HCA Faucette Hospital (Port Charlotte) -- Hurricane Ian:</strong> repaired, hardened, now "performing at a higher level than pre-Hurricane Ian"</li>
+    <li><strong>Panama City, FL -- Hurricane Michael:</strong> repaired, hardened, "performing at a higher level than pre-storm"</li>
+    <li><strong>Houston system -- Hurricane Harvey:</strong> recovered, "exceeding pre-Harvey performance"</li>
+    <li>Management belief: "we can produce similar results with these 2 hospitals in time"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Outpatient Surgery Trends</h3>
+  <ul>
+    <li>Volume declines "focused almost entirely in Medicaid and uninsured"</li>
+    <li>Revenue per surgical case up <strong>7%</strong> due to acuity growth and payer mix improvement</li>
+    <li>"Profitability of our outpatient surgery service is better as a result"</li>
+    <li>No significant changes anticipated for 2025</li>
+    <li>Advancing number of surgery centers through greenfield development and targeted acquisitions</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>AI / Digital Agenda</h3>
+  <ul>
+    <li>Presented full plan on digital agenda and AI strategy for next <strong>5 to 7 years</strong></li>
+    <li>Areas showing promising results: scheduling capabilities (demand forecasting, workforce allocation), revenue cycle management (denial mitigation)</li>
+    <li>AI initiatives "not material yet" but growing</li>
+    <li>Expect "incremental improvements in '25 and '26 and on into the rest of this decade"</li>
+    <li>Management view: "at an inflection point"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Network / New Contracts</h3>
+  <ul>
+    <li><strong>2 major commercial contract signings in 2024:</strong> Kaiser in Denver and Blue Cross of Tennessee/Chattanooga</li>
+    <li>"Less than a handful" of commercial contracts across the country where HCA does not participate</li>
+    <li>Medicaid adjusted admissions represent <strong>17%-18%</strong> of total HCA adjusted admissions</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Bad Debt / Uninsured</h3>
+  <ul>
+    <li>Uninsured cost trends described as "pretty stable"</li>
+    <li>No significant changes anticipated going into 2025</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Quality Metrics</h3>
+  <ul>
+    <li>Clinical outcomes and quality performance "better than it was in 2019" (pre-pandemic)</li>
+    <li>Quality-based kickers in commercial contracts described as "not material to the overall escalators"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Key Q&A Data Points Summary</h3>
+  <ul>
+    <li>| Topic | Data Point | Source | |-------|-----------|--------| | NRA growth deceleration Q3 vs. H1 | "All of the decline in the growth rate is driven by state supplemental programs" | Mike Marks (Q&A -- Andrew Mok) | | Inpatient revenue per admission growth H1 2024 | ~<strong>6.5%</strong> | Analyst reference (Andrew Mok) | | Inpatient revenue per admission growth Q3 2024 | ~<strong>half</strong> of H1 rate (~3.25%) | Analyst reference (Andrew Mok) | | 2025 EBITDA framework (analyst) | ~$14B midpoint minus $250M-$350M hurricane impact, grow at high end of 4%-6% range = ~$14.6B before hurricane recovery layered in | A.J. Rice framework (not confirmed by management) | | Exchange contribution to 2024 volume | "as much as maybe 200 or 250 basis points" (analyst reference from prior quarter) | Stephen Baxter reference | | Medicaid as % of adjusted admissions | <strong>17%-18%</strong> | Sam Hazen | | Medicare Advantage as % of total Medicare | <strong>58%</strong> | Mike Marks |</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q3 2024 Actuals (Reported)</h3>
+</div>
+
+<div class="prior-ref" id="priorRef">
+  <div class="prior-ref-header" onclick="var b=document.getElementById('priorBody');b.classList.toggle('open');this.querySelector('.arrow').innerHTML=b.classList.contains('open')?'&#9650;':'&#9660;';">
+    Prior Quarter Reference: Q2 2024
+    <span class="arrow">&#9660;</span>
+  </div>
+  <div class="prior-ref-body" id="priorBody">
+    <div class="metric-grid">
+      <div class="prior-mini"><div class="pm-label">CapEx Guidance</div><div class="pm-value">$1.28 billion</div></div>
+      <div class="prior-mini"><div class="pm-label">Same-Facility Admissions</div><div class="pm-value">+5.2%</div></div>
+    </div>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q2_2024.html" style="color:var(--blue);">View full Q2 2024 detail &rarr;</a></p>
+  </div>
+</div>
+
+<div class="footer-nav">
+  <a href="Q2_2024.html">&larr; Q2 2024</a>
+  <a href="../comparison.html">Back to Overview</a>
+  <a href="Q4_2024.html">Q4 2024 &rarr;</a>
+</div>
+
+</body>
+</html>

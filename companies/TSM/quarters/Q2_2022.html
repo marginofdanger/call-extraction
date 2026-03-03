@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TSM Q2 2022 Earnings Call Detail</title>
+<style>
+:root {
+    --company-primary: #c0392b;
+    --company-dark: #1a1a2e;
+    --company-accent: #16213e;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 40px 40px 32px;
+    margin: 0 -24px 0;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .header .meta {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    font-weight: 300;
+  }
+  .header .meta span { margin-right: 24px; }
+
+  .nav-bar {
+    background: var(--company-accent);
+    margin: 0 -24px 32px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    transition: all 0.15s;
+  }
+  .nav-bar a:hover { background: rgba(255,255,255,0.2); }
+  .nav-bar a.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .nav-center {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-center a.qbtn {
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+  }
+  .nav-center a.qbtn.current {
+    background: var(--company-primary);
+    border-color: var(--company-primary);
+  }
+  .nav-center a.qbtn:hover { background: rgba(255,255,255,0.2); }
+  .nav-back {
+    background: rgba(255,255,255,0.15) !important;
+    border-color: rgba(255,255,255,0.35) !important;
+  }
+
+  .metrics-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .metric {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+  .metric-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .metric-value {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+  .metric-delta {
+    font-size: 0.72rem;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+  .delta-up { color: var(--green); }
+  .delta-down { color: var(--red); }
+  .delta-flat { color: var(--text-muted); }
+
+  .changes-box {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 5px solid var(--amber);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .changes-box h3 {
+    font-size: 1rem;
+    color: var(--company-dark);
+    margin-bottom: 10px;
+  }
+  .changes-box ul { list-style: none; padding: 0; }
+  .changes-box li {
+    padding: 5px 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .change-tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .ct-raised { background: #d5f5e3; color: #1e8449; }
+  .ct-lowered { background: #fadbd8; color: #c0392b; }
+  .ct-changed { background: #d6eaf8; color: #2471a3; }
+  .ct-new { background: #e8daef; color: #6c3483; }
+  .ct-maintained { background: #fdebd0; color: #b9770e; }
+
+  .content-section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .content-section h3 {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .content-section ul {
+    padding: 14px 18px 14px 36px;
+    margin: 0;
+  }
+  .content-section li {
+    padding: 3px 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .content-section li strong { color: var(--company-dark); }
+
+  .prior-ref {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 40px;
+    overflow: hidden;
+  }
+  .prior-ref-header {
+    background: var(--light-bg);
+    padding: 12px 18px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--company-dark);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .prior-ref-header:hover { background: #eef2f7; }
+  .prior-ref-body { padding: 18px; display: none; }
+  .prior-ref-body.open { display: block; }
+  .prior-ref-body .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .prior-mini {
+    background: var(--light-bg);
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .prior-mini .pm-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .prior-mini .pm-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border);
+  }
+  .footer-nav a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .footer-nav a:hover { text-decoration: underline; }
+
+  /* Comparison page styles */
+  .toc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .toc a {
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 4px 0;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  .comp-section {
+    margin-bottom: 40px;
+  }
+  .comp-section h2 {
+    font-size: 1.2rem;
+    color: var(--company-dark);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--company-primary);
+  }
+
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+  }
+  .comp-table th {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .comp-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .comp-table tr:nth-child(even) { background: var(--light-bg); }
+  .comp-table tr:hover { background: #e8f4fd; }
+
+  @media (max-width: 768px) {
+    .header h1 { font-size: 1.5rem; }
+    .metrics-card { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .nav-center { display: none; }
+    body { padding: 0 16px 60px; }
+    .header { margin: 0 -16px 0; padding: 28px 24px 20px; }
+    .nav-bar { margin: 0 -16px 24px; }
+    .toc { grid-template-columns: 1fr; }
+    .comp-table { font-size: 0.78rem; }
+    .comp-table th, .comp-table td { padding: 6px 8px; }
+  }
+
+  @media print {
+    .nav-bar { display: none; }
+    .header { background: #333; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>TSM Q2 2022 Earnings Call</h1>
+  <div class="meta">
+    <span>Call Date: July 14, 2022</span>
+    <span>Reporting: Q2 2022</span>
+  </div>
+</div>
+<div class="nav-bar">
+  <a href="Q1_2022.html">&larr; Q1 2022</a>
+  <div class="nav-center">
+    <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="Q4_2025.html" class="qbtn">4Q25</a>
+    <a href="Q3_2025.html" class="qbtn">3Q25</a>
+    <a href="Q2_2025.html" class="qbtn">2Q25</a>
+    <a href="Q1_2025.html" class="qbtn">1Q25</a>
+    <a href="Q4_2024.html" class="qbtn">4Q24</a>
+    <a href="Q3_2024.html" class="qbtn">3Q24</a>
+    <a href="Q2_2024.html" class="qbtn">2Q24</a>
+    <a href="Q1_2024.html" class="qbtn">1Q24</a>
+    <a href="Q4_2023.html" class="qbtn">4Q23</a>
+    <a href="Q3_2023.html" class="qbtn">3Q23</a>
+    <a href="Q2_2023.html" class="qbtn">2Q23</a>
+    <a href="Q1_2023.html" class="qbtn">1Q23</a>
+    <a href="Q4_2022.html" class="qbtn">4Q22</a>
+    <a href="Q3_2022.html" class="qbtn">3Q22</a>
+    <a href="Q2_2022.html" class="qbtn current">2Q22</a>
+    <a href="Q1_2022.html" class="qbtn">1Q22</a>
+  </div>
+  <a href="Q3_2022.html">Q3 2022 &rarr;</a>
+</div>
+
+<div class="changes-box">
+  <h3>What Changed vs Q1 2022</h3>
+  <ul>
+    <li><span class="change-tag ct-raised">Raised</span> Next-Q Revenue midpoint up 12.8% vs prior quarter ($20.2B vs $17.9B)</li>
+    <li><span class="change-tag ct-raised">Raised</span> Next-Q Gross Margin midpoint up 1.5 ppts (58.5% vs 57.0%)</li>
+    <li><span class="change-tag ct-raised">Raised</span> Next-Q Operating Margin midpoint up 2.0 ppts (48.0% vs 46.0%)</li>
+    <li><span class="change-tag ct-changed">Changed</span> FY Revenue Growth: Mid-30s% YoY in USD terms (prior: Likely at or exceed high end of mid- to high 20s% in USD terms (upgraded from prior "mid- to high 20s%"))</li>
+    <li><span class="change-tag ct-changed">Changed</span> CapEx: $40B-$44B; "closer to the lower end" of the range (revised down due to tool delivery pushouts into 2023) (prior: $40B-$44B (maintained))</li>
+  </ul>
+</div>
+
+<div class="metrics-card">
+  <div class="metric" style="grid-column: 1 / -1; background: linear-gradient(135deg, var(--company-dark), var(--company-accent)); color: #fff; border: none; padding: 8px 14px;">
+    <div class="metric-label" style="color: rgba(255,255,255,0.7);">Guidance For</div>
+    <div class="metric-value" style="color: #fff; font-size: 1rem;">Q3 2022</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Next-Q Revenue</div>
+    <div class="metric-value">$19.8B-$20.6B; +11.2% QoQ at midpoint</div>
+    <div class="metric-delta delta-flat">Prior: $17.6B-$18.2B</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Next-Q Gross Margin</div>
+    <div class="metric-value">57.5%-59.5%</div>
+    <div class="metric-delta delta-flat">Prior: 56%-58%</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Next-Q Operating Margin</div>
+    <div class="metric-value">47%-49%</div>
+    <div class="metric-delta delta-flat">Prior: 45%-47%</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">FY Revenue Growth</div>
+    <div class="metric-value">Mid-30s% YoY in USD terms</div>
+    <div class="metric-delta delta-flat">Prior: Likely at or exceed high end of mid- to high 20s% in USD terms</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">CapEx</div>
+    <div class="metric-value">$40B-$44B; "closer to the lower end" of the range</div>
+    <div class="metric-delta delta-flat">Prior: $40B-$44B</div>
+  </div>
+</div>
+
+<!-- Full Guidance Content -->
+<div class="content-section">
+  <h3>Quarterly Guidance (Q3 2022)</h3>
+  <ul>
+    <li><strong>Revenue:</strong> $19.8B-$20.6B (USD); +11.2% QoQ at midpoint</li>
+    <li><strong>Gross Margin:</strong> 57.5%-59.5% (midpoint 58.5%; -60 bps QoQ sequential decline)</li>
+    <li><strong>Operating Margin:</strong> 47%-49%</li>
+    <li><strong>FX assumption:</strong> 1 USD = 29.7 TWD</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Full Year 2022 Guidance</h3>
+  <ul>
+    <li><strong>Revenue growth:</strong> Mid-30s% YoY in USD terms</li>
+    <li><strong>Capacity:</strong> Expect to remain tight throughout 2022</li>
+    <li><strong>CapEx:</strong> $40B-$44B; "closer to the lower end" of the range (revised down due to tool delivery pushouts into 2023)</li>
+    <li><strong>CapEx allocation:</strong> 70-80% advanced process technologies; ~10% packaging/mask; 10-20% specialty</li>
+    <li><strong>Tool delivery delays:</strong> pushing some CapEx into 2023 (affecting both advanced and mature nodes)</li>
+    <li><strong>No impact to 2022 capacity plan</strong> from tool delivery issues</li>
+    <li><strong>Implies Q4 sequential movement:</strong> management noted mid-30s growth is in USD terms; NT dollar growth is higher than USD growth due to FX</li>
+    <li><strong>Tax rate:</strong> 10%-11% for 2022</li>
+    <li><strong>Depreciation:</strong> Mid-single-digit growth YoY for 2022 (lower than guided at beginning of year due to tool delivery schedule changes); 2023 depreciation expected to be much higher than 2022</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Long-Term Revenue CAGR</h3>
+  <ul>
+    <li><strong>15-20% CAGR</strong> over the next several years in USD terms (reiterated)</li>
+    <li>Supported by silicon content increase (mid- to high single-digit % growth across end devices), flattish to low single-digit device unit growth, and value selling</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Long-Term Gross Margin Target</h3>
+  <ul>
+    <li><strong>53% and higher is achievable</strong> (excluding FX impact)</li>
+    <li>Six factors: technology leadership, pricing, cost reduction, capacity utilization, technology mix, FX</li>
+    <li>53% target already includes the dilution effects from N3</li>
+    <li>Challenges ahead: rising inflationary costs (raw materials, utilities, tools), increasing process complexity of leading nodes, new investments in mature nodes, overseas fab expansions</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Profitability Outlook Puts & Takes</h3>
+  <ul>
+    <li><strong>Headwinds:</strong> Rising raw material/utilities/tool costs, increasing process complexity at leading nodes, mature node investments, overseas fab expansion costs</li>
+    <li><strong>Tailwinds:</strong> Value-based pricing, cost improvement, technology leadership, high utilization</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Semiconductor Cycle / 2023 Outlook</h3>
+  <ul>
+    <li><strong>Industry view for 2022:</strong> Semiconductor (ex-memory) and foundry growth forecasts remain same as earlier projections</li>
+    <li><strong>2023 industry view:</strong> Too early to forecast, but inventory correction expected to continue</li>
+    <li><strong>Inventory correction:</strong> Supply chain already taking action; excess inventory expected to take a few quarters to rebalance to healthier level, likely through 1H 2023</li>
+    <li><strong>Base case:</strong> More typical down cycle (like 2015, 2019); not a big down cycle like 2008</li>
+    <li><strong>Segments affected:</strong> Softening in smartphone, PC, consumer end markets; data center and automotive remain steady</li>
+    <li><strong>Fabless DOI:</strong> Expected to come down gradually in 2H 2022</li>
+    <li><strong>2023 still a growth year for TSMC</strong> despite inventory correction, due to stronger technology position, strong HPC portfolio, and long-term strategic customer relationships</li>
+    <li><strong>Capacity utilization:</strong> Expected to remain healthy in 2023</li>
+    <li><strong>TSMC business:</strong> Less volatile and more resilient; capacity remains tight; customer demand still exceeds TSMC's ability to supply in 2022</li>
+    <li><strong>Internal preparedness:</strong> Internally modeled and prepared for various different scenarios</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Long-Term Agreements (LTAs)</h3>
+  <ul>
+    <li>Details not disclosed; working diligently with customers on capacity planning including receiving prepayments for capacity support</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 Technology Node Breakdown</h3>
+  <ul>
+    <li><strong>5nm:</strong> 21% of wafer revenue</li>
+    <li><strong>7nm:</strong> 30% of wafer revenue</li>
+    <li><strong>Advanced tech (7nm and below):</strong> 51% of wafer revenue</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 Platform Revenue Breakdown</h3>
+  <ul>
+    <li><strong>HPC:</strong> 43% of Q2 revenue (+13% QoQ)</li>
+    <li><strong>Smartphone:</strong> 38% of Q2 revenue (+3% QoQ)</li>
+    <li><strong>IoT:</strong> 8% of Q2 revenue (+14% QoQ)</li>
+    <li><strong>Automotive:</strong> 5% of Q2 revenue (+14% QoQ)</li>
+    <li><strong>DCE:</strong> 3% of Q2 revenue (+5% QoQ)</li>
+    <li>All 6 platforms increased in Q2</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 Balance Sheet</h3>
+  <ul>
+    <li><strong>Cash & marketable securities:</strong> TWD 1.4 trillion</li>
+    <li><strong>Current liabilities:</strong> increased TWD 22B QoQ (TWD 47B increase in accounts payable, partially offset by TWD 29B decrease in short-term loans)</li>
+    <li><strong>Long-term interest-bearing debt:</strong> increased TWD 124B QoQ (raised TWD 109B in corporate bonds during the quarter)</li>
+    <li><strong>AR turnover days:</strong> 37 days (-1 day QoQ)</li>
+    <li><strong>Inventory days:</strong> 95 days (+7 days QoQ; prebuild of N5 wafers and increased raw materials inventory)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 Cash Flow</h3>
+  <ul>
+    <li><strong>Cash from operations:</strong> TWD 339B</li>
+    <li><strong>CapEx:</strong> TWD 218B (USD 7.34B)</li>
+    <li><strong>Cash dividend distributed:</strong> TWD 71B (Q3 2021 cash dividend)</li>
+    <li><strong>Bonds payable:</strong> increased TWD 109B (bond issuances during the quarter)</li>
+    <li><strong>Cash balance:</strong> increased TWD 102B to TWD 1.3 trillion at end of Q2</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q3 Gross Margin Bridge</h3>
+  <ul>
+    <li>Q3 GM guided down ~60 bps sequentially to 58.5% at midpoint</li>
+    <li>Slightly more favorable FX rate assumption more than offset by higher inflationary costs (higher raw material and electricity costs)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 Gross Margin Bridge (Sequential)</h3>
+  <ul>
+    <li>Q2 GM increased 350 bps QoQ to 59.1%, driven by more favorable FX, cost improvement and value selling</li>
+    <li>Q2 guidance was based on FX assumption of 28.8 TWD/USD; actual was 29.42 TWD/USD, creating ~90 bps favorable surprise vs. original guidance</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>N3 Technology</h3>
+  <ul>
+    <li><strong>Volume production:</strong> 2H 2022 (on track, good yield)</li>
+    <li><strong>Revenue contribution:</strong> Starting 1H 2023, with a smooth ramp in 2023</li>
+    <li><strong>N3E:</strong> Volume production ~1 year after N3 (i.e., 2H 2023); enhanced performance, power and yield; complete platform support for both smartphone and HPC</li>
+    <li><strong>Customer engagement:</strong> Both HPC and smartphone; high level of customer engagement at N3E</li>
+    <li><strong>Gross margin dilution:</strong> 2-3 pp impact in first year (2023), diluting from 2023 forecasted gross margin (not from 53% corporate target, and not from current ~59% level)</li>
+    <li><strong>Profitability timeline:</strong> Expect N3 to be as profitable as N5 in 3-4 years (similar to N5 trajectory)</li>
+    <li><strong>Revenue significance:</strong> Dollar amount at beginning stage is certainly bigger than previous nodes, though less meaningful as a % of revenue as total pie is larger</li>
+    <li><strong>N3 family:</strong> Confident N3 family will be another large and long-lasting node for TSMC</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>N5 Technology</h3>
+  <ul>
+    <li><strong>Revenue share:</strong> 21% of total wafer revenue in Q2 2022</li>
+    <li>Supported by both HPC and smartphone</li>
+    <li>Continued strong demand for industry-leading 5nm and 7nm technologies into Q3</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>N2 Technology</h3>
+  <ul>
+    <li><strong>Risk production:</strong> 2024</li>
+    <li><strong>Volume production:</strong> 2025</li>
+    <li><strong>Transistor structure:</strong> Nanosheet (gate-all-around)</li>
+    <li><strong>Performance vs. N3E:</strong> - 10-15% speed improvement at the same power - 20-30% power improvement at the same speed - >20% logic density increase</li>
+    <li><strong>Backside power rail:</strong> Super power rail is part of N2 platform offering; will be introduced at the proper time when customers need it</li>
+    <li>Most advanced semiconductor technology in both density and energy efficiency when introduced</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>High-End Segment Assessment</h3>
+  <ul>
+    <li><strong>HPC/Data center:</strong> Structural demand remains strong; not seeing excess inventory buildup</li>
+    <li><strong>High-end smartphone:</strong> Not seeing too much inventory buildup in high-end smartphone</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>5G Smartphone Penetration</h3>
+  <ul>
+    <li><strong>5G penetration rate:</strong> ~50% (unchanged from prior estimate)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Pricing Strategy</h3>
+  <ul>
+    <li>Strategic and value-driven, not opportunistic or cost-plus</li>
+    <li>Reflects technology value, ecosystem, services and capacity support</li>
+    <li>Will not raise prices solely to offset higher overseas fab costs</li>
+    <li>Private discussions between TSMC and customers</li>
+    <li>No pull-in effect observed from customers anticipating price increases</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Overseas Fabs</h3>
+  <ul>
+    <li><strong>Arizona:</strong> Construction progressing; cost higher than expected (labor costs, COVID supply chain disruptions). Production target: 2024. Discussing cost gap with U.S. government. Ample business opportunity from U.S. customers who want to load the fab. No joint venture arrangement planned; fab open to broad customer base.</li>
+    <li><strong>Japan (JASM):</strong> On track for 2024 production start. Specialty technology focus.</li>
+    <li><strong>3DIC center in Japan:</strong> Established to leverage Japan's fundamental advantage in raw materials and packaging (e.g., substrate technology); complements TSMC's 3DIC technology</li>
+    <li><strong>Cost differential:</strong> Recognized overseas costs higher; working with governments on subsidies and continuing cost reduction efforts</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Capacity & Utilization</h3>
+  <ul>
+    <li>Tight capacity situation across both advanced and mature nodes in 2022</li>
+    <li><strong>Specialty technology capacity:</strong> 50% increase planned over next 3 years (specialty only, not overall capacity); includes both new capacity and conversion of existing capacity</li>
+    <li>Driven by customer commitments, silicon content increase in edge devices requiring specialty content</li>
+    <li>Capacity expected to remain tight and utilization healthy into 2023</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>CapEx & Tool Delivery</h3>
+  <ul>
+    <li>2022 full year $40B-$44B ("closer to the lower end" due to tool delivery pushouts)</li>
+    <li>Tool delivery challenges affecting both advanced and mature nodes</li>
+    <li>Some planned 2022 CapEx pushed to 2023 due to tool supplier supply chain issues</li>
+    <li>Situation improving; TSMC sending teams on-site to support suppliers and prioritizing wafer capacity for critical chips</li>
+    <li>No impact to 2022 capacity plan</li>
+    <li>2023 CapEx: Too early to comment; will continue to invest for future growth opportunities in a disciplined manner</li>
+    <li>CapEx invested each year for future growth opportunities</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Project Financing</h3>
+  <ul>
+    <li><strong>Not considering project financing;</strong> project financing entails stringent/stricter terms and higher costs</li>
+    <li>Will finance expansion mainly from operating cash flow and borrowing using strong balance sheet</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Advanced Packaging / 3DIC</h3>
+  <ul>
+    <li><strong>SoIC:</strong> Primarily adopted by HPC applications (high-speed, power-efficient); 20x capacity expansion planned by 2026</li>
+    <li><strong>Mobile adoption:</strong> Will depend on chiplet architecture, interconnect density, thermal and other requirements; TSMC will have other solutions for mobile</li>
+    <li><strong>3DIC growth:</strong> Expected to be healthy, slightly ahead of TSMC's corporate growth rate</li>
+    <li><strong>Substrate strategy:</strong> Focused only on very advanced substrate technology for high-performance computing / very large substrates; not developing commodity substrate technology</li>
+    <li><strong>N2 and chiplets:</strong> Number of customers using chiplet architecture at N2 expected to start increasing; will become a major approach at 2nm and beyond</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Structural Growth Drivers</h3>
+  <ul>
+    <li>Three key factors: (1) Technology leadership and differentiation, (2) Strong HPC portfolio, (3) Strategic customer relationships</li>
+    <li>Silicon content increasing across many end devices (CPUs, GPUs, AI accelerators in data center; 5G smartphone vs. 4G; automotive)</li>
+    <li>Device unit growth: Flattish to low single-digit %</li>
+    <li>Silicon content growth: Mid- to high single-digit %</li>
+    <li>HPC expected to be the main engine of TSMC's long-term growth and largest contributor of incremental revenue growth</li>
+    <li>Both x86 and ARM-based HPC significantly growing at TSMC</li>
+    <li>Technology portfolio expanding: N5, N4P, N4X ramping; N3 upcoming</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Dividend</h3>
+  <ul>
+    <li>Committed to sustainable and steadily increasing cash dividend</li>
+    <li>Q2 2022 distributed TWD 71B (Q3 2021 dividend)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Tax Rate</h3>
+  <ul>
+    <li><strong>2022:</strong> 10%-11%</li>
+    <li><strong>2023 and beyond:</strong> Certain tax exemptions in Taiwan expiring; effective tax rate will increase. Taiwan government drafting new tax exemption regulations (in comment period). Further update to be provided when details available.</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>R&D and Operating Expenses</h3>
+  <ul>
+    <li>R&D expense ratio: Expected to stay in similar range</li>
+    <li>Depreciation: Mid-single-digit growth YoY in 2022 (lower than earlier guided due to tool delivery schedule changes); 2023 depreciation to be much higher than 2022</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 2022 Actuals (Reported)</h3>
+  <ul>
+    <li><strong>Revenue:</strong> TWD 534B (USD 18.2B); +8.8% QoQ in NT, +3.4% QoQ in USD</li>
+    <li><strong>Gross Margin:</strong> 59.1% (+350 bps QoQ; slightly ahead of guidance, driven by favorable FX, cost improvement and value selling)</li>
+    <li><strong>Operating Margin:</strong> 49.1% (+3.5 pp QoQ, in line with GM increase)</li>
+    <li><strong>EPS:</strong> TWD 9.14</li>
+    <li><strong>ROE:</strong> 39.4%</li>
+    <li><strong>FX actual:</strong> 1 USD = 29.42 TWD (vs. Q2 guidance assumption of 28.8 TWD; created ~90 bps upside to GM vs. original guidance)</li>
+  </ul>
+</div>
+
+<div class="prior-ref" id="priorRef">
+  <div class="prior-ref-header" onclick="var b=document.getElementById('priorBody');b.classList.toggle('open');this.querySelector('.arrow').innerHTML=b.classList.contains('open')?'&#9650;':'&#9660;';">
+    Prior Quarter Reference: Q1 2022
+    <span class="arrow">&#9660;</span>
+  </div>
+  <div class="prior-ref-body" id="priorBody">
+    <div class="metric-grid">
+      <div class="prior-mini"><div class="pm-label">Next-Q Revenue</div><div class="pm-value">$17.6B-$18.2B (+1.9% QoQ at midpoint)</div></div>
+      <div class="prior-mini"><div class="pm-label">Next-Q Gross Margin</div><div class="pm-value">56%-58% (midpoint 57%; +140 bps QoQ)</div></div>
+      <div class="prior-mini"><div class="pm-label">Next-Q Operating Margin</div><div class="pm-value">45%-47%</div></div>
+      <div class="prior-mini"><div class="pm-label">FY Revenue Growth</div><div class="pm-value">Likely at or exceed high end of mid- to high 20s% in USD terms (upgraded from prior "mid- to high 20s%")</div></div>
+      <div class="prior-mini"><div class="pm-label">CapEx</div><div class="pm-value">$40B-$44B (maintained)</div></div>
+      <div class="prior-mini"><div class="pm-label">LT Gross Margin Target</div><div class="pm-value">53% and higher is achievable (reiterated, citing 6 profitability factors; excluding FX impact which is uncontrollable)</div></div>
+    </div>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q1_2022.html" style="color:var(--blue);">View full Q1 2022 detail &rarr;</a></p>
+  </div>
+</div>
+
+<div class="footer-nav">
+  <a href="Q1_2022.html">&larr; Q1 2022</a>
+  <a href="../comparison.html">Back to Overview</a>
+  <a href="Q3_2022.html">Q3 2022 &rarr;</a>
+</div>
+
+</body>
+</html>

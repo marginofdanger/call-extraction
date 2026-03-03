@@ -1,0 +1,240 @@
+# Amazon.com, Inc. (AMZN)
+# Company configuration for earnings call extraction pipeline
+
+company:
+  name: "Amazon.com, Inc."
+  ticker: "AMZN"
+  sector: "Diversified Tech / Cloud"
+  fiscal_year: "calendar"
+  currency: "USD"
+  reporting_currency: "USD"
+
+branding:
+  primary: "#FF9900"     # Amazon orange
+  dark: "#232F3E"        # Amazon dark
+  accent: "#146EB4"      # Amazon blue
+
+quarters:
+  - id: Q1_2022
+    call_date: "April 28, 2022"
+    reporting_quarter: "Q1 2022"
+    bamsec_id: "3f7e6c95-ff17-429b-b4c6-d3773d563944"
+  - id: Q2_2022
+    call_date: "July 28, 2022"
+    reporting_quarter: "Q2 2022"
+    bamsec_id: "22a9a278-8d96-4c55-8e36-5d59b0f85b24"
+  - id: Q3_2022
+    call_date: "October 27, 2022"
+    reporting_quarter: "Q3 2022"
+    bamsec_id: "185a7b5f-dd12-42ce-81b5-aeb2537a1ccf"
+  - id: Q4_2022
+    call_date: "February 2, 2023"
+    reporting_quarter: "Q4 2022 (Full Year 2022)"
+    bamsec_id: "21a04e30-a5ef-4e28-b15d-8fa27d797d27"
+  - id: Q1_2023
+    call_date: "April 27, 2023"
+    reporting_quarter: "Q1 2023"
+    bamsec_id: "7325e92d-428b-414d-ac34-f6f0738ed275"
+  - id: Q2_2023
+    call_date: "August 3, 2023"
+    reporting_quarter: "Q2 2023"
+    bamsec_id: "39643bfc-94b2-4ed1-a915-81bf254ea18b"
+  - id: Q3_2023
+    call_date: "October 26, 2023"
+    reporting_quarter: "Q3 2023"
+    bamsec_id: "060b5769-7545-4679-9551-a53efbf12d8a"
+  - id: Q4_2023
+    call_date: "February 1, 2024"
+    reporting_quarter: "Q4 2023 (Full Year 2023)"
+    bamsec_id: "43e9ef59-d134-424d-8b34-af63cc665076"
+  - id: Q1_2024
+    call_date: "April 30, 2024"
+    reporting_quarter: "Q1 2024"
+    bamsec_id: "64548535-e2d5-47e4-99b2-c45d6e4df158"
+  - id: Q2_2024
+    call_date: "August 1, 2024"
+    reporting_quarter: "Q2 2024"
+    bamsec_id: "e8621ad5-edf1-4a42-a0bf-d47a5a0e75d0"
+  - id: Q3_2024
+    call_date: "October 31, 2024"
+    reporting_quarter: "Q3 2024"
+    bamsec_id: "27fa81f7-dd0c-40cc-86d3-f815d4accf8f"
+  - id: Q4_2024
+    call_date: "February 6, 2025"
+    reporting_quarter: "Q4 2024 (Full Year 2024)"
+    bamsec_id: "581c70d8-c28c-4482-8093-0062a732f4eb"
+  - id: Q1_2025
+    call_date: "May 1, 2025"
+    reporting_quarter: "Q1 2025"
+    bamsec_id: "b32f4990-154d-4c5b-aacb-c3cadfde519f"
+  - id: Q2_2025
+    call_date: "July 31, 2025"
+    reporting_quarter: "Q2 2025"
+    bamsec_id: "8a4d23c4-2635-4fcc-8ea7-ea7b656b1553"
+  - id: Q3_2025
+    call_date: "October 30, 2025"
+    reporting_quarter: "Q3 2025"
+    bamsec_id: "aa969a0f-9119-44f8-9b0f-9b60b91e44e1"
+  - id: Q4_2025
+    call_date: "February 5, 2026"
+    reporting_quarter: "Q4 2025 (Full Year 2025)"
+    bamsec_id: "7352fed7-1583-4733-9790-305eda17fec9"
+
+# Tracked metrics define what appears in the key metrics card and comparison tables.
+tracked_metrics:
+  guidance_for:
+    label: "Guidance For"
+    section_pattern: "^Quarterly Guidance"
+    extract: "section_suffix"
+    display: "banner"
+
+  revenue:
+    label: "Next-Q Revenue"
+    section_pattern: "^Quarterly Guidance"
+    item_pattern: "^\\*\\*Net Sales:?\\*\\*|^\\*\\*Revenue:?\\*\\*"
+    comparison: "midpoint_pct"
+    midpoint_format: "dollar_billions"
+
+  operating_income:
+    label: "Next-Q Operating Income"
+    section_pattern: "^Quarterly Guidance"
+    item_pattern: "(?i)^\\*\\*Operating Income:?\\*\\*"
+    comparison: "midpoint_pct"
+    midpoint_format: "dollar_billions"
+
+  aws_revenue:
+    label: "AWS Revenue"
+    section_pattern: "(?i)(aws|segment|actuals)"
+    item_pattern: "(?i)^\\*\\*AWS (Segment )?Revenue:?\\*\\*"
+    comparison: "text_diff"
+
+  aws_operating_income:
+    label: "AWS Operating Income"
+    section_pattern: "(?i)(aws|segment|actuals)"
+    item_pattern: "(?i)^\\*\\*AWS (Segment )?Operating Income:?\\*\\*"
+    comparison: "text_diff"
+
+  advertising_revenue:
+    label: "Advertising Revenue"
+    section_pattern: "(?i)(advertising|segment|actuals)"
+    item_pattern: "(?i)^\\*\\*Advertising (Services )?Revenue:?\\*\\*"
+    comparison: "text_diff"
+
+  na_revenue:
+    label: "North America Revenue"
+    section_pattern: "(?i)(north america|segment|actuals)"
+    item_pattern: "(?i)^\\*\\*North America (Segment )?Revenue:?\\*\\*"
+    comparison: "text_diff"
+
+  international_revenue:
+    label: "International Revenue"
+    section_pattern: "(?i)(international|segment|actuals)"
+    item_pattern: "(?i)^\\*\\*International (Segment )?Revenue:?\\*\\*"
+    comparison: "text_diff"
+
+  fy_capex:
+    label: "CapEx"
+    section_pattern: "(?i)(full year|capex|capital)"
+    item_pattern: "(?i)^\\*\\*CapEx:?\\*\\*|^\\*\\*Capital Expenditures:?\\*\\*"
+    comparison: "text_diff"
+
+  fcf:
+    label: "Free Cash Flow"
+    section_pattern: "(?i)(full year|free cash flow|capital|actuals)"
+    item_pattern: "(?i)^\\*\\*Free Cash Flow:?\\*\\*"
+    comparison: "text_diff"
+
+  operating_margin:
+    label: "Operating Margin"
+    section_pattern: "(?i)(actuals|quarterly guidance)"
+    item_pattern: "(?i)^\\*\\*Operating Margin:?\\*\\*"
+    comparison: "midpoint_delta"
+    midpoint_format: "percentage"
+
+# Change detection: patterns for new section detection
+new_section_keywords:
+  - pattern: "(?i)ai|generative ai|bedrock"
+    label: "AI/Generative AI discussion emerges"
+    first_only: true
+    max_quarter_idx: 8
+  - pattern: "(?i)actuals"
+    label: "Full-year actuals reported this quarter"
+  - pattern: "(?i)tariff"
+    label: "Tariff impact discussion added"
+  - pattern: "(?i)project kuiper"
+    label: "Project Kuiper satellite discussion"
+  - pattern: "(?i)grocery|whole foods"
+    label: "Grocery/Whole Foods strategy discussed"
+  - pattern: "(?i)prime video|advertising.*video"
+    label: "Prime Video advertising discussed"
+  - pattern: "(?i)healthcare|one medical|amazon pharmacy"
+    label: "Healthcare initiative discussed"
+  - pattern: "(?i)custom chip|trainium|inferentia|graviton"
+    label: "Custom silicon discussed"
+
+# Comparison page configuration
+comparison_sections:
+  - title: "Quarterly Revenue Guidance"
+    metric_key: "revenue"
+    columns: ["Quarter", "Net Sales Guidance", "Midpoint", "vs Prior"]
+
+  - title: "Quarterly Operating Income Guidance"
+    metric_key: "operating_income"
+    columns: ["Quarter", "Operating Income Guidance", "Midpoint", "vs Prior"]
+
+  - title: "AWS Revenue & Profitability"
+    metrics: ["aws_revenue", "aws_operating_income"]
+    columns: ["Quarter", "AWS Revenue", "AWS Operating Income"]
+
+  - title: "Segment Revenue Split"
+    metrics: ["na_revenue", "international_revenue"]
+    columns: ["Quarter", "North America Revenue", "International Revenue"]
+
+  - title: "Advertising Revenue"
+    metric_key: "advertising_revenue"
+    columns: ["Quarter", "Advertising Revenue"]
+
+  - title: "CapEx & Free Cash Flow"
+    metrics: ["fy_capex", "fcf"]
+    columns: ["Quarter", "CapEx", "Free Cash Flow"]
+
+# Extraction context: domain-specific hints for Claude during extraction
+extraction_context: |
+  Amazon is a diversified technology company with three reportable segments:
+  1. North America: e-commerce, advertising, Prime in US/Canada/Mexico
+  2. International: e-commerce, advertising, Prime outside North America
+  3. Amazon Web Services (AWS): cloud computing, storage, database, AI/ML services
+
+  Key domain knowledge:
+  - Amazon guides on net sales (revenue) and operating income for the next quarter only
+  - They do NOT provide full-year guidance
+  - Revenue guidance is typically a range (e.g., $154B-$158.5B) that includes FX impact estimates
+  - Operating income guidance is also a range (e.g., $13B-$17.5B)
+  - AWS is the primary profit driver — its operating margin (30%+) far exceeds retail
+  - "Advertising services" is reported as a line item within North America and International segments
+  - Third-party seller services revenue reflects marketplace growth
+  - Subscription services revenue is primarily Amazon Prime
+  - Fulfillment costs and shipping costs are key expense items
+  - CapEx includes both technology infrastructure (data centers) and fulfillment/transportation
+  - Free Cash Flow = Operating cash flow minus CapEx (including finance leases and principal repayments)
+  - "Trailing Twelve Month" (TTM) FCF is commonly referenced
+  - FX impact is significant — always note constant-currency growth vs reported growth
+  - Q4 includes holiday season (peak retail revenue)
+  - Stock-based compensation (SBC) is a major non-cash expense
+  - Headcount changes are closely watched (post-2022 layoffs, then stabilization)
+  - Custom chips: Graviton (compute), Trainium (AI training), Inferentia (AI inference)
+  - Project Kuiper: satellite broadband venture
+  - Amazon Bedrock: managed generative AI service on AWS
+  - Prime Video introduced ads in early 2024 — new advertising revenue stream
+
+topic_hints:
+  - "AWS revenue growth rate and operating margin trajectory"
+  - "AI and generative AI demand (Bedrock, SageMaker, custom chips)"
+  - "Advertising revenue growth and Prime Video ads"
+  - "Operating income by segment (NA, International, AWS)"
+  - "CapEx and infrastructure investment (data centers, fulfillment)"
+  - "Free cash flow generation and capital allocation"
+  - "FX impact on revenue and operating income guidance"
+  - "Fulfillment and delivery cost efficiency (regionalization, same-day)"
+  - "Third-party seller services and marketplace growth"
+  - "Project Kuiper and other moonshot investments"

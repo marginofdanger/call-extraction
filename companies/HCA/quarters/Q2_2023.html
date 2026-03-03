@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HCA Q2 2023 Earnings Call Detail</title>
+<style>
+:root {
+    --company-primary: #C8952E;
+    --company-dark: #0D1B2A;
+    --company-accent: #1B365D;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 40px 40px 32px;
+    margin: 0 -24px 0;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .header .meta {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    font-weight: 300;
+  }
+  .header .meta span { margin-right: 24px; }
+
+  .nav-bar {
+    background: var(--company-accent);
+    margin: 0 -24px 32px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    transition: all 0.15s;
+  }
+  .nav-bar a:hover { background: rgba(255,255,255,0.2); }
+  .nav-bar a.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .nav-center {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-center a.qbtn {
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+  }
+  .nav-center a.qbtn.current {
+    background: var(--company-primary);
+    border-color: var(--company-primary);
+  }
+  .nav-center a.qbtn:hover { background: rgba(255,255,255,0.2); }
+  .nav-back {
+    background: rgba(255,255,255,0.15) !important;
+    border-color: rgba(255,255,255,0.35) !important;
+  }
+
+  .metrics-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .metric {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+  .metric-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .metric-value {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+  .metric-delta {
+    font-size: 0.72rem;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+  .delta-up { color: var(--green); }
+  .delta-down { color: var(--red); }
+  .delta-flat { color: var(--text-muted); }
+
+  .changes-box {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 5px solid var(--amber);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .changes-box h3 {
+    font-size: 1rem;
+    color: var(--company-dark);
+    margin-bottom: 10px;
+  }
+  .changes-box ul { list-style: none; padding: 0; }
+  .changes-box li {
+    padding: 5px 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .change-tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .ct-raised { background: #d5f5e3; color: #1e8449; }
+  .ct-lowered { background: #fadbd8; color: #c0392b; }
+  .ct-changed { background: #d6eaf8; color: #2471a3; }
+  .ct-new { background: #e8daef; color: #6c3483; }
+  .ct-maintained { background: #fdebd0; color: #b9770e; }
+
+  .content-section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .content-section h3 {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .content-section ul {
+    padding: 14px 18px 14px 36px;
+    margin: 0;
+  }
+  .content-section li {
+    padding: 3px 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .content-section li strong { color: var(--company-dark); }
+
+  .prior-ref {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 40px;
+    overflow: hidden;
+  }
+  .prior-ref-header {
+    background: var(--light-bg);
+    padding: 12px 18px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--company-dark);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .prior-ref-header:hover { background: #eef2f7; }
+  .prior-ref-body { padding: 18px; display: none; }
+  .prior-ref-body.open { display: block; }
+  .prior-ref-body .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .prior-mini {
+    background: var(--light-bg);
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .prior-mini .pm-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .prior-mini .pm-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border);
+  }
+  .footer-nav a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .footer-nav a:hover { text-decoration: underline; }
+
+  /* Comparison page styles */
+  .toc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .toc a {
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 4px 0;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  .comp-section {
+    margin-bottom: 40px;
+  }
+  .comp-section h2 {
+    font-size: 1.2rem;
+    color: var(--company-dark);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--company-primary);
+  }
+
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+  }
+  .comp-table th {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .comp-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .comp-table tr:nth-child(even) { background: var(--light-bg); }
+  .comp-table tr:hover { background: #e8f4fd; }
+
+  @media (max-width: 768px) {
+    .header h1 { font-size: 1.5rem; }
+    .metrics-card { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .nav-center { display: none; }
+    body { padding: 0 16px 60px; }
+    .header { margin: 0 -16px 0; padding: 28px 24px 20px; }
+    .nav-bar { margin: 0 -16px 24px; }
+    .toc { grid-template-columns: 1fr; }
+    .comp-table { font-size: 0.78rem; }
+    .comp-table th, .comp-table td { padding: 6px 8px; }
+  }
+
+  @media print {
+    .nav-bar { display: none; }
+    .header { background: #333; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>HCA Q2 2023 Earnings Call</h1>
+  <div class="meta">
+    <span>Call Date: July 27, 2023</span>
+    <span>Reporting: Q2 2023</span>
+  </div>
+</div>
+<div class="nav-bar">
+  <a href="Q1_2023.html">&larr; Q1 2023</a>
+  <div class="nav-center">
+    <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="Q4_2025.html" class="qbtn">4Q25</a>
+    <a href="Q3_2025.html" class="qbtn">3Q25</a>
+    <a href="Q2_2025.html" class="qbtn">2Q25</a>
+    <a href="Q1_2025.html" class="qbtn">1Q25</a>
+    <a href="Q4_2024.html" class="qbtn">4Q24</a>
+    <a href="Q3_2024.html" class="qbtn">3Q24</a>
+    <a href="Q2_2024.html" class="qbtn">2Q24</a>
+    <a href="Q1_2024.html" class="qbtn">1Q24</a>
+    <a href="Q4_2023.html" class="qbtn">4Q23</a>
+    <a href="Q3_2023.html" class="qbtn">3Q23</a>
+    <a href="Q2_2023.html" class="qbtn current">2Q23</a>
+    <a href="Q1_2023.html" class="qbtn">1Q23</a>
+    <a href="Q4_2022.html" class="qbtn">4Q22</a>
+    <a href="Q3_2022.html" class="qbtn">3Q22</a>
+    <a href="Q2_2022.html" class="qbtn">2Q22</a>
+    <a href="Q1_2022.html" class="qbtn">1Q22</a>
+  </div>
+  <a href="Q3_2023.html">Q3 2023 &rarr;</a>
+</div>
+
+<div class="metrics-card">
+  <div class="metric">
+    <div class="metric-label">Same-Facility Admissions</div>
+    <div class="metric-value"><strong>+2.2%</strong> YoY</div>
+    <div class="metric-delta delta-flat">Prior: +4.4% year-over-year</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Revenue Per Admission</div>
+    <div class="metric-value"><strong>+2.9%</strong> YoY</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Adj. EBITDA Margin</div>
+    <div class="metric-value"><strong>19.3%</strong> in Q2 2023</div>
+  </div>
+</div>
+
+<div class="changes-box">
+  <h3>What Changed vs Q1 2023</h3>
+  <ul>
+    <li><span class="change-tag ct-changed">Changed</span> Same-Facility Admissions: <strong>+2.2%</strong> YoY (prior: +4.4% year-over-year)</li>
+    <li><span class="change-tag ct-new">New</span> NEW: Cybersecurity incident discussed</li>
+  </ul>
+</div>
+
+<!-- Full Guidance Content -->
+<div class="content-section">
+  <h3>Full Year 2023 Guidance (Updated / Raised)</h3>
+</div>
+<div class="content-section">
+  <h3>GUIDANCE RAISE: EBITDA midpoint raised ~$450 million from initial 2023 guidance at start of year</h3>
+  <ul>
+    <li>| Metric | Updated FY 2023 Guidance (Q2 Call) | Prior Guidance (if referenced) | |---|---|---| | <strong>Revenue</strong> | <strong>$63.25 billion - $64.75 billion</strong> | Not explicitly stated on call | | <strong>Net income attributable to HCA</strong> | <strong>$4.9 billion - $5.255 billion</strong> | Not explicitly stated on call | | <strong>Adjusted EBITDA</strong> | <strong>$12.3 billion - $12.8 billion</strong> | ~$450M below current midpoint at start of year (implied prior midpoint ~$12.1B) | | <strong>Diluted EPS</strong> | <strong>$17.70 - $18.90</strong> | Not explicitly stated on call | | <strong>Capital spending</strong> | ~<strong>$4.7 billion</strong> | Slightly raised (referenced as "slight raise in CapEx guide") |</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Original Guidance Assumptions (Referenced on Call)</h3>
+  <ul>
+    <li><strong>Original admission growth assumption:</strong> <strong>1%-2%</strong></li>
+    <li><strong>Original outpatient growth assumption:</strong> <strong>mid-single digits</strong></li>
+    <li><strong>Original equivalent admission growth assumption:</strong> ~<strong>2%-3%</strong></li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Revenue</h3>
+  <ul>
+    <li><strong>Consolidated net revenue:</strong> $15.86 billion, up <strong>7%</strong> YoY (vs. $14.82 billion in Q2 2022)</li>
+    <li><strong>Same-facility revenue growth:</strong> <strong>+6.3%</strong> YoY</li>
+    <li><strong>Revenue per equivalent admission growth:</strong> <strong>+2.9%</strong> YoY</li>
+    <li><strong>Inpatient pricing (revenue per admission):</strong> up ~<strong>6%</strong> (referenced in Q&A)</li>
+    <li><strong>Revenue per outpatient equivalent:</strong> down ~<strong>1%</strong> in the quarter (referenced in Q&A)</li>
+    <li><strong>COVID support payments comparison:</strong> ~$40 million in Q2 2022; none in Q2 2023</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Volumes (Same-Facility)</h3>
+  <ul>
+    <li><strong>Admissions growth:</strong> <strong>+2.2%</strong> YoY</li>
+    <li><strong>Equivalent admissions growth:</strong> <strong>+3.7%</strong> YoY; driven by <strong>4%</strong> growth in equivalent admissions (consolidated)</li>
+    <li><strong>Inpatient surgeries growth:</strong> <strong>+1.8%</strong> YoY</li>
+    <li><strong>Emergency room visits growth:</strong> <strong>+3.7%</strong> YoY</li>
+    <li><strong>Outpatient surgeries growth:</strong> <strong>+3.3%</strong> YoY</li>
+    <li><strong>Outpatient cardiology procedures growth:</strong> <strong>+5%</strong> YoY</li>
+    <li><strong>COVID admissions as % of total:</strong> ~<strong>1%</strong> (vs. ~3% in Q2 2022)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Payer Mix & Managed Care Volumes</h3>
+  <ul>
+    <li><strong>Commercial adjusted admissions growth:</strong> <strong>+5%</strong> YoY</li>
+    <li><strong>Managed care admissions:</strong> up over <strong>4%</strong> in the quarter</li>
+    <li><strong>Managed care adjusted admissions:</strong> <strong>+5%</strong> in the quarter</li>
+    <li><strong>Emergency visits (managed care):</strong> <strong>+9.8%</strong> in the quarter</li>
+    <li><strong>Medicare adjusted admissions:</strong> <strong>+5%</strong> in the quarter</li>
+    <li><strong>Commercial outpatient growth:</strong> up close to <strong>4%</strong></li>
+    <li><strong>Outpatient surgeries commercial mix:</strong> ~<strong>50%-55%</strong> commercial</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Acuity</h3>
+  <ul>
+    <li><strong>Acuity / case mix growth:</strong> <strong>+1.6%</strong> YoY</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Profitability</h3>
+  <ul>
+    <li><strong>Adjusted EBITDA margin:</strong> <strong>19.3%</strong> in Q2 2023</li>
+    <li><strong>Valesco JV margin drag:</strong> ~<strong>30 basis points</strong> reduction to consolidated margin in the quarter</li>
+    <li><strong>Valesco JV revenue consolidated in quarter:</strong> a little north of <strong>$220 million</strong> (approximately breakeven at EBITDA level) - ~<strong>70%-75%</strong> of Valesco revenue is in SWB; remainder in other operating expenses</li>
+    <li><strong>Q1 2023 payer settlement (comparison note):</strong> $145 million recognized in Q1 2023; when adjusting for Valesco and this settlement, margins were consistent between Q1 and Q2</li>
+    <li><strong>Diluted EPS:</strong> <strong>$4.29</strong> in Q2 2023</li>
+    <li><strong>Margins vs. 2019:</strong> Management stated margins have increased compared to 2019 pre-pandemic levels; labor costs as a % of revenue in 2023 are below 2019 levels</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Labor Metrics</h3>
+  <ul>
+    <li><strong>Contract labor cost decline:</strong> <strong>-20%</strong> YoY (Q2 2023 vs. Q2 2022)</li>
+    <li><strong>Contract labor improved sequentially</strong> Q1 to Q2</li>
+    <li><strong>Contract labor as % of SWB:</strong> <strong>6.8%</strong> in Q2 (under 7%)</li>
+    <li><strong>Nurse turnover (annualized rate):</strong> <strong>17%</strong> (approaching pre-pandemic levels; "a few points above pre-pandemic")</li>
+    <li><strong>Nurse hiring growth:</strong> <strong>+9%</strong> YoY for the year</li>
+    <li><strong>Turnover trends:</strong> Declined for nurses; trending toward pre-pandemic levels</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Capacity</h3>
+  <ul>
+    <li><strong>Instances where HCA could not accept patient transfers:</strong> <strong>0.8%</strong> of total admissions in Q2, down from <strong>1.5%</strong> in Q1</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Cash Flow & Capital Allocation</h3>
+  <ul>
+    <li><strong>Cash flow from operations:</strong> <strong>$2.475 billion</strong> in Q2 2023, up <strong>$845 million</strong> YoY (vs. $1.63 billion in Q2 2022)</li>
+    <li><strong>Capital spending:</strong> just over <strong>$1.2 billion</strong> in Q2</li>
+    <li><strong>Dividends paid:</strong> <strong>$164 million</strong> in Q2</li>
+    <li><strong>Share repurchases:</strong> <strong>$915 million</strong> in Q2</li>
+    <li><strong>Debt-to-adjusted EBITDA leverage ratio:</strong> near the <strong>low end</strong> of stated range of <strong>3x to 4x</strong></li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Year-to-Date Metrics (First Half 2023)</h3>
+  <ul>
+    <li><strong>YTD same-facility admissions growth:</strong> ~<strong>3.3%</strong></li>
+    <li><strong>YTD adjusted admissions growth:</strong> <strong>5.6%</strong></li>
+    <li><strong>Divisional breadth:</strong> 13 out of 16 divisions had admission growth and adjusted admission growth</li>
+    <li><strong>Hospital-level breadth:</strong> ~<strong>72%</strong> of hospitals had >2% admission growth YTD (includes some COVID comparison pressure in Q1)</li>
+    <li><strong>Inpatient surgery breadth:</strong> ~<strong>50%</strong> of hospitals had inpatient surgery growth above 2%</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Full Year Volume Expectations (Updated)</h3>
+  <ul>
+    <li><strong>Full year admission growth:</strong> expected to hover around <strong>~3%</strong> (vs. 3.3% YTD)</li>
+    <li><strong>Full year adjusted admission growth:</strong> expected <strong>5%-6%</strong> (vs. 5.6% YTD)</li>
+    <li><strong>Full year equivalent admission growth:</strong> expected <strong>5%-6%</strong></li>
+    <li>Volume trends in second half expected to be "pretty consistent" with first half</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Margin Expectations (Second Half)</h3>
+  <ul>
+    <li><strong>SWB as % of revenue:</strong> expected to run "mostly where they're running year-to-date" in H2</li>
+    <li><strong>Supplies as % of revenue:</strong> expected to run consistent with YTD</li>
+    <li><strong>Professional fees:</strong> saw "a little pressure" in H1; management does not expect same pressure in H2</li>
+    <li><strong>Overall margin profile:</strong> expected to be "slightly better in the second half of the year" vs. H1</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Seasonality</h3>
+  <ul>
+    <li>Q3 expected to be weaker than Q4 (normal pre-pandemic seasonality pattern)</li>
+    <li>Q4 is "always the strongest quarter of the year" driven by outpatient activity and deductibles</li>
+    <li>Normal seasonality patterns have returned; reflected in guidance</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Special Topics</h3>
+</div>
+<div class="content-section">
+  <h3>Commercial Rate Cycle / Managed Care Contracting</h3>
+  <ul>
+    <li><strong>Commercial rate increases:</strong> "mid-single digit level" (consistent with prior commentary)</li>
+    <li><strong>FY 2024 contracted:</strong> a little north of <strong>70%</strong> (previously ~2/3 as of Q1 call)</li>
+    <li><strong>FY 2025 contracted:</strong> ~<strong>25%</strong> (referenced from Q1 call; "about 1/4 of the way through")</li>
+    <li>Relationships with major payers described as "strong"</li>
+    <li>Authorization and medical necessity review activity has "picked up again" post-COVID easing</li>
+    <li>Management noted physician cost pressures (pro fees) will become a factor in rate negotiation justifications</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Valesco Joint Venture (Envision-Related)</h3>
+  <ul>
+    <li>Completed acquisition of majority stake in <strong>Valesco joint venture</strong> during Q2</li>
+    <li>Now consolidating operations of the venture</li>
+    <li>Revenue impact: ~<strong>$220 million+</strong> in Q2</li>
+    <li>EBITDA impact: approximately <strong>breakeven</strong></li>
+    <li>Margin drag: ~<strong>30 basis points</strong> on consolidated adjusted EBITDA margin</li>
+    <li>Revenue split: <strong>70%-75%</strong> in SWB, remainder in other operating expenses</li>
+    <li>Strategic rationale: mitigates business risk from Envision bankruptcy; supports alignment between hospital-based physicians and hospital care teams on quality, patient satisfaction, and efficiency</li>
+    <li>Management does not expect same level of professional fee pressure in H2</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Medicaid Redeterminations</h3>
+  <ul>
+    <li><strong>Impact to date:</strong> no material impact observed</li>
+    <li><strong>Guidance assumption:</strong> nothing assumed for Medicaid redetermination impact</li>
+    <li>Texas (a major HCA state) started early; described as "a little bit messy"</li>
+    <li>Many patients receiving determinations have opportunity to re-enroll or qualify for employer-sponsored plans or marketplace coverage</li>
+    <li>HCA teams are actively identifying affected individuals and assisting with coverage</li>
+    <li><strong>Long-term view:</strong> management believes there "could be some positive trends" over the long run</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Data Breach / Cybersecurity Incident</h3>
+  <ul>
+    <li>Announced <strong>July 10, 2023</strong>: discovered a list of certain patient information made available by an unknown/unauthorized party on an online forum</li>
+    <li><strong>Data involved:</strong> does NOT include clinical information, payment information, passwords, drivers license, or social security numbers</li>
+    <li><strong>Source:</strong> appears to be theft from an external storage location used exclusively to format email messages</li>
+    <li>Notifying all affected patients in accordance with legal/regulatory obligations</li>
+    <li>Named as defendant in multiple class action lawsuits</li>
+    <li><strong>Financial impact:</strong> "has not caused any disruption to our day-to-day operations nor do we believe it will materially impact our business or financial results"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Capital Investment & Pipeline</h3>
+  <ul>
+    <li>Largest pipeline of capital projects currently in motion in recent years</li>
+    <li>Includes outpatient development, inpatient expansion, and other facility investments</li>
+    <li>Projects expected to come online in <strong>late 2023, 2024, and early 2025</strong></li>
+    <li>CapEx guide increase reflects growth opportunities in market and land acquisitions for future expansion in fast-growing markets</li>
+    <li>Investing in new clinical system to move information to the cloud</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Labor & Workforce Development</h3>
+  <ul>
+    <li>Investing in <strong>Galen College of Nursing</strong> (expanding into new markets each quarter)</li>
+    <li><strong>Centers for Clinical Advancement:</strong> ongoing clinical education for upskilling</li>
+    <li>Nurse turnover approaching pre-pandemic levels; annualized Q2 rate suggests even closer</li>
+    <li>Hiring metrics up, turnover down; expect continued improvement in H2</li>
+    <li>Management characterizes labor progress as being in "middle innings"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Digital Health & AI</h3>
+  <ul>
+    <li>Growing digital agenda with investment in new clinical systems</li>
+    <li>Moving standard data sets to the cloud for big data and analytics</li>
+    <li>Coupling digital agenda with "care transformation & innovation" initiative</li>
+    <li>Opportunities to improve care processes, reduce variation, improve quality, and create efficiencies</li>
+    <li>AI expected to "play a huge part" but early stage; specific impacts not yet known</li>
+    <li>Partnering with "sophisticated companies" to accelerate digital/AI agenda</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Competitive Positioning</h3>
+  <ul>
+    <li>Market share has improved compared to pre-pandemic levels</li>
+    <li>Margins have increased compared to 2019 despite unprecedented labor and physician cost pressures</li>
+    <li>Population growth strong in key markets: Texas, Florida, Utah, Nevada, South Carolina, Tennessee</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 2023 Actuals (Reported)</h3>
+</div>
+
+<div class="prior-ref" id="priorRef">
+  <div class="prior-ref-header" onclick="var b=document.getElementById('priorBody');b.classList.toggle('open');this.querySelector('.arrow').innerHTML=b.classList.contains('open')?'&#9650;':'&#9660;';">
+    Prior Quarter Reference: Q1 2023
+    <span class="arrow">&#9660;</span>
+  </div>
+  <div class="prior-ref-body" id="priorBody">
+    <div class="metric-grid">
+      <div class="prior-mini"><div class="pm-label">Same-Facility Admissions</div><div class="pm-value">+4.4% year-over-year</div></div>
+    </div>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q1_2023.html" style="color:var(--blue);">View full Q1 2023 detail &rarr;</a></p>
+  </div>
+</div>
+
+<div class="footer-nav">
+  <a href="Q1_2023.html">&larr; Q1 2023</a>
+  <a href="../comparison.html">Back to Overview</a>
+  <a href="Q3_2023.html">Q3 2023 &rarr;</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,206 @@
+# JPMorgan Chase & Co.
+# Company configuration for earnings call extraction pipeline
+
+company:
+  name: "JPMorgan Chase & Co."
+  ticker: "JPM"
+  sector: "Banking / Markets"
+  fiscal_year: "calendar"
+  currency: "USD"
+  reporting_currency: "USD"
+
+branding:
+  primary: "#005EB8"     # Chase blue
+  dark: "#1a1a2e"        # Dark navy
+  accent: "#117ACA"      # Lighter blue accent
+
+quarters:
+  - id: Q1_2022
+    call_date: "April 13, 2022"
+    reporting_quarter: "Q1 2022"
+    bamsec_id: "08d6977a-2c65-40bf-8098-8149bfcdd8f6"
+  - id: Q2_2022
+    call_date: "July 14, 2022"
+    reporting_quarter: "Q2 2022"
+    bamsec_id: "28f717fa-92a2-4ad6-a376-56e34224f320"
+  - id: Q3_2022
+    call_date: "October 14, 2022"
+    reporting_quarter: "Q3 2022"
+    bamsec_id: "7194a1c6-6b86-46dc-bb1c-897781e244f9"
+  - id: Q4_2022
+    call_date: "January 13, 2023"
+    reporting_quarter: "Q4 2022 (Full Year 2022)"
+    bamsec_id: "5607d344-3685-484f-b812-1e7dee0b4aac"
+  - id: Q1_2023
+    call_date: "April 14, 2023"
+    reporting_quarter: "Q1 2023"
+    bamsec_id: "7bd0adbf-6e48-4318-8add-1fc9116a4619"
+  - id: Q2_2023
+    call_date: "July 14, 2023"
+    reporting_quarter: "Q2 2023"
+    bamsec_id: "6dfd7e9d-246e-4664-80b0-43a95515e6f2"
+  - id: Q3_2023
+    call_date: "October 13, 2023"
+    reporting_quarter: "Q3 2023"
+    bamsec_id: "e7568971-e2ee-4f7c-aa9d-2228db0c99ba"
+  - id: Q4_2023
+    call_date: "January 12, 2024"
+    reporting_quarter: "Q4 2023 (Full Year 2023)"
+    bamsec_id: "182806df-1dd5-4649-8728-721df0ef9d84"
+  - id: Q1_2024
+    call_date: "April 12, 2024"
+    reporting_quarter: "Q1 2024"
+    bamsec_id: "152c7e75-39af-44fe-afa1-e9f88b5413be"
+  - id: Q2_2024
+    call_date: "July 12, 2024"
+    reporting_quarter: "Q2 2024"
+    bamsec_id: "0d51803e-0648-4048-b3d2-b551fee80f81"
+  - id: Q3_2024
+    call_date: "October 11, 2024"
+    reporting_quarter: "Q3 2024"
+    bamsec_id: "783f6df8-8b40-4259-b73f-4fd7a0c14b7c"
+  - id: Q4_2024
+    call_date: "January 15, 2025"
+    reporting_quarter: "Q4 2024 (Full Year 2024)"
+    bamsec_id: "1abca145-5dc2-4102-ac38-760ea576a3e3"
+  - id: Q1_2025
+    call_date: "April 11, 2025"
+    reporting_quarter: "Q1 2025"
+    bamsec_id: "74dc74dd-1277-4b65-91c1-28febd4bb806"
+  - id: Q2_2025
+    call_date: "July 15, 2025"
+    reporting_quarter: "Q2 2025"
+    bamsec_id: "bae27960-211f-4cdc-b7b7-0c3767b50659"
+  - id: Q3_2025
+    call_date: "October 14, 2025"
+    reporting_quarter: "Q3 2025"
+    bamsec_id: "374b6a98-947c-463b-8d3e-8ea799a0c2f1"
+  - id: Q4_2025
+    call_date: "January 14, 2026"
+    reporting_quarter: "Q4 2025 (Full Year 2025)"
+    bamsec_id: "f4dc1286-c0b1-4677-bd28-7298ccf71863"
+
+tracked_metrics:
+  guidance_for:
+    label: "Guidance For"
+    section_pattern: "^Quarterly Guidance"
+    extract: "section_suffix"
+    display: "banner"
+
+  revenue:
+    label: "Managed Revenue"
+    section_pattern: "(?i)(quarterly guidance|key metrics|firmwide)"
+    item_pattern: "(?i)^\\*\\*(Managed |Total )?Revenue:?\\*\\*"
+    comparison: "text_diff"
+
+  net_interest_income:
+    label: "Net Interest Income"
+    section_pattern: "(?i)(quarterly guidance|key metrics|nii)"
+    item_pattern: "(?i)^\\*\\*Net Interest Income( \\(NII\\))?:?\\*\\*"
+    comparison: "text_diff"
+
+  noninterest_revenue:
+    label: "Noninterest Revenue"
+    section_pattern: "(?i)(quarterly guidance|key metrics)"
+    item_pattern: "(?i)^\\*\\*Noninterest Revenue:?\\*\\*"
+    comparison: "text_diff"
+
+  provision_for_credit_losses:
+    label: "Provision for Credit Losses"
+    section_pattern: "(?i)(quarterly guidance|key metrics|credit)"
+    item_pattern: "(?i)^\\*\\*Provision( for Credit Losses)?:?\\*\\*"
+    comparison: "text_diff"
+
+  cet1_ratio:
+    label: "CET1 Capital Ratio"
+    section_pattern: "(?i)(capital|key metrics|regulatory)"
+    item_pattern: "(?i)^\\*\\*CET1( Capital)? Ratio:?\\*\\*"
+    comparison: "text_diff"
+
+  rotce:
+    label: "ROTCE"
+    section_pattern: "(?i)(key metrics|quarterly guidance|returns)"
+    item_pattern: "(?i)^\\*\\*ROTCE:?\\*\\*"
+    comparison: "text_diff"
+
+  net_charge_offs:
+    label: "Net Charge-Off Rate"
+    section_pattern: "(?i)(credit|key metrics)"
+    item_pattern: "(?i)^\\*\\*Net Charge.Off( Rate)?:?\\*\\*"
+    comparison: "text_diff"
+
+  nii_ex_markets:
+    label: "NII ex. Markets"
+    section_pattern: "(?i)(quarterly guidance|full year|nii)"
+    item_pattern: "(?i)^\\*\\*NII ex\\.? Markets:?\\*\\*"
+    comparison: "text_diff"
+
+  expenses:
+    label: "Adjusted Expense"
+    section_pattern: "(?i)(quarterly guidance|full year|expense)"
+    item_pattern: "(?i)^\\*\\*(Adjusted )?Expense:?\\*\\*"
+    comparison: "text_diff"
+
+new_section_keywords:
+  - pattern: "(?i)first republic"
+    label: "First Republic acquisition impact discussed"
+  - pattern: "(?i)basel"
+    label: "Basel III endgame / capital rules discussed"
+  - pattern: "(?i)recession"
+    label: "Recession risk assessment discussed"
+  - pattern: "(?i)actuals"
+    label: "Full-year actuals reported this quarter"
+  - pattern: "(?i)buyback"
+    label: "Share buyback program discussed"
+  - pattern: "(?i)commercial real estate"
+    label: "Commercial real estate exposure discussed"
+
+comparison_sections:
+  - title: "Revenue & NII Guidance"
+    metrics: ["revenue", "net_interest_income", "nii_ex_markets"]
+    columns: ["Quarter", "Revenue", "NII", "NII ex. Markets"]
+
+  - title: "Credit Quality"
+    metrics: ["provision_for_credit_losses", "net_charge_offs"]
+    columns: ["Quarter", "Provision", "NCO Rate"]
+
+  - title: "Capital & Returns"
+    metrics: ["cet1_ratio", "rotce"]
+    columns: ["Quarter", "CET1 Ratio", "ROTCE"]
+
+  - title: "Expense Guidance"
+    metric_key: "expenses"
+    columns: ["Quarter", "Adjusted Expense"]
+
+extraction_context: |
+  JPMorgan Chase is the largest U.S. bank by assets, with major business lines across consumer/community banking, corporate/investment banking, commercial banking, and asset/wealth management. Key domain knowledge:
+  - NII = Net Interest Income (interest earned on loans minus interest paid on deposits)
+  - "NII ex. Markets" strips out trading-related NII for a cleaner view
+  - NIR = Noninterest Revenue (fees, trading, investment banking, asset management)
+  - CET1 = Common Equity Tier 1 capital ratio (key regulatory metric)
+  - ROTCE = Return on Tangible Common Equity (key profitability metric)
+  - NCO = Net Charge-Offs (loans written off minus recoveries)
+  - Provision = forward-looking estimate of credit losses (includes reserve build/release)
+  - IB fees = Investment Banking fees (advisory, equity underwriting, debt underwriting)
+  - Markets revenue = trading revenue (Fixed Income and Equities)
+  - CCB = Consumer & Community Banking
+  - CIB = Corporate & Investment Bank
+  - CB = Commercial Banking
+  - AWM = Asset & Wealth Management
+  - "Managed" revenue includes tax-equivalent adjustments
+  - Overhead ratio = noninterest expense / managed revenue
+  - Fiscal year = calendar year (Q1=Jan-Mar, Q4=Oct-Dec)
+  - Q4 earnings calls typically include full-year actuals
+  - JPM typically reports very early in earnings season (first or second Friday)
+
+topic_hints:
+  - "Net interest income outlook and NII ex. Markets guidance"
+  - "Credit quality: provision, reserves, net charge-offs, delinquencies"
+  - "CET1 capital ratio and capital return (buybacks, dividends)"
+  - "Investment banking fees and deal pipeline"
+  - "Markets / trading revenue (FICC and Equities)"
+  - "Consumer credit trends (card, auto, mortgage)"
+  - "Commercial real estate exposure and office portfolio"
+  - "Expense guidance and efficiency / overhead ratio"
+  - "ROTCE and medium-term return targets"
+  - "Economic outlook and recession probability"

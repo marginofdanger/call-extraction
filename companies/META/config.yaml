@@ -1,0 +1,219 @@
+# Meta Platforms Inc.
+# Company configuration for earnings call extraction pipeline
+
+company:
+  name: "Meta Platforms"
+  ticker: "META"
+  sector: "Technology / Social Media & Advertising"
+  fiscal_year: "calendar"  # calendar year (Q1=Jan-Mar, Q4=Oct-Dec)
+  currency: "USD"
+  reporting_currency: "USD"
+
+branding:
+  primary: "#0668E1"     # Meta blue
+  dark: "#1C2B33"        # Dark charcoal
+  accent: "#00C2FF"      # Light blue accent
+
+quarters:
+  - id: Q1_2022
+    call_date: "April 27, 2022"
+    reporting_quarter: "Q1 2022"
+    bamsec_id: "1ab8a36e-b09d-4685-a516-eff05a19689e"
+  - id: Q2_2022
+    call_date: "July 27, 2022"
+    reporting_quarter: "Q2 2022"
+    bamsec_id: "268ed397-f878-4c65-bad1-0d306e62d1b5"
+  - id: Q3_2022
+    call_date: "October 26, 2022"
+    reporting_quarter: "Q3 2022"
+    bamsec_id: "d792c142-369a-4e98-a218-05483e609084"
+  - id: Q4_2022
+    call_date: "February 1, 2023"
+    reporting_quarter: "Q4 2022 (Full Year 2022)"
+    bamsec_id: "ae737121-4e11-4afe-b051-3aecc4629dd0"
+  - id: Q1_2023
+    call_date: "April 26, 2023"
+    reporting_quarter: "Q1 2023"
+    bamsec_id: "50fcb42e-ae65-4dbb-ac67-61b34d0192e3"
+  - id: Q2_2023
+    call_date: "July 26, 2023"
+    reporting_quarter: "Q2 2023"
+    bamsec_id: "fad301ae-5158-4394-a287-0a700ce519dc"
+  - id: Q3_2023
+    call_date: "October 25, 2023"
+    reporting_quarter: "Q3 2023"
+    bamsec_id: "17b7873f-3551-442d-b311-a92740da685d"
+  - id: Q4_2023
+    call_date: "February 1, 2024"
+    reporting_quarter: "Q4 2023 (Full Year 2023)"
+    bamsec_id: "49aaed47-312c-40ad-b9a1-8f9e852b846f"
+  - id: Q1_2024
+    call_date: "April 24, 2024"
+    reporting_quarter: "Q1 2024"
+    bamsec_id: "9dfe98fe-0c1f-4423-8d93-84e4e29af0a0"
+  - id: Q2_2024
+    call_date: "July 31, 2024"
+    reporting_quarter: "Q2 2024"
+    bamsec_id: "0763a530-5c7b-4a1b-a3d0-0a3d9361d6ce"
+  - id: Q3_2024
+    call_date: "October 30, 2024"
+    reporting_quarter: "Q3 2024"
+    bamsec_id: "fdca2ec9-21f7-4a8f-aace-37b019b294e4"
+  - id: Q4_2024
+    call_date: "January 29, 2025"
+    reporting_quarter: "Q4 2024 (Full Year 2024)"
+    bamsec_id: "ddfd41eb-7fe1-48e6-aabf-8b18fb08a927"
+  - id: Q1_2025
+    call_date: "April 30, 2025"
+    reporting_quarter: "Q1 2025"
+    bamsec_id: "d291933a-97a7-41ab-a02b-b8da03cb0801"
+  - id: Q2_2025
+    call_date: "July 30, 2025"
+    reporting_quarter: "Q2 2025"
+    bamsec_id: "e9e96e95-b9a7-487c-b15a-e82f90f97fd5"
+  - id: Q3_2025
+    call_date: "October 29, 2025"
+    reporting_quarter: "Q3 2025"
+    bamsec_id: "45dfad78-ece8-4538-b80c-b5d43abc03f0"
+  - id: Q4_2025
+    call_date: "January 28, 2026"
+    reporting_quarter: "Q4 2025 (Full Year 2025)"
+    bamsec_id: "9a48f04b-719f-47df-be4c-56a7c8a3c735"
+
+# Tracked metrics: guidance-focused + key operational KPIs.
+# Guidance metrics appear first (shown at top of detail pages and comparison).
+tracked_metrics:
+  # --- Forward Guidance ---
+  revenue_guidance:
+    label: "Revenue Guidance (Next Q)"
+    section_pattern: "(?i)^Quarterly Guidance|^Q\\d 20\\d{2}.*Guidance"
+    item_pattern: "(?i)^\\*\\*Revenue[^*]*\\*\\*"
+    comparison: "midpoint_pct"
+    midpoint_format: "dollar_billions"
+
+  fy_expenses:
+    label: "FY Total Expenses"
+    section_pattern: "(?i)^Full Year.*Guidance"
+    item_pattern: "(?i)^\\*\\*(Total )?[Ee]xpenses?[^*]*\\*\\*"
+    comparison: "midpoint_pct"
+    midpoint_format: "dollar_billions"
+
+  fy_capex:
+    label: "FY CapEx"
+    section_pattern: "(?i)^Full Year.*Guidance"
+    item_pattern: "(?i)^\\*\\*Cap[Ee]x[^*]*\\*\\*"
+    comparison: "midpoint_pct"
+    midpoint_format: "dollar_billions"
+
+  # --- Key Operational Metrics ---
+  family_dap:
+    label: "Family DAP"
+    section_pattern: "(?i)^Q\\d.*Actuals|engagement"
+    item_pattern: "(?i)^\\*\\*(Family )?DAP[^*]*\\*\\*"
+    comparison: "text_diff"
+
+  ad_impressions:
+    label: "Ad Impressions Growth"
+    section_pattern: "(?i)^Q\\d.*Actuals|ad revenue"
+    item_pattern: "(?i)^\\*\\*Ad [Ii]mpressions[^*]*\\*\\*"
+    comparison: "text_diff"
+
+  avg_price_per_ad:
+    label: "Avg Price Per Ad"
+    section_pattern: "(?i)^Q\\d.*Actuals|ad revenue"
+    item_pattern: "(?i)^\\*\\*(Average )?[Pp]rice [Pp]er [Aa]d[^*]*\\*\\*"
+    comparison: "text_diff"
+
+  operating_margin:
+    label: "Operating Margin"
+    section_pattern: "(?i)^Q\\d.*Actuals"
+    item_pattern: "(?i)^\\*\\*Operating [Mm]argin[^*]*\\*\\*"
+    comparison: "text_diff"
+
+  rl_operating_loss:
+    label: "Reality Labs Op Loss"
+    section_pattern: "(?i)reality labs|segment"
+    item_pattern: "(?i)^\\*\\*(RL |Reality Labs )?Operating [Ll]oss[^*]*\\*\\*"
+    comparison: "text_diff"
+
+# Change detection for new section topics
+new_section_keywords:
+  - pattern: "(?i)metaverse|reality labs|quest"
+    label: "Metaverse/Reality Labs discussion"
+  - pattern: "(?i)threads|new app|new product"
+    label: "New product launch discussed"
+  - pattern: "(?i)layoff|restructuring|efficiency"
+    label: "Efficiency/restructuring discussed"
+  - pattern: "(?i)regulation|antitrust|privacy"
+    label: "Regulatory/antitrust discussion"
+  - pattern: "(?i)AI|artificial intelligence|llama"
+    label: "AI strategy discussion"
+  - pattern: "(?i)tariff|trade|geopolitical"
+    label: "Trade/geopolitical impact discussed"
+
+# Comparison page configuration — guidance first, then operational metrics
+comparison_sections:
+  - title: "Next-Quarter Revenue Guidance"
+    metric_key: "revenue_guidance"
+    columns: ["Quarter", "Revenue Range", "Midpoint", "vs Prior"]
+
+  - title: "Full Year Expense Guidance"
+    metric_key: "fy_expenses"
+    columns: ["Quarter", "Expense Range", "Midpoint", "vs Prior"]
+
+  - title: "Full Year CapEx Guidance"
+    metric_key: "fy_capex"
+    columns: ["Quarter", "CapEx Range", "Midpoint", "vs Prior"]
+
+  - title: "Ad Monetization"
+    metrics: ["ad_impressions", "avg_price_per_ad"]
+    columns: ["Quarter", "Ad Impressions Growth", "Avg Price Per Ad"]
+
+  - title: "Engagement & Efficiency"
+    metrics: ["family_dap", "operating_margin"]
+    columns: ["Quarter", "Family DAP", "Operating Margin"]
+
+  - title: "Reality Labs"
+    metric_key: "rl_operating_loss"
+    columns: ["Quarter", "RL Operating Loss"]
+
+# Extraction context: domain-specific hints for Claude during extraction
+extraction_context: |
+  Meta Platforms (formerly Facebook) is the world's largest social media company, operating
+  Facebook, Instagram, WhatsApp, Messenger, and Threads (the "Family of Apps"), plus
+  Reality Labs (VR/AR hardware and metaverse).
+
+  Key domain knowledge:
+  - Two reporting segments: Family of Apps (FoA) and Reality Labs (RL)
+  - Family of Apps generates virtually all profit; Reality Labs operates at a large loss
+  - DAP = Daily Active People across the family of apps (Facebook, Instagram, WhatsApp, Messenger)
+  - MAP = Monthly Active People across the family
+  - ARPP = Average Revenue Per Person (family-level metric, replacing older Facebook-only ARPU)
+  - Ad revenue is ~97%+ of total revenue; driven by impressions x price per ad
+  - Ad impressions growth comes from more users and more ad load/surfaces
+  - Average price per ad reflects advertiser demand and ad relevance/targeting quality
+  - "Year of Efficiency" (2023) was a major cost-cutting/restructuring initiative
+  - Headcount reductions in 2022-2023 were significant (from ~87K to ~67K)
+  - Reality Labs losses have been $3-5B+ per quarter; management committed to continued investment
+  - CapEx is a critical metric — driven by AI infrastructure (data centers, GPUs)
+  - Meta AI and Llama (open-source LLM) are key AI initiatives
+  - Threads launched July 2023 as a competitor to X (formerly Twitter)
+  - WhatsApp monetization (Business messaging, Click-to-Message ads) is a growth driver
+  - Reels (short-form video) monetization efficiency has been a multi-year focus
+  - FX headwinds/tailwinds are often material given ~50%+ international revenue
+  - Share repurchases have been very large ($30B+ annually in recent years)
+  - Meta guides on next-quarter revenue and full-year CapEx/expenses
+
+topic_hints:
+  - "Family of Apps vs Reality Labs segment performance"
+  - "Ad impressions and average price per ad trends"
+  - "DAP/MAP engagement metrics and ARPP growth"
+  - "AI infrastructure investment and CapEx outlook"
+  - "Reels monetization efficiency progress"
+  - "WhatsApp/Business messaging monetization"
+  - "Headcount and operating expense management"
+  - "Reality Labs losses and metaverse strategy"
+  - "Meta AI, Llama model development, and AI product integration"
+  - "Share repurchases and capital return"
+  - "Regulatory environment (antitrust, privacy, content moderation)"
+  - "FX impact on revenue"

@@ -1,0 +1,193 @@
+# Apollo Global Management, Inc.
+# Company configuration for earnings call extraction pipeline
+
+company:
+  name: "Apollo Global Management, Inc."
+  ticker: "APO"
+  sector: "Alternative Asset Management"
+  fiscal_year: "calendar"
+  currency: "USD"
+  reporting_currency: "USD"
+
+branding:
+  primary: "#003A70"     # Apollo dark blue
+  dark: "#1a1a2e"        # Dark navy
+  accent: "#0066B3"      # Lighter blue accent
+
+quarters:
+  - id: Q1_2022
+    call_date: "May 4, 2022"
+    reporting_quarter: "Q1 2022"
+    bamsec_id: "6bf9c39b-cfc8-436b-84e5-b082b929cd98"
+  - id: Q2_2022
+    call_date: "August 3, 2022"
+    reporting_quarter: "Q2 2022"
+    bamsec_id: "a273154c-9c8d-4328-b897-ed3bd12c7aaa"
+  - id: Q3_2022
+    call_date: "November 3, 2022"
+    reporting_quarter: "Q3 2022"
+    bamsec_id: "1b284053-a9aa-48c4-b86c-d9ea1600d640"
+  - id: Q4_2022
+    call_date: "February 2, 2023"
+    reporting_quarter: "Q4 2022 (Full Year 2022)"
+    bamsec_id: "553d69af-ce3a-444a-81ec-db6b8c364f04"
+  - id: Q1_2023
+    call_date: "May 4, 2023"
+    reporting_quarter: "Q1 2023"
+    bamsec_id: "da0d262b-933a-4f1e-a74a-52ba919e38c3"
+  - id: Q2_2023
+    call_date: "August 8, 2023"
+    reporting_quarter: "Q2 2023"
+    bamsec_id: "e6ad35d5-4d80-4956-8c8c-1b04b9356994"
+  - id: Q3_2023
+    call_date: "November 1, 2023"
+    reporting_quarter: "Q3 2023"
+    bamsec_id: "ef599087-8234-4d97-bbbe-1da600609b91"
+  - id: Q4_2023
+    call_date: "February 6, 2024"
+    reporting_quarter: "Q4 2023 (Full Year 2023)"
+    bamsec_id: "e67c73c7-46bf-4437-ad91-d121ac4fcbc0"
+  - id: Q1_2024
+    call_date: "May 2, 2024"
+    reporting_quarter: "Q1 2024"
+    bamsec_id: "b2436009-29d9-4a01-a886-527c2ea318c0"
+  - id: Q2_2024
+    call_date: "August 1, 2024"
+    reporting_quarter: "Q2 2024"
+    bamsec_id: "e6029ebe-f5ef-4dda-b8fa-03a0d9e7e3f6"
+  - id: Q3_2024
+    call_date: "November 5, 2024"
+    reporting_quarter: "Q3 2024"
+    bamsec_id: "9e37f3ce-353f-4e92-9015-9903a919d2b5"
+  - id: Q4_2024
+    call_date: "February 4, 2025"
+    reporting_quarter: "Q4 2024 (Full Year 2024)"
+    bamsec_id: "257ffb18-3903-4996-8bd9-5fea76bece92"
+  - id: Q1_2025
+    call_date: "May 6, 2025"
+    reporting_quarter: "Q1 2025"
+    bamsec_id: "faffc565-ad80-450e-a0f3-1d6f29d55841"
+  - id: Q2_2025
+    call_date: "August 5, 2025"
+    reporting_quarter: "Q2 2025"
+    bamsec_id: "1795d733-1034-44a4-9996-0a7515e5343b"
+  - id: Q3_2025
+    call_date: "November 4, 2025"
+    reporting_quarter: "Q3 2025"
+    bamsec_id: "8edd99de-5e63-4cef-ace4-592b345242e6"
+  - id: Q4_2025
+    call_date: "February 3, 2026"
+    reporting_quarter: "Q4 2025 (Full Year 2025)"
+    bamsec_id: "eeb44ed3-8ea3-4390-81af-f18a817ed7af"
+
+tracked_metrics:
+  guidance_for:
+    label: "Guidance For"
+    section_pattern: "^Quarterly Guidance"
+    extract: "section_suffix"
+    display: "banner"
+
+  fee_related_earnings:
+    label: "Fee-Related Earnings"
+    section_pattern: "(?i)(quarterly guidance|key metrics|asset management)"
+    item_pattern: "(?i)^\\*\\*Fee.Related Earnings( \\(FRE\\))?:?\\*\\*"
+    comparison: "text_diff"
+
+  spread_related_earnings:
+    label: "Spread-Related Earnings"
+    section_pattern: "(?i)(quarterly guidance|key metrics|retirement)"
+    item_pattern: "(?i)^\\*\\*Spread.Related Earnings( \\(SRE\\))?:?\\*\\*"
+    comparison: "text_diff"
+
+  total_aum:
+    label: "Total AUM"
+    section_pattern: "(?i)(key metrics|aum|assets under management)"
+    item_pattern: "(?i)^\\*\\*(Total )?AUM:?\\*\\*"
+    comparison: "text_diff"
+
+  inflows:
+    label: "Inflows"
+    section_pattern: "(?i)(key metrics|aum|capital)"
+    item_pattern: "(?i)^\\*\\*(Total |Net )?Inflows:?\\*\\*"
+    comparison: "text_diff"
+
+  fre_margin:
+    label: "FRE Margin"
+    section_pattern: "(?i)(key metrics|asset management|margins)"
+    item_pattern: "(?i)^\\*\\*FRE Margin:?\\*\\*"
+    comparison: "midpoint_delta"
+    midpoint_format: "percentage"
+
+  retirement_services_revenue:
+    label: "Retirement Services Revenue"
+    section_pattern: "(?i)(retirement|athene)"
+    item_pattern: "(?i)^\\*\\*(Retirement Services )?Revenue:?\\*\\*"
+    comparison: "text_diff"
+
+  management_fees:
+    label: "Management Fees"
+    section_pattern: "(?i)(key metrics|asset management|fees)"
+    item_pattern: "(?i)^\\*\\*Management Fees:?\\*\\*"
+    comparison: "text_diff"
+
+  adjusted_net_income:
+    label: "Adjusted Net Income"
+    section_pattern: "(?i)(key metrics|quarterly guidance)"
+    item_pattern: "(?i)^\\*\\*Adjusted Net Income:?\\*\\*"
+    comparison: "text_diff"
+
+new_section_keywords:
+  - pattern: "(?i)athene"
+    label: "Athene / Retirement Services discussed"
+  - pattern: "(?i)origination"
+    label: "Origination platform activity highlighted"
+  - pattern: "(?i)credit"
+    label: "Credit strategy discussed"
+  - pattern: "(?i)actuals"
+    label: "Full-year actuals reported this quarter"
+  - pattern: "(?i)five year"
+    label: "Five-year plan targets discussed"
+
+comparison_sections:
+  - title: "Fee-Related Earnings"
+    metric_key: "fee_related_earnings"
+    columns: ["Quarter", "FRE", "vs Prior"]
+
+  - title: "Spread-Related Earnings"
+    metric_key: "spread_related_earnings"
+    columns: ["Quarter", "SRE", "vs Prior"]
+
+  - title: "Assets Under Management"
+    metrics: ["total_aum", "inflows"]
+    columns: ["Quarter", "Total AUM", "Inflows"]
+
+  - title: "Margins & Fees"
+    metrics: ["fre_margin", "management_fees"]
+    columns: ["Quarter", "FRE Margin", "Management Fees"]
+
+extraction_context: |
+  Apollo Global Management is a leading alternative asset manager with a large retirement services business (Athene). Key domain knowledge:
+  - AUM = Assets Under Management (total assets across all funds/accounts)
+  - FRE = Fee-Related Earnings (recurring, high-quality earnings from management fees)
+  - SRE = Spread-Related Earnings (from Athene's retirement services / insurance float)
+  - PII = Principal Investing Income (more volatile, performance-based)
+  - Athene = Apollo's retirement services platform (annuities, pension risk transfer)
+  - Origination = Apollo's direct lending and capital solutions platform
+  - "Yield" strategies = credit-oriented, lower-risk investments
+  - "Hybrid" and "Equity" = higher-return strategies
+  - Net invested assets vs gross AUM — net is more relevant for fee generation
+  - Retirement services net spread = investment income minus cost of funds
+  - ADIP = Apollo Debt Investment Platform
+  - "Dry powder" = uninvested committed capital
+  - Fiscal year = calendar year (Q1=Jan-Mar, Q4=Oct-Dec)
+  - Q4 earnings calls typically include full-year actuals
+
+topic_hints:
+  - "Total AUM growth and inflow trends"
+  - "Fee-related earnings and FRE margin"
+  - "Spread-related earnings and Athene retirement services"
+  - "Origination volume and capital deployment"
+  - "Fundraising activity across yield, hybrid, equity strategies"
+  - "Retirement services growth (annuity origination, pension risk transfer)"
+  - "Credit market conditions and portfolio quality"
+  - "Long-term targets (AUM, FRE, SRE growth)"

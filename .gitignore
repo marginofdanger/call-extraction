@@ -1,0 +1,20 @@
+# Binary files
+*.pdf
+
+# Transcripts (copyrighted source material)
+companies/*/transcripts/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Local settings
+.claude/settings.local.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Backup files
+*- Copy*
+* - Copy*

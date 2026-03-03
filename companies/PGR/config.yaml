@@ -1,0 +1,199 @@
+# The Progressive Corporation
+# Company configuration for earnings call extraction pipeline
+
+company:
+  name: "The Progressive Corporation"
+  ticker: "PGR"
+  sector: "Insurance / P&C"
+  fiscal_year: "calendar"
+  currency: "USD"
+  reporting_currency: "USD"
+
+branding:
+  primary: "#0033A0"     # Progressive blue
+  dark: "#1a1a2e"        # Dark navy
+  accent: "#00B4D8"      # Light blue accent
+
+quarters:
+  - id: Q1_2022
+    call_date: "April 2022"
+    reporting_quarter: "Q1 2022"
+    bamsec_id: "660b1049-6356-4f2d-b99f-fe9b6a673fab"
+  - id: Q2_2022
+    call_date: "August 2022"
+    reporting_quarter: "Q2 2022"
+    bamsec_id: "6874eeb2-bb8e-45bc-a279-37cc2654b5a8"
+  - id: Q3_2022
+    call_date: "November 2022"
+    reporting_quarter: "Q3 2022"
+    bamsec_id: "f781b463-0d23-44c2-9b69-15ff0868c45d"
+  - id: Q4_2022
+    call_date: "February 2023"
+    reporting_quarter: "Q4 2022 (Full Year 2022)"
+    bamsec_id: "9c960a66-76f8-428c-bfde-740b390e9f2f"
+  - id: Q1_2023
+    call_date: "May 2023"
+    reporting_quarter: "Q1 2023"
+    bamsec_id: "093809b4-3aff-4c6d-9526-d03f6d02a451"
+  - id: Q2_2023
+    call_date: "August 2023"
+    reporting_quarter: "Q2 2023"
+    bamsec_id: "aa729c56-0dcb-47a3-b686-e4e72aa1f9f7"
+  - id: Q3_2023
+    call_date: "November 2023"
+    reporting_quarter: "Q3 2023"
+    bamsec_id: "c374b199-0e45-48ad-90ca-825a7f4cdf34"
+  - id: Q4_2023
+    call_date: "February 2024"
+    reporting_quarter: "Q4 2023 (Full Year 2023)"
+    bamsec_id: "02011dd6-f65a-4aab-82d0-6c7dc4ab9d18"
+  - id: Q1_2024
+    call_date: "May 2024"
+    reporting_quarter: "Q1 2024"
+    bamsec_id: "7be6323a-227d-4990-b120-adc9d491a292"
+  - id: Q2_2024
+    call_date: "August 2024"
+    reporting_quarter: "Q2 2024"
+    bamsec_id: "967213cb-5a88-487e-95c2-3477b481a246"
+  - id: Q3_2024
+    call_date: "November 2024"
+    reporting_quarter: "Q3 2024"
+    bamsec_id: "464f7946-b3f0-44b7-ab4b-b2e295ec5440"
+  - id: Q4_2024
+    call_date: "February 2025"
+    reporting_quarter: "Q4 2024 (Full Year 2024)"
+    bamsec_id: "efb05ad3-bfff-4306-92ac-079204d72f86"
+  - id: Q1_2025
+    call_date: "May 2025"
+    reporting_quarter: "Q1 2025"
+    bamsec_id: "ac86e888-3216-450d-8ff6-9053222f9005"
+  - id: Q2_2025
+    call_date: "August 2025"
+    reporting_quarter: "Q2 2025"
+    bamsec_id: "8fb82701-19be-4fe7-a98c-afa6787c7c99"
+  - id: Q3_2025
+    call_date: "November 2025"
+    reporting_quarter: "Q3 2025"
+    bamsec_id: "ee1457b0-0c3c-4905-b343-a1c038fe5d79"
+  - id: Q4_2025
+    call_date: "February 2026"
+    reporting_quarter: "Q4 2025 (Full Year 2025)"
+    bamsec_id: ""
+
+tracked_metrics:
+  guidance_for:
+    label: "Guidance For"
+    section_pattern: "^Quarterly Guidance"
+    extract: "section_suffix"
+    display: "banner"
+
+  net_premiums_written:
+    label: "Net Premiums Written"
+    section_pattern: "(?i)(key metrics|quarterly guidance|premiums)"
+    item_pattern: "(?i)^\\*\\*Net Premiums Written:?\\*\\*"
+    comparison: "text_diff"
+
+  combined_ratio:
+    label: "Combined Ratio"
+    section_pattern: "(?i)(key metrics|quarterly guidance|underwriting)"
+    item_pattern: "(?i)^\\*\\*Combined Ratio:?\\*\\*"
+    comparison: "midpoint_delta"
+    midpoint_format: "percentage"
+
+  loss_ratio:
+    label: "Loss & LAE Ratio"
+    section_pattern: "(?i)(key metrics|underwriting)"
+    item_pattern: "(?i)^\\*\\*Loss( & LAE| and LAE)? Ratio:?\\*\\*"
+    comparison: "midpoint_delta"
+    midpoint_format: "percentage"
+
+  expense_ratio:
+    label: "Expense Ratio"
+    section_pattern: "(?i)(key metrics|underwriting)"
+    item_pattern: "(?i)^\\*\\*Expense Ratio:?\\*\\*"
+    comparison: "midpoint_delta"
+    midpoint_format: "percentage"
+
+  policies_in_force:
+    label: "Policies in Force"
+    section_pattern: "(?i)(key metrics|policies|growth)"
+    item_pattern: "(?i)^\\*\\*Policies in Force:?\\*\\*"
+    comparison: "text_diff"
+
+  personal_auto_premiums:
+    label: "Personal Auto Premiums"
+    section_pattern: "(?i)(personal auto|segment|key metrics)"
+    item_pattern: "(?i)^\\*\\*Personal Auto( Net)? Premiums:?\\*\\*"
+    comparison: "text_diff"
+
+  homeowners_premiums:
+    label: "Property Premiums"
+    section_pattern: "(?i)(property|homeowners|segment|key metrics)"
+    item_pattern: "(?i)^\\*\\*(Property|Homeowners)( Net)? Premiums:?\\*\\*"
+    comparison: "text_diff"
+
+  investment_income:
+    label: "Investment Income"
+    section_pattern: "(?i)(investment|key metrics)"
+    item_pattern: "(?i)^\\*\\*(Net )?Investment Income:?\\*\\*"
+    comparison: "text_diff"
+
+new_section_keywords:
+  - pattern: "(?i)rate increase"
+    label: "Rate increase activity discussed"
+  - pattern: "(?i)catastrophe|cat loss"
+    label: "Catastrophe losses discussed"
+  - pattern: "(?i)homeowners|property"
+    label: "Homeowners / Property segment discussed"
+  - pattern: "(?i)actuals"
+    label: "Full-year actuals reported this quarter"
+  - pattern: "(?i)usage.based|snapshot"
+    label: "Usage-based insurance (Snapshot) discussed"
+  - pattern: "(?i)commercial (auto|lines)"
+    label: "Commercial auto segment discussed"
+
+comparison_sections:
+  - title: "Premiums Written"
+    metrics: ["net_premiums_written", "personal_auto_premiums", "homeowners_premiums"]
+    columns: ["Quarter", "Total NPW", "Personal Auto", "Property"]
+
+  - title: "Underwriting Ratios"
+    metrics: ["combined_ratio", "loss_ratio", "expense_ratio"]
+    columns: ["Quarter", "Combined Ratio", "Loss Ratio", "Expense Ratio"]
+
+  - title: "Growth Metrics"
+    metrics: ["policies_in_force", "investment_income"]
+    columns: ["Quarter", "Policies in Force", "Investment Income"]
+
+extraction_context: |
+  Progressive is one of the largest U.S. auto and property insurers. Key domain knowledge:
+  - Combined ratio = loss ratio + expense ratio (below 100% = underwriting profit)
+  - Loss ratio = incurred losses / earned premiums (claims cost relative to premiums)
+  - LAE = Loss Adjustment Expense (cost to settle claims)
+  - Expense ratio = underwriting expenses / earned premiums
+  - NPW = Net Premiums Written (premiums after reinsurance)
+  - NEP = Net Premiums Earned (recognized over the policy period)
+  - PIF = Policies in Force (number of active policies)
+  - "Personal Lines" = Personal Auto + Special Lines (motorcycle, boat, RV)
+  - "Commercial Lines" = Commercial Auto (for-hire, business auto)
+  - "Property" = Homeowners, renters, condo, flood insurance
+  - Snapshot = Progressive's usage-based insurance / telematics program
+  - "Calendar year" vs "accident year" combined ratio — accident year excludes prior year reserve development
+  - Rate increases = price changes filed with state regulators
+  - Severity = average cost per claim; Frequency = claims per policy
+  - Progressive reports monthly results (unique among insurers)
+  - Fiscal year = calendar year (Q1=Jan-Mar, Q4=Oct-Dec)
+  - Q4 typically includes full-year actuals
+  - PGR does not hold traditional quarterly earnings calls like most companies;
+    they release monthly and quarterly financial results with a shareholder letter
+
+topic_hints:
+  - "Combined ratio by segment (Personal Auto, Commercial, Property)"
+  - "Rate increases and pricing adequacy"
+  - "Policies in force growth and market share gains"
+  - "Loss trends: severity, frequency, and inflation impact"
+  - "Catastrophe losses and property segment performance"
+  - "Expense ratio and operational efficiency"
+  - "Snapshot / telematics and usage-based insurance"
+  - "Investment portfolio and recurring investment income"
+  - "Commercial auto growth and profitability"

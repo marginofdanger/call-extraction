@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TSM Q1 2024 Earnings Call Detail</title>
+<style>
+:root {
+    --company-primary: #c0392b;
+    --company-dark: #1a1a2e;
+    --company-accent: #16213e;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 40px 40px 32px;
+    margin: 0 -24px 0;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .header .meta {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    font-weight: 300;
+  }
+  .header .meta span { margin-right: 24px; }
+
+  .nav-bar {
+    background: var(--company-accent);
+    margin: 0 -24px 32px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    transition: all 0.15s;
+  }
+  .nav-bar a:hover { background: rgba(255,255,255,0.2); }
+  .nav-bar a.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .nav-center {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-center a.qbtn {
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+  }
+  .nav-center a.qbtn.current {
+    background: var(--company-primary);
+    border-color: var(--company-primary);
+  }
+  .nav-center a.qbtn:hover { background: rgba(255,255,255,0.2); }
+  .nav-back {
+    background: rgba(255,255,255,0.15) !important;
+    border-color: rgba(255,255,255,0.35) !important;
+  }
+
+  .metrics-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .metric {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+  .metric-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .metric-value {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+  .metric-delta {
+    font-size: 0.72rem;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+  .delta-up { color: var(--green); }
+  .delta-down { color: var(--red); }
+  .delta-flat { color: var(--text-muted); }
+
+  .changes-box {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 5px solid var(--amber);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .changes-box h3 {
+    font-size: 1rem;
+    color: var(--company-dark);
+    margin-bottom: 10px;
+  }
+  .changes-box ul { list-style: none; padding: 0; }
+  .changes-box li {
+    padding: 5px 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .change-tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .ct-raised { background: #d5f5e3; color: #1e8449; }
+  .ct-lowered { background: #fadbd8; color: #c0392b; }
+  .ct-changed { background: #d6eaf8; color: #2471a3; }
+  .ct-new { background: #e8daef; color: #6c3483; }
+  .ct-maintained { background: #fdebd0; color: #b9770e; }
+
+  .content-section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .content-section h3 {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .content-section ul {
+    padding: 14px 18px 14px 36px;
+    margin: 0;
+  }
+  .content-section li {
+    padding: 3px 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .content-section li strong { color: var(--company-dark); }
+
+  .prior-ref {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 40px;
+    overflow: hidden;
+  }
+  .prior-ref-header {
+    background: var(--light-bg);
+    padding: 12px 18px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--company-dark);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .prior-ref-header:hover { background: #eef2f7; }
+  .prior-ref-body { padding: 18px; display: none; }
+  .prior-ref-body.open { display: block; }
+  .prior-ref-body .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .prior-mini {
+    background: var(--light-bg);
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .prior-mini .pm-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .prior-mini .pm-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border);
+  }
+  .footer-nav a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .footer-nav a:hover { text-decoration: underline; }
+
+  /* Comparison page styles */
+  .toc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .toc a {
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 4px 0;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  .comp-section {
+    margin-bottom: 40px;
+  }
+  .comp-section h2 {
+    font-size: 1.2rem;
+    color: var(--company-dark);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--company-primary);
+  }
+
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+  }
+  .comp-table th {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .comp-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .comp-table tr:nth-child(even) { background: var(--light-bg); }
+  .comp-table tr:hover { background: #e8f4fd; }
+
+  @media (max-width: 768px) {
+    .header h1 { font-size: 1.5rem; }
+    .metrics-card { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .nav-center { display: none; }
+    body { padding: 0 16px 60px; }
+    .header { margin: 0 -16px 0; padding: 28px 24px 20px; }
+    .nav-bar { margin: 0 -16px 24px; }
+    .toc { grid-template-columns: 1fr; }
+    .comp-table { font-size: 0.78rem; }
+    .comp-table th, .comp-table td { padding: 6px 8px; }
+  }
+
+  @media print {
+    .nav-bar { display: none; }
+    .header { background: #333; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>TSM Q1 2024 Earnings Call</h1>
+  <div class="meta">
+    <span>Call Date: April 18, 2024</span>
+    <span>Reporting: Q1 2024</span>
+  </div>
+</div>
+<div class="nav-bar">
+  <a href="Q4_2023.html">&larr; Q4 2023</a>
+  <div class="nav-center">
+    <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="Q4_2025.html" class="qbtn">4Q25</a>
+    <a href="Q3_2025.html" class="qbtn">3Q25</a>
+    <a href="Q2_2025.html" class="qbtn">2Q25</a>
+    <a href="Q1_2025.html" class="qbtn">1Q25</a>
+    <a href="Q4_2024.html" class="qbtn">4Q24</a>
+    <a href="Q3_2024.html" class="qbtn">3Q24</a>
+    <a href="Q2_2024.html" class="qbtn">2Q24</a>
+    <a href="Q1_2024.html" class="qbtn current">1Q24</a>
+    <a href="Q4_2023.html" class="qbtn">4Q23</a>
+    <a href="Q3_2023.html" class="qbtn">3Q23</a>
+    <a href="Q2_2023.html" class="qbtn">2Q23</a>
+    <a href="Q1_2023.html" class="qbtn">1Q23</a>
+    <a href="Q4_2022.html" class="qbtn">4Q22</a>
+    <a href="Q3_2022.html" class="qbtn">3Q22</a>
+    <a href="Q2_2022.html" class="qbtn">2Q22</a>
+    <a href="Q1_2022.html" class="qbtn">1Q22</a>
+  </div>
+  <a href="Q2_2024.html">Q2 2024 &rarr;</a>
+</div>
+
+<div class="changes-box">
+  <h3>What Changed vs Q4 2023</h3>
+  <ul>
+    <li><span class="change-tag ct-raised">Raised</span> Next-Q Revenue midpoint up 8.7% vs prior quarter ($20.0B vs $18.4B)</li>
+    <li><span class="change-tag ct-lowered">Lowered</span> Next-Q Gross Margin midpoint down 1.0 ppts (52.0% vs 53.0%)</li>
+    <li><span class="change-tag ct-changed">Changed</span> FY Revenue Growth: Low to mid-20% in USD terms (reaffirmed; expects QoQ growth throughout 2024, 2H stronger than 1H) (prior: Low to mid-20s% in USD terms; QoQ growth expected throughout 2024)</li>
+    <li><span class="change-tag ct-changed">Changed</span> LT Gross Margin Target: 53% and higher achievable (excluding FX impact, considering global manufacturing footprint expansion) (prior: 53% and higher achievable (long-term; excluding FX impact; considering global manufacturing footprint expansion))</li>
+    <li><span class="change-tag ct-new">New</span> NEW: Electricity cost impact quantified</li>
+  </ul>
+</div>
+
+<div class="metrics-card">
+  <div class="metric" style="grid-column: 1 / -1; background: linear-gradient(135deg, var(--company-dark), var(--company-accent)); color: #fff; border: none; padding: 8px 14px;">
+    <div class="metric-label" style="color: rgba(255,255,255,0.7);">Guidance For</div>
+    <div class="metric-value" style="color: #fff; font-size: 1rem;">Q2 2024</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Next-Q Revenue</div>
+    <div class="metric-value">$19.6B–$20.4B</div>
+    <div class="metric-delta delta-flat">Prior: $18.0B-$18.8B</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Next-Q Gross Margin</div>
+    <div class="metric-value">51%–53%</div>
+    <div class="metric-delta delta-flat">Prior: 52%-54%</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Next-Q Operating Margin</div>
+    <div class="metric-value">40%–42%</div>
+    <div class="metric-delta delta-flat">Prior: 40%-42%</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">FY Revenue Growth</div>
+    <div class="metric-value">Low to mid-20% in USD terms</div>
+    <div class="metric-delta delta-flat">Prior: Low to mid-20s% in USD terms; QoQ growth expected throughout 2024</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">CapEx</div>
+    <div class="metric-value">$28B–$32B</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">LT Gross Margin Target</div>
+    <div class="metric-value">53% and higher achievable</div>
+    <div class="metric-delta delta-flat">Prior: 53% and higher achievable</div>
+  </div>
+</div>
+
+<!-- Full Guidance Content -->
+<div class="content-section">
+  <h3>Quarterly Guidance (Q2 2024)</h3>
+  <ul>
+    <li><strong>Revenue:</strong> $19.6B–$20.4B (+6% QoQ; +27.6% YoY at midpoint)</li>
+    <li><strong>Gross Margin:</strong> 51%–53% (midpoint 52%; -1.1 pp QoQ, primarily due to earthquake impact and higher electricity costs)</li>
+    <li><strong>Operating Margin:</strong> 40%–42%</li>
+    <li><strong>FX assumption:</strong> 1 USD = 32.3 TWD</li>
+    <li><strong>Tax rate:</strong> Slightly above 19% (due to accrual of tax on undistributed retained earnings)</li>
+    <li>Supported by strong demand for 3nm and 5nm technologies, partially offset by continued smartphone seasonality</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Tax Rate Guidance</h3>
+  <ul>
+    <li><strong>Q2 2024:</strong> Slightly above 19% (undistributed retained earnings tax accrual)</li>
+    <li><strong>Q3/Q4 2024:</strong> 13%–14%</li>
+    <li><strong>Full year 2024:</strong> 15%–16%</li>
+    <li><strong>2023 comparison:</strong> 14.5%</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Full Year 2024 Guidance</h3>
+  <ul>
+    <li><strong>Revenue growth:</strong> Low to mid-20% in USD terms (reaffirmed; expects QoQ growth throughout 2024, 2H stronger than 1H)</li>
+    <li><strong>CapEx:</strong> $28B–$32B (reiterated)</li>
+    <li><strong>CapEx allocation:</strong> 70%–80% for advanced process technologies; 10%–20% for specialty technologies; ~10% for advanced packaging, testing, mask making and others</li>
+    <li><strong>Capital intensity:</strong> Mid-30s% for 2024 and next several years (rate of increase leveling off)</li>
+    <li><strong>Full year GM:</strong> 53% and higher (long-term target)</li>
+    <li><strong>Semi ex-memory:</strong> Expected to grow ~10% in 2024 (lowered from prior >10% forecast)</li>
+    <li><strong>Foundry industry growth:</strong> Mid- to high-teens % in 2024</li>
+    <li><strong>TSMC:</strong> To grow significantly above overall semi market</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Long-Term Targets</h3>
+  <ul>
+    <li><strong>Gross Margin:</strong> 53% and higher achievable (excluding FX impact, considering global manufacturing footprint expansion)</li>
+    <li><strong>ROE:</strong> Greater than 25% (sustainable)</li>
+    <li>TSMC is most efficient and cost-effective manufacturer in every region it operates</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q1 Technology Node Breakdown</h3>
+  <ul>
+    <li><strong>3nm:</strong> 9% of Q1 wafer revenue</li>
+    <li><strong>5nm:</strong> 37% of Q1 wafer revenue</li>
+    <li><strong>7nm:</strong> 19% of Q1 wafer revenue</li>
+    <li><strong>Advanced tech (7nm and below):</strong> 65% of Q1 wafer revenue</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q1 Platform Revenue Breakdown</h3>
+  <ul>
+    <li><strong>HPC:</strong> 46% of Q1 revenue (+3% QoQ)</li>
+    <li><strong>Smartphone:</strong> 38% of Q1 revenue (-16% QoQ)</li>
+    <li><strong>IoT:</strong> 6% of Q1 revenue (+5% QoQ)</li>
+    <li><strong>Automotive:</strong> 6% of Q1 revenue (flat QoQ)</li>
+    <li><strong>DCE:</strong> 2% of Q1 revenue (+33% QoQ)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q1 Balance Sheet</h3>
+  <ul>
+    <li><strong>Cash & marketable securities:</strong> TWD 1.9 trillion (USD 60 billion)</li>
+    <li><strong>Current liabilities:</strong> increased TWD 113B QoQ (TWD 140B increase in accrued liabilities and others, partially offset by TWD 44B decrease in accounts payable; accrued liabilities increase mainly due to reclassification of temporary receipt from customers from long-term liabilities)</li>
+    <li><strong>AR turnover days:</strong> 31 days (flat QoQ)</li>
+    <li><strong>Inventory days:</strong> 90 days (+5 days QoQ, primarily due to ramp of 3nm technologies)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q1 Cash Flow</h3>
+  <ul>
+    <li><strong>Cash from operations:</strong> TWD 436 billion</li>
+    <li><strong>CapEx:</strong> TWD 181 billion (USD 5.77 billion)</li>
+    <li><strong>Cash dividend distributed:</strong> TWD 78 billion (Q2 2023 cash dividend)</li>
+    <li><strong>Bond issuances:</strong> raised TWD 23 billion</li>
+    <li><strong>Cash balance:</strong> increased TWD 233B to TWD 1.7 trillion at end of Q1</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 Gross Margin Bridge</h3>
+  <ul>
+    <li><strong>Earthquake impact:</strong> ~50 bps headwind (wafer scraps and material loss)</li>
+    <li><strong>Electricity cost increase:</strong> 70–80 bps headwind (25% price increase effective April 1, 2024)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Earthquake Impact (April 3, 2024)</h3>
+  <ul>
+    <li><strong>Magnitude:</strong> 7.2 (largest in Taiwan in 25 years)</li>
+    <li><strong>Maximum magnitude at TSMC fabs:</strong> 5</li>
+    <li><strong>Tool recovery:</strong> >70% within first 10 hours; fully recovered by end of day 3</li>
+    <li><strong>Structural damage:</strong> None; no power outages; no damage to critical tools including all EUV lithography tools</li>
+    <li><strong>Wafer impact:</strong> Certain number of wafers in process scrapped; most lost production expected to be recovered in Q2</li>
+    <li><strong>Q2 revenue impact:</strong> Minimal</li>
+    <li><strong>Q2 GM impact:</strong> ~50 bps (wafer scraps and material loss)</li>
+    <li>All TSMC personnel safe</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Electricity Cost</h3>
+  <ul>
+    <li>Taiwan electricity price increased 25% starting April 1, 2024 (after 17% increase from April 1, 2023)</li>
+    <li><strong>Q2 2024 GM impact:</strong> 70–80 bps</li>
+    <li><strong>2H 2024 GM impact:</strong> 60–70 bps</li>
+    <li>Higher electricity cost also expected to indirectly lead to higher materials, chemicals, gases and other variable costs</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>N3 Technology</h3>
+  <ul>
+    <li><strong>Q1 2024 revenue contribution:</strong> 9% of wafer revenue</li>
+    <li><strong>2024 full year N3 revenue:</strong> Expected to more than triple vs 2023</li>
+    <li><strong>1H 2024 GM dilution:</strong> 2–3 percentage points</li>
+    <li><strong>2H 2024 GM dilution:</strong> 3–4 percentage points (revenue contribution from 3nm expected to increase significantly in 2H)</li>
+    <li><strong>N5-to-N3 conversion dilution:</strong> 1–2 percentage points in 2H 2024 (converting some 5nm tools to support strong multiyear 3nm demand)</li>
+    <li><strong>Time to corporate average GM:</strong> 10–12 quarters (vs 8–10 quarters for N5 and N7)</li>
+    <li><strong>Dilution vs past nodes:</strong> More severe than N5 and N7 due to greater process complexity, higher corporate average baseline, and pricing set several years ahead of production followed by cost inflation</li>
+    <li>Strong customer demand across HPC and smartphone</li>
+    <li>Managing through internal cost improvement and value-selling</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>N2 Technology</h3>
+  <ul>
+    <li><strong>Production:</strong> Volume production in 2025 (last quarter of 2025)</li>
+    <li><strong>Meaningful revenue:</strong> Expected from end of Q1 / beginning of Q2 2026</li>
+    <li><strong>Ramp profile:</strong> Similar to N3</li>
+    <li><strong>Transistor structure:</strong> Nanosheet transistors (most advanced in industry for density and energy efficiency)</li>
+    <li><strong>Development:</strong> Progressing well; device performance and yield on track or ahead of plan</li>
+    <li><strong>Tape-outs:</strong> Expected to be higher than both N3 and N5 in first 2 years</li>
+    <li><strong>Margin profile:</strong> Expect better margin profile than N3 (better job on cost and value-selling)</li>
+    <li><strong>Revenue size:</strong> Expected to be a larger node than N3 in dollar value terms (each successive advanced node larger)</li>
+    <li>Strong customer demand; almost all AI innovators working with TSMC</li>
+    <li>N2 and its derivatives will further extend TSMC's technology leadership and capture AI growth opportunities</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Overseas Fabs / Global Manufacturing Footprint</h3>
+  <ul>
+    <li><strong>Arizona Fab 1:</strong> N4 process; engineering wafer production started April 2024; on track for volume production 1H 2025</li>
+    <li><strong>Arizona Fab 2:</strong> Upgraded to 2nm technology (in addition to previously announced 3nm); recently completed topping off (last steel construction beam raised); volume production scheduled to begin in 2028</li>
+    <li><strong>Arizona Fab 3:</strong> 2nm or more advanced technologies; production beginning by end of decade</li>
+    <li>Each Arizona fab has clean-room area approximately <strong>double</strong> the size of a typical logic fab</li>
+    <li>3 fabs in Arizona to create greater economies of scale</li>
+    <li><strong>Japan (Kumamoto Fab 1):</strong> Opening ceremony held February 2024; 12/16nm and 22/28nm process technologies; on track for volume production Q4 2024</li>
+    <li><strong>Japan (Kumamoto Fab 2):</strong> 40nm, 12/16nm, and 6/7nm process technologies; supporting consumer, automotive, industrial and HPC-related applications; construction scheduled to begin 2H 2024; production target end 2027</li>
+    <li><strong>Germany (Dresden/ESMC):</strong> Specialty technology fab focusing on automotive and industrial applications; JV with partners; construction scheduled to begin Q4 2024</li>
+    <li><strong>Overseas cost management:</strong> (1) pricing strategically to reflect value of geographic flexibility; (2) working closely with governments for support; (3) leveraging manufacturing technology leadership and large-scale manufacturing base</li>
+    <li>Confident to deliver long-term GM of 53% and higher and sustainable ROE >25% even after factoring in higher cost of overseas fabs</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>AI Demand</h3>
+  <ul>
+    <li><strong>AI server processor revenue 2024:</strong> Low-teens % of total TSMC revenue</li>
+    <li><strong>AI revenue growth 2024:</strong> More than double YoY</li>
+    <li><strong>AI revenue CAGR:</strong> ~50% over next 5 years</li>
+    <li><strong>AI revenue target by 2028:</strong> Higher than 20% of total revenue</li>
+    <li><strong>AI processor definition:</strong> GPUs, AI accelerators, and CPUs performing training and inference functions (narrowly defined; excludes networking, edge, or on-device AI)</li>
+    <li>AI processors expected to be strongest driver of HPC platform growth and largest contributor to overall incremental revenue growth in next several years</li>
+    <li>CoWoS capacity more than doubling from 2023; leveraging OSAT partners (including Amkor) to complement; still not enough to meet demand in 2024; expected to remain tight into 2025</li>
+    <li><strong>Edge AI:</strong> Early stages; AI PCs and AI smartphones generating demand through larger die sizes; replacement cycle expected to accelerate; positive for TSMC</li>
+    <li>AI demand driving strong N3 and N5 utilization</li>
+    <li>Structural multi-year growth driver; insatiable demand for energy-efficient computing</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Gross Margin Dynamics — 2024</h3>
+  <ul>
+    <li><strong>Headwinds:</strong> N3 dilution (2–3 pts 1H, 3–4 pts 2H), N5-to-N3 conversion (1–2 pts 2H), electricity price increase (70–80 bps Q2, 60–70 bps 2H), earthquake (~50 bps Q2), indirect cost increases from higher electricity</li>
+    <li><strong>Tailwinds:</strong> Cost improvement efforts, value-selling, product mix</li>
+    <li><strong>Full year 2024:</strong> 53% and higher long-term target</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Pricing</h3>
+  <ul>
+    <li>Value-selling approach continuing</li>
+    <li>TSMC's value in the supply chain increasing with AI and advanced technology leadership</li>
+    <li>Expecting customers to share higher costs (overseas fabs, inflation, electricity)</li>
+    <li>Discussions with customers already started on cost sharing</li>
+    <li>Overseas fab pricing to reflect value of geographic flexibility</li>
+    <li>Pricing strategy details confidential between TSMC and customers</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Dividend</h3>
+  <ul>
+    <li><strong>Policy:</strong> 70% of free cash flow as cash dividends (annual basis, not quarterly)</li>
+    <li>Transitioning from "sustainable" to <strong>"steadily increasing"</strong> dividend as harvesting phase begins</li>
+    <li>Cash dividend expected to increase in coming quarters</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>CapEx / Capital Intensity</h3>
+  <ul>
+    <li><strong>2024 CapEx:</strong> $28B–$32B (reiterated)</li>
+    <li><strong>CapEx allocation:</strong> 70%–80% advanced process; 10%–20% specialty; ~10% advanced packaging/testing/mask</li>
+    <li><strong>Capital intensity:</strong> Mid-30s% for 2024 and next several years (rate of increase leveling off)</li>
+    <li>Higher CapEx always correlated with higher growth opportunity in following years</li>
+    <li>CapEx and capacity planning based on long-term structural market demand profile</li>
+    <li>Will invest accordingly if future growth opportunities arise</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>End Market Demand / Inventory</h3>
+  <ul>
+    <li><strong>Smartphone:</strong> Gradual (not steep) recovery; seasonality impacting Q1 and Q2</li>
+    <li><strong>PC:</strong> Bottomed out; recovery slower</li>
+    <li><strong>AI data center:</strong> Very, very strong demand</li>
+    <li><strong>Traditional server:</strong> Slow, lukewarm demand; budget shifting from traditional server to AI server (favorable for TSMC)</li>
+    <li><strong>IoT and consumer:</strong> Remain sluggish</li>
+    <li><strong>Automotive:</strong> Inventory continuing to correct; previously expected to increase in 2024, now expected to decrease (changed from 3 months ago)</li>
+    <li><strong>Mature nodes (12nm+):</strong> Demand remains sluggish; expected to gradually improve in 2H 2024</li>
+    <li><strong>N3 2024 revenue:</strong> Expected to more than triple vs 2023</li>
+    <li>Hyperscale wallet share shifting from traditional server to AI server is favorable for TSMC (higher semiconductor content capture in AI server)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Mature Node Strategy</h3>
+  <ul>
+    <li>Working closely with strategic customers to develop specialty technology solutions</li>
+    <li>Creating differentiated long-lasting value to customers</li>
+    <li>Less exposed to possible overcapacity environment from competitors building mature node capacity</li>
+    <li>Utilization and profitability on mature nodes expected to be well protected</li>
+    <li>N7 demand expected to pick up in next couple of years (similar to 28nm experience); no plans to convert N7 to N5</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Advanced Packaging / 3DIC</h3>
+  <ul>
+    <li>CoWoS demand extremely high; capacity more than doubling YoY but still insufficient</li>
+    <li>Leveraging OSAT partners (including Amkor) to complement TSMC capacity</li>
+    <li>3DIC/SoIC: HPC customers first to adopt; products coming to market now</li>
+    <li>Amkor announced advanced packaging facility near Arizona fabs</li>
+    <li>Advanced packaging in Arizona driven by customer decisions on back-end service location</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q1 2024 Actuals (Reported)</h3>
+  <ul>
+    <li><strong>Revenue:</strong> $18.9B (-3.8% QoQ in USD; -5.3% QoQ in NT), slightly above guidance in USD terms</li>
+    <li><strong>Gross Margin:</strong> 53.1% (+10 bps QoQ, driven by product mix changes due to smartphone seasonality, partially offset by less favorable FX)</li>
+    <li><strong>Operating Margin:</strong> 42% (+0.4 pp QoQ)</li>
+    <li><strong>Operating Expenses:</strong> 11.1% of net revenue (below 12% guidance, due to tighter expense controls)</li>
+    <li><strong>EPS:</strong> TWD 8.7</li>
+    <li><strong>ROE:</strong> 25.4%</li>
+  </ul>
+</div>
+
+<div class="prior-ref" id="priorRef">
+  <div class="prior-ref-header" onclick="var b=document.getElementById('priorBody');b.classList.toggle('open');this.querySelector('.arrow').innerHTML=b.classList.contains('open')?'&#9650;':'&#9660;';">
+    Prior Quarter Reference: Q4 2023
+    <span class="arrow">&#9660;</span>
+  </div>
+  <div class="prior-ref-body" id="priorBody">
+    <div class="metric-grid">
+      <div class="prior-mini"><div class="pm-label">Next-Q Revenue</div><div class="pm-value">$18.0B-$18.8B (-6.2% QoQ at midpoint)</div></div>
+      <div class="prior-mini"><div class="pm-label">Next-Q Gross Margin</div><div class="pm-value">52%-54% (flat at 53% midpoint QoQ; less favorable FX rate offset by product mix changes from smartphone seasonality)</div></div>
+      <div class="prior-mini"><div class="pm-label">Next-Q Operating Margin</div><div class="pm-value">40%-42%</div></div>
+      <div class="prior-mini"><div class="pm-label">FY Revenue Growth</div><div class="pm-value">Low to mid-20s% in USD terms; QoQ growth expected throughout 2024</div></div>
+      <div class="prior-mini"><div class="pm-label">LT Gross Margin Target</div><div class="pm-value">53% and higher achievable (long-term; excluding FX impact; considering global manufacturing footprint expansion)</div></div>
+      <div class="prior-mini"><div class="pm-label">LT Revenue CAGR</div><div class="pm-value">15-20% over next several years in USD terms (reiterated; "well on track" despite challenging 2023)</div></div>
+    </div>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q4_2023.html" style="color:var(--blue);">View full Q4 2023 detail &rarr;</a></p>
+  </div>
+</div>
+
+<div class="footer-nav">
+  <a href="Q4_2023.html">&larr; Q4 2023</a>
+  <a href="../comparison.html">Back to Overview</a>
+  <a href="Q2_2024.html">Q2 2024 &rarr;</a>
+</div>
+
+</body>
+</html>

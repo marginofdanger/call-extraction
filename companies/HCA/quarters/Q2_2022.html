@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HCA Q2 2022 Earnings Call Detail</title>
+<style>
+:root {
+    --company-primary: #C8952E;
+    --company-dark: #0D1B2A;
+    --company-accent: #1B365D;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 40px 40px 32px;
+    margin: 0 -24px 0;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .header .meta {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    font-weight: 300;
+  }
+  .header .meta span { margin-right: 24px; }
+
+  .nav-bar {
+    background: var(--company-accent);
+    margin: 0 -24px 32px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    transition: all 0.15s;
+  }
+  .nav-bar a:hover { background: rgba(255,255,255,0.2); }
+  .nav-bar a.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .nav-center {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-center a.qbtn {
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+  }
+  .nav-center a.qbtn.current {
+    background: var(--company-primary);
+    border-color: var(--company-primary);
+  }
+  .nav-center a.qbtn:hover { background: rgba(255,255,255,0.2); }
+  .nav-back {
+    background: rgba(255,255,255,0.15) !important;
+    border-color: rgba(255,255,255,0.35) !important;
+  }
+
+  .metrics-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .metric {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+  .metric-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .metric-value {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+  .metric-delta {
+    font-size: 0.72rem;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+  .delta-up { color: var(--green); }
+  .delta-down { color: var(--red); }
+  .delta-flat { color: var(--text-muted); }
+
+  .changes-box {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 5px solid var(--amber);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .changes-box h3 {
+    font-size: 1rem;
+    color: var(--company-dark);
+    margin-bottom: 10px;
+  }
+  .changes-box ul { list-style: none; padding: 0; }
+  .changes-box li {
+    padding: 5px 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .change-tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .ct-raised { background: #d5f5e3; color: #1e8449; }
+  .ct-lowered { background: #fadbd8; color: #c0392b; }
+  .ct-changed { background: #d6eaf8; color: #2471a3; }
+  .ct-new { background: #e8daef; color: #6c3483; }
+  .ct-maintained { background: #fdebd0; color: #b9770e; }
+
+  .content-section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .content-section h3 {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .content-section ul {
+    padding: 14px 18px 14px 36px;
+    margin: 0;
+  }
+  .content-section li {
+    padding: 3px 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .content-section li strong { color: var(--company-dark); }
+
+  .prior-ref {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 40px;
+    overflow: hidden;
+  }
+  .prior-ref-header {
+    background: var(--light-bg);
+    padding: 12px 18px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--company-dark);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .prior-ref-header:hover { background: #eef2f7; }
+  .prior-ref-body { padding: 18px; display: none; }
+  .prior-ref-body.open { display: block; }
+  .prior-ref-body .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .prior-mini {
+    background: var(--light-bg);
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .prior-mini .pm-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .prior-mini .pm-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border);
+  }
+  .footer-nav a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .footer-nav a:hover { text-decoration: underline; }
+
+  /* Comparison page styles */
+  .toc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .toc a {
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 4px 0;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  .comp-section {
+    margin-bottom: 40px;
+  }
+  .comp-section h2 {
+    font-size: 1.2rem;
+    color: var(--company-dark);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--company-primary);
+  }
+
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+  }
+  .comp-table th {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .comp-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .comp-table tr:nth-child(even) { background: var(--light-bg); }
+  .comp-table tr:hover { background: #e8f4fd; }
+
+  @media (max-width: 768px) {
+    .header h1 { font-size: 1.5rem; }
+    .metrics-card { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .nav-center { display: none; }
+    body { padding: 0 16px 60px; }
+    .header { margin: 0 -16px 0; padding: 28px 24px 20px; }
+    .nav-bar { margin: 0 -16px 24px; }
+    .toc { grid-template-columns: 1fr; }
+    .comp-table { font-size: 0.78rem; }
+    .comp-table th, .comp-table td { padding: 6px 8px; }
+  }
+
+  @media print {
+    .nav-bar { display: none; }
+    .header { background: #333; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>HCA Q2 2022 Earnings Call</h1>
+  <div class="meta">
+    <span>Call Date: July 22, 2022</span>
+    <span>Reporting: Q2 2022</span>
+  </div>
+</div>
+<div class="nav-bar">
+  <a href="Q1_2022.html">&larr; Q1 2022</a>
+  <div class="nav-center">
+    <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="Q4_2025.html" class="qbtn">4Q25</a>
+    <a href="Q3_2025.html" class="qbtn">3Q25</a>
+    <a href="Q2_2025.html" class="qbtn">2Q25</a>
+    <a href="Q1_2025.html" class="qbtn">1Q25</a>
+    <a href="Q4_2024.html" class="qbtn">4Q24</a>
+    <a href="Q3_2024.html" class="qbtn">3Q24</a>
+    <a href="Q2_2024.html" class="qbtn">2Q24</a>
+    <a href="Q1_2024.html" class="qbtn">1Q24</a>
+    <a href="Q4_2023.html" class="qbtn">4Q23</a>
+    <a href="Q3_2023.html" class="qbtn">3Q23</a>
+    <a href="Q2_2023.html" class="qbtn">2Q23</a>
+    <a href="Q1_2023.html" class="qbtn">1Q23</a>
+    <a href="Q4_2022.html" class="qbtn">4Q22</a>
+    <a href="Q3_2022.html" class="qbtn">3Q22</a>
+    <a href="Q2_2022.html" class="qbtn current">2Q22</a>
+    <a href="Q1_2022.html" class="qbtn">1Q22</a>
+  </div>
+  <a href="Q3_2022.html">Q3 2022 &rarr;</a>
+</div>
+
+<div class="metrics-card">
+  <div class="metric">
+    <div class="metric-label">CapEx Guidance</div>
+    <div class="metric-value">~$4.2 billion (per analyst reference; management did not dispute)</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Adj. EBITDA Margin</div>
+    <div class="metric-value">20.5% (vs. ~19.7% in Q1 2022)</div>
+  </div>
+</div>
+
+<div class="changes-box">
+  <h3>What Changed vs Q1 2022</h3>
+  <ul>
+    <li><span class="change-tag ct-maintained">Maintained</span> Key metrics largely maintained from prior quarter</li>
+  </ul>
+</div>
+
+<!-- Full Guidance Content -->
+<div class="content-section">
+  <h3>Full Year 2022 Guidance (Unchanged from Q1 2022 Update)</h3>
+  <ul>
+    <li><strong>Guidance Status:</strong> UNCHANGED from prior quarter</li>
+    <li><strong>Capital Expenditures:</strong> ~$4.2 billion (per analyst reference; management did not dispute)</li>
+    <li><strong>Cash Flow from Operations (as % of Adjusted EBITDA):</strong> Revised expectation ~8.0%-8.5% (original guide was 9.0%-9.5%; CFO Bill Rutherford noted: "it's probably going to be in around the 8%, maybe 8.5% level") > Note: Bill Rutherford stated "our full year 2022 guidance remains unchanged from what we highlighted last quarter" in prepared remarks. The cash flow from ops percentage refinement came in Q&A.</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Adjusted EBITDA Margin Outlook</h3>
+  <ul>
+    <li><strong>Near-Term Margin Planning Range:</strong> 19%-20% (reiterated by CFO Rutherford; "there'll be periods we're north of that, some periods we're within that")</li>
+    <li><strong>Q1 2022 Margin:</strong> ~19.7% (referenced as "[97]" likely 19.7%)</li>
+    <li><strong>Q2 2022 Margin:</strong> 20.5%</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Long-Term Growth Framework</h3>
+  <ul>
+    <li><strong>Long-Term EBITDA Growth Target:</strong> Mid-single digits, often toward the high end of a 4%-6% range (reiterated; no change from prior commentary)</li>
+    <li><strong>Inpatient Demand Growth (in HCA markets):</strong> 1%-2%</li>
+    <li><strong>Outpatient Demand Growth (in HCA markets):</strong> "A little bit more than that" (i.e., slightly above 1%-2%)</li>
+    <li><strong>Management View:</strong> "Not seeing anything structural that would suggest that overall demand is reduced or necessarily increase beyond what its normal trends were"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Volume Outlook (Back Half 2022)</h3>
+  <ul>
+    <li><strong>Inpatient Admissions:</strong> Expected to grow at a "more modest level than previously indicated in our guidance"</li>
+    <li><strong>Outpatient Volume:</strong> Expected "in line" growth</li>
+    <li><strong>Seasonal Trends:</strong> Management expects volumes to return to "pre-pandemic seasonal trends"</li>
+    <li><strong>Management Commentary:</strong> "Normal course of business has stabilized... we think we're going to see patterns return to kind of their normal seasonal trend"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Earnings & Profitability</h3>
+  <ul>
+    <li><strong>Diluted EPS:</strong> $4.21 (after excluding $0.11 loss on sale of facilities and $0.20 from retirement of debt)</li>
+    <li><strong>Adjusted EBITDA:</strong> $3.04 billion</li>
+    <li><strong>Adjusted EBITDA Margin:</strong> 20.5% (vs. ~19.7% in Q1 2022)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Revenue</h3>
+  <ul>
+    <li><strong>Total Revenue:</strong> $14.82 billion (vs. consensus $14.73B)</li>
+    <li><strong>Same-Facility Revenue Growth:</strong> +4% YoY</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Volume Metrics (Same-Facility Basis)</h3>
+  <ul>
+    <li><strong>Same-Facility Inpatient Admissions:</strong> -1.2% YoY</li>
+    <li><strong>Same-Facility Adjusted Admissions:</strong> +0.5% YoY</li>
+    <li><strong>Non-COVID Admissions:</strong> -0.6% YoY</li>
+    <li><strong>Non-COVID Managed Care Admissions:</strong> +0.7% YoY (favorable payer mix)</li>
+    <li><strong>Total Medicare Admissions:</strong> +0.6% YoY</li>
+    <li><strong>COVID Admissions:</strong> -18% YoY; represented ~3% of total admissions (consistent with prior year mix)</li>
+    <li><strong>COVID Admissions (Sequential):</strong> -70% vs. Q1 2022</li>
+    <li><strong>Emergency Room Visits (Same-Facility):</strong> +7.3% YoY (above pre-pandemic 2019 levels)</li>
+    <li><strong>Occupancy Rate:</strong> ~72% in Q2 2022</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Revenue Intensity</h3>
+  <ul>
+    <li><strong>Same-Facility Inpatient Revenue per Admission:</strong> +3.3% YoY</li>
+    <li><strong>Non-COVID Case Mix:</strong> Up slightly YoY, maintaining prior gains</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Labor & Staffing</h3>
+  <ul>
+    <li><strong>Cost per FTE (YoY Growth):</strong> ~4.5% in Q2 (improved from ~7%+ in Q1 2022)</li>
+    <li><strong>Contract Labor as % of SWB:</strong> Just above 8% at end of June (month of June); was 9.0%-9.2% in Q1 2022</li>
+    <li><strong>Contract Labor Expense Trend:</strong> Down 22% in June vs. April (within Q2); sequential dollar decline vs. Q1</li>
+    <li><strong>Nurse Wage Increases:</strong> Mid-single digits</li>
+    <li><strong>Turnover:</strong> Down over 20% in Q2 vs. Q1 2022</li>
+    <li><strong>Recruitment:</strong> Up 18% in Q2 vs. Q1 2022</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Cash Flow & Balance Sheet</h3>
+  <ul>
+    <li><strong>Cash Flow from Operations:</strong> $1.63 billion in Q2 ($3.0 billion first-half 2022)</li>
+    <li><strong>Capital Spending:</strong> $1.08 billion in Q2 (vs. $842 million in Q2 2021; ~$2.0 billion year-to-date)</li>
+    <li><strong>Share Repurchases:</strong> ~$2.7 billion in Q2</li>
+    <li><strong>Debt-to-Adjusted EBITDA:</strong> Just above the low end of stated leverage range</li>
+    <li><strong>Available Liquidity:</strong> Just over $2.7 billion at end of Q2</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>COVID Support / Government Funding</h3>
+  <ul>
+    <li><strong>COVID Support Revenue Recognized (Year-to-Date):</strong> ~$200 million</li>
+    <li><strong>COVID Support Revenue (Q1 2022):</strong> ~$20-$25 million</li>
+    <li><strong>Management Commentary:</strong> Most COVID support programs are "pretty much concluded"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Commercial / Managed Care Pricing</h3>
+  <ul>
+    <li><strong>Historical Commercial Pricing Escalation:</strong> 2.5%-4% range</li>
+    <li><strong>Expected Future Commercial Pricing Escalation:</strong> Mid-single digits (Sam Hazen: "I do anticipate it being somewhere around the mid-single digits")</li>
+    <li><strong>Timing:</strong> 2022 already fully contracted; some uplift expected in 2023 from renegotiated contracts; full benefit anticipated in 2024</li>
+    <li><strong>Payer Recognition:</strong> Management seeing "early success recognition by the payers" of inflationary pressures on providers</li>
+    <li><strong>Contracts with Renegotiated Terms:</strong> Reflecting "more escalation in pricing than what we had seen in our past trends"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Capital Allocation & Deployment</h3>
+  <ul>
+    <li><strong>CapEx Year-to-Date:</strong> ~$2.0 billion (tracking toward ~$4.2 billion full year guidance)</li>
+    <li><strong>Share Repurchases (Q2):</strong> ~$2.7 billion</li>
+    <li><strong>Capital Allocation Strategy:</strong> No material change expected; diversified approach across technology, outpatient development, and targeted hospital investments</li>
+    <li><strong>FTC/Utah Hospital Acquisition:</strong> FTC challenged; management says this "doesn't change our overall outlook" for M&A strategy</li>
+    <li><strong>Ambulatory/Outpatient:</strong> Acquired another urgent care company in Virginia division</li>
+    <li><strong>Galen Nursing Colleges:</strong> 3 opened in Q2; 2 more scheduled for later in 2022; pipeline of 6-8 over the following 12-18 months; now at 13 total schools (8 added since acquisition)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Accounts Receivable</h3>
+  <ul>
+    <li><strong>AR Days:</strong> Increased during 2022; at a "high mark" as of Q2</li>
+    <li><strong>Drivers:</strong> Payers reinstating claim edits that were paused during COVID; some delays in payment processing cycle</li>
+    <li><strong>Outlook:</strong> Management expects improvement through the rest of the year</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Network & Capacity</h3>
+  <ul>
+    <li><strong>Outpatient Facilities:</strong> ~2,500 outpatient facilities as part of hospital network ecosystem (~12:1 outpatient-to-hospital ratio)</li>
+    <li><strong>Market Share:</strong> Grew from 3% in 2011 to 28% currently (in HCA's markets)</li>
+    <li><strong>Capacity Constraints:</strong> Episodic staffing constraints limited transfer center throughput at certain facilities at certain times (not structural)</li>
+    <li><strong>Behavioral Health & Rehab:</strong> Operating below full capacity due to staffing constraints; improving sequentially</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Health Insurance Exchange / ACA</h3>
+  <ul>
+    <li><strong>Exchange Volume Growth in 2021:</strong> ~20%-25% growth in a given period, "primarily attributable to the increase in enrollment... attributable to the enhanced subsidies"</li>
+    <li><strong>Risk Factor:</strong> Enhanced premium tax credit expiration could impact enrollment and volume</li>
+    <li><strong>Management Position:</strong> "Hopeful that they find ways to continue those" subsidies</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Recession Preparedness</h3>
+  <ul>
+    <li><strong>Key Differentiator vs. Past Cycles:</strong> ACA exchanges and Medicaid expansion provide a safety net that did not exist in prior recessions (previously, job loss meant joining uninsured ranks)</li>
+    <li><strong>Management Confidence:</strong> "HCA Healthcare has performed well in past recessionary cycles, I'm confident that we can perform reasonably well in future recessionary cycles"</li>
+    <li><strong>Labor Benefit:</strong> Recessions historically provide labor relief</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Key Q&A Quantitative Details Summary</h3>
+  <ul>
+    <li>| Metric | Value | Context | |---|---|---| | Contract labor as % of SWB (June) | Just above 8% | Down from 9.0%-9.2% in Q1 | | Contract labor expense (June vs. April) | -22% | Intra-quarter improvement | | Cost per FTE YoY (Q2) | ~4.5% | Down from ~7%+ in Q1 | | Turnover (Q2 vs. Q1) | Down >20% | Sequential improvement | | Recruitment (Q2 vs. Q1) | Up 18% | Sequential improvement | | Occupancy | ~72% | Q2 2022 | | COVID support (YTD) | ~$200M | Programs largely concluded | | Cash from ops (FY revised view) | ~8.0%-8.5% of Adj. EBITDA | Down from guided 9.0%-9.5% | | Commercial pricing target | Mid-single digits | Up from historical 2.5%-4% | | Non-COVID managed care admissions | +0.7% YoY | Favorable payer mix | | Total Medicare admissions | +0.6% YoY | Positive trend | | HIX enrollment growth (2021 reference) | +20%-25% | Due to enhanced subsidies | | Galen nursing colleges (total) | 13 | Pipeline of 6-8 more in 12-18 months | | Market share (HCA markets) | 28% | Up from 3% in 2011 | | Outpatient facilities | ~2,500 | ~12:1 ratio to hospitals |</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Management Tone & Qualitative Signals</h3>
+  <ul>
+    <li><strong>Overall Tone:</strong> Cautiously optimistic; pleased with Q2 results despite softer-than-expected demand</li>
+    <li><strong>Labor:</strong> Clear sequential improvement; management sees continued momentum in recruitment, retention, and contract labor reduction</li>
+    <li><strong>Volumes:</strong> More cautious on inpatient admission growth for the back half vs. original guidance; expect return to normal seasonality</li>
+    <li><strong>Pricing:</strong> Constructive on managed care pricing discussions; expect mid-single-digit escalators going forward</li>
+    <li><strong>Cost Management:</strong> Resiliency programs (benchmarking, shared services, care models) driving improvement</li>
+    <li><strong>Capital Returns:</strong> Aggressive share repurchase activity ($2.7B in single quarter)</li>
+    <li><strong>Recession:</strong> Well-positioned due to ACA safety net and operational adaptability; confident in ability to manage through downturn</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Consensus Estimates vs. Actuals (S&P Global)</h3>
+  <ul>
+    <li>| Metric | FQ2 2022 Consensus | FQ2 2022 Actual | Surprise | |---|---|---|---| | <strong>EPS Normalized</strong> | $3.71 | $4.21 | +13.48% | | <strong>Revenue (mm)</strong> | $14,726.46 | $14,820.00 | +0.64% | <strong>FY 2022 Consensus:</strong> EPS $16.90 | Revenue $60,291.68mm <strong>FY 2023 Consensus:</strong> EPS $18.61 | Revenue $63,273.94mm</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 2022 Actuals (Reported)</h3>
+</div>
+
+<div class="prior-ref" id="priorRef">
+  <div class="prior-ref-header" onclick="var b=document.getElementById('priorBody');b.classList.toggle('open');this.querySelector('.arrow').innerHTML=b.classList.contains('open')?'&#9650;':'&#9660;';">
+    Prior Quarter Reference: Q1 2022
+    <span class="arrow">&#9660;</span>
+  </div>
+  <div class="prior-ref-body" id="priorBody">
+    <div class="metric-grid">
+      <div class="prior-mini"><div class="pm-label">Same-Facility Admissions</div><div class="pm-value"><strong>+2% YoY</strong> vs. Q1 2021</div></div>
+    </div>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q1_2022.html" style="color:var(--blue);">View full Q1 2022 detail &rarr;</a></p>
+  </div>
+</div>
+
+<div class="footer-nav">
+  <a href="Q1_2022.html">&larr; Q1 2022</a>
+  <a href="../comparison.html">Back to Overview</a>
+  <a href="Q3_2022.html">Q3 2022 &rarr;</a>
+</div>
+
+</body>
+</html>

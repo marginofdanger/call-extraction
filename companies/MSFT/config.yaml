@@ -1,0 +1,211 @@
+# Microsoft Corporation
+# Company configuration for earnings call extraction pipeline
+
+company:
+  name: "Microsoft Corporation"
+  ticker: "MSFT"
+  sector: "Enterprise Software / Cloud Computing"
+  fiscal_year: "offset"
+  fiscal_year_end_month: 6  # June 30
+  currency: "USD"
+  reporting_currency: "USD"
+
+branding:
+  primary: "#00A4EF"     # Microsoft blue
+  dark: "#1a1a2e"        # Dark navy
+  accent: "#7FBA00"      # Microsoft green
+
+quarters:
+  - id: Q1_FY2023
+    call_date: "October 25, 2022"
+    reporting_quarter: "Q1 FY2023 (Jul–Sep 2022)"
+    bamsec_id: "4af6de71-94bf-4234-82a2-7258b870fa7f"
+  - id: Q2_FY2023
+    call_date: "January 24, 2023"
+    reporting_quarter: "Q2 FY2023 (Oct–Dec 2022)"
+    bamsec_id: "77af8755-00be-4477-a922-59a22b25ec97"
+  - id: Q3_FY2023
+    call_date: "April 25, 2023"
+    reporting_quarter: "Q3 FY2023 (Jan–Mar 2023)"
+    bamsec_id: "31509cf3-4369-4c66-b7cf-07ff44bbb2d0"
+  - id: Q4_FY2023
+    call_date: "July 25, 2023"
+    reporting_quarter: "Q4 FY2023 (Apr–Jun 2023, Full Year)"
+    bamsec_id: "156d60a8-b2cf-40dc-b7c5-05e994246003"
+  - id: Q1_FY2024
+    call_date: "October 24, 2023"
+    reporting_quarter: "Q1 FY2024 (Jul–Sep 2023)"
+    bamsec_id: "67fb4d89-189f-41ef-83d1-8f2defd6473d"
+  - id: Q2_FY2024
+    call_date: "January 30, 2024"
+    reporting_quarter: "Q2 FY2024 (Oct–Dec 2023)"
+    bamsec_id: "39056f6b-8b6e-4ac7-823a-e3b4f2d08ab4"
+  - id: Q3_FY2024
+    call_date: "April 25, 2024"
+    reporting_quarter: "Q3 FY2024 (Jan–Mar 2024)"
+    bamsec_id: "9a819b1a-e16c-4795-8b73-e9610490c04e"
+  - id: Q4_FY2024
+    call_date: "July 30, 2024"
+    reporting_quarter: "Q4 FY2024 (Apr–Jun 2024, Full Year)"
+    bamsec_id: "d9ce2747-f28d-41b6-a716-dd0fd915af8e"
+  - id: Q1_FY2025
+    call_date: "October 30, 2024"
+    reporting_quarter: "Q1 FY2025 (Jul–Sep 2024)"
+    bamsec_id: "b05bb853-6361-44fc-ae62-94705f1a995e"
+  - id: Q2_FY2025
+    call_date: "January 29, 2025"
+    reporting_quarter: "Q2 FY2025 (Oct–Dec 2024)"
+    bamsec_id: "02b2cef2-f16b-424e-a163-6600301ab37a"
+  - id: Q3_FY2025
+    call_date: "April 30, 2025"
+    reporting_quarter: "Q3 FY2025 (Jan–Mar 2025)"
+    bamsec_id: "f04d231b-b3eb-466b-9c67-6bb57f40174d"
+  - id: Q4_FY2025
+    call_date: "July 29, 2025"
+    reporting_quarter: "Q4 FY2025 (Apr–Jun 2025, Full Year)"
+    bamsec_id: "47e2bc09-e47e-4e0a-8b0e-a3889754dd44"
+  - id: Q1_FY2026
+    call_date: "October 28, 2025"
+    reporting_quarter: "Q1 FY2026 (Jul–Sep 2025)"
+    bamsec_id: "0f28892f-cf3d-47fb-814c-a8306d92ea61"
+  - id: Q2_FY2026
+    call_date: "January 27, 2026"
+    reporting_quarter: "Q2 FY2026 (Oct–Dec 2025)"
+    bamsec_id: "8d493880-afa2-452d-b9b5-f7de4f88e0fa"
+  - id: Q3_FY2026
+    call_date: "April 28, 2026"
+    reporting_quarter: "Q3 FY2026 (Jan–Mar 2026)"
+    bamsec_id: ""
+  - id: Q4_FY2026
+    call_date: "July 28, 2026"
+    reporting_quarter: "Q4 FY2026 (Apr–Jun 2026, Full Year)"
+    bamsec_id: ""
+
+tracked_metrics:
+  guidance_for:
+    label: "Guidance For"
+    section_pattern: "^Quarterly Guidance"
+    extract: "section_suffix"
+    display: "banner"
+
+  revenue:
+    label: "Total Revenue"
+    section_pattern: "(?i)(quarterly guidance|full year|key metrics)"
+    item_pattern: "(?i)^\\*\\*(Total )?Revenue:?\\*\\*"
+    comparison: "midpoint_pct"
+    midpoint_format: "dollar_billions"
+
+  intelligent_cloud_revenue:
+    label: "Intelligent Cloud Revenue"
+    section_pattern: "(?i)(quarterly guidance|segment|intelligent cloud)"
+    item_pattern: "(?i)^\\*\\*Intelligent Cloud Revenue:?\\*\\*"
+    comparison: "text_diff"
+
+  azure_growth:
+    label: "Azure Revenue Growth"
+    section_pattern: "(?i)(quarterly guidance|segment|intelligent cloud|azure)"
+    item_pattern: "(?i)^\\*\\*Azure( and Other Cloud Services)?( Revenue)? Growth:?\\*\\*"
+    comparison: "text_diff"
+
+  productivity_revenue:
+    label: "Productivity & Business Revenue"
+    section_pattern: "(?i)(quarterly guidance|segment|productivity)"
+    item_pattern: "(?i)^\\*\\*Productivity (& |and )Business Processes Revenue:?\\*\\*"
+    comparison: "text_diff"
+
+  more_personal_computing_revenue:
+    label: "More Personal Computing Revenue"
+    section_pattern: "(?i)(quarterly guidance|segment|personal computing)"
+    item_pattern: "(?i)^\\*\\*More Personal Computing Revenue:?\\*\\*"
+    comparison: "text_diff"
+
+  operating_income:
+    label: "Operating Income"
+    section_pattern: "(?i)(quarterly guidance|full year|key metrics)"
+    item_pattern: "(?i)^\\*\\*Operating Income:?\\*\\*"
+    comparison: "text_diff"
+
+  eps:
+    label: "EPS (Diluted)"
+    section_pattern: "(?i)(quarterly guidance|full year|key metrics)"
+    item_pattern: "(?i)^\\*\\*(Diluted )?EPS:?\\*\\*"
+    comparison: "text_diff"
+
+  capex:
+    label: "Capital Expenditures"
+    section_pattern: "(?i)(quarterly guidance|full year|capex|capital)"
+    item_pattern: "(?i)^\\*\\*Cap(ital )?Ex(penditures)?:?\\*\\*"
+    comparison: "text_diff"
+
+  cloud_gross_margin:
+    label: "Cloud Gross Margin"
+    section_pattern: "(?i)(quarterly guidance|key metrics|cloud|margin)"
+    item_pattern: "(?i)^\\*\\*(Microsoft )?Cloud Gross Margin:?\\*\\*"
+    comparison: "midpoint_delta"
+    midpoint_format: "percentage"
+
+new_section_keywords:
+  - pattern: "(?i)copilot"
+    label: "Copilot AI product discussed"
+    first_only: true
+    max_quarter_idx: 4
+  - pattern: "(?i)openai"
+    label: "OpenAI partnership discussed"
+  - pattern: "(?i)activision"
+    label: "Activision Blizzard acquisition impact discussed"
+  - pattern: "(?i)actuals"
+    label: "Full-year actuals reported this quarter"
+  - pattern: "(?i)ai infrastructure|ai capex"
+    label: "AI infrastructure investment discussed"
+  - pattern: "(?i)gaming"
+    label: "Gaming segment discussed"
+
+comparison_sections:
+  - title: "Revenue Guidance"
+    metric_key: "revenue"
+    columns: ["Quarter", "Revenue Guidance", "Midpoint", "vs Prior"]
+
+  - title: "Segment Revenue"
+    metrics: ["intelligent_cloud_revenue", "productivity_revenue", "more_personal_computing_revenue"]
+    columns: ["Quarter", "Intelligent Cloud", "Productivity & BP", "More Personal Computing"]
+
+  - title: "Azure & Cloud"
+    metrics: ["azure_growth", "cloud_gross_margin"]
+    columns: ["Quarter", "Azure Growth", "Cloud GM"]
+
+  - title: "Profitability & CapEx"
+    metrics: ["operating_income", "eps", "capex"]
+    columns: ["Quarter", "Operating Income", "EPS", "CapEx"]
+
+extraction_context: |
+  Microsoft is one of the world's largest technology companies, operating across cloud, productivity software, gaming, and AI. Key domain knowledge:
+  - Three reporting segments:
+    1. Intelligent Cloud: Azure, SQL Server, Windows Server, Enterprise Services, GitHub, Nuance
+    2. Productivity & Business Processes: Office 365, LinkedIn, Dynamics 365
+    3. More Personal Computing: Windows, Gaming (Xbox, Activision), Search/advertising, Surface, devices
+  - Azure = Microsoft's cloud platform (IaaS, PaaS); growth reported as % YoY in constant currency
+  - "Azure and other cloud services" is the exact line item (includes Azure, SQL, other cloud)
+  - "Microsoft Cloud" = Azure + Office 365 Commercial + Dynamics 365 + LinkedIn + other cloud
+  - Microsoft Cloud revenue and gross margin are key metrics across all segments
+  - Copilot = AI assistant integrated across Microsoft 365, GitHub, Azure, etc.
+  - OpenAI partnership = Microsoft's major AI investment (exclusive cloud provider)
+  - Activision Blizzard = acquired October 2023 for ~$69B (impacts Gaming segment)
+  - CapEx = massive and growing, driven by AI datacenter infrastructure
+  - LinkedIn revenue is reported within Productivity & Business Processes
+  - Search and news advertising revenue includes Bing and Edge
+  - "Constant currency" growth removes FX impact for cleaner YoY comparisons
+  - Microsoft guides segment revenue ranges and operating metrics for next quarter
+  - Fiscal year ends June 30 (FY2026 = Jul 2025 – Jun 2026)
+  - Q4 (Apr-Jun) earnings calls include full-year actuals
+
+topic_hints:
+  - "Azure revenue growth rate and AI contribution to Azure growth"
+  - "Microsoft Cloud revenue and gross margin trajectory"
+  - "Copilot adoption, monetization, and seat growth"
+  - "AI infrastructure CapEx and datacenter expansion"
+  - "OpenAI partnership and AI model integration"
+  - "Office 365 / Microsoft 365 commercial seat growth and ARPU"
+  - "Gaming segment and Activision integration"
+  - "LinkedIn revenue growth"
+  - "Dynamics 365 and business applications growth"
+  - "Segment-level operating income and margin trends"

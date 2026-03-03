@@ -1,0 +1,204 @@
+# Veeva Systems Inc.
+# Company configuration for earnings call extraction pipeline
+
+company:
+  name: "Veeva Systems Inc."
+  ticker: "VEEV"
+  sector: "SaaS / Life Sciences Cloud"
+  fiscal_year: "offset"
+  fiscal_year_end_month: 1  # January 31
+  currency: "USD"
+  reporting_currency: "USD"
+
+branding:
+  primary: "#F58220"     # Veeva orange
+  dark: "#1a1a2e"        # Dark navy
+  accent: "#2C5234"      # Green accent
+
+quarters:
+  - id: Q1_FY2023
+    call_date: "May 31, 2022"
+    reporting_quarter: "Q1 FY2023 (Feb–Apr 2022)"
+    bamsec_id: "5793fd48-1c36-4d55-b53c-5717a681a356"
+  - id: Q2_FY2023
+    call_date: "August 31, 2022"
+    reporting_quarter: "Q2 FY2023 (May–Jul 2022)"
+    bamsec_id: "8739a1fc-6397-4406-bc33-d0f9d0479fc9"
+  - id: Q3_FY2023
+    call_date: "November 29, 2022"
+    reporting_quarter: "Q3 FY2023 (Aug–Oct 2022)"
+    bamsec_id: "532422c1-08f4-4115-9c0e-84b1e03a17f2"
+  - id: Q4_FY2023
+    call_date: "February 28, 2023"
+    reporting_quarter: "Q4 FY2023 (Nov 2022–Jan 2023, Full Year)"
+    bamsec_id: "3ac07c34-37b5-4bff-a66a-bdb34b4b732d"
+  - id: Q1_FY2024
+    call_date: "May 31, 2023"
+    reporting_quarter: "Q1 FY2024 (Feb–Apr 2023)"
+    bamsec_id: "bde5d530-66ed-40ba-b422-81ec1d5056a0"
+  - id: Q2_FY2024
+    call_date: "August 30, 2023"
+    reporting_quarter: "Q2 FY2024 (May–Jul 2023)"
+    bamsec_id: "2a762858-36c9-47d7-a2cf-75c0019c0bf2"
+  - id: Q3_FY2024
+    call_date: "November 29, 2023"
+    reporting_quarter: "Q3 FY2024 (Aug–Oct 2023)"
+    bamsec_id: "4824bbeb-9d99-4757-87da-0ed7a9cf76e8"
+  - id: Q4_FY2024
+    call_date: "February 29, 2024"
+    reporting_quarter: "Q4 FY2024 (Nov 2023–Jan 2024, Full Year)"
+    bamsec_id: "c1c62115-9ac8-4f29-9ffe-e1f3ec03d99f"
+  - id: Q1_FY2025
+    call_date: "May 30, 2024"
+    reporting_quarter: "Q1 FY2025 (Feb–Apr 2024)"
+    bamsec_id: "abe4e335-a53c-4fed-87ef-25342296000c"
+  - id: Q2_FY2025
+    call_date: "August 28, 2024"
+    reporting_quarter: "Q2 FY2025 (May–Jul 2024)"
+    bamsec_id: "915e6891-825e-467c-835d-daa1b5d8635e"
+  - id: Q3_FY2025
+    call_date: "November 26, 2024"
+    reporting_quarter: "Q3 FY2025 (Aug–Oct 2024)"
+    bamsec_id: "3e458609-1d8d-4c7c-8a16-6c15cc4d2d4b"
+  - id: Q4_FY2025
+    call_date: "February 27, 2025"
+    reporting_quarter: "Q4 FY2025 (Nov 2024–Jan 2025, Full Year)"
+    bamsec_id: "8db21855-54b9-410e-a682-e09bd0edf03d"
+  - id: Q1_FY2026
+    call_date: "May 29, 2025"
+    reporting_quarter: "Q1 FY2026 (Feb–Apr 2025)"
+    bamsec_id: "89449013-5671-48b8-9e3a-77adfe71ff7c"
+  - id: Q2_FY2026
+    call_date: "August 28, 2025"
+    reporting_quarter: "Q2 FY2026 (May–Jul 2025)"
+    bamsec_id: "f28c1386-ea69-4c9e-b47a-7deb296923dc"
+  - id: Q3_FY2026
+    call_date: "November 25, 2025"
+    reporting_quarter: "Q3 FY2026 (Aug–Oct 2025)"
+    bamsec_id: "bd358ac1-5288-45f8-be08-0d2428210f25"
+  - id: Q4_FY2026
+    call_date: "February 26, 2026"
+    reporting_quarter: "Q4 FY2026 (Nov 2025–Jan 2026, Full Year)"
+    bamsec_id: ""
+
+tracked_metrics:
+  guidance_for:
+    label: "Guidance For"
+    section_pattern: "^Quarterly Guidance"
+    extract: "section_suffix"
+    display: "banner"
+
+  total_revenue:
+    label: "Total Revenue"
+    section_pattern: "(?i)(quarterly guidance|full year|key metrics)"
+    item_pattern: "(?i)^\\*\\*(Total )?Revenue:?\\*\\*"
+    comparison: "midpoint_pct"
+    midpoint_format: "dollar_billions"
+
+  subscription_revenue:
+    label: "Subscription Revenue"
+    section_pattern: "(?i)(quarterly guidance|full year|key metrics|subscription)"
+    item_pattern: "(?i)^\\*\\*Subscription (Services )?Revenue:?\\*\\*"
+    comparison: "text_diff"
+
+  operating_income:
+    label: "Non-GAAP Operating Income"
+    section_pattern: "(?i)(quarterly guidance|full year|key metrics)"
+    item_pattern: "(?i)^\\*\\*(Non.GAAP )?Operating Income:?\\*\\*"
+    comparison: "text_diff"
+
+  operating_margin:
+    label: "Non-GAAP Operating Margin"
+    section_pattern: "(?i)(quarterly guidance|full year|key metrics)"
+    item_pattern: "(?i)^\\*\\*(Non.GAAP )?Operating Margin:?\\*\\*"
+    comparison: "midpoint_delta"
+    midpoint_format: "percentage"
+
+  billings:
+    label: "Calculated Billings"
+    section_pattern: "(?i)(quarterly guidance|key metrics|billings)"
+    item_pattern: "(?i)^\\*\\*(Calculated )?Billings:?\\*\\*"
+    comparison: "text_diff"
+
+  remaining_performance_obligations:
+    label: "RPO"
+    section_pattern: "(?i)(key metrics|rpo|deferred)"
+    item_pattern: "(?i)^\\*\\*(Total )?RPO:?\\*\\*"
+    comparison: "text_diff"
+
+  eps:
+    label: "Non-GAAP EPS"
+    section_pattern: "(?i)(quarterly guidance|full year|key metrics)"
+    item_pattern: "(?i)^\\*\\*(Non.GAAP )?(Diluted )?EPS:?\\*\\*"
+    comparison: "text_diff"
+
+  fcf_margin:
+    label: "FCF Margin"
+    section_pattern: "(?i)(key metrics|cash flow|full year)"
+    item_pattern: "(?i)^\\*\\*(Free )?Cash Flow Margin:?\\*\\*"
+    comparison: "text_diff"
+
+new_section_keywords:
+  - pattern: "(?i)vault"
+    label: "Vault platform developments discussed"
+  - pattern: "(?i)data cloud|link"
+    label: "Veeva Data Cloud / Link discussed"
+  - pattern: "(?i)public benefit"
+    label: "Public Benefit Corporation status discussed"
+  - pattern: "(?i)actuals"
+    label: "Full-year actuals reported this quarter"
+  - pattern: "(?i)ai|generative"
+    label: "AI / GenAI capabilities discussed"
+    first_only: true
+    max_quarter_idx: 4
+  - pattern: "(?i)salesforce|crm migration"
+    label: "CRM migration from Salesforce discussed"
+
+comparison_sections:
+  - title: "Revenue Guidance"
+    metrics: ["total_revenue", "subscription_revenue"]
+    columns: ["Quarter", "Total Revenue", "Subscription Revenue"]
+
+  - title: "Profitability"
+    metrics: ["operating_income", "operating_margin"]
+    columns: ["Quarter", "Operating Income", "Op Margin"]
+
+  - title: "Billings & RPO"
+    metrics: ["billings", "remaining_performance_obligations"]
+    columns: ["Quarter", "Billings", "RPO"]
+
+  - title: "EPS & Cash Flow"
+    metrics: ["eps", "fcf_margin"]
+    columns: ["Quarter", "Non-GAAP EPS", "FCF Margin"]
+
+extraction_context: |
+  Veeva Systems is a cloud computing company focused on the life sciences industry. It provides CRM, content management, data, and regulatory solutions to pharmaceutical and biotech companies. Key domain knowledge:
+  - Veeva is a Public Benefit Corporation (PBC) — incorporated for public benefit, not just shareholders
+  - Vault = Veeva's core content management and application platform for life sciences
+  - Vault modules: Vault Clinical, Vault Quality, Vault Regulatory, Vault Safety, Vault RIM, Vault CDMS
+  - Veeva CRM = customer relationship management for pharma sales reps (migrating from Salesforce to Vault CRM)
+  - Veeva Data Cloud = commercial data (prescriber data, patient data, reference data) — competing with IQVIA
+  - Veeva Link = real-time data on key opinion leaders (KOLs), clinical trials, etc.
+  - Veeva Compass = patient and prescriber data product
+  - Veeva OpenData = physician and healthcare reference data
+  - Subscription revenue = recurring SaaS revenue (the key metric)
+  - Professional services revenue = implementation and consulting (lower margin)
+  - RPO = Remaining Performance Obligations (contracted future revenue)
+  - Billings = revenue + change in deferred revenue (proxy for bookings momentum)
+  - NRR = Net Revenue Retention (existing customer expansion, not always disclosed)
+  - "R&D" and "Development Cloud" refer to clinical trial and regulatory software
+  - "Commercial Cloud" refers to CRM, data, and marketing solutions
+  - Company is migrating its CRM product off Salesforce platform to Vault CRM
+  - Fiscal year ends January 31 (FY2026 = Feb 2025 – Jan 2026)
+  - Q4 earnings calls typically include full-year actuals and next-year guidance
+
+topic_hints:
+  - "Subscription revenue growth and renewal rates"
+  - "Vault platform adoption and new module wins"
+  - "CRM migration from Salesforce to Vault CRM timeline and progress"
+  - "Veeva Data Cloud / Compass growth vs. IQVIA"
+  - "Operating margin trajectory and Rule of 40 performance"
+  - "R&D / Development Cloud (clinical, regulatory, safety)"
+  - "AI and GenAI capabilities in life sciences"
+  - "Customer count growth and large deal activity"
+  - "Free cash flow generation and capital allocation"

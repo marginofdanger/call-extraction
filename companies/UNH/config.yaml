@@ -1,0 +1,198 @@
+# UnitedHealth Group Incorporated
+# Company configuration for earnings call extraction pipeline
+
+company:
+  name: "UnitedHealth Group Incorporated"
+  ticker: "UNH"
+  sector: "Health Insurance / Healthcare Services"
+  fiscal_year: "calendar"
+  currency: "USD"
+  reporting_currency: "USD"
+
+branding:
+  primary: "#002677"     # UHG blue
+  dark: "#1a1a2e"        # Dark navy
+  accent: "#00BCD4"      # Teal accent
+
+quarters:
+  - id: Q1_2022
+    call_date: "April 14, 2022"
+    reporting_quarter: "Q1 2022"
+    bamsec_id: "efc18740-82fa-45f0-a63d-3140a059f014"
+  - id: Q2_2022
+    call_date: "July 15, 2022"
+    reporting_quarter: "Q2 2022"
+    bamsec_id: "9561fe38-fe01-46f3-ada3-eaf45fad2b59"
+  - id: Q3_2022
+    call_date: "October 14, 2022"
+    reporting_quarter: "Q3 2022"
+    bamsec_id: "b059af97-f37b-4593-a4cd-889638717aeb"
+  - id: Q4_2022
+    call_date: "January 13, 2023"
+    reporting_quarter: "Q4 2022 (Full Year 2022)"
+    bamsec_id: "44d17bc9-7fdd-4fd5-b512-42548ace9237"
+  - id: Q1_2023
+    call_date: "April 14, 2023"
+    reporting_quarter: "Q1 2023"
+    bamsec_id: "fce6f82c-a628-4ddf-967e-5ad8516df551"
+  - id: Q2_2023
+    call_date: "July 14, 2023"
+    reporting_quarter: "Q2 2023"
+    bamsec_id: "66958455-ef83-4192-a412-1eb43222b293"
+  - id: Q3_2023
+    call_date: "October 13, 2023"
+    reporting_quarter: "Q3 2023"
+    bamsec_id: "931a2037-fa3e-48b8-a353-8c1179e4f794"
+  - id: Q4_2023
+    call_date: "January 12, 2024"
+    reporting_quarter: "Q4 2023 (Full Year 2023)"
+    bamsec_id: "6582cceb-9bb2-4d3a-8b08-fc2dfc4717fb"
+  - id: Q1_2024
+    call_date: "April 16, 2024"
+    reporting_quarter: "Q1 2024"
+    bamsec_id: "01dbf875-ae83-4165-bcf2-54e5fd714a81"
+  - id: Q2_2024
+    call_date: "July 16, 2024"
+    reporting_quarter: "Q2 2024"
+    bamsec_id: "d63a0805-542c-40d2-b65e-08c2fc904351"
+  - id: Q3_2024
+    call_date: "October 15, 2024"
+    reporting_quarter: "Q3 2024"
+    bamsec_id: "1af10be1-9a96-44d8-b42e-992611e9018d"
+  - id: Q4_2024
+    call_date: "January 16, 2025"
+    reporting_quarter: "Q4 2024 (Full Year 2024)"
+    bamsec_id: "51444824-a4bf-4e20-8001-1bd18fd43575"
+  - id: Q1_2025
+    call_date: "April 15, 2025"
+    reporting_quarter: "Q1 2025"
+    bamsec_id: "fd855ed0-5b92-4ed5-96ba-82be51cf03a4"
+  - id: Q2_2025
+    call_date: "July 15, 2025"
+    reporting_quarter: "Q2 2025"
+    bamsec_id: "7c7367a1-92b4-4c16-b853-5862a280d505"
+  - id: Q3_2025
+    call_date: "October 14, 2025"
+    reporting_quarter: "Q3 2025"
+    bamsec_id: "a9e88e40-9313-45c0-8ca3-43df6708863e"
+  - id: Q4_2025
+    call_date: "January 15, 2026"
+    reporting_quarter: "Q4 2025 (Full Year 2025)"
+    bamsec_id: "acf2accc-e9e5-4153-829e-ecb2c1ef1443"
+
+tracked_metrics:
+  guidance_for:
+    label: "Guidance For"
+    section_pattern: "^Quarterly Guidance"
+    extract: "section_suffix"
+    display: "banner"
+
+  revenue:
+    label: "Revenue"
+    section_pattern: "(?i)(quarterly guidance|full year|key metrics)"
+    item_pattern: "(?i)^\\*\\*(Total )?Revenue:?\\*\\*"
+    comparison: "text_diff"
+
+  adjusted_eps:
+    label: "Adjusted EPS"
+    section_pattern: "(?i)(full year|quarterly guidance|key metrics)"
+    item_pattern: "(?i)^\\*\\*Adjusted (Diluted )?EPS:?\\*\\*"
+    comparison: "text_diff"
+
+  medical_care_ratio:
+    label: "Medical Care Ratio"
+    section_pattern: "(?i)(key metrics|quarterly guidance|unitedhealthcare)"
+    item_pattern: "(?i)^\\*\\*Medical Care Ratio( \\(MCR\\))?:?\\*\\*"
+    comparison: "midpoint_delta"
+    midpoint_format: "percentage"
+
+  operating_cost_ratio:
+    label: "Operating Cost Ratio"
+    section_pattern: "(?i)(key metrics|quarterly guidance)"
+    item_pattern: "(?i)^\\*\\*Operating Cost Ratio:?\\*\\*"
+    comparison: "midpoint_delta"
+    midpoint_format: "percentage"
+
+  optum_revenue:
+    label: "Optum Revenue"
+    section_pattern: "(?i)(optum|key metrics|segment)"
+    item_pattern: "(?i)^\\*\\*Optum Revenue:?\\*\\*"
+    comparison: "text_diff"
+
+  uhc_revenue:
+    label: "UnitedHealthcare Revenue"
+    section_pattern: "(?i)(unitedhealthcare|key metrics|segment)"
+    item_pattern: "(?i)^\\*\\*UnitedHealthcare Revenue:?\\*\\*"
+    comparison: "text_diff"
+
+  membership:
+    label: "Total Membership"
+    section_pattern: "(?i)(unitedhealthcare|key metrics|membership)"
+    item_pattern: "(?i)^\\*\\*(Total )?Membership:?\\*\\*"
+    comparison: "text_diff"
+
+  cash_from_operations:
+    label: "Cash from Operations"
+    section_pattern: "(?i)(full year|quarterly guidance|cash flow)"
+    item_pattern: "(?i)^\\*\\*Cash (Flows? )?from Operations:?\\*\\*"
+    comparison: "text_diff"
+
+new_section_keywords:
+  - pattern: "(?i)change healthcare"
+    label: "Change Healthcare cyberattack impact discussed"
+  - pattern: "(?i)medicare advantage"
+    label: "Medicare Advantage rate/enrollment discussed"
+  - pattern: "(?i)star rating"
+    label: "Star Ratings impact discussed"
+  - pattern: "(?i)actuals"
+    label: "Full-year actuals reported this quarter"
+  - pattern: "(?i)pbm|pharmacy benefit"
+    label: "PBM / pharmacy benefit management discussed"
+  - pattern: "(?i)value.based care"
+    label: "Value-based care model discussed"
+
+comparison_sections:
+  - title: "Revenue & EPS Guidance"
+    metrics: ["revenue", "adjusted_eps"]
+    columns: ["Quarter", "Revenue", "Adjusted EPS"]
+
+  - title: "Medical Care Ratio"
+    metric_key: "medical_care_ratio"
+    columns: ["Quarter", "MCR", "vs Prior"]
+
+  - title: "Segment Revenue"
+    metrics: ["uhc_revenue", "optum_revenue"]
+    columns: ["Quarter", "UHC Revenue", "Optum Revenue"]
+
+  - title: "Membership & Cash Flow"
+    metrics: ["membership", "cash_from_operations"]
+    columns: ["Quarter", "Membership", "Cash from Ops"]
+
+extraction_context: |
+  UnitedHealth Group is the largest U.S. health insurer and healthcare services company, operating through two main platforms: UnitedHealthcare (insurance) and Optum (health services). Key domain knowledge:
+  - MCR = Medical Care Ratio (medical costs / premiums; lower is better for insurer)
+  - UHC = UnitedHealthcare (health benefits / insurance segment)
+  - Optum has three sub-segments: OptumHealth (care delivery), OptumInsight (analytics/tech), OptumRx (PBM)
+  - PBM = Pharmacy Benefit Manager (OptumRx manages drug benefits)
+  - Medicare Advantage = private Medicare plans (government-funded, key growth driver)
+  - Star Ratings = CMS quality scores that affect Medicare bonus payments
+  - "Medical cost trend" = rate of increase in per-member medical costs
+  - "Days claims payable" = reserves measured in days of claims expense
+  - Value-based care = providers paid for outcomes rather than volume
+  - Change Healthcare = acquired health IT company (cyberattack in Feb 2024)
+  - Fiscal year = calendar year (Q1=Jan-Mar, Q4=Oct-Dec)
+  - Q4 earnings calls typically include full-year actuals and next-year guidance
+  - Adjusted EPS excludes amortization of intangibles and other non-recurring items
+  - Medicare Advantage enrollment/rate cycles are key seasonal drivers
+
+topic_hints:
+  - "Medical care ratio trends and medical cost outlook"
+  - "Medicare Advantage enrollment and rate updates"
+  - "Optum segment performance (Health, Insight, Rx)"
+  - "Adjusted EPS and full-year guidance"
+  - "Value-based care expansion and patient engagement"
+  - "PBM / OptumRx market dynamics and drug cost trends"
+  - "Star Ratings impact on Medicare bonus payments"
+  - "Change Healthcare recovery and integration"
+  - "Capital allocation (dividends, buybacks, M&A)"
+  - "Regulatory and policy environment (IRA, prior auth rules)"

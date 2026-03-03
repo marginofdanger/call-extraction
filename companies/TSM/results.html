@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TSMC Results vs Guidance &mdash; 16-Quarter Scorecard</title>
+<style>
+  :root {
+    --company-primary: #c0392b;
+    --company-dark: #1a1a2e;
+    --company-accent: #16213e;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 48px 40px;
+    margin: 0 -24px 40px;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+  .header .subtitle {
+    font-size: 1.1rem;
+    opacity: 0.85;
+    font-weight: 300;
+  }
+
+  /* Quarter Navigation */
+  .quarter-nav {
+    background: var(--company-accent);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+  .quarter-nav .label {
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-right: 8px;
+    white-space: nowrap;
+  }
+  .quarter-nav .year-group {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+  .quarter-nav .year-label {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.72rem;
+    font-weight: 600;
+    margin-right: 2px;
+    letter-spacing: 0.5px;
+  }
+  .quarter-nav a {
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+  .quarter-nav a:hover { background: rgba(255,255,255,0.25); }
+  .quarter-nav a.overview-link {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.35);
+    padding: 4px 14px;
+    font-size: 0.82rem;
+    margin-left: auto;
+  }
+
+  /* Table of Contents */
+  .toc {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 32px;
+    margin-bottom: 40px;
+  }
+  .toc h2 {
+    font-size: 1.1rem;
+    color: var(--company-accent);
+    margin-bottom: 12px;
+  }
+  .toc a {
+    display: block;
+    color: var(--blue);
+    text-decoration: none;
+    padding: 3px 0;
+    font-size: 0.9rem;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  /* Section */
+  .section {
+    margin-bottom: 48px;
+    scroll-margin-top: 20px;
+  }
+  .section h2 {
+    font-size: 1.4rem;
+    color: var(--company-dark);
+    border-bottom: 3px solid var(--company-primary);
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+  }
+  .section h2 .num {
+    display: inline-block;
+    background: var(--company-primary);
+    color: #fff;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 0.85rem;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+
+  /* Scorecard grid */
+  .scorecard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .score-card {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+  }
+  .score-card .metric-value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--company-dark);
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+  .score-card .metric-value.green { color: var(--green); }
+  .score-card .metric-label {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+  .score-card .metric-sub {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+  .score-card.highlight {
+    border-color: var(--green);
+    background: #eafaf1;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 0.88rem;
+  }
+  thead th {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+  thead th.right { text-align: right; }
+  tbody td {
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tbody td.right { text-align: right; }
+  tbody tr:nth-child(even) { background: var(--light-bg); }
+  tbody tr:hover { background: #eef2f7; }
+
+  /* Color helpers */
+  .pos { color: var(--green); font-weight: 600; }
+  .neg { color: var(--red); font-weight: 600; }
+  .neutral { color: var(--amber); font-weight: 600; }
+  .raised { background: #eafaf1 !important; }
+  .lowered { background: #fef0ef !important; }
+  .bold { font-weight: 700; }
+  .muted { color: var(--text-muted); font-style: italic; }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    vertical-align: middle;
+  }
+  .tag-beat { background: #d5f5e3; color: #1e8449; }
+  .tag-miss { background: #fadbd8; color: #c0392b; }
+  .tag-met { background: #fdebd0; color: #b9770e; }
+  .tag-pending { background: #d6eaf8; color: #2471a3; }
+
+  /* Insight boxes */
+  .insight {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 4px solid var(--amber);
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.9rem;
+  }
+  .insight strong { color: var(--company-dark); }
+
+  /* Takeaways */
+  .takeaways { counter-reset: takeaway; }
+  .takeaway {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 18px;
+    padding: 14px 18px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .takeaway-num {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    background: var(--company-primary);
+    color: #fff;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+  .takeaway-text { font-size: 0.92rem; }
+  .takeaway-text strong { color: var(--company-dark); }
+
+  /* Year divider rows */
+  .year-divider td {
+    background: var(--company-accent) !important;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.82rem;
+    padding: 6px 12px;
+    letter-spacing: 0.5px;
+  }
+
+  /* Footnote */
+  .footnote {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 8px;
+    font-style: italic;
+  }
+
+  /* FY table */
+  .fy-block {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+  }
+  .fy-block h3 {
+    font-size: 1.1rem;
+    color: var(--company-dark);
+    margin-bottom: 12px;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 6px;
+  }
+  .fy-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.88rem;
+  }
+  .fy-row:last-child { border-bottom: none; }
+  .fy-label { color: var(--text-muted); font-weight: 500; }
+  .fy-value { font-weight: 600; }
+
+  @media (max-width: 768px) {
+    .toc { columns: 1; }
+    .header h1 { font-size: 1.6rem; }
+    table { font-size: 0.8rem; }
+    thead th, tbody td { padding: 6px 8px; }
+    .quarter-nav { gap: 4px; }
+    .scorecard { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media print {
+    .header { background: #333; }
+    .section { page-break-inside: avoid; }
+    table { font-size: 0.75rem; }
+    .quarter-nav { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>TSMC Results vs Guidance &mdash; 16-Quarter Scorecard</h1>
+  <div class="subtitle">How actuals compared to management guidance | Q1 2022 &ndash; Q4 2025 (15 guidance&ndash;actual pairs)</div>
+</div>
+
+<!-- Quarter Navigation -->
+<div class="quarter-nav" id="qnav">
+  <span class="label">Quarter detail:</span>
+  <div class="year-group">
+    <span class="year-label">2025</span>
+    <a href="quarters/Q4_2025.html">4Q25</a>
+    <a href="quarters/Q3_2025.html">3Q25</a>
+    <a href="quarters/Q2_2025.html">2Q25</a>
+    <a href="quarters/Q1_2025.html">1Q25</a>
+  </div>
+  <div class="year-group">
+    <span class="year-label">2024</span>
+    <a href="quarters/Q4_2024.html">4Q24</a>
+    <a href="quarters/Q3_2024.html">3Q24</a>
+    <a href="quarters/Q2_2024.html">2Q24</a>
+    <a href="quarters/Q1_2024.html">1Q24</a>
+  </div>
+  <div class="year-group">
+    <span class="year-label">2023</span>
+    <a href="quarters/Q4_2023.html">4Q23</a>
+    <a href="quarters/Q3_2023.html">3Q23</a>
+    <a href="quarters/Q2_2023.html">2Q23</a>
+    <a href="quarters/Q1_2023.html">1Q23</a>
+  </div>
+  <div class="year-group">
+    <span class="year-label">2022</span>
+    <a href="quarters/Q4_2022.html">4Q22</a>
+    <a href="quarters/Q3_2022.html">3Q22</a>
+    <a href="quarters/Q2_2022.html">2Q22</a>
+    <a href="quarters/Q1_2022.html">1Q22</a>
+  </div>
+  <a href="comparison.html" class="overview-link">Guidance Overview &rarr;</a>
+</div>
+
+<!-- Table of Contents -->
+<nav class="toc">
+  <h2>Table of Contents</h2>
+  <a href="#s0">Summary Scorecard</a>
+  <a href="#s1">1. Quarterly Revenue &mdash; Actuals vs Guidance</a>
+  <a href="#s2">2. Quarterly Gross Margin &mdash; Actuals vs Guidance</a>
+  <a href="#s3">3. Quarterly Operating Margin &mdash; Actuals vs Guidance</a>
+  <a href="#s4">4. FX Rate &mdash; Assumption vs Actual</a>
+  <a href="#s5">5. Full-Year Guidance vs Actuals</a>
+  <a href="#s6">6. Key Takeaways</a>
+</nav>
+
+<!-- ====== SUMMARY SCORECARD ====== -->
+<div class="section" id="s0">
+  <h2>Summary Scorecard</h2>
+  <div class="scorecard">
+    <div class="score-card highlight">
+      <div class="metric-value green">12/15</div>
+      <div class="metric-label">Revenue beat rate vs midpoint</div>
+      <div class="metric-sub">1 met exactly, 2 missed</div>
+    </div>
+    <div class="score-card">
+      <div class="metric-value">+1.5%</div>
+      <div class="metric-label">Avg revenue beat vs midpoint</div>
+      <div class="metric-sub">Never missed the low end</div>
+    </div>
+    <div class="score-card highlight">
+      <div class="metric-value green">15/15</div>
+      <div class="metric-label">GM beat rate vs midpoint</div>
+      <div class="metric-sub">Perfect record</div>
+    </div>
+    <div class="score-card">
+      <div class="metric-value">+155 bps</div>
+      <div class="metric-label">Avg GM beat vs midpoint</div>
+      <div class="metric-sub">Systematic upside surprise</div>
+    </div>
+    <div class="score-card highlight">
+      <div class="metric-value green">15/15</div>
+      <div class="metric-label">OM beat rate vs midpoint</div>
+      <div class="metric-sub">Perfect record</div>
+    </div>
+    <div class="score-card">
+      <div class="metric-value">+231 bps</div>
+      <div class="metric-label">Avg OM beat vs midpoint</div>
+      <div class="metric-sub">Strongest margin beat</div>
+    </div>
+    <div class="score-card">
+      <div class="metric-value">6/15</div>
+      <div class="metric-label">Revenue exceeded high end</div>
+      <div class="metric-sub">Trending up: 5 of last 7</div>
+    </div>
+    <div class="score-card">
+      <div class="metric-value">0/15</div>
+      <div class="metric-label">Missed low-end guidance</div>
+      <div class="metric-sub">Any metric, any quarter</div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== SECTION 1: Revenue ====== -->
+<div class="section" id="s1">
+  <h2><span class="num">1</span> Quarterly Revenue &mdash; Actuals vs Guidance</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Quarter</th>
+        <th>Guided From</th>
+        <th>Guidance Range</th>
+        <th class="right">Actual</th>
+        <th class="right">vs Low</th>
+        <th class="right">vs Mid</th>
+        <th class="right">vs High</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Pending -->
+      <tr class="year-divider"><td colspan="7">2026 (Pending)</td></tr>
+      <tr>
+        <td class="bold">Q1 2026</td>
+        <td>Q4 &rsquo;25 call (Jan &rsquo;26)</td>
+        <td>$34.6B &ndash; $35.8B</td>
+        <td class="right muted">Pending</td>
+        <td class="right muted">&mdash;</td>
+        <td class="right muted">&mdash;</td>
+        <td class="right muted">&mdash;</td>
+      </tr>
+      <!-- 2025 -->
+      <tr class="year-divider"><td colspan="7">2025</td></tr>
+      <tr class="raised">
+        <td class="bold">Q4 2025</td>
+        <td>Q3 &rsquo;25 call (Oct &rsquo;25)</td>
+        <td>$32.2B &ndash; $33.4B</td>
+        <td class="right bold">$33.7B</td>
+        <td class="right pos">+4.7%</td>
+        <td class="right pos">+2.7%</td>
+        <td class="right pos">+0.9%</td>
+      </tr>
+      <tr>
+        <td class="bold">Q3 2025</td>
+        <td>Q2 &rsquo;25 call (Jul &rsquo;25)</td>
+        <td>$31.8B &ndash; $33.0B</td>
+        <td class="right bold">$33.1B</td>
+        <td class="right pos">+4.1%</td>
+        <td class="right pos">+2.2%</td>
+        <td class="right pos">+0.3%</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q2 2025</td>
+        <td>Q1 &rsquo;25 call (Apr &rsquo;25)</td>
+        <td>$28.4B &ndash; $29.2B</td>
+        <td class="right bold">$30.1B</td>
+        <td class="right pos">+6.0%</td>
+        <td class="right pos">+4.5%</td>
+        <td class="right pos">+3.1%</td>
+      </tr>
+      <tr>
+        <td class="bold">Q1 2025</td>
+        <td>Q4 &rsquo;24 call (Jan &rsquo;25)</td>
+        <td>$25.0B &ndash; $25.8B</td>
+        <td class="right bold">$25.5B</td>
+        <td class="right pos">+2.0%</td>
+        <td class="right pos">+0.4%</td>
+        <td class="right neg">&minus;1.2%</td>
+      </tr>
+      <!-- 2024 -->
+      <tr class="year-divider"><td colspan="7">2024</td></tr>
+      <tr>
+        <td class="bold">Q4 2024</td>
+        <td>Q3 &rsquo;24 call (Oct &rsquo;24)</td>
+        <td>$26.1B &ndash; $26.9B</td>
+        <td class="right bold">$26.8B</td>
+        <td class="right pos">+2.7%</td>
+        <td class="right pos">+1.1%</td>
+        <td class="right neg">&minus;0.4%</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q3 2024</td>
+        <td>Q2 &rsquo;24 call (Jul &rsquo;24)</td>
+        <td>$22.4B &ndash; $23.2B</td>
+        <td class="right bold">$23.5B</td>
+        <td class="right pos">+4.9%</td>
+        <td class="right pos">+3.1%</td>
+        <td class="right pos">+1.3%</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q2 2024</td>
+        <td>Q1 &rsquo;24 call (Apr &rsquo;24)</td>
+        <td>$19.6B &ndash; $20.4B</td>
+        <td class="right bold">$20.8B</td>
+        <td class="right pos">+6.1%</td>
+        <td class="right pos">+4.0%</td>
+        <td class="right pos">+2.0%</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q1 2024</td>
+        <td>Q4 &rsquo;23 call (Jan &rsquo;24)</td>
+        <td>$18.0B &ndash; $18.8B</td>
+        <td class="right bold">$18.9B</td>
+        <td class="right pos">+5.0%</td>
+        <td class="right pos">+2.7%</td>
+        <td class="right pos">+0.5%</td>
+      </tr>
+      <!-- 2023 -->
+      <tr class="year-divider"><td colspan="7">2023</td></tr>
+      <tr>
+        <td class="bold">Q4 2023</td>
+        <td>Q3 &rsquo;23 call (Oct &rsquo;23)</td>
+        <td>$18.8B &ndash; $19.6B</td>
+        <td class="right bold">$19.6B</td>
+        <td class="right pos">+4.3%</td>
+        <td class="right pos">+2.1%</td>
+        <td class="right neutral">0.0%</td>
+      </tr>
+      <tr>
+        <td class="bold">Q3 2023</td>
+        <td>Q2 &rsquo;23 call (Jul &rsquo;23)</td>
+        <td>$16.7B &ndash; $17.5B</td>
+        <td class="right bold">$17.3B</td>
+        <td class="right pos">+3.6%</td>
+        <td class="right pos">+1.2%</td>
+        <td class="right neg">&minus;1.1%</td>
+      </tr>
+      <tr>
+        <td class="bold">Q2 2023</td>
+        <td>Q1 &rsquo;23 call (Apr &rsquo;23)</td>
+        <td>$15.2B &ndash; $16.0B</td>
+        <td class="right bold">$15.7B</td>
+        <td class="right pos">+3.3%</td>
+        <td class="right pos">+0.6%</td>
+        <td class="right neg">&minus;1.9%</td>
+      </tr>
+      <tr>
+        <td class="bold">Q1 2023</td>
+        <td>Q4 &rsquo;22 call (Jan &rsquo;23)</td>
+        <td>$16.7B &ndash; $17.5B</td>
+        <td class="right bold">$16.7B&thinsp;*</td>
+        <td class="right neutral">0.0%</td>
+        <td class="right neg">&minus;2.3%</td>
+        <td class="right neg">&minus;4.6%</td>
+      </tr>
+      <!-- 2022 -->
+      <tr class="year-divider"><td colspan="7">2022</td></tr>
+      <tr>
+        <td class="bold">Q4 2022</td>
+        <td>Q3 &rsquo;22 call (Oct &rsquo;22)</td>
+        <td>$19.9B &ndash; $20.7B</td>
+        <td class="right bold">$20.0B&thinsp;&dagger;</td>
+        <td class="right pos">+0.5%</td>
+        <td class="right neg">&minus;1.5%</td>
+        <td class="right neg">&minus;3.4%</td>
+      </tr>
+      <tr>
+        <td class="bold">Q3 2022</td>
+        <td>Q2 &rsquo;22 call (Jul &rsquo;22)</td>
+        <td>$19.8B &ndash; $20.6B</td>
+        <td class="right bold">$20.2B</td>
+        <td class="right pos">+2.0%</td>
+        <td class="right neutral">0.0%</td>
+        <td class="right neg">&minus;1.9%</td>
+      </tr>
+      <tr>
+        <td class="bold">Q2 2022</td>
+        <td>Q1 &rsquo;22 call (Apr &rsquo;22)</td>
+        <td>$17.6B &ndash; $18.2B</td>
+        <td class="right bold">$18.2B</td>
+        <td class="right pos">+3.4%</td>
+        <td class="right pos">+1.7%</td>
+        <td class="right neutral">0.0%</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="footnote">* Q1 2023 revenue reported as $6.7B in source; corrected to $16.7B based on &minus;16.1% QoQ from $20.0B and &ldquo;towards low end of guidance.&rdquo;</p>
+  <p class="footnote">&dagger; Q4 2022 revenue derived from FY2022 total of $76.0B minus Q1&ndash;Q3 sum ($56.0B). Reported as &minus;1.5% QoQ, &ldquo;at low end of prior guidance.&rdquo;</p>
+  <div class="insight">
+    <strong>Pattern:</strong> TSMC has never missed the low end of its revenue guidance in 15 quarters. Revenue beat the midpoint in 12 of 15 quarters, with the average beat accelerating sharply from 2024 onward (+3.0% avg) vs 2022&ndash;2023 (+0.3% avg). The two misses (Q4 2022 and Q1 2023) coincided with the smartphone/PC inventory correction &mdash; the only period demand deteriorated faster than TSMC&rsquo;s 90-day guidance horizon.
+  </div>
+</div>
+
+<!-- ====== SECTION 2: Gross Margin ====== -->
+<div class="section" id="s2">
+  <h2><span class="num">2</span> Quarterly Gross Margin &mdash; Actuals vs Guidance</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Quarter</th>
+        <th>Guided From</th>
+        <th>Guidance Range</th>
+        <th class="right">Actual</th>
+        <th class="right">vs Low</th>
+        <th class="right">vs Mid</th>
+        <th class="right">vs High</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Pending -->
+      <tr class="year-divider"><td colspan="7">2026 (Pending)</td></tr>
+      <tr>
+        <td class="bold">Q1 2026</td>
+        <td>Q4 &rsquo;25 call (Jan &rsquo;26)</td>
+        <td>63.0% &ndash; 65.0%</td>
+        <td class="right muted">Pending</td>
+        <td class="right muted">&mdash;</td>
+        <td class="right muted">&mdash;</td>
+        <td class="right muted">&mdash;</td>
+      </tr>
+      <!-- 2025 -->
+      <tr class="year-divider"><td colspan="7">2025</td></tr>
+      <tr class="raised">
+        <td class="bold">Q4 2025</td>
+        <td>Q3 &rsquo;25 call (Oct &rsquo;25)</td>
+        <td>59.0% &ndash; 61.0%</td>
+        <td class="right bold">62.3%</td>
+        <td class="right pos">+330 bps</td>
+        <td class="right pos">+230 bps</td>
+        <td class="right pos">+130 bps</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q3 2025</td>
+        <td>Q2 &rsquo;25 call (Jul &rsquo;25)</td>
+        <td>55.5% &ndash; 57.5%</td>
+        <td class="right bold">59.5%</td>
+        <td class="right pos">+400 bps</td>
+        <td class="right pos">+300 bps</td>
+        <td class="right pos">+200 bps</td>
+      </tr>
+      <tr>
+        <td class="bold">Q2 2025</td>
+        <td>Q1 &rsquo;25 call (Apr &rsquo;25)</td>
+        <td>57.0% &ndash; 59.0%</td>
+        <td class="right bold">58.6%</td>
+        <td class="right pos">+160 bps</td>
+        <td class="right pos">+60 bps</td>
+        <td class="right neg">&minus;40 bps</td>
+      </tr>
+      <tr>
+        <td class="bold">Q1 2025</td>
+        <td>Q4 &rsquo;24 call (Jan &rsquo;25)</td>
+        <td>57.0% &ndash; 59.0%</td>
+        <td class="right bold">58.8%</td>
+        <td class="right pos">+180 bps</td>
+        <td class="right pos">+80 bps</td>
+        <td class="right neg">&minus;20 bps</td>
+      </tr>
+      <!-- 2024 -->
+      <tr class="year-divider"><td colspan="7">2024</td></tr>
+      <tr>
+        <td class="bold">Q4 2024</td>
+        <td>Q3 &rsquo;24 call (Oct &rsquo;24)</td>
+        <td>57.0% &ndash; 59.0%</td>
+        <td class="right bold">59.0%</td>
+        <td class="right pos">+200 bps</td>
+        <td class="right pos">+100 bps</td>
+        <td class="right neutral">0 bps</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q3 2024</td>
+        <td>Q2 &rsquo;24 call (Jul &rsquo;24)</td>
+        <td>53.5% &ndash; 55.5%</td>
+        <td class="right bold">57.8%</td>
+        <td class="right pos">+430 bps</td>
+        <td class="right pos">+330 bps</td>
+        <td class="right pos">+230 bps</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q2 2024</td>
+        <td>Q1 &rsquo;24 call (Apr &rsquo;24)</td>
+        <td>51.0% &ndash; 53.0%</td>
+        <td class="right bold">53.2%</td>
+        <td class="right pos">+220 bps</td>
+        <td class="right pos">+120 bps</td>
+        <td class="right pos">+20 bps</td>
+      </tr>
+      <tr>
+        <td class="bold">Q1 2024</td>
+        <td>Q4 &rsquo;23 call (Jan &rsquo;24)</td>
+        <td>52.0% &ndash; 54.0%</td>
+        <td class="right bold">53.1%</td>
+        <td class="right pos">+110 bps</td>
+        <td class="right pos">+10 bps</td>
+        <td class="right neg">&minus;90 bps</td>
+      </tr>
+      <!-- 2023 -->
+      <tr class="year-divider"><td colspan="7">2023</td></tr>
+      <tr>
+        <td class="bold">Q4 2023</td>
+        <td>Q3 &rsquo;23 call (Oct &rsquo;23)</td>
+        <td>51.5% &ndash; 53.5%</td>
+        <td class="right bold">53.0%</td>
+        <td class="right pos">+150 bps</td>
+        <td class="right pos">+50 bps</td>
+        <td class="right neg">&minus;50 bps</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q3 2023</td>
+        <td>Q2 &rsquo;23 call (Jul &rsquo;23)</td>
+        <td>51.5% &ndash; 53.5%</td>
+        <td class="right bold">54.3%</td>
+        <td class="right pos">+280 bps</td>
+        <td class="right pos">+180 bps</td>
+        <td class="right pos">+80 bps</td>
+      </tr>
+      <tr>
+        <td class="bold">Q2 2023</td>
+        <td>Q1 &rsquo;23 call (Apr &rsquo;23)</td>
+        <td>52.0% &ndash; 54.0%</td>
+        <td class="right bold">54.1%</td>
+        <td class="right pos">+210 bps</td>
+        <td class="right pos">+110 bps</td>
+        <td class="right pos">+10 bps</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q1 2023</td>
+        <td>Q4 &rsquo;22 call (Jan &rsquo;23)</td>
+        <td>53.5% &ndash; 55.5%</td>
+        <td class="right bold">56.3%</td>
+        <td class="right pos">+280 bps</td>
+        <td class="right pos">+180 bps</td>
+        <td class="right pos">+80 bps</td>
+      </tr>
+      <!-- 2022 -->
+      <tr class="year-divider"><td colspan="7">2022</td></tr>
+      <tr class="raised">
+        <td class="bold">Q4 2022</td>
+        <td>Q3 &rsquo;22 call (Oct &rsquo;22)</td>
+        <td>59.5% &ndash; 61.5%</td>
+        <td class="right bold">62.2%</td>
+        <td class="right pos">+270 bps</td>
+        <td class="right pos">+170 bps</td>
+        <td class="right pos">+70 bps</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q3 2022</td>
+        <td>Q2 &rsquo;22 call (Jul &rsquo;22)</td>
+        <td>57.5% &ndash; 59.5%</td>
+        <td class="right bold">60.4%</td>
+        <td class="right pos">+290 bps</td>
+        <td class="right pos">+190 bps</td>
+        <td class="right pos">+90 bps</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q2 2022</td>
+        <td>Q1 &rsquo;22 call (Apr &rsquo;22)</td>
+        <td>56.0% &ndash; 58.0%</td>
+        <td class="right bold">59.1%</td>
+        <td class="right pos">+310 bps</td>
+        <td class="right pos">+210 bps</td>
+        <td class="right pos">+110 bps</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>Systematic GM upside:</strong> TSMC beat its gross margin midpoint in all 15 quarters &mdash; the only metric with a perfect record across the entire dataset. The average beat of +155 bps suggests management incorporates a ~150 bps conservatism buffer. Notably, the beat was widest when FX tailwinds materialized (Q2&ndash;Q4 2022, averaging +190 bps) and during the AI-driven margin expansion (Q3 2024: +330 bps, Q3&ndash;Q4 2025: +265 bps avg). The narrowest beats came in Q1 2024 (+10 bps) when 3nm ramp dilution peaked.
+  </div>
+</div>
+
+<!-- ====== SECTION 3: Operating Margin ====== -->
+<div class="section" id="s3">
+  <h2><span class="num">3</span> Quarterly Operating Margin &mdash; Actuals vs Guidance</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Quarter</th>
+        <th>Guided From</th>
+        <th>Guidance Range</th>
+        <th class="right">Actual</th>
+        <th class="right">vs Low</th>
+        <th class="right">vs Mid</th>
+        <th class="right">vs High</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Pending -->
+      <tr class="year-divider"><td colspan="7">2026 (Pending)</td></tr>
+      <tr>
+        <td class="bold">Q1 2026</td>
+        <td>Q4 &rsquo;25 call (Jan &rsquo;26)</td>
+        <td>54.0% &ndash; 56.0%</td>
+        <td class="right muted">Pending</td>
+        <td class="right muted">&mdash;</td>
+        <td class="right muted">&mdash;</td>
+        <td class="right muted">&mdash;</td>
+      </tr>
+      <!-- 2025 -->
+      <tr class="year-divider"><td colspan="7">2025</td></tr>
+      <tr class="raised">
+        <td class="bold">Q4 2025</td>
+        <td>Q3 &rsquo;25 call (Oct &rsquo;25)</td>
+        <td>49.0% &ndash; 51.0%</td>
+        <td class="right bold">54.0%</td>
+        <td class="right pos">+500 bps</td>
+        <td class="right pos">+400 bps</td>
+        <td class="right pos">+300 bps</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q3 2025</td>
+        <td>Q2 &rsquo;25 call (Jul &rsquo;25)</td>
+        <td>45.5% &ndash; 47.5%</td>
+        <td class="right bold">50.6%</td>
+        <td class="right pos">+510 bps</td>
+        <td class="right pos">+410 bps</td>
+        <td class="right pos">+310 bps</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q2 2025</td>
+        <td>Q1 &rsquo;25 call (Apr &rsquo;25)</td>
+        <td>47.0% &ndash; 49.0%</td>
+        <td class="right bold">49.6%</td>
+        <td class="right pos">+260 bps</td>
+        <td class="right pos">+160 bps</td>
+        <td class="right pos">+60 bps</td>
+      </tr>
+      <tr>
+        <td class="bold">Q1 2025</td>
+        <td>Q4 &rsquo;24 call (Jan &rsquo;25)</td>
+        <td>46.5% &ndash; 48.5%</td>
+        <td class="right bold">48.5%</td>
+        <td class="right pos">+200 bps</td>
+        <td class="right pos">+100 bps</td>
+        <td class="right neutral">0 bps</td>
+      </tr>
+      <!-- 2024 -->
+      <tr class="year-divider"><td colspan="7">2024</td></tr>
+      <tr class="raised">
+        <td class="bold">Q4 2024</td>
+        <td>Q3 &rsquo;24 call (Oct &rsquo;24)</td>
+        <td>46.5% &ndash; 48.5%</td>
+        <td class="right bold">49.0%</td>
+        <td class="right pos">+250 bps</td>
+        <td class="right pos">+150 bps</td>
+        <td class="right pos">+50 bps</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q3 2024</td>
+        <td>Q2 &rsquo;24 call (Jul &rsquo;24)</td>
+        <td>42.5% &ndash; 44.5%</td>
+        <td class="right bold">47.5%</td>
+        <td class="right pos">+500 bps</td>
+        <td class="right pos">+400 bps</td>
+        <td class="right pos">+300 bps</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q2 2024</td>
+        <td>Q1 &rsquo;24 call (Apr &rsquo;24)</td>
+        <td>40.0% &ndash; 42.0%</td>
+        <td class="right bold">42.5%</td>
+        <td class="right pos">+250 bps</td>
+        <td class="right pos">+150 bps</td>
+        <td class="right pos">+50 bps</td>
+      </tr>
+      <tr>
+        <td class="bold">Q1 2024</td>
+        <td>Q4 &rsquo;23 call (Jan &rsquo;24)</td>
+        <td>40.0% &ndash; 42.0%</td>
+        <td class="right bold">42.0%</td>
+        <td class="right pos">+200 bps</td>
+        <td class="right pos">+100 bps</td>
+        <td class="right neutral">0 bps</td>
+      </tr>
+      <!-- 2023 -->
+      <tr class="year-divider"><td colspan="7">2023</td></tr>
+      <tr class="raised">
+        <td class="bold">Q4 2023</td>
+        <td>Q3 &rsquo;23 call (Oct &rsquo;23)</td>
+        <td>39.5% &ndash; 41.5%</td>
+        <td class="right bold">41.6%</td>
+        <td class="right pos">+210 bps</td>
+        <td class="right pos">+110 bps</td>
+        <td class="right pos">+10 bps</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q3 2023</td>
+        <td>Q2 &rsquo;23 call (Jul &rsquo;23)</td>
+        <td>38.0% &ndash; 40.0%</td>
+        <td class="right bold">41.7%</td>
+        <td class="right pos">+370 bps</td>
+        <td class="right pos">+270 bps</td>
+        <td class="right pos">+170 bps</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q2 2023</td>
+        <td>Q1 &rsquo;23 call (Apr &rsquo;23)</td>
+        <td>39.5% &ndash; 41.5%</td>
+        <td class="right bold">42.0%</td>
+        <td class="right pos">+250 bps</td>
+        <td class="right pos">+150 bps</td>
+        <td class="right pos">+50 bps</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q1 2023</td>
+        <td>Q4 &rsquo;22 call (Jan &rsquo;23)</td>
+        <td>41.5% &ndash; 43.5%</td>
+        <td class="right bold">45.5%</td>
+        <td class="right pos">+400 bps</td>
+        <td class="right pos">+300 bps</td>
+        <td class="right pos">+200 bps</td>
+      </tr>
+      <!-- 2022 -->
+      <tr class="year-divider"><td colspan="7">2022</td></tr>
+      <tr class="raised">
+        <td class="bold">Q4 2022</td>
+        <td>Q3 &rsquo;22 call (Oct &rsquo;22)</td>
+        <td>49.0% &ndash; 51.0%</td>
+        <td class="right bold">52.0%</td>
+        <td class="right pos">+300 bps</td>
+        <td class="right pos">+200 bps</td>
+        <td class="right pos">+100 bps</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q3 2022</td>
+        <td>Q2 &rsquo;22 call (Jul &rsquo;22)</td>
+        <td>47.0% &ndash; 49.0%</td>
+        <td class="right bold">50.6%</td>
+        <td class="right pos">+360 bps</td>
+        <td class="right pos">+260 bps</td>
+        <td class="right pos">+160 bps</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q2 2022</td>
+        <td>Q1 &rsquo;22 call (Apr &rsquo;22)</td>
+        <td>45.0% &ndash; 47.0%</td>
+        <td class="right bold">49.1%</td>
+        <td class="right pos">+410 bps</td>
+        <td class="right pos">+310 bps</td>
+        <td class="right pos">+210 bps</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>Operating leverage amplifies GM beats:</strong> OM beat its midpoint in all 15 quarters with an average beat of +231 bps &mdash; 76 bps wider than the GM beat. This is the operating leverage effect: when revenue beats guidance, fixed costs (OpEx) are spread over a larger base, converting each GM bps beat into a larger OM bps beat. The most dramatic was Q3 2025 (+410 bps) when a TWD-appreciation tailwind and strong AI demand combined. In 13 of 15 quarters, OM exceeded even the high end of guidance.
+  </div>
+</div>
+
+<!-- ====== SECTION 4: FX Rate ====== -->
+<div class="section" id="s4">
+  <h2><span class="num">4</span> FX Rate &mdash; Guidance Assumptions</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Quarter Guided</th>
+        <th>Guided From</th>
+        <th class="right">FX Assumption (TWD/USD)</th>
+        <th>Directional Trend</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2026</td></tr>
+      <tr><td>Q1 2026</td><td>Q4 &rsquo;25 call</td><td class="right">31.6</td><td class="pos">TWD weakening</td></tr>
+      <tr class="year-divider"><td colspan="4">2025</td></tr>
+      <tr><td>Q4 2025</td><td>Q3 &rsquo;25 call</td><td class="right">30.6</td><td class="pos">TWD weakening</td></tr>
+      <tr><td>Q3 2025</td><td>Q2 &rsquo;25 call</td><td class="right">29.0</td><td class="neg">Sharp TWD appreciation</td></tr>
+      <tr><td>Q2 2025</td><td>Q1 &rsquo;25 call</td><td class="right">32.5</td><td class="neg">TWD strengthening</td></tr>
+      <tr><td>Q1 2025</td><td>Q4 &rsquo;24 call</td><td class="right">32.8</td><td class="pos">TWD weakening</td></tr>
+      <tr class="year-divider"><td colspan="4">2024</td></tr>
+      <tr><td>Q4 2024</td><td>Q3 &rsquo;24 call</td><td class="right">32.0</td><td class="neg">TWD strengthening</td></tr>
+      <tr><td>Q3 2024</td><td>Q2 &rsquo;24 call</td><td class="right">32.5</td><td class="neutral">Roughly flat</td></tr>
+      <tr><td>Q2 2024</td><td>Q1 &rsquo;24 call</td><td class="right">32.3</td><td class="pos">TWD weakening</td></tr>
+      <tr><td>Q1 2024</td><td>Q4 &rsquo;23 call</td><td class="right">31.1</td><td class="neg">TWD strengthening</td></tr>
+      <tr class="year-divider"><td colspan="4">2023</td></tr>
+      <tr><td>Q4 2023</td><td>Q3 &rsquo;23 call</td><td class="right">32.0</td><td class="pos">TWD weakening</td></tr>
+      <tr><td>Q3 2023</td><td>Q2 &rsquo;23 call</td><td class="right">30.8</td><td class="pos">TWD weakening</td></tr>
+      <tr><td>Q2 2023</td><td>Q1 &rsquo;23 call</td><td class="right">30.4</td><td class="neg">TWD strengthening</td></tr>
+      <tr><td>Q1 2023</td><td>Q4 &rsquo;22 call</td><td class="right">30.7</td><td class="neg">TWD strengthening</td></tr>
+      <tr class="year-divider"><td colspan="4">2022</td></tr>
+      <tr><td>Q4 2022</td><td>Q3 &rsquo;22 call</td><td class="right">31.5</td><td class="pos">TWD weakening sharply</td></tr>
+      <tr><td>Q3 2022</td><td>Q2 &rsquo;22 call</td><td class="right">29.7</td><td class="pos">TWD weakening</td></tr>
+      <tr><td>Q2 2022</td><td>Q1 &rsquo;22 call</td><td class="right">28.8</td><td class="muted">Baseline</td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>FX as margin tailwind/headwind:</strong> TSMC&rsquo;s guidance sensitivity is approximately 40&ndash;50 bps of gross margin per 1 TWD/USD move. When actual FX rates came in weaker than assumptions (as in H2 2022), TSMC captured a significant GM tailwind that partly explains the systematic GM beats. The dramatic shift from 32.5 to 29.0 TWD/USD in the Q3 2025 assumption reflected the sharp TWD appreciation of mid-2025 &mdash; yet TSMC still beat GM guidance by 200 bps that quarter, suggesting pricing power more than offset the FX headwind.
+  </div>
+</div>
+
+<!-- ====== SECTION 5: Full-Year Guidance vs Actuals ====== -->
+<div class="section" id="s5">
+  <h2><span class="num">5</span> Full-Year Guidance vs Actuals</h2>
+
+  <!-- FY 2022 -->
+  <div class="fy-block">
+    <h3>FY 2022</h3>
+    <div class="fy-row">
+      <span class="fy-label">Revenue Growth (Initial &mdash; Q1 &rsquo;22 call)</span>
+      <span class="fy-value">Mid- to high 20s%</span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">Revenue Growth (Q2 revision)</span>
+      <span class="fy-value">Mid-30s% <span class="tag tag-beat">Raised</span></span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">Revenue Growth (Actual)</span>
+      <span class="fy-value pos">+33.5% YoY</span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">Gross Margin (Actual)</span>
+      <span class="fy-value">59.6%</span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">CapEx (Initial)</span>
+      <span class="fy-value">$40B &ndash; $44B</span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">CapEx (Actual)</span>
+      <span class="fy-value neg">$36.3B <span class="tag tag-miss">Below range</span></span>
+    </div>
+  </div>
+
+  <!-- FY 2023 -->
+  <div class="fy-block">
+    <h3>FY 2023</h3>
+    <div class="fy-row">
+      <span class="fy-label">Revenue Growth (Initial &mdash; Q4 &rsquo;22 call)</span>
+      <span class="fy-value">Slight growth in USD</span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">Revenue Growth (Q1 revision)</span>
+      <span class="fy-value">Low to mid-single-digit decline <span class="tag tag-miss">Lowered</span></span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">Revenue Growth (Q2 revision)</span>
+      <span class="fy-value">Decline ~10% <span class="tag tag-miss">Lowered</span></span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">Revenue Growth (Actual)</span>
+      <span class="fy-value neg">&minus;8.7% YoY</span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">Gross Margin (Actual)</span>
+      <span class="fy-value">54.4%</span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">CapEx (Initial)</span>
+      <span class="fy-value">$32B &ndash; $36B</span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">CapEx (Actual)</span>
+      <span class="fy-value neg">$30.5B <span class="tag tag-miss">Below range</span></span>
+    </div>
+  </div>
+
+  <!-- FY 2024 -->
+  <div class="fy-block">
+    <h3>FY 2024</h3>
+    <div class="fy-row">
+      <span class="fy-label">Revenue Growth (Initial &mdash; Q4 &rsquo;23 call)</span>
+      <span class="fy-value">Low to mid-20s%</span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">Revenue Growth (Q2 revision)</span>
+      <span class="fy-value">Slightly above mid-20s% <span class="tag tag-beat">Raised</span></span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">Revenue Growth (Q3 revision)</span>
+      <span class="fy-value">Close to 30% <span class="tag tag-beat">Raised</span></span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">Revenue Growth (Actual)</span>
+      <span class="fy-value pos">+30% YoY ($90B)</span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">Gross Margin (Actual)</span>
+      <span class="fy-value">56.1%</span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">CapEx (Initial)</span>
+      <span class="fy-value">$28B &ndash; $32B</span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">CapEx (Q2 revision)</span>
+      <span class="fy-value">$30B &ndash; $32B <span class="tag tag-beat">Narrowed up</span></span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">CapEx (Actual)</span>
+      <span class="fy-value">$29.8B</span>
+    </div>
+  </div>
+
+  <!-- FY 2025 -->
+  <div class="fy-block">
+    <h3>FY 2025</h3>
+    <div class="fy-row">
+      <span class="fy-label">Revenue Growth (Initial &mdash; Q4 &rsquo;24 call)</span>
+      <span class="fy-value">Close to mid-20s%</span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">Revenue Growth (Q2 revision)</span>
+      <span class="fy-value">Around 30% <span class="tag tag-beat">Raised</span></span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">Revenue Growth (Q3 revision)</span>
+      <span class="fy-value">Close to mid-30s% <span class="tag tag-beat">Raised</span></span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">Revenue Growth (Actual)</span>
+      <span class="fy-value pos">+35.9% YoY ($122B)</span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">Gross Margin (Actual)</span>
+      <span class="fy-value">59.9%</span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">CapEx (Initial)</span>
+      <span class="fy-value">$38B &ndash; $42B</span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">CapEx (Q3 revision)</span>
+      <span class="fy-value">$40B &ndash; $42B <span class="tag tag-beat">Narrowed up</span></span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">CapEx (Actual)</span>
+      <span class="fy-value">$40.9B</span>
+    </div>
+  </div>
+
+  <div class="insight">
+    <strong>Full-year pattern:</strong> In 3 of 4 completed fiscal years (2022, 2024, 2025), TSMC raised its full-year revenue guidance through the year and actual growth exceeded even the raised targets. Only FY2023 saw guidance cuts, as the inventory correction proved deeper than initially expected. CapEx guidance tends to be lowered or tightened during downturns (2022&ndash;2023) and narrowed upward during upcycles (2024&ndash;2025), tracking management&rsquo;s confidence in demand visibility.
+  </div>
+</div>
+
+<!-- ====== SECTION 6: Key Takeaways ====== -->
+<div class="section" id="s6">
+  <h2><span class="num">6</span> Key Takeaways</h2>
+  <div class="takeaways">
+
+    <div class="takeaway">
+      <div class="takeaway-num">1</div>
+      <div class="takeaway-text"><strong>TSMC never misses the low end.</strong> In 15 quarters of guidance, actual revenue always came in at or above the bottom of the range. This reflects management&rsquo;s strong 90-day demand visibility and deliberate conservatism in setting guidance floors.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">2</div>
+      <div class="takeaway-text"><strong>Gross margin guidance is the most conservative metric.</strong> 15/15 quarters beat the GM midpoint, with an average surprise of +155 bps. This systematic upside appears structural rather than accidental &mdash; management consistently incorporates buffers for cost improvement, FX moves, and utilization optimization.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">3</div>
+      <div class="takeaway-text"><strong>Operating margin amplifies the beat through operating leverage.</strong> OM beat its midpoint 15/15 quarters with an even wider +231 bps average surprise. The differential vs GM (+76 bps) comes from fixed-cost leverage: when revenue exceeds guidance, OpEx as a percentage of revenue naturally declines.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">4</div>
+      <div class="takeaway-text"><strong>Revenue beats accelerated with the AI cycle.</strong> The average revenue beat vs midpoint was +0.3% during 2022&ndash;2023 (inventory correction) vs +3.0% during 2024&ndash;2025 (AI demand surge). AI demand appears harder for TSMC to forecast, or management adopted wider conservatism buffers as visibility improved.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">5</div>
+      <div class="takeaway-text"><strong>The Q2 2025 revenue beat (+4.5% vs mid) was the largest single-quarter surprise</strong> at $1.3B above the midpoint. This coincided with the acceleration of AI accelerator chip demand and likely reflected upside from CoWoS advanced packaging capacity coming online faster than expected.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">6</div>
+      <div class="takeaway-text"><strong>Only two revenue misses vs midpoint: Q4 2022 and Q1 2023.</strong> Both occurred during the post-pandemic inventory correction when smartphone and PC demand deteriorated faster than TSMC&rsquo;s guidance cycle. Critically, even these misses stayed within the guidance range &mdash; highlighting the conservatism of the low-end floor.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">7</div>
+      <div class="takeaway-text"><strong>Full-year guidance is systematically conservative.</strong> In 3 of 4 years (2022, 2024, 2025), TSMC raised full-year revenue guidance intra-year and actual growth still exceeded the final raised number. Initial guidance appears to be set at a level management is confident of exceeding.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">8</div>
+      <div class="takeaway-text"><strong>Q3 2024 was the inflection quarter.</strong> The +330 bps GM beat and +400 bps OM beat that quarter marked the moment AI demand overwhelmed the drag from N3 ramp dilution. From Q3 2024 onward, beat magnitudes structurally widened across all three metrics.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">9</div>
+      <div class="takeaway-text"><strong>FX assumptions add a hidden buffer.</strong> Management sets FX assumptions conservatively. When actual TWD/USD rates came in weaker than assumed (common in 2022), the resulting margin tailwind contributed to GM beats. Even in Q3 2025 when the TWD dramatically strengthened (assumption: 29.0), TSMC still beat by +300 bps on GM, proving pricing power dominates FX effects.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">10</div>
+      <div class="takeaway-text"><strong>CapEx guidance is the one metric where TSMC undershoots.</strong> In both 2022 ($36.3B vs $40&ndash;44B guidance) and 2023 ($30.5B vs $32&ndash;36B), actual CapEx came in below the guided range. Management appears to set CapEx guidance optimistically relative to spending pace, then adjusts down if demand softens.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">11</div>
+      <div class="takeaway-text"><strong>The Q1 2026 guidance ($34.6&ndash;35.8B, GM 63&ndash;65%) would be a new high-water mark</strong> on both revenue and GM if achieved. The guidance midpoint of $35.2B represents +4.5% QoQ and the 64% GM midpoint would be 170 bps above Q4 2025&rsquo;s already-record 62.3%. Based on the scorecard pattern, an upside surprise is statistically likely.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">12</div>
+      <div class="takeaway-text"><strong>Investors should &ldquo;model the beat.&rdquo;</strong> TSMC&rsquo;s systematic guidance conservatism means the midpoint is effectively a floor, not a central estimate. Over 15 quarters, the high end of revenue guidance has been a better predictor of actuals than the midpoint, and for margins, even the high end understates reality two-thirds of the time.</div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

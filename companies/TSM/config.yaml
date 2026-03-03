@@ -1,0 +1,223 @@
+# TSMC (Taiwan Semiconductor Manufacturing Company)
+# Company configuration for earnings call extraction pipeline
+
+company:
+  name: "Taiwan Semiconductor Manufacturing Company"
+  ticker: "TSM"
+  sector: "Semiconductors"
+  fiscal_year: "calendar"  # calendar | offset (e.g., HCA fiscal year ends March)
+  currency: "TWD"
+  reporting_currency: "USD"
+
+branding:
+  primary: "#c0392b"     # TSMC red
+  dark: "#1a1a2e"        # Dark blue
+  accent: "#16213e"      # Accent blue
+
+quarters:
+  - id: Q1_2022
+    call_date: "April 14, 2022"
+    reporting_quarter: "Q1 2022"
+    bamsec_id: "8ceb2f84-f4b7-446e-9c86-5459c3d338a3"
+  - id: Q2_2022
+    call_date: "July 14, 2022"
+    reporting_quarter: "Q2 2022"
+    bamsec_id: "5c6260c8-7957-4398-81cd-e3b7f681d119"
+  - id: Q3_2022
+    call_date: "October 13, 2022"
+    reporting_quarter: "Q3 2022"
+    bamsec_id: "ac29d73e-fb06-4822-9c8e-02e7062875a2"
+  - id: Q4_2022
+    call_date: "January 12, 2023"
+    reporting_quarter: "Q4 2022 (Full Year 2022)"
+    bamsec_id: "ef9a588a-a98b-4c44-9dab-902169818205"
+  - id: Q1_2023
+    call_date: "April 20, 2023"
+    reporting_quarter: "Q1 2023"
+    bamsec_id: "59218aae-b119-496d-8ff1-c6dd96740f02"
+  - id: Q2_2023
+    call_date: "July 20, 2023"
+    reporting_quarter: "Q2 2023"
+    bamsec_id: "acabde37-b881-43b2-8d84-ccaceecee42a"
+  - id: Q3_2023
+    call_date: "October 19, 2023"
+    reporting_quarter: "Q3 2023"
+    bamsec_id: "b9b11f9c-27a5-4b73-b316-f978834e453e"
+  - id: Q4_2023
+    call_date: "January 18, 2024"
+    reporting_quarter: "Q4 2023 (Full Year 2023)"
+    bamsec_id: "54fd1ab4-8dce-4c8c-9e83-add442e68d49"
+  - id: Q1_2024
+    call_date: "April 18, 2024"
+    reporting_quarter: "Q1 2024"
+    bamsec_id: "60a0e27e-92eb-4e8f-9c14-dcec322a72af"
+  - id: Q2_2024
+    call_date: "July 18, 2024"
+    reporting_quarter: "Q2 2024"
+    bamsec_id: "ab974356-9233-4415-9150-83a5bed5e77c"
+  - id: Q3_2024
+    call_date: "October 17, 2024"
+    reporting_quarter: "Q3 2024"
+    bamsec_id: "5a6139b0-3bad-4788-90df-52fe5d4b1259"
+  - id: Q4_2024
+    call_date: "January 16, 2025"
+    reporting_quarter: "Q4 2024 (Full Year 2024)"
+    bamsec_id: "f3430ef3-20f1-4aba-9d54-0d0b6884e013"
+  - id: Q1_2025
+    call_date: "April 17, 2025"
+    reporting_quarter: "Q1 2025"
+    bamsec_id: "5a1e416a-d755-4a66-ab26-99b6ed70d029"
+  - id: Q2_2025
+    call_date: "July 17, 2025"
+    reporting_quarter: "Q2 2025"
+    bamsec_id: "3df54427-a429-4374-bb7b-22f0f6abab41"
+  - id: Q3_2025
+    call_date: "October 16, 2025"
+    reporting_quarter: "Q3 2025"
+    bamsec_id: "7de565b8-dca8-47eb-b882-8ae1e734d3ae"
+  - id: Q4_2025
+    call_date: "January 15, 2026"
+    reporting_quarter: "Q4 2025 (Full Year 2025)"
+    bamsec_id: "fcede2c4-3aa4-47aa-88e3-a2665176b8b4"
+
+# Tracked metrics define what appears in the key metrics card and comparison tables.
+# section_pattern: regex to match the section title in the MD file
+# item_pattern: regex to match the specific item within that section
+# comparison: how to compare across quarters (midpoint_pct, midpoint_delta, text_diff)
+tracked_metrics:
+  guidance_for:
+    label: "Guidance For"
+    section_pattern: "^Quarterly Guidance"
+    extract: "section_suffix"  # Extract the parenthetical from section title
+    display: "banner"          # Full-width banner style
+
+  revenue:
+    label: "Next-Q Revenue"
+    section_pattern: "^Quarterly Guidance"
+    item_pattern: "^\\*\\*Revenue:?\\*\\*"
+    comparison: "midpoint_pct"
+    midpoint_format: "dollar_billions"  # $XB...$YB
+
+  gm:
+    label: "Next-Q Gross Margin"
+    section_pattern: "^Quarterly Guidance"
+    item_pattern: "^\\*\\*Gross Margin:?\\*\\*"
+    comparison: "midpoint_delta"
+    midpoint_format: "percentage"  # X%...Y%
+
+  om:
+    label: "Next-Q Operating Margin"
+    section_pattern: "^Quarterly Guidance"
+    item_pattern: "^\\*\\*Operating Margin:?\\*\\*"
+    comparison: "midpoint_delta"
+    midpoint_format: "percentage"
+
+  fy_revenue:
+    label: "FY Revenue Growth"
+    section_pattern: "^Full Year.*Guidance"
+    item_pattern: "^\\*\\*Revenue( growth)?:?\\*\\*"
+    comparison: "text_diff"
+
+  capex:
+    label: "CapEx"
+    section_pattern: "^Full Year.*Guidance"
+    item_pattern: "^\\*\\*CapEx:?\\*\\*"
+    comparison: "text_diff"
+
+  lt_gm:
+    label: "LT Gross Margin Target"
+    section_pattern: "^Long-Term"
+    item_pattern: "^\\*\\*Gross Margin:?\\*\\*"
+    comparison: "text_diff"
+
+  lt_cagr:
+    label: "LT Revenue CAGR"
+    section_pattern: "^Long-Term"
+    item_pattern: "^\\*\\*Revenue CAGR:?\\*\\*"
+    comparison: "text_diff"
+
+  ai_cagr:
+    label: "AI Revenue CAGR"
+    section_pattern: "(?i)(ai|full year.*guidance)"
+    item_pattern: "(?i)ai.*(revenue cagr|accelerator revenue cagr)"
+    comparison: "text_diff"
+
+  ai_share:
+    label: "AI Revenue Share"
+    section_pattern: "(?i)ai"
+    item_pattern: "(?i)ai revenue share"
+    comparison: "text_diff"
+
+# Change detection: patterns for new section detection (generic approach)
+# If a section title matches any of these patterns and didn't exist in the prior quarter,
+# it's flagged as "NEW" in the What Changed box.
+new_section_keywords:
+  - pattern: "(?i)a16"
+    label: "A16 technology first disclosed"
+  - pattern: "(?i)tariff"
+    label: "Tariff impact discussion added"
+  - pattern: "(?i)(ai demand|ai / generative ai)"
+    label: "AI demand emerges as a discussion theme"
+    first_only: true  # Only flag the very first appearance, not reappearances
+    max_quarter_idx: 4  # Only consider as "new" within first 5 quarters
+  - pattern: "(?i)actuals"
+    label: "Full-year actuals reported this quarter"
+  - pattern: "(?i)electricity"
+    label: "Electricity cost impact quantified"
+  - pattern: "(?i)power supply"
+    label: "Power supply assessment added"
+  - pattern: "(?i)four growth"
+    label: "Four Growth Platforms framework introduced"
+
+# Comparison page configuration
+comparison_sections:
+  - title: "Quarterly Revenue Guidance"
+    metric_key: "revenue"
+    columns: ["Quarter", "Revenue Guidance", "Midpoint", "vs Prior"]
+
+  - title: "Quarterly Gross Margin Guidance"
+    metric_key: "gm"
+    columns: ["Quarter", "GM Guidance", "Midpoint", "vs Prior"]
+
+  - title: "Full Year Revenue Guidance"
+    metric_key: "fy_revenue"
+    columns: ["Quarter", "FY Revenue Guidance"]
+
+  - title: "CapEx Guidance"
+    metric_key: "capex"
+    columns: ["Quarter", "CapEx Guidance"]
+
+  - title: "Long-Term Targets"
+    metrics: ["lt_gm", "lt_cagr"]
+    columns: ["Quarter", "LT GM Target", "LT Revenue CAGR"]
+
+  - title: "AI Metrics"
+    metrics: ["ai_cagr", "ai_share"]
+    columns: ["Quarter", "AI Revenue CAGR", "AI Revenue Share"]
+
+# Extraction context: domain-specific hints for Claude during extraction
+extraction_context: |
+  TSMC is a semiconductor foundry. Key domain knowledge:
+  - Node naming: smaller number = more advanced (e.g., 3nm > 5nm > 7nm)
+  - Revenue is reported in both TWD (Taiwan Dollars) and USD
+  - "Wafer revenue" refers to revenue broken down by process technology node
+  - GM = Gross Margin, OM = Operating Margin
+  - CapEx is typically guided as a range in USD billions
+  - CoWoS = Chip-on-Wafer-on-Substrate (advanced packaging)
+  - SoIC = System on Integrated Chips (3D stacking)
+  - HPC = High Performance Computing
+  - DCE = Digital Consumer Electronics
+  - "Foundry 2.0" is TSMC's expanded definition of the foundry market
+  - Fiscal year = calendar year (Q1=Jan-Mar, Q4=Oct-Dec)
+  - Q4 earnings calls typically include full-year actuals
+  - FX impact: TWD weakening vs USD is positive for margins
+
+topic_hints:
+  - "Technology nodes and roadmap (N3, N2, A16)"
+  - "Advanced packaging (CoWoS, SoIC)"
+  - "Overseas fab expansion (Arizona, Japan, Germany)"
+  - "AI demand and revenue mix"
+  - "Gross margin trajectory and dilution factors"
+  - "CapEx and capacity plans"
+  - "Platform revenue breakdown (HPC, Smartphone, IoT, Auto, DCE)"
+  - "Pricing strategy and value-selling"

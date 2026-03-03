@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>META Q2 2022 Earnings Call Detail</title>
+<style>
+:root {
+    --company-primary: #0668E1;
+    --company-dark: #1C2B33;
+    --company-accent: #00C2FF;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 40px 40px 32px;
+    margin: 0 -24px 0;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .header .meta {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    font-weight: 300;
+  }
+  .header .meta span { margin-right: 24px; }
+
+  .nav-bar {
+    background: var(--company-accent);
+    margin: 0 -24px 32px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    transition: all 0.15s;
+  }
+  .nav-bar a:hover { background: rgba(255,255,255,0.2); }
+  .nav-bar a.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .nav-center {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-center a.qbtn {
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+  }
+  .nav-center a.qbtn.current {
+    background: var(--company-primary);
+    border-color: var(--company-primary);
+  }
+  .nav-center a.qbtn:hover { background: rgba(255,255,255,0.2); }
+  .nav-back {
+    background: rgba(255,255,255,0.15) !important;
+    border-color: rgba(255,255,255,0.35) !important;
+  }
+
+  .metrics-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .metric {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+  .metric-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .metric-value {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+  .metric-delta {
+    font-size: 0.72rem;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+  .delta-up { color: var(--green); }
+  .delta-down { color: var(--red); }
+  .delta-flat { color: var(--text-muted); }
+
+  .changes-box {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 5px solid var(--amber);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .changes-box h3 {
+    font-size: 1rem;
+    color: var(--company-dark);
+    margin-bottom: 10px;
+  }
+  .changes-box ul { list-style: none; padding: 0; }
+  .changes-box li {
+    padding: 5px 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .change-tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .ct-raised { background: #d5f5e3; color: #1e8449; }
+  .ct-lowered { background: #fadbd8; color: #c0392b; }
+  .ct-changed { background: #d6eaf8; color: #2471a3; }
+  .ct-new { background: #e8daef; color: #6c3483; }
+  .ct-maintained { background: #fdebd0; color: #b9770e; }
+
+  .content-section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .content-section h3 {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .content-section ul {
+    padding: 14px 18px 14px 36px;
+    margin: 0;
+  }
+  .content-section li {
+    padding: 3px 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .content-section li strong { color: var(--company-dark); }
+
+  .prior-ref {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 40px;
+    overflow: hidden;
+  }
+  .prior-ref-header {
+    background: var(--light-bg);
+    padding: 12px 18px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--company-dark);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .prior-ref-header:hover { background: #eef2f7; }
+  .prior-ref-body { padding: 18px; display: none; }
+  .prior-ref-body.open { display: block; }
+  .prior-ref-body .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .prior-mini {
+    background: var(--light-bg);
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .prior-mini .pm-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .prior-mini .pm-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border);
+  }
+  .footer-nav a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .footer-nav a:hover { text-decoration: underline; }
+
+  /* Comparison page styles */
+  .toc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .toc a {
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 4px 0;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  .comp-section {
+    margin-bottom: 40px;
+  }
+  .comp-section h2 {
+    font-size: 1.2rem;
+    color: var(--company-dark);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--company-primary);
+  }
+
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+  }
+  .comp-table th {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .comp-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .comp-table tr:nth-child(even) { background: var(--light-bg); }
+  .comp-table tr:hover { background: #e8f4fd; }
+
+  @media (max-width: 768px) {
+    .header h1 { font-size: 1.5rem; }
+    .metrics-card { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .nav-center { display: none; }
+    body { padding: 0 16px 60px; }
+    .header { margin: 0 -16px 0; padding: 28px 24px 20px; }
+    .nav-bar { margin: 0 -16px 24px; }
+    .toc { grid-template-columns: 1fr; }
+    .comp-table { font-size: 0.78rem; }
+    .comp-table th, .comp-table td { padding: 6px 8px; }
+  }
+
+  @media print {
+    .nav-bar { display: none; }
+    .header { background: #333; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>META Q2 2022 Earnings Call</h1>
+  <div class="meta">
+    <span>Call Date: July 27, 2022</span>
+    <span>Reporting: Q2 2022</span>
+  </div>
+</div>
+<div class="nav-bar">
+  <a href="Q1_2022.html">&larr; Q1 2022</a>
+  <div class="nav-center">
+    <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="Q4_2025.html" class="qbtn">4Q25</a>
+    <a href="Q3_2025.html" class="qbtn">3Q25</a>
+    <a href="Q2_2025.html" class="qbtn">2Q25</a>
+    <a href="Q1_2025.html" class="qbtn">1Q25</a>
+    <a href="Q4_2024.html" class="qbtn">4Q24</a>
+    <a href="Q3_2024.html" class="qbtn">3Q24</a>
+    <a href="Q2_2024.html" class="qbtn">2Q24</a>
+    <a href="Q1_2024.html" class="qbtn">1Q24</a>
+    <a href="Q4_2023.html" class="qbtn">4Q23</a>
+    <a href="Q3_2023.html" class="qbtn">3Q23</a>
+    <a href="Q2_2023.html" class="qbtn">2Q23</a>
+    <a href="Q1_2023.html" class="qbtn">1Q23</a>
+    <a href="Q4_2022.html" class="qbtn">4Q22</a>
+    <a href="Q3_2022.html" class="qbtn">3Q22</a>
+    <a href="Q2_2022.html" class="qbtn current">2Q22</a>
+    <a href="Q1_2022.html" class="qbtn">1Q22</a>
+  </div>
+  <a href="Q3_2022.html">Q3 2022 &rarr;</a>
+</div>
+
+<div class="metrics-card">
+  <div class="metric">
+    <div class="metric-label">FY Total Expenses</div>
+    <div class="metric-value">$85B-$88B (lowered from prior outlook of $87B-$92B; reduced hiring and overall expense growth to account for more challenging operating environment)</div>
+    <div class="metric-delta delta-flat">Prior: $87B-$92B (lowered from prior outlook of $90B-$95B)</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">FY CapEx</div>
+    <div class="metric-value">$30B-$34B (narrowed from prior range of $29B-$34B)</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Ad Impressions Growth</div>
+    <div class="metric-value">Increased 15% YoY (driven by Asia Pacific and Rest of World)</div>
+    <div class="metric-delta delta-flat">Prior: +15% YoY (driven primarily by Asia Pacific and Rest of World)</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Avg Price Per Ad</div>
+    <div class="metric-value">Decreased 14% YoY (driven by reduction in advertiser demand, mix shift toward lower monetizing services/regions, and foreign currency depreciation)</div>
+    <div class="metric-delta delta-flat">Prior: -8% YoY (driven primarily by ongoing mix shift in ad impressions towards regions and services that monetize at lower rates)</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Operating Margin</div>
+    <div class="metric-value">29%</div>
+    <div class="metric-delta delta-flat">Prior: 31%</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Reality Labs Op Loss</div>
+    <div class="metric-value">$2.8B</div>
+    <div class="metric-delta delta-flat">Prior: $3.0B</div>
+  </div>
+</div>
+
+<div class="changes-box">
+  <h3>What Changed vs Q1 2022</h3>
+  <ul>
+    <li><span class="change-tag ct-lowered">Lowered</span> FY Total Expenses midpoint down 3.4% vs prior quarter ($86.5B vs $89.5B)</li>
+    <li><span class="change-tag ct-changed">Changed</span> Ad Impressions Growth: Increased 15% YoY (driven by Asia Pacific and Rest of World) (prior: +15% YoY (driven primarily by Asia Pacific and Rest of World))</li>
+    <li><span class="change-tag ct-changed">Changed</span> Avg Price Per Ad: Decreased 14% YoY (driven by reduction in advertiser demand, mix shift toward lower monetizing services/regions, and foreign currency depreciation) (prior: -8% YoY (driven primarily by ongoing mix shift in ad impressions towards regions and services that monetize at lower rates))</li>
+    <li><span class="change-tag ct-changed">Changed</span> Operating Margin: 29% (prior: 31%)</li>
+    <li><span class="change-tag ct-changed">Changed</span> Reality Labs Op Loss: $2.8B (prior: $3.0B)</li>
+  </ul>
+</div>
+
+<!-- Full Guidance Content -->
+<div class="content-section">
+  <h3>Q3 2022 Guidance</h3>
+  <ul>
+    <li><strong>Total Revenue:</strong> $26B-$28.5B (implies midpoint of $27.25B; reflects continuation of weak advertising demand environment driven by broader macroeconomic uncertainty)</li>
+    <li><strong>Reality Labs Revenue:</strong> Expected to be lower than Q2 2022 ($452M)</li>
+    <li><strong>Foreign Currency Headwind:</strong> ~6% headwind to YoY total revenue growth in Q3 (based on current exchange rates)</li>
+    <li><strong>Key Assumption - Macro:</strong> Continuation of the weak advertising demand environment experienced throughout Q2; broad-based weakness across most verticals</li>
+    <li><strong>Key Assumption - Transatlantic Data Transfers:</strong> Continuing to monitor developments regarding viability of transatlantic data transfers and potential impact on European operations</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Full Year 2022 Guidance</h3>
+  <ul>
+    <li><strong>Total Expenses:</strong> $85B-$88B (lowered from prior outlook of $87B-$92B; reduced hiring and overall expense growth to account for more challenging operating environment)</li>
+    <li><strong>CapEx (including principal payments on finance leases):</strong> $30B-$34B (narrowed from prior range of $29B-$34B)</li>
+    <li><strong>Tax Rate:</strong> Expected above Q2 rate (18%) and in the high teens for full year 2022 (absent any changes to U.S. tax law)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Consolidated Results</h3>
+  <ul>
+    <li><strong>Revenue:</strong> $28.8B (-1% YoY; +3% YoY on constant currency basis)</li>
+    <li><strong>Foreign Currency Impact:</strong> Revenue would have been ~$1.3B higher had FX rates remained constant with Q2 2021</li>
+    <li><strong>Total Expenses:</strong> $20.5B (+22% YoY)</li>
+    <li><strong>Operating Income:</strong> $8.4B</li>
+    <li><strong>Operating Margin:</strong> 29%</li>
+    <li><strong>Tax Rate:</strong> 18%</li>
+    <li><strong>Interest and Other Expenses:</strong> Loss of $172M (driven mainly by unrealized losses on equity investments)</li>
+    <li><strong>Net Income:</strong> $6.7B</li>
+    <li><strong>Diluted EPS:</strong> $2.46</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Expense Line Items</h3>
+  <ul>
+    <li><strong>Cost of Revenue:</strong> Decreased 4% YoY (growth in core infrastructure and content-related costs more than offset by reduction in Reality Labs loss reserves due to Quest 2 price increase)</li>
+    <li><strong>R&D:</strong> Increased 43% YoY (driven by hiring to support Family of Apps and Reality Labs)</li>
+    <li><strong>Marketing and Sales:</strong> Increased 10% YoY (driven by hiring and marketing spend)</li>
+    <li><strong>G&A:</strong> Increased 53% YoY (driven by legal-related and employee-related costs)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Headcount</h3>
+  <ul>
+    <li><strong>Net New Hires (Q2):</strong> Over 5,700 (majority in technical functions)</li>
+    <li><strong>Total Full-Time Employees:</strong> Over 83,500 (+32% YoY)</li>
+    <li><strong>Outlook:</strong> Headcount growth expected to slow throughout the rest of 2022 due to reduction in hiring plans</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Capital Expenditures and Cash Flow</h3>
+  <ul>
+    <li><strong>CapEx (including principal payments on finance leases):</strong> $7.7B (driven by investments in servers, data centers and network infrastructure; big step-up YoY and sequentially related to server spend including AI infrastructure)</li>
+    <li><strong>Free Cash Flow:</strong> $4.5B</li>
+    <li><strong>Share Repurchases:</strong> $5.1B of Class A common stock in Q2</li>
+    <li><strong>Cash and Marketable Securities:</strong> $40.5B (end of quarter)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Ad Monetization Metrics</h3>
+  <ul>
+    <li><strong>Ad Impressions:</strong> Increased 15% YoY (driven by Asia Pacific and Rest of World)</li>
+    <li><strong>Average Price Per Ad:</strong> Decreased 14% YoY (driven by reduction in advertiser demand, mix shift toward lower monetizing services/regions, and foreign currency depreciation)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>User / Engagement Metrics</h3>
+  <ul>
+    <li><strong>Family Daily Active People (DAP):</strong> ~2.9B (June 2022)</li>
+    <li><strong>Family Monthly Active People (MAP):</strong> ~3.6B (June 2022)</li>
+    <li><strong>Facebook DAUs:</strong> 1.97B (+3% YoY, +60M YoY)</li>
+    <li><strong>Facebook DAU/MAU Ratio:</strong> ~67%</li>
+    <li><strong>Facebook MAUs:</strong> 2.93B (+39M YoY, +1% YoY)</li>
+    <li><strong>Europe DAUs and MAUs:</strong> Declined sequentially (negatively impacted by loss of users in Russia and Ukraine)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>AI-Recommended Content</h3>
+  <ul>
+    <li><strong>Facebook Feed AI-Recommended Content:</strong> ~15% of content recommended by AI from people, groups, or accounts the user does not follow</li>
+    <li><strong>Instagram Feed AI-Recommended Content:</strong> A little more than 15% from non-followed accounts</li>
+    <li><strong>Target:</strong> These numbers expected to more than double by end of 2023</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Reels Performance</h3>
+  <ul>
+    <li><strong>Reels Time Spent Growth:</strong> More than 30% increase in time spent engaging with Reels across Facebook and Instagram (QoQ)</li>
+    <li><strong>Reels Share of Instagram Time:</strong> Previously disclosed at 20% of time spent on Instagram (as of Q1 2022)</li>
+    <li><strong>Reels Revenue Run Rate:</strong> Crossed $1B annual revenue run rate</li>
+    <li><strong>Reels vs. Stories:</strong> Reels has a higher revenue run rate than Stories did at identical times post launch</li>
+    <li><strong>Reels Watch Time Impact (Facebook):</strong> 15% increase in watch time in the Reels video player on Facebook alone after launching a new large AI model for recommendations</li>
+    <li><strong>Reels Monetization Status:</strong> Does not yet monetize at the same rate as Feed or Stories; still a revenue headwind in near term as engagement shifts to Reels</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Family of Apps Segment</h3>
+  <ul>
+    <li><strong>Total Family of Apps Revenue:</strong> $28.4B (-1% YoY)</li>
+    <li><strong>Family of Apps Ad Revenue:</strong> $28.2B (-1% YoY; +3% YoY on constant currency basis)</li>
+    <li><strong>Family of Apps Other Revenue:</strong> $218M (+14% YoY, driven by WhatsApp Business API)</li>
+    <li><strong>Family of Apps Expenses:</strong> $17.2B (+23% YoY, driven by employee-related expenses, legal costs, and infrastructure costs)</li>
+    <li><strong>Family of Apps Operating Income:</strong> $11.2B</li>
+    <li><strong>Family of Apps Operating Margin:</strong> 39%</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Ad Revenue by User Geography (YoY Growth)</h3>
+  <ul>
+    <li><strong>Asia Pacific:</strong> +13% (benefited meaningfully from strong growth in click-to-messaging ads)</li>
+    <li><strong>Rest of World:</strong> +11% (benefited meaningfully from strong growth in click-to-messaging ads)</li>
+    <li><strong>North America:</strong> -4%</li>
+    <li><strong>Europe:</strong> -12%</li>
+    <li><strong>FX Impact:</strong> Headwind in all international regions; Europe and Asia Pacific experienced the largest impacts</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Reality Labs Segment</h3>
+  <ul>
+    <li><strong>Revenue:</strong> $452M (+48% YoY, driven primarily by Quest 2 sales)</li>
+    <li><strong>Expenses:</strong> $3.3B (+19% YoY, due to growth in employee-related costs and R&D operating expenses, partially offset by reduction in loss reserves)</li>
+    <li><strong>Operating Loss:</strong> $2.8B</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Business Messaging and Click-to-Message Ads</h3>
+  <ul>
+    <li><strong>Click-to-Message Advertiser Adoption:</strong> 40% of advertisers already using this format</li>
+    <li><strong>Click-to-Message Revenue:</strong> Already a multibillion-dollar business, with strong double-digit YoY growth</li>
+    <li><strong>Users Messaging Businesses:</strong> Estimated 1 billion users messaging with a business each week across WhatsApp, Messenger, and Instagram</li>
+    <li><strong>Geographic Strength:</strong> Particularly popular with SMBs in emerging markets like Brazil and Mexico; many are new advertisers to Meta who come solely for this format</li>
+    <li><strong>Performance Case Study (RoamHowl Creative):</strong> Click-to-Messenger ads resulted in 2.3x more qualified leads and 57% lower cost per lead compared to normal website conversion ads</li>
+    <li><strong>Performance Case Study (Wild Alaskan Company):</strong> Adding Reels to campaign resulted in 36% increase in return on ad spend, similar uplift in new subscribers, and 26% lower cost per new subscriber</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Reels Monetization Trajectory</h3>
+  <ul>
+    <li><strong>Stories Monetization Timeline:</strong> Stories started rolling out in earnest in 2018; did not reach parity with Feed on a monetization-per-time-spent basis in developed markets until 2022 (multiyear journey)</li>
+    <li><strong>Reels Status:</strong> Still very early in the multiyear monetization journey</li>
+    <li><strong>Reels Revenue Headwind:</strong> Engagement shifting to Reels is an overall headwind on the business in 2022; expected to be a tailwind in the long run but not in 2022</li>
+    <li><strong>Reels Net Impact on Engagement:</strong> Additive to total time spent (net positive), though some cannibalization of Feed and Stories engagement</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Headcount and Cost Discipline</h3>
+  <ul>
+    <li><strong>Hiring Plan:</strong> Steadily reducing headcount growth over the next year; many teams expected to shrink to shift energy to other areas</li>
+    <li><strong>Reported Growth Lag:</strong> Headcount growth will still appear substantial for the next few quarters due to hires earlier in 2022, but should continue to decline over time</li>
+    <li><strong>2023 Headcount:</strong> No specific markers given for 2023; plan to maintain discipline on headcount growth going into 2023 budget cycle</li>
+    <li><strong>Expense Focus:</strong> Reduced hiring and overall expense growth plans for 2022; directing resources toward company priorities</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Metaverse / Reality Labs Strategy</h3>
+  <ul>
+    <li><strong>Investment Posture:</strong> Reality Labs remains a key priority area with increasing investment; discipline applied across entire operating posture</li>
+    <li><strong>Horizon (Social Metaverse Platform):</strong> Web version of Horizon to be launched later in 2022, accessible on all platforms, expected to dramatically increase number of users</li>
+    <li><strong>Avatars Store:</strong> Launched with digital clothes from leading fashion houses; expanding selection and fidelity of Avatar system</li>
+    <li><strong>Project Cambria:</strong> High-end VR device focused on professional users and work, with high-resolution color mixed reality, to be released later in 2022</li>
+    <li><strong>Within Acquisition:</strong> FTC announced lawsuit to block acquisition of Within (VR fitness app); Meta believes acquisition would be good for competition and expand the VR ecosystem</li>
+    <li><strong>Long-Term View:</strong> Management believes developing metaverse platforms will unlock hundreds of billions of dollars, if not trillions, over time</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>AI Strategy and Discovery Engine</h3>
+  <ul>
+    <li><strong>AI Investment Focus:</strong> AI identified as the major technology wave driving the business today; heavy investment in AI compute CapEx</li>
+    <li><strong>Discovery Engine:</strong> Social feeds transitioning from primarily people/accounts you follow to increasingly AI-recommended content from across Facebook and Instagram</li>
+    <li><strong>Content Recommendation Scope:</strong> AI recommendations span all content types -- text, images, links, group content, short-form video (Reels), comments, and more (differentiated from competitors focused on single format)</li>
+    <li><strong>AI for Ads:</strong> Investing in AI to improve ads ranking and measurement capabilities; AI-driven products include Advantage Detailed Targeting and Advantage Lookalikes</li>
+    <li><strong>AI for Content Moderation:</strong> Most content moderation done through AI today; metrics for proactive identification of harmful content generally moving in the right direction</li>
+    <li><strong>Privacy-Enhancing Technologies:</strong> Developing tools like Private Lift (beta testing with large advertisers) for measurement while minimizing personal information processed; investing in Conversions API for direct, reliable, privacy-safe advertiser data connection</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Leadership Transitions</h3>
+  <ul>
+    <li><strong>Sheryl Sandberg:</strong> Last earnings call as COO; transitioning to Meta's Board of Directors</li>
+    <li><strong>Javier Olivan and Marne Levine:</strong> Taking on expanded roles to carry the business forward</li>
+    <li><strong>Dave Wehner:</strong> Transitioning from CFO to Chief Strategy Officer (overseeing strategy and corporate development teams), effective November 2022</li>
+    <li><strong>Susan Li:</strong> Promoted to CFO starting later in 2022 (currently runs financial planning process)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Capital Allocation</h3>
+  <ul>
+    <li><strong>Share Repurchases:</strong> $5.1B in Q2 2022; substantial amount remaining in buyback program; expect to continue buybacks as part of capital allocation strategy</li>
+    <li><strong>Cash Position:</strong> $40.5B in cash and marketable securities at end of Q2</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 2022 Actuals</h3>
+</div>
+
+<div class="prior-ref" id="priorRef">
+  <div class="prior-ref-header" onclick="var b=document.getElementById('priorBody');b.classList.toggle('open');this.querySelector('.arrow').innerHTML=b.classList.contains('open')?'&#9650;':'&#9660;';">
+    Prior Quarter Reference: Q1 2022
+    <span class="arrow">&#9660;</span>
+  </div>
+  <div class="prior-ref-body" id="priorBody">
+    <div class="metric-grid">
+      <div class="prior-mini"><div class="pm-label">Revenue Guidance (Next Q)</div><div class="pm-value">$28B-$30B (midpoint: $29B)</div></div>
+      <div class="prior-mini"><div class="pm-label">FY Total Expenses</div><div class="pm-value">$87B-$92B (lowered from prior outlook of $90B-$95B)</div></div>
+      <div class="prior-mini"><div class="pm-label">Ad Impressions Growth</div><div class="pm-value">+15% YoY (driven primarily by Asia Pacific and Rest of World)</div></div>
+      <div class="prior-mini"><div class="pm-label">Avg Price Per Ad</div><div class="pm-value">-8% YoY (driven primarily by ongoing mix shift in ad impressions towards regions and services that monetize at lower rates)</div></div>
+      <div class="prior-mini"><div class="pm-label">Operating Margin</div><div class="pm-value">31%</div></div>
+      <div class="prior-mini"><div class="pm-label">Reality Labs Op Loss</div><div class="pm-value">$3.0B</div></div>
+    </div>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q1_2022.html" style="color:var(--blue);">View full Q1 2022 detail &rarr;</a></p>
+  </div>
+</div>
+
+<div class="footer-nav">
+  <a href="Q1_2022.html">&larr; Q1 2022</a>
+  <a href="../comparison.html">Back to Overview</a>
+  <a href="Q3_2022.html">Q3 2022 &rarr;</a>
+</div>
+
+</body>
+</html>
