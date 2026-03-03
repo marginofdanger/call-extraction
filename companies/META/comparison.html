@@ -31,8 +31,9 @@
     padding: 0 24px 80px;
   }
 
+  /* Header */
   .header {
-    background: linear-gradient(135deg, var(--company-dark), #0668E1);
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
     color: #fff;
     padding: 48px 40px;
     margin: 0 -24px 40px;
@@ -41,8 +42,9 @@
   .header h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; }
   .header .subtitle { font-size: 1.1rem; opacity: 0.85; font-weight: 300; }
 
+  /* Quarter Navigation */
   .quarter-nav {
-    background: var(--company-dark);
+    background: var(--company-accent);
     border-radius: 8px;
     padding: 16px 20px;
     margin-bottom: 24px;
@@ -66,7 +68,15 @@
     transition: all 0.15s;
   }
   .quarter-nav a:hover { background: rgba(255,255,255,0.25); }
+  .quarter-nav a.overview-link {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.35);
+    padding: 4px 14px;
+    font-size: 0.82rem;
+    margin-left: auto;
+  }
 
+  /* Table of Contents */
   .toc {
     background: var(--light-bg);
     border: 1px solid var(--border);
@@ -76,7 +86,7 @@
     columns: 2;
     column-gap: 40px;
   }
-  .toc h2 { font-size: 1.1rem; color: var(--company-dark); margin-bottom: 12px; column-span: all; }
+  .toc h2 { font-size: 1.1rem; color: var(--company-accent); margin-bottom: 12px; column-span: all; }
   .toc a { display: block; color: var(--blue); text-decoration: none; padding: 3px 0; font-size: 0.9rem; break-inside: avoid; }
   .toc a:hover { text-decoration: underline; }
 
@@ -93,7 +103,7 @@
 
   table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 0.88rem; }
   thead th {
-    background: var(--company-dark);
+    background: var(--company-accent);
     color: #fff; padding: 10px 12px; text-align: left;
     font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap;
   }
@@ -135,8 +145,9 @@
   .takeaway-text { font-size: 0.92rem; }
   .takeaway-text strong { color: var(--company-dark); }
 
+  /* Year divider rows */
   .year-divider td {
-    background: var(--company-dark) !important;
+    background: var(--company-accent) !important;
     color: #fff; font-weight: 700; font-size: 0.82rem;
     padding: 6px 12px; letter-spacing: 0.5px;
   }
@@ -194,7 +205,7 @@
     <a href="quarters/Q2_2022.html">2Q22</a>
     <a href="quarters/Q1_2022.html">1Q22</a>
   </div>
-  <a href="results.html" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.35);padding:4px 14px;font-size:0.82rem;margin-left:auto;">Results Scorecard &rarr;</a>
+  <a href="results.html" class="overview-link">Results Scorecard &rarr;</a>
 </div>
 
 <nav class="toc">
@@ -218,7 +229,7 @@
   <a href="#s17">17. Key Takeaways</a>
 </nav>
 
-<!-- SECTION 1 -->
+<!-- ====== SECTION 1 ====== -->
 <div class="section" id="s1">
 <h2><span class="num">1</span> Next-Quarter Revenue Guidance</h2>
 <table>
@@ -249,7 +260,7 @@
 <div class="insight"><strong>Key Insight:</strong> Revenue guidance midpoint nearly doubled from $29.0B (Q2 2022 guide) to $57.5B (Q4 2025 guide) over this 16-quarter span. The Q4 2022 trough ($27.25B midpoint for Q1 2023) marked the low point of Meta's post-ATT, post-pandemic slump. Sequential guidance increases became the norm from Q1 2023 onward, with the Q4 2025 guide representing the largest sequential jump ($57.5B, +$8.5B from prior).</div>
 </div>
 
-<!-- SECTION 2 -->
+<!-- ====== SECTION 2 ====== -->
 <div class="section" id="s2">
 <h2><span class="num">2</span> Full Year Expense Guidance</h2>
 <table>
@@ -286,7 +297,7 @@
 <div class="insight"><strong>Key Insight:</strong> The FY2023 expense guidance arc is the most dramatic: initial $96B&ndash;$101B (Oct '22) was slashed to $87B&ndash;$89B (Oct '23) &mdash; a $10.5B midpoint reduction driven by the Year of Efficiency restructuring. FY2026 guidance of $162B&ndash;$169B represents a 41% YoY increase, driven overwhelmingly by AI infrastructure costs including third-party cloud spend, depreciation, and technical talent for Meta Superintelligence Labs.</div>
 </div>
 
-<!-- SECTION 3 -->
+<!-- ====== SECTION 3 ====== -->
 <div class="section" id="s3">
 <h2><span class="num">3</span> Full Year CapEx Guidance</h2>
 <table>
@@ -322,7 +333,7 @@
 <div class="insight"><strong>Key Insight:</strong> CapEx is the defining financial story of this era. From a $28B trough (FY2023) to $125B midpoint guidance (FY2026) &mdash; a 4.5x increase in three years. FY2025 CapEx was raised every single quarter, with the initial $60B&ndash;$65B range ending at $70B&ndash;$72B (+$8.5B at midpoint). The FY2026 $115B&ndash;$135B range has a $20B spread &mdash; the widest ever &mdash; reflecting genuine uncertainty about AI infrastructure scaling needs.</div>
 </div>
 
-<!-- SECTION 4 -->
+<!-- ====== SECTION 4 ====== -->
 <div class="section" id="s4">
 <h2><span class="num">4</span> Ad Impressions &amp; Average Price Per Ad</h2>
 <table>
@@ -353,7 +364,7 @@
 <div class="insight"><strong>Key Insight:</strong> The ad monetization story has two distinct phases. In 2022&ndash;early 2023, volume growth (impressions) was strong but pricing collapsed (trough: &minus;22% in Q4 2022) due to ATT signal loss, macro weakness, and mix shift to lower-monetizing surfaces. From Q4 2023 onward, pricing turned positive and has remained there, while the growth driver shifted from volume to value: by Q4 2024, pricing (+14%) contributed more than volume (+6%) for the first time. In 2025, impression growth reaccelerated as engagement improvements on video surfaces added supply.</div>
 </div>
 
-<!-- SECTION 5 -->
+<!-- ====== SECTION 5 ====== -->
 <div class="section" id="s5">
 <h2><span class="num">5</span> Family Daily Active People (DAP)</h2>
 <table>
@@ -384,7 +395,7 @@
 <div class="insight"><strong>Key Insight:</strong> Family DAP grew from ~2.9B to 3.5B+ over 16 quarters &mdash; roughly 600M more daily users (+21%). Growth was remarkably steady despite the geopolitical disruptions (Russia/Ukraine) in 2022 and Meta's internal turmoil. The platform has reached near-saturation in mature markets, with growth driven by APAC and Rest of World, yet even North America saw engagement growth via increased time spent per user through AI recommendations.</div>
 </div>
 
-<!-- SECTION 6 -->
+<!-- ====== SECTION 6 ====== -->
 <div class="section" id="s6">
 <h2><span class="num">6</span> Consolidated Operating Margin</h2>
 <table>
@@ -415,7 +426,7 @@
 <div class="insight"><strong>Key Insight:</strong> Meta's operating margin traced a dramatic V-shape: from 31% (Q1 2022) to a 20% trough (Q3&ndash;Q4 2022) &mdash; driven by runaway expenses, ATT headwinds, and metaverse losses &mdash; then surging to 48% (Q4 2024). The Year of Efficiency cut $10B+ from the expense trajectory while revenue recovered, creating massive operating leverage. In 2025, margins settled at 40&ndash;43% as AI infrastructure spending accelerated, with management guiding that 2026 absolute operating income will exceed 2025 despite even higher investment.</div>
 </div>
 
-<!-- SECTION 7 -->
+<!-- ====== SECTION 7 ====== -->
 <div class="section" id="s7">
 <h2><span class="num">7</span> Reality Labs Operating Losses</h2>
 <table>
@@ -446,7 +457,7 @@
 <div class="insight"><strong>Key Insight:</strong> Reality Labs has consumed an estimated $65B+ in operating losses over FY2022&ndash;FY2025. Losses deepened from ~$13.8B (FY2022) to ~$17.7B (FY2024). However, the Q4 2025 call marked a turning point: Zuckerberg described 2025 as the likely peak for RL losses, with investment shifting toward glasses/wearables and away from pure VR. Ray-Ban Meta glasses tripled in sales during 2025, and FY2026 RL losses are expected to remain similar to 2025 levels before gradually declining.</div>
 </div>
 
-<!-- SECTION 8 -->
+<!-- ====== SECTION 8 ====== -->
 <div class="section" id="s8">
 <h2><span class="num">8</span> Reels: Headwind to $50B Run Rate</h2>
 <table>
@@ -477,7 +488,7 @@
 <div class="insight"><strong>Key Insight:</strong> Reels is the canonical example of Meta's ability to disrupt itself. In early 2022, Reels was a $1B revenue headwind costing $500M+ per quarter in displaced higher-monetizing inventory. By Q3 2023, it reached net neutrality (ahead of schedule). By Q3 2025, it was a $50B+ annual run rate and the dominant engagement format. Reels now drives 50% of Instagram time and 30%+ video growth, and Meta stopped reporting it as a separate line item because it became inseparable from the core business.</div>
 </div>
 
-<!-- SECTION 9 -->
+<!-- ====== SECTION 9 ====== -->
 <div class="section" id="s9">
 <h2><span class="num">9</span> Headcount: Restructuring &amp; Rebuild</h2>
 <table>
@@ -508,7 +519,7 @@
 <div class="insight"><strong>Key Insight:</strong> Headcount peaked at ~87,000 (Q3 2022) and troughed at ~66,100 (Q3 2023) &mdash; a reduction of ~21,000 people (~24%). The rebuild has been deliberately different: almost exclusively technical hires in AI, infrastructure, and monetization. By Q4 2025, headcount reached 78,800 but the composition has shifted fundamentally toward engineering talent. Zuckerberg's stated vision of AI coding agents doing "mid-level engineer" work by 2025&ndash;2026 suggests headcount growth may moderate even as capability scales.</div>
 </div>
 
-<!-- SECTION 10 -->
+<!-- ====== SECTION 10 ====== -->
 <div class="section" id="s10">
 <h2><span class="num">10</span> AI Strategy &amp; Recommendation Systems</h2>
 <table>
@@ -542,7 +553,7 @@
 <div class="insight"><strong>Key Insight:</strong> Meta's AI evolution across these 16 quarters traces a clear arc: from "Discovery Engine" (Q1 2022, recommending content beyond followed accounts at ~15%) to "Superintelligence" (Q4 2025, MSL with multi-gigawatt clusters). The mid-journey inflection was Llama 2 (Q2 2023), which transformed Meta from an AI consumer to an AI platform company. By 2025, AI-recommended content exceeds 50% on Instagram, and the Andromeda ads engine achieved a 10,000x increase in model complexity. The announcement of merging LLMs with recommendation systems signals the next frontier.</div>
 </div>
 
-<!-- SECTION 11 -->
+<!-- ====== SECTION 11 ====== -->
 <div class="section" id="s11">
 <h2><span class="num">11</span> Llama &amp; Foundation Models</h2>
 <table>
@@ -571,7 +582,7 @@
 <div class="insight"><strong>Key Insight:</strong> From zero LLM presence in 2022 to training frontier models on 100,000+ GPU clusters by late 2024, Meta's foundation model trajectory is remarkable. The open-source strategy (Llama) created an industry ecosystem: NVIDIA and AMD optimize chips for Llama, enterprises and governments adopt it, and Meta benefits from community improvements. Each Llama generation requires ~10x the compute, explaining the exponential CapEx trajectory. The creation of Meta Superintelligence Labs (MSL) in 2025 signals a shift from "competitive with closed models" to "leading the frontier."</div>
 </div>
 
-<!-- SECTION 12 -->
+<!-- ====== SECTION 12 ====== -->
 <div class="section" id="s12">
 <h2><span class="num">12</span> Generative AI Advertising &amp; Advantage+</h2>
 <table>
@@ -603,7 +614,7 @@
 <div class="insight"><strong>Key Insight:</strong> Advantage+ Shopping went from launch (Q3 2022) to $20B+ run rate (Q4 2024) in just over two years. The gen AI ad creative revolution exploded in 2024: from 1M advertisers in mid-2024 to 4M+ by year-end. The end-to-end AI ad platform reached a $60B run rate by Q3 2025. Meta's incremental attribution feature (launched mid-2025) showed 24% more incremental conversions vs. standard attribution, achieving a multibillion-dollar run rate within 7 months. The advertising platform has been fundamentally rebuilt around AI.</div>
 </div>
 
-<!-- SECTION 13 -->
+<!-- ====== SECTION 13 ====== -->
 <div class="section" id="s13">
 <h2><span class="num">13</span> Business Messaging &amp; WhatsApp</h2>
 <table>
@@ -634,7 +645,7 @@
 <div class="insight"><strong>Key Insight:</strong> Business messaging evolved from a "third revenue pillar" concept (Q4 2022) to a material revenue driver. FoA Other Revenue (the best proxy) grew from $215M (Q1 2022) to $801M (Q4 2025) &mdash; nearly 4x. Click-to-WhatsApp ads reached 60% YoY growth by Q3 2025, and WhatsApp paid messaging crossed a $2B annual run rate. The introduction of Business AIs (agents that can sell, support, and transact) represents the next phase: Meta expects every business to eventually have an AI agent across its messaging platforms.</div>
 </div>
 
-<!-- SECTION 14 -->
+<!-- ====== SECTION 14 ====== -->
 <div class="section" id="s14">
 <h2><span class="num">14</span> Threads: Launch to Monetization</h2>
 <table>
@@ -660,7 +671,7 @@
 <div class="insight"><strong>Key Insight:</strong> Threads went from zero to 350M+ MAU in under two years &mdash; faster than any Meta product except the original Facebook. It passed 150M daily actives by Q3 2025 and began monetization in early 2025. The playbook is classic Meta: build audience first, optimize engagement, then gradually introduce ads. Management repeatedly emphasized Threads would not be a meaningful revenue contributor in 2025, but the global ad expansion in January 2026 signals acceleration ahead.</div>
 </div>
 
-<!-- SECTION 15 -->
+<!-- ====== SECTION 15 ====== -->
 <div class="section" id="s15">
 <h2><span class="num">15</span> Regulatory &amp; Legal Environment</h2>
 <table>
@@ -689,7 +700,7 @@
 <div class="insight"><strong>Key Insight:</strong> The EU regulatory environment has been a persistent overhang across all 16 quarters, evolving from data transfer concerns (2022) to DMA-driven changes to ad personalization (2025). The Q1 2025 disclosure that EU/EEA + Switzerland represents 16% of worldwide revenue put a quantifiable frame around the risk. Management's Q4 2025 guidance explicitly notes EU Less Personalized Ads as a revenue headwind for later in 2026. Meanwhile, U.S. youth-related trials scheduled for 2026 represent a new domestic legal frontier.</div>
 </div>
 
-<!-- SECTION 16 -->
+<!-- ====== SECTION 16 ====== -->
 <div class="section" id="s16">
 <h2><span class="num">16</span> Capital Return &amp; Allocation</h2>
 <table>
@@ -716,7 +727,7 @@
 <div class="insight"><strong>Key Insight:</strong> Capital allocation has undergone a fundamental shift. In 2022, Meta returned $27.9B via buybacks while simultaneously facing revenue declines &mdash; arguably buying at favorable prices. In early 2024, Meta initiated its first-ever dividend and executed a $14.6B buyback quarter. But by Q4 2025, buybacks dropped to zero for the first time in ~4 years as management explicitly prioritized AI infrastructure investment. The introduction of debt ($28.8B by end-2024) and external partnerships (Blue Owl JV) signal Meta is accessing every capital source to fund its AI ambitions.</div>
 </div>
 
-<!-- SECTION 17: KEY TAKEAWAYS -->
+<!-- ====== SECTION 17 ====== -->
 <div class="section" id="s17">
 <h2><span class="num">17</span> Key Takeaways</h2>
 <div class="takeaways">
@@ -784,9 +795,9 @@
 </div>
 </div>
 
-<div style="margin-top:60px; padding-top:20px; border-top:2px solid var(--border); font-size:0.82rem; color:var(--text-muted); text-align:center;">
-  <p>Data sourced from public earnings call transcripts via <a href="https://www.bamsec.com" style="color:var(--blue);">BamSEC</a>. Analysis generated with Claude.</p>
-  <p style="margin-top:8px;"><a href="../../index.html" style="color:var(--blue);">Back to Company Index</a></p>
+<div style="text-align:center; padding:40px 0 20px; color:var(--text-muted); font-size:0.8rem; border-top:1px solid var(--border); margin-top:40px;">
+  Meta Platforms Guidance Evolution &mdash; 16-Quarter Analysis &mdash; Q1 2022 through Q4 2025<br>
+  Data extracted from BamSEC (AlphaSense) earnings call transcripts
 </div>
 
 </body>
