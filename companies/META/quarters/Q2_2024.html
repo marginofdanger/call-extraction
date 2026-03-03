@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>META Q2 2024 Earnings Call Detail</title>
+<style>
+:root {
+    --company-primary: #0668E1;
+    --company-dark: #1C2B33;
+    --company-accent: #00C2FF;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 40px 40px 32px;
+    margin: 0 -24px 0;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .header .meta {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    font-weight: 300;
+  }
+  .header .meta span { margin-right: 24px; }
+
+  .nav-bar {
+    background: var(--company-accent);
+    margin: 0 -24px 32px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    transition: all 0.15s;
+  }
+  .nav-bar a:hover { background: rgba(255,255,255,0.2); }
+  .nav-bar a.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .nav-center {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-center a.qbtn {
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+  }
+  .nav-center a.qbtn.current {
+    background: var(--company-primary);
+    border-color: var(--company-primary);
+  }
+  .nav-center a.qbtn:hover { background: rgba(255,255,255,0.2); }
+  .nav-back {
+    background: rgba(255,255,255,0.15) !important;
+    border-color: rgba(255,255,255,0.35) !important;
+  }
+
+  .metrics-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .metric {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+  .metric-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .metric-value {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+  .metric-delta {
+    font-size: 0.72rem;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+  .delta-up { color: var(--green); }
+  .delta-down { color: var(--red); }
+  .delta-flat { color: var(--text-muted); }
+
+  .changes-box {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 5px solid var(--amber);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .changes-box h3 {
+    font-size: 1rem;
+    color: var(--company-dark);
+    margin-bottom: 10px;
+  }
+  .changes-box ul { list-style: none; padding: 0; }
+  .changes-box li {
+    padding: 5px 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .change-tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .ct-raised { background: #d5f5e3; color: #1e8449; }
+  .ct-lowered { background: #fadbd8; color: #c0392b; }
+  .ct-changed { background: #d6eaf8; color: #2471a3; }
+  .ct-new { background: #e8daef; color: #6c3483; }
+  .ct-maintained { background: #fdebd0; color: #b9770e; }
+
+  .content-section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .content-section h3 {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .content-section ul {
+    padding: 14px 18px 14px 36px;
+    margin: 0;
+  }
+  .content-section li {
+    padding: 3px 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .content-section li strong { color: var(--company-dark); }
+
+  .prior-ref {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 40px;
+    overflow: hidden;
+  }
+  .prior-ref-header {
+    background: var(--light-bg);
+    padding: 12px 18px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--company-dark);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .prior-ref-header:hover { background: #eef2f7; }
+  .prior-ref-body { padding: 18px; display: none; }
+  .prior-ref-body.open { display: block; }
+  .prior-ref-body .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .prior-mini {
+    background: var(--light-bg);
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .prior-mini .pm-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .prior-mini .pm-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border);
+  }
+  .footer-nav a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .footer-nav a:hover { text-decoration: underline; }
+
+  /* Comparison page styles */
+  .toc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .toc a {
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 4px 0;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  .comp-section {
+    margin-bottom: 40px;
+  }
+  .comp-section h2 {
+    font-size: 1.2rem;
+    color: var(--company-dark);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--company-primary);
+  }
+
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+  }
+  .comp-table th {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .comp-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .comp-table tr:nth-child(even) { background: var(--light-bg); }
+  .comp-table tr:hover { background: #e8f4fd; }
+
+  @media (max-width: 768px) {
+    .header h1 { font-size: 1.5rem; }
+    .metrics-card { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .nav-center { display: none; }
+    body { padding: 0 16px 60px; }
+    .header { margin: 0 -16px 0; padding: 28px 24px 20px; }
+    .nav-bar { margin: 0 -16px 24px; }
+    .toc { grid-template-columns: 1fr; }
+    .comp-table { font-size: 0.78rem; }
+    .comp-table th, .comp-table td { padding: 6px 8px; }
+  }
+
+  @media print {
+    .nav-bar { display: none; }
+    .header { background: #333; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>META Q2 2024 Earnings Call</h1>
+  <div class="meta">
+    <span>Call Date: July 31, 2024</span>
+    <span>Reporting: Q2 2024 (April - June 2024)</span>
+  </div>
+</div>
+<div class="nav-bar">
+  <a href="Q1_2024.html">&larr; Q1 2024</a>
+  <div class="nav-center">
+    <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="Q4_2025.html" class="qbtn">4Q25</a>
+    <a href="Q3_2025.html" class="qbtn">3Q25</a>
+    <a href="Q2_2025.html" class="qbtn">2Q25</a>
+    <a href="Q1_2025.html" class="qbtn">1Q25</a>
+    <a href="Q4_2024.html" class="qbtn">4Q24</a>
+    <a href="Q3_2024.html" class="qbtn">3Q24</a>
+    <a href="Q2_2024.html" class="qbtn current">2Q24</a>
+    <a href="Q1_2024.html" class="qbtn">1Q24</a>
+    <a href="Q4_2023.html" class="qbtn">4Q23</a>
+    <a href="Q3_2023.html" class="qbtn">3Q23</a>
+    <a href="Q2_2023.html" class="qbtn">2Q23</a>
+    <a href="Q1_2023.html" class="qbtn">1Q23</a>
+    <a href="Q4_2022.html" class="qbtn">4Q22</a>
+    <a href="Q3_2022.html" class="qbtn">3Q22</a>
+    <a href="Q2_2022.html" class="qbtn">2Q22</a>
+    <a href="Q1_2022.html" class="qbtn">1Q22</a>
+  </div>
+  <a href="Q3_2024.html">Q3 2024 &rarr;</a>
+</div>
+
+<div class="metrics-card">
+  <div class="metric">
+    <div class="metric-label">Revenue Guidance (Next Q)</div>
+    <div class="metric-value">$38.5B - $41.0B (midpoint: $39.75B)</div>
+    <div class="metric-delta delta-flat">Prior: $36.5B - $39.0B (midpoint: $37.75B)</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">FY Total Expenses</div>
+    <div class="metric-value">$96B - $99B (unchanged from prior outlook)</div>
+    <div class="metric-delta delta-flat">Prior: $96B - $99B (raised from prior outlook of $94B - $99B; increase due to higher infrastructure and legal costs)</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">FY CapEx</div>
+    <div class="metric-value">$37B - $40B (raised from prior range of $35B - $40B; low end raised by $2B)</div>
+    <div class="metric-delta delta-flat">Prior: $35B - $40B (raised from prior range of $30B - $37B; increase driven by accelerating infrastructure investments to support AI road map)</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Family DAP</div>
+    <div class="metric-value">~3.27B in June (also described as "more than 3.2 billion")</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Operating Margin</div>
+    <div class="metric-value">38%</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Reality Labs Op Loss</div>
+    <div class="metric-value">$4.5B</div>
+    <div class="metric-delta delta-flat">Prior: $3.8B</div>
+  </div>
+</div>
+
+<div class="changes-box">
+  <h3>What Changed vs Q1 2024</h3>
+  <ul>
+    <li><span class="change-tag ct-raised">Raised</span> Revenue Guidance (Next Q) midpoint up 5.3% vs prior quarter ($39.8B vs $37.8B)</li>
+    <li><span class="change-tag ct-raised">Raised</span> FY CapEx midpoint up 2.7% vs prior quarter ($38.5B vs $37.5B)</li>
+    <li><span class="change-tag ct-changed">Changed</span> Reality Labs Op Loss: $4.5B (prior: $3.8B)</li>
+  </ul>
+</div>
+
+<!-- Full Guidance Content -->
+<div class="content-section">
+  <h3>Q3 2024 Revenue Guidance</h3>
+  <ul>
+    <li><strong>Revenue:</strong> $38.5B - $41.0B (midpoint: $39.75B)</li>
+    <li><strong>FX Assumption:</strong> 2% headwind to YoY total revenue growth based on current exchange rates</li>
+    <li><strong>Commentary:</strong> Expect YoY growth to slow in Q3 as Meta laps strong growth from China-based advertisers and strong Reels impression growth from prior year; expect modestly larger FX headwinds in Q3; continued healthy global advertising demand and ongoing ad performance improvements expected; broad-based strength across regions and verticals including smaller advertisers expected to continue</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Full Year 2024 Guidance</h3>
+</div>
+<div class="content-section">
+  <h3>Expense Outlook</h3>
+  <ul>
+    <li><strong>Total Expenses:</strong> $96B - $99B (unchanged from prior outlook)</li>
+    <li><strong>Reality Labs Operating Losses:</strong> expected to "increase meaningfully year-over-year" due to ongoing product development efforts and investments to further scale ecosystem</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>CapEx Outlook</h3>
+  <ul>
+    <li><strong>CapEx:</strong> $37B - $40B (raised from prior range of $35B - $40B; low end raised by $2B)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>2025 Preliminary Outlook</h3>
+  <ul>
+    <li><strong>CapEx:</strong> "significant CapEx growth in 2025" expected to support AI research and product development efforts</li>
+    <li><strong>Infrastructure Costs:</strong> expected to be "a significant driver of expense growth next year" as Meta recognizes depreciation and operating costs associated with expanded infrastructure footprint</li>
+    <li><strong>Quantitative 2025 Guidance:</strong> not yet provided; expected on the Q4 2024 call</li>
+    <li><strong>Headcount:</strong> no 2025 headcount growth expectations provided yet (budgeting process not started)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Consolidated Results</h3>
+  <ul>
+    <li><strong>Revenue:</strong> $39.1B (+22% YoY, +23% on constant currency basis)</li>
+    <li><strong>Total Expenses:</strong> $24.2B (+7% YoY)</li>
+    <li><strong>Operating Income:</strong> $14.8B</li>
+    <li><strong>Operating Margin:</strong> 38%</li>
+    <li><strong>Tax Rate:</strong> 11%</li>
+    <li><strong>Net Income:</strong> $13.5B</li>
+    <li><strong>Diluted EPS:</strong> $5.16</li>
+    <li><strong>Headcount:</strong> ~70,800 employees (+2% from Q1 2024)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Expense Line Items (YoY)</h3>
+  <ul>
+    <li><strong>Cost of Revenue:</strong> +23% YoY (driven by higher infrastructure and Reality Labs inventory costs)</li>
+    <li><strong>R&D:</strong> +13% YoY (driven by higher headcount-related expenses and infrastructure costs, partially offset by lower restructuring costs)</li>
+    <li><strong>Marketing and Sales:</strong> -14% YoY (lower restructuring and headcount-related costs)</li>
+    <li><strong>G&A:</strong> -12% YoY (lower legal-related expenses)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Capital Expenditures & Cash Flow</h3>
+  <ul>
+    <li><strong>CapEx (including principal payments on finance leases):</strong> $8.5B (driven by investments in servers, data centers, and network infrastructure)</li>
+    <li><strong>Free Cash Flow:</strong> $10.9B</li>
+    <li><strong>Share Repurchases:</strong> $6.3B of Class A common stock</li>
+    <li><strong>Dividends:</strong> $1.3B paid to shareholders</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Balance Sheet Highlights</h3>
+  <ul>
+    <li><strong>Cash and Marketable Securities:</strong> $58.1B</li>
+    <li><strong>Debt:</strong> $18.4B</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Family of Apps Segment</h3>
+</div>
+<div class="content-section">
+  <h3>Engagement Metrics</h3>
+  <ul>
+    <li><strong>Family DAP (Daily Active People):</strong> ~3.27B in June (also described as "more than 3.2 billion")</li>
+    <li><strong>WhatsApp U.S. Monthly Actives:</strong> 100M+</li>
+    <li><strong>Threads Monthly Actives:</strong> approaching 200M</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Family of Apps Revenue</h3>
+  <ul>
+    <li><strong>FoA Total Revenue:</strong> $38.7B (+22% YoY)</li>
+    <li><strong>FoA Ads Revenue:</strong> $38.3B (+22% YoY, +23% on constant currency basis)</li>
+    <li><strong>FoA Other Revenue:</strong> $389M (+73% YoY, driven primarily by WhatsApp business platform messaging revenue growth)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Ad Revenue by Vertical (YoY contribution to growth)</h3>
+  <ul>
+    <li><strong>Largest Contributor:</strong> Online commerce</li>
+    <li><strong>Second:</strong> Gaming</li>
+    <li><strong>Third:</strong> Entertainment and media</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Ad Revenue by User Geography (YoY growth)</h3>
+  <ul>
+    <li><strong>Rest of World:</strong> +33%</li>
+    <li><strong>Europe:</strong> +26%</li>
+    <li><strong>Asia Pacific:</strong> +20%</li>
+    <li><strong>North America:</strong> +17%</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Ad Revenue by Advertiser Geography</h3>
+  <ul>
+    <li><strong>Asia Pacific (advertiser basis):</strong> +28% (though below Q1 rate of +41% due to lapping stronger China-based advertiser demand)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Ad Impressions & Pricing</h3>
+  <ul>
+    <li><strong>Ad Impressions:</strong> +10% YoY (mainly driven by Asia Pacific and Rest of World)</li>
+    <li><strong>Average Price Per Ad:</strong> +10% YoY (driven by increased advertiser demand and improved ad performance, partially offset by impression growth from lower monetizing regions and services)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Family of Apps Profitability</h3>
+  <ul>
+    <li><strong>FoA Expenses:</strong> $19.4B (~80% of overall expenses, +4% YoY; driven by higher infrastructure and headcount-related expenses, partially offset by lower restructuring costs)</li>
+    <li><strong>FoA Operating Income:</strong> $19.3B</li>
+    <li><strong>FoA Operating Margin:</strong> 50%</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Reality Labs Segment</h3>
+  <ul>
+    <li><strong>RL Revenue:</strong> $353M (+28% YoY, driven primarily by Quest headset sales)</li>
+    <li><strong>RL Expenses:</strong> $4.8B (+21% YoY, driven by higher headcount-related expenses and Reality Labs inventory costs)</li>
+    <li><strong>RL Operating Loss:</strong> $4.5B</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Tax Rate</h3>
+  <ul>
+    <li><strong>Full Year 2024 Tax Rate:</strong> mid-teens (absent any changes to tax landscape)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Headcount</h3>
+  <ul>
+    <li><strong>Year-End 2024 Headcount:</strong> expected to end "meaningfully higher" than year-end 2023 (working down a prior hiring underrun)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>AI Strategy & Infrastructure Investment</h3>
+</div>
+<div class="content-section">
+  <h3>Llama Foundation Models</h3>
+  <ul>
+    <li><strong>Llama 3.1 Release:</strong> includes the "first frontier-level open source model" plus new small and medium-sized models</li>
+    <li><strong>Llama 3.1 405B Parameter Model:</strong> better cost performance relative to leading closed models</li>
+    <li><strong>Llama 3 Training:</strong> trained on 16,000 H100 GPUs</li>
+    <li><strong>Llama 4 Compute Requirement:</strong> expected to require ~10x the compute used to train Llama 3 (~160,000 GPU equivalent)</li>
+    <li><strong>GPU Fleet:</strong> 600,000 GPU equivalents expected by year-end 2024</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Meta AI</h3>
+  <ul>
+    <li><strong>Usage:</strong> on track to achieve goal of becoming the most used AI assistant by end of 2024</li>
+    <li><strong>Queries:</strong> billions of queries since launch</li>
+    <li><strong>Availability:</strong> 20+ countries and 8 languages</li>
+    <li><strong>Largest Market for Meta AI Usage:</strong> India (on WhatsApp)</li>
+    <li><strong>Monetization Timeline:</strong> not expected to be a meaningful driver of revenue in 2024; monetization expected to take "years"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>AI Studio</h3>
+  <ul>
+    <li><strong>Launch:</strong> launched the week of the earnings call; allows anyone to create AIs to interact with across Meta apps</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Generative AI Advertising Tools</h3>
+  <ul>
+    <li><strong>Advertiser Adoption:</strong> 1M+ advertisers used at least 1 generative AI ad feature (image expansion, background generation, text generation) in the past month</li>
+    <li><strong>Advantage+ Shopping Campaigns:</strong> 22% higher return on ad spend for U.S. advertisers after adoption (per Meta study)</li>
+    <li><strong>Full Image Generation:</strong> began rolling out into Advantage+ creative in May 2024</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>AI Investment Framework</h3>
+  <ul>
+    <li><strong>Core AI:</strong> ROI-based approach; strong returns as engagement and ad performance improvements translate into revenue gains</li>
+    <li><strong>GenAI:</strong> earlier stage; not expected to be a meaningful revenue driver in 2024; focused on 4 primary monetization opportunities: (1) enhanced core ads business, (2) business messaging, (3) Meta AI assistant, (4) organic content growth</li>
+    <li><strong>Infrastructure Flexibility:</strong> CapEx built with fungibility in mind -- GenAI training capacity can be flexed to GenAI inference or core ranking/recommendation with modifications; data center sites staged at various phases of development</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Ad Monetization & Engagement Drivers</h3>
+</div>
+<div class="content-section">
+  <h3>Video & Reels</h3>
+  <ul>
+    <li><strong>Facebook Unified Video Player:</strong> global rollout of unified video player and ranking systems in June 2024; brings Reels, longer videos, and live into a single experience</li>
+    <li><strong>Unified AI Systems Impact:</strong> already increased engagement on Facebook Reels "more than our initial move from CPUs to GPUs did"</li>
+    <li><strong>Instagram Reels:</strong> engagement continues to grow with ongoing recommendation system enhancements</li>
+    <li><strong>Instagram Original Posts:</strong> more than half of recommendations in the U.S. now come from original posts</li>
+    <li><strong>H2 2024 Impression Growth:</strong> video expected to remain a source of impression growth; Reels to continue driving Instagram growth; Facebook expected to grow overall video time while increasing short-form video mix</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Advantage+ Suite</h3>
+  <ul>
+    <li><strong>Advantage+ Shopping - Flexible Format:</strong> introduced in Q2, allows advertisers to upload multiple images/videos for automatic format optimization</li>
+    <li><strong>Advantage+ Shopping - Conversion Types:</strong> expanded to include 10 additional conversion types (e.g., add to cart)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Business Messaging</h3>
+  <ul>
+    <li><strong>WhatsApp Business Platform:</strong> primary driver of FoA other revenue growth (+73%)</li>
+    <li><strong>Business AI Agents:</strong> in alpha testing; positive feedback; vision is every business will have an AI agent</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Metaverse & Reality Labs</h3>
+</div>
+<div class="content-section">
+  <h3>Ray-Ban Meta Smart Glasses</h3>
+  <ul>
+    <li><strong>Demand:</strong> outpacing ability to build them; performing "better than expected"</li>
+    <li><strong>Partnership:</strong> deepening long-term partnership with EssilorLuxottica for future generations of AI glasses</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Quest 3</h3>
+  <ul>
+    <li><strong>Sales:</strong> outpacing expectations</li>
+    <li><strong>Use Cases:</strong> expanding beyond gaming into general computing (video watching, web browsing, virtual desktop PC extension)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Connect Conference</h3>
+  <ul>
+    <li><strong>Date:</strong> September 25, 2024; planned updates on AI and metaverse work</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Capital Return</h3>
+  <ul>
+    <li><strong>Q2 Share Repurchases:</strong> $6.3B</li>
+    <li><strong>Q2 Dividends:</strong> $1.3B</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Regulatory Environment</h3>
+  <ul>
+    <li><strong>Commentary:</strong> monitoring "increasing legal and regulatory headwinds in the EU and the U.S. that could significantly impact our business and our financial results"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Young Adult Engagement (Facebook)</h3>
+  <ul>
+    <li><strong>U.S. & Canada Young Adults (18-29):</strong> healthy growth in app usage for the past several quarters</li>
+    <li><strong>Key Products for Young Adults:</strong> Groups (posting to Groups in U.S. & Canada growing, boosted mainly by young adults) and Marketplace (strong demand for secondhand products)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Marketplace & Commerce</h3>
+  <ul>
+    <li><strong>Shops Ads Revenue:</strong> growing at a strong YoY pace</li>
+    <li><strong>Shops Ads:</strong> driving incremental performance for advertisers; working well with Advantage+ shopping</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 2024 Actuals</h3>
+</div>
+
+<div class="prior-ref" id="priorRef">
+  <div class="prior-ref-header" onclick="var b=document.getElementById('priorBody');b.classList.toggle('open');this.querySelector('.arrow').innerHTML=b.classList.contains('open')?'&#9650;':'&#9660;';">
+    Prior Quarter Reference: Q1 2024
+    <span class="arrow">&#9660;</span>
+  </div>
+  <div class="prior-ref-body" id="priorBody">
+    <div class="metric-grid">
+      <div class="prior-mini"><div class="pm-label">Revenue Guidance (Next Q)</div><div class="pm-value">$36.5B - $39.0B (midpoint: $37.75B)</div></div>
+      <div class="prior-mini"><div class="pm-label">FY Total Expenses</div><div class="pm-value">$96B - $99B (raised from prior outlook of $94B - $99B; increase due to higher infrastructure and legal costs)</div></div>
+      <div class="prior-mini"><div class="pm-label">FY CapEx</div><div class="pm-value">$35B - $40B (raised from prior range of $30B - $37B; increase driven by accelerating infrastructure investments to support AI road map)</div></div>
+      <div class="prior-mini"><div class="pm-label">Operating Margin</div><div class="pm-value">38%</div></div>
+      <div class="prior-mini"><div class="pm-label">Reality Labs Op Loss</div><div class="pm-value">$3.8B</div></div>
+    </div>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q1_2024.html" style="color:var(--blue);">View full Q1 2024 detail &rarr;</a></p>
+  </div>
+</div>
+
+<div class="footer-nav">
+  <a href="Q1_2024.html">&larr; Q1 2024</a>
+  <a href="../comparison.html">Back to Overview</a>
+  <a href="Q3_2024.html">Q3 2024 &rarr;</a>
+</div>
+
+</body>
+</html>

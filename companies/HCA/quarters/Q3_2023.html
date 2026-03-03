@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HCA Q3 2023 Earnings Call Detail</title>
+<style>
+:root {
+    --company-primary: #C8952E;
+    --company-dark: #0D1B2A;
+    --company-accent: #1B365D;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 40px 40px 32px;
+    margin: 0 -24px 0;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .header .meta {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    font-weight: 300;
+  }
+  .header .meta span { margin-right: 24px; }
+
+  .nav-bar {
+    background: var(--company-accent);
+    margin: 0 -24px 32px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    transition: all 0.15s;
+  }
+  .nav-bar a:hover { background: rgba(255,255,255,0.2); }
+  .nav-bar a.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .nav-center {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-center a.qbtn {
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+  }
+  .nav-center a.qbtn.current {
+    background: var(--company-primary);
+    border-color: var(--company-primary);
+  }
+  .nav-center a.qbtn:hover { background: rgba(255,255,255,0.2); }
+  .nav-back {
+    background: rgba(255,255,255,0.15) !important;
+    border-color: rgba(255,255,255,0.35) !important;
+  }
+
+  .metrics-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .metric {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+  .metric-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .metric-value {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+  .metric-delta {
+    font-size: 0.72rem;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+  .delta-up { color: var(--green); }
+  .delta-down { color: var(--red); }
+  .delta-flat { color: var(--text-muted); }
+
+  .changes-box {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 5px solid var(--amber);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .changes-box h3 {
+    font-size: 1rem;
+    color: var(--company-dark);
+    margin-bottom: 10px;
+  }
+  .changes-box ul { list-style: none; padding: 0; }
+  .changes-box li {
+    padding: 5px 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .change-tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .ct-raised { background: #d5f5e3; color: #1e8449; }
+  .ct-lowered { background: #fadbd8; color: #c0392b; }
+  .ct-changed { background: #d6eaf8; color: #2471a3; }
+  .ct-new { background: #e8daef; color: #6c3483; }
+  .ct-maintained { background: #fdebd0; color: #b9770e; }
+
+  .content-section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .content-section h3 {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .content-section ul {
+    padding: 14px 18px 14px 36px;
+    margin: 0;
+  }
+  .content-section li {
+    padding: 3px 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .content-section li strong { color: var(--company-dark); }
+
+  .prior-ref {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 40px;
+    overflow: hidden;
+  }
+  .prior-ref-header {
+    background: var(--light-bg);
+    padding: 12px 18px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--company-dark);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .prior-ref-header:hover { background: #eef2f7; }
+  .prior-ref-body { padding: 18px; display: none; }
+  .prior-ref-body.open { display: block; }
+  .prior-ref-body .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .prior-mini {
+    background: var(--light-bg);
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .prior-mini .pm-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .prior-mini .pm-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border);
+  }
+  .footer-nav a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .footer-nav a:hover { text-decoration: underline; }
+
+  /* Comparison page styles */
+  .toc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .toc a {
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 4px 0;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  .comp-section {
+    margin-bottom: 40px;
+  }
+  .comp-section h2 {
+    font-size: 1.2rem;
+    color: var(--company-dark);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--company-primary);
+  }
+
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+  }
+  .comp-table th {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .comp-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .comp-table tr:nth-child(even) { background: var(--light-bg); }
+  .comp-table tr:hover { background: #e8f4fd; }
+
+  @media (max-width: 768px) {
+    .header h1 { font-size: 1.5rem; }
+    .metrics-card { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .nav-center { display: none; }
+    body { padding: 0 16px 60px; }
+    .header { margin: 0 -16px 0; padding: 28px 24px 20px; }
+    .nav-bar { margin: 0 -16px 24px; }
+    .toc { grid-template-columns: 1fr; }
+    .comp-table { font-size: 0.78rem; }
+    .comp-table th, .comp-table td { padding: 6px 8px; }
+  }
+
+  @media print {
+    .nav-bar { display: none; }
+    .header { background: #333; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>HCA Q3 2023 Earnings Call</h1>
+  <div class="meta">
+    <span>Call Date: October 24, 2023</span>
+    <span>Reporting: Q3 2023</span>
+  </div>
+</div>
+<div class="nav-bar">
+  <a href="Q2_2023.html">&larr; Q2 2023</a>
+  <div class="nav-center">
+    <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="Q4_2025.html" class="qbtn">4Q25</a>
+    <a href="Q3_2025.html" class="qbtn">3Q25</a>
+    <a href="Q2_2025.html" class="qbtn">2Q25</a>
+    <a href="Q1_2025.html" class="qbtn">1Q25</a>
+    <a href="Q4_2024.html" class="qbtn">4Q24</a>
+    <a href="Q3_2024.html" class="qbtn">3Q24</a>
+    <a href="Q2_2024.html" class="qbtn">2Q24</a>
+    <a href="Q1_2024.html" class="qbtn">1Q24</a>
+    <a href="Q4_2023.html" class="qbtn">4Q23</a>
+    <a href="Q3_2023.html" class="qbtn current">3Q23</a>
+    <a href="Q2_2023.html" class="qbtn">2Q23</a>
+    <a href="Q1_2023.html" class="qbtn">1Q23</a>
+    <a href="Q4_2022.html" class="qbtn">4Q22</a>
+    <a href="Q3_2022.html" class="qbtn">3Q22</a>
+    <a href="Q2_2022.html" class="qbtn">2Q22</a>
+    <a href="Q1_2022.html" class="qbtn">1Q22</a>
+  </div>
+  <a href="Q4_2023.html">Q4 2023 &rarr;</a>
+</div>
+
+<div class="metrics-card">
+  <div class="metric">
+    <div class="metric-label">FY 2023 Revenue Guidance</div>
+    <div class="metric-value">$63.5B – $64.5B</div>
+    <div class="metric-delta delta-flat">Prior: <strong>$63.25B – $64.75B</strong></div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">FY 2023 Adj. EBITDA Guidance</div>
+    <div class="metric-value">$12.3B – $12.6B</div>
+    <div class="metric-delta delta-down">Prior: <strong>$12.3B – $12.8B</strong></div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">FY 2023 Diluted EPS Guidance</div>
+    <div class="metric-value">$17.80 – $18.50</div>
+    <div class="metric-delta delta-down">Prior: <strong>$17.70 – $18.90</strong></div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">FY 2023 CapEx Guidance</div>
+    <div class="metric-value">~$4.7B</div>
+    <div class="metric-delta delta-flat">Prior: <strong>~$4.7B</strong></div>
+  </div>
+</div>
+
+<div class="changes-box">
+  <h3>What Changed vs Q2 2023 Guidance</h3>
+  <ul>
+    <li><span class="change-tag ct-changed">Narrowed</span> <strong>Revenue:</strong> $63.5B – $64.5B (was $63.25B – $64.75B) — low end raised, high end lowered</li>
+    <li><span class="change-tag ct-lowered">Lowered</span> <strong>Adj. EBITDA:</strong> $12.3B – $12.6B (was $12.3B – $12.8B) — top end cut $200M due to Valesco losses</li>
+    <li><span class="change-tag ct-lowered">Lowered</span> <strong>Net Income:</strong> $4.94B – $5.13B (was $4.9B – $5.255B) — top end lowered</li>
+    <li><span class="change-tag ct-lowered">Lowered</span> <strong>Diluted EPS:</strong> $17.80 – $18.50 (was $17.70 – $18.90) — top end cut $0.40</li>
+    <li><span class="change-tag ct-maintained">Maintained</span> <strong>Capital Spending:</strong> ~$4.7B (unchanged)</li>
+    <li><span class="change-tag ct-maintained">Maintained</span> <strong>Long-term EBITDA Margin:</strong> 19% – 20% sustainable range reaffirmed</li>
+  </ul>
+</div>
+
+<!-- Full Guidance Content -->
+<div class="content-section">
+  <h3>Full Year 2023 Guidance (Updated Q3 2023)</h3>
+  <ul>
+    <li><strong>GUIDANCE REVISION:</strong> Top end of guidance lowered primarily due to Valesco venture losses.</li>
+  </ul>
+  <table class="comp-table">
+    <thead><tr><th>Metric</th><th>Updated FY 2023 Guidance (Q3 Call)</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Revenue</strong></td><td>$63.5 billion – $64.5 billion</td></tr>
+      <tr><td><strong>Net Income Attributable to HCA Healthcare</strong></td><td>$4.94 billion – $5.13 billion</td></tr>
+      <tr><td><strong>Adjusted EBITDA</strong></td><td>$12.3 billion – $12.6 billion</td></tr>
+      <tr><td><strong>Diluted EPS</strong></td><td>$17.80 – $18.50</td></tr>
+      <tr><td><strong>Capital Spending</strong></td><td>approximately $4.7 billion</td></tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="content-section">
+  <h3>Forward Outlook & Qualitative Commentary</h3>
+  <ul>
+    <li><strong>Long-Term EBITDA Margin Target:</strong> 19% to 20% described as "fairly sustainable" (management confirmed confidence in maintaining this)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Earnings & Revenue</h3>
+  <ul>
+    <li><strong>Diluted EPS:</strong> $3.91</li>
+    <li><strong>Consolidated Net Revenue:</strong> $16.21 billion (up 8.3% YoY from $14.97 billion prior year)</li>
+    <li><strong>Same-Facility Revenue Growth:</strong> +7.9% YoY</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Volume Metrics (Same-Facility Basis)</h3>
+  <ul>
+    <li><strong>Same-Facility Admissions Growth:</strong> +3.4% YoY</li>
+    <li><strong>Same-Facility Commercial Admissions Growth:</strong> +7% YoY</li>
+    <li><strong>Same-Facility Equivalent Admissions Growth:</strong> +4.1%</li>
+    <li><strong>Consolidated Equivalent Admissions Growth:</strong> +4.5%</li>
+    <li><strong>Emergency Room Visits Growth:</strong> +3.5% (same-facility)</li>
+    <li><strong>Outpatient Surgeries Growth:</strong> ~+1% YoY (same-facility)</li>
+    <li><strong>Outpatient Cardiology Procedures Growth:</strong> ~+5% YoY (same-facility)</li>
+    <li><strong>Revenue Per Equivalent Admission Growth:</strong> +3.6% YoY</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Margin & Operating Metrics</h3>
+  <ul>
+    <li><strong>Same-Facility Operating Margins:</strong> over 20%</li>
+    <li><strong>Valesco Impact on Adjusted EBITDA Margins:</strong> approximately -80 basis points in Q3; approximately -40 basis points on YTD basis</li>
+    <li><strong>Valesco Impact on Adjusted EBITDA:</strong> approximately -$100 million in Q3; approximately -$100 million on a YTD basis (inclusive of Q2 revenue revisions)</li>
+    <li><strong>Valesco Margin Impact Breakdown (Other Operating line):</strong> - Valesco: ~50 basis points of margin pressure - Professional fee growth (ex-Valesco): ~40 basis points of margin pressure - Balance: supplemental expense increases related to Florida DPP and other programs - Excluding Valesco, other operating was off ~120 basis points; 40-50 bps from pro fees, balance from supplemental expenses</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Contract Labor & Workforce</h3>
+  <ul>
+    <li><strong>Contract Labor Costs:</strong> down 12.5% YoY vs. Q3 2022; down 11% sequentially (Q3 vs. Q2)</li>
+    <li><strong>Available Bed Capacity Constraints (patient divert rate):</strong> 0.9% of total admissions (consistent with Q2 2023)</li>
+    <li><strong>Nurse Hiring:</strong> strongest it has been all year</li>
+    <li><strong>Turnover:</strong> stable in the quarter</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Cash Flow & Capital Allocation (Q3 2023)</h3>
+  <ul>
+    <li><strong>Cash Flow from Operations:</strong> $2.48 billion</li>
+    <li><strong>Capital Spending:</strong> $1.15 billion</li>
+    <li><strong>Dividends Paid:</strong> ~$160 million</li>
+    <li><strong>Share Repurchases:</strong> $1.14 billion</li>
+    <li><strong>Debt-to-Adjusted EBITDA Leverage Ratio:</strong> near the low end of stated 3x-4x range</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Valesco Venture Details</h3>
+  <ul>
+    <li><strong>Valesco Revenue (YTD):</strong> ~$380 million (just under $400 million)</li>
+    <li><strong>Valesco Scale:</strong> ~5,000 physicians across ~200 different programs</li>
+    <li><strong>Valesco Forward Run Rate Loss:</strong> approximately $50 million per quarter</li>
+    <li><strong>Valesco Revenue/Cost Model (go-forward quarterly):</strong> ~$200 million revenue, ~$250 million cost (per analyst/management confirmation)</li>
+    <li><strong>Professional Fees as % of Other Operating Expense:</strong> just under 24% in Q3 (similar to Q2; up from 22% in Q1)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Supplemental Program Notes</h3>
+  <ul>
+    <li><strong>Florida DPP (Directed Payment Program):</strong> slightly above expectations in Q3, but other supplemental programs were below expectations; net impact roughly offsetting</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Year-to-Date 2023 Performance (Through Q3)</h3>
+  <ul>
+    <li><strong>Same-Facility Admissions Growth:</strong> +3.3% YTD</li>
+    <li><strong>Equivalent Admissions Growth:</strong> +5.1% YTD</li>
+    <li><strong>Non-COVID Admissions Growth:</strong> +7.5% YTD YoY</li>
+    <li><strong>Same-Facility ER Visits Growth:</strong> +5.7% YTD</li>
+    <li><strong>Inpatient Surgeries Growth:</strong> +2.3% YTD</li>
+    <li><strong>Outpatient Surgeries Growth:</strong> +3.1% YTD</li>
+    <li><strong>Managed Care Admissions Growth:</strong> +5.3% YTD</li>
+    <li><strong>Medicare Admissions Growth:</strong> +4.3% YTD</li>
+    <li><strong>Medicaid and Uninsured Admissions:</strong> slightly down from prior year YTD</li>
+    <li><strong>Same-Facility Revenue Growth:</strong> +6.4% YTD</li>
+    <li><strong>Case Mix Index:</strong> held steady, increased slightly over prior year</li>
+    <li><strong>Same-Facility Labor Costs:</strong> below prior year as a percentage of revenue</li>
+    <li><strong>Same-Facility Supply Costs:</strong> below prior year as a percentage of revenue</li>
+    <li><strong>Contract Labor Expense:</strong> down 18% YTD, or over $300 million below prior year</li>
+    <li><strong>Professional Fee Expense Growth (Contracted Providers):</strong> approximately +20% YTD; rate of growth slowed in Q3 vs. Q2</li>
+    <li><strong>Diluted EPS Growth (ex losses on sale of facilities and losses on retirement of debt):</strong> +7.2% YTD</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Notable Items Affecting 2023 Adjusted EBITDA (Context for Year-Over-Year Comparisons)</h3>
+  <ul>
+    <li><strong>2022 Items Not Recurring in 2023:</strong> COVID support payments, out-of-period Texas waiver payment, and 340B impact -- all totaled approximately $500 million (discussed at January year-end call)</li>
+    <li><strong>2023 Q1 Favorable Item:</strong> $145 million payer settlement recorded in Q1 2023</li>
+    <li><strong>Valesco Venture Impact:</strong> ~$100 million negative impact on adjusted EBITDA YTD (through Q3); expected ~$50 million per quarter going forward, meaning less pressure in Q4 than Q3</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Valesco Venture -- Forward Expectations</h3>
+  <ul>
+    <li><strong>Expected Quarterly Loss Run Rate:</strong> ~$50 million per quarter going forward</li>
+    <li><strong>Q4 2023 Expectation:</strong> less pressure than Q3 (management: "including less pressure for the company in the fourth quarter")</li>
+    <li><strong>2024 Implication:</strong> 3 quarters of Valesco losses in 2023 vs. 4 quarters in 2024; management confirmed analyst framing that this creates an incremental ~$50 million headwind in 2024</li>
+    <li><strong>Primary Issue:</strong> revenue shortfalls vs. original model -- claims clearing at lower rates than anticipated</li>
+    <li><strong>Mitigation Strategies:</strong> program adjustments, cost structure reductions, payer reimbursement negotiations, revenue cycle management (contracting, coding, billing, collections now fully managed internally), staffing allocation optimization, overhead reduction</li>
+    <li><strong>Revenue Cycle:</strong> HCA now manages the full revenue cycle for Valesco from contracting to coding to billing and collections</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Professional Fees (Ex-Valesco)</h3>
+  <ul>
+    <li><strong>Growth Rate:</strong> expected to slow going forward vs. ~20% YTD growth</li>
+    <li><strong>Subsidy Requests:</strong> continuing to increase from contracted hospital-based providers</li>
+    <li><strong>Anesthesia:</strong> noted as a particular pressure point</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Labor Environment</h3>
+  <ul>
+    <li><strong>Cost Per Hour:</strong> in line with full-year expectations; stabilized</li>
+    <li><strong>California Minimum Wage Impact:</strong> "very de minimis" impact on HCA; most compensation already in line</li>
+    <li><strong>Unionization:</strong> HCA has been "successful in pushing through those issues organizationally"</li>
+    <li><strong>New Graduate Training Programs:</strong> investment creating a "little bit of a headwind" in Q3 and throughout the year; expected to benefit Q4 and into 2024</li>
+    <li><strong>Galen College of Nursing:</strong> encouraging enrollment pipeline of new nursing students</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Demand Environment</h3>
+  <ul>
+    <li><strong>Healthcare Demand:</strong> remains strong; expected to remain strong driven by population trends, aging baby boomers, chronic conditions</li>
+    <li><strong>GLP-1 Impact:</strong> "way too early" to judge impact on business; bariatric surgeries less than 0.5% of overall revenue; diversified revenue mix cited as mitigating factor</li>
+    <li><strong>Volume Breadth:</strong> every division had admission growth and adjusted admission growth; every service category had growth except obstetrics (births down slightly), pediatrics (down slightly), behavioral (down due to capacity reallocation, not demand)</li>
+    <li><strong>Calendar Impact:</strong> 1 fewer surgical day in Q3 vs. prior year (headwind to surgery and cardiology procedure volumes)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>ER Revitalization Program</h3>
+  <ul>
+    <li><strong>Patient Satisfaction:</strong> up 4-5 points since program began</li>
+    <li><strong>ER Throughput:</strong> seeing ER patient within 9-10 minutes with a clinician upon presentation</li>
+    <li><strong>Discharge Throughput:</strong> improved</li>
+    <li><strong>Admission Throughput:</strong> more efficient floor transfers for admitted patients</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Upcoming Events</h3>
+  <ul>
+    <li><strong>Investor Day:</strong> November 9, 2023 -- will provide early perspectives on 2024, longer-term growth targets, and more detail on company strategy</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>2024 Preview Items (Flagged on Call)</h3>
+  <ul>
+    <li><strong>Known Headwind:</strong> $145 million Q1 2023 payer settlement (non-recurring in 2024)</li>
+    <li><strong>Known Headwind:</strong> 4 quarters of Valesco losses in 2024 vs. 3 quarters in 2023 (incremental ~$50 million)</li>
+    <li><strong>Nevada UPL Program:</strong> new program being introduced; "still too early" for HCA to size the incremental benefit; awaiting approval level</li>
+    <li><strong>Professional Fee Growth:</strong> expected to decelerate but not yet quantified</li>
+    <li><strong>Volume Trends:</strong> management expressed confidence in durability of current demand and competitive positioning trends</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q&A Key Data Points (Supplemental)</h3>
+  <table class="comp-table">
+    <thead><tr><th>Topic</th><th>Detail</th><th>Source</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Valesco Revenue (YTD)</strong></td><td>~$380M (~$200M/quarter run rate going forward)</td><td>Bill Rutherford (Brian Tanquilut Q&A)</td></tr>
+      <tr><td><strong>Valesco Cost Structure</strong></td><td>~$250M/quarter (implying ~$50M loss/quarter)</td><td>Bill Rutherford (John Ransom Q&A)</td></tr>
+      <tr><td><strong>Pro Fees % of Other OpEx</strong></td><td>Q1: 22%, Q2: 24%, Q3: just under 24%</td><td>Bill Rutherford (Gary Taylor Q&A)</td></tr>
+      <tr><td><strong>Valesco Q3 EBITDA Impact</strong></td><td>~80 bps margin; ~50 bps Valesco, ~40 bps pro fees, balance supplemental</td><td>Bill Rutherford (Ben Hendrix Q&A)</td></tr>
+      <tr><td><strong>Valesco Ex-EBITDA Margin</strong></td><td>Excluding Valesco, other operating off ~120 bps</td><td>Bill Rutherford (Ben Hendrix Q&A)</td></tr>
+      <tr><td><strong>Florida DPP</strong></td><td>Slightly above expectations but offset by other programs below</td><td>Sam Hazen (A.J. Rice Q&A)</td></tr>
+      <tr><td><strong>Bariatric Surgery Revenue</strong></td><td>Less than 0.5% of overall revenue</td><td>Sam Hazen (Jason Cassorla Q&A)</td></tr>
+      <tr><td><strong>Longer-Term EBITDA Margin</strong></td><td>19%-20% described as sustainable</td><td>Bill Rutherford (Jamie Perse Q&A)</td></tr>
+      <tr><td><strong>Calendar Headwind Q3</strong></td><td>1 fewer surgical day vs. prior year Q3</td><td>Sam Hazen (Jason Cassorla Q&A)</td></tr>
+      <tr><td><strong>Valesco Scale</strong></td><td>~5,000 physicians, ~200 programs</td><td>Sam Hazen (Brian Tanquilut Q&A)</td></tr>
+      <tr><td><strong>Patient Satisfaction (ER)</strong></td><td>Up 4-5 points since ER revitalization began</td><td>Sam Hazen (Whit Mayo Q&A)</td></tr>
+      <tr><td><strong>ER Wait Time</strong></td><td>9-10 minutes to see clinician upon arrival</td><td>Sam Hazen (Whit Mayo Q&A)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="prior-ref" id="priorRef">
+  <div class="prior-ref-header" onclick="var b=document.getElementById('priorBody');b.classList.toggle('open');this.querySelector('.arrow').innerHTML=b.classList.contains('open')?'&#9650;':'&#9660;';">
+    Prior Quarter Reference: Q2 2023
+    <span class="arrow">&#9660;</span>
+  </div>
+  <div class="prior-ref-body" id="priorBody">
+    <div class="metric-grid">
+      <div class="prior-mini"><div class="pm-label">FY 2023 Revenue Guidance</div><div class="pm-value">$63.25B – $64.75B</div></div>
+      <div class="prior-mini"><div class="pm-label">FY 2023 Adj. EBITDA Guidance</div><div class="pm-value">$12.3B – $12.8B</div></div>
+      <div class="prior-mini"><div class="pm-label">FY 2023 Diluted EPS Guidance</div><div class="pm-value">$17.70 – $18.90</div></div>
+      <div class="prior-mini"><div class="pm-label">FY 2023 CapEx Guidance</div><div class="pm-value">~$4.7B</div></div>
+    </div>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q2_2023.html" style="color:var(--blue);">View full Q2 2023 detail &rarr;</a></p>
+  </div>
+</div>
+
+<div class="footer-nav">
+  <a href="Q2_2023.html">&larr; Q2 2023</a>
+  <a href="../comparison.html">Back to Overview</a>
+  <a href="Q4_2023.html">Q4 2023 &rarr;</a>
+</div>
+
+</body>
+</html>

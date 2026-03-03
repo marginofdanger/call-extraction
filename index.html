@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Earnings Call Guidance Tracker</title>
+<style>
+  :root {
+    --dark: #0D1B2A;
+    --accent: #1B365D;
+    --gold: #C8952E;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+    --blue: #2980b9;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+  .header {
+    background: linear-gradient(135deg, var(--dark), var(--accent));
+    color: #fff;
+    padding: 48px 40px 40px;
+    margin: 0 -24px 40px;
+    border-bottom: 4px solid var(--gold);
+  }
+  .header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+  .header p {
+    font-size: 1rem;
+    opacity: 0.8;
+    font-weight: 300;
+    max-width: 600px;
+  }
+  .company-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+  .company-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .company-card:hover {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+  }
+  .card-header {
+    padding: 20px 20px 14px;
+    color: #fff;
+  }
+  .card-ticker {
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+  .card-name {
+    font-size: 0.85rem;
+    opacity: 0.85;
+    font-weight: 400;
+  }
+  .card-body {
+    padding: 14px 20px 18px;
+    background: #fff;
+  }
+  .card-sector {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .card-detail {
+    font-size: 0.85rem;
+    color: var(--text);
+  }
+  .card-links {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+  }
+  .card-link {
+    font-size: 0.78rem;
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .card-link:hover { text-decoration: underline; }
+  .footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border);
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    text-align: center;
+  }
+  .footer a { color: var(--blue); text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Earnings Call Guidance Tracker</h1>
+  <p>16-quarter guidance evolution analysis across public companies. Tracking how forward guidance changes quarter to quarter.</p>
+</div>
+
+<div class="company-grid">
+  <a href="companies/HCA/comparison.html" class="company-card">
+    <div class="card-header" style="background: linear-gradient(135deg, #0D1B2A, #1B365D); border-bottom: 3px solid #C8952E;">
+      <div class="card-ticker">HCA</div>
+      <div class="card-name">HCA Healthcare</div>
+    </div>
+    <div class="card-body">
+      <div class="card-sector">Healthcare / Hospitals</div>
+      <div class="card-detail">16 quarters: Q1 2022 &ndash; Q4 2025</div>
+      <div class="card-links">
+        <span class="card-link">Comparison &rarr;</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="companies/META/comparison.html" class="company-card">
+    <div class="card-header" style="background: linear-gradient(135deg, #0668E1, #0080FB); border-bottom: 3px solid #00C2FF;">
+      <div class="card-ticker">META</div>
+      <div class="card-name">Meta Platforms</div>
+    </div>
+    <div class="card-body">
+      <div class="card-sector">Technology / Social Media</div>
+      <div class="card-detail">16 quarters: Q1 2022 &ndash; Q4 2025</div>
+      <div class="card-links">
+        <span class="card-link">Comparison &rarr;</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="companies/TSM/comparison.html" class="company-card">
+    <div class="card-header" style="background: linear-gradient(135deg, #8B0000, #C41E3A); border-bottom: 3px solid #FFD700;">
+      <div class="card-ticker">TSM</div>
+      <div class="card-name">Taiwan Semiconductor</div>
+    </div>
+    <div class="card-body">
+      <div class="card-sector">Semiconductors</div>
+      <div class="card-detail">16 quarters: Q1 2022 &ndash; Q4 2025</div>
+      <div class="card-links">
+        <span class="card-link">Comparison &rarr;</span>
+      </div>
+    </div>
+  </a>
+</div>
+
+<div class="footer">
+  <p>Data sourced from public earnings call transcripts via <a href="https://www.bamsec.com">BamSEC</a>. Analysis generated with Claude.</p>
+</div>
+
+</body>
+</html>
