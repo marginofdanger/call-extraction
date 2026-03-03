@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TSMC Guidance Evolution &mdash; 16-Quarter Comparison</title>
+<title>TSMC Guidance Evolution — 16-Quarter Comparison</title>
 <style>
   :root {
-    --company-primary: #c0392b;
-    --company-dark: #1a1a2e;
-    --company-accent: #16213e;
+    --tsmc-red: #c0392b;
+    --tsmc-dark: #1a1a2e;
+    --tsmc-accent: #16213e;
     --green: #27ae60;
     --red: #e74c3c;
     --amber: #f39c12;
@@ -33,11 +33,11 @@
 
   /* Header */
   .header {
-    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    background: linear-gradient(135deg, var(--tsmc-dark), var(--tsmc-accent));
     color: #fff;
     padding: 48px 40px;
     margin: 0 -24px 40px;
-    border-bottom: 4px solid var(--company-primary);
+    border-bottom: 4px solid var(--tsmc-red);
   }
   .header h1 {
     font-size: 2.2rem;
@@ -53,7 +53,7 @@
 
   /* Quarter Navigation */
   .quarter-nav {
-    background: var(--company-accent);
+    background: var(--tsmc-accent);
     border-radius: 8px;
     padding: 16px 20px;
     margin-bottom: 24px;
@@ -93,13 +93,6 @@
     transition: all 0.15s;
   }
   .quarter-nav a:hover { background: rgba(255,255,255,0.25); }
-  .quarter-nav a.overview-link {
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.35);
-    padding: 4px 14px;
-    font-size: 0.82rem;
-    margin-left: auto;
-  }
 
   /* Table of Contents */
   .toc {
@@ -113,7 +106,7 @@
   }
   .toc h2 {
     font-size: 1.1rem;
-    color: var(--company-accent);
+    color: var(--tsmc-accent);
     margin-bottom: 12px;
     column-span: all;
   }
@@ -134,14 +127,14 @@
   }
   .section h2 {
     font-size: 1.4rem;
-    color: var(--company-dark);
-    border-bottom: 3px solid var(--company-primary);
+    color: var(--tsmc-dark);
+    border-bottom: 3px solid var(--tsmc-red);
     padding-bottom: 8px;
     margin-bottom: 16px;
   }
   .section h2 .num {
     display: inline-block;
-    background: var(--company-primary);
+    background: var(--tsmc-red);
     color: #fff;
     width: 28px;
     height: 28px;
@@ -161,7 +154,7 @@
     font-size: 0.88rem;
   }
   thead th {
-    background: var(--company-accent);
+    background: var(--tsmc-accent);
     color: #fff;
     padding: 10px 12px;
     text-align: left;
@@ -209,7 +202,7 @@
     border-radius: 0 6px 6px 0;
     font-size: 0.9rem;
   }
-  .insight strong { color: var(--company-dark); }
+  .insight strong { color: var(--tsmc-dark); }
 
   /* Takeaways */
   .takeaways { counter-reset: takeaway; }
@@ -228,18 +221,18 @@
     height: 32px;
     line-height: 32px;
     text-align: center;
-    background: var(--company-primary);
+    background: var(--tsmc-red);
     color: #fff;
     border-radius: 50%;
     font-weight: 700;
     font-size: 0.85rem;
   }
   .takeaway-text { font-size: 0.92rem; }
-  .takeaway-text strong { color: var(--company-dark); }
+  .takeaway-text strong { color: var(--tsmc-dark); }
 
   /* Year divider rows */
   .year-divider td {
-    background: var(--company-accent) !important;
+    background: var(--tsmc-accent) !important;
     color: #fff;
     font-weight: 700;
     font-size: 0.82rem;
@@ -302,7 +295,6 @@
     <a href="quarters/Q2_2022.html">2Q22</a>
     <a href="quarters/Q1_2022.html">1Q22</a>
   </div>
-  <a href="results.html" class="overview-link">Results Scorecard &rarr;</a>
 </div>
 
 <nav class="toc">
@@ -474,24 +466,24 @@
     </thead>
     <tbody>
       <tr class="year-divider"><td colspan="4">2026</td></tr>
-      <tr class="raised" data-q="q4-25"><td>Jan &rsquo;26</td><td>2026</td><td class="pos bold">$52B &ndash; $56B</td><td>70&ndash;80% advanced; ~10% specialty; 10&ndash;20% pkg/test/mask</td></tr>
+      <tr class="raised" data-q="q4-25"><td>Jan &rsquo;26</td><td>2026</td><td class="pos bold">$52B &ndash; $56B</td><td>Same</td></tr>
       <tr class="year-divider"><td colspan="4">2025</td></tr>
-      <tr data-q="q4-24"><td>Jan &rsquo;25</td><td>2025</td><td>$38B &ndash; $42B</td><td>~70% advanced; 10&ndash;20% specialty; 10&ndash;20% pkg/test/mask</td></tr>
+      <tr data-q="q4-24"><td>Jan &rsquo;25</td><td>2025</td><td>$38B &ndash; $42B</td><td>Same</td></tr>
       <tr data-q="q1-25"><td>Apr &rsquo;25</td><td>2025</td><td>$38B &ndash; $42B (maintained)</td><td>Same</td></tr>
       <tr data-q="q2-25"><td>Jul &rsquo;25</td><td>2025</td><td>$38B &ndash; $42B (maintained)</td><td>Same</td></tr>
       <tr data-q="q3-25"><td>Oct &rsquo;25</td><td>2025</td><td>$40B &ndash; $42B (narrowed up)</td><td>Same</td></tr>
       <tr class="year-divider"><td colspan="4">2024</td></tr>
-      <tr data-q="q4-23"><td>Jan &rsquo;24</td><td>2024</td><td>$28B &ndash; $32B</td><td>70&ndash;80% advanced; 10&ndash;20% specialty; ~10% pkg/test/mask</td></tr>
+      <tr data-q="q4-23"><td>Jan &rsquo;24</td><td>2024</td><td>$28B &ndash; $32B</td><td>Same</td></tr>
       <tr data-q="q1-24"><td>Apr &rsquo;24</td><td>2024</td><td>$28B &ndash; $32B</td><td>Same</td></tr>
       <tr class="raised" data-q="q2-24"><td>Jul &rsquo;24</td><td>2024</td><td>$30B &ndash; $32B (narrowed up)</td><td>Same</td></tr>
       <tr data-q="q3-24"><td>Oct &rsquo;24</td><td>2024</td><td>Slightly above $30B</td><td>Same</td></tr>
       <tr class="year-divider"><td colspan="4">2023</td></tr>
-      <tr data-q="q4-22"><td>Jan &rsquo;23</td><td>2023</td><td>$32B &ndash; $36B</td><td>~70% advanced; ~20% specialty; ~10% pkg/test/mask</td></tr>
+      <tr data-q="q4-22"><td>Jan &rsquo;23</td><td>2023</td><td>$32B &ndash; $36B</td><td>Same allocation</td></tr>
       <tr data-q="q1-23"><td>Apr &rsquo;23</td><td>2023</td><td>$32B &ndash; $36B</td><td>Same</td></tr>
       <tr data-q="q2-23"><td>Jul &rsquo;23</td><td>2023</td><td>$32B &ndash; $36B (toward lower end)</td><td>Same</td></tr>
       <tr data-q="q3-23"><td>Oct &rsquo;23</td><td>2023</td><td>Slightly above $32B</td><td>Same</td></tr>
       <tr class="year-divider"><td colspan="4">2022</td></tr>
-      <tr data-q="q1-22"><td>Apr &rsquo;22</td><td>2022</td><td>$40B &ndash; $44B</td><td>70&ndash;80% advanced; ~10% pkg; 10&ndash;20% specialty</td></tr>
+      <tr data-q="q1-22"><td>Apr &rsquo;22</td><td>2022</td><td>$40B &ndash; $44B</td><td>70&ndash;80% advanced, ~10% pkg, 10&ndash;20% specialty</td></tr>
       <tr data-q="q2-22"><td>Jul &rsquo;22</td><td>2022</td><td>$40B &ndash; $44B (closer to lower end)</td><td>Same</td></tr>
       <tr class="lowered" data-q="q3-22"><td>Oct &rsquo;22</td><td>2022</td><td>~$36B (lowered)</td><td>Same; N7 adjusted down</td></tr>
     </tbody>
@@ -582,14 +574,14 @@
       <tr data-q="q1-22 q2-22 q3-22 q4-22 q1-23"><td>Apr &rsquo;22 &ndash; Apr &rsquo;23</td><td class="muted">Not quantified</td><td>Arizona cost higher than expected; working with government</td></tr>
       <tr class="raised" data-q="q2-23"><td>Jul &rsquo;23</td><td class="bold">2&ndash;3 pts initially</td><td>First quantification</td></tr>
       <tr data-q="q3-23 q4-23 q1-24 q2-24"><td>Oct &rsquo;23 &ndash; Jul &rsquo;24</td><td>2&ndash;3 pts initially</td><td>Improving over time with scale</td></tr>
-      <tr data-q="q3-24"><td>Oct &rsquo;24</td><td>2&ndash;3 pts when ramping</td><td>Arizona + Japan starting 2025; persists 3&ndash;5 years</td></tr>
-      <tr data-q="q4-24 q1-25"><td>Jan &rsquo;25 &ndash; Apr &rsquo;25</td><td>2&ndash;3 pts early; widening to 3&ndash;4 pts later</td><td>Scale of expansion growing</td></tr>
-      <tr data-q="q2-25"><td>Jul &rsquo;25</td><td>2&ndash;3 pts early; 3&ndash;4 pts later</td><td>Arizona dilution kicking in; slightly more than 100 bps in Q2</td></tr>
-      <tr data-q="q3-25"><td>Oct &rsquo;25</td><td class="bold">Closer to 2% in H2 2025</td><td>Fab 1 maturing; widens to 3&ndash;4 pts as more fabs ramp</td></tr>
-      <tr data-q="q4-25"><td>Jan &rsquo;26</td><td class="bold">2&ndash;3 pts early; 3&ndash;4 pts later</td><td>More fabs entering ramp simultaneously; next 5 years</td></tr>
+      <tr data-q="q3-24"><td>Oct &rsquo;24</td><td>2&ndash;3 pts when ramping</td><td>Arizona + Japan starting 2025</td></tr>
+      <tr data-q="q4-24 q1-25"><td>Jan &rsquo;25 &ndash; Apr &rsquo;25</td><td>2&ndash;3 pts; improving to 1&ndash;2 pts</td><td>First mention of improvement path</td></tr>
+      <tr data-q="q2-25"><td>Jul &rsquo;25</td><td>Improving toward 1&ndash;2 pts</td><td>Positive trajectory</td></tr>
+      <tr class="raised" data-q="q3-25"><td>Oct &rsquo;25</td><td class="pos bold">1&ndash;2 pts</td><td>Officially improved from 2&ndash;3 pts</td></tr>
+      <tr data-q="q4-25"><td>Jan &rsquo;26</td><td class="bold">2&ndash;3 pts early; 3&ndash;4 pts later</td><td>Scale of overseas expansion growing; more fabs entering ramp simultaneously</td></tr>
     </tbody>
   </table>
-  <div class="insight"><strong>Key Insight:</strong> Overseas dilution was first quantified at 2&ndash;3 pts in Jul &rsquo;23. As Arizona Fab 1 matured in 2025, the near-term dilution narrowed to ~2%, but the forward outlook widened to 3&ndash;4 pts as the scale of global expansion grows substantially with Arizona Fabs 2&ndash;4, Japan Fab 2, and Germany all entering ramp phases over the next several years.</div>
+  <div class="insight"><strong>Key Insight:</strong> Overseas dilution improved from 2&ndash;3 pts to 1&ndash;2 pts during 2025 as Arizona Fab 1 matured, then reset upward for the next several years to 2&ndash;3% early / 3&ndash;4% later as the scale of global expansion grows substantially (Arizona Fabs 2&ndash;4, Japan Fab 2, Germany).</div>
 </div>
 
 <!-- ====== SECTION 10 ====== -->
@@ -651,8 +643,8 @@
       <tr class="lowered" data-q="q4-23"><td>Jan &rsquo;24</td><td>N4, 1H 2025</td><td class="neg">2nm/3nm, <strong>2028</strong> (delayed)</td><td>Under consideration</td></tr>
       <tr class="raised" data-q="q1-24"><td>Apr &rsquo;24</td><td>Eng. wafers started Apr &rsquo;24</td><td class="pos"><strong>2nm</strong> (upgraded), 2028</td><td>Planning; most advanced</td></tr>
       <tr data-q="q3-24"><td>Oct &rsquo;24</td><td>N4, 1H 2025</td><td>2nm, 2028</td><td>End of decade</td></tr>
-      <tr data-q="q1-25"><td>Apr &rsquo;25</td><td class="pos">Volume production started</td><td>Construction complete; speeding up</td><td>Construction scheduled later 2025</td></tr>
-      <tr data-q="q3-25"><td>Oct &rsquo;25</td><td class="pos">Yield approaching Taiwan parity</td><td>Construction complete; speeding up</td><td>Construction on track</td></tr>
+      <tr data-q="q1-25"><td>Apr &rsquo;25</td><td class="pos">Volume production started</td><td>2nm, 2028</td><td>End of decade</td></tr>
+      <tr data-q="q3-25"><td>Oct &rsquo;25</td><td class="pos">Yield approaching Taiwan parity</td><td>2nm, 2028</td><td>End of decade</td></tr>
       <tr class="raised" data-q="q4-25"><td>Jan &rsquo;26</td><td class="pos bold">HVM started Q4 &rsquo;24; yield at parity</td><td class="pos bold">Construction complete; tool install 2026; HVM <strong>H2 2027</strong></td><td class="bold">Fab 3 construction started; Fab 4 + adv. pkg permits sought; 2nd land purchased</td></tr>
     </tbody>
   </table>
@@ -690,13 +682,11 @@
       <tr><th>Call Date</th><th>Status</th></tr>
     </thead>
     <tbody>
-      <tr data-q="q3-22"><td>Oct &rsquo;22</td><td>In preliminary evaluation</td></tr>
-      <tr data-q="q4-22"><td>Jan &rsquo;23</td><td>Evaluating opportunity; automotive focus</td></tr>
-      <tr data-q="q1-23"><td>Apr &rsquo;23</td><td>Engaging with customers and partners</td></tr>
-      <tr class="raised" data-q="q2-23"><td>Jul &rsquo;23</td><td class="bold">Evaluating specialty fab; automotive/industrial focus</td></tr>
-      <tr data-q="q3-23"><td>Oct &rsquo;23</td><td>JV with NXP/Bosch/Infineon; construction 2H 2024; production late 2027</td></tr>
-      <tr data-q="q4-23 q1-24"><td>Jan &ndash; Apr &rsquo;24</td><td>Construction starting Q4 2024; 22/28nm + 12/16nm</td></tr>
-      <tr data-q="q2-24 q3-24"><td>Jul &ndash; Oct &rsquo;24</td><td>Groundbreaking ceremony August 2024; volume production end 2027</td></tr>
+      <tr data-q="q4-22"><td>Jan &rsquo;23</td><td>Evaluating opportunity</td></tr>
+      <tr class="raised" data-q="q2-23"><td>Jul &rsquo;23</td><td class="bold">Announced plan: Dresden; 22/28nm + 12/16nm; automotive/industrial</td></tr>
+      <tr data-q="q3-23"><td>Oct &rsquo;23</td><td>JV with NXP/Bosch/Infineon; construction 2H 2024; production 2027&ndash;2028</td></tr>
+      <tr data-q="q1-24"><td>Apr &rsquo;24</td><td>Construction starting 2H 2024</td></tr>
+      <tr data-q="q2-24 q3-24"><td>Jul &ndash; Oct &rsquo;24</td><td>Groundbreaking ceremony August 2024</td></tr>
       <tr data-q="q4-24 q1-25 q2-25 q3-25 q4-25"><td>Jan &rsquo;25 &ndash; Jan &rsquo;26</td><td>Construction progressing; ramp schedule based on customer need</td></tr>
     </tbody>
   </table>
@@ -715,11 +705,9 @@
       <tr data-q="q4-22"><td>Jan &rsquo;23</td><td class="neg">Decline ~4% in 2023</td><td class="neg">Decline ~3% in 2023</td></tr>
       <tr data-q="q1-23"><td>Apr &rsquo;23</td><td class="neg">Mid-single-digit decline in 2023</td><td class="neg">High-single-digit decline</td></tr>
       <tr data-q="q2-23"><td>Jul &rsquo;23</td><td class="neg">Mid-single-digit decline in 2023</td><td class="neg">Mid-teens decline</td></tr>
-      <tr class="raised" data-q="q4-23"><td>Jan &rsquo;24</td><td class="pos">Grow &gt;10% in 2024</td><td class="pos">Grow ~20% in 2024</td></tr>
-      <tr data-q="q1-24"><td>Apr &rsquo;24</td><td>~10% growth in 2024</td><td>Mid- to high-teens %</td></tr>
-      <tr data-q="q2-24"><td>Jul &rsquo;24</td><td>~10% growth in 2024</td><td>Foundry 2.0 close to 10% in 2024</td></tr>
-      <tr data-q="q3-24"><td>Oct &rsquo;24</td><td>Near $1T by 2030</td><td>Foundry 2.0 ~10% in 2024</td></tr>
-      <tr data-q="q4-24"><td>Jan &rsquo;25</td><td>Foundry 2.0 proxy</td><td>Foundry 2.0 grew +6% in 2024; ~10% in 2025</td></tr>
+      <tr class="raised" data-q="q4-23"><td>Jan &rsquo;24</td><td class="pos">Grow ~10% in 2024</td><td class="pos">Grow ~20% in 2024</td></tr>
+      <tr data-q="q3-24"><td>Oct &rsquo;24</td><td>Near $1T by 2030</td><td>&mdash;</td></tr>
+      <tr data-q="q4-24"><td>Jan &rsquo;25</td><td>Grow mid-single-digit % in 2025</td><td>Foundry 2.0 grow ~10% in 2025</td></tr>
       <tr data-q="q4-25"><td>Jan &rsquo;26</td><td>&mdash;</td><td class="bold">Foundry 2.0 grew 16% in 2025; forecast 14% in 2026</td></tr>
     </tbody>
   </table>
@@ -733,13 +721,12 @@
       <tr><th>Period</th><th>Approach</th><th>Key Language</th></tr>
     </thead>
     <tbody>
-      <tr data-q="q1-22 q2-22 q3-22"><td>2022</td><td>Strategic, not opportunistic</td><td>&ldquo;Will not raise prices to offset overseas costs&rdquo;; will not lower in downturn</td></tr>
-      <tr data-q="q4-22 q1-23 q2-23 q3-23"><td>2023</td><td>Strategic, value-based</td><td>&ldquo;Selling our value&rdquo;; not cutting in downturn; geographic flexibility value</td></tr>
-      <tr data-q="q4-23 q1-24 q2-24 q3-24"><td>2024</td><td>Value-selling intensifying</td><td>&ldquo;TSMC&rsquo;s value in supply chain increasing with AI&rdquo;; customer profitability rising</td></tr>
-      <tr data-q="q4-24 q1-25 q2-25 q3-25 q4-25"><td>2025&ndash;2026</td><td class="bold">Value-selling as core strategy</td><td>&ldquo;Earning the right return&rdquo;; blended ASPs up ~20% in 2025; enabled 56% LT GM target</td></tr>
+      <tr data-q="q1-22 q2-22 q3-22"><td>2022</td><td>Strategic, not opportunistic</td><td>&ldquo;Will not raise prices to offset overseas costs&rdquo;</td></tr>
+      <tr data-q="q4-22 q1-23 q2-23 q3-23"><td>2023</td><td>Strategic, value-based</td><td>&ldquo;Selling our value&rdquo;; not cutting in downturn</td></tr>
+      <tr data-q="q4-23 q1-24 q2-24 q3-24"><td>2024</td><td>Value-selling intensifying</td><td>&ldquo;TSMC&rsquo;s value in supply chain increasing with AI&rdquo;</td></tr>
+      <tr data-q="q4-24 q1-25 q2-25 q3-25 q4-25"><td>2025&ndash;2026</td><td class="bold">Value-selling as core strategy</td><td>&ldquo;Earning the right return&rdquo;; technology value increasing; enabled 56% LT GM target</td></tr>
     </tbody>
   </table>
-  <div class="insight"><strong>Key Insight:</strong> TSMC&rsquo;s pricing language evolved from defensive (&ldquo;not opportunistic&rdquo;) to assertive (&ldquo;earning the right return&rdquo;). Blended wafer ASPs rose ~20% in 2025 for the second consecutive year. The shift from cost-plus to value-based pricing was a critical enabler of the structural margin improvement from 53% to 56%+ long-term target.</div>
 </div>
 
 <!-- ====== SECTION 17 ====== -->
@@ -752,14 +739,13 @@
     <tbody>
       <tr data-q="q1-22 q2-22 q3-22"><td>2022</td><td>&ldquo;Sustainable and steadily increasing&rdquo;</td><td>TWD 11.25 (2022)</td></tr>
       <tr data-q="q4-22"><td>Jan &rsquo;23</td><td>Committed to increasing</td><td>TWD 11.25</td></tr>
-      <tr data-q="q2-23"><td>Jul &rsquo;23</td><td>New minimum quarterly: TWD 3/share</td><td>TWD 11.25 for 2023; at least TWD 12 for 2024</td></tr>
-      <tr data-q="q4-23"><td>Jan &rsquo;24</td><td>&ldquo;Steadily increasing&rdquo;</td><td class="pos">TWD 13.5 (2023 actual); at least TWD 13.5 for 2024</td></tr>
+      <tr data-q="q4-23"><td>Jan &rsquo;24</td><td>&ldquo;Steadily increasing&rdquo;</td><td class="pos">TWD 13.5 (2023)</td></tr>
       <tr data-q="q1-24"><td>Apr &rsquo;24</td><td>Transitioning to &ldquo;steadily increasing&rdquo;</td><td>&mdash;</td></tr>
-      <tr data-q="q4-24 q1-25 q2-25 q3-25"><td>2025</td><td>&ldquo;Sustainable and steadily increasing&rdquo;</td><td class="pos">TWD 18 (2025 actual; +28.6% YoY)</td></tr>
+      <tr data-q="q2-24"><td>Jul &rsquo;24</td><td>70% of FCF policy; &ldquo;steadily increasing&rdquo;</td><td>&mdash;</td></tr>
+      <tr data-q="q4-24 q1-25 q2-25 q3-25"><td>2025</td><td>&ldquo;Sustainable and steadily increasing&rdquo;</td><td class="pos">TWD 18 (2025; +28.6% YoY)</td></tr>
       <tr class="raised" data-q="q4-25"><td>Jan &rsquo;26</td><td>&ldquo;Sustainable and steadily increasing; annual and quarterly basis&rdquo;</td><td class="pos bold">At least TWD 23 in 2026</td></tr>
     </tbody>
   </table>
-  <div class="insight"><strong>Key Insight:</strong> Annual dividends grew from TWD 11.25 (2022) to TWD 18 (2025) with at least TWD 23 guided for 2026 &mdash; a 104%+ increase in 4 years. The policy language shifted from emphasizing &ldquo;sustainable&rdquo; (during heavy investment) to &ldquo;steadily increasing&rdquo; as TSMC entered its harvesting phase.</div>
 </div>
 
 <!-- ====== SECTION 18 ====== -->
@@ -767,14 +753,13 @@
   <h2><span class="num">18</span> Tax Rate</h2>
   <table>
     <thead>
-      <tr><th>Period</th><th>Tax Rate</th><th>Commentary</th></tr>
+      <tr><th>Period</th><th>Tax Rate</th></tr>
     </thead>
     <tbody>
-      <tr data-q="q2-22"><td>2022</td><td>10%&ndash;11%</td><td>Pre-Industrial Innovation Statute amendment</td></tr>
-      <tr data-q="q4-22"><td>Jan &rsquo;23 (new statute)</td><td>~15%</td><td>Taiwan Industrial Innovation Statute benefit; without it would have been 18&ndash;19%</td></tr>
-      <tr data-q="q4-23 q1-24"><td>2024</td><td>15%&ndash;16%</td><td>Full year 2024 actual: 16.7%</td></tr>
-      <tr data-q="q4-24 q1-25 q2-25 q3-25"><td>2025</td><td class="bold">16%&ndash;17%</td><td>Full year 2025 actual: 16%</td></tr>
-      <tr data-q="q4-25"><td>2026 (guided)</td><td class="neg bold">17%&ndash;18%</td><td>Creeping higher as global operations expand</td></tr>
+      <tr data-q="q4-22"><td>Jan &rsquo;23 (new Industrial Innovation Statute)</td><td>~15%</td></tr>
+      <tr data-q="q4-23 q1-24 q2-24 q3-24"><td>2024</td><td>~15%</td></tr>
+      <tr data-q="q4-24 q1-25 q2-25 q3-25"><td>2025 (actual)</td><td class="bold">16%</td></tr>
+      <tr data-q="q4-25"><td>2026 (guided)</td><td class="neg bold">17%&ndash;18%</td></tr>
     </tbody>
   </table>
 </div>
@@ -787,19 +772,17 @@
       <tr><th>Call Date</th><th>CoWoS Status</th></tr>
     </thead>
     <tbody>
-      <tr data-q="q1-22"><td>Apr &rsquo;22</td><td>2021 revenue $4.1B; growing at corporate rate; SoIC starting small volume</td></tr>
-      <tr data-q="q2-22 q3-22 q4-22"><td>Jul &rsquo;22 &ndash; Jan &rsquo;23</td><td>Advanced packaging ~7% of revenue; growing at corporate average</td></tr>
-      <tr data-q="q1-23"><td>Apr &rsquo;23</td><td>Customer requests for big increase in CoWoS capacity; AI-driven</td></tr>
+      <tr data-q="q1-22"><td>Apr &rsquo;22</td><td>2021 revenue $4.1B; growing at corporate rate</td></tr>
+      <tr data-q="q2-22 q3-22 q4-22 q1-23"><td>Jul &rsquo;22 &ndash; Apr &rsquo;23</td><td class="muted">Not a major topic</td></tr>
       <tr class="raised" data-q="q2-23"><td>Jul &rsquo;23</td><td class="bold">Demand significantly exceeds supply; more than doubling in 2024; tight through 2024</td></tr>
-      <tr data-q="q3-23 q4-23 q1-24"><td>Oct &rsquo;23 &ndash; Apr &rsquo;24</td><td>More than doubling in 2024; tight into 2025; leveraging OSAT partners</td></tr>
-      <tr class="raised" data-q="q2-24"><td>Jul &rsquo;24</td><td class="bold">More than doubled; doubling again in 2025; multiple variants; approaching corporate average GM</td></tr>
-      <tr data-q="q3-24 q4-24"><td>Oct &rsquo;24 &ndash; Jan &rsquo;25</td><td>Continuing to expand; still tight into 2025; over 8% of revenue in 2024</td></tr>
-      <tr data-q="q1-25 q2-25"><td>Apr &rsquo;25 &ndash; Jul &rsquo;25</td><td>Expanding; still tight; approaching close to 10% of revenue</td></tr>
-      <tr data-q="q3-25"><td>Oct &rsquo;25</td><td>Approaching close to 10% of total revenue</td></tr>
-      <tr data-q="q4-25"><td>Jan &rsquo;26</td><td class="bold">Climbing to just over 10% of total revenue in 2026; growing faster than corporate average</td></tr>
+      <tr data-q="q3-23 q4-23 q1-24"><td>Oct &rsquo;23 &ndash; Apr &rsquo;24</td><td>More than doubling in 2024; tight into 2025</td></tr>
+      <tr class="raised" data-q="q2-24"><td>Jul &rsquo;24</td><td class="bold">More than doubled; doubling again in 2025; multiple variants; tight through 2025</td></tr>
+      <tr data-q="q3-24 q4-24"><td>Oct &rsquo;24 &ndash; Jan &rsquo;25</td><td>Continuing to expand; still tight into 2025</td></tr>
+      <tr data-q="q1-25 q2-25 q3-25"><td>Apr &rsquo;25 &ndash; Oct &rsquo;25</td><td>Expanding; tight but improving</td></tr>
+      <tr data-q="q4-25"><td>Jan &rsquo;26</td><td class="bold">Expanding; adv. packaging revenue climbing to just over 10% of total revenue in 2026</td></tr>
     </tbody>
   </table>
-  <div class="insight"><strong>Key Insight:</strong> CoWoS went from a minor mention in 2022 to the critical bottleneck for AI chip production by mid-2023. Capacity has been doubled at least twice. Advanced packaging revenue is climbing to ~10%+ of total revenue by 2026, and its profitability has improved dramatically from well below to approaching corporate average gross margin.</div>
+  <div class="insight"><strong>Key Insight:</strong> CoWoS went from a minor mention in 2022 to the critical bottleneck for AI chip production by mid-2023. Capacity has been doubled at least twice. Advanced packaging revenue is climbing to ~10%+ of total revenue by 2026.</div>
 </div>
 
 <!-- ====== SECTION 20 ====== -->
@@ -810,11 +793,11 @@
       <tr><th>Period</th><th>Language</th></tr>
     </thead>
     <tbody>
-      <tr data-q="q1-22 q2-22 q3-22"><td>Q1&ndash;Q3 2022</td><td>&ldquo;Capacity remains tight throughout 2022&rdquo;; not enough to support all customer demand</td></tr>
-      <tr data-q="q4-22 q1-23"><td>Q4 2022 &ndash; Q1 2023</td><td class="neg">&ldquo;Lower utilization&rdquo;; N7/N6 adjustment; inventory correction deepening</td></tr>
-      <tr data-q="q2-23 q3-23"><td>Q2&ndash;Q4 2023</td><td class="neutral">Mixed: N3 tight + fully utilized; N7 recovering; overall cyclical trough passing</td></tr>
-      <tr data-q="q4-23 q1-24 q2-24"><td>Q1&ndash;Q2 2024</td><td>&ldquo;Increasing utilization&rdquo;; AI driving advanced node tightness; N3 and N5 very tight</td></tr>
-      <tr data-q="q3-24 q4-24 q1-25 q2-25 q3-25 q4-25"><td>Q3 2024 &ndash; Q4 2025</td><td class="pos">&ldquo;Strong utilization&rdquo;; &ldquo;capacity tightness at leading edge&rdquo;; broad-based strength; CoWoS supply-constrained</td></tr>
+      <tr data-q="q1-22 q2-22 q3-22"><td>Q1&ndash;Q3 2022</td><td>&ldquo;Capacity remains tight throughout 2022&rdquo;</td></tr>
+      <tr data-q="q4-22 q1-23"><td>Q4 2022 &ndash; Q1 2023</td><td class="neg">&ldquo;Lower utilization&rdquo;; N7/N6 adjustment; inventory correction</td></tr>
+      <tr data-q="q2-23 q3-23"><td>Q2&ndash;Q4 2023</td><td class="neutral">Mixed: N3 tight + fully utilized; N7 recovering; overall cyclical trough</td></tr>
+      <tr data-q="q4-23 q1-24 q2-24"><td>Q1&ndash;Q2 2024</td><td>&ldquo;Increasing utilization&rdquo;; AI driving advanced node tightness</td></tr>
+      <tr data-q="q3-24 q4-24 q1-25 q2-25 q3-25 q4-25"><td>Q3 2024 &ndash; Q4 2025</td><td class="pos">&ldquo;Strong utilization&rdquo;; &ldquo;capacity tightness at leading edge&rdquo;; broad-based strength</td></tr>
     </tbody>
   </table>
 </div>
@@ -837,39 +820,39 @@
     </div>
     <div class="takeaway">
       <div class="takeaway-num">4</div>
-      <div class="takeaway-text"><strong>N3 dilution was more painful than expected.</strong> Initially guided at 2&ndash;3 pts, it expanded to 3&ndash;4 pts. By Jan &rsquo;26, N3 was expected to cross corporate average margin &mdash; a full recovery after ~3 years.</div>
+      <div class="takeaway-text"><strong>N3 dilution was more painful than expected.</strong> Initially guided at 2&ndash;3 pts, it expanded to 3&ndash;4 pts. By Jan &rsquo;26, N3 was expected to cross corporate average margin &mdash; a full recovery.</div>
     </div>
     <div class="takeaway">
       <div class="takeaway-num">5</div>
-      <div class="takeaway-text"><strong>Overseas expansion entered a new phase.</strong> From a single Arizona fab in 2022 to 4 Arizona fabs (+ advanced packaging), 2 Japan fabs, and 1 Germany fab &mdash; building an independent giga-fab cluster in Arizona with a total U.S. investment of $165 billion.</div>
+      <div class="takeaway-text"><strong>Overseas expansion entered a new phase.</strong> From a single Arizona fab in 2022 to 4 Arizona fabs (+ advanced packaging), 2 Japan fabs, and 1 Germany fab &mdash; building an independent giga-fab cluster in Arizona.</div>
     </div>
     <div class="takeaway">
       <div class="takeaway-num">6</div>
-      <div class="takeaway-text"><strong>Arizona Fab 1 achieved Taiwan yield parity</strong> by Q4 2024. Fab 2 was upgraded from 3nm to 2nm and brought forward from 2028 to H2 2027 due to strong demand.</div>
+      <div class="takeaway-text"><strong>Arizona Fab 1 achieved Taiwan yield parity</strong> by Q4 2024. Fab 2 was brought forward from 2028 to H2 2027 due to strong demand.</div>
     </div>
     <div class="takeaway">
       <div class="takeaway-num">7</div>
-      <div class="takeaway-text"><strong>The 53% GM target was finally raised to 56%.</strong> After maintaining 53%+ for 15 consecutive quarters despite actual GMs of 57&ndash;62%, management raised the LT GM target to 56% and higher in Jan &rsquo;26, with an ROE target of high 20s% through the cycle.</div>
+      <div class="takeaway-text"><strong>The 53% GM target was finally raised to 56%.</strong> After maintaining 53%+ for 15 consecutive quarters despite actual GMs of 57&ndash;62%, management raised the LT GM target to 56% and higher in Jan &rsquo;26, with an ROE target of high 20s%.</div>
     </div>
     <div class="takeaway">
       <div class="takeaway-num">8</div>
-      <div class="takeaway-text"><strong>CapEx surged to record levels:</strong> From $36B (2022) &rarr; trough ~$30B (2024) &rarr; $40.9B actual (2025) &rarr; massive step-up to $52&ndash;56B (2026), driven by N2, A16, Arizona expansion, and advanced packaging.</div>
+      <div class="takeaway-text"><strong>CapEx surged to record levels:</strong> From $36B (2022) &rarr; trough ~$30B (2024) &rarr; $40.9B actual (2025) &rarr; massive step-up to $52&ndash;56B (2026).</div>
     </div>
     <div class="takeaway">
       <div class="takeaway-num">9</div>
-      <div class="takeaway-text"><strong>Long-term CAGR raised twice:</strong> From &ldquo;15&ndash;20%&rdquo; &rarr; &ldquo;close to 20%&rdquo; (Jan &rsquo;25) &rarr; &ldquo;approach 25%&rdquo; (Jan &rsquo;26) &mdash; the highest growth outlook in TSMC&rsquo;s history, reflecting AI-driven structural acceleration.</div>
+      <div class="takeaway-text"><strong>Long-term CAGR raised twice:</strong> From &ldquo;15&ndash;20%&rdquo; &rarr; &ldquo;close to 20%&rdquo; (Jan &rsquo;25) &rarr; &ldquo;approach 25%&rdquo; (Jan &rsquo;26) &mdash; the highest growth outlook in TSMC&rsquo;s history.</div>
     </div>
     <div class="takeaway">
       <div class="takeaway-num">10</div>
-      <div class="takeaway-text"><strong>CoWoS became the critical bottleneck.</strong> Advanced packaging went from a minor business (~7% of revenue) to the key constraint in AI chip production, with revenue climbing to ~10%+ of total by 2026 and capacity doubled multiple times.</div>
+      <div class="takeaway-text"><strong>CoWoS became the critical bottleneck.</strong> Advanced packaging went from a minor business to the key constraint in AI chip production. Revenue climbing to ~10%+ of total by 2026.</div>
     </div>
     <div class="takeaway">
       <div class="takeaway-num">11</div>
-      <div class="takeaway-text"><strong>TSMC&rsquo;s pricing power increased.</strong> The shift from &ldquo;strategic pricing&rdquo; to &ldquo;value-selling&rdquo; and &ldquo;earning the right return&rdquo; reflected TSMC&rsquo;s growing irreplaceability. Blended wafer ASPs rose ~20% in 2025 for the second consecutive year, enabling the 56% LT GM target.</div>
+      <div class="takeaway-text"><strong>TSMC&rsquo;s pricing power increased.</strong> The shift from &ldquo;strategic pricing&rdquo; to &ldquo;value-selling&rdquo; reflected TSMC&rsquo;s growing irreplaceability, enabling the 56% LT GM target.</div>
     </div>
     <div class="takeaway">
       <div class="takeaway-num">12</div>
-      <div class="takeaway-text"><strong>Technology roadmap executed flawlessly.</strong> N2 maintained a 2H 2025 target for 16 consecutive quarters with zero delays, entering HVM at both Hsinchu and Kaohsiung in Q4 2025. N2P and A16 are advancing to H2 2026 volume production on schedule.</div>
+      <div class="takeaway-text"><strong>Technology roadmap executed flawlessly.</strong> N2 maintained a 2H 2025 target for 16 consecutive quarters with zero delays, entering HVM at both Hsinchu and Kaohsiung in Q4 2025.</div>
     </div>
   </div>
 </div>

@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HCA Healthcare Results vs Guidance &mdash; Full-Year Scorecard</title>
+<style>
+  :root {
+    --company-primary: #C8952E;
+    --company-dark: #0D1B2A;
+    --company-accent: #1B365D;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 48px 40px;
+    margin: 0 -24px 40px;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+  .header .subtitle {
+    font-size: 1.1rem;
+    opacity: 0.85;
+    font-weight: 300;
+  }
+
+  /* Quarter Navigation */
+  .quarter-nav {
+    background: var(--company-accent);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+  .quarter-nav .label {
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-right: 8px;
+    white-space: nowrap;
+  }
+  .quarter-nav .year-group {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+  .quarter-nav .year-label {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.72rem;
+    font-weight: 600;
+    margin-right: 2px;
+    letter-spacing: 0.5px;
+  }
+  .quarter-nav a {
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+  .quarter-nav a:hover { background: rgba(255,255,255,0.25); }
+  .quarter-nav a.overview-link {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.35);
+    padding: 4px 14px;
+    font-size: 0.82rem;
+    margin-left: auto;
+  }
+
+  /* Table of Contents */
+  .toc {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 32px;
+    margin-bottom: 40px;
+  }
+  .toc h2 {
+    font-size: 1.1rem;
+    color: var(--company-accent);
+    margin-bottom: 12px;
+  }
+  .toc a {
+    display: block;
+    color: var(--blue);
+    text-decoration: none;
+    padding: 3px 0;
+    font-size: 0.9rem;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  /* Section */
+  .section {
+    margin-bottom: 48px;
+    scroll-margin-top: 20px;
+  }
+  .section h2 {
+    font-size: 1.4rem;
+    color: var(--company-dark);
+    border-bottom: 3px solid var(--company-primary);
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+  }
+  .section h2 .num {
+    display: inline-block;
+    background: var(--company-primary);
+    color: #fff;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 0.85rem;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+
+  /* Scorecard grid */
+  .scorecard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .score-card {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+  }
+  .score-card .metric-value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--company-dark);
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+  .score-card .metric-value.green { color: var(--green); }
+  .score-card .metric-label {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+  .score-card .metric-sub {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+  .score-card.highlight {
+    border-color: var(--green);
+    background: #eafaf1;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 0.88rem;
+  }
+  thead th {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+  thead th.right { text-align: right; }
+  tbody td {
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tbody td.right { text-align: right; }
+  tbody tr:nth-child(even) { background: var(--light-bg); }
+  tbody tr:hover { background: #eef2f7; }
+
+  /* Color helpers */
+  .pos { color: var(--green); font-weight: 600; }
+  .neg { color: var(--red); font-weight: 600; }
+  .neutral { color: var(--amber); font-weight: 600; }
+  .raised { background: #eafaf1 !important; }
+  .lowered { background: #fef0ef !important; }
+  .bold { font-weight: 700; }
+  .muted { color: var(--text-muted); font-style: italic; }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    vertical-align: middle;
+  }
+  .tag-beat { background: #d5f5e3; color: #1e8449; }
+  .tag-miss { background: #fadbd8; color: #c0392b; }
+  .tag-met { background: #fdebd0; color: #b9770e; }
+  .tag-pending { background: #d6eaf8; color: #2471a3; }
+  .tag-raised { background: #d5f5e3; color: #1e8449; }
+  .tag-lowered { background: #fadbd8; color: #c0392b; }
+  .tag-maintained { background: #fdebd0; color: #b9770e; }
+  .tag-new { background: #d6eaf8; color: #2471a3; }
+
+  /* Insight boxes */
+  .insight {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 4px solid var(--amber);
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.9rem;
+  }
+  .insight strong { color: var(--company-dark); }
+
+  /* Takeaways */
+  .takeaways { counter-reset: takeaway; }
+  .takeaway {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 18px;
+    padding: 14px 18px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .takeaway-num {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    background: var(--company-primary);
+    color: #fff;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+  .takeaway-text { font-size: 0.92rem; }
+  .takeaway-text strong { color: var(--company-dark); }
+
+  /* Year divider rows */
+  .year-divider td {
+    background: var(--company-accent) !important;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.82rem;
+    padding: 6px 12px;
+    letter-spacing: 0.5px;
+  }
+
+  /* Footnote */
+  .footnote {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 8px;
+    font-style: italic;
+  }
+
+  /* Guidance evolution blocks */
+  .evo-block {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+  }
+  .evo-block h3 {
+    font-size: 1.1rem;
+    color: var(--company-dark);
+    margin-bottom: 12px;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 6px;
+  }
+  .evo-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.88rem;
+  }
+  .evo-row:last-child { border-bottom: none; }
+  .evo-label { color: var(--text-muted); font-weight: 500; }
+  .evo-value { font-weight: 600; }
+
+  @media (max-width: 768px) {
+    .toc { columns: 1; }
+    .header h1 { font-size: 1.6rem; }
+    table { font-size: 0.8rem; }
+    thead th, tbody td { padding: 6px 8px; }
+    .quarter-nav { gap: 4px; }
+    .scorecard { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media print {
+    .header { background: #333; }
+    .section { page-break-inside: avoid; }
+    table { font-size: 0.75rem; }
+    .quarter-nav { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>HCA Healthcare Results vs Guidance &mdash; Full-Year Scorecard</h1>
+  <div class="subtitle">How FY actuals compared to management guidance | FY 2023 &ndash; FY 2025 (3 completed fiscal years)</div>
+</div>
+
+<!-- Quarter Navigation -->
+<div class="quarter-nav" id="qnav">
+  <span class="label">Quarter detail:</span>
+  <div class="year-group">
+    <span class="year-label">2025</span>
+    <a href="quarters/Q4_2025.html">4Q25</a>
+    <a href="quarters/Q3_2025.html">3Q25</a>
+    <a href="quarters/Q2_2025.html">2Q25</a>
+    <a href="quarters/Q1_2025.html">1Q25</a>
+  </div>
+  <div class="year-group">
+    <span class="year-label">2024</span>
+    <a href="quarters/Q4_2024.html">4Q24</a>
+    <a href="quarters/Q3_2024.html">3Q24</a>
+    <a href="quarters/Q2_2024.html">2Q24</a>
+    <a href="quarters/Q1_2024.html">1Q24</a>
+  </div>
+  <div class="year-group">
+    <span class="year-label">2023</span>
+    <a href="quarters/Q4_2023.html">4Q23</a>
+    <a href="quarters/Q3_2023.html">3Q23</a>
+    <a href="quarters/Q2_2023.html">2Q23</a>
+    <a href="quarters/Q1_2023.html">1Q23</a>
+  </div>
+  <div class="year-group">
+    <span class="year-label">2022</span>
+    <a href="quarters/Q4_2022.html">4Q22</a>
+    <a href="quarters/Q3_2022.html">3Q22</a>
+    <a href="quarters/Q2_2022.html">2Q22</a>
+    <a href="quarters/Q1_2022.html">1Q22</a>
+  </div>
+  <a href="comparison.html" class="overview-link">Guidance Overview &rarr;</a>
+</div>
+
+<!-- Table of Contents -->
+<nav class="toc">
+  <h2>Table of Contents</h2>
+  <a href="#s0">Summary Scorecard</a>
+  <a href="#s1">1. FY Revenue &mdash; Actuals vs Guidance</a>
+  <a href="#s2">2. FY Adjusted EBITDA &mdash; Actuals vs Guidance</a>
+  <a href="#s3">3. FY Diluted EPS &mdash; Actuals vs Guidance</a>
+  <a href="#s4">4. FY CapEx &amp; Cash Flow</a>
+  <a href="#s5">5. Guidance Evolution</a>
+  <a href="#s6">6. Key Takeaways</a>
+</nav>
+
+<!-- ====== SUMMARY SCORECARD ====== -->
+<div class="section" id="s0">
+  <h2>Summary Scorecard</h2>
+  <div class="scorecard">
+    <div class="score-card highlight">
+      <div class="metric-value green">3/3</div>
+      <div class="metric-label">Revenue beat rate vs initial midpoint</div>
+      <div class="metric-sub">Never missed initial guidance</div>
+    </div>
+    <div class="score-card">
+      <div class="metric-value">+2.6%</div>
+      <div class="metric-label">Avg revenue beat vs initial mid</div>
+      <div class="metric-sub">Consistent guide-and-raise</div>
+    </div>
+    <div class="score-card">
+      <div class="metric-value">2/3</div>
+      <div class="metric-label">EPS beat rate vs final midpoint</div>
+      <div class="metric-sub">FY 2023 &amp; FY 2025 beat</div>
+    </div>
+    <div class="score-card">
+      <div class="metric-value">+$0.48</div>
+      <div class="metric-label">Avg EPS beat vs final mid</div>
+      <div class="metric-sub">+2.2% average upside</div>
+    </div>
+    <div class="score-card highlight">
+      <div class="metric-value green">5</div>
+      <div class="metric-label">Times guidance raised during year</div>
+      <div class="metric-sub">Across 3 fiscal years</div>
+    </div>
+    <div class="score-card">
+      <div class="metric-value">3</div>
+      <div class="metric-label">Times actual exceeded final high end</div>
+      <div class="metric-sub">Rev &rsquo;23, EPS &rsquo;23, EPS &rsquo;25</div>
+    </div>
+    <div class="score-card">
+      <div class="metric-value">7.9%</div>
+      <div class="metric-label">Revenue CAGR FY22&rarr;FY25</div>
+      <div class="metric-sub">$60.2B &rarr; $75.6B</div>
+    </div>
+    <div class="score-card highlight">
+      <div class="metric-value green">14.0%</div>
+      <div class="metric-label">EPS CAGR FY22&rarr;FY25</div>
+      <div class="metric-sub">$19.15 &rarr; $28.33</div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== SECTION 1: FY Revenue ====== -->
+<div class="section" id="s1">
+  <h2><span class="num">1</span> FY Revenue &mdash; Actuals vs Guidance</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>FY</th>
+        <th>Guided From</th>
+        <th>Initial Range</th>
+        <th>Final Range</th>
+        <th class="right">Actual</th>
+        <th class="right">vs Init Mid</th>
+        <th class="right">vs Final Mid</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Pending -->
+      <tr class="year-divider"><td colspan="7">FY 2026 (Pending)</td></tr>
+      <tr>
+        <td class="bold">FY 2026</td>
+        <td>Q4 &rsquo;25 call (Jan &rsquo;26)</td>
+        <td>$76.5B &ndash; $80.0B</td>
+        <td class="muted">In progress</td>
+        <td class="right muted">Pending</td>
+        <td class="right muted">&mdash;</td>
+        <td class="right muted">&mdash;</td>
+      </tr>
+      <!-- FY 2025 -->
+      <tr class="year-divider"><td colspan="7">FY 2025</td></tr>
+      <tr>
+        <td class="bold">FY 2025</td>
+        <td>Q4 &rsquo;24 call (Jan &rsquo;25)</td>
+        <td>$72.8B &ndash; $75.8B</td>
+        <td>$75.0B &ndash; $76.5B</td>
+        <td class="right bold">$75.6B</td>
+        <td class="right pos">+1.7%</td>
+        <td class="right neg">&minus;0.2%</td>
+      </tr>
+      <!-- FY 2024 -->
+      <tr class="year-divider"><td colspan="7">FY 2024</td></tr>
+      <tr>
+        <td class="bold">FY 2024</td>
+        <td>Q4 &rsquo;23 call (Jan &rsquo;24)</td>
+        <td>$67.75B &ndash; $70.25B</td>
+        <td>$69.75B &ndash; $71.75B</td>
+        <td class="right bold">$70.6B</td>
+        <td class="right pos">+2.3%</td>
+        <td class="right neg">&minus;0.2%</td>
+      </tr>
+      <!-- FY 2023 -->
+      <tr class="year-divider"><td colspan="7">FY 2023</td></tr>
+      <tr class="raised">
+        <td class="bold">FY 2023</td>
+        <td>Q4 &rsquo;22 call (Jan &rsquo;23)</td>
+        <td>$61.5B &ndash; $63.5B</td>
+        <td>$63.5B &ndash; $64.5B</td>
+        <td class="right bold">$65.0B</td>
+        <td class="right pos">+3.9%</td>
+        <td class="right pos">+1.5%</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="footnote">Revenue actuals from EDGAR press release income statements. FY 2023 actual = $64,968M; FY 2024 = $70,603M; FY 2025 = $75,600M. Rounded to nearest $0.1B in table for readability.</p>
+  <div class="insight">
+    <strong>Pattern:</strong> HCA consistently beat initial revenue guidance midpoint in all 3 fiscal years, with an average beat of +2.6%. However, by the time guidance was raised through the year, final midpoints closed the gap &mdash; FY 2024 and FY 2025 actuals landed slightly below the final midpoint. Only FY 2023 beat both initial and final guidance, exceeding the final high end by $468M. This confirms HCA&rsquo;s &ldquo;guide-and-raise&rdquo; cadence: conservative initial guidance progressively tightened toward actuals.
+  </div>
+</div>
+
+<!-- ====== SECTION 2: FY EBITDA ====== -->
+<div class="section" id="s2">
+  <h2><span class="num">2</span> FY Adjusted EBITDA &mdash; Actuals vs Guidance</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>FY</th>
+        <th>Guided From</th>
+        <th>Initial Range</th>
+        <th>Final Range</th>
+        <th class="right">Actual</th>
+        <th class="right">vs Init Mid</th>
+        <th class="right">vs Final Mid</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Pending -->
+      <tr class="year-divider"><td colspan="7">FY 2026 (Pending)</td></tr>
+      <tr>
+        <td class="bold">FY 2026</td>
+        <td>Q4 &rsquo;25 call (Jan &rsquo;26)</td>
+        <td>$15.55B &ndash; $16.45B</td>
+        <td class="muted">In progress</td>
+        <td class="right muted">Pending</td>
+        <td class="right muted">&mdash;</td>
+        <td class="right muted">&mdash;</td>
+      </tr>
+      <!-- FY 2025 -->
+      <tr class="year-divider"><td colspan="7">FY 2025</td></tr>
+      <tr>
+        <td class="bold">FY 2025</td>
+        <td>Q4 &rsquo;24 call (Jan &rsquo;25)</td>
+        <td>$14.3B &ndash; $15.1B</td>
+        <td>$15.25B &ndash; $15.65B</td>
+        <td class="right bold">$15.57B</td>
+        <td class="right pos">+5.9%</td>
+        <td class="right pos">+0.8%</td>
+      </tr>
+      <!-- FY 2024 -->
+      <tr class="year-divider"><td colspan="7">FY 2024</td></tr>
+      <tr>
+        <td class="bold">FY 2024</td>
+        <td>Q4 &rsquo;23 call (Jan &rsquo;24)</td>
+        <td>$12.85B &ndash; $13.55B</td>
+        <td>$13.75B &ndash; $14.25B</td>
+        <td class="right bold">$13.88B</td>
+        <td class="right pos">+5.2%</td>
+        <td class="right neg">&minus;0.8%</td>
+      </tr>
+      <!-- FY 2023 -->
+      <tr class="year-divider"><td colspan="7">FY 2023</td></tr>
+      <tr class="raised">
+        <td class="bold">FY 2023</td>
+        <td>Q4 &rsquo;22 call (Jan &rsquo;23)</td>
+        <td>$11.8B &ndash; $12.4B</td>
+        <td>$12.3B &ndash; $12.6B</td>
+        <td class="right bold">$12.73B</td>
+        <td class="right pos">+5.2%</td>
+        <td class="right pos">+2.2%</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="footnote">EBITDA computed from EDGAR income statements: Revenue &minus; SWB &minus; Supplies &minus; Other OpEx + Equity earnings. FY 2023 = $12,726M; FY 2024 = $13,882M; FY 2025 = $15,566M.</p>
+  <div class="insight">
+    <strong>Pattern:</strong> EBITDA showed the strongest initial guidance beats of any metric, averaging +5.4% vs initial midpoint across all 3 years. Initial EBITDA guidance was set with ~5% conservatism buffer. FY 2023 beat both initial and final guidance; FY 2025 also landed above the final midpoint by $120M. Only FY 2024 came in slightly below the final midpoint (&minus;0.8%), partly due to ~$200M in hurricane impact in Q4.
+  </div>
+</div>
+
+<!-- ====== SECTION 3: FY EPS ====== -->
+<div class="section" id="s3">
+  <h2><span class="num">3</span> FY Diluted EPS &mdash; Actuals vs Guidance</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>FY</th>
+        <th>Guided From</th>
+        <th>Initial Range</th>
+        <th>Final Range</th>
+        <th class="right">Actual</th>
+        <th class="right">vs Init Mid</th>
+        <th class="right">vs Final Mid</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Pending -->
+      <tr class="year-divider"><td colspan="7">FY 2026 (Pending)</td></tr>
+      <tr>
+        <td class="bold">FY 2026</td>
+        <td>Q4 &rsquo;25 call (Jan &rsquo;26)</td>
+        <td>$29.10 &ndash; $31.50</td>
+        <td class="muted">In progress</td>
+        <td class="right muted">Pending</td>
+        <td class="right muted">&mdash;</td>
+        <td class="right muted">&mdash;</td>
+      </tr>
+      <!-- FY 2025 -->
+      <tr class="year-divider"><td colspan="7">FY 2025</td></tr>
+      <tr class="raised">
+        <td class="bold">FY 2025</td>
+        <td>Q4 &rsquo;24 call (Jan &rsquo;25)</td>
+        <td>$24.05 &ndash; $25.85</td>
+        <td>$27.00 &ndash; $28.00</td>
+        <td class="right bold">$28.33</td>
+        <td class="right pos">+$3.38 (+13.5%)</td>
+        <td class="right pos">+$0.83 (+3.0%)</td>
+      </tr>
+      <!-- FY 2024 -->
+      <tr class="year-divider"><td colspan="7">FY 2024</td></tr>
+      <tr>
+        <td class="bold">FY 2024</td>
+        <td>Q4 &rsquo;23 call (Jan &rsquo;24)</td>
+        <td>$19.70 &ndash; $21.20</td>
+        <td>$21.60 &ndash; $22.80</td>
+        <td class="right bold">$22.00</td>
+        <td class="right pos">+$1.55 (+7.6%)</td>
+        <td class="right neg">&minus;$0.20 (&minus;0.9%)</td>
+      </tr>
+      <!-- FY 2023 -->
+      <tr class="year-divider"><td colspan="7">FY 2023</td></tr>
+      <tr class="raised">
+        <td class="bold">FY 2023</td>
+        <td>Q4 &rsquo;22 call (Jan &rsquo;23)</td>
+        <td>$16.40 &ndash; $17.60</td>
+        <td>$17.80 &ndash; $18.50</td>
+        <td class="right bold">$18.97</td>
+        <td class="right pos">+$1.97 (+11.6%)</td>
+        <td class="right pos">+$0.82 (+4.5%)</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="footnote">EPS from EDGAR press releases: FY 2022 = $19.15; FY 2023 = $18.97; FY 2024 = $22.00; FY 2025 = $28.33 (diluted).</p>
+  <div class="insight">
+    <strong>Pattern:</strong> EPS showed the largest initial guidance beats, averaging +10.9% vs initial midpoint &mdash; reflecting both EBITDA conservatism and the compounding effect of aggressive share repurchases. FY 2023 EPS of $18.97 beat the initial high end ($17.60) by $1.37 and the final high end ($18.50) by $0.47. FY 2025 was even more dramatic: $28.33 actual vs $24.95 initial midpoint (+$3.38) and $27.50 final midpoint (+$0.83), exceeding the raised high end of $28.00 by $0.33. Diluted share count fell from ~295M (FY 2022) to ~239M (FY 2025), adding ~4 ppts annually to EPS growth above net income growth.
+  </div>
+</div>
+
+<!-- ====== SECTION 4: CapEx & Cash Flow ====== -->
+<div class="section" id="s4">
+  <h2><span class="num">4</span> FY CapEx &amp; Cash Flow</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>FY</th>
+        <th class="right">CapEx (Actual)</th>
+        <th class="right">Cash from Ops</th>
+        <th class="right">Free Cash Flow</th>
+        <th>Commentary</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">FY 2026 (Guidance)</td></tr>
+      <tr>
+        <td class="bold">FY 2026</td>
+        <td class="right muted">$5.0B &ndash; $5.5B</td>
+        <td class="right muted">&mdash;</td>
+        <td class="right muted">&mdash;</td>
+        <td>Guided up +$300M at top vs FY 2025; ~$7B approved pipeline</td>
+      </tr>
+      <tr class="year-divider"><td colspan="5">Completed Fiscal Years</td></tr>
+      <tr>
+        <td class="bold">FY 2025</td>
+        <td class="right">$4.9B</td>
+        <td class="right bold">$12.6B</td>
+        <td class="right bold">$7.7B</td>
+        <td>Record CFO; guided $5.0B &ndash; $5.2B &mdash; came in slightly below</td>
+      </tr>
+      <tr>
+        <td class="bold">FY 2024</td>
+        <td class="right">$4.9B</td>
+        <td class="right">$10.5B</td>
+        <td class="right">$5.6B</td>
+        <td>Guided $5.1B &ndash; $5.3B initially; lowered to ~$5.0B due to project timing</td>
+      </tr>
+      <tr>
+        <td class="bold">FY 2023</td>
+        <td class="right">~$4.7B</td>
+        <td class="right">$9.4B</td>
+        <td class="right">$4.7B</td>
+        <td>Guided $4.3B initially, raised twice to ~$4.7B &mdash; growth opportunities</td>
+      </tr>
+      <tr>
+        <td class="bold">FY 2022</td>
+        <td class="right">~$4.4B</td>
+        <td class="right">$8.5B</td>
+        <td class="right">$4.1B</td>
+        <td>Guided ~$4.2B; overran slightly on accelerated projects</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="footnote">Free cash flow = Cash from operations minus CapEx. CFO from EDGAR cash flow statements.</p>
+  <div class="insight">
+    <strong>Pattern:</strong> Cash from operations grew 48% from $8.5B (FY 2022) to $12.6B (FY 2025), a CAGR of 14.0% &mdash; mirroring EPS growth. CapEx grew modestly from ~$4.4B to ~$4.9B, meaning free cash flow nearly doubled from $4.1B to $7.7B. CapEx as a % of revenue actually declined from 7.3% (FY 2022) to 6.5% (FY 2025) even as absolute CapEx grew, reflecting operating leverage. HCA consistently underspent its CapEx guidance due to project timing, then carried balances forward.
+  </div>
+</div>
+
+<!-- ====== SECTION 5: Guidance Evolution ====== -->
+<div class="section" id="s5">
+  <h2><span class="num">5</span> Guidance Evolution</h2>
+
+  <!-- FY 2025 -->
+  <div class="evo-block">
+    <h3>FY 2025 &mdash; Guide-and-Raise Playbook</h3>
+    <div class="evo-row">
+      <span class="evo-label">Initial (Jan &rsquo;25)</span>
+      <span class="evo-value">Rev: $72.8B&ndash;$75.8B &nbsp;|&nbsp; EBITDA: $14.3B&ndash;$15.1B &nbsp;|&nbsp; EPS: $24.05&ndash;$25.85</span>
+    </div>
+    <div class="evo-row">
+      <span class="evo-label">Q1 Update (Apr &rsquo;25)</span>
+      <span class="evo-value"><span class="tag tag-maintained">Reaffirmed</span> &mdash; all ranges maintained</span>
+    </div>
+    <div class="evo-row">
+      <span class="evo-label">Q2 Update (Jul &rsquo;25)</span>
+      <span class="evo-value"><span class="tag tag-raised">Raised</span> Rev: $74.0B&ndash;$76.0B &nbsp;|&nbsp; EBITDA: $14.7B&ndash;$15.3B &nbsp;|&nbsp; EPS: $25.50&ndash;$27.00</span>
+    </div>
+    <div class="evo-row">
+      <span class="evo-label">Q3 Update (Oct &rsquo;25)</span>
+      <span class="evo-value"><span class="tag tag-raised">Raised</span> Rev: $75.0B&ndash;$76.5B &nbsp;|&nbsp; EBITDA: $15.25B&ndash;$15.65B &nbsp;|&nbsp; EPS: $27.00&ndash;$28.00</span>
+    </div>
+    <div class="evo-row">
+      <span class="evo-label bold">Actual</span>
+      <span class="evo-value bold">Rev: $75.6B &nbsp;|&nbsp; EBITDA: $15.57B &nbsp;|&nbsp; EPS: $28.33</span>
+    </div>
+    <div class="evo-row" style="border-bottom: none; padding-top: 8px;">
+      <span class="evo-label">Verdict</span>
+      <span class="evo-value"><span class="pos">EPS beat final high end by $0.33.</span> Revenue and EBITDA landed within final range. Two intra-year raises.</span>
+    </div>
+  </div>
+
+  <!-- FY 2024 -->
+  <div class="evo-block">
+    <h3>FY 2024 &mdash; Exchange Boom &amp; Hurricane Disruption</h3>
+    <div class="evo-row">
+      <span class="evo-label">Initial (Jan &rsquo;24)</span>
+      <span class="evo-value">Rev: $67.75B&ndash;$70.25B &nbsp;|&nbsp; EBITDA: $12.85B&ndash;$13.55B &nbsp;|&nbsp; EPS: $19.70&ndash;$21.20</span>
+    </div>
+    <div class="evo-row">
+      <span class="evo-label">Q1 Update (Apr &rsquo;24)</span>
+      <span class="evo-value"><span class="tag tag-maintained">Reaffirmed</span> &mdash; all ranges maintained</span>
+    </div>
+    <div class="evo-row">
+      <span class="evo-label">Q2 Update (Jul &rsquo;24)</span>
+      <span class="evo-value"><span class="tag tag-raised">Raised</span> Rev: $69.75B&ndash;$71.75B &nbsp;|&nbsp; EBITDA: $13.75B&ndash;$14.25B &nbsp;|&nbsp; EPS: $21.60&ndash;$22.80</span>
+    </div>
+    <div class="evo-row">
+      <span class="evo-label">Q3 Update (Oct &rsquo;24)</span>
+      <span class="evo-value"><span class="tag tag-maintained">Reaffirmed*</span> &mdash; same ranges but guided to &ldquo;lower half&rdquo; due to hurricane impact</span>
+    </div>
+    <div class="evo-row">
+      <span class="evo-label bold">Actual</span>
+      <span class="evo-value bold">Rev: $70.6B &nbsp;|&nbsp; EBITDA: $13.88B &nbsp;|&nbsp; EPS: $22.00</span>
+    </div>
+    <div class="evo-row" style="border-bottom: none; padding-top: 8px;">
+      <span class="evo-label">Verdict</span>
+      <span class="evo-value">All actuals within final range. EPS of $22.00 landed in the lower half of $21.60&ndash;$22.80, consistent with hurricane-adjusted guidance. ~$200M Q4 hurricane impact.</span>
+    </div>
+  </div>
+
+  <!-- FY 2023 -->
+  <div class="evo-block">
+    <h3>FY 2023 &mdash; Volume Rebound &amp; Margin Recovery</h3>
+    <div class="evo-row">
+      <span class="evo-label">Initial (Jan &rsquo;23)</span>
+      <span class="evo-value">Rev: $61.5B&ndash;$63.5B &nbsp;|&nbsp; EBITDA: $11.8B&ndash;$12.4B &nbsp;|&nbsp; EPS: $16.40&ndash;$17.60</span>
+    </div>
+    <div class="evo-row">
+      <span class="evo-label">Q1 Update (Apr &rsquo;23)</span>
+      <span class="evo-value"><span class="tag tag-raised">Raised</span> Rev: $62.5B&ndash;$64.5B &nbsp;|&nbsp; EBITDA: $12.1B&ndash;$12.7B &nbsp;|&nbsp; EPS: $17.25&ndash;$18.55</span>
+    </div>
+    <div class="evo-row">
+      <span class="evo-label">Q2 Update (Jul &rsquo;23)</span>
+      <span class="evo-value"><span class="tag tag-raised">Raised</span> Rev: $63.25B&ndash;$64.75B &nbsp;|&nbsp; EBITDA: $12.3B&ndash;$12.8B &nbsp;|&nbsp; EPS: $17.70&ndash;$18.90</span>
+    </div>
+    <div class="evo-row">
+      <span class="evo-label">Q3 Update (Oct &rsquo;23)</span>
+      <span class="evo-value"><span class="tag tag-maintained">Narrowed</span> Rev: $63.5B&ndash;$64.5B &nbsp;|&nbsp; EBITDA: $12.3B&ndash;$12.6B &nbsp;|&nbsp; EPS: $17.80&ndash;$18.50</span>
+    </div>
+    <div class="evo-row">
+      <span class="evo-label bold">Actual</span>
+      <span class="evo-value bold">Rev: $65.0B &nbsp;|&nbsp; EBITDA: $12.73B &nbsp;|&nbsp; EPS: $18.97</span>
+    </div>
+    <div class="evo-row" style="border-bottom: none; padding-top: 8px;">
+      <span class="evo-label">Verdict</span>
+      <span class="evo-value"><span class="pos">Beat every metric&rsquo;s final high end.</span> Revenue exceeded by $468M, EBITDA by $126M, EPS by $0.47. Two raises plus one narrowing. The strongest beat year.</span>
+    </div>
+  </div>
+
+  <!-- FY 2026 -->
+  <div class="evo-block">
+    <h3>FY 2026 &mdash; Initial Guidance (Pending)</h3>
+    <div class="evo-row">
+      <span class="evo-label">Initial (Jan &rsquo;26)</span>
+      <span class="evo-value">Rev: $76.5B&ndash;$80.0B &nbsp;|&nbsp; EBITDA: $15.55B&ndash;$16.45B &nbsp;|&nbsp; EPS: $29.10&ndash;$31.50</span>
+    </div>
+    <div class="evo-row" style="border-bottom: none;">
+      <span class="evo-label">Context</span>
+      <span class="evo-value">Widest revenue range ever ($3.5B spread) reflects $600M&ndash;$900M EPTC/admin reform headwind uncertainty. Revenue midpoint of $78.25B implies +3.5% growth vs FY 2025. EPS midpoint of $30.30 implies +7.0% growth, boosted by continued buybacks.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ====== SECTION 6: Key Takeaways ====== -->
+<div class="section" id="s6">
+  <h2><span class="num">6</span> Key Takeaways</h2>
+  <div class="takeaways">
+    <div class="takeaway">
+      <div class="takeaway-num">1</div>
+      <div class="takeaway-text"><strong>Systematic guide-and-raise:</strong> In all 3 completed fiscal years, HCA set initial guidance conservatively and raised it at least once during the year. The average initial EPS midpoint beat of +10.9% confirms management builds in substantial buffer.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">2</div>
+      <div class="takeaway-text"><strong>Revenue growth re-acceleration:</strong> Revenue CAGR of 7.9% (FY 2022&ndash;FY 2025) was driven by a triple tailwind: post-COVID volume rebound, healthcare exchange enrollment surge, and mid-single-digit managed care rate escalators.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">3</div>
+      <div class="takeaway-text"><strong>EPS compounding engine:</strong> EPS grew at a 14.0% CAGR &mdash; nearly double the revenue growth rate. The gap was driven by EBITDA margin expansion (from ~20.0% to ~20.6%), contract labor normalization, and ~5.5% annual share count reduction via buybacks.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">4</div>
+      <div class="takeaway-text"><strong>EBITDA conservatism strongest of all metrics:</strong> Initial EBITDA guidance averaged +5.4% below actual. This was consistently the widest initial guidance miss, as management could not pre-quantify supplemental payment program outcomes at the start of each year.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">5</div>
+      <div class="takeaway-text"><strong>Final guidance is highly accurate:</strong> Once raised, final guidance narrowed to within 1&ndash;2% of actuals across all metrics. The average absolute deviation between final midpoint and actual was 0.6% for revenue, 1.3% for EBITDA, and 2.8% for EPS.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">6</div>
+      <div class="takeaway-text"><strong>FY 2023 was the standout year:</strong> The only year where actuals exceeded the final high end of every guided metric. This coincided with the Q1 2023 volume surge (+7.5% same-facility equivalent admissions), the strongest quarter in the 16-quarter dataset.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">7</div>
+      <div class="takeaway-text"><strong>Cash flow trajectory is impressive:</strong> CFO nearly doubled from $8.5B to $12.6B over 3 years. Free cash flow of $7.7B in FY 2025 means HCA generates its entire CapEx budget in about 7 months of operating cash flow.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">8</div>
+      <div class="takeaway-text"><strong>Hurricane risk is real but manageable:</strong> FY 2024 was the only year where all metrics came in at or below the final midpoint, directly attributable to ~$200M in Q4 hurricane impact. Management guided to &ldquo;lower half&rdquo; after Q3 and actuals confirmed.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">9</div>
+      <div class="takeaway-text"><strong>Supplemental payments are the wild card:</strong> The single largest driver of EBITDA guidance uncertainty across all 3 years. FY 2024 saw a $400M+ swing from expected headwind to actual tailwind. FY 2026 guidance embeds $250M&ndash;$450M headwind as TN reverts and TX ATLIS pauses.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">10</div>
+      <div class="takeaway-text"><strong>FY 2026 is the most uncertain year:</strong> The $3.5B revenue guidance range (widest ever) and $0.9B EBITDA range reflect the compounding uncertainty of EPTC expiration, Medicaid administrative reforms, and supplemental payment resets. If HCA&rsquo;s guide-and-raise pattern holds, the initial $30.30 EPS midpoint may prove conservative.</div>
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center; padding:40px 0 20px; color:var(--text-muted); font-size:0.8rem; border-top:1px solid var(--border); margin-top:40px;">
+  HCA Metrics Tracker &mdash; Results Scorecard &mdash; Q1 2022 through Q4 2025<br>
+  Data extracted from BamSEC transcripts and EDGAR
+</div>
+
+</body>
+</html>
