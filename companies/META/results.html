@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>META Results Scorecard — Actuals vs Guidance</title>
+<style>
+  :root {
+    --company-primary: #0668E1;
+    --company-dark: #1C2B33;
+    --company-accent: #0668E1;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text); background: #fff; line-height: 1.6;
+    max-width: 1200px; margin: 0 auto; padding: 0 24px 80px;
+  }
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), #0668E1);
+    color: #fff; padding: 48px 40px; margin: 0 -24px 40px;
+    border-bottom: 4px solid #00C2FF;
+  }
+  .header h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 8px; }
+  .header .subtitle { font-size: 1.1rem; opacity: 0.85; font-weight: 300; }
+
+  .nav-bar {
+    background: var(--company-dark); border-radius: 8px; padding: 12px 20px;
+    margin-bottom: 32px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+  }
+  .nav-bar a {
+    background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 4px; padding: 6px 14px; font-size: 0.82rem; font-weight: 600;
+    text-decoration: none; transition: all 0.15s;
+  }
+  .nav-bar a:hover { background: rgba(255,255,255,0.25); }
+  .nav-bar a.active { background: var(--company-primary); border-color: var(--company-primary); }
+
+  .score-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px; margin-bottom: 40px;
+  }
+  .score-card {
+    background: var(--light-bg); border: 1px solid var(--border); border-radius: 10px;
+    padding: 20px; text-align: center;
+  }
+  .score-card.highlight { border-color: var(--green); border-width: 2px; }
+  .score-card .label { font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; margin-bottom: 6px; }
+  .score-card .value { font-size: 2rem; font-weight: 800; color: var(--company-dark); }
+  .score-card .detail { font-size: 0.82rem; color: var(--text-muted); margin-top: 4px; }
+  .score-card .value.green { color: var(--green); }
+
+  .section { margin-bottom: 48px; scroll-margin-top: 20px; }
+  .section h2 { font-size: 1.4rem; color: var(--company-dark); border-bottom: 3px solid var(--company-primary); padding-bottom: 8px; margin-bottom: 16px; }
+  .section h2 .num {
+    display: inline-block; background: var(--company-primary); color: #fff;
+    width: 28px; height: 28px; line-height: 28px; text-align: center; border-radius: 50%;
+    font-size: 0.85rem; margin-right: 8px; vertical-align: middle;
+  }
+
+  table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 0.88rem; }
+  thead th {
+    background: var(--company-dark); color: #fff; padding: 10px 12px; text-align: left;
+    font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap;
+  }
+  tbody td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tbody tr:nth-child(even) { background: var(--light-bg); }
+  tbody tr:hover { background: #eef2f7; }
+
+  .pos { color: var(--green); font-weight: 600; }
+  .neg { color: var(--red); font-weight: 600; }
+  .neutral { color: var(--amber); font-weight: 600; }
+  .raised { background: #eafaf1 !important; }
+  .lowered { background: #fef0ef !important; }
+  .bold { font-weight: 700; }
+  .muted { color: var(--text-muted); font-style: italic; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
+  .tag-beat { background: #d5f5e3; color: #1e8449; }
+  .tag-miss { background: #fadbd8; color: #c0392b; }
+  .tag-met { background: #fdebd0; color: #b9770e; }
+
+  .year-divider td {
+    background: var(--company-dark) !important; color: #fff; font-weight: 700;
+    font-size: 0.82rem; padding: 6px 12px; letter-spacing: 0.5px;
+  }
+
+  .insight {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 4px solid var(--amber); padding: 14px 18px; margin: 16px 0;
+    border-radius: 0 6px 6px 0; font-size: 0.9rem;
+  }
+  .insight strong { color: var(--company-dark); }
+
+  .takeaways { counter-reset: takeaway; }
+  .takeaway {
+    display: flex; gap: 16px; margin-bottom: 18px; padding: 14px 18px;
+    background: var(--light-bg); border-radius: 8px; border: 1px solid var(--border);
+  }
+  .takeaway-num {
+    flex-shrink: 0; width: 32px; height: 32px; line-height: 32px;
+    text-align: center; background: var(--company-primary); color: #fff;
+    border-radius: 50%; font-weight: 700; font-size: 0.85rem;
+  }
+  .takeaway-text { font-size: 0.92rem; }
+  .takeaway-text strong { color: var(--company-dark); }
+
+  @media (max-width: 768px) {
+    .score-grid { grid-template-columns: repeat(2, 1fr); }
+    .header h1 { font-size: 1.6rem; }
+    table { font-size: 0.8rem; }
+    thead th, tbody td { padding: 6px 8px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Meta Platforms Results Scorecard</h1>
+  <div class="subtitle">Actuals vs Guidance &mdash; Q2 2022 through Q4 2025 (15 quarters of revenue guidance tracked)</div>
+</div>
+
+<div class="nav-bar">
+  <a href="comparison.html">Guidance Overview</a>
+  <a href="results.html" class="active">Results Scorecard</a>
+  <a href="../../index.html">Company Index</a>
+</div>
+
+<!-- SUMMARY SCORECARD -->
+<div class="score-grid">
+  <div class="score-card highlight">
+    <div class="label">Revenue Beat Rate (vs Mid)</div>
+    <div class="value green">14/15</div>
+    <div class="detail">93% &mdash; only Q2 2022 missed</div>
+  </div>
+  <div class="score-card highlight">
+    <div class="label">Avg Revenue Beat (vs Mid)</div>
+    <div class="value green">+3.5%</div>
+    <div class="detail">Consistently above midpoint</div>
+  </div>
+  <div class="score-card highlight">
+    <div class="label">Beat High End</div>
+    <div class="value green">8/15</div>
+    <div class="detail">53% of quarters exceeded the top of the range</div>
+  </div>
+  <div class="score-card highlight">
+    <div class="label">Missed Low End</div>
+    <div class="value green">0/15</div>
+    <div class="detail">Never below the guided range</div>
+  </div>
+  <div class="score-card">
+    <div class="label">FY Expense Accuracy</div>
+    <div class="value">3/4</div>
+    <div class="detail">3 of 4 FYs within or below final range</div>
+  </div>
+  <div class="score-card">
+    <div class="label">FY CapEx Accuracy</div>
+    <div class="value">3/4</div>
+    <div class="detail">3 of 4 FYs within final range</div>
+  </div>
+</div>
+
+<!-- SECTION 1: Revenue -->
+<div class="section" id="s1">
+<h2><span class="num">1</span> Revenue Actuals vs Guidance</h2>
+<table>
+<thead><tr><th>Quarter</th><th>Guided From</th><th>Range</th><th>Midpoint</th><th>Actual</th><th>vs Low</th><th>vs Mid</th><th>vs High</th></tr></thead>
+<tbody>
+<tr class="muted"><td>Q1 2026</td><td>Q4 2025</td><td>$53.5B&ndash;$56.5B</td><td>$55.0B</td><td class="muted">Pending</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr class="year-divider"><td colspan="8">2025</td></tr>
+<tr class="raised"><td>Q4 2025</td><td>Q3 2025</td><td>$56.0B&ndash;$59.0B</td><td>$57.5B</td><td class="bold">$59.9B</td><td class="pos">+7.0%</td><td class="pos">+4.2%</td><td class="pos">+1.5% <span class="tag tag-beat">Beat</span></td></tr>
+<tr class="raised"><td>Q3 2025</td><td>Q2 2025</td><td>$47.5B&ndash;$50.5B</td><td>$49.0B</td><td class="bold">$51.2B</td><td class="pos">+7.8%</td><td class="pos">+4.5%</td><td class="pos">+1.4% <span class="tag tag-beat">Beat</span></td></tr>
+<tr class="raised"><td>Q2 2025</td><td>Q1 2025</td><td>$42.5B&ndash;$45.5B</td><td>$44.0B</td><td class="bold">$47.5B</td><td class="pos">+11.8%</td><td class="pos">+8.0%</td><td class="pos">+4.4% <span class="tag tag-beat">Beat</span></td></tr>
+<tr class="raised"><td>Q1 2025</td><td>Q4 2024</td><td>$39.5B&ndash;$41.8B</td><td>$40.65B</td><td class="bold">$42.3B</td><td class="pos">+7.1%</td><td class="pos">+4.1%</td><td class="pos">+1.2% <span class="tag tag-beat">Beat</span></td></tr>
+<tr class="year-divider"><td colspan="8">2024</td></tr>
+<tr class="raised"><td>Q4 2024</td><td>Q3 2024</td><td>$45.0B&ndash;$48.0B</td><td>$46.5B</td><td class="bold">$48.4B</td><td class="pos">+7.6%</td><td class="pos">+4.1%</td><td class="pos">+0.8% <span class="tag tag-beat">Beat</span></td></tr>
+<tr><td>Q3 2024</td><td>Q2 2024</td><td>$38.5B&ndash;$41.0B</td><td>$39.75B</td><td>$40.6B</td><td class="pos">+5.5%</td><td class="pos">+2.1%</td><td class="neg">&minus;1.0%</td></tr>
+<tr class="raised"><td>Q2 2024</td><td>Q1 2024</td><td>$36.5B&ndash;$39.0B</td><td>$37.75B</td><td class="bold">$39.1B</td><td class="pos">+7.1%</td><td class="pos">+3.6%</td><td class="pos">+0.3% <span class="tag tag-beat">Beat</span></td></tr>
+<tr><td>Q1 2024</td><td>Q4 2023</td><td>$34.5B&ndash;$37.0B</td><td>$35.75B</td><td>$36.5B</td><td class="pos">+5.8%</td><td class="pos">+2.1%</td><td class="neg">&minus;1.4%</td></tr>
+<tr class="year-divider"><td colspan="8">2023</td></tr>
+<tr class="raised"><td>Q4 2023</td><td>Q3 2023</td><td>$36.5B&ndash;$40.0B</td><td>$38.25B</td><td class="bold">$40.1B</td><td class="pos">+9.9%</td><td class="pos">+4.8%</td><td class="pos">+0.2% <span class="tag tag-beat">Beat</span></td></tr>
+<tr><td>Q3 2023</td><td>Q2 2023</td><td>$32.0B&ndash;$34.5B</td><td>$33.25B</td><td>$34.1B</td><td class="pos">+6.6%</td><td class="pos">+2.6%</td><td class="neg">&minus;1.2%</td></tr>
+<tr><td>Q2 2023</td><td>Q1 2023</td><td>$29.5B&ndash;$32.0B</td><td>$30.75B</td><td>$32.0B</td><td class="pos">+8.5%</td><td class="pos">+4.1%</td><td class="neutral">0.0% <span class="tag tag-met">Met</span></td></tr>
+<tr><td>Q1 2023</td><td>Q4 2022</td><td>$26.0B&ndash;$28.5B</td><td>$27.25B</td><td>$28.6B</td><td class="pos">+10.0%</td><td class="pos">+5.0%</td><td class="pos">+0.4%</td></tr>
+<tr class="year-divider"><td colspan="8">2022</td></tr>
+<tr><td>Q4 2022</td><td>Q3 2022</td><td>$30.0B&ndash;$32.5B</td><td>$31.25B</td><td>$32.2B</td><td class="pos">+7.3%</td><td class="pos">+3.0%</td><td class="neg">&minus;0.9%</td></tr>
+<tr><td>Q3 2022</td><td>Q2 2022</td><td>$26.0B&ndash;$28.5B</td><td>$27.25B</td><td>$27.7B</td><td class="pos">+6.5%</td><td class="pos">+1.7%</td><td class="neg">&minus;2.8%</td></tr>
+<tr><td>Q2 2022</td><td>Q1 2022</td><td>$28.0B&ndash;$30.0B</td><td>$29.0B</td><td>$28.8B</td><td class="pos">+2.9%</td><td class="neg">&minus;0.7%</td><td class="neg">&minus;4.0%</td></tr>
+</tbody>
+</table>
+<div class="insight"><strong>Key Insight:</strong> Meta's revenue guidance has been remarkably conservative across this period. The average beat vs midpoint of +3.5% is substantial for a $30B&ndash;$60B quarterly revenue business. The only quarter that missed the midpoint was Q2 2022 (&minus;0.7%), during the worst advertising downturn in the company's history. From 2025, every single quarter beat the high end of the range, with Q2 2025 posting a remarkable +8.0% beat vs midpoint ($47.5B actual vs $44.0B guided) &mdash; the largest beat in the entire series.</div>
+</div>
+
+<!-- SECTION 2: FY Expenses -->
+<div class="section" id="s2">
+<h2><span class="num">2</span> Full Year Expense Actuals vs Final Guidance</h2>
+<table>
+<thead><tr><th>Fiscal Year</th><th>Final Guidance</th><th>Midpoint</th><th>Actual</th><th>vs Mid</th><th>vs Range</th></tr></thead>
+<tbody>
+<tr><td>FY 2025</td><td>$116B&ndash;$118B</td><td>$117.0B</td><td class="bold">~$117.7B</td><td class="neutral">+0.6%</td><td><span class="tag tag-met">Within range</span></td></tr>
+<tr><td>FY 2024</td><td>$96B&ndash;$98B</td><td>$97.0B</td><td class="bold">~$95.0B</td><td class="pos">&minus;2.1%</td><td><span class="tag tag-beat">Below range</span></td></tr>
+<tr><td>FY 2023</td><td>$87B&ndash;$89B</td><td>$88.0B</td><td class="bold">~$88.1B</td><td class="neutral">+0.1%</td><td><span class="tag tag-met">At midpoint</span></td></tr>
+<tr><td>FY 2022</td><td>$85B&ndash;$87B</td><td>$86.0B</td><td class="bold">~$87.8B</td><td class="neg">+2.1%</td><td><span class="tag tag-miss">Above range</span></td></tr>
+</tbody>
+</table>
+<p style="font-size:0.82rem;color:var(--text-muted);margin-top:4px;">Note: Actuals derived from sum of quarterly reported total expenses. FY2022 exceeded the final range due to $4.2B in Q4 restructuring charges. For expenses, below guidance = favorable outcome.</p>
+
+<div class="insight"><strong>Key Insight:</strong> Expense guidance accuracy improved markedly over the period. FY2022 expenses came in above the final range due to $4.2B in Q4 restructuring charges that were partially but not fully embedded in guidance. FY2023 and FY2025 landed essentially at midpoint. FY2024 came in ~$2B below the final range &mdash; a favorable outcome reflecting the permanent cost discipline of the Year of Efficiency. The FY2023 expense arc is notable: initial guidance of $96B&ndash;$101B was slashed to a final $87B&ndash;$89B, and actuals matched the revised target almost exactly.</div>
+</div>
+
+<!-- SECTION 3: FY CapEx -->
+<div class="section" id="s3">
+<h2><span class="num">3</span> Full Year CapEx Actuals vs Final Guidance</h2>
+<table>
+<thead><tr><th>Fiscal Year</th><th>Initial Guidance</th><th>Final Guidance</th><th>Final Mid</th><th>Actual</th><th>vs Final Mid</th><th>vs Final Range</th></tr></thead>
+<tbody>
+<tr><td>FY 2026</td><td>$115B&ndash;$135B</td><td class="muted">In progress</td><td>$125.0B</td><td class="muted">Pending</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr><td>FY 2025</td><td>$60B&ndash;$65B</td><td>$70B&ndash;$72B</td><td>$71.0B</td><td class="bold">~$72.2B</td><td class="neutral">+1.7%</td><td><span class="tag tag-met">Near high end</span></td></tr>
+<tr><td>FY 2024</td><td>$30B&ndash;$35B</td><td>$38B&ndash;$40B</td><td>$39.0B</td><td class="bold">~$39.2B</td><td class="neutral">+0.5%</td><td><span class="tag tag-met">At midpoint</span></td></tr>
+<tr><td>FY 2023</td><td>$34B&ndash;$39B</td><td>$27B&ndash;$29B</td><td>$28.0B</td><td class="bold">~$28.2B</td><td class="neutral">+0.7%</td><td><span class="tag tag-met">At midpoint</span></td></tr>
+<tr><td>FY 2022</td><td>$29B&ndash;$34B</td><td>$32B&ndash;$33B</td><td>$32.5B</td><td class="bold">~$31.9B</td><td class="neutral">&minus;1.8%</td><td><span class="tag tag-met">Near low end</span></td></tr>
+</tbody>
+</table>
+<p style="font-size:0.82rem;color:var(--text-muted);margin-top:4px;">Note: Actuals derived from sum of quarterly reported CapEx (including principal payments on finance leases).</p>
+
+<div class="insight"><strong>Key Insight:</strong> CapEx guidance has been accurate at the final-revision level &mdash; all four completed fiscal years landed within or very near the final guided range. The story is in the revisions: FY2023 CapEx was initially guided at $34B&ndash;$39B but was slashed to $27B&ndash;$29B as Meta pivoted to a new data center architecture. FY2024 went the other direction, starting at $30B&ndash;$35B and ending at $38B&ndash;$40B as AI infrastructure needs escalated. FY2025 was raised every single quarter ($60B&ndash;$65B initial to $70B&ndash;$72B final), and actual spend of ~$72.2B came in right at the top of the range.</div>
+</div>
+
+<!-- SECTION 4: FY Expense Guidance Evolution -->
+<div class="section" id="s4">
+<h2><span class="num">4</span> FY Expense Guidance: Initial vs Final vs Actual</h2>
+<table>
+<thead><tr><th>Fiscal Year</th><th>Initial Mid</th><th>Final Mid</th><th>Revision</th><th>Actual</th><th>Actual vs Initial</th></tr></thead>
+<tbody>
+<tr><td>FY 2025</td><td>$116.5B</td><td>$117.0B</td><td class="pos">+$0.5B</td><td>~$117.7B</td><td class="pos">+$1.2B (+1.0%)</td></tr>
+<tr class="lowered"><td>FY 2024</td><td>$96.5B</td><td>$97.0B</td><td class="pos">+$0.5B</td><td>~$95.0B</td><td class="neg">&minus;$1.5B (&minus;1.6%)</td></tr>
+<tr class="raised"><td>FY 2023</td><td>$98.5B</td><td>$88.0B</td><td class="neg bold">&minus;$10.5B</td><td>~$88.1B</td><td class="neg bold">&minus;$10.4B (&minus;10.6%)</td></tr>
+<tr><td>FY 2022</td><td>$89.5B</td><td>$86.0B</td><td class="neg">&minus;$3.5B</td><td>~$87.8B</td><td class="neg">&minus;$1.7B (&minus;1.9%)</td></tr>
+</tbody>
+</table>
+<div class="insight"><strong>Key Insight:</strong> The FY2023 expense story stands alone: a $10.5B midpoint reduction from initial to final guidance, driven by the Year of Efficiency. This was the largest guidance revision (in either direction) across any metric in the entire 16-quarter dataset. FY2024 and FY2025 saw minimal revisions (&lt;$1B), indicating Meta's expense forecasting normalized after the restructuring period. Initial guidance has become a reliable predictor of final outcomes.</div>
+</div>
+
+<!-- SECTION 5: Takeaways -->
+<div class="section" id="s5">
+<h2><span class="num">5</span> Key Takeaways</h2>
+<div class="takeaways">
+
+<div class="takeaway">
+  <div class="takeaway-num">1</div>
+  <div class="takeaway-text"><strong>Meta is a conservative revenue guider.</strong> 14 of 15 quarters beat the midpoint, with an average beat of +3.5%. This is not coincidence &mdash; management systematically guides below internal expectations, creating a reliable pattern of beats that builds investor confidence.</div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-num">2</div>
+  <div class="takeaway-text"><strong>2025 was the strongest beat year on record.</strong> All four quarters beat the high end of guidance, with Q2 2025 posting a +8.0% beat vs midpoint ($3.5B above). This acceleration reflects AI-driven ad performance gains consistently exceeding management's own expectations.</div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-num">3</div>
+  <div class="takeaway-text"><strong>The one miss (Q2 2022) came during an unprecedented downturn.</strong> Even then, actual revenue of $28.8B was only 0.7% below the $29.0B midpoint and well within the guided range. Meta has never reported revenue below the low end of guidance in this 15-quarter history.</div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-num">4</div>
+  <div class="takeaway-text"><strong>Expense guidance became more accurate post-restructuring.</strong> FY2022 expenses overshot the final range, and FY2023 saw a massive $10.5B revision. But FY2024 and FY2025 landed near their final midpoints, suggesting Meta's expense forecasting normalized after the Year of Efficiency volatility.</div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-num">5</div>
+  <div class="takeaway-text"><strong>CapEx guidance revisions tell the AI story.</strong> FY2023 was slashed by $8.5B (new DC architecture), FY2024 was raised by $6.5B (AI ramp), and FY2025 was raised by $8.5B (accelerating AI). The direction of CapEx revisions is the single best real-time indicator of Meta's AI investment conviction.</div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-num">6</div>
+  <div class="takeaway-text"><strong>Revenue guidance ranges widened during uncertainty.</strong> The Q1 2025 guide used a $2.3B range (smallest) while Q3 2023's Q4 guide used a $3.5B range (widest) due to Middle East geopolitical uncertainty. Q1 2025's Q2 guide used a $3.0B range citing macro uncertainty from trade policy. Management intentionally widens ranges when visibility is lower.</div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-num">7</div>
+  <div class="takeaway-text"><strong>Beats accelerated as AI improvements compounded.</strong> The average beat vs midpoint was +1.3% in 2022, +4.1% in 2023, +3.0% in 2024, and +5.2% in 2025. The trend suggests AI-driven ad performance improvements are generating revenue upside that management struggles to fully forecast.</div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-num">8</div>
+  <div class="takeaway-text"><strong>FY CapEx actuals land at the final range but not the initial range.</strong> Every FY landed within or near the final guided range, but the cumulative revisions were massive: FY2023 fell $8.3B below initial midpoint while FY2025 came in $9.7B above. This suggests CapEx plans are highly dynamic and initial guidance is directional rather than precise.</div>
+</div>
+
+</div>
+</div>
+
+<div style="margin-top:60px; padding-top:20px; border-top:2px solid var(--border); font-size:0.82rem; color:var(--text-muted); text-align:center;">
+  <p>Data sourced from public earnings call transcripts via <a href="https://www.bamsec.com" style="color:var(--blue);">BamSEC</a>. Analysis generated with Claude.</p>
+  <p style="margin-top:8px;"><a href="comparison.html" style="color:var(--blue);">Guidance Overview</a> &middot; <a href="../../index.html" style="color:var(--blue);">Company Index</a></p>
+</div>
+
+</body>
+</html>
