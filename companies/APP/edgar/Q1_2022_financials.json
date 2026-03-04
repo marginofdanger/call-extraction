@@ -1,0 +1,147 @@
+{
+  "ticker": "APP",
+  "quarter": "Q1_2022",
+  "filing_date": "",
+  "accession": "0001193125-22-147577",
+  "tables": [
+    {
+      "headers": [
+        "",
+        "1Q 20",
+        "2Q22"
+      ],
+      "rows": [
+        [
+          ", we will update the revenue measurement period used to determine the number of SPECs in a period to include clients from whom we have collected greater than $125,000 in Software Platform revenue over the trailing 12 months. The current definition of SPEC included third-party clients who had more than $31,250 in Software Platform revenue for the prior three months. We believe this change in revenue measurement period will provide additional information regarding the scale and growth of our more-mature clients. Going forward, when Net Dollar-Based Revenue Retention (“NDBRR”) measures are provided, we will also calculate such measures using the updated definition of SPECs. The table below shows our SPEC and Revenue per SPEC for the last five quarters under the current calculations as well as the updated calculations. Revenue Revenue Revenue Final Disclosure 1Q 4Q 3Q 2Q 1Q Metric Measurement Composition Threshold Period",
+          "2022",
+          "2021"
+        ],
+        [
+          "2021 Period $31,250 per Quarter ended SPEC",
+          "481",
+          "461"
+        ],
+        [
+          "193 Current Software Platform Annualized Quarter March",
+          "31",
+          "2022"
+        ],
+        [
+          "Calculations Revenue per Revenue Quarterly ($125,000 per Quarter ended",
+          "553",
+          "503"
+        ],
+        [
+          "$453 SPEC Year) March",
+          "31",
+          "2022"
+        ],
+        [
+          "SPEC",
+          "N/A",
+          "447"
+        ],
+        [
+          "Updated Software Platform Trailing 12- Revenue per $125,000 Calculations Revenue Month Basis",
+          "N/A",
+          "1701"
+        ]
+      ],
+      "caption": "Software Platform Enterprise Clients. We focus on the number of Software Platform Enterprise Clients, which are third-party business\nclients from whom we have collected greater than $31,250 of revenue",
+      "source": "workiva_hidden_text"
+    }
+  ],
+  "xbrl": {
+    "Revenue": {
+      "value": 625421000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2022-05-13",
+      "concept": "RevenueFromContractWithCustomerExcludingAssessedTax"
+    },
+    "Net Income": {
+      "value": -115257000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2022-05-13",
+      "concept": "NetIncomeLoss"
+    },
+    "Net Income to Common": {
+      "value": -115257000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2022-05-13",
+      "concept": "NetIncomeLossAvailableToCommonStockholdersBasic"
+    },
+    "EPS (Basic)": {
+      "value": -0.31,
+      "units": "USD/shares",
+      "form": "10-Q",
+      "filed": "2022-05-13",
+      "concept": "EarningsPerShareBasic"
+    },
+    "EPS (Diluted)": {
+      "value": -0.31,
+      "units": "USD/shares",
+      "form": "10-Q",
+      "filed": "2022-05-13",
+      "concept": "EarningsPerShareDiluted"
+    },
+    "Total Assets": {
+      "value": 6167193000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2022-05-13",
+      "concept": "Assets"
+    },
+    "Total Liabilities": {
+      "value": 4154738000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2022-05-13",
+      "concept": "Liabilities"
+    },
+    "Total Equity": {
+      "value": 2012295000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2022-05-13",
+      "concept": "StockholdersEquity"
+    },
+    "Shares Outstanding": {
+      "value": 375286039,
+      "units": "shares",
+      "form": "10-Q",
+      "filed": "2022-05-13",
+      "concept": "CommonStockSharesOutstanding"
+    },
+    "Operating Income": {
+      "value": -127987000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2022-05-13",
+      "concept": "OperatingIncomeLoss"
+    },
+    "Cash & Equivalents": {
+      "value": 1413256000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2022-05-13",
+      "concept": "CashAndCashEquivalentsAtCarryingValue"
+    },
+    "Comprehensive Income": {
+      "value": -128789000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2022-05-13",
+      "concept": "ComprehensiveIncomeNetOfTax"
+    },
+    "Income Tax Expense": {
+      "value": -42684000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2022-05-13",
+      "concept": "IncomeTaxExpenseBenefit"
+    }
+  }
+}

@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VEEV Q1 FY2026 Earnings Call Detail</title>
+<style>
+:root {
+    --company-primary: #F58220;
+    --company-dark: #1a1a2e;
+    --company-accent: #2C5234;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 40px 40px 32px;
+    margin: 0 -24px 0;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .header .meta {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    font-weight: 300;
+  }
+  .header .meta span { margin-right: 24px; }
+
+  .nav-bar {
+    background: var(--company-accent);
+    margin: 0 -24px 32px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    transition: all 0.15s;
+  }
+  .nav-bar a:hover { background: rgba(255,255,255,0.2); }
+  .nav-bar a.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .nav-center {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-center a.qbtn {
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+  }
+  .nav-center a.qbtn.current {
+    background: var(--company-primary);
+    border-color: var(--company-primary);
+  }
+  .nav-center a.qbtn:hover { background: rgba(255,255,255,0.2); }
+  .nav-back {
+    background: rgba(255,255,255,0.15) !important;
+    border-color: rgba(255,255,255,0.35) !important;
+  }
+
+  .metrics-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .metric {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+  .metric-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .metric-value {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+  .metric-delta {
+    font-size: 0.72rem;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+  .delta-up { color: var(--green); }
+  .delta-down { color: var(--red); }
+  .delta-flat { color: var(--text-muted); }
+
+  .changes-box {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 5px solid var(--amber);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .changes-box h3 {
+    font-size: 1rem;
+    color: var(--company-dark);
+    margin-bottom: 10px;
+  }
+  .changes-box ul { list-style: none; padding: 0; }
+  .changes-box li {
+    padding: 5px 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .change-tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .ct-raised { background: #d5f5e3; color: #1e8449; }
+  .ct-lowered { background: #fadbd8; color: #c0392b; }
+  .ct-changed { background: #d6eaf8; color: #2471a3; }
+  .ct-new { background: #e8daef; color: #6c3483; }
+  .ct-maintained { background: #fdebd0; color: #b9770e; }
+
+  .content-section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .content-section h3 {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .content-section ul {
+    padding: 14px 18px 14px 36px;
+    margin: 0;
+  }
+  .content-section li {
+    padding: 3px 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .content-section li strong { color: var(--company-dark); }
+
+  .prior-ref {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 40px;
+    overflow: hidden;
+  }
+  .prior-ref-header {
+    background: var(--light-bg);
+    padding: 12px 18px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--company-dark);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .prior-ref-header:hover { background: #eef2f7; }
+  .prior-ref-body { padding: 18px; display: none; }
+  .prior-ref-body.open { display: block; }
+  .prior-ref-body .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .prior-mini {
+    background: var(--light-bg);
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .prior-mini .pm-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .prior-mini .pm-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border);
+  }
+  .footer-nav a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .footer-nav a:hover { text-decoration: underline; }
+
+  /* Comparison page styles */
+  .toc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .toc a {
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 4px 0;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  .comp-section {
+    margin-bottom: 40px;
+  }
+  .comp-section h2 {
+    font-size: 1.2rem;
+    color: var(--company-dark);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--company-primary);
+  }
+
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+  }
+  .comp-table th {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .comp-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .comp-table tr:nth-child(even) { background: var(--light-bg); }
+  .comp-table tr:hover { background: #e8f4fd; }
+
+  @media (max-width: 768px) {
+    .header h1 { font-size: 1.5rem; }
+    .metrics-card { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .nav-center { display: none; }
+    body { padding: 0 16px 60px; }
+    .header { margin: 0 -16px 0; padding: 28px 24px 20px; }
+    .nav-bar { margin: 0 -16px 24px; }
+    .toc { grid-template-columns: 1fr; }
+    .comp-table { font-size: 0.78rem; }
+    .comp-table th, .comp-table td { padding: 6px 8px; }
+  }
+
+  @media print {
+    .nav-bar { display: none; }
+    .header { background: #333; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>VEEV Q1 FY2026 Earnings Call</h1>
+  <div class="meta">
+    <span>Call Date: May 28, 2025</span>
+    <span>Reporting: Q1 FY2026 (Feb-Apr 2025)</span>
+  </div>
+</div>
+<div class="nav-bar">
+  <a href="Q4_FY2025.html">&larr; Q4 FY2025</a>
+  <div class="nav-center">
+    <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="Q3_FY2026.html" class="qbtn">3Q2026</a>
+    <a href="Q2_FY2026.html" class="qbtn">2Q2026</a>
+    <a href="Q1_FY2026.html" class="qbtn current">1Q2026</a>
+    <a href="Q4_FY2025.html" class="qbtn">4Q2025</a>
+    <a href="Q3_FY2025.html" class="qbtn">3Q2025</a>
+    <a href="Q2_FY2025.html" class="qbtn">2Q2025</a>
+    <a href="Q1_FY2025.html" class="qbtn">1Q2025</a>
+    <a href="Q4_FY2024.html" class="qbtn">4Q2024</a>
+    <a href="Q3_FY2024.html" class="qbtn">3Q2024</a>
+    <a href="Q2_FY2024.html" class="qbtn">2Q2024</a>
+    <a href="Q1_FY2024.html" class="qbtn">1Q2024</a>
+    <a href="Q4_FY2023.html" class="qbtn">4Q2023</a>
+    <a href="Q3_FY2023.html" class="qbtn">3Q2023</a>
+    <a href="Q2_FY2023.html" class="qbtn">2Q2023</a>
+    <a href="Q1_FY2023.html" class="qbtn">1Q2023</a>
+  </div>
+  <a href="Q2_FY2026.html">Q2 FY2026 &rarr;</a>
+</div>
+
+<div class="changes-box">
+  <h3>What Changed vs Q4 FY2025</h3>
+  <ul>
+    <li><span class="change-tag ct-changed">Changed</span> Non-GAAP Operating Income: $335-$337M (~44% implied non-GAAP operating margin at midpoint) (prior: $1,152.3 million (vs. prior guidance of ~$1,130 million -- beat by ~$22 million; 42.0% non-GAAP operating margin vs. 35.6% prior year; up 37% YoY from $842.5 million))</li>
+    <li><span class="change-tag ct-changed">Changed</span> Non-GAAP EPS: $1.89-$1.90 (prior: $6.60 (vs. prior guidance of ~$6.46 -- beat by ~$0.14; vs. $4.84 prior year))</li>
+  </ul>
+</div>
+
+<div class="metrics-card">
+  <div class="metric" style="grid-column: 1 / -1; background: linear-gradient(135deg, var(--company-dark), var(--company-accent)); color: #fff; border: none; padding: 8px 14px;">
+    <div class="metric-label" style="color: rgba(255,255,255,0.7);">Guidance For</div>
+    <div class="metric-value" style="color: #fff; font-size: 1rem;">Q2 FY2026, ending July 31, 2025</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Total Revenue</div>
+    <div class="metric-value">$766-$769M</div>
+    <div class="metric-delta delta-flat">Prior: $2,746.6 million</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Non-GAAP Operating Income</div>
+    <div class="metric-value">$335-$337M</div>
+    <div class="metric-delta delta-flat">Prior: $1,152.3 million</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Non-GAAP EPS</div>
+    <div class="metric-value">$1.89-$1.90</div>
+    <div class="metric-delta delta-flat">Prior: $6.60</div>
+  </div>
+</div>
+
+<!-- Full Guidance Content -->
+<div class="content-section">
+  <h3>Quarterly Guidance (Q2 FY2026, ending July 31, 2025)</h3>
+  <ul>
+    <li><strong>Total Revenue:</strong> $766-$769M</li>
+    <li><strong>Non-GAAP Operating Income:</strong> $335-$337M (~44% implied non-GAAP operating margin at midpoint)</li>
+    <li><strong>Non-GAAP Diluted EPS:</strong> $1.89-$1.90</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Full Year FY2026 Guidance (Updated, ending January 31, 2026)</h3>
+  <ul>
+    <li><strong>Total Revenue:</strong> $3,090-$3,100M (raised from prior $3,040-$3,055M)</li>
+    <li><strong>Non-GAAP Operating Income:</strong> ~$1,360M (raised from prior ~$1,300M)</li>
+    <li><strong>Non-GAAP Diluted EPS:</strong> ~$7.63 (raised from prior ~$7.32)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Guidance Changes vs. Prior (Q4 FY2025 initial guidance)</h3>
+  <ul>
+    <li>| Metric | Prior (Q4 FY2025) | Updated (Q1 FY2026) | Change | |--------|-------------------|---------------------|--------| | Total Revenue | $3,040-$3,055M | $3,090-$3,100M | +$45M at midpoint | | Non-GAAP Operating Income | ~$1,300M | ~$1,360M | +$60M | | Non-GAAP Diluted EPS | ~$7.32 | ~$7.63 | +$0.31 |</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Full Year Guidance Commentary</h3>
+  <ul>
+    <li><strong>R&D Solutions subscription revenue growth guidance:</strong> 19% for FY2026 (Brian Van Wagener: "guidance for the year now at 19%")</li>
+    <li><strong>Billings guidance raised</strong> -- 2 major factors: (1) FX tailwind flowing through, (2) Q1 subscription revenue outperformance flowing through to billings</li>
+    <li>Revenue raise driven primarily by Q1 Crossix outperformance pulling through to the balance of the year</li>
+    <li>Services revenue timing in Q1 expected to normalize back out over Q2-Q4 (faster-than-expected services delivery in Q1)</li>
+    <li>Business is "largely as we expected it to be 90 days ago" outside of Crossix outperformance and services timing</li>
+    <li><strong>Macro assumption:</strong> guidance assumes "things continue roughly as they are now" -- more uncertainty in the world but customers continue to navigate it effectively; no material change to financials or pipeline observed</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Long-Term Targets</h3>
+  <ul>
+    <li><strong>Calendar 2025 Revenue Run Rate Goal:</strong> $3B -- <strong>achieved</strong> this quarter</li>
+    <li><strong>2030 Revenue Goal:</strong> double the $3B run rate (~$6B)</li>
+    <li><strong>2030 Goals:</strong> "double revenue and the positive impact we can have for the industry"</li>
+    <li><strong>Veeva AI Efficiency Target (3-5 year horizon to 2030):</strong> Veeva AI can help increase life sciences industry efficiency by ~15% (Peter Gassner)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Revenue</h3>
+  <ul>
+    <li><strong>Total Revenue:</strong> $759.0M (+17% YoY vs. $650.3M) - Beat guidance of $726-$729M (initial Q4 FY2025 guidance)</li>
+    <li><strong>Subscription Services Revenue:</strong> $634.8M (+19% YoY vs. $534.0M) - <strong>Veeva Commercial Solutions (Subscription):</strong> $305.4M (+17% YoY vs. $261.3M) - <strong>Veeva R&D Solutions (Subscription):</strong> $329.4M (+21% YoY vs. $272.6M)</li>
+    <li><strong>Professional Services & Other Revenue:</strong> $124.3M (+7% YoY vs. $116.4M) - <strong>Commercial Solutions (Services):</strong> $46.6M (vs. $48.8M YoY, -5%) - <strong>R&D Solutions (Services):</strong> $77.7M (vs. $67.6M YoY, +15%)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Profitability (GAAP)</h3>
+  <ul>
+    <li><strong>Gross Profit:</strong> $585.2M (77.1% gross margin vs. 73.3% YoY) - <strong>Subscription Services Gross Margin (GAAP):</strong> 87.7% (vs. 85.4% YoY) - <strong>Professional Services Gross Margin (GAAP):</strong> 23.2% (vs. 17.7% YoY)</li>
+    <li><strong>Operating Income (GAAP):</strong> $233.7M (30.8% margin vs. 23.9% / $155.2M YoY, +51% YoY)</li>
+    <li><strong>Net Income (GAAP):</strong> $228.2M (+41% YoY vs. $161.7M)</li>
+    <li><strong>GAAP Diluted EPS:</strong> $1.37 (vs. $0.98 YoY)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Profitability (Non-GAAP)</h3>
+  <ul>
+    <li><strong>Non-GAAP Gross Profit:</strong> $600.8M (79.2% margin vs. 75.6% YoY) - <strong>Non-GAAP Subscription Services Gross Margin:</strong> 88.1% (vs. 85.9% YoY) - <strong>Non-GAAP Professional Services Gross Margin:</strong> 33.6% (vs. 28.6% YoY)</li>
+    <li><strong>Non-GAAP Operating Income:</strong> $349.9M (46.1% margin vs. 40.1% / $260.9M YoY, +34% YoY) - Beat guidance of $307-$309M (initial Q4 FY2025 guidance) - ~3/4 of outperformance driven by revenue (usage-based Crossix + faster services delivery timing) - ~1/4 driven by expense timing (items occurred later than expected)</li>
+    <li><strong>Non-GAAP Net Income:</strong> $327.8M (vs. $247.0M YoY, +33%)</li>
+    <li><strong>Non-GAAP Diluted EPS:</strong> $1.97 (vs. $1.50 YoY) - Beat guidance of $1.74-$1.75 (initial Q4 FY2025 guidance)</li>
+    <li><strong>Non-GAAP Tax Rate:</strong> 21.0% (used for both Q1 FY2026 and Q1 FY2025)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Stock-Based Compensation</h3>
+  <ul>
+    <li><strong>Total SBC:</strong> $112.2M (vs. $95.9M YoY) - Cost of subscription services: $1.7M - Cost of professional services: $12.8M - R&D: $47.9M - Sales & marketing: $22.3M - G&A: $27.5M</li>
+    <li><strong>Amortization of Purchased Intangibles:</strong> $3.9M (vs. $4.8M YoY)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Operating Expenses (GAAP / Non-GAAP)</h3>
+  <ul>
+    <li><strong>R&D:</strong> $184.0M / $136.1M (vs. $162.7M / $120.9M YoY)</li>
+    <li><strong>Sales & Marketing:</strong> $98.6M / $73.5M (vs. $97.3M / $70.8M YoY)</li>
+    <li><strong>G&A:</strong> $68.8M / $41.4M (vs. $61.3M / $39.2M YoY)</li>
+    <li><strong>Total OpEx (GAAP):</strong> $351.5M (vs. $321.3M YoY)</li>
+    <li><strong>Total OpEx (Non-GAAP):</strong> $251.0M (vs. $230.9M YoY)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Cash Flow & Balance Sheet</h3>
+  <ul>
+    <li><strong>Operating Cash Flow (GAAP):</strong> $877.2M (vs. $763.5M YoY)</li>
+    <li><strong>Operating Cash Flow (Non-GAAP):</strong> $874.6M (excluding $2.6M excess tax benefits from employee stock plans; vs. $760.4M YoY)</li>
+    <li><strong>Cash & Equivalents:</strong> $1.96B (vs. $1.12B at Jan 31, 2025)</li>
+    <li><strong>Short-Term Investments:</strong> $4.10B (vs. $4.03B at Jan 31, 2025)</li>
+    <li><strong>Cash + Short-Term Investments:</strong> ~$6.07B</li>
+    <li><strong>Accounts Receivable:</strong> $492.8M (vs. $1,016.4M at Jan 31, 2025 -- seasonal Q4-to-Q1 collection)</li>
+    <li><strong>Unbilled Accounts Receivable:</strong> $48.4M (vs. $40.8M at Jan 31, 2025)</li>
+    <li><strong>Deferred Revenue:</strong> $1,246.2M (vs. $1,274.0M at Jan 31, 2025)</li>
+    <li><strong>Total Assets:</strong> $7.77B</li>
+    <li><strong>Total Equity:</strong> $6.21B</li>
+    <li><strong>Total Liabilities:</strong> $1.55B</li>
+    <li><strong>Goodwill:</strong> $439.9M (unchanged)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Shares</h3>
+  <ul>
+    <li><strong>Diluted Shares Outstanding:</strong> 166.2M (vs. 164.4M YoY)</li>
+    <li><strong>Basic Shares Outstanding:</strong> 162.7M (vs. 161.4M YoY)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Revenue Run Rate Milestone</h3>
+  <ul>
+    <li><strong>Achieved calendar 2025 revenue run rate goal of $3 billion</strong> (Q1 annualized: $759M x 4 = ~$3.04B)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Margin Commentary</h3>
+  <ul>
+    <li>Q1 was a <strong>high watermark for margins</strong> in FY2026; expected to return to ~44% non-GAAP operating margin in Q2, roughly what is expected for the balance of the year</li>
+    <li>Revenue outperformance (Crossix usage-based + faster services timing) not expected to be a recurring benefit to margins through the balance of the year</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Vault CRM Migration Progress</h3>
+  <ul>
+    <li><strong>Vault CRM Customers Live:</strong> over 80 (vs. "a handful" one year ago)</li>
+    <li><strong>Vault CRM Customers Live Target (by ~May 2026):</strong> ~200 customers on track</li>
+    <li><strong>Q1 FY2026 New Vault CRM Customers Added:</strong> 28 total (approximately half migrations, half net new customers to Veeva)</li>
+    <li><strong>Top 20 Pharma Progress:</strong> - 4 top 20 pharmas have publicly announced decision to move to Vault CRM - 3 top 20 biopharmas going live in calendar 2026 - One top 20 pharma (SVP of Digital confirmed at Summit) going live "in a month or so" with full global rollout (~20,000 people) by end of calendar 2025 - Progress is on track or slightly ahead of expectations from 1-2 years ago</li>
+    <li><strong>Red Zone:</strong> starts to kick in during 2027 timeframe; large customers want to make decisions before that, which is why most large companies expected to decide in 2025 or 2026</li>
+    <li><strong>Why Customers Choose Vault CRM:</strong> better than Veeva CRM, AI strategy (agents in product by end of year), brings sales/marketing/medical together in single customer database; innovation pace</li>
+    <li><strong>Why Some Don't Choose Veeva:</strong> some companies want more of a custom-type product; expected to be a minority</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>CRM Expansion Products</h3>
+  <ul>
+    <li><strong>Campaign Manager & Service Center:</strong> early days, have some early customers in both areas</li>
+    <li><strong>Requirement:</strong> customer must be on Vault CRM first</li>
+    <li><strong>Focus:</strong> initially on smaller and midsized customers; over time, expect progress in midsize and large companies</li>
+    <li><strong>Value Proposition:</strong> bringing sales, marketing, and medical together in a single customer database -- unprecedented in life sciences</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Veeva AI Strategy</h3>
+  <ul>
+    <li><strong>Veeva AI First Release:</strong> planned for December 2025</li>
+    <li><strong>AI Agents Planned for First Release:</strong> - CRM Bot (pre-call planning agent) - Voice Control - Compliant Free Text - MLR Bot (medical legal regulatory approval agent) - Safety AI agent (transcribes pretext into a safety case)</li>
+    <li><strong>Approach:</strong> deeply embedded in core applications, not generic AI; industry-specific processes with deep industry-specific AI</li>
+    <li><strong>Monetization:</strong> will charge an appropriate license fee; want pricing to be reasonable and broadly adopted; packaging not yet worked out; no specific revenue projections at this time</li>
+    <li><strong>Customer Reception:</strong> "very positive" -- customers need AI working with core applications, trust Veeva with data, can see tangible use cases</li>
+    <li><strong>Separate AI Team:</strong> dedicated team working on Veeva AI</li>
+    <li><strong>Direct Data API & AI Partner Program:</strong> part of the overall AI strategy alongside Veeva AI applications</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Crossix Performance & Commentary</h3>
+  <ul>
+    <li><strong>Crossix Growth Rate:</strong> growing at more than 30% year-over-year</li>
+    <li><strong>Q1 Outperformance Driver:</strong> predominantly usage-based area of the business outperformed expectations</li>
+    <li><strong>Lumpiness:</strong> usage-based business can be "a little lumpy from quarter to quarter" -- reflected in full year guide</li>
+    <li><strong>Product Breadth Expansion:</strong> historically started with digital consumer measurement and optimization; now strong in HCP (health care provider) measurement and optimization, plus audiences across both segments</li>
+    <li><strong>Deal Size:</strong> comprehensive Crossix deal value is "maybe double in the size of what it was 3 years ago"</li>
+    <li><strong>No Evidence of Pull Forward:</strong> Peter Gassner stated "I wouldn't say any particular pull forward we're seeing"</li>
+    <li><strong>Strategic Direction:</strong> tighter integration with CRM products, optimizing for long-term agreements, getting higher in the account</li>
+    <li><strong>Data Network:</strong> supports both Crossix and Compass; covers retail, specialty drugs, specialty pharmacy, hospital-administered drugs, complex therapies; can project sales data for ~4,000 brands across retail and nonretail</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Data Cloud / Compass Update</h3>
+  <ul>
+    <li><strong>Compass Brands Added in Q1:</strong> ~10 brands (mostly in patient area)</li>
+    <li><strong>Compass Status:</strong> "marathon" -- industry used to doing things a certain way; hard business to get into but making good progress</li>
+    <li><strong>Prescriber & National Compass:</strong> still in early adopter phase; few early adopters; pipeline getting bigger; focused on adding to data network and customer success; not a mature/scale business yet</li>
+    <li><strong>CRM Pulse:</strong> launched March 2025 -- powerful offering for segmentation and targeting "only Veeva can provide"</li>
+    <li><strong>Data Cloud Complete Suite:</strong> reference data, deep data, performance data, and pulse data on common data architecture</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Clinical / R&D Commentary</h3>
+  <ul>
+    <li><strong>eTMF (Electronic Trial Master File):</strong> 19 of top 20 pharmas; feel they have "a pretty good path to 20 of the top 20"</li>
+    <li><strong>EDC (Electronic Data Capture):</strong> 9 of top 20 using Veeva EDC - Some are very early and are multiyear ramp deals - Path to additional top 20s, but nothing imminent - Revenue ramps steadily contributing to revenue base</li>
+    <li><strong>Clinical Platform Vision:</strong> integrate clinical operations to clinical data management, reaching out to research sites</li>
+    <li><strong>R&D Solutions Subscription Revenue Growth:</strong> 19% for FY2026 guidance (strong growth engine)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Horizontal Business Applications</h3>
+  <ul>
+    <li><strong>First Focus Area:</strong> horizontal CRM (outside of life sciences)</li>
+    <li><strong>Team:</strong> different team from life sciences; different operating model; core team in place, will add incrementally over next 2-4 years</li>
+    <li><strong>Target Market:</strong> large enterprises (not SMB/HubSpot segment); many entry points</li>
+    <li><strong>First Customers:</strong> "hope to have first customers by the end of the year" (Peter Gassner)</li>
+    <li><strong>Differentiation:</strong> technology breakthroughs, PBC orientation, business model, customer success focus</li>
+    <li><strong>M&A:</strong> keeping "really wide aperture" -- most likely in horizontal applications area (CRM or other); disciplined approach; looking for Crossix-type acquisitions where they can create a lot of value</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Macro Environment Assessment</h3>
+  <ul>
+    <li><strong>Overall:</strong> "more uncertain today compared to 90 days ago" but no material change seen in financials or pipeline</li>
+    <li><strong>Customer Conversations:</strong> discussions reflect "general unease" -- multifaceted concerns about: - FDA staffing and drug approval timing (PDUFA dates) - Drug pricing executive order impacts on M&A plans - Funding environment for small biotechs (interest rates, bond prices, next round availability)</li>
+    <li><strong>No Financial Impact Observed:</strong> deals progressing as expected, contracts renewing, projects on or ahead of schedule</li>
+    <li><strong>Most Durable Business:</strong> long-term subscription contracts (not susceptible to short-term swings)</li>
+    <li><strong>Most Exposed:</strong> (1) business consulting/services engagements (quicker to be impacted), (2) small emerging biotechs (funding-dependent)</li>
+    <li><strong>Tariffs / Reshoring:</strong> neither a headwind nor tailwind for Veeva; no evidence of impact so far; possible project delays if companies need to prioritize emergency reshoring over long-term capability projects</li>
+    <li><strong>Crossix Insulation:</strong> shorter business cycle, quick ROI -- "may not be affected" by macro uncertainty</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Commercial Summit Takeaways (May 2025)</h3>
+  <ul>
+    <li><strong>Attendance:</strong> ~2,000 people</li>
+    <li><strong>Customer Sentiment:</strong> good; Peter Gassner had 50+ one-on-one conversations of 5-10+ minutes each</li>
+    <li><strong>Vault CRM Vibe:</strong> "whole different vibe" -- 80 customers live vs. handful a year ago; couple of big top 20 customers midway in flight</li>
+    <li><strong>Veeva AI Reception:</strong> "aha moment" when showing CRM Bot demo; customers showed relief that Veeva has a measured, durable AI approach</li>
+    <li><strong>Data Cloud Awareness:</strong> becoming really real; people starting to understand Commercial Cloud + Data Cloud working together</li>
+    <li><strong>Industry Trend:</strong> leaning into digital marketing and data/analytics more than prior year; getting more systematic in commercial</li>
+    <li><strong>Veeva CRM as Start:</strong> "CRM is the start of our commercial core CRM" -- add-on products (marketing, Service Center), Data Cloud, Crossix, business consulting are the broader commercial vision</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Key Business Metrics</h3>
+  <ul>
+    <li><strong>Customers Served:</strong> more than 1,000</li>
+    <li><strong>Vault CRM Customers Live:</strong> 80+</li>
+    <li><strong>Vault CRM New Customers (Q1):</strong> 28 (half migrations, half net new)</li>
+    <li><strong>Top 20 Pharma on eTMF:</strong> 19 of 20</li>
+    <li><strong>Top 20 Pharma on EDC:</strong> 9 of 20</li>
+    <li><strong>Top 20 Pharma Publicly Committed to Vault CRM:</strong> 4</li>
+    <li><strong>Compass Brands Added (Q1):</strong> ~10</li>
+    <li><strong>Crossix Growth:</strong> 30%+ YoY</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q1 FY2026 Actuals (Reported)</h3>
+</div>
+
+<div class="prior-ref" id="priorRef">
+  <div class="prior-ref-header" onclick="var b=document.getElementById('priorBody');b.classList.toggle('open');this.querySelector('.arrow').innerHTML=b.classList.contains('open')?'&#9650;':'&#9660;';">
+    Prior Quarter Reference: Q4 FY2025
+    <span class="arrow">&#9660;</span>
+  </div>
+  <div class="prior-ref-body" id="priorBody">
+    <div class="metric-grid">
+      <div class="prior-mini"><div class="pm-label">Total Revenue</div><div class="pm-value">$2,746.6 million (vs. prior guidance of $2,722-$2,725 million -- beat by ~$22-$25 million; up 16% YoY from $2,363.7 million; up ~12% when normalizing for TFC rights)</div></div>
+      <div class="prior-mini"><div class="pm-label">Subscription Revenue</div><div class="pm-value">$2,284.7 million (up 20% YoY from $1,901.6 million; up ~15% normalized for TFC rights) - <strong>Veeva Commercial Solutions (Subscription):</strong> $1,104.9 million (up 11% YoY from $995.8 million) - <strong>Veeva R&D Solutions (Subscription):</strong> $1,179.8 million (up 30% YoY from $905.8 million)</div></div>
+      <div class="prior-mini"><div class="pm-label">Non-GAAP Operating Income</div><div class="pm-value">$1,152.3 million (vs. prior guidance of ~$1,130 million -- beat by ~$22 million; 42.0% non-GAAP operating margin vs. 35.6% prior year; up 37% YoY from $842.5 million)</div></div>
+      <div class="prior-mini"><div class="pm-label">Non-GAAP EPS</div><div class="pm-value">$6.60 (vs. prior guidance of ~$6.46 -- beat by ~$0.14; vs. $4.84 prior year)</div></div>
+    </div>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q4_FY2025.html" style="color:var(--blue);">View full Q4 FY2025 detail &rarr;</a></p>
+  </div>
+</div>
+
+<div class="footer-nav">
+  <a href="Q4_FY2025.html">&larr; Q4 FY2025</a>
+  <a href="../comparison.html">Back to Overview</a>
+  <a href="Q2_FY2026.html">Q2 FY2026 &rarr;</a>
+</div>
+
+</body>
+</html>

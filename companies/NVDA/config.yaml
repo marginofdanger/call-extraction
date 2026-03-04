@@ -1,0 +1,270 @@
+company:
+  name: NVIDIA Corporation
+  ticker: NVDA
+  sector: Semiconductors
+  fiscal_year: offset_january  # FY ends late January; Q1=Feb-Apr, Q4=Nov-Jan
+  currency: USD
+  reporting_currency: USD
+  edgar_cik: 0001045810
+  edgar_form_type: 8-K
+branding:
+  primary: '#76b900'
+  dark: '#1a1a1a'
+  accent: '#333333'
+quarters:
+- id: Q1_2023
+  call_date: May 25, 2022
+  reporting_quarter: Q1 FY2023 (Feb-Apr 2022)
+  bamsec_id: 0ecc2bef-8ef8-4ac7-ae2c-f3e3d3930338
+  edgar_8k_accession: 0001045810-22-000073
+- id: Q2_2023
+  call_date: August 24, 2022
+  reporting_quarter: Q2 FY2023 (May-Jul 2022)
+  bamsec_id: c102160b-430c-44a9-bf1c-d56f544b6111
+  edgar_8k_accession: 0001045810-22-000136
+- id: Q3_2023
+  call_date: November 16, 2022
+  reporting_quarter: Q3 FY2023 (Aug-Oct 2022)
+  bamsec_id: e1c5c4c2-beff-4b39-8209-a4ade803c76f
+  edgar_8k_accession: 0001045810-22-000163
+- id: Q4_2023
+  call_date: February 22, 2023
+  reporting_quarter: Q4 FY2023 (Full Year FY2023)
+  bamsec_id: db9438a9-3ebd-45d1-bc75-fdbfeb8e4fe2
+  edgar_8k_accession: 0001045810-23-000014
+- id: Q1_2024
+  call_date: May 24, 2023
+  reporting_quarter: Q1 FY2024 (Feb-Apr 2023)
+  bamsec_id: 3610fe42-d913-4808-82bc-f5fd6a237c6f
+  edgar_8k_accession: 0001045810-23-000087
+- id: Q2_2024
+  call_date: August 23, 2023
+  reporting_quarter: Q2 FY2024 (May-Jul 2023)
+  bamsec_id: 4c68c2a4-e88b-49b1-9a89-76fb22ee8494
+  edgar_8k_accession: 0001045810-23-000171
+- id: Q3_2024
+  call_date: November 21, 2023
+  reporting_quarter: Q3 FY2024 (Aug-Oct 2023)
+  bamsec_id: fca68215-c45e-4304-8c69-37ad43ee966b
+  edgar_8k_accession: 0001045810-23-000225
+- id: Q4_2024
+  call_date: February 21, 2024
+  reporting_quarter: Q4 FY2024 (Full Year FY2024)
+  bamsec_id: 5fa37aa8-2e81-4b1a-a4e2-c251dbd29cd2
+  edgar_8k_accession: 0001045810-24-000028
+- id: Q1_2025
+  call_date: May 22, 2024
+  reporting_quarter: Q1 FY2025 (Feb-Apr 2024)
+  bamsec_id: bc961ca5-4968-44bb-8a10-f15f89c078bd
+  edgar_8k_accession: 0001045810-24-000113
+- id: Q2_2025
+  call_date: August 28, 2024
+  reporting_quarter: Q2 FY2025 (May-Jul 2024)
+  bamsec_id: f086de0b-871d-4ec7-bb70-3ffa89907ade
+  edgar_8k_accession: 0001045810-24-000262
+- id: Q3_2025
+  call_date: November 20, 2024
+  reporting_quarter: Q3 FY2025 (Aug-Oct 2024)
+  bamsec_id: 6ab11245-346f-4d99-bee3-49da10085d72
+  edgar_8k_accession: 0001045810-24-000315
+- id: Q4_2025
+  call_date: February 26, 2025
+  reporting_quarter: Q4 FY2025 (Full Year FY2025)
+  bamsec_id: 5e6408b8-2304-4cc4-b9a8-351b47307d2e
+  edgar_8k_accession: 0001045810-25-000021
+- id: Q1_2026
+  call_date: May 28, 2025
+  reporting_quarter: Q1 FY2026 (Feb-Apr 2025)
+  bamsec_id: fc7101ad-fe4e-4497-ad98-b503ef068751
+  edgar_8k_accession: 0001045810-25-000115
+- id: Q2_2026
+  call_date: August 27, 2025
+  reporting_quarter: Q2 FY2026 (May-Jul 2025)
+  bamsec_id: c1f81806-835a-4eb4-8528-f56aa30477f8
+  edgar_8k_accession: 0001045810-25-000207
+- id: Q3_2026
+  call_date: November 19, 2025
+  reporting_quarter: Q3 FY2026 (Aug-Oct 2025)
+  bamsec_id: 27471037-9b41-42bb-bccd-c2c937e11a19
+  edgar_8k_accession: 0001045810-25-000228
+- id: Q4_2026
+  call_date: February 25, 2026
+  reporting_quarter: Q4 FY2026 (Full Year FY2026)
+  bamsec_id: e5fb84ce-3ca6-4a69-9184-84af225dbb04
+  edgar_8k_accession: 0001045810-26-000019
+tracked_metrics:
+  guidance_for:
+    label: Guidance For
+    section_pattern: ^Quarterly Guidance
+    extract: section_suffix
+    display: banner
+  revenue:
+    label: Next-Q Revenue
+    section_pattern: ^Quarterly Guidance
+    item_pattern: ^\*\*Revenue:?\*\*
+    comparison: midpoint_pct
+    midpoint_format: dollar_billions
+  gm:
+    label: Next-Q Gross Margin (Non-GAAP)
+    section_pattern: ^Quarterly Guidance
+    item_pattern: (?i)^\*\*(Non-GAAP )?Gross Margin:?\*\*
+    comparison: midpoint_delta
+    midpoint_format: percentage
+  opex:
+    label: Next-Q OpEx (Non-GAAP)
+    section_pattern: ^Quarterly Guidance
+    item_pattern: (?i)^\*\*(Non-GAAP )?Operating Expenses:?\*\*
+    comparison: midpoint_pct
+    midpoint_format: dollar_billions
+  gaap_gm:
+    label: Next-Q Gross Margin (GAAP)
+    section_pattern: ^Quarterly Guidance
+    item_pattern: (?i)^\*\*GAAP Gross Margin:?\*\*
+    comparison: midpoint_delta
+    midpoint_format: percentage
+  fy_revenue:
+    label: FY Revenue Growth
+    section_pattern: ^Full Year.*Guidance
+    item_pattern: ^\*\*Revenue( growth)?:?\*\*
+    comparison: text_diff
+  capex:
+    label: CapEx
+    section_pattern: ^Full Year.*Guidance
+    item_pattern: ^\*\*CapEx:?\*\*
+    comparison: text_diff
+  dc_revenue:
+    label: Data Center Revenue
+    section_pattern: (?i)(segment|data center|platform)
+    item_pattern: (?i)data center
+    comparison: text_diff
+  gaming_revenue:
+    label: Gaming Revenue
+    section_pattern: (?i)(segment|gaming|platform)
+    item_pattern: (?i)gaming
+    comparison: text_diff
+  lt_gm:
+    label: LT Gross Margin Target
+    section_pattern: ^Long-Term
+    item_pattern: ^\*\*Gross Margin:?\*\*
+    comparison: text_diff
+  lt_cagr:
+    label: LT Revenue CAGR
+    section_pattern: ^Long-Term
+    item_pattern: ^\*\*Revenue CAGR:?\*\*
+    comparison: text_diff
+new_section_keywords:
+- pattern: (?i)blackwell
+  label: Blackwell architecture first discussed
+- pattern: (?i)grace
+  label: Grace CPU discussed
+- pattern: (?i)sovereign ai
+  label: Sovereign AI demand emerges
+- pattern: (?i)tariff
+  label: Tariff impact discussion added
+- pattern: (?i)nvlink
+  label: NVLink scaling discussed
+- pattern: (?i)actuals
+  label: Full-year actuals reported this quarter
+comparison_sections:
+- title: Quarterly Revenue Guidance
+  metric_key: revenue
+  columns:
+  - Quarter
+  - Revenue Guidance
+  - Midpoint
+  - vs Prior
+- title: Quarterly Gross Margin Guidance (Non-GAAP)
+  metric_key: gm
+  columns:
+  - Quarter
+  - GM Guidance
+  - Midpoint
+  - vs Prior
+- title: Quarterly Operating Expenses (Non-GAAP)
+  metric_key: opex
+  columns:
+  - Quarter
+  - OpEx Guidance
+  - Midpoint
+  - vs Prior
+- title: Data Center Revenue
+  metric_key: dc_revenue
+  columns:
+  - Quarter
+  - Data Center Revenue
+- title: Gaming Revenue
+  metric_key: gaming_revenue
+  columns:
+  - Quarter
+  - Gaming Revenue
+- title: Full Year Revenue Guidance
+  metric_key: fy_revenue
+  columns:
+  - Quarter
+  - FY Revenue Guidance
+- title: CapEx Guidance
+  metric_key: capex
+  columns:
+  - Quarter
+  - CapEx Guidance
+- title: Long-Term Targets
+  metrics:
+  - lt_gm
+  - lt_cagr
+  columns:
+  - Quarter
+  - LT GM Target
+  - LT Revenue CAGR
+extraction_context: 'NVIDIA is a semiconductor company focused on GPUs and accelerated
+  computing. Key domain knowledge:
+
+  - GPU architectures: Hopper (H100, H200), Blackwell (B100, B200, GB200), Ada Lovelace
+  (consumer GeForce RTX 40-series), Ampere (prior gen A100)
+
+  - Segments: Data Center, Gaming, Professional Visualization, Automotive/Robotics,
+  OEM & Other
+
+  - Data Center is the primary growth driver (AI/ML training and inference)
+
+  - GAAP vs Non-GAAP: Non-GAAP excludes stock-based compensation and acquisition-related
+  costs
+
+  - Revenue is reported in USD (billions)
+
+  - GM = Gross Margin, OM = Operating Margin, OpEx = Operating Expenses
+
+  - CapEx includes property/equipment and cloud compute commitments
+
+  - DGX = AI supercomputer systems, HGX = GPU server boards
+
+  - NVLink = GPU-to-GPU interconnect, NVSwitch = network switch for GPU clusters
+
+  - InfiniBand = high-speed networking (Mellanox acquisition), transitioning to Spectrum-X
+  Ethernet
+
+  - Grace = ARM-based data center CPU (Grace Hopper, Grace Blackwell superchips)
+
+  - CUDA = parallel computing platform and programming model
+
+  - NIMS = NVIDIA Inference Microservices
+
+  - Sovereign AI = national/government AI infrastructure initiatives
+
+  - Fiscal year ends late January (FY2025 = Feb 2024 - Jan 2025)
+
+  - Q4 earnings calls include full fiscal year actuals
+
+  - Revenue guidance given as a range (e.g., $24.0B +/- 2%)
+
+  '
+topic_hints:
+- GPU architecture roadmap (Hopper, Blackwell, next-gen)
+- Data Center revenue and AI demand trajectory
+- Gaming segment recovery and Ada Lovelace cycle
+- Gross margin trajectory (product mix, new architecture ramps)
+- Supply chain and CoWoS/HBM capacity constraints
+- Networking revenue (InfiniBand vs Spectrum-X transition)
+- Sovereign AI and geographic revenue mix
+- Automotive/Robotics (DRIVE platform, autonomous vehicles)
+- CapEx and infrastructure investment
+- China export restrictions and regulatory impact

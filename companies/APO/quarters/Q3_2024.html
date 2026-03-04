@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APO Q3 2024 Earnings Call Detail</title>
+<style>
+:root {
+    --company-primary: #003A70;
+    --company-dark: #1a1a2e;
+    --company-accent: #0066B3;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 40px 40px 32px;
+    margin: 0 -24px 0;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .header .meta {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    font-weight: 300;
+  }
+  .header .meta span { margin-right: 24px; }
+
+  .nav-bar {
+    background: var(--company-accent);
+    margin: 0 -24px 32px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    transition: all 0.15s;
+  }
+  .nav-bar a:hover { background: rgba(255,255,255,0.2); }
+  .nav-bar a.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .nav-center {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-center a.qbtn {
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+  }
+  .nav-center a.qbtn.current {
+    background: var(--company-primary);
+    border-color: var(--company-primary);
+  }
+  .nav-center a.qbtn:hover { background: rgba(255,255,255,0.2); }
+  .nav-back {
+    background: rgba(255,255,255,0.15) !important;
+    border-color: rgba(255,255,255,0.35) !important;
+  }
+
+  .metrics-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .metric {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+  .metric-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .metric-value {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+  .metric-delta {
+    font-size: 0.72rem;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+  .delta-up { color: var(--green); }
+  .delta-down { color: var(--red); }
+  .delta-flat { color: var(--text-muted); }
+
+  .changes-box {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 5px solid var(--amber);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .changes-box h3 {
+    font-size: 1rem;
+    color: var(--company-dark);
+    margin-bottom: 10px;
+  }
+  .changes-box ul { list-style: none; padding: 0; }
+  .changes-box li {
+    padding: 5px 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .change-tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .ct-raised { background: #d5f5e3; color: #1e8449; }
+  .ct-lowered { background: #fadbd8; color: #c0392b; }
+  .ct-changed { background: #d6eaf8; color: #2471a3; }
+  .ct-new { background: #e8daef; color: #6c3483; }
+  .ct-maintained { background: #fdebd0; color: #b9770e; }
+
+  .content-section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .content-section h3 {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .content-section ul {
+    padding: 14px 18px 14px 36px;
+    margin: 0;
+  }
+  .content-section li {
+    padding: 3px 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .content-section li strong { color: var(--company-dark); }
+
+  .prior-ref {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 40px;
+    overflow: hidden;
+  }
+  .prior-ref-header {
+    background: var(--light-bg);
+    padding: 12px 18px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--company-dark);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .prior-ref-header:hover { background: #eef2f7; }
+  .prior-ref-body { padding: 18px; display: none; }
+  .prior-ref-body.open { display: block; }
+  .prior-ref-body .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .prior-mini {
+    background: var(--light-bg);
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .prior-mini .pm-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .prior-mini .pm-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border);
+  }
+  .footer-nav a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .footer-nav a:hover { text-decoration: underline; }
+
+  /* Comparison page styles */
+  .toc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .toc a {
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 4px 0;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  .comp-section {
+    margin-bottom: 40px;
+  }
+  .comp-section h2 {
+    font-size: 1.2rem;
+    color: var(--company-dark);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--company-primary);
+  }
+
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+  }
+  .comp-table th {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .comp-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .comp-table tr:nth-child(even) { background: var(--light-bg); }
+  .comp-table tr:hover { background: #e8f4fd; }
+
+  @media (max-width: 768px) {
+    .header h1 { font-size: 1.5rem; }
+    .metrics-card { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .nav-center { display: none; }
+    body { padding: 0 16px 60px; }
+    .header { margin: 0 -16px 0; padding: 28px 24px 20px; }
+    .nav-bar { margin: 0 -16px 24px; }
+    .toc { grid-template-columns: 1fr; }
+    .comp-table { font-size: 0.78rem; }
+    .comp-table th, .comp-table td { padding: 6px 8px; }
+  }
+
+  @media print {
+    .nav-bar { display: none; }
+    .header { background: #333; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>APO Q3 2024 Earnings Call</h1>
+  <div class="meta">
+    <span>Call Date: November 5, 2024</span>
+    <span>Reporting: Q3 2024</span>
+  </div>
+</div>
+<div class="nav-bar">
+  <a href="Q2_2024.html">&larr; Q2 2024</a>
+  <div class="nav-center">
+    <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="Q4_2025.html" class="qbtn">4Q25</a>
+    <a href="Q3_2025.html" class="qbtn">3Q25</a>
+    <a href="Q2_2025.html" class="qbtn">2Q25</a>
+    <a href="Q1_2025.html" class="qbtn">1Q25</a>
+    <a href="Q4_2024.html" class="qbtn">4Q24</a>
+    <a href="Q3_2024.html" class="qbtn current">3Q24</a>
+    <a href="Q2_2024.html" class="qbtn">2Q24</a>
+    <a href="Q1_2024.html" class="qbtn">1Q24</a>
+    <a href="Q4_2023.html" class="qbtn">4Q23</a>
+    <a href="Q3_2023.html" class="qbtn">3Q23</a>
+    <a href="Q2_2023.html" class="qbtn">2Q23</a>
+    <a href="Q1_2023.html" class="qbtn">1Q23</a>
+    <a href="Q4_2022.html" class="qbtn">4Q22</a>
+    <a href="Q3_2022.html" class="qbtn">3Q22</a>
+    <a href="Q2_2022.html" class="qbtn">2Q22</a>
+    <a href="Q1_2022.html" class="qbtn">1Q22</a>
+  </div>
+  <a href="Q4_2024.html">Q4 2024 &rarr;</a>
+</div>
+
+<div class="changes-box">
+  <h3>What Changed vs Q2 2024</h3>
+  <ul>
+    <li><span class="change-tag ct-changed">Changed</span> Inflows: ~$140 billion+ LTM (prior: $39 billion Q2 — record for non-PE franchise year; ~$80 billion H1)</li>
+  </ul>
+</div>
+
+<div class="metrics-card">
+  <div class="metric">
+    <div class="metric-label">Inflows</div>
+    <div class="metric-value">~$140 billion+ LTM</div>
+    <div class="metric-delta delta-flat">Prior: $39 billion Q2 — record for non-PE franchise year; ~$80 billion H1</div>
+  </div>
+</div>
+
+<!-- Full Guidance Content -->
+<div class="content-section">
+  <h3>Forward Guidance</h3>
+</div>
+<div class="content-section">
+  <h3>2024 Guidance (Updated)</h3>
+  <ul>
+    <li><strong>FRE:</strong> Record YTD $1,509 million; Q4 revenue growth trends expected to largely persist - Supported by $120 billion organic capital formation target and strong origination pipeline</li>
+    <li><strong>SRE:</strong> ~$3.2 billion for full year (reaffirmed from Investor Day); Q4 expected similar to Q3 on as-reported basis - Implies ~5% FY growth ex-notable items (vs 4% at Investor Day; slightly better due to stronger Q3 organic growth + better marginal spreads)</li>
+    <li><strong>Organic Capital Formation:</strong> $120 billion target for FY2024 (reaffirmed; on track)</li>
+    <li><strong>PII:</strong> Near-term realizations in line with recent quarterly trends; expect meaningful increase over next couple years as exit environment improves</li>
+    <li><strong>Net Floating Rate Position:</strong> ~$15 billion maintained; no change to hedge posture - Rate assumptions: 6 rate cuts modeled (2 in 2024, 4 more by end 2025); "looking more realistic" post-rate backup</li>
+    <li><strong>Liability Outflows:</strong> 2025 forecast to be published (on to-do list post-Investor Day); no different trend expected; highly predictable</li>
+    <li><strong>ADIP Participation:</strong> Mid-to-high 30s / ~40% over time (unchanged)</li>
+    <li><strong>Athene Dividend:</strong> $750 million/year unchanged; no real change expected absent business falloff</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q3 2024 AUM & Flows</h3>
+  <ul>
+    <li><strong>Total Inflows:</strong> ~$140 billion+ LTM</li>
+    <li><strong>Credit Inflows:</strong> $39 billion Q3 (Athene organic + broad-based AM fundraising)</li>
+    <li><strong>Athene Organic Inflows:</strong> ~$20 billion Q3 - Launched on BAML platform (another top 15 distributor) - Outflow rate back to ~10% annualized range (in line with target)</li>
+    <li><strong>Origination:</strong> $62 billion Q3 — record quarterly; $194 billion YTD - Vast majority debt origination (mid- to high-$50B debt; balance equity) - Atlas: $50 billion cumulative origination; $5 billion equity capital raised; new $5 billion BNP facility; 350 employees - Split between: platforms + core credit (lion's share) + high-grade capital solutions - Origination partnerships: >12, only couple public (Citi notably) - Chris Edson now runs global origination; organized in 3-4 buckets</li>
+    <li><strong>Retail/Global Wealth Fundraising:</strong> On pace to increase 50% YoY in 2024 (without flagship PE fund) - ABC: now distributing on 2 large wirehouses - ASPM (evergreen multi-asset secondary): launched globally - 11 wealth products total; 6 launched within last year - AAA: ~$18.5 billion; expect ~$20 billion year-end; 10.5% return; first CIT/DC mandate (equity sleeve of default offering) - ADS: expect ~$15 billion year-end - Altitude series (insurance-wrapped): expect ~$1 billion year-end; active in 2 significant wirehouses</li>
+    <li><strong>Third-Party Insurance:</strong> ~$100 billion AUM; Jeff Jacobs named CEO; expect to double over next 5 years</li>
+    <li><strong>16 Origination Platforms:</strong> 4 biggest: Atlas, MidCap, Redding Ridge, Wheels; ~$8B invested over 15 years; ~4,000 employees - Platforms are stand-alone entities; bear own expenses; generally strong ROEs - No further rationalization planned; sold one in past when flow vs equity got out of balance</li>
+    <li><strong>PE Fund X:</strong> >30% return LTM</li>
+    <li><strong>Share Buybacks:</strong> >$400 million in Q3 at avg ~$105; >4 million shares repurchased</li>
+    <li><strong>Lord Abbett / State Street Partnerships:</strong> Product in registration (public/private convergence)</li>
+    <li><strong>First DC/CIT Mandate:</strong> AAA in equity sleeve of CIT; enormous milestone for private assets in retirement</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q3 2024 Investment Performance</h3>
+  <ul>
+    <li><strong>Credit Strategies:</strong> Double-digit returns LTM across variety of strategies</li>
+    <li><strong>Hybrid Value:</strong> Double-digit returns LTM</li>
+    <li><strong>PE Fund X:</strong> >30% LTM</li>
+    <li><strong>AAA:</strong> 10.5% annualized Q3</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q3 2024 Capital & Balance Sheet</h3>
+  <ul>
+    <li><strong>Net Balance Sheet Value:</strong> $3,046 million ($4.97/share)</li>
+    <li><strong>Cash & Cash Equivalents:</strong> $2,666 million</li>
+    <li><strong>Investments:</strong> $3,137 million (includes assets from alts portfolio restructuring)</li>
+    <li><strong>Net Accrued Performance Fees:</strong> $1,433 million (down from $1,588M; Fund IX monetizations)</li>
+    <li><strong>Net Clawback Payable:</strong> -$108 million</li>
+    <li><strong>Debt:</strong> $4,082 million</li>
+    <li><strong>ANI Shares Outstanding:</strong> 613 million (down from 617M)</li>
+    <li><strong>Average Net Invested Assets:</strong> $237,810 million (+14.7% YoY)</li>
+    <li><strong>Credit Ratings:</strong> AM: A2/A/A- (Moody's/S&P/Fitch); Athene: A1/A+/A+/A+ (Moody's/S&P/Fitch/AM Best)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>5-Year Plan (Investor Day October 1, 2024)</h3>
+  <ul>
+    <li><strong>FRE Growth:</strong> Average 20% annually</li>
+    <li><strong>SRE Growth:</strong> Average 10% annually</li>
+    <li><strong>FRE + SRE:</strong> $10 billion by 2029 ($5 billion each)</li>
+    <li><strong>ANI:</strong> More than doubling to >$15/share by 2029</li>
+    <li><strong>Capital Generation:</strong> $21 billion over 5 years</li>
+    <li><strong>Origination:</strong> $275 billion annually (5-year target)</li>
+    <li><strong>Credit Business:</strong> Doubling over 5 years (largest business)</li>
+    <li><strong>Equity/Hybrid Business:</strong> Substantial growth; key plank of second 5-year plan</li>
+    <li><strong>Third-Party Insurance:</strong> Double from ~$100 billion AUM over 5 years</li>
+    <li><strong>4 Macro Tailwinds:</strong> 1. Global Industrial Renaissance (infrastructure, energy transition, next-gen power/data) 2. Retirement (rethinking product set; guaranteed lifetime income as North Star) 3. Individual investors (retail channel; 50% growth without flagship PE) 4. Public/private convergence (fixed income replacement; beta public IG / alpha private IG)</li>
+    <li><strong>Any single TAM could double the business</strong> over next 5 years</li>
+    <li><strong>DC/401(k) Opportunity:</strong> $12-13 trillion; not budgeted in 5-year plan; would be upside; 40-60% better outcomes with private asset inclusion (Australia model)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Market & Competitive Commentary</h3>
+  <ul>
+    <li><strong>Origination Spreads:</strong> Platforms mid-300s to ~400 over (tightened 10-15 bps; from ~400 to 385-390); traditional credit ~375-380 (from ~410; ~60-70 bps compression vs 150+ bps in public credit)</li>
+    <li><strong>Retail Distribution Costs:</strong> Migration from upfront placement fees to trailer fees (netted against revenue, not non-comp); reflects product quality/stickiness; no margin degradation expected; contemplated in plan</li>
+    <li><strong>Private Asset Supply/Demand:</strong> Expects private assets in shorter supply with rising demand from retirement, individuals, fixed income replacement; fees expected stable long-term</li>
+    <li><strong>Cayman Capital Arbitrage:</strong> "Divide the capital by 2... I do not personally believe that is going to end well"; Apollo committed to U.S./Bermuda capital regimes</li>
+    <li><strong>Sidecar Model (ADIP):</strong> Clients pay management fees + fronting fee + promote; reflects trust and sustainable high ROE; >$6B raised vs competitors forced to subsidize with own capital</li>
+    <li><strong>Platform Economics:</strong> Stand-alone entities; own expenses; strong ROEs; bulk of AAA portfolio; synergy with broader franchise</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q3 2024 Actuals (Reported)</h3>
+  <ul>
+    <li><strong>Fee-Related Earnings (FRE):</strong> $531 million ($0.87/share) — record quarterly; YTD $1,509 million</li>
+    <li><strong>Spread-Related Earnings (SRE):</strong> $856 million ($1.40/share) — near-record; YTD $2,383 million (+1% YoY) - Notable items: -$25 million (alternatives portfolio restructuring) - SRE ex-notable: $831 million ($1.36/share; +6.1% YoY); YTD $2,358 million (+5.0% YoY)</li>
+    <li><strong>Fee & Spread Related Earnings:</strong> $1,387 million; YTD $3,892 million</li>
+    <li><strong>Fee & Spread Related Earnings ex-Notable:</strong> $1,362 million; YTD $3,867 million</li>
+    <li><strong>Principal Investing Income (PII):</strong> $78 million ($0.13/share) — realized perf fees $331 million (highest since 2021); YTD $132 million</li>
+    <li><strong>Segment Income:</strong> $1,465 million; YTD $4,024 million</li>
+    <li><strong>Segment Income ex-Notable:</strong> $1,440 million; YTD $3,999 million</li>
+    <li><strong>Adjusted Net Income (ANI):</strong> $1,132 million ($1.85/share) — second highest on record; YTD $3,205 million</li>
+    <li><strong>ANI ex-Notable:</strong> $1,112 million ($1.81/share); YTD $3,185 million</li>
+    <li><strong>Management Fees:</strong> $710 million (+9.6% YoY; +5.7% QoQ); YTD $2,034 million (+10.2% YoY) - Credit management fees +20% YoY; third-party credit growth exceeding Athene/Athora</li>
+    <li><strong>Capital Solutions Fees:</strong> $159 million — second highest quarter on record; ~80 underlying transactions; YTD $508 million (+20.4% YoY)</li>
+    <li><strong>Fee-Related Performance Fees:</strong> $57 million (+42.5% YoY); YTD $155 million (+52.0% YoY) - Primarily driven by stable, spread-based income from credit products including ADS</li>
+    <li><strong>Fee-Related Compensation:</strong> -$238 million; YTD -$698 million</li>
+    <li><strong>Non-Compensation Expenses:</strong> -$157 million; YTD -$490 million - Total expenses +11% YTD (ex $15M one-time Q2 fund merger)</li>
+    <li><strong>Net Spread:</strong> 1.44% (as-reported); 1.40% ex-notable items - Adjusting for 11% LT alts expectation: +13 bps → 1.57% as-reported; 1.53% ex-notable - Net spread ex-notable +16 bps QoQ; roughly flat with Q2 adjusting for 11% alts</li>
+    <li><strong>Net Investment Spread:</strong> 1.83%</li>
+    <li><strong>Fixed Income Net Investment Income:</strong> $2,806 million (4.96%; +39 bps YoY)</li>
+    <li><strong>Alternative Net Investment Income:</strong> $236 million (8.19% annualized; +44 bps YoY) - AAA: 10.5% annualized Q3 (approaching 11% LT expectation) - Alts portfolio restructured in Q3: ~80% AAA, ~10% retirement platforms (Athora principally, small Venerable), ~10% other hybrid fund investments (teens returns expected) - Catalina, FWD and other platforms repositioned or sold in Q3; restructuring complete - Starting January 2025: will pre-release alt return info around first business day after quarter end</li>
+    <li><strong>Cost of Funds:</strong> -$1,983 million (3.34%; +67 bps YoY)</li>
+    <li><strong>PII Compensation Ratio:</strong> 72.7% (vs 86.6% Q3 2023)</li>
+    <li><strong>GAAP Net Income:</strong> $1,769 million</li>
+    <li><strong>Average Net Invested Assets:</strong> $237,810 million (+14.7% YoY)</li>
+  </ul>
+</div>
+
+<div class="prior-ref" id="priorRef">
+  <div class="prior-ref-header" onclick="var b=document.getElementById('priorBody');b.classList.toggle('open');this.querySelector('.arrow').innerHTML=b.classList.contains('open')?'&#9650;':'&#9660;';">
+    Prior Quarter Reference: Q2 2024
+    <span class="arrow">&#9660;</span>
+  </div>
+  <div class="prior-ref-body" id="priorBody">
+    <div class="metric-grid">
+      <div class="prior-mini"><div class="pm-label">Inflows</div><div class="pm-value">$39 billion Q2 — record for non-PE franchise year; ~$80 billion H1</div></div>
+    </div>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q2_2024.html" style="color:var(--blue);">View full Q2 2024 detail &rarr;</a></p>
+  </div>
+</div>
+
+<div class="footer-nav">
+  <a href="Q2_2024.html">&larr; Q2 2024</a>
+  <a href="../comparison.html">Back to Overview</a>
+  <a href="Q4_2024.html">Q4 2024 &rarr;</a>
+</div>
+
+</body>
+</html>

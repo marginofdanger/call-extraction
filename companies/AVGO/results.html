@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Broadcom Results vs Guidance &mdash; Scorecard</title>
+<style>
+  :root {
+    --company-primary: #CC092F;
+    --company-dark: #1a1a2e;
+    --company-accent: #16213e;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 48px 40px;
+    margin: 0 -24px 40px;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+  .header .subtitle {
+    font-size: 1.1rem;
+    opacity: 0.85;
+    font-weight: 300;
+  }
+
+  /* Quarter Navigation */
+  .quarter-nav {
+    background: var(--company-accent);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+  .quarter-nav .label {
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-right: 8px;
+    white-space: nowrap;
+  }
+  .quarter-nav .year-group {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+  .quarter-nav .year-label {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.72rem;
+    font-weight: 600;
+    margin-right: 2px;
+    letter-spacing: 0.5px;
+  }
+  .quarter-nav a {
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+  .quarter-nav a:hover { background: rgba(255,255,255,0.25); }
+  .quarter-nav a.overview-link {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.35);
+    padding: 4px 14px;
+    font-size: 0.82rem;
+    margin-left: auto;
+  }
+
+  /* Table of Contents */
+  .toc {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 32px;
+    margin-bottom: 40px;
+  }
+  .toc h2 {
+    font-size: 1.1rem;
+    color: var(--company-accent);
+    margin-bottom: 12px;
+  }
+  .toc a {
+    display: block;
+    color: var(--blue);
+    text-decoration: none;
+    padding: 3px 0;
+    font-size: 0.9rem;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  /* Section */
+  .section {
+    margin-bottom: 48px;
+    scroll-margin-top: 20px;
+  }
+  .section h2 {
+    font-size: 1.4rem;
+    color: var(--company-dark);
+    border-bottom: 3px solid var(--company-primary);
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+  }
+  .section h2 .num {
+    display: inline-block;
+    background: var(--company-primary);
+    color: #fff;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 0.85rem;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+
+  /* Scorecard grid */
+  .scorecard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .score-card {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+  }
+  .score-card .metric-value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--company-dark);
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+  .score-card .metric-value.green { color: var(--green); }
+  .score-card .metric-label {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+  .score-card .metric-sub {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+  .score-card.highlight {
+    border-color: var(--green);
+    background: #eafaf1;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 0.88rem;
+  }
+  thead th {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+  thead th.right { text-align: right; }
+  tbody td {
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tbody td.right { text-align: right; }
+  tbody tr:nth-child(even) { background: var(--light-bg); }
+  tbody tr:hover { background: #eef2f7; }
+
+  /* Color helpers */
+  .pos { color: var(--green); font-weight: 600; }
+  .neg { color: var(--red); font-weight: 600; }
+  .neutral { color: var(--amber); font-weight: 600; }
+  .raised { background: #eafaf1 !important; }
+  .lowered { background: #fef0ef !important; }
+  .bold { font-weight: 700; }
+  .muted { color: var(--text-muted); font-style: italic; }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    vertical-align: middle;
+  }
+  .tag-beat { background: #d5f5e3; color: #1e8449; }
+  .tag-miss { background: #fadbd8; color: #c0392b; }
+  .tag-met { background: #fdebd0; color: #b9770e; }
+  .tag-pending { background: #d6eaf8; color: #2471a3; }
+
+  /* Insight boxes */
+  .insight {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 4px solid var(--amber);
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.9rem;
+  }
+  .insight strong { color: var(--company-dark); }
+
+  /* Takeaways */
+  .takeaways { counter-reset: takeaway; }
+  .takeaway {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 18px;
+    padding: 14px 18px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .takeaway-num {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    background: var(--company-primary);
+    color: #fff;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+  .takeaway-text { font-size: 0.92rem; }
+  .takeaway-text strong { color: var(--company-dark); }
+
+  /* Year divider rows */
+  .year-divider td {
+    background: var(--company-accent) !important;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.82rem;
+    padding: 6px 12px;
+    letter-spacing: 0.5px;
+  }
+
+  /* Footnote */
+  .footnote {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 8px;
+    font-style: italic;
+  }
+
+  /* FY block */
+  .fy-block {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+  }
+  .fy-block h3 {
+    font-size: 1.1rem;
+    color: var(--company-dark);
+    margin-bottom: 12px;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 6px;
+  }
+  .fy-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.88rem;
+  }
+  .fy-row:last-child { border-bottom: none; }
+  .fy-label { color: var(--text-muted); font-weight: 500; }
+  .fy-value { font-weight: 600; }
+
+  /* Footer */
+  .footer {
+    margin-top: 60px;
+    padding: 24px 0;
+    border-top: 2px solid var(--border);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    text-align: center;
+  }
+  .footer a { color: var(--blue); text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 768px) {
+    .toc { columns: 1; }
+    .header h1 { font-size: 1.6rem; }
+    table { font-size: 0.8rem; }
+    thead th, tbody td { padding: 6px 8px; }
+    .quarter-nav { gap: 4px; }
+    .scorecard { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media print {
+    .header { background: #333; }
+    .section { page-break-inside: avoid; }
+    table { font-size: 0.75rem; }
+    .quarter-nav { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Broadcom Results vs Guidance &mdash; Scorecard</h1>
+  <div class="subtitle">How actuals compared to management guidance | FQ1 2022 &ndash; FQ4 2025 (13 quarterly guidance&ndash;actual pairs)</div>
+</div>
+
+<!-- Quarter Navigation -->
+<div class="quarter-nav" id="qnav">
+  <span class="label">Quarter detail:</span>
+  <div class="year-group">
+    <span class="year-label">FY2025</span>
+    <a href="quarters/FQ4_2025.html">FQ4</a>
+    <a href="quarters/FQ3_2025.html">FQ3</a>
+    <a href="quarters/FQ2_2025.html">FQ2</a>
+    <a href="quarters/FQ1_2025.html">FQ1</a>
+  </div>
+  <div class="year-group">
+    <span class="year-label">FY2024</span>
+    <a href="quarters/FQ4_2024.html">FQ4</a>
+    <a href="quarters/FQ3_2024.html">FQ3</a>
+    <a href="quarters/FQ2_2024.html">FQ2</a>
+    <a href="quarters/FQ1_2024.html">FQ1</a>
+  </div>
+  <div class="year-group">
+    <span class="year-label">FY2023</span>
+    <a href="quarters/FQ4_2023.html">FQ4</a>
+    <a href="quarters/FQ3_2023.html">FQ3</a>
+    <a href="quarters/FQ2_2023.html">FQ2</a>
+    <a href="quarters/FQ1_2023.html">FQ1</a>
+  </div>
+  <div class="year-group">
+    <span class="year-label">FY2022</span>
+    <a href="quarters/FQ4_2022.html">FQ4</a>
+    <a href="quarters/FQ3_2022.html">FQ3</a>
+    <a href="quarters/FQ2_2022.html">FQ2</a>
+    <a href="quarters/FQ1_2022.html">FQ1</a>
+  </div>
+  <a href="comparison.html" class="overview-link">Guidance Overview &rarr;</a>
+</div>
+
+<!-- Table of Contents -->
+<nav class="toc">
+  <h2>Table of Contents</h2>
+  <a href="#s0">Summary Scorecard</a>
+  <a href="#s1">1. Revenue &mdash; Actuals vs Guidance</a>
+  <a href="#s2">2. Adjusted EBITDA % &mdash; Actuals vs Guidance</a>
+  <a href="#s3">3. AI Revenue &mdash; Outlook vs Actual</a>
+  <a href="#s4">4. Full-Year Revenue Guidance vs Actuals</a>
+  <a href="#s5">5. Key Takeaways</a>
+</nav>
+
+<!-- ====== SUMMARY SCORECARD ====== -->
+<div class="section" id="s0">
+  <h2>Summary Scorecard</h2>
+  <div class="scorecard">
+    <div class="score-card highlight">
+      <div class="metric-value green">10/13</div>
+      <div class="metric-label">Revenue beat rate</div>
+      <div class="metric-sub">3 met exactly, 0 missed</div>
+    </div>
+    <div class="score-card">
+      <div class="metric-value">+1.0%</div>
+      <div class="metric-label">Average revenue beat</div>
+      <div class="metric-sub">vs single-point guidance</div>
+    </div>
+    <div class="score-card">
+      <div class="metric-value green">9/13</div>
+      <div class="metric-label">EBITDA % beat rate</div>
+      <div class="metric-sub">3 met exactly, 0 missed</div>
+    </div>
+    <div class="score-card">
+      <div class="metric-value">+78 bps</div>
+      <div class="metric-label">Average EBITDA % beat</div>
+      <div class="metric-sub">vs guided margin</div>
+    </div>
+    <div class="score-card highlight">
+      <div class="metric-value green">0</div>
+      <div class="metric-label">Guidance misses</div>
+      <div class="metric-sub">Never missed on revenue or EBITDA</div>
+    </div>
+    <div class="score-card">
+      <div class="metric-value">+3.2%</div>
+      <div class="metric-label">FY2024 revenue vs initial guide</div>
+      <div class="metric-sub">$50B guided &rarr; $51.6B actual</div>
+    </div>
+    <div class="score-card">
+      <div class="metric-value green">+63%</div>
+      <div class="metric-label">FY2024 AI rev vs initial outlook</div>
+      <div class="metric-sub">~$7.5B implied &rarr; $12.2B actual</div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== 1. REVENUE ACTUALS VS GUIDANCE ====== -->
+<div class="section" id="s1">
+  <h2><span class="num">1</span> Revenue &mdash; Actuals vs Guidance</h2>
+
+  <div class="insight">
+    <strong>Context:</strong> Broadcom guides revenue as a single-point estimate (not a range). During FQ4 2023 through FQ2 2024, only annual FY2024 guidance was provided due to VMware integration variability. Quarterly guidance resumed in FQ3 2024. Broadcom&rsquo;s fiscal year is offset: FQ1=Nov&ndash;Jan, FQ2=Feb&ndash;Apr, FQ3=May&ndash;Jul, FQ4=Aug&ndash;Oct.
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Quarter</th>
+        <th>Guided From</th>
+        <th class="right">Guidance</th>
+        <th class="right">Actual</th>
+        <th class="right">vs Guidance</th>
+        <th>Tag</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Pending -->
+      <tr class="muted">
+        <td>FQ1 2026</td>
+        <td>FQ4 2025 (Dec &rsquo;25)</td>
+        <td class="right">~$19.1B</td>
+        <td class="right">&mdash;</td>
+        <td class="right">Pending</td>
+        <td><span class="tag tag-pending">Pending</span></td>
+      </tr>
+
+      <!-- FY2025 divider -->
+      <tr class="year-divider"><td colspan="6">Fiscal Year 2025 (Nov 2024 &ndash; Oct 2025)</td></tr>
+
+      <tr class="raised">
+        <td><a href="quarters/FQ4_2025.html">FQ4 2025</a></td>
+        <td>FQ3 2025 (Sep &rsquo;25)</td>
+        <td class="right">~$17.4B</td>
+        <td class="right bold">$18.0B</td>
+        <td class="right pos">+3.4%</td>
+        <td><span class="tag tag-beat">Beat</span></td>
+      </tr>
+      <tr>
+        <td><a href="quarters/FQ3_2025.html">FQ3 2025</a></td>
+        <td>FQ2 2025 (Jun &rsquo;25)</td>
+        <td class="right">~$15.8B</td>
+        <td class="right bold">$16.0B</td>
+        <td class="right pos">+1.3%</td>
+        <td><span class="tag tag-beat">Beat</span></td>
+      </tr>
+      <tr>
+        <td><a href="quarters/FQ2_2025.html">FQ2 2025</a></td>
+        <td>FQ1 2025 (Mar &rsquo;25)</td>
+        <td class="right">~$14.9B</td>
+        <td class="right bold">$15.0B</td>
+        <td class="right pos">+0.7%</td>
+        <td><span class="tag tag-beat">Beat</span></td>
+      </tr>
+      <tr>
+        <td><a href="quarters/FQ1_2025.html">FQ1 2025</a></td>
+        <td>FQ4 2024 (Dec &rsquo;24)</td>
+        <td class="right">~$14.6B</td>
+        <td class="right bold">$14.9B</td>
+        <td class="right pos">+2.1%</td>
+        <td><span class="tag tag-beat">Beat</span></td>
+      </tr>
+
+      <!-- FY2024 divider -->
+      <tr class="year-divider"><td colspan="6">Fiscal Year 2024 (Nov 2023 &ndash; Oct 2024)</td></tr>
+
+      <tr>
+        <td><a href="quarters/FQ4_2024.html">FQ4 2024</a></td>
+        <td>FQ3 2024 (Sep &rsquo;24)</td>
+        <td class="right">~$14.0B</td>
+        <td class="right bold">$14.1B</td>
+        <td class="right pos">+0.7%</td>
+        <td><span class="tag tag-beat">Beat</span></td>
+      </tr>
+      <tr class="muted">
+        <td><a href="quarters/FQ3_2024.html">FQ3 2024</a></td>
+        <td colspan="4" style="text-align:center;">Annual guidance only ($50B FY2024) &mdash; no quarterly guidance issued</td>
+        <td><span class="tag tag-pending">Annual</span></td>
+      </tr>
+      <tr class="muted">
+        <td><a href="quarters/FQ2_2024.html">FQ2 2024</a></td>
+        <td colspan="4" style="text-align:center;">Annual guidance only ($50B &rarr; $51B FY2024) &mdash; no quarterly guidance issued</td>
+        <td><span class="tag tag-pending">Annual</span></td>
+      </tr>
+      <tr class="muted">
+        <td><a href="quarters/FQ1_2024.html">FQ1 2024</a></td>
+        <td colspan="4" style="text-align:center;">Annual guidance only ($50B FY2024) &mdash; no quarterly guidance issued</td>
+        <td><span class="tag tag-pending">Annual</span></td>
+      </tr>
+
+      <!-- FY2023 divider -->
+      <tr class="year-divider"><td colspan="6">Fiscal Year 2023 (Nov 2022 &ndash; Oct 2023)</td></tr>
+
+      <tr>
+        <td><a href="quarters/FQ4_2023.html">FQ4 2023</a></td>
+        <td>FQ3 2023 (Aug &rsquo;23)</td>
+        <td class="right">$9.27B</td>
+        <td class="right bold">$9.3B</td>
+        <td class="right pos">+0.3%</td>
+        <td><span class="tag tag-beat">Beat</span></td>
+      </tr>
+      <tr>
+        <td><a href="quarters/FQ3_2023.html">FQ3 2023</a></td>
+        <td>FQ2 2023 (Jun &rsquo;23)</td>
+        <td class="right">$8.85B</td>
+        <td class="right bold">$8.9B</td>
+        <td class="right pos">+0.6%</td>
+        <td><span class="tag tag-beat">Beat</span></td>
+      </tr>
+      <tr>
+        <td><a href="quarters/FQ2_2023.html">FQ2 2023</a></td>
+        <td>FQ1 2023 (Mar &rsquo;23)</td>
+        <td class="right">$8.7B</td>
+        <td class="right bold">$8.7B</td>
+        <td class="right">0.0%</td>
+        <td><span class="tag tag-met">Met</span></td>
+      </tr>
+      <tr>
+        <td><a href="quarters/FQ1_2023.html">FQ1 2023</a></td>
+        <td>FQ4 2022 (Dec &rsquo;22)</td>
+        <td class="right">$8.9B</td>
+        <td class="right bold">$8.9B</td>
+        <td class="right">0.0%</td>
+        <td><span class="tag tag-met">Met</span></td>
+      </tr>
+
+      <!-- FY2022 divider -->
+      <tr class="year-divider"><td colspan="6">Fiscal Year 2022 (Nov 2021 &ndash; Oct 2022)</td></tr>
+
+      <tr>
+        <td><a href="quarters/FQ4_2022.html">FQ4 2022</a></td>
+        <td>FQ3 2022 (Sep &rsquo;22)</td>
+        <td class="right">$8.9B</td>
+        <td class="right bold">$8.9B</td>
+        <td class="right">0.0%</td>
+        <td><span class="tag tag-met">Met</span></td>
+      </tr>
+      <tr>
+        <td><a href="quarters/FQ3_2022.html">FQ3 2022</a></td>
+        <td>FQ2 2022 (Jun &rsquo;22)</td>
+        <td class="right">~$8.4B</td>
+        <td class="right bold">$8.5B</td>
+        <td class="right pos">+1.2%</td>
+        <td><span class="tag tag-beat">Beat</span></td>
+      </tr>
+      <tr class="raised">
+        <td><a href="quarters/FQ2_2022.html">FQ2 2022</a></td>
+        <td>FQ1 2022 (Mar &rsquo;22)</td>
+        <td class="right">$7.9B</td>
+        <td class="right bold">$8.1B</td>
+        <td class="right pos">+2.5%</td>
+        <td><span class="tag tag-beat">Beat</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="insight">
+    <strong>Summary:</strong> 10 beats, 3 met, 0 misses out of 13 quarterly guidance&ndash;actual pairs. Broadcom has never missed its revenue guidance. Average beat: +1.0%.
+  </div>
+</div>
+
+<!-- ====== 2. ADJUSTED EBITDA % ACTUALS VS GUIDANCE ====== -->
+<div class="section" id="s2">
+  <h2><span class="num">2</span> Adjusted EBITDA % &mdash; Actuals vs Guidance</h2>
+
+  <div class="insight">
+    <strong>Context:</strong> Broadcom guides Adjusted EBITDA as a percentage of revenue. During the VMware integration year (FY2024), annual EBITDA % guidance was provided rather than quarterly.
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Quarter</th>
+        <th>Guided From</th>
+        <th class="right">Guidance</th>
+        <th class="right">Actual</th>
+        <th class="right">vs Guidance</th>
+        <th>Tag</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Pending -->
+      <tr class="muted">
+        <td>FQ1 2026</td>
+        <td>FQ4 2025 (Dec &rsquo;25)</td>
+        <td class="right">~67%</td>
+        <td class="right">&mdash;</td>
+        <td class="right">Pending</td>
+        <td><span class="tag tag-pending">Pending</span></td>
+      </tr>
+
+      <!-- FY2025 divider -->
+      <tr class="year-divider"><td colspan="6">Fiscal Year 2025 (Nov 2024 &ndash; Oct 2025)</td></tr>
+
+      <tr>
+        <td><a href="quarters/FQ4_2025.html">FQ4 2025</a></td>
+        <td>FQ3 2025 (Sep &rsquo;25)</td>
+        <td class="right">67%</td>
+        <td class="right bold">68%</td>
+        <td class="right pos">+100 bps</td>
+        <td><span class="tag tag-beat">Beat</span></td>
+      </tr>
+      <tr>
+        <td><a href="quarters/FQ3_2025.html">FQ3 2025</a></td>
+        <td>FQ2 2025 (Jun &rsquo;25)</td>
+        <td class="right">&ge;66%</td>
+        <td class="right bold">67%</td>
+        <td class="right pos">+100 bps</td>
+        <td><span class="tag tag-beat">Beat</span></td>
+      </tr>
+      <tr>
+        <td><a href="quarters/FQ2_2025.html">FQ2 2025</a></td>
+        <td>FQ1 2025 (Mar &rsquo;25)</td>
+        <td class="right">~66%</td>
+        <td class="right bold">67%</td>
+        <td class="right pos">+100 bps</td>
+        <td><span class="tag tag-beat">Beat</span></td>
+      </tr>
+      <tr class="raised">
+        <td><a href="quarters/FQ1_2025.html">FQ1 2025</a></td>
+        <td>FQ4 2024 (Dec &rsquo;24)</td>
+        <td class="right">~66%</td>
+        <td class="right bold">68%</td>
+        <td class="right pos">+200 bps</td>
+        <td><span class="tag tag-beat">Beat</span></td>
+      </tr>
+
+      <!-- FY2024 divider -->
+      <tr class="year-divider"><td colspan="6">Fiscal Year 2024 (Nov 2023 &ndash; Oct 2024)</td></tr>
+
+      <tr>
+        <td><a href="quarters/FQ4_2024.html">FQ4 2024</a></td>
+        <td>FQ3 2024 (Sep &rsquo;24)</td>
+        <td class="right">~64%</td>
+        <td class="right bold">65%</td>
+        <td class="right pos">+100 bps</td>
+        <td><span class="tag tag-beat">Beat</span></td>
+      </tr>
+      <tr class="muted">
+        <td>FQ1&ndash;FQ3 2024</td>
+        <td>FQ4 &rsquo;23 &ndash; FQ2 &rsquo;24</td>
+        <td class="right">~60% annual</td>
+        <td class="right bold">62% actual</td>
+        <td class="right pos">+200 bps</td>
+        <td><span class="tag tag-pending">FY</span></td>
+      </tr>
+
+      <!-- FY2023 divider -->
+      <tr class="year-divider"><td colspan="6">Fiscal Year 2023 (Nov 2022 &ndash; Oct 2023)</td></tr>
+
+      <tr>
+        <td><a href="quarters/FQ4_2023.html">FQ4 2023</a></td>
+        <td>FQ3 2023 (Aug &rsquo;23)</td>
+        <td class="right">~65%</td>
+        <td class="right bold">65%</td>
+        <td class="right">0 bps</td>
+        <td><span class="tag tag-met">Met</span></td>
+      </tr>
+      <tr>
+        <td><a href="quarters/FQ3_2023.html">FQ3 2023</a></td>
+        <td>FQ2 2023 (Jun &rsquo;23)</td>
+        <td class="right">~65%</td>
+        <td class="right bold">65%</td>
+        <td class="right">0 bps</td>
+        <td><span class="tag tag-met">Met</span></td>
+      </tr>
+      <tr>
+        <td><a href="quarters/FQ2_2023.html">FQ2 2023</a></td>
+        <td>FQ1 2023 (Mar &rsquo;23)</td>
+        <td class="right">~64.5%</td>
+        <td class="right bold">65%</td>
+        <td class="right pos">+50 bps</td>
+        <td><span class="tag tag-beat">Beat</span></td>
+      </tr>
+      <tr>
+        <td><a href="quarters/FQ1_2023.html">FQ1 2023</a></td>
+        <td>FQ4 2022 (Dec &rsquo;22)</td>
+        <td class="right">~63%</td>
+        <td class="right bold">64%</td>
+        <td class="right pos">+100 bps</td>
+        <td><span class="tag tag-beat">Beat</span></td>
+      </tr>
+
+      <!-- FY2022 divider -->
+      <tr class="year-divider"><td colspan="6">Fiscal Year 2022 (Nov 2021 &ndash; Oct 2022)</td></tr>
+
+      <tr>
+        <td><a href="quarters/FQ4_2022.html">FQ4 2022</a></td>
+        <td>FQ3 2022 (Sep &rsquo;22)</td>
+        <td class="right">~63%</td>
+        <td class="right bold">64%</td>
+        <td class="right pos">+100 bps</td>
+        <td><span class="tag tag-beat">Beat</span></td>
+      </tr>
+      <tr>
+        <td><a href="quarters/FQ3_2022.html">FQ3 2022</a></td>
+        <td>FQ2 2022 (Jun &rsquo;22)</td>
+        <td class="right">~63.5%</td>
+        <td class="right bold">63.5%</td>
+        <td class="right">0 bps</td>
+        <td><span class="tag tag-met">Met</span></td>
+      </tr>
+      <tr>
+        <td><a href="quarters/FQ2_2022.html">FQ2 2022</a></td>
+        <td>FQ1 2022 (Mar &rsquo;22)</td>
+        <td class="right">~62.5%</td>
+        <td class="right bold">63.1%</td>
+        <td class="right pos">+60 bps</td>
+        <td><span class="tag tag-beat">Beat</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="insight">
+    <strong>Summary:</strong> 9 beats, 3 met, 0 misses out of 13 quarterly guidance&ndash;actual pairs (excluding FY2024 annual). Never missed. Average beat: +78 bps. EBITDA margin improved from ~63% to 68% over the period.
+  </div>
+</div>
+
+<!-- ====== 3. AI REVENUE: OUTLOOK VS ACTUAL ====== -->
+<div class="section" id="s3">
+  <h2><span class="num">3</span> AI Revenue &mdash; Outlook vs Actual</h2>
+
+  <div class="insight">
+    <strong>Context:</strong> Broadcom first quantified AI revenue in FQ1 2023 and has since provided evolving outlook figures. AI revenue includes custom accelerators (XPUs/compute offload) and AI networking. Outlook was raised multiple times during FY2024 as AI demand exceeded expectations.
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Fiscal Year</th>
+        <th class="right">Initial Outlook</th>
+        <th class="right">Final Outlook</th>
+        <th class="right">Actual</th>
+        <th class="right">vs Initial</th>
+        <th class="right">vs Final</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="muted">
+        <td>FY2026</td>
+        <td class="right">&mdash;</td>
+        <td class="right">&mdash;</td>
+        <td class="right">&mdash;</td>
+        <td class="right">Pending</td>
+        <td class="right">Pending</td>
+      </tr>
+      <tr>
+        <td>FY2025</td>
+        <td class="right">~$19&ndash;20B implied</td>
+        <td class="right">~60% growth implied</td>
+        <td class="right bold">$20B</td>
+        <td class="right pos">In line</td>
+        <td class="right pos">+65% YoY</td>
+      </tr>
+      <tr class="raised">
+        <td>FY2024</td>
+        <td class="right">~$7.5B implied</td>
+        <td class="right">$12B</td>
+        <td class="right bold">$12.2B</td>
+        <td class="right pos">+63%</td>
+        <td class="right pos">+1.7%</td>
+      </tr>
+      <tr>
+        <td>FY2023</td>
+        <td class="right">~$3.8B</td>
+        <td class="right">$3.8B confirmed</td>
+        <td class="right bold">~$4.2B</td>
+        <td class="right pos">+11%</td>
+        <td class="right pos">+11%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="fy-block">
+    <h3>FY2024 AI Revenue Outlook Evolution</h3>
+    <div class="fy-row">
+      <span class="fy-label">FQ4 2023 (Dec &rsquo;23) &mdash; Initial</span>
+      <span class="fy-value">&gt;25% of semi revenue (~$7.5B implied)</span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">FQ1 2024 (Mar &rsquo;24) &mdash; Raised</span>
+      <span class="fy-value pos">&gt;$10B / 35% of semi revenue</span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">FQ2 2024 (Jun &rsquo;24) &mdash; Raised</span>
+      <span class="fy-value pos">&gt;$11B</span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">FQ3 2024 (Sep &rsquo;24) &mdash; Raised</span>
+      <span class="fy-value pos">$12B</span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">Actual</span>
+      <span class="fy-value bold pos">$12.2B (+220% YoY) &mdash; beat initial by +63%, beat final by +1.7%</span>
+    </div>
+  </div>
+
+  <div class="insight">
+    <strong>Key finding:</strong> Broadcom systematically underestimated AI revenue during FY2024, raising the outlook four consecutive times. The initial ~$7.5B implied figure was ultimately exceeded by 63%.
+  </div>
+</div>
+
+<!-- ====== 4. FULL-YEAR REVENUE GUIDANCE VS ACTUALS ====== -->
+<div class="section" id="s4">
+  <h2><span class="num">4</span> Full-Year Revenue Guidance vs Actuals</h2>
+
+  <div class="insight">
+    <strong>Context:</strong> Broadcom only provided formal annual revenue guidance during FY2024 (the VMware integration year). FY2022, FY2023, and FY2025 had quarterly-only guidance with no annual figure.
+  </div>
+
+  <div class="fy-block">
+    <h3>FY2024 Revenue: $50B &rarr; $51B &rarr; $51.5B &rarr; Actual $51.6B</h3>
+    <div class="fy-row">
+      <span class="fy-label">FQ4 2023 (Dec &rsquo;23) &mdash; Initial</span>
+      <span class="fy-value">$50B (+40% YoY)</span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">FQ1 2024 (Mar &rsquo;24) &mdash; Reiterated</span>
+      <span class="fy-value">$50B</span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">FQ2 2024 (Jun &rsquo;24) &mdash; Raised</span>
+      <span class="fy-value pos">$51B (+$1B)</span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">FQ3 2024 (Sep &rsquo;24) &mdash; Implied</span>
+      <span class="fy-value pos">$51.5B (+$0.5B)</span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">Actual</span>
+      <span class="fy-value bold pos">$51.6B (+44% YoY) &mdash; beat initial by +3.2%, beat final by +0.2%</span>
+    </div>
+  </div>
+
+  <div class="fy-block">
+    <h3>FY2024 Adjusted EBITDA %: 60% &rarr; 61% &rarr; 61.5% &rarr; Actual 62%</h3>
+    <div class="fy-row">
+      <span class="fy-label">FQ4 2023 (Dec &rsquo;23) &mdash; Initial</span>
+      <span class="fy-value">~60%</span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">FQ2 2024 (Jun &rsquo;24) &mdash; Raised</span>
+      <span class="fy-value pos">61%</span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">FQ3 2024 (Sep &rsquo;24) &mdash; Raised</span>
+      <span class="fy-value pos">61.5%</span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">Actual</span>
+      <span class="fy-value bold pos">62% &mdash; beat initial by +200 bps</span>
+    </div>
+  </div>
+
+  <div class="fy-block">
+    <h3>FY2025 Revenue (No Annual Guidance)</h3>
+    <div class="fy-row">
+      <span class="fy-label">Annual guidance</span>
+      <span class="fy-value muted">Not provided &mdash; quarterly guidance only</span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">Actual</span>
+      <span class="fy-value bold">$63.9B (+24% YoY)</span>
+    </div>
+  </div>
+
+  <div class="fy-block">
+    <h3>FY2022 &amp; FY2023 (No Annual Guidance)</h3>
+    <div class="fy-row">
+      <span class="fy-label">Annual guidance</span>
+      <span class="fy-value muted">Not provided &mdash; quarterly guidance only</span>
+    </div>
+  </div>
+</div>
+
+<!-- ====== 5. KEY TAKEAWAYS ====== -->
+<div class="section" id="s5">
+  <h2><span class="num">5</span> Key Takeaways</h2>
+
+  <div class="takeaways">
+    <div class="takeaway">
+      <div class="takeaway-num">1</div>
+      <div class="takeaway-text"><strong>Perfect record &mdash; never missed guidance in 13 quarters.</strong> Across both revenue and Adjusted EBITDA %, Broadcom has never come in below its guided figure. This is an exceptional track record for a company guiding single-point estimates rather than ranges.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">2</div>
+      <div class="takeaway-text"><strong>Conservative guidance philosophy.</strong> Broadcom consistently guides conservatively and then delivers at or above the target. Of 13 revenue pairs, 10 were beats and 3 were met exactly &mdash; zero misses. This pattern suggests deliberate sandbagging of guidance.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">3</div>
+      <div class="takeaway-text"><strong>Revenue beats accelerated in FY2025.</strong> The FQ4 2025 beat of +3.4% was the largest single-quarter revenue beat in the dataset, driven by surging AI demand. FQ1 2025 also beat by +2.1%, well above the historical average.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">4</div>
+      <div class="takeaway-text"><strong>EBITDA guidance also conservative &mdash; beat 9 of 13, never missed.</strong> The average EBITDA % beat of +78 bps compounds over time. Every beat flows directly to the bottom line, meaning Broadcom consistently delivers more profit than guided.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">5</div>
+      <div class="takeaway-text"><strong>VMware integration year (FY2024) &mdash; shifted to annual guidance, still beat by 3.2%.</strong> When Broadcom acquired VMware in late 2023, it suspended quarterly guidance due to integration variability. Even with the uncertainty, the initial $50B annual target was exceeded by $1.6B.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">6</div>
+      <div class="takeaway-text"><strong>AI revenue outlook systematically underestimated.</strong> FY2024 AI revenue was raised four consecutive times: from an implied ~$7.5B to $12B, with the actual coming in at $12.2B (+63% vs initial). This reflects the difficulty of forecasting exponential AI infrastructure demand.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">7</div>
+      <div class="takeaway-text"><strong>FQ4 2025 was the largest revenue beat (+3.4%), driven by AI upside.</strong> At $18.0B actual vs ~$17.4B guided, this quarter demonstrated that as Broadcom&rsquo;s AI revenue share grows, the magnitude of beats may increase given conservative guidance practices.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">8</div>
+      <div class="takeaway-text"><strong>Broadcom uses single-point revenue estimates (not ranges), yet never misses.</strong> Unlike most semiconductor peers who provide guidance ranges, Broadcom commits to a single number. Despite this tighter target, they have a perfect hit-or-beat record.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">9</div>
+      <div class="takeaway-text"><strong>EBITDA % improved from ~63% to 68% over the period &mdash; every beat accumulated.</strong> Over 13 quarters, Adjusted EBITDA margin expanded by roughly 500 bps. This reflects both operating leverage on AI revenue growth and VMware integration synergies.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  Data sourced from Broadcom (AVGO) earnings calls and press releases, FQ1 2022 &ndash; FQ4 2025.
+  <br>Broadcom Metrics Tracker &mdash; <a href="comparison.html">Guidance Overview</a>
+</div>
+
+</body>
+</html>

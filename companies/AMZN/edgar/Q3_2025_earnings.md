@@ -1,0 +1,288 @@
+# Amazon.com, Inc. — Q3_2025 Earnings Release
+
+**Ticker:** AMZN
+**Filing Date:** 2025-10-30
+**Accession:** 0001018724-25-000121
+**Source:** [SEC EDGAR](https://www.sec.gov/Archives/edgar/data/1018724/000101872425000121/0001018724-25-000121-index.htm)
+
+## Key Metrics (XBRL)
+
+| Metric | Value | Units | Source |
+|--------|------:|-------|--------|
+| Cash & Equivalents | $66.92B | USD | 10-Q |
+| Comprehensive Income | $31.10B | USD | 10-Q |
+| EPS (Basic) | 2 | USD/shares | 10-Q |
+| EPS (Diluted) | 2 | USD/shares | 10-Q |
+| Income Tax Expense | $6.91B | USD | 10-Q |
+| Net Income | $21.19B | USD | 10-Q |
+| Operating Income | $17.42B | USD | 10-Q |
+| Revenue | $180.17B | USD | 10-Q |
+| Shares Outstanding | 10,687.0M | shares | 10-Q |
+| Total Assets | $727.92B | USD | 10-Q |
+| Total Equity | $369.63B | USD | 10-Q |
+
+## Financial Tables (from Exhibits)
+
+### 
+
+|  | Three Months Ended September 30, |  | Nine Months Ended September 30, |  | Twelve Months Ended September 30, |
+|  | 2024 |  | 2025 |  | 2024 |  | 2025 |  | 2024 |  | 2025 |
+| CASH, CASH EQUIVALENTS, AND RESTRICTED CASH, BEGINNING OF PERIOD |  | 71673 |  |  |  | 61453 |  |  |  | 73890 |  |  |  | 82312 |  |  |  | 50081 |  |  |  | 78677 |  |
+| OPERATING ACTIVITIES: |  |  |  |  |  |  |  |  |  |  |  |
+| Net income | 15328 |  |  | 21187 |  |  | 39244 |  |  | 56478 |  |  | 49868 |  |  | 76482 |  |
+| Adjustments to reconcile net income to net cash from operating activities: |  |  |  |  |  |  |  |  |  |  |  |
+| Depreciation and amortization of property and equipment and capitalized content costs, operating lease assets, and other | 13442 |  |  | 16796 |  |  | 37164 |  |  | 46285 |  |  | 50984 |  |  | 61916 |  |
+| Stock-based compensation | 5333 |  |  | 4847 |  |  | 17016 |  |  | 15070 |  |  | 23335 |  |  | 20065 |  |
+| Non-operating expense (income), net | -141 |  |  | -10112 |  |  | 2498 |  |  | -14187 |  |  | 2159 |  |  | -14673 |  |
+| Deferred income taxes | -1317 |  |  | 10130 |  |  | -3040 |  |  | 10648 |  |  | -4504 |  |  | 9040 |  |
+| Changes in operating assets and liabilities: |  |  |  |  |  |  |  |  |  |  |  |
+| Inventories | -1509 |  |  | -827 |  |  | -2818 |  |  | -6103 |  |  | -175 |  |  | -5169 |  |
+| Accounts receivable, net and other | -701 |  |  | -1977 |  |  | 774 |  |  | -1855 |  |  | -6673 |  |  | -5878 |  |
+| Other assets | -4537 |  |  | -4039 |  |  | -10293 |  |  | -10412 |  |  | -13095 |  |  | -14602 |  |
+| Accounts payable | -477 |  |  | 2151 |  |  | -5754 |  |  | 166 |  |  | 5134 |  |  | 8892 |  |
+| Accrued expenses and other | 129 |  |  | -1999 |  |  | -6946 |  |  | -11012 |  |  | -352 |  |  | -6970 |  |
+| Unearned revenue | 421 |  |  | -632 |  |  | 2396 |  |  | -23 |  |  | 6025 |  |  | 1588 |  |
+| Net cash provided by (used in) operating activities | 25971 |  |  | 35525 |  |  | 70241 |  |  | 85055 |  |  | 112706 |  |  | 130691 |  |
+| INVESTING ACTIVITIES: |  |  |  |  |  |  |  |  |  |  |  |
+| Purchases of property and equipment | -22620 |  |  | -35095 |  |  | -55165 |  |  | -92297 |  |  | -69753 |  |  | -120131 |  |
+| Proceeds from property and equipment sales and incentives | 1342 |  |  | 867 |  |  | 3559 |  |  | 2446 |  |  | 4794 |  |  | 4228 |  |
+| Acquisitions, net of cash acquired, non-marketable investments, and other, net | -622 |  |  | -786 |  |  | -4547 |  |  | -2438 |  |  | -4928 |  |  | -4973 |  |
+| Sales and maturities of marketable securities | 8069 |  |  | 16367 |  |  | 12726 |  |  | 35545 |  |  | 14294 |  |  | 39222 |  |
+| Purchases of marketable securities | -3068 |  |  | -7426 |  |  | -13472 |  |  | -38556 |  |  | -13907 |  |  | -51089 |  |
+| Net cash provided by (used in) investing activities | -16899 |  |  | -26073 |  |  | -56899 |  |  | -95300 |  |  | -69500 |  |  | -132743 |  |
+| FINANCING ACTIVITIES: |  |  |  |  |  |  |  |  |  |  |  |
+| Proceeds from short-term debt, and other | 1725 |  |  | 3223 |  |  | 2588 |  |  | 7131 |  |  | 3322 |  |  | 9685 |  |
+| Repayments of short-term debt, and other | -1820 |  |  | -1826 |  |  | -2453 |  |  | -5300 |  |  | -8791 |  |  | -7907 |  |
+| Proceeds from long-term debt | — |  |  | — |  |  | — |  |  | 746 |  |  | — |  |  | 746 |  |
+| Repayments of long-term debt | -2183 |  |  | -1008 |  |  | -6682 |  |  | -3759 |  |  | -6972 |  |  | -6259 |  |
+| Principal repayments of finance leases | -402 |  |  | -351 |  |  | -1710 |  |  | -1172 |  |  | -2489 |  |  | -1505 |  |
+| Principal repayments of financing obligations | -78 |  |  | -82 |  |  | -247 |  |  | -276 |  |  | -320 |  |  | -698 |  |
+| Net cash provided by (used in) financing activities | -2758 |  |  | -44 |  |  | -8504 |  |  | -2630 |  |  | -15250 |  |  | -5938 |  |
+| Foreign currency effect on cash, cash equivalents, and restricted cash | 690 |  |  | -397 |  |  | -51 |  |  | 1027 |  |  | 640 |  |  | -223 |  |
+| Net increase (decrease) in cash, cash equivalents, and restricted cash | 7004 |  |  | 9011 |  |  | 4787 |  |  | -11848 |  |  | 28596 |  |  | -8213 |  |
+| CASH, CASH EQUIVALENTS, AND RESTRICTED CASH, END OF PERIOD |  | 78677 |  |  |  | 70464 |  |  |  | 78677 |  |  |  | 70464 |  |  |  | 78677 |  |  |  | 70464 |  |
+| SUPPLEMENTAL CASH FLOW INFORMATION: |  |  |  |  |  |  |  |  |  |  |  |
+| Cash paid for interest on debt, net of capitalized interest |  | 266 |  |  |  | 249 |  |  |  | 1215 |  |  |  | 1008 |  |  |  | 2002 |  |  |  | 1651 |  |
+| Cash paid for operating leases | 2940 |  |  | 4155 |  |  | 9116 |  |  | 11475 |  |  | 11882 |  |  | 14700 |  |
+| Cash paid for interest on finance leases | 71 |  |  | 76 |  |  | 217 |  |  | 219 |  |  | 291 |  |  | 289 |  |
+| Cash paid for interest on financing obligations | 47 |  |  | 52 |  |  | 161 |  |  | 159 |  |  | 207 |  |  | 217 |  |
+| Cash paid for income taxes, net of refunds | 2004 |  |  | 1136 |  |  | 8162 |  |  | 6774 |  |  | 12359 |  |  | 10920 |  |
+| Assets acquired under operating leases | 3571 |  |  | 5057 |  |  | 11235 |  |  | 13999 |  |  | 14212 |  |  | 18188 |  |
+| Property and equipment acquired under finance leases, net of remeasurements and modifications | 186 |  |  | 977 |  |  | 409 |  |  | 1968 |  |  | 620 |  |  | 2413 |  |
+| Increase (decrease) in property and equipment acquired but not yet paid | 1622 |  |  | 3341 |  |  | 4793 |  |  | 4849 |  |  | 4769 |  |  | 7095 |  |
+
+### 
+
+|  | Three Months Ended September 30, |  | Nine Months Ended September 30, |
+|  | 2024 |  | 2025 |  | 2024 |  | 2025 |
+| Net product sales |  | 67601 |  |  |  | 74058 |  |  |  | 190085 |  |  |  | 206274 |  |
+| Net service sales | 91276 |  |  | 106111 |  |  | 260082 |  |  | 297264 |  |
+| Total net sales | 158877 |  |  | 180169 |  |  | 450167 |  |  | 503538 |  |
+| Operating expenses: |  |  |  |  |  |  |  |
+| Cost of sales | 80977 |  |  | 88670 |  |  | 227395 |  |  | 246455 |  |
+| Fulfillment | 24660 |  |  | 27679 |  |  | 70543 |  |  | 78248 |  |
+| Technology and infrastructure | 22245 |  |  | 28962 |  |  | 64973 |  |  | 79122 |  |
+| Sales and marketing | 10609 |  |  | 11686 |  |  | 30783 |  |  | 32865 |  |
+| General and administrative | 2713 |  |  | 2875 |  |  | 8496 |  |  | 8468 |  |
+| Other operating expense (income), net | 262 |  |  | 2875 |  |  | 587 |  |  | 3382 |  |
+| Total operating expenses | 141466 |  |  | 162747 |  |  | 402777 |  |  | 448540 |  |
+| Operating income | 17411 |  |  | 17422 |  |  | 47390 |  |  | 54998 |  |
+| Interest income | 1256 |  |  | 1100 |  |  | 3429 |  |  | 3251 |  |
+| Interest expense | -603 |  |  | -538 |  |  | -1836 |  |  | -1595 |  |
+| Other income (expense), net | -27 |  |  | 10186 |  |  | -2718 |  |  | 14052 |  |
+| Total non-operating income (expense) | 626 |  |  | 10748 |  |  | -1125 |  |  | 15708 |  |
+| Income before income taxes | 18037 |  |  | 28170 |  |  | 46265 |  |  | 70706 |  |
+| Provision for income taxes | -2706 |  |  | -6910 |  |  | -6940 |  |  | -14141 |  |
+| Equity-method investment activity, net of tax |  |  |  | -73 |  |  | -81 |  |  | -87 |  |
+| Net income |  | 15328 |  |  |  | 21187 |  |  |  | 39244 |  |  |  | 56478 |  |
+| Basic earnings per share |  | 1.46 |  |  |  | 1.98 |  |  |  | 3.76 |  |  |  | 5.31 |  |
+| Diluted earnings per share |  | 1.43 |  |  |  | 1.95 |  |  |  | 3.67 |  |  |  | 5.22 |  |
+| Weighted-average shares used in computation of earnings per share: |  |  |  |  |  |  |  |
+| Basic | 10501 |  |  | 10674 |  |  | 10447 |  |  | 10638 |  |
+| Diluted | 10735 |  |  | 10845 |  |  | 10705 |  |  | 10815 |  |
+
+### 
+
+|  | Three Months Ended September 30, |  | Nine Months Ended September 30, |
+|  | 2024 |  | 2025 |  | 2024 |  | 2025 |
+| Net income |  | 15328 |  |  |  | 21187 |  |  |  | 39244 |  |  |  | 56478 |  |
+| Other comprehensive income (loss): |  |  |  |  |  |  |  |
+| Foreign currency translation adjustments, net of tax of (45), 27, 43, and (181) | 1911 |  |  | -690 |  |  | 178 |  |  | 4159 |  |
+| Available-for-sale debt securities: |  |  |  |  |  |  |  |
+| Change in net unrealized gains (losses), net of tax of (55), (3,797), (282), and (3,820) | 167 |  |  | 12397 |  |  | 944 |  |  | 12474 |  |
+| Less: reclassification adjustment for losses (gains) included in “Other income (expense), net,” net of tax of 0, 512, (1), and 1,326 | — |  |  | -1795 |  |  | 4 |  |  | -4266 |  |
+| Net change | 167 |  |  | 10602 |  |  | 948 |  |  | 8208 |  |
+| Other, net of tax of 3, 0, 1, and 0 |  |  |  | 1 |  |  |  |  |  | — |  |
+| Total other comprehensive income (loss) | 2075 |  |  | 9913 |  |  | 1122 |  |  | 12367 |  |
+| Comprehensive income |  | 17403 |  |  |  | 31100 |  |  |  | 40366 |  |  |  | 68845 |  |
+
+### 
+
+|  | Three Months Ended September 30, |  | Nine Months Ended September 30, |
+|  | 2024 |  | 2025 |  | 2024 |  | 2025 |
+| North America |  |  |  |  |  |  |  |
+| Net sales |  | 95537 |  |  |  | 106267 |  |  |  | 271911 |  |  |  | 299222 |  |
+| Operating expenses | 89874 |  |  | 101478 |  |  | 256200 |  |  | 281075 |  |
+| Operating income |  | 5663 |  |  |  | 4789 |  |  |  | 15711 |  |  |  | 18147 |  |
+| International |  |  |  |  |  |  |  |
+| Net sales |  | 35888 |  |  |  | 40896 |  |  |  | 99486 |  |  |  | 111170 |  |
+| Operating expenses | 34587 |  |  | 39697 |  |  | 97009 |  |  | 107460 |  |
+| Operating income |  | 1301 |  |  |  | 1199 |  |  |  | 2477 |  |  |  | 3710 |  |
+| AWS |  |  |  |  |  |  |  |
+| Net sales |  | 27452 |  |  |  | 33006 |  |  |  | 78770 |  |  |  | 93146 |  |
+| Operating expenses | 17005 |  |  | 21572 |  |  | 49568 |  |  | 60005 |  |
+| Operating income |  | 10447 |  |  |  | 11434 |  |  |  | 29202 |  |  |  | 33141 |  |
+| Consolidated |  |  |  |  |  |  |  |
+| Net sales |  | 158877 |  |  |  | 180169 |  |  |  | 450167 |  |  |  | 503538 |  |
+| Operating expenses | 141466 |  |  | 162747 |  |  | 402777 |  |  | 448540 |  |
+| Operating income | 17411 |  |  | 17422 |  |  | 47390 |  |  | 54998 |  |
+| Total non-operating income (expense) | 626 |  |  | 10748 |  |  | -1125 |  |  | 15708 |  |
+| Provision for income taxes | -2706 |  |  | -6910 |  |  | -6940 |  |  | -14141 |  |
+| Equity-method investment activity, net of tax |  |  |  | -73 |  |  | -81 |  |  | -87 |  |
+| Net income |  | 15328 |  |  |  | 21187 |  |  |  | 39244 |  |  |  | 56478 |  |
+| Segment Highlights: |  |  |  |  |  |  |  |
+| Y/Y net sales growth: |  |  |  |  |  |  |  |
+| North America | 9 | % |  | 11 | % |  | 10 | % |  | 10 | % |
+| International | 12 |  |  | 14 |  |  | 9 |  |  | 12 |  |
+| AWS | 19 |  |  | 20 |  |  | 18 |  |  | 18 |  |
+| Consolidated | 11 |  |  | 13 |  |  | 11 |  |  | 12 |  |
+| Net sales mix: |  |  |  |  |  |  |  |
+| North America | 60 | % |  | 59 | % |  | 60 | % |  | 59 | % |
+| International | 23 |  |  | 23 |  |  | 22 |  |  | 22 |  |
+| AWS | 17 |  |  | 18 |  |  | 18 |  |  | 19 |  |
+| Consolidated | 100 | % |  | 100 | % |  | 100 | % |  | 100 | % |
+
+### 
+
+|  | December 31, 2024 |  | September 30, 2025 |
+| ASSETS |  |  |  |
+| Current assets: |  |  |  |
+| Cash and cash equivalents |  | 78779 |  |  |  | 66922 |  |
+| Marketable securities | 22423 |  |  | 27275 |  |
+| Inventories | 34214 |  |  | 41494 |  |
+| Accounts receivable, net and other | 55451 |  |  | 61175 |  |
+| Total current assets | 190867 |  |  | 196866 |  |
+| Property and equipment, net | 252665 |  |  | 324435 |  |
+| Operating leases | 76141 |  |  | 83456 |  |
+| Goodwill | 23074 |  |  | 23260 |  |
+| Other assets | 82147 |  |  | 99904 |  |
+| Total assets |  | 624894 |  |  |  | 727921 |  |
+| LIABILITIES AND STOCKHOLDERS’ EQUITY |  |  |  |
+| Current liabilities: |  |  |  |
+| Accounts payable |  | 94363 |  |  |  | 106032 |  |
+| Accrued expenses and other | 66965 |  |  | 68051 |  |
+| Unearned revenue | 18103 |  |  | 21113 |  |
+| Total current liabilities | 179431 |  |  | 195196 |  |
+| Long-term lease liabilities | 78277 |  |  | 84677 |  |
+| Long-term debt | 52623 |  |  | 50742 |  |
+| Other long-term liabilities | 28593 |  |  | 27675 |  |
+| Commitments and contingencies |  |  |  |
+| Stockholders’ equity: |  |  |  |
+| Preferred stock (0.01 par value; 500 shares authorized; no shares issued or outstanding) | — |  |  | — |  |
+| Common stock (0.01 par value; 100,000 shares authorized; 11,108 and 11,202 shares issued; 10,593 and 10,687 shares outstanding) | 111 |  |  | 112 |  |
+| Treasury stock, at cost | -7837 |  |  | -7837 |  |
+| Additional paid-in capital | 120864 |  |  | 135679 |  |
+| Accumulated other comprehensive income (loss) | -34 |  |  | 12333 |  |
+| Retained earnings | 172866 |  |  | 229344 |  |
+| Total stockholders’ equity | 285970 |  |  | 369631 |  |
+| Total liabilities and stockholders’ equity |  | 624894 |  |  |  | 727921 |  |
+
+### 
+
+|  | Q2 2024 | Q3 2024 | Q4 2024 | Q1 2025 | Q2 2025 | Q3 2025 | Y/Y % Change |
+| Cash Flows and Shares |  |  |  |  |  |  |  |
+| Operating cash flow -- trailing twelve months (TTM) |  | 107952 |  |  | 112706 |  |  | 115877 |  |  | 113903 |  |  | 121137 |  |  | 130691 |  | 16 | % |
+| Operating cash flow -- TTM Y/Y growth | 75 | % | 57 | % | 36 | % | 15 | % | 12 | % | 16 | % | N/A |
+| Purchases of property and equipment, net of proceeds from sales and incentives -- TTM |  | 54979 |  |  | 64959 |  |  | 77658 |  |  | 87978 |  |  | 102953 |  |  | 115903 |  | 78 | % |
+| Free cash flow -- TTM |  | 52973 |  |  | 47747 |  |  | 38219 |  |  | 25925 |  |  | 18184 |  |  | 14788 |  | -69 | % |
+| Common shares and stock-based awards outstanding | 10871 |  | 10872 |  | 10876 |  | 10876 |  | 10952 |  | 10955 |  | 1 | % |
+| Common shares outstanding | 10490 |  | 10511 |  | 10593 |  | 10613 |  | 10660 |  | 10687 |  | 2 | % |
+| Stock-based awards outstanding | 381 |  | 361 |  | 283 |  | 263 |  | 292 |  | 268 |  | -26 | % |
+| Stock-based awards outstanding -- % of common shares outstanding | 3.6 | % | 3.4 | % | 2.7 | % | 2.5 | % | 2.7 | % | 2.5 | % | N/A |
+| Results of Operations |  |  |  |  |  |  |  |
+| Worldwide (WW) net sales |  | 147977 |  |  | 158877 |  |  | 187792 |  |  | 155667 |  |  | 167702 |  |  | 180169 |  | 13 | % |
+| WW net sales -- Y/Y growth, excluding F/X | 11 | % | 11 | % | 11 | % | 10 | % | 12 | % | 12 | % | N/A |
+| WW net sales -- TTM |  | 604334 |  |  | 620128 |  |  | 637959 |  |  | 650313 |  |  | 670038 |  |  | 691330 |  | 11 | % |
+| WW net sales -- TTM Y/Y growth, excluding F/X | 12 | % | 12 | % | 11 | % | 11 | % | 11 | % | 11 | % | N/A |
+| Operating income |  | 14672 |  |  | 17411 |  |  | 21203 |  |  | 18405 |  |  | 19171 |  |  | 17422 |  | — | % |
+| F/X impact -- favorable |  | 29 |  |  | 16 |  |  | 14 |  |  | 53 |  |  | 153 |  |  | 129 |  | N/A |
+| Operating income -- Y/Y growth (decline), excluding F/X | 91 | % | 55 | % | 60 | % | 20 | % | 30 | % |  | % | N/A |
+| Operating margin -- % of WW net sales | 9.9 | % | 11.0 | % | 11.3 | % | 11.8 | % | 11.4 | % | 9.7 | % | N/A |
+| Operating income -- TTM |  | 54376 |  |  | 60599 |  |  | 68593 |  |  | 71691 |  |  | 76190 |  |  | 76201 |  | 26 | % |
+| Operating income -- TTM Y/Y growth, excluding F/X | 205 | % | 129 | % | 86 | % | 51 | % | 40 | % | 25 | % | N/A |
+| Operating margin -- TTM % of WW net sales | 9.0 | % | 9.8 | % | 10.8 | % | 11.0 | % | 11.4 | % | 11.0 | % | N/A |
+| Net income |  | 13485 |  |  | 15328 |  |  | 20004 |  |  | 17127 |  |  | 18164 |  |  | 21187 |  | 38 | % |
+| Net income per diluted share |  | 1.26 |  |  | 1.43 |  |  | 1.86 |  |  | 1.59 |  |  | 1.68 |  |  | 1.95 |  | 37 | % |
+| Net income -- TTM |  | 44419 |  |  | 49868 |  |  | 59248 |  |  | 65944 |  |  | 70623 |  |  | 76482 |  | 53 | % |
+| Net income per diluted share -- TTM |  | 4.18 |  |  | 4.67 |  |  | 5.53 |  |  | 6.13 |  |  | 6.55 |  |  | 7.08 |  | 52 | % |
+
+### 
+
+|  | Q2 2024 | Q3 2024 | Q4 2024 | Q1 2025 | Q2 2025 | Q3 2025 | Y/Y % Change |
+| Segments |  |  |  |  |  |  |  |
+| North America Segment: |  |  |  |  |  |  |  |
+| Net sales |  | 90033 |  |  | 95537 |  |  | 115586 |  |  | 92887 |  |  | 100068 |  |  | 106267 |  | 11 | % |
+| Net sales -- Y/Y growth, excluding F/X | 9 | % | 9 | % | 10 | % | 8 | % | 11 | % | 11 | % | N/A |
+| Net sales -- TTM |  | 369775 |  |  | 377425 |  |  | 387497 |  |  | 394043 |  |  | 404078 |  |  | 414808 |  | 10 | % |
+| Operating income |  | 5065 |  |  | 5663 |  |  | 9256 |  |  | 5841 |  |  | 7517 |  |  | 4789 |  | -15 | % |
+| F/X impact -- favorable (unfavorable) |  | 8 |  |  | -28 |  |  | -49 |  |  | -32 |  |  | -46 |  |  | -53 |  | N/A |
+| Operating income -- Y/Y growth (decline), excluding F/X | 58 | % | 32 | % | 44 | % | 18 | % | 49 | % | -14 | % | N/A |
+| Operating margin -- % of North America net sales | 5.6 | % | 5.9 | % | 8.0 | % | 6.3 | % | 7.5 | % | 4.5 | % | N/A |
+| Operating income -- TTM |  | 20816 |  |  | 22172 |  |  | 24967 |  |  | 25825 |  |  | 28277 |  |  | 27403 |  | 24 | % |
+| Operating margin -- TTM % of North America net sales | 5.6 | % | 5.9 | % | 6.4 | % | 6.6 | % | 7.0 | % | 6.6 | % | N/A |
+| International Segment: |  |  |  |  |  |  |  |
+| Net sales |  | 31663 |  |  | 35888 |  |  | 43420 |  |  | 33513 |  |  | 36761 |  |  | 40896 |  | 14 | % |
+| Net sales -- Y/Y growth, excluding F/X | 10 | % | 12 | % | 9 | % | 8 | % | 11 | % | 10 | % | N/A |
+| Net sales -- TTM |  | 135978 |  |  | 139729 |  |  | 142906 |  |  | 144484 |  |  | 149582 |  |  | 154590 |  | 11 | % |
+| Operating income |  | 273 |  |  | 1301 |  |  | 1315 |  |  | 1017 |  |  | 1494 |  |  | 1199 |  |  | % |
+| F/X impact -- favorable (unfavorable) |  | -94 |  |  | 43 |  |  | 6 |  |  | -56 |  |  | 338 |  |  | 302 |  | N/A |
+| Operating income -- Y/Y growth (decline), excluding F/X | N/A | N/A | N/A | 19 | % | 324 | % | -31 | % | N/A |
+| Operating margin -- % of International net sales | 0.9 | % | 3.6 | % | 3.0 | % | 3.0 | % | 4.1 | % | 2.9 | % | N/A |
+| Operating income -- TTM |  | 662 |  |  | 2058 |  |  | 3792 |  |  | 3906 |  |  | 5127 |  |  | 5025 |  | 144 | % |
+| Operating margin -- TTM % of International net sales | 0.5 | % | 1.5 | % | 2.7 | % | 2.7 | % | 3.4 | % | 3.2 | % | N/A |
+| AWS Segment: |  |  |  |  |  |  |  |
+| Net sales |  | 26281 |  |  | 27452 |  |  | 28786 |  |  | 29267 |  |  | 30873 |  |  | 33006 |  | 20 | % |
+| Net sales -- Y/Y growth, excluding F/X | 19 | % | 19 | % | 19 | % | 17 | % | 17 | % | 20 | % | N/A |
+| Net sales -- TTM |  | 98581 |  |  | 102974 |  |  | 107556 |  |  | 111786 |  |  | 116378 |  |  | 121932 |  | 18 | % |
+| Operating income |  | 9334 |  |  | 10447 |  |  | 10632 |  |  | 11547 |  |  | 10160 |  |  | 11434 |  | 9 | % |
+| F/X impact -- favorable (unfavorable) |  | 115 |  |  | 1 |  |  | 57 |  |  | 141 |  |  | -139 |  |  | -120 |  | N/A |
+| Operating income -- Y/Y growth, excluding F/X | 72 | % | 50 | % | 48 | % | 21 | % | 10 | % | 11 | % | N/A |
+| Operating margin -- % of AWS net sales | 35.5 | % | 38.1 | % | 36.9 | % | 39.5 | % | 32.9 | % | 34.6 | % | N/A |
+| Operating income -- TTM |  | 32898 |  |  | 36369 |  |  | 39834 |  |  | 41960 |  |  | 42786 |  |  | 43773 |  | 20 | % |
+| Operating margin -- TTM % of AWS net sales | 33.4 | % | 35.3 | % | 37.0 | % | 37.5 | % | 36.8 | % | 35.9 | % | N/A |
+
+### 
+
+|  | Q2 2024 | Q3 2024 | Q4 2024 | Q1 2025 | Q2 2025 | Q3 2025 | Y/Y % Change |
+| Net Sales |  |  |  |  |  |  |  |
+| Online stores |  | 55392 |  |  | 61411 |  |  | 75556 |  |  | 57407 |  |  | 61485 |  |  | 67407 |  | 10 | % |
+| Online stores -- Y/Y growth, excluding F/X | 6 | % | 8 | % | 8 | % | 6 | % | 10 | % | 8 | % | N/A |
+| Physical stores |  | 5206 |  |  | 5228 |  |  | 5579 |  |  | 5533 |  |  | 5595 |  |  | 5578 |  | 7 | % |
+| Physical stores -- Y/Y growth, excluding F/X | 4 | % | 5 | % | 8 | % | 6 | % | 7 | % | 7 | % | N/A |
+| Third-party seller services |  | 36201 |  |  | 37864 |  |  | 47485 |  |  | 36512 |  |  | 40348 |  |  | 42486 |  | 12 | % |
+| Third-party seller services -- Y/Y growth, excluding F/X | 13 | % | 10 | % | 9 | % | 7 | % | 10 | % | 11 | % | N/A |
+| Advertising services |  | 12771 |  |  | 14331 |  |  | 17288 |  |  | 13921 |  |  | 15694 |  |  | 17703 |  | 24 | % |
+| Advertising services -- Y/Y growth, excluding F/X | 20 | % | 19 | % | 18 | % | 19 | % | 22 | % | 22 | % | N/A |
+| Subscription services |  | 10866 |  |  | 11278 |  |  | 11508 |  |  | 11715 |  |  | 12208 |  |  | 12574 |  | 11 | % |
+| Subscription services -- Y/Y growth, excluding F/X | 11 | % | 11 | % | 10 | % | 11 | % | 11 | % | 10 | % | N/A |
+| AWS |  | 26281 |  |  | 27452 |  |  | 28786 |  |  | 29267 |  |  | 30873 |  |  | 33006 |  | 20 | % |
+| AWS -- Y/Y growth, excluding F/X | 19 | % | 19 | % | 19 | % | 17 | % | 17 | % | 20 | % | N/A |
+| Other |  | 1260 |  |  | 1313 |  |  | 1590 |  |  | 1312 |  |  | 1499 |  |  | 1415 |  | 8 | % |
+| Other -- Y/Y growth (decline), excluding F/X |  | % | 5 | % | 17 | % | 4 | % | 18 | % | 7 | % | N/A |
+| Stock-based Compensation Expense |  |  |  |  |  |  |  |
+| Cost of sales |  | 266 |  |  | 193 |  |  | 205 |  |  | 148 |  |  | 250 |  |  | 197 |  | 2 | % |
+| Fulfillment |  | 944 |  |  | 696 |  |  | 697 |  |  | 497 |  |  | 880 |  |  | 685 |  |  | % |
+| Technology and infrastructure |  | 3670 |  |  | 2961 |  |  | 2747 |  |  | 2060 |  |  | 3655 |  |  | 2697 |  |  | % |
+| Sales and marketing |  | 1224 |  |  | 1012 |  |  | 916 |  |  | 653 |  |  | 1207 |  |  | 832 |  | -18 | % |
+| General and administrative |  | 618 |  |  | 471 |  |  | 430 |  |  | 331 |  |  | 542 |  |  | 436 |  |  | % |
+| Total stock-based compensation expense |  | 6722 |  |  | 5333 |  |  | 4995 |  |  | 3689 |  |  | 6534 |  |  | 4847 |  |  | % |
+| Other |  |  |  |  |  |  |  |
+| WW shipping costs |  | 21965 |  |  | 23501 |  |  | 28549 |  |  | 22495 |  |  | 23370 |  |  | 25384 |  | 8 | % |
+| WW shipping costs -- Y/Y growth | 8 | % | 8 | % | 4 | % | 3 | % | 6 | % | 8 | % | N/A |
+| WW paid units -- Y/Y growth | 11 | % | 12 | % | 11 | % | 8 | % | 12 | % | 11 | % | N/A |
+| WW seller unit mix -- % of WW paid units | 61 | % | 60 | % | 62 | % | 61 | % | 62 | % | 62 | % | N/A |
+| Employees (full-time and part-time; excludes contractors & temporary personnel) | 1532000 |  | 1551000 |  | 1556000 |  | 1560000 |  | 1546000 |  | 1578000 |  | 2 | % |
+| Employees (full-time and part-time; excludes contractors & temporary personnel) -- Y/Y growth | 5 | % | 3 | % | 2 | % | 3 | % | 1 | % | 2 | % | N/A |
+
+---
+*Generated by edgar_download.py on 2026-03-03 19:18*

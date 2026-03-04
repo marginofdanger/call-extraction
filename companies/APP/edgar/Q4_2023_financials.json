@@ -1,0 +1,107 @@
+{
+  "ticker": "APP",
+  "quarter": "Q4_2023",
+  "filing_date": "",
+  "accession": "0001751008-24-000004",
+  "tables": [],
+  "xbrl": {
+    "Total Revenue": {
+      "value": 3283087000,
+      "units": "USD",
+      "form": "10-K",
+      "filed": "2024-02-26",
+      "concept": "Revenues"
+    },
+    "Revenue": {
+      "value": 3283087000,
+      "units": "USD",
+      "form": "10-K",
+      "filed": "2024-02-26",
+      "concept": "RevenueFromContractWithCustomerExcludingAssessedTax"
+    },
+    "Net Income": {
+      "value": 356711000,
+      "units": "USD",
+      "form": "10-K",
+      "filed": "2024-02-26",
+      "concept": "NetIncomeLoss"
+    },
+    "Net Income to Common": {
+      "value": 354942000,
+      "units": "USD",
+      "form": "10-K",
+      "filed": "2024-02-26",
+      "concept": "NetIncomeLossAvailableToCommonStockholdersBasic"
+    },
+    "EPS (Basic)": {
+      "value": 1.01,
+      "units": "USD/shares",
+      "form": "10-K",
+      "filed": "2024-02-26",
+      "concept": "EarningsPerShareBasic"
+    },
+    "EPS (Diluted)": {
+      "value": 0.98,
+      "units": "USD/shares",
+      "form": "10-K",
+      "filed": "2024-02-26",
+      "concept": "EarningsPerShareDiluted"
+    },
+    "Total Assets": {
+      "value": 5359187000,
+      "units": "USD",
+      "form": "10-K",
+      "filed": "2024-02-26",
+      "concept": "Assets"
+    },
+    "Total Liabilities": {
+      "value": 4102858000,
+      "units": "USD",
+      "form": "10-K",
+      "filed": "2024-02-26",
+      "concept": "Liabilities"
+    },
+    "Total Equity": {
+      "value": 1256329000,
+      "units": "USD",
+      "form": "10-K",
+      "filed": "2024-02-26",
+      "concept": "StockholdersEquity"
+    },
+    "Shares Outstanding": {
+      "value": 339886712,
+      "units": "shares",
+      "form": "10-K",
+      "filed": "2024-02-26",
+      "concept": "CommonStockSharesOutstanding"
+    },
+    "Operating Income": {
+      "value": 648207000,
+      "units": "USD",
+      "form": "10-K",
+      "filed": "2024-02-26",
+      "concept": "OperatingIncomeLoss"
+    },
+    "Cash & Equivalents": {
+      "value": 502152000,
+      "units": "USD",
+      "form": "10-K",
+      "filed": "2024-02-26",
+      "concept": "CashAndCashEquivalentsAtCarryingValue"
+    },
+    "Comprehensive Income": {
+      "value": 374819000,
+      "units": "USD",
+      "form": "10-K",
+      "filed": "2024-02-26",
+      "concept": "ComprehensiveIncomeNetOfTax"
+    },
+    "Income Tax Expense": {
+      "value": 23859000,
+      "units": "USD",
+      "form": "10-K",
+      "filed": "2024-02-26",
+      "concept": "IncomeTaxExpenseBenefit"
+    }
+  }
+}

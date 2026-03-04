@@ -1,0 +1,100 @@
+{
+  "ticker": "APP",
+  "quarter": "Q2_2024",
+  "filing_date": "",
+  "accession": "0001751008-24-000053",
+  "tables": [],
+  "xbrl": {
+    "Revenue": {
+      "value": 1080119000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2024-08-07",
+      "concept": "RevenueFromContractWithCustomerExcludingAssessedTax"
+    },
+    "Net Income": {
+      "value": 309969000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2024-08-07",
+      "concept": "NetIncomeLoss"
+    },
+    "Net Income to Common": {
+      "value": 309890000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2024-08-07",
+      "concept": "NetIncomeLossAvailableToCommonStockholdersBasic"
+    },
+    "EPS (Basic)": {
+      "value": 0.92,
+      "units": "USD/shares",
+      "form": "10-Q",
+      "filed": "2024-08-07",
+      "concept": "EarningsPerShareBasic"
+    },
+    "EPS (Diluted)": {
+      "value": 0.89,
+      "units": "USD/shares",
+      "form": "10-Q",
+      "filed": "2024-08-07",
+      "concept": "EarningsPerShareDiluted"
+    },
+    "Total Assets": {
+      "value": 5269466000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2024-08-07",
+      "concept": "Assets"
+    },
+    "Total Liabilities": {
+      "value": 4454630000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2024-08-07",
+      "concept": "Liabilities"
+    },
+    "Total Equity": {
+      "value": 814836000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2024-08-07",
+      "concept": "StockholdersEquity"
+    },
+    "Shares Outstanding": {
+      "value": 334168646,
+      "units": "shares",
+      "form": "10-Q",
+      "filed": "2024-08-07",
+      "concept": "CommonStockSharesOutstanding"
+    },
+    "Operating Income": {
+      "value": 390986000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2024-08-07",
+      "concept": "OperatingIncomeLoss"
+    },
+    "Cash & Equivalents": {
+      "value": 460449000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2024-08-07",
+      "concept": "CashAndCashEquivalentsAtCarryingValue"
+    },
+    "Comprehensive Income": {
+      "value": 303237000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2025-08-06",
+      "concept": "ComprehensiveIncomeNetOfTax"
+    },
+    "Income Tax Expense": {
+      "value": 15298000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2024-08-07",
+      "concept": "IncomeTaxExpenseBenefit"
+    }
+  }
+}

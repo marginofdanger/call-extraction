@@ -1,0 +1,241 @@
+# Carvana Co. — Q2_2022 Earnings Release
+
+**Ticker:** CVNA
+**Filing Date:** 2022-08-04
+**Accession:** 0001690820-22-000252
+**Source:** [SEC EDGAR](https://www.sec.gov/Archives/edgar/data/1690820/000169082022000252/0001690820-22-000252-index.htm)
+
+## Key Metrics (XBRL)
+
+| Metric | Value | Units | Source |
+|--------|------:|-------|--------|
+| Cash & Equivalents | $1.05B | USD | 10-Q |
+| EPS (Basic) | -2 | USD/shares | 10-Q |
+| EPS (Diluted) | -2 | USD/shares | 10-Q |
+| Income Tax Expense | $1.0M | USD | 10-Q |
+| Net Income | $-238.0M | USD | 10-Q |
+| Revenue | $3.88B | USD | 10-Q |
+| Total Assets | $10.50B | USD | 10-Q |
+| Total Equity | $539.0M | USD | 10-Q |
+| Total Liabilities | $9.64B | USD | 10-Q |
+
+## Financial Tables (from Exhibits)
+
+### 
+
+|  | June 30, 2022 |  | December 31, 2021 |
+| ASSETS |  |  |  |
+| Current assets: |  |  |  |
+| Cash and cash equivalents |  | 1047 |  |  |  | 403 |  |
+| Restricted cash | 150 |  |  | 233 |  |
+| Accounts receivable, net | 428 |  |  | 206 |  |
+| Finance receivables held for sale, net | 393 |  |  | 356 |  |
+| Vehicle inventory | 2865 |  |  | 3149 |  |
+| Beneficial interests in securitizations | 401 |  |  | 382 |  |
+| Other current assets, including 8 and 12, respectively, due from related parties | 207 |  |  | 163 |  |
+| Total current assets | 5491 |  |  | 4892 |  |
+| Property and equipment, net | 3261 |  |  | 1560 |  |
+| Operating lease right-of-use assets, including 15 and 17, respectively, from leases with related parties | 659 |  |  | 369 |  |
+| Intangible assets, net | 82 |  |  | 4 |  |
+| Goodwill | 847 |  |  | 9 |  |
+| Other assets, including 3 and 7, respectively, due from related parties | 162 |  |  | 181 |  |
+| Total assets |  | 10502 |  |  |  | 7015 |  |
+| LIABILITIES & STOCKHOLDERS' EQUITY |  |  |  |
+| Current liabilities: |  |  |  |
+| Accounts payable and accrued liabilities, including 24 and 27, respectively, due to related parties |  | 981 |  |  |  | 656 |  |
+| Short-term revolving facilities | 1118 |  |  | 2053 |  |
+| Current portion of long-term debt | 212 |  |  | 152 |  |
+| Other current liabilities, including 4 and 3, respectively, from leases with related parties | 57 |  |  | 29 |  |
+| Total current liabilities | 2368 |  |  | 2890 |  |
+| Long-term debt, excluding current portion | 6605 |  |  | 3208 |  |
+| Operating lease liabilities, excluding current portion, including 11 and 13, respectively, from leases with related parties | 640 |  |  | 361 |  |
+| Other liabilities | 25 |  |  | 31 |  |
+| Total liabilities | 9638 |  |  | 6490 |  |
+| Commitments and contingencies |  |  |  |
+| Stockholders' equity: |  |  |  |
+| Preferred stock, 0.01 par value - 50,000 shares authorized; none issued and outstanding as of June 30, 2022 and December 31, 2021 | — |  |  | — |  |
+| Class A common stock, 0.001 par value - 500,000 shares authorized; 105,789 and 89,930 shares issued and outstanding as of June 30, 2022 and December 31, 2021, respectively | — |  |  | — |  |
+| Class B common stock, 0.001 par value - 125,000 shares authorized; 82,900 shares issued and outstanding as of June 30, 2022 and December 31, 2021 | — |  |  | — |  |
+| Additional paid-in capital | 1526 |  |  | 795 |  |
+| Accumulated deficit | -987 |  |  | -489 |  |
+| Total stockholders' equity attributable to Carvana Co. | 539 |  |  | 306 |  |
+| Non-controlling interests | 325 |  |  | 219 |  |
+| Total stockholders' equity | 864 |  |  | 525 |  |
+| Total liabilities & stockholders' equity |  | 10502 |  |  |  | 7015 |  |
+
+### 
+
+|  | Three Months Ended June 30, |  | Six Months Ended June 30, |
+|  | 2022 |  | 2021 |  | 2022 |  | 2021 |
+| Sales and operating revenues: |  |  |  |  |  |  |  |
+| Used vehicle sales, net |  | 2962 |  |  |  | 2504 |  |  |  | 5694 |  |  |  | 4304 |  |
+| Wholesale sales and revenues, including 7, 16, 21 and 22, respectively, from related parties | 704 |  |  | 557 |  |  | 1279 |  |  | 797 |  |
+| Other sales and revenues, including 50, 49, 98 and 91, respectively, from related parties | 218 |  |  | 275 |  |  | 408 |  |  | 480 |  |
+| Net sales and operating revenues | 3884 |  |  | 3336 |  |  | 7381 |  |  | 5581 |  |
+| Cost of sales, including 9, 3, 18 and 4, respectively, to related parties | 3488 |  |  | 2784 |  |  | 6687 |  |  | 4691 |  |
+| Gross profit | 396 |  |  | 552 |  |  | 694 |  |  | 890 |  |
+| Selling, general and administrative expenses, including 7, 6, 13 and 12, respectively, to related parties | 721 |  |  | 470 |  |  | 1448 |  |  | 867 |  |
+| Interest expense | 116 |  |  | 43 |  |  | 180 |  |  | 73 |  |
+| Other (income) expense, net |  |  |  |  |  |  | 10 |  |  | -13 |  |
+| Net (loss) income before income taxes | -438 |  |  | 45 |  |  | -944 |  |  | -37 |  |
+| Income tax provision | 1 |  |  | — |  |  | 1 |  |  | — |  |
+| Net (loss) income | -439 |  |  | 45 |  |  | -945 |  |  | -37 |  |
+| Net (loss) income attributable to non-controlling interests | -201 |  |  | 23 |  |  | -447 |  |  | -23 |  |
+| Net (loss) income attributable to Carvana Co. |  | -238 |  |  |  | 22 |  |  |  | -498 |  |  |  | -14 |  |
+| Net (loss) earnings per share of Class A common stock - basic |  | -2.35 |  |  |  | 0.27 |  |  |  | -5.20 |  |  |  | -0.18 |  |
+| Net (loss) earnings per share of Class A common stock - diluted |  | -2.35 |  |  |  | 0.26 |  |  |  | -5.20 |  |  |  | -0.18 |  |
+| Weighted-average shares of Class A common stock - basic | 101450 |  |  | 81398 |  |  | 95773 |  |  | 79751 |  |
+| Weighted-average shares of Class A common stock - diluted | 101450 |  |  | 176015 |  |  | 95773 |  |  | 79751 |  |
+
+### 
+
+|  | Six Months Ended June 30, |
+|  | 2022 |  | 2021 |
+| Cash Flows from Operating Activities: |  |  |  |
+| Net loss |  | -945 |  |  |  | -37 |  |
+| Adjustments to reconcile net loss to net cash used in operating activities: |  |  |  |
+| Depreciation and amortization expense | 101 |  |  | 46 |  |
+| Equity-based compensation expense | 42 |  |  | 18 |  |
+| Loss on disposal of property and equipment | 2 |  |  | 1 |  |
+| Provision for bad debt and valuation allowance | 8 |  |  | 6 |  |
+| Amortization and write-off of debt issuance costs | 12 |  |  | 5 |  |
+| Unrealized loss on warrants to acquire Root Class A common stock | 5 |  |  | — |  |
+| Unrealized loss (gain) on beneficial interests in securitization | 10 |  |  |  |  |
+| Changes in finance receivable related assets: |  |  |  |
+| Originations of finance receivables | -3960 |  |  | -3289 |  |
+| Proceeds from sale of finance receivables, net | 3921 |  |  | 3254 |  |
+| Gain on loan sales | -235 |  |  | -338 |  |
+| Principal payments received on finance receivables held for sale | 113 |  |  | 78 |  |
+| Other changes in assets and liabilities: |  |  |  |
+| Vehicle inventory | 333 |  |  | -926 |  |
+| Accounts receivable | -29 |  |  | -111 |  |
+| Other assets | -19 |  |  | -60 |  |
+| Accounts payable and accrued liabilities | 122 |  |  | 216 |  |
+| Operating lease right-of-use assets | -102 |  |  |  |  |
+| Operating lease liabilities | 140 |  |  | 6 |  |
+| Other liabilities |  |  |  | — |  |
+| Net cash used in operating activities | -487 |  |  | -1139 |  |
+| Cash Flows from Investing Activities: |  |  |  |
+| Purchases of property and equipment | -361 |  |  | -194 |  |
+| Payments for acquisitions, net of cash acquired | -2189 |  |  | — |  |
+| Principal payments received on and proceeds from sale of  beneficial interests | 25 |  |  | 20 |  |
+| Net cash used in investing activities | -2525 |  |  | -174 |  |
+| Cash Flows from Financing Activities: |  |  |  |
+| Proceeds from short-term revolving facilities | 8159 |  |  | 4664 |  |
+| Payments on short-term revolving facilities | -9094 |  |  | -4024 |  |
+| Proceeds from issuance of long-term debt | 3416 |  |  | 710 |  |
+| Payments on long-term debt | -66 |  |  | -29 |  |
+| Payments of debt issuance costs | -65 |  |  | -11 |  |
+| Net proceeds from issuance of Class A common stock | 1227 |  |  | — |  |
+| Proceeds from equity-based compensation plans | 3 |  |  | 1 |  |
+| Tax withholdings related to restricted stock units and awards |  |  |  | -17 |  |
+| Net cash provided by financing activities | 3573 |  |  | 1294 |  |
+| Net increase (decrease) in cash, cash equivalents and restricted cash | 561 |  |  | -19 |  |
+| Cash, cash equivalents and restricted cash at beginning of period | 636 |  |  | 329 |  |
+| Cash, cash equivalents and restricted cash at end of period |  | 1197 |  |  |  | 310 |  |
+
+### 
+
+|  |  |  |  | Three Months Ended |
+| (dollars in millions) |  |  |  | Jun 30, 2021 |  | Sep 30, 2021 |  | Dec 31, 2021 |  | Mar 31, 2022 |  | Jun 30, 2022 |
+| Net (loss) income |  |  |  |  | 45 |  |  |  | -68 |  |  |  | -182 |  |  |  | -506 |  |  |  | -439 |  |
+| Income tax provision |  |  |  | — |  |  | — |  |  | 1 |  |  | — |  |  | 1 |  |
+| Interest expense |  |  |  | 43 |  |  | 48 |  |  | 55 |  |  | 64 |  |  | 116 |  |
+| Other (income) expense, net |  |  |  |  |  |  |  |  |  | 22 |  |  | 13 |  |  |  |  |
+| Depreciation and amortization expense |  |  |  | 30 |  |  | 32 |  |  | 40 |  |  | 45 |  |  | 76 |  |
+| CEO Milestone Gift in cost of sales |  |  |  | — |  |  | — |  |  | — |  |  | 8 |  |  | 6 |  |
+| CEO Milestone Gift in SG&A |  |  |  | — |  |  | — |  |  | — |  |  | 20 |  |  | 4 |  |
+| Adjusted EBITDA |  |  |  |  | 112 |  |  |  | 9 |  |  |  | -64 |  |  |  | -356 |  |  |  | -239 |  |
+| Share-based compensation, excluding Gift |  |  |  | 9 |  |  | 11 |  |  | 11 |  |  | 10 |  |  | 9 |  |
+| Adjusted EBITDA, excluding non-Gift share-based compensation |  |  |  |  | 121 |  |  |  | 20 |  |  |  | -53 |  |  |  | -346 |  |  |  | -230 |  |
+| Total revenues |  |  |  |  | 3336 |  |  |  | 3480 |  |  |  | 3753 |  |  |  | 3497 |  |  |  | 3884 |  |
+| Adjusted EBITDA Margin |  |  |  | 3.4 | % |  | 0.3 | % |  | -1.7 | % |  | -10.2 | % |  | -6.2 | % |
+| Adjusted EBITDA Margin, excluding non-Gift share-based compensation |  |  |  | 3.6 | % |  | 0.6 | % |  | -1.4 | % |  | -9.9 | % |  | -5.9 | % |
+
+### 
+
+|  |  |  |  | Years Ended December 31, |
+| (dollars in millions) |  |  |  | 2015 |  | 2016 |  | 2017 |  | 2018 |  | 2019 |  | 2020 |  | 2021 |
+| Net loss |  |  |  | -37 |  | -93 |  | -164 |  | -255 |  | -365 |  | -462 |  | -287 |
+| Income tax provision |  |  |  | — |  | — |  | — |  | — |  | — |  | — |  | 1 |
+| Interest expense |  |  |  | 1 |  | 3 |  | 7 |  | 25 |  | 81 |  | 131 |  | 176 |
+| Other (income) expense, net |  |  |  | — |  | — |  | 1 |  | 1 |  | 4 |  |  |  | 6 |
+| Depreciation and amortization expense |  |  |  | 3 |  | 5 |  | 12 |  | 24 |  | 41 |  | 74 |  | 129 |
+| CEO Milestone Gift in cost of sales |  |  |  | — |  | — |  | — |  | 4 |  | 5 |  | 1 |  | — |
+| CEO Milestone Gift in SG&A |  |  |  | — |  | — |  | — |  | 8 |  | 8 |  | — |  | — |
+| Adjusted EBITDA |  |  |  | -33 |  | -85 |  | -144 |  | -193 |  | -226 |  | -257 |  | 25 |
+| Share-based compensation, excluding Gift |  |  |  | — |  | — |  | 6 |  | 14 |  | 23 |  | 25 |  | 39 |
+| Adjusted EBITDA, excluding non-Gift share-based compensation |  |  |  | -33 |  | -85 |  | -138 |  | -179 |  | -203 |  | -232 |  | 64 |
+| Total revenues |  |  |  | 130 |  | 365 |  | 859 |  | 1955 |  | 3940 |  | 5587 |  | 12814 |
+| Adjusted EBITDA Margin |  |  |  | (25.0)% |  | (23.2)% |  | (16.8)% |  | (9.9)% |  | (5.7)% |  | (4.6)% |  | 0.2% |
+| Adjusted EBITDA Margin, excluding non-Gift share-based compensation |  |  |  | (25.0)% |  | (23.2)% |  | (16.1)% |  | (9.2)% |  | (5.2)% |  | (4.2)% |  | 0.5% |
+
+### 
+
+|  |  |  |  | Three Months Ended, |
+| (dollars in millions) |  |  |  | Q2 14 |  | Q2 15 |  | Q2 16 |  | Q2 17 |  | Q2 18 |  | Q2 19 |  | Q2 20 |  | Q2 21 |  | Q2 22 |
+| Net (loss) income |  |  |  |  |  |  |  | -18 |  | -39 |  | -51 |  | -64 |  | -106 |  |  | 45 |  |  |  | -439 |  |
+| Income tax provision |  |  |  | — |  | — |  | — |  | — |  | — |  | — |  | — |  | — |  |  | 1 |  |
+| Interest expense |  |  |  | — |  | — |  | 1 |  | 3 |  | 4 |  | 19 |  | 20 |  | 43 |  |  | 116 |  |
+| Other (income) expense, net |  |  |  | — |  | — |  | — |  | — |  | — |  | 1 |  |  |  |  |  |  |  |  |
+| Depreciation and amortization expense |  |  |  | — |  | 1 |  | 1 |  | 3 |  | 5 |  | 9 |  | 18 |  | 30 |  |  | 76 |  |
+| CEO Milestone Gift in cost of sales |  |  |  | — |  | — |  | — |  | — |  | — |  | 2 |  | — |  | — |  |  | 6 |  |
+| CEO Milestone Gift in SG&A |  |  |  | — |  | — |  | — |  | — |  | — |  | 1 |  | — |  | — |  |  | 4 |  |
+| Adjusted EBITDA |  |  |  |  |  |  |  | -16 |  | -33 |  | -42 |  | -32 |  | -71 |  | 112 |  | -239 |
+| Share-based compensation, excluding Gift |  |  |  | — |  | — |  | — |  | 2 |  | 3 |  | 6 |  | 6 |  | 9 |  |  | 9 |  |
+| Adjusted EBITDA, excluding non-Gift share-based compensation |  |  |  |  |  |  |  | -16 |  | -31 |  | -39 |  | -26 |  | -65 |  | 121 |  | -230 |
+| Total revenues |  |  |  | 9 |  | 29 |  | 87 |  | 209 |  | 475 |  | 986 |  | 1118 |  | 3336 |  | 3884 |
+| Adjusted EBITDA Margin |  |  |  | (25.6)% |  | (23.0)% |  | (18.9)% |  | (15.8)% |  | (8.8)% |  | (3.2)% |  | (6.4)% |  | 3.4% |  | (6.2)% |
+| Adjusted EBITDA Margin, excluding non-Gift share-based compensation |  |  |  | (25.6)% |  | (23.0)% |  | (18.9)% |  | (14.8)% |  | (8.2)% |  | (2.6)% |  | (5.8)% |  | 3.6% |  | (5.9)% |
+
+### 
+
+|  | Three Months Ended June 30, |  |  |  | Six Months Ended June 30, |  |  |
+|  | 2022 |  | 2021 |  | Change |  | 2022 |  | 2021 |  | Change |
+|  | (in millions, except unit and per unit amounts) |  |  |  | (in millions, except unit and per unit amounts) |  |  |
+| Net sales and operating revenues: |  |  |  |  |  |  |  |  |  |  |
+| Used vehicle sales, net |  | 2962 |  |  |  | 2504 |  |  | 18.3 | % |  |  | 5694 |  |  |  | 4304 |  |  | 32.3 | % |
+| Wholesale sales and revenues | 704 |  |  | 557 |  |  | 26.4 | % |  | 1279 |  |  | 797 |  |  | 60.5 | % |
+| Other sales and revenues | 218 |  |  | 275 |  |  | -20.7 | % |  | 408 |  |  | 480 |  |  | -15.0 | % |
+| Total net sales and operating revenues |  | 3884 |  |  |  | 3336 |  |  | 16.4 | % |  |  | 7381 |  |  |  | 5581 |  |  | 32.3 | % |
+| Gross profit: |  |  |  |  |  |  |  |  |  |  |  |
+| Used vehicle gross profit |  | 133 |  |  |  | 218 |  |  | -39.0 | % |  |  | 218 |  |  |  | 330 |  |  | -33.9 | % |
+| Wholesale gross profit | 45 |  |  | 59 |  |  | -23.7 | % |  | 68 |  |  | 80 |  |  | -15.0 | % |
+| Other gross profit | 218 |  |  | 275 |  |  | -20.7 | % |  | 408 |  |  | 480 |  |  | -15.0 | % |
+| Total gross profit |  | 396 |  |  |  | 552 |  |  | -28.3 | % |  |  | 694 |  |  |  | 890 |  |  | -22.0 | % |
+| Unit sales information: |  |  |  |  |  |  |  |  |  |  |  |
+| Used vehicle unit sales | 117564 |  |  | 107815 |  |  | 9.0 | % |  | 222749 |  |  | 200272 |  |  | 11.2 | % |
+| Wholesale vehicle unit sales | 55299 |  |  | 47052 |  |  | 17.5 | % |  | 105579 |  |  | 73092 |  |  | 44.4 | % |
+| Per unit selling prices: |  |  |  |  |  |  |  |  |  |  |  |
+| Used vehicles | 25195 |  |  | 23225 |  |  | 8.5 | % |  | 25562 |  |  | 21491 |  |  | 18.9 | % |
+| Wholesale vehicles | 12731 |  |  | 11838 |  |  | 7.5 | % |  | 12114 |  |  | 10904 |  |  | 11.1 | % |
+| Per retail unit gross profit: |  |  |  |  |  |  |  |  |  |  |  |
+| Used vehicle gross profit |  | 1131 |  |  |  | 2022 |  |  | -44.1 | % |  |  | 979 |  |  |  | 1648 |  |  | -40.6 | % |
+| Wholesale gross profit | 383 |  |  | 547 |  |  | -30.0 | % |  | 305 |  |  | 399 |  |  | -23.6 | % |
+| Other gross profit | 1854 |  |  | 2551 |  |  | -27.3 | % |  | 1832 |  |  | 2397 |  |  | -23.6 | % |
+| Total gross profit |  | 3368 |  |  |  | 5120 |  |  | -34.2 | % |  |  | 3116 |  |  |  | 4444 |  |  | -29.9 | % |
+| Per wholesale unit gross profit: |  |  |  |  |  |  |  |  |  |  |  |
+| Wholesale vehicle gross profit |  | 814 |  |  |  | 1254 |  |  | -35.1 | % |  |  | 644 |  |  |  | 1095 |  |  | -41.2 | % |
+| Wholesale marketplace: |  |  |  |  |  |  |  |  |  |  |  |
+| Wholesale marketplace units sold | 111883 |  |  |  | — |  |  | NM |  | 111883 |  |  |  | — |  |  | NM |
+| Wholesale marketplace revenues |  | 108 |  |  |  | — |  |  | NM |  |  | 108 |  |  |  | — |  |  | NM |
+| Wholesale marketplace gross profit (5) |  | 5 |  |  |  | — |  |  | NM |  |  | 5 |  |  |  | — |  |  | NM |
+
+### 
+
+|  |  | Three Months Ended |  |  |
+|  |  | Jun 30, 2021 |  | Sep 30, 2021 |  | Dec 31, 2021 |  | Mar 31, 2022 |  | Jun 30, 2022 |  |  |
+|  |  | (in millions) |  |  |
+| Compensation and benefits |  |  | 148 |  |  |  | 181 |  |  |  | 212 |  |  |  | 236 |  |  |  | 248 |  |  |  |
+| CEO Milestone Gift |  | — |  |  | — |  |  | — |  |  | 20 |  |  | 4 |  |  |  |
+| Advertising |  | 119 |  |  | 126 |  |  | 134 |  |  | 155 |  |  | 131 |  |  |  |
+| Market occupancy |  | 15 |  |  | 18 |  |  | 24 |  |  | 23 |  |  | 24 |  |  |  |
+| Logistics |  | 34 |  |  | 40 |  |  | 44 |  |  | 56 |  |  | 71 |  |  |  |
+| Other |  | 154 |  |  | 181 |  |  | 206 |  |  | 237 |  |  | 243 |  |  |  |
+| Total |  |  | 470 |  |  |  | 546 |  |  |  | 620 |  |  |  | 727 |  |  |  | 721 |  |  |  |
+| Depreciation and amortization |  | 24 |  |  | 26 |  |  | 33 |  |  | 37 |  |  | 49 |  |  |  |
+| Share-based compensation, excluding Gift |  | 9 |  |  | 11 |  |  |  | 11 |  |  |  | 10 |  |  | 9 |  |  |
+| Total, excluding depreciation and amortization and share-based compensation |  |  | 437 |  |  |  | 509 |  |  |  | 576 |  |  |  | 660 |  |  |  | 659 |  |  |  |
+
+---
+*Generated by edgar_download.py on 2026-03-03 20:15*

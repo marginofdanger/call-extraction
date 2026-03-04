@@ -1,0 +1,108 @@
+# JPMorgan Chase & Co. — Q3_2022 Earnings Release
+
+**Ticker:** JPM
+**Filing Date:** 2022-10-14
+**Accession:** 0000019617-22-000486
+**Source:** [SEC EDGAR](https://www.sec.gov/Archives/edgar/data/19617/000001961722000486/0000019617-22-000486-index.htm)
+
+## Key Metrics (XBRL)
+
+| Metric | Value | Units | Source |
+|--------|------:|-------|--------|
+| Comprehensive Income | $4.97B | USD | 10-Q |
+| EPS (Basic) | 3 | USD/shares | 10-Q |
+| EPS (Diluted) | 3 | USD/shares | 10-Q |
+| Income Tax Expense | $2.26B | USD | 10-Q |
+| Net Income | $9.74B | USD | 10-Q |
+| Net Income to Common | $9.26B | USD | 10-Q |
+| Net Interest Income | $17.52B | USD | 10-Q |
+| Noninterest Expense | $19.18B | USD | 10-Q |
+| Noninterest Revenue | $15.20B | USD | 10-Q |
+| Provision for Credit Losses | $1.54B | USD | 10-Q |
+| Total Assets | $3,773.88B | USD | 10-Q |
+| Total Equity | $288.02B | USD | 10-Q |
+| Total Liabilities | $3,485.87B | USD | 10-Q |
+
+## Financial Tables (from Exhibits)
+
+### 
+
+| Firmwide Metrics | n | Reported revenue of 32.7 billion and managed revenue of 33.5 billion 2 , including 959 million of net investment securities losses |
+| n | Credit costs of 1.5 billion included an 808 million net reserve build and 727 million of net charge-offs |
+| n | Average loans up 7%; average deposits up 3% |
+| CCB ROE 33% | n | Average deposits up 9%; client investment assets down 10% |
+| n | Average loans up 2% YoY and up 1% QoQ; Card net charge-off rate of 1.40% |
+| n | Debit and credit card sales volume 5 up 13% |
+| n | Active mobile customers 6 up 10% |
+| CIB ROE 13% | n | #1 ranking for Global Investment Banking fees with 8.1% wallet share YTD |
+| n | Total Markets revenue of 6.8 billion, up 8%, with Fixed Income Markets up 22% and Equity Markets down 11% |
+| CB ROE 14% | n | Gross Investment Banking revenue of 761 million, down 43% |
+| n | Average loans up 13% YoY and up 4% QoQ; average deposits down 6% |
+| AWM ROE 28% | n | Assets under management (AUM) of 2.6 trillion, down 13% |
+| n | Average loans up 8% YoY and flat QoQ; average deposits up 10% |
+
+### 
+
+| Results for JPM |  |  |  |  |  |  | 2Q22 |  | 3Q21 |
+| ( millions, except per share data) | 3Q22 |  | 2Q22 |  | 3Q21 |  | O/ | O/(U) % |  | O/ | O/(U) % |
+| Net revenue - reported |  | 32716 |  |  |  | 30715 |  |  |  | 29647 |  |  |  | 2001 |  | 7 | % |  |  | 3069 |  | 10 | % |
+| Net revenue - managed | 33491 |  |  | 31630 |  |  | 30441 |  |  | 1861 |  | 6 |  |  | 3050 |  | 10 |  |
+| Noninterest expense | 19178 |  |  | 18749 |  |  | 17063 |  |  | 429 |  | 2 |  |  | 2115 |  | 12 |  |
+| Provision for credit losses | 1537 |  |  | 1101 |  |  | -1527 |  |  | 436 |  | 40 |  |  | 3064 |  | NM |
+| Net income |  | 9737 |  |  |  | 8649 |  |  |  | 11687 |  |  |  | 1088 |  | 13 | % |  |  | -1950 |  | -17 | % |
+| Earnings per share - diluted |  | 3.12 |  |  |  | 2.76 |  |  |  | 3.74 |  |  |  | 0.36 |  | 13 | % |  |  | -0.62 |  | -17 | % |
+| Return on common equity | 15 | % |  | 13 | % |  | 18 | % |  |  |  |  |  |  |
+| Return on tangible common equity | 18 |  |  | 17 |  |  | 22 |  |  |  |  |  |  |  |
+
+### 
+
+| Results for CCB |  |  |  |  |  |  | 2Q22 |  | 3Q21 |
+| ( millions) | 3Q22 |  | 2Q22 |  | 3Q21 |  | O/ | O/(U) % |  | O/ | O/(U) % |
+| Net revenue |  | 14331 |  |  |  | 12614 |  |  |  | 12521 |  |  |  | 1717 |  | 14 | % |  |  | 1810 |  | 14 | % |
+| Consumer & Business Banking | 8010 |  |  | 6558 |  |  | 6157 |  |  | 1452 |  | 22 |  |  | 1853 |  | 30 |  |
+| Home Lending | 920 |  |  | 1001 |  |  | 1400 |  |  | -81 |  |  |  |  | -480 |  | -34 |  |
+| Card & Auto | 5401 |  |  | 5055 |  |  | 4964 |  |  | 346 |  | 7 |  |  | 437 |  | 9 |  |
+| Noninterest expense | 8047 |  |  | 7723 |  |  | 7238 |  |  | 324 |  | 4 |  |  | 809 |  | 11 |  |
+| Provision for credit losses | 529 |  |  | 761 |  |  | -459 |  |  | -232 |  | -30 |  |  | 988 |  | NM |
+| Net income |  | 4334 |  |  |  | 3100 |  |  |  | 4351 |  |  |  | 1234 |  | 40 | % |  |  | -17 |  | — | % |
+
+### 
+
+| Results for CIB |  |  |  |  |  |  | 2Q22 |  | 3Q21 |
+| ( millions) | 3Q22 |  | 2Q22 |  | 3Q21 |  | O/ | O/(U) % |  | O/ | O/(U) % |
+| Net revenue |  | 11875 |  |  |  | 11947 |  |  |  | 12396 |  |  |  | -72 |  |  | % |  |  | -521 |  |  | % |
+| Banking | 4025 |  |  | 3224 |  |  | 4893 |  |  | 801 |  | 25 |  |  | -868 |  | -18 |  |
+| Markets & Securities Services | 7850 |  |  | 8723 |  |  | 7503 |  |  | -873 |  | -10 |  |  | 347 |  | 5 |  |
+| Noninterest expense | 6618 |  |  | 6745 |  |  | 5871 |  |  | -127 |  |  |  |  | 747 |  | 13 |  |
+| Provision for credit losses | 513 |  |  | 59 |  |  | -638 |  |  | 454 |  | NM |  | 1151 |  | NM |
+| Net income |  | 3532 |  |  |  | 3725 |  |  |  | 5647 |  |  |  | -193 |  |  | % |  |  | -2115 |  | -37 | % |
+
+### 
+
+| Results for CB |  |  |  |  |  |  | 2Q22 |  | 3Q21 |
+| ( millions) | 3Q22 |  | 2Q22 |  | 3Q21 |  | O/ | O/(U) % |  | O/ | O/(U) % |
+| Net revenue |  | 3048 |  |  |  | 2683 |  |  |  | 2520 |  |  |  | 365 |  | 14 | % |  |  | 528 |  | 21 | % |
+| Noninterest expense | 1180 |  |  | 1156 |  |  | 1032 |  |  | 24 |  | 2 |  |  | 148 |  | 14 |  |
+| Provision for credit losses | 618 |  |  | 209 |  |  | -363 |  |  | 409 |  | 196 |  |  | 981 |  | NM |
+| Net income |  | 946 |  |  |  | 994 |  |  |  | 1409 |  |  |  | -48 |  |  | % |  |  | -463 |  | -33 | % |
+
+### 
+
+| Results for AWM |  |  |  |  |  |  | 2Q22 |  | 3Q21 |
+| ( millions) | 3Q22 |  | 2Q22 |  | 3Q21 |  | O/ | O/(U) % |  | O/ | O/(U) % |
+| Net revenue |  | 4539 |  |  |  | 4306 |  |  |  | 4300 |  |  |  | 233 |  | 5 | % |  |  | 239 |  | 6 | % |
+| Noninterest expense | 3028 |  |  | 2919 |  |  | 2762 |  |  | 109 |  | 4 |  |  | 266 |  | 10 |  |
+| Provision for credit losses | -102 |  |  | 44 |  |  | -60 |  |  | -146 |  | NM |  | -42 |  | -70 |  |
+| Net income |  | 1219 |  |  |  | 1004 |  |  |  | 1196 |  |  |  | 215 |  | 21 | % |  |  | 23 |  | 2 | % |
+
+### 
+
+| Results for Corporate |  |  |  |  |  |  | 2Q22 |  | 3Q21 |
+| ( millions) | 3Q22 |  | 2Q22 |  | 3Q21 |  | O/ | O/(U) % |  | O/ | O/(U) % |
+| Net revenue |  | -302 |  |  |  | 80 |  |  |  | -1296 |  |  |  | -382 |  | NM |  |  | 994 |  | 77 | % |
+| Noninterest expense | 305 |  |  | 206 |  |  | 160 |  |  | 99 |  | 48 |  |  | 145 |  | 91 |  |
+| Provision for credit losses | -21 |  |  | 28 |  |  |  |  |  | -49 |  | NM |  | -14 |  | -200 |  |
+| Net income/(loss) |  | -294 |  |  |  | -174 |  |  |  | -916 |  |  |  | -120 |  | -69 | % |  |  | 622 |  | 68 | % |
+
+---
+*Generated by edgar_download.py on 2026-03-03 20:13*

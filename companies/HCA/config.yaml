@@ -1,0 +1,210 @@
+company:
+  name: HCA Healthcare
+  ticker: HCA
+  sector: Healthcare / Hospitals
+  fiscal_year: calendar
+  currency: USD
+  reporting_currency: USD
+  edgar_cik: 0000860730
+branding:
+  primary: '#C8952E'
+  dark: '#0D1B2A'
+  accent: '#1B365D'
+quarters:
+- id: Q1_2022
+  call_date: April 22, 2022
+  reporting_quarter: Q1 2022
+  bamsec_id: c2bfef9b-f937-4673-9a8a-a5dfff11e231
+  edgar_8k_accession: 0001193125-22-114235
+- id: Q2_2022
+  call_date: July 22, 2022
+  reporting_quarter: Q2 2022
+  bamsec_id: 0fa53cc2-3240-4b40-b136-c64db292b0ad
+  edgar_8k_accession: 0001193125-22-199606
+- id: Q3_2022
+  call_date: October 21, 2022
+  reporting_quarter: Q3 2022
+  bamsec_id: ccc0a5dd-11bf-48f0-87c4-fceeb76bcebc
+  edgar_8k_accession: 0001193125-22-266319
+- id: Q4_2022
+  call_date: January 27, 2023
+  reporting_quarter: Q4 2022 (Full Year 2022)
+  bamsec_id: 69c456c3-9f3a-4b66-87ea-0e416660d747
+  edgar_8k_accession: 0001193125-23-016833
+- id: Q1_2023
+  call_date: April 21, 2023
+  reporting_quarter: Q1 2023
+  bamsec_id: b6251fe9-803b-4303-8f0b-c10b26eef1d7
+  edgar_8k_accession: 0001193125-23-109258
+- id: Q2_2023
+  call_date: July 27, 2023
+  reporting_quarter: Q2 2023
+  bamsec_id: f4ef1629-8729-4fbd-8bc9-5627968504f8
+  edgar_8k_accession: 0001193125-23-195360
+- id: Q3_2023
+  call_date: October 24, 2023
+  reporting_quarter: Q3 2023
+  bamsec_id: 6ed9e9fb-0cd4-47e3-a7ab-f63b96b30f87
+  edgar_8k_accession: 0001193125-23-261204
+- id: Q4_2023
+  call_date: January 30, 2024
+  reporting_quarter: Q4 2023 (Full Year 2023)
+  bamsec_id: 103d8221-2810-4fca-ba5b-e3d46259bf5f
+  edgar_8k_accession: 0001193125-24-018748
+- id: Q1_2024
+  call_date: April 26, 2024
+  reporting_quarter: Q1 2024
+  bamsec_id: 9860bb13-60fc-47ad-b844-03ed832bbd58
+  edgar_8k_accession: 0001193125-24-115857
+- id: Q2_2024
+  call_date: July 23, 2024
+  reporting_quarter: Q2 2024
+  bamsec_id: bcbc1398-da02-42d0-92a8-903d4387373f
+  edgar_8k_accession: 0001193125-24-182591
+- id: Q3_2024
+  call_date: October 25, 2024
+  reporting_quarter: Q3 2024
+  bamsec_id: e5624d39-e090-4a18-a1f5-c66ff2c2d4ef
+  edgar_8k_accession: 0000950170-24-117215
+- id: Q4_2024
+  call_date: January 24, 2025
+  reporting_quarter: Q4 2024 (Full Year 2024)
+  bamsec_id: ee77ac91-6314-4d41-b1e0-ddcd82bbc0e0
+  edgar_8k_accession: 0000950170-25-008608
+- id: Q1_2025
+  call_date: April 25, 2025
+  reporting_quarter: Q1 2025
+  bamsec_id: d5a1b563-c6a9-40f1-b2cc-73d153602809
+  edgar_8k_accession: 0000950170-25-058334
+- id: Q2_2025
+  call_date: July 25, 2025
+  reporting_quarter: Q2 2025
+  bamsec_id: 211ffe42-c2bf-42ec-99d4-a3cd3b8afa0b
+  edgar_8k_accession: 0000950170-25-098578
+- id: Q3_2025
+  call_date: October 24, 2025
+  reporting_quarter: Q3 2025
+  bamsec_id: 6d908b73-0487-4a52-9d8d-b1fe1d9c5db1
+  edgar_8k_accession: 0001193125-25-249345
+- id: Q4_2025
+  call_date: January 27, 2026
+  reporting_quarter: Q4 2025 (Full Year 2025)
+  bamsec_id: 971af025-6ed1-40df-8165-02b8412a9721
+  edgar_8k_accession: 0001193125-26-023323
+tracked_metrics:
+  fy_revenue_guidance:
+    label: FY Revenue Guidance
+    section_pattern: (?i)^Full Year.*Guidance|^20\d{2} Guidance
+    item_pattern: (?i)^\*\*Revenue[^*]*\*\*
+    comparison: midpoint_pct
+    midpoint_format: dollar_billions
+  fy_ebitda_guidance:
+    label: FY Adj. EBITDA Guidance
+    section_pattern: (?i)^Full Year.*Guidance|^20\d{2} Guidance
+    item_pattern: (?i)^\*\*Adjusted EBITDA[^*]*\*\*
+    comparison: midpoint_pct
+    midpoint_format: dollar_billions
+  fy_eps_guidance:
+    label: FY Diluted EPS Guidance
+    section_pattern: (?i)^Full Year.*Guidance|^20\d{2} Guidance
+    item_pattern: (?i)^\*\*(Diluted )?EPS[^*]*\*\*
+    comparison: text_diff
+  capex:
+    label: CapEx Guidance
+    section_pattern: (?i)^Full Year.*Guidance|^20\d{2} Guidance|^Capital
+    item_pattern: (?i)^\*\*(Cap[Ee]x|Capital [Ee]xpenditure)[^*]*\*\*
+    comparison: text_diff
+  same_facility_admissions:
+    label: Same-Facility Admissions
+    section_pattern: (?i)^Q\d.*Actuals|same.?facility|volume
+    item_pattern: (?i)^\*\*(Same[- ]?facility )?(Equivalent )?[Aa]dmissions[^*]*\*\*
+    comparison: text_diff
+  same_facility_revenue_growth:
+    label: Revenue Per Admission
+    section_pattern: (?i)^Q\d.*Actuals|same.?facility|revenue
+    item_pattern: (?i)^\*\*(Same[- ]?facility )?(Net )?[Rr]evenue[^*]*admission[^*]*\*\*
+    comparison: text_diff
+  adjusted_ebitda_margin:
+    label: Adj. EBITDA Margin
+    section_pattern: (?i)^Q\d.*Actuals|^Quarterly Results
+    item_pattern: (?i)^\*\*Adjusted EBITDA [Mm]argin[^*]*\*\*
+    comparison: text_diff
+new_section_keywords:
+- pattern: (?i)labor|staffing|workforce
+  label: Labor/staffing discussion added
+- pattern: (?i)medicaid.*(redetermination|unwind)
+  label: Medicaid redetermination impact discussed
+- pattern: (?i)hurricane|disaster|storm
+  label: Natural disaster impact discussed
+- pattern: (?i)cyber|breach|security incident
+  label: Cybersecurity incident discussed
+- pattern: (?i)acquisition|M&A|deal
+  label: M&A/acquisition discussion added
+comparison_sections:
+- title: Full Year Revenue Guidance
+  metric_key: fy_revenue_guidance
+  columns:
+  - Quarter
+  - FY Revenue Range
+  - Midpoint
+  - vs Prior
+- title: Full Year EBITDA Guidance
+  metric_key: fy_ebitda_guidance
+  columns:
+  - Quarter
+  - FY EBITDA Range
+  - Midpoint
+  - vs Prior
+- title: Full Year EPS & CapEx Guidance
+  metrics:
+  - fy_eps_guidance
+  - capex
+  columns:
+  - Quarter
+  - FY EPS Guidance
+  - CapEx Guidance
+- title: Same-Facility Volume & Revenue Intensity
+  metrics:
+  - same_facility_admissions
+  - same_facility_revenue_growth
+  columns:
+  - Quarter
+  - Admissions Growth
+  - Rev/Admission Growth
+- title: EBITDA Margin Trends
+  metric_key: adjusted_ebitda_margin
+  columns:
+  - Quarter
+  - Adj. EBITDA Margin
+extraction_context: "HCA Healthcare is the largest for-profit hospital operator in\
+  \ the United States,\noperating ~180+ hospitals and ~2,000+ ambulatory sites of\
+  \ care across 20 states and the UK.\n\nKey domain knowledge:\n- \"Same-facility\"\
+  \ or \"same-store\" metrics exclude recently acquired/divested facilities and\n\
+  \  are the most important comparison basis (like same-store sales in retail)\n-\
+  \ Equivalent admissions = admissions adjusted for outpatient activity (converts\
+  \ outpatient\n  revenue to inpatient-equivalent volume)\n- Revenue per equivalent\
+  \ admission (Rev/EA) is the key revenue intensity metric\n- Payer mix: Managed Care\
+  \ (commercial insurance), Medicare, Medicaid, Uninsured/Self-pay\n- Managed care\
+  \ is highest-margin payer; Medicaid is lowest; uninsured is a net cost\n- EBITDA\
+  \ = Earnings Before Interest, Taxes, Depreciation, and Amortization\n- \"Adjusted\
+  \ EBITDA\" excludes one-time items (gains/losses on sales, legal settlements, etc.)\n\
+  - SWB = Salaries, Wages, and Benefits (largest cost line, typically ~45-48% of revenue)\n\
+  - Supply costs typically ~15-17% of revenue\n- \"Contract labor\" = temporary/agency\
+  \ nurses — a key cost pressure indicator\n- HCA guides on: revenue, adjusted EBITDA,\
+  \ diluted EPS, and CapEx for the full year\n- Q4 calls typically include full-year\
+  \ actuals and initial next-year guidance\n- HCA operates in 3 segments historically\
+  \ but reports as one operating segment\n- Share repurchases are a major capital\
+  \ return mechanism\n- Acuity = severity/complexity of cases; higher acuity = higher\
+  \ revenue per admission\n- Observation patients count differently from inpatient\
+  \ admissions for reporting\n"
+topic_hints:
+- Same-facility admissions and equivalent admissions trends
+- Revenue per equivalent admission growth and payer mix shifts
+- Labor costs, contract labor usage, and staffing trends
+- Adjusted EBITDA margin trajectory
+- Full-year guidance updates (revenue, EBITDA, EPS, CapEx)
+- 'Payer mix: managed care vs Medicare vs Medicaid vs uninsured'
+- Medicaid redetermination / expansion impacts
+- 'Capital deployment: CapEx, acquisitions, share repurchases'
+- Outpatient vs inpatient volume mix
+- Acuity trends and surgical volume

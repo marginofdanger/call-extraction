@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Earnings Call Guidance Tracker</title>
+<title>Portfolio Metrics Tracker</title>
 <style>
   :root {
     --dark: #0D1B2A;
@@ -120,11 +120,25 @@
 <body>
 
 <div class="header">
-  <h1>Earnings Call Guidance Tracker</h1>
-  <p>16-quarter guidance evolution analysis across public companies. Tracking how forward guidance changes quarter to quarter.</p>
+  <h1>Portfolio Metrics Tracker</h1>
+  <p>Systematic and automated tracking of key performance metrics for selected public companies.</p>
 </div>
 
 <div class="company-grid">
+  <a href="companies/TSM/comparison.html" class="company-card">
+    <div class="card-header" style="background: linear-gradient(135deg, #8B0000, #C41E3A); border-bottom: 3px solid #FFD700;">
+      <div class="card-ticker">TSM</div>
+      <div class="card-name">Taiwan Semiconductor</div>
+    </div>
+    <div class="card-body">
+      <div class="card-sector">Semiconductors</div>
+      <div class="card-detail">16 quarters: Q1 2022 &ndash; Q4 2025</div>
+      <div class="card-links">
+        <span class="card-link">Comparison &rarr;</span>
+      </div>
+    </div>
+  </a>
+
   <a href="companies/HCA/comparison.html" class="company-card">
     <div class="card-header" style="background: linear-gradient(135deg, #0D1B2A, #1B365D); border-bottom: 3px solid #C8952E;">
       <div class="card-ticker">HCA</div>
@@ -153,14 +167,70 @@
     </div>
   </a>
 
-  <a href="companies/TSM/comparison.html" class="company-card">
-    <div class="card-header" style="background: linear-gradient(135deg, #8B0000, #C41E3A); border-bottom: 3px solid #FFD700;">
-      <div class="card-ticker">TSM</div>
-      <div class="card-name">Taiwan Semiconductor</div>
+  <a href="companies/AVGO/comparison.html" class="company-card">
+    <div class="card-header" style="background: linear-gradient(135deg, #1a1a2e, #CC092F); border-bottom: 3px solid #16213e;">
+      <div class="card-ticker">AVGO</div>
+      <div class="card-name">Broadcom Inc.</div>
+    </div>
+    <div class="card-body">
+      <div class="card-sector">Semiconductors + Infrastructure Software</div>
+      <div class="card-detail">16 quarters: FQ1 2022 &ndash; FQ4 2025</div>
+      <div class="card-links">
+        <span class="card-link">Comparison &rarr;</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="companies/NVDA/comparison.html" class="company-card">
+    <div class="card-header" style="background: linear-gradient(135deg, #1a1a1a, #333333); border-bottom: 3px solid #76b900;">
+      <div class="card-ticker">NVDA</div>
+      <div class="card-name">NVIDIA Corporation</div>
     </div>
     <div class="card-body">
       <div class="card-sector">Semiconductors</div>
+      <div class="card-detail">16 quarters: Q1 2023 &ndash; Q4 2026</div>
+      <div class="card-links">
+        <span class="card-link">Comparison &rarr;</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="companies/APO/comparison.html" class="company-card">
+    <div class="card-header" style="background: linear-gradient(135deg, #1a1a2e, #003A70); border-bottom: 3px solid #0066B3;">
+      <div class="card-ticker">APO</div>
+      <div class="card-name">Apollo Global Management</div>
+    </div>
+    <div class="card-body">
+      <div class="card-sector">Alternative Asset Management</div>
       <div class="card-detail">16 quarters: Q1 2022 &ndash; Q4 2025</div>
+      <div class="card-links">
+        <span class="card-link">Comparison &rarr;</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="companies/UNH/comparison.html" class="company-card">
+    <div class="card-header" style="background: linear-gradient(135deg, #1a1a2e, #002677); border-bottom: 3px solid #00BCD4;">
+      <div class="card-ticker">UNH</div>
+      <div class="card-name">UnitedHealth Group</div>
+    </div>
+    <div class="card-body">
+      <div class="card-sector">Health Insurance / Healthcare Services</div>
+      <div class="card-detail">16 quarters: Q1 2022 &ndash; Q4 2025</div>
+      <div class="card-links">
+        <span class="card-link">Comparison &rarr;</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="companies/VEEV/comparison.html" class="company-card">
+    <div class="card-header" style="background: linear-gradient(135deg, #1a1a2e, #F58220); border-bottom: 3px solid #2C5234;">
+      <div class="card-ticker">VEEV</div>
+      <div class="card-name">Veeva Systems</div>
+    </div>
+    <div class="card-body">
+      <div class="card-sector">SaaS / Life Sciences Cloud</div>
+      <div class="card-detail">15 quarters: Q1 FY2023 &ndash; Q4 FY2025</div>
       <div class="card-links">
         <span class="card-link">Comparison &rarr;</span>
       </div>
@@ -169,7 +239,7 @@
 </div>
 
 <div class="footer">
-  <p>Data sourced from public earnings call transcripts via <a href="https://www.bamsec.com">BamSEC</a>. Analysis generated with Claude.</p>
+  <p>Data sourced from <a href="https://www.bamsec.com">BamSEC</a> transcripts and <a href="https://www.sec.gov/edgar">EDGAR</a>. Analysis generated with Claude.</p>
 </div>
 
 </body>

@@ -1,0 +1,1283 @@
+{
+  "ticker": "APO",
+  "quarter": "Q3_2024",
+  "filing_date": "",
+  "accession": "0001858681-24-000117",
+  "tables": [
+    {
+      "headers": [
+        "",
+        "3Q'23",
+        "2Q'24",
+        "3Q'24"
+      ],
+      "rows": [
+        [
+          "YTD'23 YTD'24 Revenues Asset Management Management fees",
+          "462",
+          "462",
+          "476"
+        ],
+        [
+          "$1,328 $1,376 Advisory and transaction fees, net",
+          "157",
+          "267",
+          "181"
+        ],
+        [
+          "482 617 Investment income (loss)",
+          "292",
+          "278",
+          "230"
+        ],
+        [
+          "882 910 Incentive fees",
+          "18",
+          "47",
+          "35"
+        ],
+        [
+          "59 108 Retirement Services Premiums",
+          "26",
+          "673",
+          "389"
+        ],
+        [
+          "9,163 1,163 Product charges",
+          "217",
+          "251",
+          "267"
+        ],
+        [
+          "622 756 Net investment income",
+          "3166",
+          "3804",
+          "4101"
+        ],
+        [
+          "8,726 11,481 Investment related gains (losses)",
+          "-2624",
+          "-134",
+          "1539"
+        ],
+        [
+          "(1,193) 3,082 Revenues of consolidated variable interest entities",
+          "318",
+          "366",
+          "552"
+        ],
+        [
+          "946 1,329 Other revenues",
+          "563",
+          "4",
+          "3"
+        ],
+        [
+          "583 9 Total Revenues",
+          "2595",
+          "6018",
+          "7773"
+        ],
+        [
+          "21,598 20,831 Expenses Asset Management Compensation and benefits",
+          "-557",
+          "-604",
+          "-605"
+        ],
+        [
+          "(1,743) (1,876) Interest expense",
+          "-36",
+          "-53",
+          "-55"
+        ],
+        [
+          "(98) (159) General, administrative and other",
+          "-220",
+          "-319",
+          "-326"
+        ],
+        [
+          "(643) (885) Retirement Services Interest sensitive contract benefits",
+          "-333",
+          "-1824",
+          "-2599"
+        ],
+        [
+          "(3,634) (7,307) Future policy and other policy benefits",
+          "-368",
+          "-1095",
+          "-793"
+        ],
+        [
+          "(10,346) (2,431) Market risk benefits remeasurement gains (losses)",
+          "441",
+          "16",
+          "-524"
+        ],
+        [
+          "166 (354) Amortization of deferred acquisition costs, deferred sales inducements and value of business acquired",
+          "-211",
+          "-227",
+          "-244"
+        ],
+        [
+          "(502) (678) Policy and other operating expenses",
+          "-467",
+          "-478",
+          "-670"
+        ],
+        [
+          "(1,356) (1,601) Total Expenses",
+          "-1751",
+          "-4584",
+          "-5816"
+        ],
+        [
+          "(18,156) (15,291) Other Income (Loss) – Asset Management Net gains (losses) from investment activities",
+          "-32",
+          "-21",
+          "15"
+        ],
+        [
+          "(14) 33 Net gains (losses) from investment activities of consolidated variable interest entities",
+          "49",
+          "1",
+          "44"
+        ],
+        [
+          "95 70 Other income (loss), net",
+          "22",
+          "24",
+          "70"
+        ],
+        [
+          "102 68 Total Other Income (Loss)",
+          "39",
+          "4",
+          "129"
+        ],
+        [
+          "183 171 Income (loss) before income tax (provision) benefit",
+          "883",
+          "1438",
+          "2086"
+        ],
+        [
+          "3,625 5,711 Income tax (provision) benefit",
+          "-243",
+          "-261",
+          "-317"
+        ],
+        [
+          "(697) (1,000) Net income (loss)",
+          "640",
+          "1177",
+          "1769"
+        ],
+        [
+          "2,928 4,711 Net (income) loss attributable to non-controlling interests",
+          "42",
+          "-324",
+          "-958"
+        ],
+        [
+          "(637) (1,620) Net income (loss) attributable to Apollo Global Management, Inc.",
+          "682",
+          "853",
+          "811"
+        ],
+        [
+          "2,291 3,091 Preferred stock dividends",
+          "-22",
+          "-25",
+          "-24"
+        ],
+        [
+          "(22) (73) Net income (loss) attributable to Apollo Global Management, Inc. Common Stockholders",
+          "660",
+          "828",
+          "787"
+        ],
+        [
+          "$2,269 $3,018 Earnings (Loss) per share Net income (loss) attributable to Common Stockholders - Basic",
+          "1.10",
+          "1.36",
+          "1.30"
+        ],
+        [
+          "$3.77 $4.96 Net income (loss) attributable to Common Stockholders - Diluted",
+          "1.10",
+          "1.35",
+          "1.29"
+        ],
+        [
+          "$3.75 $4.94 Weighted average shares outstanding – Basic",
+          "579",
+          "587",
+          "585"
+        ],
+        [
+          "581 587 Weighted average shares outstanding – Diluted",
+          "579",
+          "590",
+          "589"
+        ]
+      ],
+      "caption": "(In millions, except per share amounts)",
+      "source": "workiva_hidden_text"
+    },
+    {
+      "headers": [
+        "",
+        "3Q'23",
+        "2Q'24",
+        "3Q'24"
+      ],
+      "rows": [
+        [
+          "YTD'23 YTD'24 Management fees",
+          "648",
+          "672",
+          "710"
+        ],
+        [
+          "$1,845 $2,034 Capital solutions fees and other, net",
+          "146",
+          "208",
+          "159"
+        ],
+        [
+          "422 508 Fee-related performance fees",
+          "40",
+          "52",
+          "57"
+        ],
+        [
+          "102 155 Fee-related compensation",
+          "-212",
+          "-240",
+          "-238"
+        ],
+        [
+          "(635) (698) Non-compensation expenses",
+          "-150",
+          "-176",
+          "-157"
+        ],
+        [
+          "(423) (490) Fee Related Earnings",
+          "472",
+          "516",
+          "531"
+        ],
+        [
+          "$1,311 $1,509 Net investment spread",
+          "1100",
+          "945",
+          "1086"
+        ],
+        [
+          "3,066 3,053 Other operating expenses",
+          "-121",
+          "-116",
+          "-112"
+        ],
+        [
+          "(362) (342) Interest and other financing costs",
+          "-106",
+          "-119",
+          "-118"
+        ],
+        [
+          "(344) (328) Spread Related Earnings",
+          "873",
+          "710",
+          "856"
+        ],
+        [
+          "$2,360 $2,383 Fee and Spread Related Earnings",
+          "1345",
+          "1226",
+          "1387"
+        ],
+        [
+          "$3,671 $3,892 Principal Investing Income",
+          "4",
+          "33",
+          "78"
+        ],
+        [
+          "$32 $132 Segment Income",
+          "1349",
+          "1259",
+          "1465"
+        ],
+        [
+          "$3,703 $4,024 HoldCo interest and other financing costs1",
+          "-36",
+          "-15",
+          "-21"
+        ],
+        [
+          "(77) (51) Taxes and related payables",
+          "-268",
+          "-235",
+          "-312"
+        ],
+        [
+          "(726) (768) Adjusted Net Income",
+          "1045",
+          "1009",
+          "1132"
+        ],
+        [
+          "$2,900 $3,205 ANI per share",
+          "1.71",
+          "1.64",
+          "1.85"
+        ]
+      ],
+      "caption": "($ in millions, except per share amounts)",
+      "source": "workiva_hidden_text"
+    },
+    {
+      "headers": [
+        "",
+        "3Q'23",
+        "2Q'24",
+        "3Q'24"
+      ],
+      "rows": [
+        [
+          "YTD'23 YTD'24 Management fees",
+          "648",
+          "672",
+          "710"
+        ],
+        [
+          "$1,845 $2,034 Capital solutions fees and other, net",
+          "146",
+          "208",
+          "159"
+        ],
+        [
+          "422 508 Fee-related performance fees",
+          "40",
+          "52",
+          "57"
+        ],
+        [
+          "102 155 Fee-related compensation",
+          "-212",
+          "-240",
+          "-238"
+        ],
+        [
+          "(635) (698) Non-compensation expenses",
+          "-150",
+          "-176",
+          "-157"
+        ],
+        [
+          "(423) (490) Fee Related Earnings",
+          "472",
+          "516",
+          "531"
+        ],
+        [
+          "$1,311 $1,509 Net investment spread",
+          "1100",
+          "945",
+          "1086"
+        ],
+        [
+          "3,066 3,053 Other operating expenses",
+          "-121",
+          "-116",
+          "-112"
+        ],
+        [
+          "(362) (342) Interest and other financing costs",
+          "-106",
+          "-119",
+          "-118"
+        ],
+        [
+          "(344) (328) Notable items",
+          "-90",
+          "—",
+          "-25"
+        ],
+        [
+          "(115) (25) Spread Related Earnings, Excluding Notable Items",
+          "783",
+          "710",
+          "831"
+        ],
+        [
+          "$2,245 $2,358 Fee and Spread Related Earnings, Excluding Notable Items",
+          "1255",
+          "1226",
+          "1362"
+        ],
+        [
+          "$3,556 $3,867 Principal Investing Income",
+          "4",
+          "33",
+          "78"
+        ],
+        [
+          "$32 $132 Segment Income, Excluding Notable Items",
+          "1259",
+          "1259",
+          "1440"
+        ],
+        [
+          "$3,588 $3,999 HoldCo interest and other financing costs",
+          "-36",
+          "-15",
+          "-21"
+        ],
+        [
+          "(77) (51) Taxes and related payables",
+          "-249",
+          "-235",
+          "-307"
+        ],
+        [
+          "(702) (763) Adjusted Net Income, Excluding Notable Items",
+          "974",
+          "1009",
+          "1112"
+        ],
+        [
+          "$2,809 $3,185 ANI per share, Excluding Notable Items",
+          "1.59",
+          "1.64",
+          "1.81"
+        ]
+      ],
+      "caption": "($ in millions, except per share amounts)",
+      "source": "workiva_hidden_text"
+    },
+    {
+      "headers": [
+        "",
+        "3Q'23",
+        "2Q'24",
+        "3Q'24",
+        "3Q'23"
+      ],
+      "rows": [
+        [
+          "YTD'23 YTD'24 % Change vs. YTD'23 Fixed income and other net investment income",
+          "2235",
+          "2633",
+          "2806",
+          "25.5%"
+        ],
+        [
+          "$6,399 $7,893 23.3% Alternative net investment income",
+          "230",
+          "168",
+          "236",
+          "2.6%"
+        ],
+        [
+          "674 670 (0.6)% Strategic capital management fees",
+          "19",
+          "24",
+          "27",
+          "42.1%"
+        ],
+        [
+          "49 76 55.1% Cost of funds",
+          "-1384",
+          "-1880",
+          "-1983",
+          "43.3%"
+        ],
+        [
+          "(4,056) (5,586) 37.7% Net Investment Spread 1,100 945 1,086 (1.3)% 3,066 3,053 (0.4)% Other operating expenses (121) (116) (112) (7.4)% (362) (342) (5.5)% Interest and other financing costs",
+          "-106",
+          "-119",
+          "-118",
+          "11.3%"
+        ],
+        [
+          "(344) (328) (4.7)% Spread Related Earnings $873 $710 $856 (1.9)% $2,360 $2,383 1.0% SRE per share $1.43 $1.15 $1.40 (2.1)% $3.92 $3.87 (1.3)% Notable items (90) — (25) (72.2)% (115) (25) (78.3)% Spread Related Earnings, Excluding Notable Items",
+          "783",
+          "710",
+          "831",
+          "6.1%"
+        ],
+        [
+          "$2,245 $2,358 5.0% SRE per share, Excluding Notable Items",
+          "1.28",
+          "1.15",
+          "1.36",
+          "6.3%"
+        ],
+        [
+          "$3.73 $3.83 2.7% Net Spread 1.68% 1.24% 1.44% (24)bps 1.52% 1.38% (14)bps Net Spread, Excluding Notable Items 1.51% 1.24% 1.40% (11)bps 1.45% 1.37% (8)bps Alternative net investment income delta to long-term expectation1",
+          "96",
+          "154",
+          "81",
+          "319"
+        ],
+        [
+          "$291 Alternative net return delta to long-term expectation",
+          "3.25%",
+          "5.27%",
+          "2.81%",
+          "3.54%"
+        ],
+        [
+          "3.31% Impact to Net Spread",
+          "0.18%",
+          "0.27%",
+          "0.13%",
+          "0.21%"
+        ]
+      ],
+      "caption": "• Spread Related Earnings, Excluding Notables increased 6% year-over-year primarily due to strong net organic growth trends • Spread Related Earnings included an 8.2% annualized return in the third qu",
+      "source": "workiva_hidden_text"
+    },
+    {
+      "headers": [
+        "",
+        "3Q'23",
+        "2Q'24",
+        "3Q'24",
+        "3Q'23"
+      ],
+      "rows": [
+        [
+          "YTD'23 YTD'24 % Change vs. YTD'23 Fixed income and other net investment income 4.57% 4.82% 4.96% 39bps 4.39% 4.82% 43bps Alternative net investment income 7.75% 5.73% 8.19% 44bps 7.46% 7.69% 23bps Net Investment Earnings 4.76% 4.87% 5.12% 36bps 4.57% 4.96% 39bps Strategic capital management fees 0.04% 0.04% 0.05% 1bp 0.03% 0.04% 1bp Cost of funds (2.67)% (3.27)% (3.34)% 67bps (2.62)% (3.24)% 62bps Net Investment Spread 2.13% 1.64% 1.83% (30)bps 1.98% 1.76% (22)bps Other operating expenses (0.24)% (0.20)% (0.19)% (5)bps (0.24)% (0.20)% (4)bps Interest and other financing costs (0.21)% (0.20)% (0.20)% (1)bp (0.22)% (0.18)% (4)bps Net Spread 1.68% 1.24% 1.44% (24)bps 1.52% 1.38% (14)bps Notable items (0.17)% —% (0.04)% 13bps (0.07)% (0.01)% 6bps Net Spread, Excluding Notable Items 1.51% 1.24% 1.40% (11)bps 1.45% 1.37% (8)bps Net investment earnings, excluding notable items 4.76% 4.87% 5.12% 36bps 4.57% 4.96% 39bps Cost of funds, excluding notable items (2.84)% (3.27)% (3.38)% 54bps (2.69)% (3.25)% 56bps Net investment spread, excluding notable items 1.96% 1.64% 1.79% (17)bps 1.91% 1.75% (16)bps Alternative net return delta to long-term expectation",
+          "3.25%",
+          "5.27%",
+          "2.81%",
+          "3.54%"
+        ],
+        [
+          "3.31% Impact to Net Spread",
+          "0.18%",
+          "0.27%",
+          "0.13%",
+          "0.21%"
+        ],
+        [
+          "0.16% ($ in millions) Average net invested assets1",
+          "207312",
+          "230156",
+          "237810",
+          "14.7%"
+        ],
+        [
+          "206,241 230,101 11.6% Average net invested assets - fixed income1",
+          "195448",
+          "218446",
+          "226295",
+          "15.8%"
+        ]
+      ],
+      "caption": "(% of average net invested assets)",
+      "source": "workiva_hidden_text"
+    },
+    {
+      "headers": [
+        "",
+        "3Q'23",
+        "2Q'24",
+        "3Q'24",
+        "3Q'23"
+      ],
+      "rows": [
+        [
+          "YTD'23 YTD'24 % Change vs. YTD'23 Realized performance fees",
+          "132",
+          "175",
+          "331",
+          "150.8%"
+        ],
+        [
+          "$473 $600 26.8% Realized investment income",
+          "5",
+          "11",
+          "17",
+          "240.0%"
+        ],
+        [
+          "35 42 20.0% Realized principal investing compensation",
+          "-119",
+          "-138",
+          "-253",
+          "112.6%"
+        ],
+        [
+          "(434) (464) 6.9% Other operating expenses",
+          "-14",
+          "-15",
+          "-17",
+          "21.4%"
+        ],
+        [
+          "(42) (46) 9.5% Principal Investing Income",
+          "4",
+          "33",
+          "78",
+          "NM"
+        ],
+        [
+          "$32 $132 NM PII per share",
+          "0.01",
+          "0.05",
+          "0.13",
+          "NM"
+        ],
+        [
+          "$0.05 $0.21 NM PII Compensation Ratio",
+          "86.6%",
+          "74.2%",
+          "72.7%",
+          "85.5%"
+        ]
+      ],
+      "caption": "• Realized performance fees of $331 million in the third quarter reached the highest level since 2021, reflecting a few sizeable monetizations within flagship  private equity • Realized principal inve",
+      "source": "workiva_hidden_text"
+    },
+    {
+      "headers": [
+        "",
+        "2Q'24",
+        "3Q'24"
+      ],
+      "rows": [
+        [
+          "Cash and cash equivalents",
+          "2853",
+          "2666"
+        ],
+        [
+          "Investments, net2",
+          "2625",
+          "3137"
+        ],
+        [
+          "Net accrued performance fees receivable3",
+          "1588",
+          "1433"
+        ],
+        [
+          "Net clawback payable4",
+          "-93",
+          "-108"
+        ],
+        [
+          "Debt",
+          "-4082",
+          "-4082"
+        ],
+        [
+          "Net Balance Sheet Value",
+          "2891",
+          "3046"
+        ],
+        [
+          "Net Balance Sheet Value per share",
+          "4.69",
+          "4.97"
+        ],
+        [
+          "Net Balance Sheet Value / AUM",
+          "0.42%",
+          "0.42%"
+        ],
+        [
+          "Adjusted Net Income Shares Outstanding",
+          "617",
+          "613"
+        ],
+        [
+          "A2 / A / A Apollo Asset Management rated by Moody's, S&P, Fitch A1 / A+ / A+ / A+ Athene5 rated by Moody's, S&P, Fitch, AM Best 1. Amounts presented are for Apollo Global Management, Inc. and consolidated subsidiaries, and excludes Athene and consolidated VIEs. 2. Investments, net includes assets from restructuring certain positions in Athene's alternatives portfolio in the third quarter of",
+          "2024.",
+          "3."
+        ]
+      ],
+      "caption": "HoldCo & Asset Management Summary Balance Sheet Highlights1 Financial Strength Ratings ($ in millions, except per share amounts)",
+      "source": "workiva_hidden_text"
+    },
+    {
+      "headers": [
+        "",
+        "4Q'23",
+        "3Q'24"
+      ],
+      "rows": [
+        [
+          "Assets Asset Management Cash and cash equivalents",
+          "2748",
+          "2666"
+        ],
+        [
+          "Restricted cash and cash equivalents",
+          "2",
+          "3"
+        ],
+        [
+          "Investments",
+          "5502",
+          "5860"
+        ],
+        [
+          "Assets of consolidated variable interest entities Cash and cash equivalents",
+          "62",
+          "102"
+        ],
+        [
+          "Investments",
+          "1640",
+          "2353"
+        ],
+        [
+          "Other assets",
+          "177",
+          "124"
+        ],
+        [
+          "Due from related parties",
+          "449",
+          "572"
+        ],
+        [
+          "Goodwill",
+          "264",
+          "264"
+        ],
+        [
+          "Other assets",
+          "2331",
+          "2512"
+        ],
+        [
+          "Retirement Services Cash and cash equivalents",
+          "13020",
+          "13587"
+        ],
+        [
+          "Restricted cash and cash equivalents",
+          "1761",
+          "964"
+        ],
+        [
+          "Investments",
+          "213099",
+          "257776"
+        ],
+        [
+          "Investments in related parties",
+          "25842",
+          "27991"
+        ],
+        [
+          "Assets of consolidated variable interest entities Cash and cash equivalents",
+          "98",
+          "305"
+        ],
+        [
+          "Investments",
+          "20232",
+          "21792"
+        ],
+        [
+          "Other assets",
+          "110",
+          "192"
+        ],
+        [
+          "Reinsurance recoverable",
+          "4154",
+          "7454"
+        ],
+        [
+          "Deferred acquisition costs, deferred sales inducements and value of business acquired",
+          "5979",
+          "6971"
+        ],
+        [
+          "Goodwill",
+          "4065",
+          "4071"
+        ],
+        [
+          "Other assets",
+          "11953",
+          "13130"
+        ],
+        [
+          "Total Assets",
+          "313488",
+          "368689"
+        ]
+      ],
+      "caption": "($ in millions, except share amounts)",
+      "source": "workiva_hidden_text"
+    },
+    {
+      "headers": [
+        "",
+        "4Q'23",
+        "3Q'24"
+      ],
+      "rows": [
+        [
+          "Liabilities Asset Management Accounts payable, accrued expenses, and other liabilities",
+          "3338",
+          "3908"
+        ],
+        [
+          "Due to related parties",
+          "870",
+          "709"
+        ],
+        [
+          "Debt",
+          "3883",
+          "4082"
+        ],
+        [
+          "Liabilities of consolidated variable interest entities Other liabilities",
+          "1145",
+          "1021"
+        ],
+        [
+          "Retirement Services Interest sensitive contract liabilities",
+          "204670",
+          "245436"
+        ],
+        [
+          "Future policy benefits",
+          "53287",
+          "52962"
+        ],
+        [
+          "Market risk benefits",
+          "3751",
+          "4402"
+        ],
+        [
+          "Debt",
+          "4209",
+          "5725"
+        ],
+        [
+          "Payables for collateral on derivatives and securities to repurchase",
+          "7536",
+          "7952"
+        ],
+        [
+          "Other liabilities",
+          "4456",
+          "9597"
+        ],
+        [
+          "Liabilities of consolidated variable interest entities Other liabilities",
+          "1098",
+          "1354"
+        ],
+        [
+          "Total Liabilities",
+          "288243",
+          "337148"
+        ],
+        [
+          "Redeemable non-controlling interests Redeemable non-controlling interests",
+          "12",
+          "15"
+        ],
+        [
+          "Equity Mandatory Convertible Preferred Stock",
+          "1398",
+          "1398"
+        ],
+        [
+          "Common Stock, $0.00001 par value, 90,000,000,000 shares authorized, 565,816,456 and 567,762,932 shares issued and outstanding as of September",
+          "30",
+          "2024"
+        ],
+        [
+          "and December",
+          "31",
+          "2023"
+        ],
+        [
+          "respectively",
+          "—",
+          "—"
+        ],
+        [
+          "Additional paid in capital",
+          "15249",
+          "15073"
+        ],
+        [
+          "Retained earnings (accumulated deficit)",
+          "2972",
+          "4865"
+        ],
+        [
+          "Accumulated other comprehensive income (loss)",
+          "-5575",
+          "-3473"
+        ],
+        [
+          "Total Apollo Global Management, Inc. Stockholders' Equity",
+          "14044",
+          "17863"
+        ],
+        [
+          "Non-controlling interests",
+          "11189",
+          "13663"
+        ],
+        [
+          "Total Equity",
+          "25233",
+          "31526"
+        ],
+        [
+          "Total Liabilities, Redeemable non-controlling interests and Equity",
+          "313488",
+          "368689"
+        ]
+      ],
+      "caption": "($ in millions, except share amounts)",
+      "source": "workiva_hidden_text"
+    },
+    {
+      "headers": [
+        "",
+        "3Q'23",
+        "4Q'23",
+        "1Q'24",
+        "2Q'24",
+        "3Q'24"
+      ],
+      "rows": [
+        [
+          "YTD'23 YTD'24 GAAP Net income (loss) attributable to Apollo Global Management, Inc. Common Stockholders",
+          "660",
+          "2732",
+          "1403",
+          "828",
+          "787"
+        ],
+        [
+          "$2,269 $3,018 Preferred dividends",
+          "22",
+          "24",
+          "24",
+          "25",
+          "24"
+        ],
+        [
+          "22 73 Net income (loss) attributable to non-controlling interests",
+          "-42",
+          "825",
+          "338",
+          "324",
+          "958"
+        ],
+        [
+          "637 1,620 GAAP Net income (loss)",
+          "640",
+          "3581",
+          "1765",
+          "1177",
+          "1769"
+        ],
+        [
+          "$2,928 $4,711 Income tax provision (benefit)",
+          "243",
+          "-1620",
+          "422",
+          "261",
+          "317"
+        ],
+        [
+          "697 1,000 GAAP Income (loss) before Income tax provision (benefit)",
+          "883",
+          "1961",
+          "2187",
+          "1438",
+          "2086"
+        ],
+        [
+          "$3,625 $5,711 Asset Management Adjustments: Equity-based profit sharing expense and other1",
+          "62",
+          "53",
+          "94",
+          "45",
+          "41"
+        ],
+        [
+          "186 180 Equity-based compensation",
+          "57",
+          "69",
+          "74",
+          "84",
+          "72"
+        ],
+        [
+          "167 230 Special equity-based compensation and other charges2",
+          "—",
+          "438",
+          "—",
+          "—",
+          "—"
+        ],
+        [
+          "— — Transaction-related charges3",
+          "25",
+          "14",
+          "55",
+          "22",
+          "79"
+        ],
+        [
+          "18 156 Merger-related transaction and integration costs4",
+          "5",
+          "10",
+          "8",
+          "7",
+          "9"
+        ],
+        [
+          "17 24 (Gains) losses from changes in tax receivable agreement liability",
+          "—",
+          "13",
+          "—",
+          "1",
+          "-35"
+        ],
+        [
+          "— (34) Net (income) loss attributable to non-controlling interests in consolidated entities",
+          "28",
+          "-869",
+          "-377",
+          "-323",
+          "-975"
+        ],
+        [
+          "(687) (1,675) Unrealized performance fees",
+          "-91",
+          "117",
+          "-268",
+          "-86",
+          "141"
+        ],
+        [
+          "(244) (213) Unrealized profit sharing expense",
+          "55",
+          "-12",
+          "159",
+          "35",
+          "-65"
+        ],
+        [
+          "191 129 HoldCo interest and other financing costs",
+          "36",
+          "11",
+          "15",
+          "15",
+          "21"
+        ],
+        [
+          "77 51 Unrealized principal investment (income) loss",
+          "-27",
+          "-22",
+          "-11",
+          "1",
+          ""
+        ],
+        [
+          "(66) (14) Unrealized net (gains) losses from investment activities and other",
+          "30",
+          "-24",
+          "-28",
+          "57",
+          ""
+        ],
+        [
+          "50 23 Retirement Services Adjustments: Investment (gains) losses, net of offsets",
+          "663",
+          "-999",
+          "22",
+          "124",
+          "-628"
+        ],
+        [
+          "829 (482) Non-operating change in insurance liabilities and related derivatives5",
+          "-431",
+          "418",
+          "-673",
+          "-203",
+          "513"
+        ],
+        [
+          "(600) (363) Integration, restructuring and other non-operating expenses",
+          "41",
+          "32",
+          "30",
+          "31",
+          "204"
+        ],
+        [
+          "98 265 Equity-based compensation expense",
+          "13",
+          "46",
+          "13",
+          "11",
+          "12"
+        ],
+        [
+          "42 36 Segment Income",
+          "1349",
+          "1256",
+          "1300",
+          "1259",
+          "1465"
+        ],
+        [
+          "$3,703 $4,024 HoldCo interest and other financing costs",
+          "-36",
+          "-11",
+          "-15",
+          "-15",
+          "-21"
+        ],
+        [
+          "(77) (51) Taxes and related payables",
+          "-268",
+          "-63",
+          "-221",
+          "-235",
+          "-312"
+        ],
+        [
+          "(726) (768) Adjusted Net Income",
+          "1045",
+          "1182",
+          "1064",
+          "1009",
+          "1132"
+        ],
+        [
+          "$2,900 $3,205 Notable items",
+          "-90",
+          "—",
+          "—",
+          "—",
+          "-25"
+        ],
+        [
+          "(115) (25) Tax impact of notable items",
+          "19",
+          "—",
+          "—",
+          "—",
+          "5"
+        ],
+        [
+          "24 5 Adjusted Net Income, Excluding Notable Items",
+          "974",
+          "1182",
+          "1064",
+          "1009",
+          "1112"
+        ]
+      ],
+      "caption": "($ in millions)",
+      "source": "workiva_hidden_text"
+    }
+  ],
+  "xbrl": {
+    "Total Revenue": {
+      "value": 7773000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2024-11-06",
+      "concept": "Revenues"
+    },
+    "Net Income": {
+      "value": 811000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2024-11-06",
+      "concept": "NetIncomeLoss"
+    },
+    "Net Income to Common": {
+      "value": 787000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2024-11-06",
+      "concept": "NetIncomeLossAvailableToCommonStockholdersBasic"
+    },
+    "EPS (Basic)": {
+      "value": 1.3,
+      "units": "USD/shares",
+      "form": "10-Q",
+      "filed": "2024-11-06",
+      "concept": "EarningsPerShareBasic"
+    },
+    "EPS (Diluted)": {
+      "value": 1.29,
+      "units": "USD/shares",
+      "form": "10-Q",
+      "filed": "2024-11-06",
+      "concept": "EarningsPerShareDiluted"
+    },
+    "Total Assets": {
+      "value": 368689000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2024-11-06",
+      "concept": "Assets"
+    },
+    "Total Liabilities": {
+      "value": 337148000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2024-11-06",
+      "concept": "Liabilities"
+    },
+    "Total Equity": {
+      "value": 17863000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2024-11-06",
+      "concept": "StockholdersEquity"
+    },
+    "Shares Outstanding": {
+      "value": 565816456,
+      "units": "shares",
+      "form": "10-Q",
+      "filed": "2024-11-06",
+      "concept": "CommonStockSharesOutstanding"
+    },
+    "Comprehensive Income": {
+      "value": 3158000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2024-11-06",
+      "concept": "ComprehensiveIncomeNetOfTax"
+    },
+    "Income Tax Expense": {
+      "value": 317000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2024-11-06",
+      "concept": "IncomeTaxExpenseBenefit"
+    }
+  }
+}

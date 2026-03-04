@@ -1,0 +1,223 @@
+# Meta Platforms — Q3_2023 Earnings Release
+
+**Ticker:** META
+**Filing Date:** 2023-10-25
+**Accession:** 0001326801-23-000100
+**Source:** [SEC EDGAR](https://www.sec.gov/Archives/edgar/data/1326801/000132680123000100/0001326801-23-000100-index.htm)
+
+## Key Metrics (XBRL)
+
+| Metric | Value | Units | Source |
+|--------|------:|-------|--------|
+| Cash & Equivalents | $36.89B | USD | 10-Q |
+| Comprehensive Income | $11.13B | USD | 10-Q |
+| EPS (Basic) | 4 | USD/shares | 10-Q |
+| EPS (Diluted) | 4 | USD/shares | 10-Q |
+| Income Tax Expense | $2.44B | USD | 10-Q |
+| Net Income | $11.58B | USD | 10-Q |
+| Operating Income | $13.75B | USD | 10-Q |
+| Revenue | $34.15B | USD | 10-Q |
+| Total Assets | $216.27B | USD | 10-Q |
+| Total Equity | $142.87B | USD | 10-Q |
+| Total Liabilities | $73.40B | USD | 10-Q |
+
+## Financial Tables (from Exhibits)
+
+### 
+
+|  | Three Months Ended September 30, |  |  |  |  |  |  |
+| In millions, except percentages and per share amounts | 2023 |  | 2022 |  | % Change |  |  |  |  |  |
+| Revenue |  | 34146 |  |  |  | 27714 |  |  | 23% |  |  |  |  |  |  |
+| Costs and expenses | 20398 |  |  | 22050 |  |  | (7)% |  |  |  |  |  |  |
+| Income from operations |  | 13748 |  |  |  | 5664 |  |  | 143% |  |  |  |  |  |  |
+| Operating margin | 40 | % |  | 20 | % |  |  |  |  |  |  |  |  |
+| Provision for income taxes |  | 2437 |  |  |  | 1181 |  |  | 106% |  |  |  |  |  |  |
+| Effective tax rate | 17 | % |  | 21 | % |  |  |  |  |  |  |  |  |
+| Net income |  | 11583 |  |  |  | 4395 |  |  | 164% |  |  |  |  |  |  |
+| Diluted earnings per share (EPS) |  | 4.39 |  |  |  | 1.64 |  |  | 168% |  |  |  |  |  |  |
+
+### 
+
+|  | Three Months Ended September 30, 2023 |  | Nine Months Ended September 30, 2023 |
+|  | Facilities Consolidation |  | Severance and Other Personnel Costs |  | Data Center Assets |  | Total |  | Facilities Consolidation |  | Severance and Other Personnel Costs |  | Data Center Assets |  | Total |
+| Cost of revenue |  | 25 |  |  |  | — |  |  |  | -12 |  |  |  | 13 |  |  |  | 92 |  |  |  | — |  |  |  | -232 |  |  |  | -140 |  |
+| Research and development | 228 |  |  | -70 |  |  | — |  |  | 158 |  |  | 871 |  |  | 385 |  |  | — |  |  | 1256 |  |
+| Marketing and sales | 54 |  |  | 69 |  |  | — |  |  | 123 |  |  | 233 |  |  | 290 |  |  | — |  |  | 523 |  |
+| General and administrative | 45 |  |  | 41 |  |  | — |  |  | 86 |  |  | 210 |  |  | 454 |  |  | — |  |  | 664 |  |
+| Total |  | 352 |  |  |  | 40 |  |  |  | -12 |  |  |  | 380 |  |  |  | 1406 |  |  |  | 1129 |  |  |  | -232 |  |  |  | 2303 |  |
+
+### 
+
+| META PLATFORMS, INC. |
+| CONDENSED CONSOLIDATED STATEMENTS OF INCOME |
+| (In millions, except per share amounts) |
+| (Unaudited) |
+|  | Three Months Ended September 30, |  | Nine Months Ended September 30, |
+|  | 2023 |  | 2022 |  | 2023 |  | 2022 |
+| Revenue |  | 34146 |  |  |  | 27714 |  |  |  | 94791 |  |  |  | 84444 |  |
+| Costs and expenses: |  |  |  |  |  |  |  |
+| Cost of revenue | 6210 |  |  | 5716 |  |  | 18264 |  |  | 16913 |  |
+| Research and development | 9241 |  |  | 9170 |  |  | 27966 |  |  | 25567 |  |
+| Marketing and sales | 2877 |  |  | 3780 |  |  | 9075 |  |  | 10688 |  |
+| General and administrative | 2070 |  |  | 3384 |  |  | 9119 |  |  | 8731 |  |
+| Total costs and expenses | 20398 |  |  | 22050 |  |  | 64424 |  |  | 61899 |  |
+| Income from operations | 13748 |  |  | 5664 |  |  | 30367 |  |  | 22545 |  |
+| Interest and other income (expense), net | 272 |  |  | -88 |  |  | 254 |  |  | 125 |  |
+| Income before provision for income taxes | 14020 |  |  | 5576 |  |  | 30621 |  |  | 22670 |  |
+| Provision for income taxes | 2437 |  |  | 1181 |  |  | 5540 |  |  | 4123 |  |
+| Net income |  | 11583 |  |  |  | 4395 |  |  |  | 25081 |  |  |  | 18547 |  |
+| Earnings per share attributable to Class A and Class B common stockholders: |  |  |  |  |  |  |  |
+| Basic |  | 4.50 |  |  |  | 1.64 |  |  |  | 9.73 |  |  |  | 6.86 |  |
+| Diluted |  | 4.39 |  |  |  | 1.64 |  |  |  | 9.56 |  |  |  | 6.82 |  |
+| Weighted-average shares used to compute earnings per share attributable to Class A and Class B common stockholders: |  |  |  |  |  |  |  |
+| Basic | 2576 |  |  | 2682 |  |  | 2577 |  |  | 2703 |  |
+| Diluted | 2641 |  |  | 2687 |  |  | 2623 |  |  | 2718 |  |
+
+### 
+
+| META PLATFORMS, INC. |
+| CONDENSED CONSOLIDATED BALANCE SHEETS |
+| (In millions) |
+| (Unaudited) |
+|  | September 30, 2023 |  | December 31, 2022 |
+| Assets |  |  |  |
+| Current assets: |  |  |  |
+| Cash and cash equivalents |  | 36890 |  |  |  | 14681 |  |
+| Marketable securities | 24233 |  |  | 26057 |  |
+| Accounts receivable, net | 12944 |  |  | 13466 |  |
+| Prepaid expenses and other current assets | 4311 |  |  | 5345 |  |
+| Total current assets | 78378 |  |  | 59549 |  |
+| Non-marketable equity securities | 6142 |  |  | 6201 |  |
+| Property and equipment, net | 91772 |  |  | 79518 |  |
+| Operating lease right-of-use assets | 13033 |  |  | 12673 |  |
+| Intangible assets, net | 813 |  |  | 897 |  |
+| Goodwill | 20668 |  |  | 20306 |  |
+| Other assets | 5468 |  |  | 6583 |  |
+| Total assets |  | 216274 |  |  |  | 185727 |  |
+| Liabilities and stockholders' equity |  |  |  |
+| Current liabilities: |  |  |  |
+| Accounts payable |  | 4372 |  |  |  | 4990 |  |
+| Partners payable | 770 |  |  | 1117 |  |
+| Operating lease liabilities, current | 1460 |  |  | 1367 |  |
+| Accrued expenses and other current liabilities | 23929 |  |  | 19552 |  |
+| Total current liabilities | 30531 |  |  | 27026 |  |
+| Operating lease liabilities, non-current | 16374 |  |  | 15301 |  |
+| Long-term debt | 18383 |  |  | 9923 |  |
+| Other liabilities | 8113 |  |  | 7764 |  |
+| Total liabilities | 73401 |  |  | 60014 |  |
+| Commitments and contingencies |  |  |  |
+| Stockholders' equity: |  |  |  |
+| Common stock and additional paid-in capital | 71224 |  |  | 64444 |  |
+| Accumulated other comprehensive loss | -3556 |  |  | -3530 |  |
+| Retained earnings | 75205 |  |  | 64799 |  |
+| Total stockholders' equity | 142873 |  |  | 125713 |  |
+| Total liabilities and stockholders' equity |  | 216274 |  |  |  | 185727 |  |
+
+### 
+
+| META PLATFORMS, INC. |
+| CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS |
+| (In millions) |
+| (Unaudited) |
+|  | Three Months Ended September 30, |  | Nine Months Ended September 30, |
+|  | 2023 |  | 2022 |  | 2023 |  | 2022 |
+| Cash flows from operating activities |  |  |  |  |  |  |  |
+| Net income |  | 11583 |  |  |  | 4395 |  |  |  | 25081 |  |  |  | 18547 |  |
+| Adjustments to reconcile net income to net cash provided by operating activities: |  |  |  |  |  |  |  |
+| Depreciation and amortization | 2858 |  |  | 2175 |  |  | 8006 |  |  | 6310 |  |
+| Share-based compensation | 3492 |  |  | 3134 |  |  | 10603 |  |  | 8984 |  |
+| Deferred income taxes | 3049 |  |  | -1097 |  |  | 1292 |  |  | -2113 |  |
+| Impairment charges for facilities consolidation, net | 340 |  |  | 413 |  |  | 1342 |  |  | 413 |  |
+| Other | 75 |  |  | 104 |  |  | 278 |  |  | 71 |  |
+| Changes in assets and liabilities: |  |  |  |  |  |  |  |
+| Accounts receivable | -678 |  |  | -105 |  |  | 444 |  |  | 1930 |  |
+| Prepaid expenses and other current assets | -907 |  |  | -830 |  |  | -141 |  |  | -693 |  |
+| Other assets | -36 |  |  | -27 |  |  | 31 |  |  | -160 |  |
+| Accounts payable | 611 |  |  | -22 |  |  | -543 |  |  | -666 |  |
+| Partners payable | 9 |  |  | 20 |  |  | -347 |  |  | -12 |  |
+| Accrued expenses and other current liabilities | 78 |  |  | 998 |  |  | 5702 |  |  | 2942 |  |
+| Other liabilities | -72 |  |  | 533 |  |  | -39 |  |  | 411 |  |
+| Net cash provided by operating activities | 20402 |  |  | 9691 |  |  | 51709 |  |  | 35964 |  |
+| Cash flows from investing activities |  |  |  |  |  |  |  |
+| Purchases of property and equipment | -6543 |  |  | -9375 |  |  | -19601 |  |  | -22388 |  |
+| Proceeds relating to property and equipment | 47 |  |  | 20 |  |  | 148 |  |  | 190 |  |
+| Purchases of marketable debt securities | -1008 |  |  | -2597 |  |  | -1810 |  |  | -8885 |  |
+| Maturities and sales of marketable debt securities | 1475 |  |  | 2269 |  |  | 3825 |  |  | 10895 |  |
+| Acquisitions of businesses and intangible assets | -38 |  |  | -34 |  |  | -565 |  |  | -1250 |  |
+| Other investing activities | -10 |  |  | 16 |  |  | -20 |  |  |  |  |
+| Net cash used in investing activities | -6077 |  |  | -9701 |  |  | -18023 |  |  | -21439 |  |
+| Cash flows from financing activities |  |  |  |  |  |  |  |
+| Taxes paid related to net share settlement of equity awards | -2087 |  |  | -1011 |  |  | -4789 |  |  | -2938 |  |
+| Repurchases of Class A common stock | -3570 |  |  | -6354 |  |  | -13832 |  |  | -21093 |  |
+| Proceeds from issuance of long-term debt, net | — |  |  | 9921 |  |  | 8455 |  |  | 9921 |  |
+| Principal payments on finance leases | -267 |  |  | -163 |  |  | -751 |  |  | -615 |  |
+| Other financing activities | 49 |  |  | -246 |  |  | -182 |  |  | -351 |  |
+| Net cash provided by (used in) financing activities | -5875 |  |  | 2147 |  |  | -11099 |  |  | -15076 |  |
+| Effect of exchange rate changes on cash, cash equivalents, and restricted cash | -354 |  |  | -364 |  |  | -283 |  |  | -1063 |  |
+| Net increase (decrease) in cash, cash equivalents, and restricted cash | 8096 |  |  | 1773 |  |  | 22304 |  |  | -1614 |  |
+| Cash, cash equivalents, and restricted cash at beginning of the period | 29804 |  |  | 13478 |  |  | 15596 |  |  | 16865 |  |
+| Cash, cash equivalents, and restricted cash at end of the period |  | 37900 |  |  |  | 15251 |  |  |  | 37900 |  |  |  | 15251 |  |
+| Reconciliation of cash, cash equivalents, and restricted cash to the condensed consolidated balance sheets |  |  |  |  |  |  |  |
+| Cash and cash equivalents |  | 36890 |  |  |  | 14308 |  |  |  | 36890 |  |  |  | 14308 |  |
+| Restricted cash, included in prepaid expenses and other current assets | 152 |  |  | 232 |  |  | 152 |  |  | 232 |  |
+| Restricted cash, included in other assets | 858 |  |  | 711 |  |  | 858 |  |  | 711 |  |
+| Total cash, cash equivalents, and restricted cash |  | 37900 |  |  |  | 15251 |  |  |  | 37900 |  |  |  | 15251 |  |
+
+### 
+
+| META PLATFORMS, INC. |
+| CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS |
+| (In millions) |
+| (Unaudited) |
+|  | Three Months Ended September 30, |  | Nine Months Ended September 30, |
+|  | 2023 |  | 2022 |  | 2023 |  | 2022 |
+| Supplemental cash flow data |  |  |  |  |  |  |  |
+| Cash paid for income taxes, net |  | 509 |  |  |  | 2006 |  |  |  | 2016 |  |  |  | 4647 |  |
+| Cash paid for interest, net of amounts capitalized |  | 120 |  |  |  | — |  |  |  | 302 |  |  |  | — |  |
+| Non-cash investing and financing activities: |  |  |  |  |  |  |  |
+| Property and equipment in accounts payable and accrued expenses and other current liabilities |  | 4506 |  |  |  | 4130 |  |  |  | 4506 |  |  |  | 4130 |  |
+| Acquisition of businesses in accrued expenses and other current liabilities and other liabilities |  | 182 |  |  |  | 294 |  |  |  | 182 |  |  |  | 294 |  |
+| Repurchases of Class A common stock in accrued expenses and other current liabilities |  | 122 |  |  |  | 265 |  |  |  | 122 |  |  |  | 265 |  |
+
+### 
+
+| Segment Information |  |  |  |  |  |  |
+| (In millions) |  |  |  |  |  |  |
+| (Unaudited) |  |  |  |  |  |  |
+|  | Three Months Ended September 30, |  |  |  |  |  | Nine Months Ended September 30, |  |  |
+|  | 2023 |  | 2022 |  |  |  |  |  | 2023 |  | 2022 |  |  |  |  |  |  |
+| Revenue: |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Advertising |  | 33643 |  |  |  | 27237 |  |  |  |  |  |  |  | 93242 |  |  |  | 82387 |  |  |  |  |  |  |  |
+| Other revenue | 293 |  |  | 192 |  |  |  |  |  |  | 724 |  |  | 624 |  |  |  |  |  |  |  |
+| Family of Apps | 33936 |  |  | 27429 |  |  |  |  |  |  | 93966 |  |  | 83011 |  |  |  |  |  |  |  |
+| Reality Labs | 210 |  |  | 285 |  |  |  |  |  |  | 825 |  |  | 1433 |  |  |  |  |  |  |  |
+| Total revenue |  | 34146 |  |  |  | 27714 |  |  |  |  |  |  |  | 94791 |  |  |  | 84444 |  |  |  |  |  |  |  |
+| Income (loss) from operations: |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Family of Apps |  | 17490 |  |  |  | 9336 |  |  |  |  |  |  |  | 41841 |  |  |  | 31983 |  |  |  |  |  |  |  |
+| Reality Labs | -3742 |  |  | -3672 |  |  |  |  |  |  | -11474 |  |  | -9438 |  |  |  |  |  |  |  |
+| Total income from operations |  | 13748 |  |  |  | 5664 |  |  |  |  |  |  |  | 30367 |  |  |  | 22545 |  |  |  |  |  |  |  |
+
+### 
+
+| Reconciliation of GAAP to Non-GAAP Results |
+| (In millions, except percentages) |
+| (Unaudited) |
+|  | Three Months Ended September 30, |  | Nine Months Ended September 30, |
+|  | 2023 |  | 2022 |  | 2023 |  | 2022 |
+| GAAP revenue |  | 34146 |  |  |  | 27714 |  |  |  | 94791 |  |  |  | 84444 |  |
+| Foreign exchange effect on 2023 revenue using 2022 rates | -647 |  |  |  |  | 442 |  |  |  |
+| Revenue excluding foreign exchange effect |  | 33499 |  |  |  |  |  | 95233 |  |  |  |
+| GAAP revenue year-over-year change % | 23 | % |  |  |  | 12 | % |  |  |
+| Revenue excluding foreign exchange effect year-over-year change % | 21 | % |  |  |  | 13 | % |  |  |
+| GAAP advertising revenue |  | 33643 |  |  |  | 27237 |  |  |  | 93242 |  |  |  | 82387 |  |
+| Foreign exchange effect on 2023 advertising revenue using 2022 rates | -645 |  |  |  |  | 431 |  |  |  |
+| Advertising revenue excluding foreign exchange effect |  | 32998 |  |  |  |  |  | 93673 |  |  |  |
+| GAAP advertising revenue year-over-year change % | 24 | % |  |  |  | 13 | % |  |  |
+| Advertising revenue excluding foreign exchange effect year-over-year change % | 21 | % |  |  |  | 14 | % |  |  |
+| Net cash provided by operating activities |  | 20402 |  |  |  | 9691 |  |  |  | 51709 |  |  |  | 35964 |  |
+| Purchases of property and equipment, net | -6496 |  |  | -9355 |  |  | -19453 |  |  | -22198 |  |
+| Principal payments on finance leases | -267 |  |  | -163 |  |  | -751 |  |  | -615 |  |
+| Free cash flow |  | 13639 |  |  |  | 173 |  |  |  | 31505 |  |  |  | 13151 |  |
+
+---
+*Generated by edgar_download.py on 2026-03-03 20:14*

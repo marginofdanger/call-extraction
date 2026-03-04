@@ -1,0 +1,205 @@
+# Somnigroup International Inc. — Q3_2024 Earnings Release
+
+**Ticker:** SGI
+**Filing Date:** 2024-11-07
+**Accession:** 0001206264-24-000162
+**Source:** [SEC EDGAR](https://www.sec.gov/Archives/edgar/data/1206264/000120626424000162/0001206264-24-000162-index.htm)
+
+## Key Metrics (XBRL)
+
+| Metric | Value | Units | Source |
+|--------|------:|-------|--------|
+| Comprehensive Income | $167.0M | USD | 10-Q |
+| EPS (Basic) | 1 | USD/shares | 10-Q |
+| EPS (Diluted) | 1 | USD/shares | 10-Q |
+| Income Tax Expense | $40.8M | USD | 10-Q |
+| Net Income | $130.0M | USD | 10-Q |
+| Operating Income | $201.8M | USD | 10-Q |
+| Revenue | $1.30B | USD | 10-Q |
+| Total Assets | $4.57B | USD | 10-Q |
+| Total Liabilities | $3.99B | USD | 10-Q |
+
+## Financial Tables (from Exhibits)
+
+### 
+
+|  | Three Months Ended |  |  |  | Nine Months Ended |  |  |
+|  | September 30, |  | Chg % |  | September 30, |  | Chg % |
+|  | 2024 |  | 2023 |  |  |  | 2024 |  | 2023 |  |  |
+| Net sales |  | 1300.0 |  |  |  | 1277.1 |  |  | 1.8% |  |  | 3723.0 |  |  |  | 3754.9 |  |  | (0.8)% |
+| Cost of sales | 710.1 |  |  | 703.4 |  |  |  |  | 2066.3 |  |  | 2139.0 |  |  |  |
+| Gross profit | 589.9 |  |  | 573.7 |  |  | 2.8% |  | 1656.7 |  |  | 1615.9 |  |  | 2.5% |
+| Selling and marketing expenses | 272.0 |  |  | 272.9 |  |  |  |  | 813.2 |  |  | 799.8 |  |  |  |
+| General, administrative and other expenses | 118.6 |  |  | 122.2 |  |  |  |  | 347.4 |  |  | 344.2 |  |  |  |
+| Equity income in earnings of unconsolidated affiliates | -2.5 |  |  | -4.6 |  |  |  |  | -10.5 |  |  | -13.4 |  |  |  |
+| Operating income | 201.8 |  |  | 183.2 |  |  | 10.2% |  | 506.6 |  |  | 485.3 |  |  | 4.4% |
+| Other expense, net: |  |  |  |  |  |  |  |  |  |  |  |
+| Interest expense, net | 30.8 |  |  | 32.6 |  |  |  |  | 98.5 |  |  | 99.0 |  |  |  |
+| Other expense (income), net | 0.4 |  |  | -0.1 |  |  |  |  | -0.5 |  |  | -0.2 |  |  |  |
+| Total other expense, net | 31.2 |  |  | 32.5 |  |  |  |  | 98.0 |  |  | 98.8 |  |  |  |
+| Income before income taxes | 170.6 |  |  | 150.7 |  |  | 13.2% |  | 408.6 |  |  | 386.5 |  |  | 5.7% |
+| Income tax provision | -40.8 |  |  | -36.8 |  |  |  |  | -95.5 |  |  | -93.5 |  |  |  |
+| Net income before non-controlling interest | 129.8 |  |  | 113.9 |  |  | 14.0% |  | 313.1 |  |  | 293.0 |  |  | 6.9% |
+| Less: Net (loss) income attributable to non-controlling interest | -0.2 |  |  | 0.6 |  |  |  |  | 0.7 |  |  | 2.0 |  |  |  |
+| Net income attributable to Tempur Sealy International, Inc. |  | 130.0 |  |  |  | 113.3 |  |  | 14.7% |  |  | 312.4 |  |  |  | 291.0 |  |  | 7.4% |
+| Earnings per common share: |  |  |  |  |  |  |  |  |  |  |  |
+| Basic |  | 0.75 |  |  |  | 0.66 |  |  | 13.6% |  |  | 1.80 |  |  |  | 1.69 |  |  | 6.5% |
+| Diluted |  | 0.73 |  |  |  | 0.64 |  |  | 14.1% |  |  | 1.75 |  |  |  | 1.64 |  |  | 6.7% |
+| Weighted average common shares outstanding: |  |  |  |  |  |  |  |  |  |  |  |
+| Basic | 173.7 |  |  | 172.2 |  |  |  |  | 173.6 |  |  | 172.1 |  |  |  |
+| Diluted | 178.2 |  |  | 177.6 |  |  |  |  | 178.1 |  |  | 177.0 |  |  |  |
+
+### 
+
+|  | September 30, 2024 |  | December 31, 2023 |
+| ASSETS | (unaudited) |  |  |
+| Current Assets: |  |  |  |
+| Cash and cash equivalents |  | 104.2 |  |  |  | 74.9 |  |
+| Accounts receivable, net | 467.6 |  |  | 431.4 |  |
+| Inventories | 496.2 |  |  | 483.1 |  |
+| Prepaid expenses and other current assets | 87.3 |  |  | 113.8 |  |
+| Total Current Assets | 1155.3 |  |  | 1103.2 |  |
+| Property, plant and equipment, net | 843.8 |  |  | 878.3 |  |
+| Goodwill | 1097.3 |  |  | 1083.3 |  |
+| Other intangible assets, net | 714.6 |  |  | 714.8 |  |
+| Operating lease right-of-use assets | 617.6 |  |  | 636.5 |  |
+| Deferred income taxes | 14.2 |  |  | 15.6 |  |
+| Other non-current assets | 125.2 |  |  | 122.2 |  |
+| Total Assets |  | 4568.0 |  |  |  | 4553.9 |  |
+| LIABILITIES AND STOCKHOLDERS' EQUITY |  |  |  |
+| Current Liabilities: |  |  |  |
+| Accounts payable |  | 346.8 |  |  |  | 311.3 |  |
+| Accrued expenses and other current liabilities | 466.8 |  |  | 427.1 |  |
+| Short-term operating lease obligations | 129.9 |  |  | 119.6 |  |
+| Current portion of long-term debt | 46.4 |  |  | 44.9 |  |
+| Income taxes payable | 21.9 |  |  | 5.3 |  |
+| Total Current Liabilities | 1011.8 |  |  | 908.2 |  |
+| Long-term debt, net | 2227.1 |  |  | 2527.0 |  |
+| Long-term operating lease obligations | 548.7 |  |  | 574.8 |  |
+| Deferred income taxes | 128.9 |  |  | 127.9 |  |
+| Other non-current liabilities | 78.3 |  |  | 82.6 |  |
+| Total Liabilities | 3994.8 |  |  | 4220.5 |  |
+| Redeemable non-controlling interest | 8.7 |  |  | 10.0 |  |
+| Total Stockholders' Equity | 564.5 |  |  | 323.4 |  |
+| Total Liabilities, Redeemable Non-Controlling Interest and Stockholders' Equity |  | 4568.0 |  |  |  | 4553.9 |  |
+
+### 
+
+|  | Nine Months Ended |
+|  | September 30, |
+|  | 2024 |  | 2023 |
+| CASH FLOWS FROM OPERATING ACTIVITIES: |  |  |  |
+| Net income before non-controlling interest |  | 313.1 |  |  |  | 293.0 |  |
+| Adjustments to reconcile net income to net cash provided by operating activities: |  |  |  |
+| Depreciation and amortization | 121.9 |  |  | 99.6 |  |
+| Amortization of stock-based compensation | 27.3 |  |  | 35.9 |  |
+| Amortization of deferred financing costs | 2.8 |  |  | 2.9 |  |
+| Bad debt expense | 9.9 |  |  | 7.1 |  |
+| Deferred income taxes | 0.6 |  |  | 0.5 |  |
+| Dividends received from unconsolidated affiliates | 23.4 |  |  | 18.1 |  |
+| Equity income in earnings of unconsolidated affiliates | -10.5 |  |  | -13.4 |  |
+| Foreign currency adjustments and other | 0.9 |  |  | -1.9 |  |
+| Changes in operating assets and liabilities | 48.0 |  |  | 37.4 |  |
+| Net cash provided by operating activities | 537.4 |  |  | 479.2 |  |
+| CASH FLOWS FROM INVESTING ACTIVITIES: |  |  |  |
+| Purchases of property, plant and equipment | -76.4 |  |  | -153.3 |  |
+| Other | 0.5 |  |  | 0.5 |  |
+| Net cash used in investing activities | -75.9 |  |  | -152.8 |  |
+| CASH FLOWS FROM FINANCING ACTIVITIES: |  |  |  |
+| Proceeds from borrowings under long-term debt obligations | 1165.3 |  |  | 1491.5 |  |
+| Repayments of borrowings under long-term debt obligations | -1472.6 |  |  | -1689.9 |  |
+| Proceeds from exercise of stock options | 0.3 |  |  | 2.8 |  |
+| Treasury stock repurchased | -43.8 |  |  | -36.0 |  |
+| Dividends paid | -70.1 |  |  | -58.8 |  |
+| Repayments of finance lease obligations and other | -14.8 |  |  | -12.8 |  |
+| Net cash used in financing activities | -435.7 |  |  | -303.2 |  |
+| NET EFFECT OF EXCHANGE RATE CHANGES ON CASH AND CASH EQUIVALENTS | 3.5 |  |  | -1.0 |  |
+| Increase in cash and cash equivalents | 29.3 |  |  | 22.2 |  |
+| CASH AND CASH EQUIVALENTS, beginning of period | 74.9 |  |  | 69.4 |  |
+| CASH AND CASH EQUIVALENTS, end of period |  | 104.2 |  |  |  | 91.6 |  |
+
+### 
+
+|  | Three Months Ended |
+| (in millions, except per share amounts) | September 30, 2024 |  | September 30, 2023 |
+| Net income |  | 130.0 |  |  |  | 113.3 |  |
+| Transaction costs | 13.7 |  |  | 15.7 |  |
+| Supply chain transition costs | 8.2 |  |  | — |  |
+| Cybersecurity event | — |  |  | 13.5 |  |
+| Operational start-up costs | — |  |  | 2.3 |  |
+| Adjusted income tax provision | -5.4 |  |  | -8.0 |  |
+| Adjusted net income |  | 146.5 |  |  |  | 136.8 |  |
+| Adjusted earnings per common share, diluted |  | 0.82 |  |  |  | 0.77 |  |
+| Diluted shares outstanding | 178.2 |  |  | 177.6 |  |
+
+### 
+
+|  | 3Q 2024 |
+| (in millions, except percentages) | Consolidated |  | Margin |  | North America |  | Margin |  | International |  | Margin |  | Corporate |
+| Net sales |  | 1300.0 |  |  |  |  |  | 1015.3 |  |  |  |  |  | 284.7 |  |  |  |  |  | — |  |
+| Gross profit |  | 589.9 |  |  | 45.4 | % |  |  | 426.7 |  |  | 42.0 | % |  |  | 163.2 |  |  | 57.3 | % |  |  | — |  |
+| Adjustments: |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Supply chain transition costs | 8.0 |  |  |  |  | 8.0 |  |  |  |  | — |  |  |  |  | — |  |
+| Transaction costs | 2.4 |  |  |  |  | 2.4 |  |  |  |  | — |  |  |  |  | — |  |
+| Total adjustments | 10.4 |  |  |  |  | 10.4 |  |  |  |  | — |  |  |  |  | — |  |
+| Adjusted gross profit |  | 600.3 |  |  | 46.2 | % |  |  | 437.1 |  |  | 43.1 | % |  |  | 163.2 |  |  | 57.3 | % |  |  | — |  |
+| Operating income (expense) |  | 201.8 |  |  | 15.5 | % |  |  | 193.3 |  |  | 19.0 | % |  |  | 51.7 |  |  | 18.2 | % |  |  | -43.2 |  |
+| Adjustments: |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Transaction costs | 13.7 |  |  |  |  | 2.5 |  |  |  |  | — |  |  |  |  | 11.2 |
+| Supply chain transition costs | 8.2 |  |  |  |  | 8.2 |  |  |  |  | — |  |  |  |  | — |  |
+| Total adjustments | 21.9 |  |  |  |  | 10.7 |  |  |  |  | — |  |  |  |  | 11.2 |  |
+| Adjusted operating income (expense) |  | 223.7 |  |  | 17.2 | % |  |  | 204.0 |  |  | 20.1 | % |  |  | 51.7 |  |  | 18.2 | % |  |  | -32.0 |  |
+
+### 
+
+|  | 3Q 2023 |
+| (in millions, except percentages) | Consolidated |  | Margin |  | North America |  | Margin |  | International |  | Margin |  | Corporate |
+| Net sales |  | 1277.1 |  |  |  |  |  | 1023.7 |  |  |  |  |  | 253.4 |  |  |  |  |  | — |  |
+| Gross profit |  | 573.7 |  |  | 44.9 | % |  |  | 430.4 |  |  | 42.0 | % |  |  | 143.3 |  |  | 56.6 | % |  |  | — |  |
+| Adjustments: |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Cybersecurity event | 9.6 |  |  |  |  | 9.6 |  |  |  |  | — |  |  |  |  | — |  |
+| Operational start-up costs | 2.3 |  |  |  |  | 2.3 |  |  |  |  | — |  |  |  |  | — |  |
+| Total adjustments | 11.9 |  |  |  |  | 11.9 |  |  |  |  | — |  |  |  |  | — |  |
+| Adjusted gross profit |  | 585.6 |  |  | 45.9 | % |  |  | 442.3 |  |  | 43.2 | % |  |  | 143.3 |  |  | 56.6 | % |  |  | — |  |
+| Operating income (expense) |  | 183.2 |  |  | 14.3 | % |  |  | 195.5 |  |  | 19.1 | % |  |  | 40.0 |  |  | 15.8 | % |  |  | -52.3 |  |
+| Adjustments: |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Transaction costs | 15.7 |  |  |  |  | — |  |  |  |  | — |  |  |  |  | 15.7 |  |
+| Cybersecurity event | 13.5 |  |  |  |  | 10.0 |  |  |  |  | 1.1 |  |  |  |  | 2.4 |  |
+| Operational start-up costs | 2.3 |  |  |  |  | 2.3 |  |  |  |  | — |  |  |  |  | — |  |
+| Total adjustments | 31.5 |  |  |  |  | 12.3 |  |  |  |  | 1.1 |  |  |  |  | 18.1 |  |
+| Adjusted operating income (expense) |  | 214.7 |  |  | 16.8 | % |  |  | 207.8 |  |  | 20.3 | % |  |  | 41.1 |  |  | 16.2 | % |  |  | -34.2 |  |
+
+### 
+
+|  | Trailing Twelve Months Ended |
+| (in millions) | September 30, 2024 |
+| Net income |  | 389.5 |  |
+| Interest expense, net | 129.4 |  |
+| Loss on extinguishment of debt | 3.2 |  |
+| Income tax provision | 105.4 |  |
+| Depreciation and amortization | 198.9 |  |
+| EBITDA |  | 826.4 |  |
+| Adjustments: |  |
+| Transaction costs | 53.3 |  |
+| Fair value remeasurement | 11.0 |  |
+| Supply chain transition costs | 8.2 |  |
+| Operational start-up costs | 7.1 |  |
+| Cybersecurity event | 0.8 |  |
+| Adjusted EBITDA |  | 906.8 |  |
+| Consolidated indebtedness less netted cash |  | 2183.6 |  |
+| Ratio of consolidated indebtedness less netted cash to adjusted EBITDA | 2.41 times |
+
+### 
+
+|  | In the third quarter of 2024, the Company recorded 13.7 million of transaction costs associated with the pending acquisition of Mattress Firm. Cost of sales included 2.4 million of charges related to customer-specific inventory. Operating expenses primarily included legal and professional fees associated with the pending acquisition of Mattress Firm. In the third quarter of 2023, the Company recorded 15.7 million of transaction costs primarily associated with the pending acquisition of Mattress Firm. In the trailing twelve months ended September 30, 2024, the Company recognized 53.3 million of transaction costs associated with the pending acquisition of Mattress Firm. |
+|  | In the third quarter of 2024, the Company recorded 8.2 million of supply chain transition costs associated with the consolidation of certain manufacturing facilities, with 8.0 million recorded in cost of sales and 0.2 million recorded in operating expenses. |
+|  | In the third quarter of 2023, the Company recorded 13.5 million of costs associated with the cybersecurity event identified on July 23, 2023. Cost of sales included 9.6 million of manufacturing and network disruption costs incurred to ensure business continuity. Operating expenses included 3.9 million, primarily related to professional fees incurred for incident response, containment measures and stabilization of the Company's information systems. In the trailing twelve months ended September 30, 2024, the Company recorded 0.8 million of costs associated with the cybersecurity event identified on July 23, 2023. |
+|  | In the third quarter of 2023, the Company recorded 2.3 million of operational start-up costs related to the capacity expansion of its manufacturing and distribution facilities in the U.S., including personnel and facility related costs. In the trailing twelve months ended September 30, 2024, the Company recognized 7.1 million of operational start-up costs. |
+|  | Adjusted income tax provision represents the tax effects associated with the aforementioned items. |
+|  | In the trailing twelve months ended September 30, 2024, the Company recognized 3.2 million of loss on extinguishment of debt associated with the refinancing of its senior secured credit facilities. |
+|  | In the trailing twelve months ended September 30, 2024, the Company recorded a fair value remeasurement of 11.0 million related to a strategic investment in a product innovation initiative. |
+|  | The Company presents deferred financing costs as a direct reduction from the carrying amount of the related debt in the Condensed Consolidated Balance Sheets. For purposes of determining total debt for financial covenant purposes, the Company has added these costs back to total debt, net as calculated per the Condensed Consolidated Balance Sheets. |
+|  | Netted cash includes cash and cash equivalents for domestic and foreign subsidiaries designated as restricted subsidiaries in the 2023 Credit Agreement. |
+
+---
+*Generated by edgar_download.py on 2026-03-03 20:16*

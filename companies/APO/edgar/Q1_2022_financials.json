@@ -1,0 +1,1289 @@
+{
+  "ticker": "APO",
+  "quarter": "Q1_2022",
+  "filing_date": "",
+  "accession": "0001858681-22-000026",
+  "tables": [
+    {
+      "headers": [
+        "",
+        "1Q'21",
+        "4Q'21",
+        "1Q'22"
+      ],
+      "rows": [
+        [
+          "Revenues Asset Management Management fees",
+          "457",
+          "519",
+          "336"
+        ],
+        [
+          "Advisory and transaction fees, net",
+          "56",
+          "97",
+          "66"
+        ],
+        [
+          "Investment income",
+          "1778",
+          "573",
+          "701"
+        ],
+        [
+          "Incentive fees",
+          "4",
+          "6",
+          "6"
+        ],
+        [
+          "Retirement Services Premiums",
+          "—",
+          "—",
+          "2110"
+        ],
+        [
+          "Product charges",
+          "—",
+          "—",
+          "166"
+        ],
+        [
+          "Net investment income",
+          "—",
+          "—",
+          "1731"
+        ],
+        [
+          "Investment related gains (losses)",
+          "—",
+          "—",
+          "-4217"
+        ],
+        [
+          "Revenues of consolidated variable interest entities",
+          "—",
+          "—",
+          "-21"
+        ],
+        [
+          "Other revenues",
+          "—",
+          "—",
+          ""
+        ],
+        [
+          "Total Revenues",
+          "2295",
+          "1195",
+          "875"
+        ],
+        [
+          "Expenses Asset Management Compensation and benefits",
+          "-887",
+          "-1509",
+          "-734"
+        ],
+        [
+          "Interest expense",
+          "-35",
+          "-34",
+          "-32"
+        ],
+        [
+          "General, administrative and other",
+          "-100",
+          "-153",
+          "-148"
+        ],
+        [
+          "Retirement Services Interest sensitive contract benefits",
+          "—",
+          "—",
+          "41"
+        ],
+        [
+          "Future policy and other policy benefits",
+          "—",
+          "—",
+          "-2085"
+        ],
+        [
+          "Amortization of deferred acquisition costs, deferred sales inducements and value of business acquired",
+          "—",
+          "—",
+          "-125"
+        ],
+        [
+          "Policy and other operating expenses",
+          "—",
+          "—",
+          "-308"
+        ],
+        [
+          "Total Expenses",
+          "-1022",
+          "-1696",
+          "-3391"
+        ],
+        [
+          "Other Income (Loss) – Asset Management Net gains from investment activities",
+          "353",
+          "1172",
+          "34"
+        ],
+        [
+          "Net gains from investment activities of consolidated variable interest entities",
+          "113",
+          "157",
+          "367"
+        ],
+        [
+          "Other income (loss), net",
+          "-17",
+          "-120",
+          "-23"
+        ],
+        [
+          "Total Other Income (Loss)",
+          "449",
+          "1209",
+          "378"
+        ],
+        [
+          "Income (loss) before income tax (provision) benefit",
+          "1722",
+          "708",
+          "-2138"
+        ],
+        [
+          "Income tax (provision) benefit",
+          "-203",
+          "-96",
+          "608"
+        ],
+        [
+          "Net income (loss)",
+          "1519",
+          "612",
+          "-1530"
+        ],
+        [
+          "Net (income) loss attributable to Non-Controlling interests",
+          "-840",
+          "-369",
+          "660"
+        ],
+        [
+          "Net income (loss) attributable to Apollo Global Management, Inc.",
+          "679",
+          "243",
+          "-870"
+        ],
+        [
+          "Preferred stock dividends",
+          "",
+          "",
+          "—"
+        ],
+        [
+          "Net income (loss) attributable to Apollo Global Management, Inc. Common Stockholders",
+          "670",
+          "234",
+          "-870"
+        ],
+        [
+          "Earnings (Loss) per share Net income (loss) attributable to Common Stockholders - Basic",
+          "2.81",
+          "0.91",
+          "-1.50"
+        ],
+        [
+          "Net income (loss) attributable to Common Stockholders - Diluted",
+          "2.81",
+          "0.91",
+          "-1.50"
+        ],
+        [
+          "Weighted average shares outstanding – Basic",
+          "230",
+          "246",
+          "586"
+        ],
+        [
+          "Weighted average shares outstanding – Diluted",
+          "230",
+          "246",
+          "586"
+        ]
+      ],
+      "caption": "GAAP Income Statement (Unaudited) ($ in millions, expect per share amounts)",
+      "source": "workiva_hidden_text"
+    },
+    {
+      "headers": [
+        "",
+        "1Q'21",
+        "4Q'21",
+        "1Q'22",
+        "LTM 1Q'21",
+        "LTM 1Q'22"
+      ],
+      "rows": [
+        [
+          "Management fees",
+          "453.9",
+          "483.0",
+          "505.4",
+          "1719.5",
+          "1929.7"
+        ],
+        [
+          "Advisory and transaction fees, net",
+          "55.4",
+          "94.3",
+          "64.1",
+          "270.2",
+          "306.8"
+        ],
+        [
+          "Fee-related performance fees",
+          "8.8",
+          "20.2",
+          "14.2",
+          "16.2",
+          "62.3"
+        ],
+        [
+          "Fee-related compensation",
+          "-154.4",
+          "-176.6",
+          "-175.4",
+          "-568.5",
+          "-674.3"
+        ],
+        [
+          "Non-compensation expenses",
+          "-62.0",
+          "-94.9",
+          "-98.3",
+          "-275.0",
+          "-349.5"
+        ],
+        [
+          "Fee Related Earnings",
+          "301.7",
+          "326.0",
+          "310.0",
+          "1162.4",
+          "1275.0"
+        ],
+        [
+          "Net investment spread",
+          "—",
+          "—",
+          "840.5",
+          "—",
+          "—"
+        ],
+        [
+          "Other operating expenses",
+          "—",
+          "—",
+          "-108.7",
+          "—",
+          "—"
+        ],
+        [
+          "Interest and other financing costs",
+          "—",
+          "—",
+          "-61.6",
+          "—",
+          "—"
+        ],
+        [
+          "Normalization of alternative investment income to 11%, net of offsets1",
+          "—",
+          "—",
+          "-143.4",
+          "—",
+          "—"
+        ],
+        [
+          "Other notable items2",
+          "—",
+          "—",
+          "-39.0",
+          "—",
+          "—"
+        ],
+        [
+          "Spread Related Earnings - Normalized3 $— $— $487.8 $— $— Fee and Spread Related Earnings - Normalized $301.7 $326.0 $797.8 $1,162.4 $— Principal Investing Income",
+          "61.1",
+          "191.8",
+          "187.0",
+          "117.6",
+          "1233.5"
+        ],
+        [
+          "Adjusted Segment Income - Normalized $362.8 $517.8 $984.8 $1,280.0 $— HoldCo interest and other financing costs",
+          "-43.0",
+          "-41.6",
+          "-39.0",
+          "-164.7",
+          "—"
+        ],
+        [
+          "Taxes and related payables",
+          "-25.7",
+          "6.8",
+          "-174.8",
+          "-93.5",
+          "—"
+        ]
+      ],
+      "caption": "($ in millions, except per share amounts)",
+      "source": "workiva_hidden_text"
+    },
+    {
+      "headers": [
+        "",
+        "1Q'21",
+        "4Q'21",
+        "1Q'22",
+        "1Q'21",
+        "LTM 1Q'21",
+        "LTM 1Q'22",
+        "LTM 1Q'21"
+      ],
+      "rows": [
+        [
+          "Fixed income and other investment income, net $— $— $1,206.8 NM $— $— NM Alternative investment income, net",
+          "—",
+          "—",
+          "447.7",
+          "NM",
+          "—",
+          "—",
+          "NM"
+        ],
+        [
+          "Strategic capital management fees",
+          "—",
+          "—",
+          "12.4",
+          "NM",
+          "—",
+          "—",
+          "NM"
+        ],
+        [
+          "Cost of funds",
+          "—",
+          "—",
+          "-826.4",
+          "NM",
+          "—",
+          "—",
+          "NM"
+        ],
+        [
+          "Net Investment Spread",
+          "—",
+          "—",
+          "840.5",
+          "NM",
+          "—",
+          "—",
+          "NM"
+        ],
+        [
+          "Other operating expenses",
+          "—",
+          "—",
+          "-108.7",
+          "NM",
+          "—",
+          "—",
+          "NM"
+        ],
+        [
+          "Interest and other financing costs",
+          "—",
+          "—",
+          "-61.6",
+          "NM",
+          "—",
+          "—",
+          "NM"
+        ],
+        [
+          "Spread Relating Earnings $— $— $670.2 NM $— $— NM SRE per share $— $— $1.12 NM $— $— NM Normalization of alternative investment income to 11%, net of offsets",
+          "—",
+          "—",
+          "-143.4",
+          "NM",
+          "—",
+          "—",
+          "NM"
+        ],
+        [
+          "Other notable items",
+          "—",
+          "—",
+          "-39.0",
+          "NM",
+          "—",
+          "—",
+          "NM"
+        ]
+      ],
+      "caption": "• Spread-related earnings exhibited meaningful durability amid a challenging macro backdrop, driven by a stronger asset yield, which  benefited from above-trend performance within alternative investme",
+      "source": "workiva_hidden_text"
+    },
+    {
+      "headers": [
+        "",
+        "1Q'22"
+      ],
+      "rows": [
+        [
+          "SRE represents Athene’s historically reported adjusted operating income available to common shareholders excluding the change in fair value of AOG units, equity based compensation related to Athene’s long-term incentive plan, and operating income tax. Normalized SRE excludes notable items and normalizes alternative income to an",
+          "11%"
+        ],
+        [
+          "long-term return, net of offsets.",
+          "2."
+        ],
+        [
+          "Normalized net investment spread excludes notable items and normalizes alternative income to an",
+          "11%"
+        ],
+        [
+          "long-term return, net of offsets. PGAAP impact on net investment spread = +2bps ~90% correlation between as-reported SRE and FRE >95% correlation between normalized SRE and FRE",
+          "13"
+        ]
+      ],
+      "caption": "Retirement Services SRE is Predictable and Sustainable Through the Cycle Spread Related Earnings - Normalized1 ($mn) Net Investment Spread - Normalized2 $879 $893 $961 $1,061 $1,380 $1,463 $1,367 $1,8",
+      "source": "workiva_hidden_text"
+    },
+    {
+      "headers": [
+        "",
+        "1Q'21",
+        "4Q'21",
+        "1Q'22",
+        "1Q'21",
+        "LTM 1Q'21",
+        "LTM 1Q'22",
+        "LTM 1Q'21"
+      ],
+      "rows": [
+        [
+          "Realized performance fees",
+          "106.8",
+          "405.5",
+          "127.2",
+          "19.1%",
+          "321.9",
+          "1609.5",
+          "400.0%"
+        ],
+        [
+          "Realized investment income",
+          "30.0",
+          "39.7",
+          "226.4",
+          "NM",
+          "49.4",
+          "633.7",
+          "NM"
+        ],
+        [
+          "Realized principal investing compensation",
+          "-68.2",
+          "-245.1",
+          "-156.0",
+          "128.7%",
+          "-216.7",
+          "-964.2",
+          "344.9%"
+        ],
+        [
+          "Other operating expenses",
+          "-7.5",
+          "-8.3",
+          "-10.6",
+          "41.3%",
+          "-37.0",
+          "-45.5",
+          "23.0%"
+        ],
+        [
+          "Principal Investing Income",
+          "61.1",
+          "191.8",
+          "187.0",
+          "206.1%",
+          "117.6",
+          "1233.5",
+          "NM"
+        ],
+        [
+          "PII Per Share",
+          "0.14",
+          "0.42",
+          "0.31",
+          "121.4%",
+          "0.26",
+          "2.67",
+          "NM"
+        ]
+      ],
+      "caption": "• Given the optionality Apollo possesses as a long-term manager of capital, realized performance fees of $127 million moderated year-over- year as equity market volatility delayed monetization activit",
+      "source": "workiva_hidden_text"
+    },
+    {
+      "headers": [
+        "",
+        "LTM 1Q'22"
+      ],
+      "rows": [
+        [
+          "Flows by Channel Retail",
+          "2865"
+        ],
+        [
+          "Flow reinsurance",
+          "1001"
+        ],
+        [
+          "Funding agreements1",
+          "5696"
+        ],
+        [
+          "Pension group annuities",
+          "1994"
+        ],
+        [
+          "Gross organic inflows2",
+          "11556"
+        ],
+        [
+          "Gross inorganic inflows3",
+          "—"
+        ],
+        [
+          "Total gross inflows5",
+          "11556"
+        ],
+        [
+          "Gross outflows4,5",
+          "-4883"
+        ],
+        [
+          "Net flows",
+          "6673"
+        ],
+        [
+          "Flows attributable to Athene vs. ADIP Inflows attributable to Athene",
+          "9333"
+        ],
+        [
+          "Inflows attributable to ADIP",
+          "2223"
+        ],
+        [
+          "Total gross inflows",
+          "11556"
+        ],
+        [
+          "Outflows attributable to Athene",
+          "-4072"
+        ],
+        [
+          "Outflows attributable to ADIP",
+          "-811"
+        ],
+        [
+          "Total gross outflows",
+          "-4883"
+        ],
+        [
+          "Funding agreements are comprised of funding agreements issued under Apollo's FABN and FABR programs, FHLB and long term repurchase agreements.",
+          "2."
+        ],
+        [
+          "Gross organic inflows equal inflows from retail, flow reinsurance and institutional channels. Gross organic inflows include all inflows sourced by Athene, including all of the inflows reinsured to ADIP.",
+          "3."
+        ],
+        [
+          "Gross inorganic inflows represents acquisitions and block reinsurance transactions.",
+          "4."
+        ],
+        [
+          "Gross outflows include full surrenders, partial withdrawals, death benefits, annuitization benefits and interest payments and maturities on funding agreement products.",
+          "5."
+        ],
+        [
+          "See below table for supplementary presentation of gross inflows and outflows attributable to Athene and ADIP. Flows attributable to ADIP are the proportionate share of flows associated with the noncontrolling interest.",
+          "6."
+        ],
+        [
+          "Net invested assets represent the investments that directly back Athene’s net reserve liabilities as well as surplus assets. Net invested assets are a component of Apollo’s total AUM reported under the Asset Management segment and should not be viewed as additive to total AUM disclosed previously. Refer to reconciliation of GAAP to Non-GAAP measures pages",
+          "28"
+        ],
+        [
+          "to",
+          "32"
+        ],
+        [
+          "for additional reconciliation to Athene’s presentation of non-GAAP measures. ($ in millions) As of and for the three months ended March",
+          "31"
+        ],
+        [
+          "Invested Assets Gross invested assets",
+          "221720"
+        ],
+        [
+          "Invested assets attributable to ADIP",
+          "-37449"
+        ],
+        [
+          "Net invested assets6",
+          "184271"
+        ],
+        [
+          "Average net invested assets",
+          "181398"
+        ],
+        [
+          "Average net invested assets",
+          "–"
+        ],
+        [
+          "Fixed Income",
+          "170616"
+        ],
+        [
+          "Average net invested assets",
+          "–"
+        ],
+        [
+          "Alternatives",
+          "10782"
+        ],
+        [
+          "Retirement Services Flows Invested Assets",
+          "23"
+        ]
+      ],
+      "caption": "Retirement Services Flows & Invested Assets ($ in millions) Three months ended  March 31, 2022",
+      "source": "workiva_hidden_text"
+    },
+    {
+      "headers": [
+        "",
+        "4Q'21",
+        "1Q'22"
+      ],
+      "rows": [
+        [
+          "Assets Asset Management Cash and cash equivalents",
+          "917",
+          "1246"
+        ],
+        [
+          "Restricted cash and cash equivalents",
+          "708",
+          "1038"
+        ],
+        [
+          "Investments",
+          "11354",
+          "6730"
+        ],
+        [
+          "Assets of consolidated variable interest entities Cash and cash equivalents",
+          "463",
+          "272"
+        ],
+        [
+          "Investments",
+          "14737",
+          "3772"
+        ],
+        [
+          "Other assets",
+          "252",
+          "92"
+        ],
+        [
+          "Due from related parties",
+          "490",
+          "367"
+        ],
+        [
+          "Goodwill",
+          "117",
+          "131"
+        ],
+        [
+          "Other assets",
+          "1464",
+          "2015"
+        ],
+        [
+          "Retirement Services Cash and cash equivalents",
+          "—",
+          "8523"
+        ],
+        [
+          "Restricted cash and cash equivalents",
+          "—",
+          "834"
+        ],
+        [
+          "Investments",
+          "—",
+          "171370"
+        ],
+        [
+          "Investments in related parties",
+          "—",
+          "24864"
+        ],
+        [
+          "Assets of consolidated variable interest entities Cash and cash equivalents",
+          "—",
+          "521"
+        ],
+        [
+          "Investments",
+          "—",
+          "18015"
+        ],
+        [
+          "Other assets",
+          "—",
+          "315"
+        ],
+        [
+          "Reinsurance recoverable",
+          "—",
+          "4648"
+        ],
+        [
+          "Deferred acquisition costs, deferred sales inducements and value of business acquired",
+          "—",
+          "4713"
+        ],
+        [
+          "Goodwill",
+          "—",
+          "4181"
+        ],
+        [
+          "Other assets",
+          "—",
+          "7908"
+        ],
+        [
+          "Total Assets",
+          "30502",
+          "261555"
+        ]
+      ],
+      "caption": "GAAP Balance Sheet (Unaudited) ($ in millions)",
+      "source": "workiva_hidden_text"
+    },
+    {
+      "headers": [
+        "",
+        "4Q'21",
+        "1Q'22"
+      ],
+      "rows": [
+        [
+          "Liabilities Asset Management Accounts payable, accrued expenses, and other liabilities",
+          "2847",
+          "3208"
+        ],
+        [
+          "Due to related parties",
+          "1222",
+          "1121"
+        ],
+        [
+          "Debt",
+          "3134",
+          "2815"
+        ],
+        [
+          "Liabilities of consolidated variable interest entities Debt, at fair value",
+          "7943",
+          "1898"
+        ],
+        [
+          "Notes payable",
+          "2611",
+          "—"
+        ],
+        [
+          "Other liabilities",
+          "781",
+          "75"
+        ],
+        [
+          "Retirement Services Interest sensitive contract liabilities",
+          "—",
+          "164369"
+        ],
+        [
+          "Future policy benefits",
+          "—",
+          "48093"
+        ],
+        [
+          "Debt",
+          "—",
+          "3287"
+        ],
+        [
+          "Payables for collateral on derivatives and securities to repurchase",
+          "—",
+          "7071"
+        ],
+        [
+          "Other liabilities",
+          "—",
+          "2611"
+        ],
+        [
+          "Liabilities of consolidated variable interest entities Debt, at fair value",
+          "—",
+          "5905"
+        ],
+        [
+          "Other liabilities",
+          "—",
+          "824"
+        ],
+        [
+          "Total Liabilities",
+          "18538",
+          "241277"
+        ],
+        [
+          "Redeemable Non-Controlling Interests Redeemable Non-Controlling interests",
+          "1770",
+          "1790"
+        ],
+        [
+          "Equity Series A&B Preferred Stock",
+          "554",
+          "—"
+        ],
+        [
+          "Common Stock, $0.00001 par value, 90,000,000,000 shares authorized, 570,353,554 shares issued and outstanding as of March",
+          "31",
+          "2022"
+        ],
+        [
+          "Additional paid in capital",
+          "2096",
+          "15762"
+        ],
+        [
+          "Retained earnings (accumulated deficit)",
+          "1144",
+          "-93"
+        ],
+        [
+          "Accumulated other comprehensive income (loss)",
+          "",
+          "-4676"
+        ],
+        [
+          "Total Apollo Global Management Inc. Stockholders' Equity",
+          "3789",
+          "10993"
+        ],
+        [
+          "Non-Controlling interests",
+          "6405",
+          "7495"
+        ],
+        [
+          "Total Stockholders' Equity",
+          "10194",
+          "18488"
+        ],
+        [
+          "Total Liabilities and Equity",
+          "30502",
+          "261555"
+        ]
+      ],
+      "caption": "GAAP Balance Sheet (Unaudited) - cont'd ($ in millions)",
+      "source": "workiva_hidden_text"
+    },
+    {
+      "headers": [
+        "",
+        "1Q'21",
+        "2Q'21",
+        "3Q'21",
+        "4Q'21",
+        "1Q'22"
+      ],
+      "rows": [
+        [
+          "GAAP Net income (loss) attributable to Apollo Global Management, Inc. Common Stockholders",
+          "670",
+          "649",
+          "249",
+          "234",
+          "-870"
+        ],
+        [
+          "Preferred dividends",
+          "9",
+          "9",
+          "9",
+          "10",
+          "—"
+        ],
+        [
+          "Net income (loss) attributable to Non-Controlling Interests",
+          "840",
+          "847",
+          "373",
+          "369",
+          "-660"
+        ],
+        [
+          "GAAP Net income (loss)",
+          "1519",
+          "1505",
+          "631",
+          "613",
+          "-1530"
+        ],
+        [
+          "Income tax provision (benefit)",
+          "203",
+          "194",
+          "101",
+          "96",
+          "-608"
+        ],
+        [
+          "GAAP Income (loss) before Income tax provision (benefit)",
+          "1722",
+          "1699",
+          "732",
+          "709",
+          "-2138"
+        ],
+        [
+          "Asset Management Adjustments: Equity-based profit sharing expense and other1",
+          "35",
+          "27",
+          "32",
+          "52",
+          "97"
+        ],
+        [
+          "Equity-based compensation",
+          "16",
+          "19",
+          "20",
+          "25",
+          "56"
+        ],
+        [
+          "Preferred dividends",
+          "",
+          "",
+          "",
+          "-10",
+          "—"
+        ],
+        [
+          "Transaction related charges2",
+          "9",
+          "19",
+          "",
+          "8",
+          ""
+        ],
+        [
+          "Merger-related transaction and integration costs3",
+          "11",
+          "13",
+          "15",
+          "28",
+          "18"
+        ],
+        [
+          "Charges associated with corporate conversion",
+          "—",
+          "—",
+          "—",
+          "—",
+          "—"
+        ],
+        [
+          "(Gains) losses from changes in tax receivable agreement liability",
+          "",
+          "—",
+          "—",
+          "",
+          "14"
+        ],
+        [
+          "Net (income) loss attributable to Non-Controlling Interests in consolidated entities",
+          "-71",
+          "-116",
+          "-113",
+          "-118",
+          "651"
+        ],
+        [
+          "Unrealized performance fees",
+          "-1290",
+          "-280",
+          "159",
+          "-54",
+          "-445"
+        ],
+        [
+          "Unrealized profit sharing expense",
+          "589",
+          "98",
+          "-41",
+          "3",
+          "191"
+        ],
+        [
+          "One-time equity-based compensation charges4",
+          "—",
+          "—",
+          "—",
+          "949",
+          "—"
+        ],
+        [
+          "HoldCo interest and other financing costs",
+          "43",
+          "43",
+          "42",
+          "42",
+          "39"
+        ],
+        [
+          "Unrealized principal investment (income) loss",
+          "-364",
+          "",
+          "219",
+          "-68",
+          "82"
+        ],
+        [
+          "Unrealized net (gains) losses from investment activities and other",
+          "-326",
+          "-913",
+          "-152",
+          "-1040",
+          "-18"
+        ],
+        [
+          "Retirement Services Adjustments: Investment (gains) losses, net of offsets",
+          "—",
+          "—",
+          "—",
+          "—",
+          "2494"
+        ],
+        [
+          "Change in fair values of derivatives and embedded derivatives – FIAs, net of offsets",
+          "—",
+          "—",
+          "—",
+          "—",
+          "81"
+        ],
+        [
+          "Integration, restructuring and other non-operating expenses",
+          "—",
+          "—",
+          "—",
+          "—",
+          "34"
+        ],
+        [
+          "Equity-based compensation expense",
+          "—",
+          "—",
+          "—",
+          "—",
+          "12"
+        ],
+        [
+          "Adjusted Segment Income",
+          "363",
+          "591",
+          "903",
+          "518",
+          "1167"
+        ],
+        [
+          "HoldCo interest and other financing costs",
+          "-43",
+          "-43",
+          "-42",
+          "-42",
+          "-39"
+        ],
+        [
+          "Taxes and related payables",
+          "-26",
+          "-46",
+          "-108",
+          "7",
+          "-213"
+        ],
+        [
+          "Adjusted Net Income",
+          "294",
+          "502",
+          "753",
+          "483",
+          "915"
+        ],
+        [
+          "Normalization of alternative investment income to 11%, net of offsets",
+          "—",
+          "—",
+          "—",
+          "—",
+          "-143"
+        ],
+        [
+          "Other notable items",
+          "—",
+          "—",
+          "—",
+          "—",
+          "-39"
+        ],
+        [
+          "Tax impact of normalization and other notable items",
+          "—",
+          "—",
+          "—",
+          "—",
+          "38"
+        ],
+        [
+          "Adjusted Net Income - Normalized",
+          "294",
+          "502",
+          "753",
+          "483",
+          "771"
+        ]
+      ],
+      "caption": "Reconciliation of GAAP to Non-GAAP Financial Measures  ($ in millions)",
+      "source": "workiva_hidden_text"
+    }
+  ],
+  "xbrl": {
+    "Total Revenue": {
+      "value": 862000000,
+      "units": "USD",
+      "form": "10-K",
+      "filed": "2024-02-27",
+      "concept": "Revenues"
+    },
+    "Net Income": {
+      "value": -401000000,
+      "units": "USD",
+      "form": "10-K",
+      "filed": "2024-02-27",
+      "concept": "NetIncomeLoss"
+    },
+    "Net Income to Common": {
+      "value": -870000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2022-05-10",
+      "concept": "NetIncomeLossAvailableToCommonStockholdersBasic"
+    },
+    "EPS (Basic)": {
+      "value": -1.5,
+      "units": "USD/shares",
+      "form": "10-Q",
+      "filed": "2022-05-10",
+      "concept": "EarningsPerShareBasic"
+    },
+    "EPS (Diluted)": {
+      "value": -1.5,
+      "units": "USD/shares",
+      "form": "10-Q",
+      "filed": "2022-05-10",
+      "concept": "EarningsPerShareDiluted"
+    },
+    "Total Assets": {
+      "value": 261555000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2022-05-10",
+      "concept": "Assets"
+    },
+    "Total Liabilities": {
+      "value": 241277000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2022-05-10",
+      "concept": "Liabilities"
+    },
+    "Total Equity": {
+      "value": 10993000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2022-05-10",
+      "concept": "StockholdersEquity"
+    },
+    "Shares Outstanding": {
+      "value": 570353554,
+      "units": "shares",
+      "form": "10-Q",
+      "filed": "2022-05-10",
+      "concept": "CommonStockSharesOutstanding"
+    },
+    "Cash & Equivalents": {
+      "value": 9769000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2022-05-10",
+      "concept": "CashAndCashEquivalentsAtCarryingValue"
+    },
+    "Comprehensive Income": {
+      "value": -5541000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2022-05-10",
+      "concept": "ComprehensiveIncomeNetOfTax"
+    },
+    "Income Tax Expense": {
+      "value": -608000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2022-05-10",
+      "concept": "IncomeTaxExpenseBenefit"
+    }
+  }
+}

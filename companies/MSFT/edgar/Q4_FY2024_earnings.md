@@ -1,0 +1,197 @@
+# Microsoft Corporation — Q4_FY2024 Earnings Release
+
+**Ticker:** MSFT
+**Filing Date:** 2024-07-30
+**Accession:** 0000950170-24-087835
+**Source:** [SEC EDGAR](https://www.sec.gov/Archives/edgar/data/789019/000095017024087835/0000950170-24-087835-index.htm)
+
+## Key Metrics (XBRL)
+
+| Metric | Value | Units | Source |
+|--------|------:|-------|--------|
+| Cash & Equivalents | $18.32B | USD | 10-K |
+| Comprehensive Income | $88.89B | USD | 10-K |
+| EPS (Basic) | 12 | USD/shares | 10-K |
+| EPS (Diluted) | 12 | USD/shares | 10-K |
+| Income Tax Expense | $19.65B | USD | 10-K |
+| Net Income | $88.14B | USD | 10-K |
+| Operating Income | $109.43B | USD | 10-K |
+| Revenue | $245.12B | USD | 10-K |
+| Shares Outstanding | 7,434.0M | shares | 10-K |
+| Total Assets | $512.16B | USD | 10-K |
+| Total Equity | $268.48B | USD | 10-K |
+| Total Liabilities | $243.69B | USD | 10-K |
+
+## Financial Tables (from Exhibits)
+
+### 
+
+|  |  | Twelve Months Ended June 30, |
+| ( in millions, except per share amounts) |  | Revenue |  | Operating Income |  | Net Income |  | Diluted Earnings per Share |
+| 2023 As Reported (GAAP) |  | 211915 |  | 88523 |  | 72361 |  | 9.68 |
+| Severance, hardware-related impairment, and lease consolidation costs |  | - |  | 1171 |  | 946 |  | 0.13 |
+| 2023 As Adjusted (non-GAAP) |  | 211915 |  | 89694 |  | 73307 |  | 9.81 |
+| 2024 As Reported (GAAP) |  | 245122 |  | 109433 |  | 88136 |  | 11.80 |
+| Percentage Change Y/Y (GAAP) |  | 16% |  | 24% |  | 22% |  | 22% |
+| Percentage Change Y/Y Constant Currency |  | 15% |  | 23% |  | 21% |  | 21% |
+| Percentage Change Y/Y (non-GAAP) |  | 16% |  | 22% |  | 20% |  | 20% |
+| Percentage Change Y/Y (non-GAAP) Constant Currency |  | 15% |  | 21% |  | 20% |  | 20% |
+
+### Financial Performance Constant Currency Reconciliation
+
+|  |  | Three Months Ended June 30, |
+| ( in millions, except per share amounts) |  | Revenue |  | Operating Income |  | Net Income |  | Diluted Earnings per Share |
+| 2023 As Reported (GAAP) |  | 56189 |  | 24254 |  | 20081 |  | 2.69 |
+| 2024 As Reported (GAAP) |  | 64727 |  | 27925 |  | 22036 |  | 2.95 |
+| Percentage Change Y/Y (GAAP) |  | 15% |  | 15% |  | 10% |  | 10% |
+| Constant Currency Impact |  | -345 |  | -218 |  | -269 |  | -0.04 |
+| Percentage Change Y/Y Constant Currency |  | 16% |  | 16% |  | 11% |  | 11% |
+
+### 
+
+|  |  | Twelve Months Ended June 30, |
+| ( in millions, except per share amounts) |  | Revenue |  | Operating Income |  | Net Income |  | Diluted Earnings per Share |
+| 2023 As Reported (GAAP) |  | 211915 |  | 88523 |  | 72361 |  | 9.68 |
+| 2023 As Adjusted (non-GAAP) |  | 211915 |  | 89694 |  | 73307 |  | 9.81 |
+| 2024 As Reported (GAAP) |  | 245122 |  | 109433 |  | 88136 |  | 11.80 |
+| Percentage Change Y/Y (GAAP) |  | 16% |  | 24% |  | 22% |  | 22% |
+| Percentage Change Y/Y (non-GAAP) |  | 16% |  | 22% |  | 20% |  | 20% |
+| Constant Currency Impact |  | 900 |  | 717 |  | 312 |  | 0.04 |
+| Percentage Change Y/Y Constant Currency |  | 15% |  | 23% |  | 21% |  | 21% |
+| Percentage Change Y/Y (non-GAAP) Constant Currency |  | 15% |  | 21% |  | 20% |  | 20% |
+
+### 
+
+|  |  | Three Months Ended June 30, |  | Twelve Months Ended June 30, |
+|  |  | 2024 |  | 2023 |  | 2024 |  | 2023 |
+| Revenue: |  |  |  |  |  |  |  |  |
+| Product |  | 13217 |  | 16853 |  | 64773 |  | 64699 |
+| Service and other |  | 51510 |  | 39336 |  | 180349 |  | 147216 |
+| Total revenue |  | 64727 |  | 56189 |  | 245122 |  | 211915 |
+| Cost of revenue: |  |  |  |  |  |  |  |  |
+| Product |  | 1438 |  | 3871 |  | 15272 |  | 17804 |
+| Service and other |  | 18246 |  | 12924 |  | 58842 |  | 48059 |
+| Total cost of revenue |  | 19684 |  | 16795 |  | 74114 |  | 65863 |
+| Gross margin |  | 45043 |  | 39394 |  | 171008 |  | 146052 |
+| Research and development |  | 8056 |  | 6739 |  | 29510 |  | 27195 |
+| Sales and marketing |  | 6816 |  | 6204 |  | 24456 |  | 22759 |
+| General and administrative |  | 2246 |  | 2197 |  | 7609 |  | 7575 |
+| Operating income |  | 27925 |  | 24254 |  | 109433 |  | 88523 |
+| Other income (expense), net |  | -675 |  | 473 |  | -1646 |  | 788 |
+| Income before income taxes |  | 27250 |  | 24727 |  | 107787 |  | 89311 |
+| Provision for income taxes |  | 5214 |  | 4646 |  | 19651 |  | 16950 |
+| Net income |  | 22036 |  | 20081 |  | 88136 |  | 72361 |
+| Earnings per share: |  |  |  |  |  |  |  |  |
+| Basic |  | 2.96 |  | 2.70 |  | 11.86 |  | 9.72 |
+| Diluted |  | 2.95 |  | 2.69 |  | 11.80 |  | 9.68 |
+| Weighted average shares outstanding: |  |  |  |  |  |  |  |  |
+| Basic |  | 7433 |  | 7434 |  | 7431 |  | 7446 |
+| Diluted |  | 7472 |  | 7467 |  | 7469 |  | 7472 |
+
+### 
+
+|  |  | June 30, 2024 |  | June 30, 2023 |
+| Assets |  |  |  |  |
+| Current assets: |  |  |  |  |
+| Cash and cash equivalents |  | 18315 |  | 34704 |
+| Short-term investments |  | 57228 |  | 76558 |
+| Total cash, cash equivalents, and short-term investments |  | 75543 |  | 111262 |
+| Accounts receivable, net of allowance for doubtful accounts of 830 and 650 |  | 56924 |  | 48688 |
+| Inventories |  | 1246 |  | 2500 |
+| Other current assets |  | 26021 |  | 21807 |
+| Total current assets |  | 159734 |  | 184257 |
+| Property and equipment, net of accumulated depreciation of 76,421 and 68,251 |  | 135591 |  | 95641 |
+| Operating lease right-of-use assets |  | 18961 |  | 14346 |
+| Equity and other investments |  | 14600 |  | 9879 |
+| Goodwill |  | 119220 |  | 67886 |
+| Intangible assets, net |  | 27597 |  | 9366 |
+| Other long-term assets |  | 36460 |  | 30601 |
+| Total assets |  | 512163 |  | 411976 |
+| Liabilities and stockholders' equity |  |  |  |  |
+| Current liabilities: |  |  |  |  |
+| Accounts payable |  | 21996 |  | 18095 |
+| Short-term debt |  | 6693 |  | 0 |
+| Current portion of long-term debt |  | 2249 |  | 5247 |
+| Accrued compensation |  | 12564 |  | 11009 |
+| Short-term income taxes |  | 5017 |  | 4152 |
+| Short-term unearned revenue |  | 57582 |  | 50901 |
+| Other current liabilities |  | 19185 |  | 14745 |
+| Total current liabilities |  | 125286 |  | 104149 |
+| Long-term debt |  | 42688 |  | 41990 |
+| Long-term income taxes |  | 27931 |  | 25560 |
+| Long-term unearned revenue |  | 2602 |  | 2912 |
+| Deferred income taxes |  | 2618 |  | 433 |
+| Operating lease liabilities |  | 15497 |  | 12728 |
+| Other long-term liabilities |  | 27064 |  | 17981 |
+| Total liabilities |  | 243686 |  | 205753 |
+| Commitments and contingencies |  |  |  |  |
+| Stockholders' equity: |  |  |  |  |
+| Common stock and paid-in capital - shares authorized 24,000; outstanding 7,434 and 7,432 |  | 100923 |  | 93718 |
+| Retained earnings |  | 173144 |  | 118848 |
+| Accumulated other comprehensive loss |  | -5590 |  | -6343 |
+| Total stockholders' equity |  | 268477 |  | 206223 |
+| Total liabilities and stockholders' equity |  | 512163 |  | 411976 |
+
+### 
+
+|  |  | Three Months Ended |  | Twelve Months Ended |
+|  |  | June 30, |  | June 30, |
+|  |  | 2024 |  | 2023 |  | 2024 |  | 2023 |
+| Operations |  |  |  |  |  |  |  |  |
+| Net income |  | 22036 |  | 20081 |  | 88136 |  | 72361 |
+| Adjustments to reconcile net income to net cash from operations: |  |  |  |  |  |  |  |  |
+| Depreciation, amortization, and other |  | 6380 |  | 3874 |  | 22287 |  | 13861 |
+| Stock-based compensation expense |  | 2696 |  | 2416 |  | 10734 |  | 9611 |
+| Net recognized losses on investments and derivatives |  | 44 |  | 44 |  | 305 |  | 196 |
+| Deferred income taxes |  | -1145 |  | -1888 |  | -4738 |  | -6059 |
+| Changes in operating assets and liabilities: |  |  |  |  |  |  |  |  |
+| Accounts receivable |  | -13246 |  | -11244 |  | -7191 |  | -4087 |
+| Inventories |  | 55 |  | 374 |  | 1284 |  | 1242 |
+| Other current assets |  | -2528 |  | -2419 |  | -1648 |  | -1991 |
+| Other long-term assets |  | -1240 |  | -1548 |  | -6817 |  | -2833 |
+| Accounts payable |  | 4204 |  | 1311 |  | 3545 |  | -2721 |
+| Unearned revenue |  | 15657 |  | 14224 |  | 5348 |  | 5535 |
+| Income taxes |  | -806 |  | 681 |  | 1687 |  | -358 |
+| Other current liabilities |  | 4652 |  | 2762 |  | 4867 |  | 2272 |
+| Other long-term liabilities |  | 436 |  | 102 |  | 749 |  | 553 |
+| Net cash from operations |  | 37195 |  | 28770 |  | 118548 |  | 87582 |
+| Financing |  |  |  |  |  |  |  |  |
+| Proceeds from issuance (repayments) of debt, maturities of 90 days or less, net |  | -1142 |  | 0 |  | 5250 |  | 0 |
+| Proceeds from issuance of debt |  | 197 |  | 0 |  | 24395 |  | 0 |
+| Repayments of debt |  | -13065 |  | -1000 |  | -29070 |  | -2750 |
+| Common stock issued |  | 534 |  | 512 |  | 2002 |  | 1866 |
+| Common stock repurchased |  | -4210 |  | -5704 |  | -17254 |  | -22245 |
+| Common stock cash dividends paid |  | -5574 |  | -5054 |  | -21771 |  | -19800 |
+| Other, net |  | -303 |  | -167 |  | -1309 |  | -1006 |
+| Net cash used in financing |  | -23563 |  | -11413 |  | -37757 |  | -43935 |
+| Investing |  |  |  |  |  |  |  |  |
+| Additions to property and equipment |  | -13873 |  | -8943 |  | -44477 |  | -28107 |
+| Acquisition of companies, net of cash acquired, and purchases of intangible and other assets |  | -1342 |  | -341 |  | -69132 |  | -1670 |
+| Purchases of investments |  | -2831 |  | -11976 |  | -17732 |  | -37651 |
+| Maturities of investments |  | 1557 |  | 6766 |  | 24775 |  | 33510 |
+| Sales of investments |  | 2023 |  | 5629 |  | 10894 |  | 14354 |
+| Other, net |  | -382 |  | -269 |  | -1298 |  | -3116 |
+| Net cash used in investing |  | -14848 |  | -9134 |  | -96970 |  | -22680 |
+| Effect of foreign exchange rates on cash and cash equivalents |  | -103 |  | -81 |  | -210 |  | -194 |
+| Net change in cash and cash equivalents |  | -1319 |  | 8142 |  | -16389 |  | 20773 |
+| Cash and cash equivalents, beginning of period |  | 19634 |  | 26562 |  | 34704 |  | 13931 |
+| Cash and cash equivalents, end of period |  | 18315 |  | 34704 |  | 18315 |  | 34704 |
+
+### 
+
+|  |  | Three Months Ended |  | Twelve Months Ended |
+|  |  | June 30, |  | June 30, |
+|  |  | 2024 |  | 2023 |  | 2024 |  | 2023 |
+| Revenue |  |  |  |  |  |  |  |  |
+| Productivity and Business Processes |  | 20317 |  | 18291 |  | 77728 |  | 69274 |
+| Intelligent Cloud |  | 28515 |  | 23993 |  | 105362 |  | 87907 |
+| More Personal Computing |  | 15895 |  | 13905 |  | 62032 |  | 54734 |
+| Total |  | 64727 |  | 56189 |  | 245122 |  | 211915 |
+| Operating Income |  |  |  |  |  |  |  |  |
+| Productivity and Business Processes |  | 10143 |  | 9052 |  | 40540 |  | 34189 |
+| Intelligent Cloud |  | 12859 |  | 10526 |  | 49584 |  | 37884 |
+| More Personal Computing |  | 4923 |  | 4676 |  | 19309 |  | 16450 |
+| Total |  | 27925 |  | 24254 |  | 109433 |  | 88523 |
+
+---
+*Generated by edgar_download.py on 2026-03-03 18:30*

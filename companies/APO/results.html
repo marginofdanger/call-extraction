@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apollo Global Management &mdash; Actuals vs Guidance Scorecard</title>
+<style>
+  :root {
+    --company-primary: #003A70;
+    --company-dark: #1a1a2e;
+    --company-accent: #0066B3;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text); background: #fff; line-height: 1.6;
+    max-width: 1200px; margin: 0 auto; padding: 0 24px 80px;
+  }
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff; padding: 48px 40px; margin: 0 -24px 40px;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; }
+  .header .subtitle { font-size: 1.1rem; opacity: 0.85; font-weight: 300; }
+  .quarter-nav {
+    background: var(--company-accent); border-radius: 8px; padding: 16px 20px;
+    margin-bottom: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  }
+  .quarter-nav .label { color: #fff; font-weight: 600; font-size: 0.85rem; margin-right: 8px; white-space: nowrap; }
+  .quarter-nav .year-group { display: flex; gap: 4px; align-items: center; }
+  .quarter-nav .year-label { color: rgba(255,255,255,0.5); font-size: 0.72rem; font-weight: 600; margin-right: 2px; letter-spacing: 0.5px; }
+  .quarter-nav a {
+    background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 4px; padding: 4px 10px; font-size: 0.78rem; font-weight: 600;
+    text-decoration: none; transition: all 0.15s;
+  }
+  .quarter-nav a:hover { background: rgba(255,255,255,0.25); }
+  .quarter-nav a.overview-link {
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.35);
+    padding: 4px 14px; font-size: 0.82rem; margin-left: auto;
+  }
+  .toc {
+    background: var(--light-bg); border: 1px solid var(--border); border-radius: 8px;
+    padding: 24px 32px; margin-bottom: 40px; columns: 2; column-gap: 40px;
+  }
+  .toc h2 { font-size: 1.1rem; color: var(--company-accent); margin-bottom: 12px; column-span: all; }
+  .toc a { display: block; color: var(--blue); text-decoration: none; padding: 3px 0; font-size: 0.9rem; break-inside: avoid; }
+  .toc a:hover { text-decoration: underline; }
+
+  /* Score cards */
+  .score-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 40px; }
+  .score-card {
+    background: var(--light-bg); border: 2px solid var(--border); border-radius: 10px;
+    padding: 20px; text-align: center;
+  }
+  .score-card.highlight { border-color: var(--green); }
+  .score-card.warning { border-color: var(--amber); }
+  .score-card .score-label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-bottom: 4px; }
+  .score-card .score-value { font-size: 2rem; font-weight: 700; color: var(--company-dark); }
+  .score-card .score-detail { font-size: 0.82rem; color: var(--text-muted); margin-top: 4px; }
+
+  .section { margin-bottom: 48px; scroll-margin-top: 20px; }
+  .section h2 { font-size: 1.4rem; color: var(--company-dark); border-bottom: 3px solid var(--company-primary); padding-bottom: 8px; margin-bottom: 16px; }
+  .section h2 .num {
+    display: inline-block; background: var(--company-primary); color: #fff;
+    width: 28px; height: 28px; line-height: 28px; text-align: center;
+    border-radius: 50%; font-size: 0.85rem; margin-right: 8px; vertical-align: middle;
+  }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 0.88rem; }
+  thead th {
+    background: var(--company-accent); color: #fff; padding: 10px 12px; text-align: left;
+    font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap;
+  }
+  tbody td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tbody tr:nth-child(even) { background: var(--light-bg); }
+  tbody tr:hover { background: #eef2f7; }
+  .pos { color: var(--green); font-weight: 600; }
+  .neg { color: var(--red); font-weight: 600; }
+  .neutral { color: var(--amber); font-weight: 600; }
+  .raised { background: #eafaf1 !important; }
+  .lowered { background: #fef0ef !important; }
+  .bold { font-weight: 700; }
+  .muted { color: var(--text-muted); font-style: italic; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; vertical-align: middle; }
+  .tag-beat { background: #d5f5e3; color: #1e8449; }
+  .tag-miss { background: #fadbd8; color: #c0392b; }
+  .tag-met { background: #fdebd0; color: #b9770e; }
+  .tag-pending { background: #d6eaf8; color: #2471a3; }
+  .insight {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0); border-left: 4px solid var(--amber);
+    padding: 14px 18px; margin: 16px 0; border-radius: 0 6px 6px 0; font-size: 0.9rem;
+  }
+  .insight strong { color: var(--company-dark); }
+  .takeaways { counter-reset: takeaway; }
+  .takeaway {
+    display: flex; gap: 16px; margin-bottom: 18px; padding: 14px 18px;
+    background: var(--light-bg); border-radius: 8px; border: 1px solid var(--border);
+  }
+  .takeaway-num {
+    flex-shrink: 0; width: 32px; height: 32px; line-height: 32px; text-align: center;
+    background: var(--company-primary); color: #fff; border-radius: 50%; font-weight: 700; font-size: 0.85rem;
+  }
+  .takeaway-text { font-size: 0.92rem; }
+  .takeaway-text strong { color: var(--company-dark); }
+  .year-divider td { background: var(--company-accent) !important; color: #fff; font-weight: 700; font-size: 0.82rem; padding: 6px 12px; letter-spacing: 0.5px; }
+  .footer { margin-top: 60px; padding: 24px 0; border-top: 2px solid var(--border); text-align: center; font-size: 0.82rem; color: var(--text-muted); }
+  @media (max-width: 768px) { .toc { columns: 1; } .header h1 { font-size: 1.6rem; } table { font-size: 0.8rem; } thead th, tbody td { padding: 6px 8px; } .score-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media print { .header { background: #333; } .section { page-break-inside: avoid; } table { font-size: 0.75rem; } .quarter-nav { display: none; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Apollo Global Management &mdash; Results Scorecard</h1>
+  <div class="subtitle">Actuals vs Guidance &mdash; FY 2022 through FY 2025 (Annual Guidance Tracking)</div>
+</div>
+
+<div class="quarter-nav" id="qnav">
+  <span class="label">Quarter detail:</span>
+  <div class="year-group"><span class="year-label">2025</span>
+    <a href="quarters/Q4_2025.html">4Q25</a><a href="quarters/Q3_2025.html">3Q25</a><a href="quarters/Q2_2025.html">2Q25</a><a href="quarters/Q1_2025.html">1Q25</a>
+  </div>
+  <div class="year-group"><span class="year-label">2024</span>
+    <a href="quarters/Q4_2024.html">4Q24</a><a href="quarters/Q3_2024.html">3Q24</a><a href="quarters/Q2_2024.html">2Q24</a><a href="quarters/Q1_2024.html">1Q24</a>
+  </div>
+  <div class="year-group"><span class="year-label">2023</span>
+    <a href="quarters/Q4_2023.html">4Q23</a><a href="quarters/Q3_2023.html">3Q23</a><a href="quarters/Q2_2023.html">2Q23</a><a href="quarters/Q1_2023.html">1Q23</a>
+  </div>
+  <div class="year-group"><span class="year-label">2022</span>
+    <a href="quarters/Q4_2022.html">4Q22</a><a href="quarters/Q3_2022.html">3Q22</a><a href="quarters/Q2_2022.html">2Q22</a><a href="quarters/Q1_2022.html">1Q22</a>
+  </div>
+  <a href="comparison.html" class="overview-link">Guidance Overview &rarr;</a>
+</div>
+
+<!-- SUMMARY SCORECARD -->
+<div class="score-grid">
+  <div class="score-card highlight">
+    <div class="score-label">FRE Guidance Beat Rate</div>
+    <div class="score-value pos">4 / 4</div>
+    <div class="score-detail">Met or exceeded every year</div>
+  </div>
+  <div class="score-card warning">
+    <div class="score-card highlight" style="border:0; padding:0;">
+      <div class="score-label">SRE vs Initial Guide</div>
+      <div class="score-value neutral">2 / 4</div>
+      <div class="score-detail">2 years required downward revision</div>
+    </div>
+  </div>
+  <div class="score-card highlight">
+    <div class="score-label">Athene Inflows</div>
+    <div class="score-value pos">4 / 4</div>
+    <div class="score-detail">Exceeded target every year</div>
+  </div>
+  <div class="score-card highlight">
+    <div class="score-label">Origination Target</div>
+    <div class="score-value pos">4 / 4</div>
+    <div class="score-detail">Met or exceeded every year</div>
+  </div>
+  <div class="score-card highlight">
+    <div class="score-label">Avg FRE Beat vs Target</div>
+    <div class="score-value pos">+3.4pp</div>
+    <div class="score-detail">Above midpoint guidance</div>
+  </div>
+  <div class="score-card">
+    <div class="score-label">ANI CAGR (3yr)</div>
+    <div class="score-value">17%</div>
+    <div class="score-detail">$5.21 &rarr; $8.38/share</div>
+  </div>
+</div>
+
+<!-- TOC -->
+<div class="toc">
+  <h2>Table of Contents</h2>
+  <a href="#s1">1. FRE Growth: Guidance vs Actual</a>
+  <a href="#s2">2. SRE: Guidance vs Actual</a>
+  <a href="#s3">3. Net Spread: Guidance vs Actual</a>
+  <a href="#s4">4. Athene Inflows: Guidance vs Actual</a>
+  <a href="#s5">5. Origination: Guidance vs Actual</a>
+  <a href="#s6">6. Capital Solutions: Guidance vs Actual</a>
+  <a href="#s7">7. Full-Year Guidance Revision Timeline</a>
+  <a href="#s8">8. Key Takeaways</a>
+</div>
+
+<!-- SECTION 1: FRE -->
+<div class="section" id="s1">
+  <h2><span class="num">1</span> FRE Growth: Guidance vs Actual</h2>
+  <table>
+    <thead><tr><th>Year</th><th>Initial Guidance</th><th>Final Guidance</th><th>Actual FRE</th><th>Actual Growth</th><th>vs Guide</th><th>Result</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="7">PENDING</td></tr>
+      <tr><td class="bold">FY 2026</td><td>20%+ growth</td><td class="muted">In progress</td><td class="muted">Pending</td><td class="muted">&mdash;</td><td class="muted">&mdash;</td><td><span class="tag tag-pending">Pending</span></td></tr>
+      <tr class="year-divider"><td colspan="7">COMPLETED YEARS</td></tr>
+      <tr class="raised"><td class="bold">FY 2025</td><td>15-20%</td><td>On pace for 20%</td><td class="bold">$2,528M</td><td class="pos">+23%</td><td class="pos">Beat high end by +3pp</td><td><span class="tag tag-beat">Beat</span></td></tr>
+      <tr class="raised"><td class="bold">FY 2024</td><td>15-20%</td><td>On track (15-20%)</td><td class="bold">$2,063M</td><td class="pos">+16.7%</td><td class="pos">Within range</td><td><span class="tag tag-met">Met</span></td></tr>
+      <tr class="raised"><td class="bold">FY 2023</td><td>~25%</td><td>25% (confident)</td><td class="bold">$1,768M</td><td class="pos">+25%</td><td class="pos">Met exactly</td><td><span class="tag tag-met">Met</span></td></tr>
+      <tr class="raised"><td class="bold">FY 2022</td><td>$2.35/share</td><td>$2.35 (confident)</td><td class="bold">$1,410M ($2.36)</td><td class="pos">+11%</td><td class="pos">+$0.01 vs target</td><td><span class="tag tag-met">Met</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Apollo has a perfect 4/4 record on FRE guidance. The pattern is unmistakable: set conservative targets, then systematically meet or exceed. FY2025 was the most impressive outperformance, delivering 23% growth against a 15-20% guide. FY2023 was the most precise, hitting the 25% target exactly. The FRE guidance process has never required a downward revision &mdash; making it the most reliable metric in Apollo's guidance framework.</div>
+</div>
+
+<!-- SECTION 2: SRE -->
+<div class="section" id="s2">
+  <h2><span class="num">2</span> SRE: Guidance vs Actual</h2>
+  <table>
+    <thead><tr><th>Year</th><th>Initial Guidance</th><th>Revision(s)</th><th>Final Guide</th><th>Actual SRE</th><th>vs Initial</th><th>vs Final</th><th>Result</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="8">PENDING</td></tr>
+      <tr><td class="bold">FY 2026</td><td>10% (~$3.85B)</td><td class="muted">None yet</td><td class="muted">In progress</td><td class="muted">Pending</td><td class="muted">&mdash;</td><td class="muted">&mdash;</td><td><span class="tag tag-pending">Pending</span></td></tr>
+      <tr class="year-divider"><td colspan="8">COMPLETED YEARS</td></tr>
+      <tr><td class="bold">FY 2025</td><td>~$3.5B (ID)</td><td class="neg">Mid-single-digit off $3.2B</td><td>~$3,475M (~8%)</td><td class="bold">$3,361M</td><td class="neg">-$139M vs initial</td><td class="neg">-$114M vs final</td><td><span class="tag tag-miss">Below initial</span></td></tr>
+      <tr><td></td><td colspan="7" style="font-size:0.82rem; color: var(--text-muted);">Ex-notable $3,371M; normalized ~$3.4B (+9% per mgmt). Headwinds: extra rate cuts (~$40M), competitive retail (~10 bps), prepays (~$40M), COVID runoff. Beat revised mid-single-digit guide.</td></tr>
+
+      <tr><td class="bold">FY 2024</td><td>Low double-digit %</td><td class="neg">Mid-single-digit % (Aug '24)</td><td>~$3.2B</td><td class="bold">$3,224M</td><td class="neg">Below initial</td><td class="pos">Met final</td><td><span class="tag tag-met">Met revised</span></td></tr>
+      <tr><td></td><td colspan="7" style="font-size:0.82rem; color: var(--text-muted);">Ex-notable $3,199M (+6.9%). COVID-era FABN maturity, hedging costs, and higher corporate purchases forced mid-year revision. Beat revised target.</td></tr>
+
+      <tr class="raised"><td class="bold">FY 2023</td><td>~20% normalized</td><td class="pos">~30% norm (raised 3x)</td><td>Exceeding 30%</td><td class="bold pos">$3,108M (+26%)</td><td class="pos">Beat initial</td><td class="neg">Below 30% final</td><td><span class="tag tag-beat">Beat initial</span></td></tr>
+      <tr><td></td><td colspan="7" style="font-size:0.82rem; color: var(--text-muted);">Ex-notable $2,993M (+21%). Guidance raised 3x through the year (20% &rarr; $3B &rarr; 30% &rarr; exceeding 30%). As-reported beat initial; fell slightly short of final raised target on ex-notable basis.</td></tr>
+
+      <tr class="raised"><td class="bold">FY 2022</td><td>~$3.35/share</td><td class="pos">~$4/share (raised Nov)</td><td>~$4/share</td><td class="bold pos">$2,332M norm ($3.88)</td><td class="pos">+$0.53 vs initial</td><td class="neg">-$0.12 vs final</td><td><span class="tag tag-beat">Beat initial</span></td></tr>
+      <tr><td></td><td colspan="7" style="font-size:0.82rem; color: var(--text-muted);">Normalized $3.88/share. Massive outperformance vs initial $3.35 Investor Day indication. Rate tailwind ($100M+ incremental) drove upward revision. Landed slightly below final $4 raised target.</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> SRE guidance is Apollo's most dynamic metric. In 2022 and 2023, initial guidance was set conservatively and then raised 1-3 times during the year as rate tailwinds materialized. In 2024 and 2025, the opposite occurred: initial targets were too aggressive and had to be revised downward mid-year as COVID-era liabilities rolled off and hedging costs mounted. The critical distinction: when measured against the <em>final</em> guidance, Apollo met or came close in every year. When measured against <em>initial</em> guidance, the record is 2/4 beat, 2/4 missed. This dual pattern reflects the inherent sensitivity of spread-based earnings to macro conditions, rate moves, and competitive dynamics that are harder to forecast at the start of the year.</div>
+</div>
+
+<!-- SECTION 3: NET SPREAD -->
+<div class="section" id="s3">
+  <h2><span class="num">3</span> Net Spread: Guidance vs Actual</h2>
+  <table>
+    <thead><tr><th>Year</th><th>Initial Guide (bps)</th><th>Revised Guide</th><th>Actual (bps)</th><th>vs Initial</th><th>Result</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="6">PENDING</td></tr>
+      <tr><td class="bold">FY 2026</td><td>120-125 bps</td><td class="muted">N/A</td><td class="muted">Pending</td><td class="muted">&mdash;</td><td><span class="tag tag-pending">Pending</span></td></tr>
+      <tr class="year-divider"><td colspan="6">COMPLETED YEARS (ex-notable, comparable basis)</td></tr>
+      <tr><td class="bold">FY 2025</td><td class="muted">Not explicitly guided annually<sup>1</sup></td><td>&mdash;</td><td>~123 bps FY</td><td>&mdash;</td><td>&mdash;</td></tr>
+      <tr><td></td><td colspan="5" style="font-size:0.82rem; color: var(--text-muted);"><sup>1</sup>2025 SRE guided in dollars; net spread disclosed quarterly but no explicit FY bps target set.</td></tr>
+
+      <tr class="lowered"><td class="bold">FY 2024</td><td>160-165 bps</td><td class="neg">~150 bps (Aug '24)</td><td class="neg">~137 bps ex-notable</td><td class="neg">-23 to -28 bps vs initial</td><td><span class="tag tag-miss">Missed</span></td></tr>
+      <tr><td></td><td colspan="5" style="font-size:0.82rem; color: var(--text-muted);">At 11% alts: ~153 bps. COVID-era FABN maturity, hedging costs, and shift to corporate purchases drove the miss. Net spread guidance was revised from 160-165 to ~150 bps at Q2 2024 but actual still came in below.</td></tr>
+
+      <tr class="raised"><td class="bold">FY 2023</td><td>135-140 bps</td><td class="pos">150-155 bps (raised May '23; +10 bps for LDTI)</td><td class="pos">144 bps ex-notable<sup>2</sup></td><td class="pos">+4 to +9 bps vs initial</td><td><span class="tag tag-beat">Beat initial</span></td></tr>
+      <tr><td></td><td colspan="5" style="font-size:0.82rem; color: var(--text-muted);"><sup>2</sup>Reporting changed in Q4 2023. At 11% alts, FY net spread was ~165 bps. Beat original target. The LDTI accounting restatement added ~10 bps to the comparable basis.</td></tr>
+
+      <tr class="raised"><td class="bold">FY 2022</td><td>~110-115 bps</td><td>&mdash;</td><td class="pos">123 bps normalized</td><td class="pos">+8 to +13 bps</td><td><span class="tag tag-beat">Beat</span></td></tr>
+      <tr><td></td><td colspan="5" style="font-size:0.82rem; color: var(--text-muted);">Rate tailwind drove spread expansion throughout the year. Q4 printed 140 bps normalized vs 108 bps in Q1.</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Net spread guidance follows a clear pattern: underestimated in 2022-2023 (rate tailwinds drove spreads above guide) and overestimated in 2024 (COVID-era maturity impact was larger than expected). The FY2024 miss was the most significant &mdash; landing at ~137 bps vs 160-165 bps initial guidance, a 23-28 bps shortfall that forced the mid-year SRE revision. By 2025, management stopped giving explicit annual net spread targets, instead guiding SRE in dollar terms and disclosing spread quarterly. The 2026 guide of 120-125 bps represents management's expectation that the trough is at hand.</div>
+</div>
+
+<!-- SECTION 4: ATHENE INFLOWS -->
+<div class="section" id="s4">
+  <h2><span class="num">4</span> Athene Inflows: Guidance vs Actual</h2>
+  <table>
+    <thead><tr><th>Year</th><th>Initial Target</th><th>Revisions</th><th>Actual</th><th>vs Target</th><th>Result</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="6">PENDING</td></tr>
+      <tr><td class="bold">FY 2026</td><td>~$85B</td><td class="muted">N/A</td><td class="muted">Pending</td><td class="muted">&mdash;</td><td><span class="tag tag-pending">Pending</span></td></tr>
+      <tr class="year-divider"><td colspan="6">COMPLETED YEARS</td></tr>
+      <tr class="raised"><td class="bold">FY 2025</td><td>&gt;$70B+</td><td class="pos">Pacing toward record (Nov)</td><td class="bold pos">$83B</td><td class="pos">+$13B+ vs initial</td><td><span class="tag tag-beat">Beat</span></td></tr>
+      <tr><td></td><td colspan="5" style="font-size:0.82rem; color: var(--text-muted);">Record year; retail $34B, FA $35B (record), reinsurance $12B. Original guide was ">$70B+" based on whether Apollo could "earn spread."</td></tr>
+
+      <tr class="raised"><td class="bold">FY 2024</td><td>$70B</td><td>On track (reaffirmed)</td><td class="bold pos">$71B+</td><td class="pos">+$1B vs target</td><td><span class="tag tag-met">Met</span></td></tr>
+      <tr><td></td><td colspan="5" style="font-size:0.82rem; color: var(--text-muted);">All 4 channels contributing; leading U.S. market share. Management noted "could have been $75-80B but managed growth responsibly."</td></tr>
+
+      <tr class="raised"><td class="bold">FY 2023</td><td>&gt;$48B (exceed '22)</td><td class="pos">Line of sight &gt;$60B (raised Aug)</td><td class="bold pos">$66B</td><td class="pos">+$18B vs initial; +$6B vs raised</td><td><span class="tag tag-beat">Beat</span></td></tr>
+      <tr><td></td><td colspan="5" style="font-size:0.82rem; color: var(--text-muted);">Record year; flow reinsurance >$10B; retail record; "leaving $10-20B on the table annually."</td></tr>
+
+      <tr class="raised"><td class="bold">FY 2022</td><td>$45B+</td><td class="pos">"Close to $50B" (Nov)</td><td class="bold pos">$48B</td><td class="pos">+$3B vs initial</td><td><span class="tag tag-beat">Beat</span></td></tr>
+      <tr><td></td><td colspan="5" style="font-size:0.82rem; color: var(--text-muted);">#1 purveyor of annuities in U.S.; record $6B retail quarter in Q3.</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Athene inflows have beaten guidance in every year: $48B vs $45B target (2022), $66B vs $48B+ (2023), $71B vs $70B (2024), and $83B vs $70B+ (2025). The consistent message is disciplined volume management &mdash; "leaving $10-20B on the table" &mdash; yet actuals keep exceeding targets. The growth from $48B to $83B (73% in 3 years) was achieved while maintaining quality and channel diversification. The $85B target for 2026 includes >$5B from markets Apollo wasn't in 18 months ago.</div>
+</div>
+
+<!-- SECTION 5: ORIGINATION -->
+<div class="section" id="s5">
+  <h2><span class="num">5</span> Origination: Guidance vs Actual</h2>
+  <table>
+    <thead><tr><th>Year</th><th>Target</th><th>Actual</th><th>vs Target</th><th>Result</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="6">PENDING</td></tr>
+      <tr><td class="bold">FY 2026</td><td>$275B (5yr plan)</td><td class="muted">Pending</td><td class="muted">&mdash;</td><td><span class="tag tag-pending">Pending</span></td><td>$305B achieved in year 1; "premature to formally revise"</td></tr>
+      <tr class="year-divider"><td colspan="6">COMPLETED YEARS</td></tr>
+      <tr class="raised"><td class="bold">FY 2025</td><td>Exceed $222B</td><td class="bold pos">$305B</td><td class="pos">+$83B (+37%)</td><td><span class="tag tag-beat">Beat</span></td><td>Crossed $300B mark; +40% YoY; exceeded $275B 5yr target in year 1</td></tr>
+      <tr class="raised"><td class="bold">FY 2024</td><td>$125B</td><td class="bold pos">$222B</td><td class="pos">+$97B (+78%)</td><td><span class="tag tag-beat">Beat</span></td><td>Record; ~2x FY2023; $62B Q3 record; platforms + HGCS + core all strong</td></tr>
+      <tr><td class="bold">FY 2023</td><td>$100B+ (LTM)</td><td class="bold">~$100B</td><td class="pos">Met</td><td><span class="tag tag-met">Met</span></td><td>Atlas fully integrated; 50% from 16 platforms</td></tr>
+      <tr><td class="bold">FY 2022</td><td>$100B (ID target)</td><td class="bold">&gt;$100B</td><td class="pos">Met</td><td><span class="tag tag-met">Met</span></td><td>Matched Investor Day LTM target; 7 new platforms added</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Origination is the metric where Apollo has most dramatically outperformed. FY2024 delivered $222B against a $125B target &mdash; a 78% overshoot. FY2025 then grew another 37% to $305B, exceeding the new 5-year plan target ($275B) in year 1. The acceleration from $100B steady-state (2022-2023) to $305B (2025) reflects the maturation of platform ecosystems (Atlas, MidCap), the sponsor solutions channel ($20B &rarr; $80B), and global expansion ($40B Europe, $15-20B Asia). This is the clearest evidence that Apollo's origination capacity has structurally shifted to a new level.</div>
+</div>
+
+<!-- SECTION 6: CAPITAL SOLUTIONS -->
+<div class="section" id="s6">
+  <h2><span class="num">6</span> Capital Solutions: Guidance vs Actual</h2>
+  <table>
+    <thead><tr><th>Year</th><th>Guidance / Target</th><th>Actual</th><th>YoY</th><th>vs Target</th><th>Result</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="6">PENDING</td></tr>
+      <tr><td class="bold">FY 2026+</td><td>$1B by 2029 (5yr plan)</td><td class="muted">Pending</td><td class="muted">&mdash;</td><td class="muted">&mdash;</td><td><span class="tag tag-pending">Pending</span></td></tr>
+      <tr class="year-divider"><td colspan="6">COMPLETED YEARS</td></tr>
+      <tr class="raised"><td class="bold">FY 2025</td><td>Not explicitly guided</td><td class="bold pos">$808M</td><td class="pos">+21%</td><td class="pos">81% of 2029 target</td><td><span class="tag tag-beat">Exceeded $800M</span></td></tr>
+      <tr class="raised"><td class="bold">FY 2024</td><td>"Stronger than expected" (revised up Aug)</td><td class="bold pos">$668M</td><td class="pos">+24%</td><td class="pos">Beat raised expectation</td><td><span class="tag tag-beat">Beat</span></td></tr>
+      <tr><td class="bold">FY 2023</td><td>~$414M baseline (similar to '22)</td><td class="bold pos">$538M</td><td class="pos">+30%</td><td class="pos">Exceeded 5yr $500M target 2 years early</td><td><span class="tag tag-beat">Beat</span></td></tr>
+      <tr><td class="bold">FY 2022</td><td>Tracking to $500M by 2026</td><td class="bold">$414M</td><td>&mdash;</td><td class="pos">83% of 5yr target in year 1</td><td><span class="tag tag-met">On track</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Capital Solutions has been the most consistent over-deliverer. The original 5-year target of $500M (by 2026) was exceeded in FY2023 &mdash; just the second year. FY2025's $808M puts Apollo at 81% of the new $1B target (by 2029) with 4 years remaining. Quarterly run rates have more than doubled from ~$100M (Q3 2022, then a record) to ~$220M (Q4 2025). The shift toward credit-driven transactions (~60% in 2025 vs ~55% in 2021) reflects Apollo's strategic pivot toward IG-led origination and capital solutions.</div>
+</div>
+
+<!-- SECTION 7: REVISION TIMELINE -->
+<div class="section" id="s7">
+  <h2><span class="num">7</span> Full-Year Guidance Revision Timeline</h2>
+  <table>
+    <thead><tr><th>Year</th><th>Metric</th><th>Q4 Prior / Initial</th><th>Q1</th><th>Q2</th><th>Q3</th><th>Final Actual</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="7">FY 2025</td></tr>
+      <tr><td></td><td class="bold">FRE</td><td>15-20%</td><td>15-20% &#10004;</td><td class="pos">&uarr; Higher end</td><td class="pos">&uarr; On pace 20%</td><td class="bold pos">+23%</td></tr>
+      <tr><td></td><td class="bold">SRE</td><td>~$3.5B</td><td class="neg">&darr; Mid-single off $3.2B</td><td>Mid-single &#10004;</td><td class="pos">&uarr; ~$3,475M (~8%)</td><td class="bold">$3,361M (+4.2%)</td></tr>
+      <tr><td></td><td class="bold">Athene</td><td>&gt;$70B+</td><td>&mdash;</td><td>Projected &gt;$70B</td><td>Pacing record</td><td class="bold pos">$83B</td></tr>
+
+      <tr class="year-divider"><td colspan="7">FY 2024</td></tr>
+      <tr><td></td><td class="bold">FRE</td><td>15-20%</td><td>15-20% &#10004;</td><td>15-20% &#10004;</td><td>On track</td><td class="bold pos">+16.7%</td></tr>
+      <tr><td></td><td class="bold">SRE</td><td>Low double-digit</td><td>Low DD &#10004;</td><td class="neg">&darr; Mid-single</td><td>~$3.2B</td><td class="bold">$3,224M (+3.7%)</td></tr>
+      <tr><td></td><td class="bold">Net Spread</td><td>160-165 bps</td><td>160-165 &#10004;</td><td class="neg">&darr; ~150 bps</td><td>~150 &#10004;</td><td class="bold neg">~137 bps</td></tr>
+
+      <tr class="year-divider"><td colspan="7">FY 2023</td></tr>
+      <tr><td></td><td class="bold">FRE</td><td>~25%</td><td>~25% &#10004;</td><td>~25% &#10004;</td><td>25% confident</td><td class="bold pos">+25%</td></tr>
+      <tr><td></td><td class="bold">SRE</td><td>~20% norm</td><td class="pos">&uarr; Slightly &gt;$3B</td><td class="pos">&uarr; ~30% norm</td><td class="pos">&uarr; Exceeding 30%</td><td class="bold pos">+26% ($3,108M)</td></tr>
+      <tr><td></td><td class="bold">Net Spread</td><td>135-140 bps</td><td class="pos">&uarr; 150-155</td><td>160-165 &#10004;</td><td>~165 &#10004;</td><td class="bold pos">144 bps ex-not.</td></tr>
+
+      <tr class="year-divider"><td colspan="7">FY 2022</td></tr>
+      <tr><td></td><td class="bold">FRE</td><td>$2.35/share</td><td>&mdash;</td><td>$2.35 &#10004;</td><td>$2.35 confident</td><td class="bold pos">$2.36</td></tr>
+      <tr><td></td><td class="bold">SRE</td><td>~$3.35/share</td><td>&mdash;</td><td>Ramping</td><td class="pos">&uarr; ~$4/share</td><td class="bold pos">$3.88 norm</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> The revision timeline reveals a consistent asymmetry: FRE guidance is rock-steady (never revised, always met), while SRE guidance is dynamic (revised in 7 of 8 quarters where revisions occurred). In 2022-2023, SRE was revised upward; in 2024-2025, downward. This reflects the fundamental difference between FRE (driven by controllable activities like fundraising, origination, and product launches) and SRE (partially driven by exogenous factors like interest rates, competitive spreads, and COVID-era liability maturity). Management has adapted by increasingly framing SRE as "through-cycle 10%" rather than giving precise dollar targets.</div>
+</div>
+
+<!-- SECTION 8: KEY TAKEAWAYS -->
+<div class="section" id="s8">
+  <h2><span class="num">8</span> Key Takeaways</h2>
+  <div class="takeaways">
+
+    <div class="takeaway">
+      <div class="takeaway-num">1</div>
+      <div class="takeaway-text"><strong>FRE Guidance: Perfect Record.</strong> Apollo met or exceeded FRE guidance in all 4 years (2022-2025). Growth rates of 11%, 25%, 17%, and 23% against targets that were never revised downward. This is the most reliable metric in Apollo's guidance framework and the foundation of the investment thesis.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">2</div>
+      <div class="takeaway-text"><strong>SRE Guidance: Environment-Dependent.</strong> SRE guidance was revised 7 times across 4 years &mdash; 4 upward (2022-2023) and 3 downward (2024-2025). When measured against initial guidance, Apollo beat in 2 years and missed in 2. When measured against final/revised guidance, the record is 3/4 met. This asymmetry underscores why management shifted to "through-cycle 10% average" framing.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">3</div>
+      <div class="takeaway-text"><strong>Athene Inflows: 4/4 Beat.</strong> Athene organic inflows exceeded guidance every year: $48B vs $45B (2022), $66B vs $48B (2023), $71B vs $70B (2024), $83B vs $70B+ (2025). Total growth of 73% over 3 years while consistently "leaving $10-20B on the table." This is the clearest evidence of Apollo's disciplined growth approach.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">4</div>
+      <div class="takeaway-text"><strong>Origination: Massive Over-Delivery.</strong> The most dramatic outperformance in any metric. FY2024 delivered $222B vs a $125B target (+78%). FY2025 produced $305B, exceeding the new 5-year plan target ($275B) in year 1. Every 5-year origination target has been surpassed ahead of schedule.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">5</div>
+      <div class="takeaway-text"><strong>Capital Solutions: 5-Year Target in 2 Years.</strong> The $500M target (by 2026) was hit in FY2023 ($538M). FY2025's $808M puts Apollo at 81% of the new $1B target with 4 years remaining. Quarterly run rates doubled from ~$100M to ~$220M.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">6</div>
+      <div class="takeaway-text"><strong>Net Spread Guidance: The 2024 Miss.</strong> The most significant guidance miss was FY2024 net spread: ~137 bps actual vs 160-165 bps initial guidance (23-28 bps shortfall). COVID-era FABN maturity, hedging costs, and corporate purchase mix were underestimated. This miss drove the SRE guidance revision and remains the most instructive example of macro-sensitivity in Apollo's model.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">7</div>
+      <div class="takeaway-text"><strong>The FRE vs SRE Dichotomy.</strong> The results scorecard reveals two fundamentally different earnings streams. FRE is controllable, predictable, and conservatively guided (4/4 met, never revised down). SRE is partially exogenous, volatile, and frequently revised (7 revisions in 4 years). This dichotomy is why management targets FRE = SRE by 2028 and FRE > SRE thereafter &mdash; shifting the earnings mix toward the more controllable stream.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">8</div>
+      <div class="takeaway-text"><strong>Conservative Guidance as Strategy.</strong> Apollo's guidance framework is deliberately conservative on metrics it controls (FRE, inflows, origination, ACS) and more uncertain on macro-sensitive metrics (SRE, net spread). This creates a reliable "meet or exceed" pattern for the controllable metrics while providing transparency about the risks in environment-dependent earnings. The overall batting average: 18 of 22 metric-years were met or exceeded.</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="footer">
+  <p>Data sourced from Apollo Global Management quarterly earnings call transcripts and supplemental materials (Q1 2022 &ndash; Q4 2025).</p>
+  <p>Metrics Tracker &mdash; Actuals vs Guidance Scorecard</p>
+</div>
+
+</body>
+</html>

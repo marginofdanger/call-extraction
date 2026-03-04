@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AVGO FQ2 2022 Earnings Call Detail</title>
+<style>
+:root {
+    --company-primary: #CC092F;
+    --company-dark: #1a1a2e;
+    --company-accent: #16213e;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 40px 40px 32px;
+    margin: 0 -24px 0;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .header .meta {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    font-weight: 300;
+  }
+  .header .meta span { margin-right: 24px; }
+
+  .nav-bar {
+    background: var(--company-accent);
+    margin: 0 -24px 32px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    transition: all 0.15s;
+  }
+  .nav-bar a:hover { background: rgba(255,255,255,0.2); }
+  .nav-bar a.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .nav-center {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-center a.qbtn {
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+  }
+  .nav-center a.qbtn.current {
+    background: var(--company-primary);
+    border-color: var(--company-primary);
+  }
+  .nav-center a.qbtn:hover { background: rgba(255,255,255,0.2); }
+  .nav-back {
+    background: rgba(255,255,255,0.15) !important;
+    border-color: rgba(255,255,255,0.35) !important;
+  }
+
+  .metrics-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .metric {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+  .metric-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .metric-value {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+  .metric-delta {
+    font-size: 0.72rem;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+  .delta-up { color: var(--green); }
+  .delta-down { color: var(--red); }
+  .delta-flat { color: var(--text-muted); }
+
+  .changes-box {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 5px solid var(--amber);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .changes-box h3 {
+    font-size: 1rem;
+    color: var(--company-dark);
+    margin-bottom: 10px;
+  }
+  .changes-box ul { list-style: none; padding: 0; }
+  .changes-box li {
+    padding: 5px 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .change-tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .ct-raised { background: #d5f5e3; color: #1e8449; }
+  .ct-lowered { background: #fadbd8; color: #c0392b; }
+  .ct-changed { background: #d6eaf8; color: #2471a3; }
+  .ct-new { background: #e8daef; color: #6c3483; }
+  .ct-maintained { background: #fdebd0; color: #b9770e; }
+
+  .content-section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .content-section h3 {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .content-section ul {
+    padding: 14px 18px 14px 36px;
+    margin: 0;
+  }
+  .content-section li {
+    padding: 3px 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .content-section li strong { color: var(--company-dark); }
+
+  .prior-ref {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 40px;
+    overflow: hidden;
+  }
+  .prior-ref-header {
+    background: var(--light-bg);
+    padding: 12px 18px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--company-dark);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .prior-ref-header:hover { background: #eef2f7; }
+  .prior-ref-body { padding: 18px; display: none; }
+  .prior-ref-body.open { display: block; }
+  .prior-ref-body .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .prior-mini {
+    background: var(--light-bg);
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .prior-mini .pm-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .prior-mini .pm-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border);
+  }
+  .footer-nav a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .footer-nav a:hover { text-decoration: underline; }
+
+  /* Comparison page styles */
+  .toc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .toc a {
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 4px 0;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  .comp-section {
+    margin-bottom: 40px;
+  }
+  .comp-section h2 {
+    font-size: 1.2rem;
+    color: var(--company-dark);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--company-primary);
+  }
+
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+  }
+  .comp-table th {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .comp-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .comp-table tr:nth-child(even) { background: var(--light-bg); }
+  .comp-table tr:hover { background: #e8f4fd; }
+
+  @media (max-width: 768px) {
+    .header h1 { font-size: 1.5rem; }
+    .metrics-card { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .nav-center { display: none; }
+    body { padding: 0 16px 60px; }
+    .header { margin: 0 -16px 0; padding: 28px 24px 20px; }
+    .nav-bar { margin: 0 -16px 24px; }
+    .toc { grid-template-columns: 1fr; }
+    .comp-table { font-size: 0.78rem; }
+    .comp-table th, .comp-table td { padding: 6px 8px; }
+  }
+
+  @media print {
+    .nav-bar { display: none; }
+    .header { background: #333; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>AVGO FQ2 2022 Earnings Call</h1>
+  <div class="meta">
+    <span>Call Date: June 2, 2022</span>
+    <span>Reporting: Fiscal Q2 2022 (Feb - Apr '22)</span>
+  </div>
+</div>
+<div class="nav-bar">
+  <a href="FQ1_2022.html">&larr; FQ1 2022</a>
+  <div class="nav-center">
+    <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="FQ4_2025.html" class="qbtn">F4Q25</a>
+    <a href="FQ3_2025.html" class="qbtn">F3Q25</a>
+    <a href="FQ2_2025.html" class="qbtn">F2Q25</a>
+    <a href="FQ1_2025.html" class="qbtn">F1Q25</a>
+    <a href="FQ4_2024.html" class="qbtn">F4Q24</a>
+    <a href="FQ3_2024.html" class="qbtn">F3Q24</a>
+    <a href="FQ2_2024.html" class="qbtn">F2Q24</a>
+    <a href="FQ1_2024.html" class="qbtn">F1Q24</a>
+    <a href="FQ4_2023.html" class="qbtn">F4Q23</a>
+    <a href="FQ3_2023.html" class="qbtn">F3Q23</a>
+    <a href="FQ2_2023.html" class="qbtn">F2Q23</a>
+    <a href="FQ1_2023.html" class="qbtn">F1Q23</a>
+    <a href="FQ4_2022.html" class="qbtn">F4Q22</a>
+    <a href="FQ3_2022.html" class="qbtn">F3Q22</a>
+    <a href="FQ2_2022.html" class="qbtn current">F2Q22</a>
+    <a href="FQ1_2022.html" class="qbtn">F1Q22</a>
+  </div>
+  <a href="FQ3_2022.html">FQ3 2022 &rarr;</a>
+</div>
+
+<div class="changes-box">
+  <h3>What Changed vs FQ1 2022</h3>
+  <ul>
+    <li><span class="change-tag ct-new">New</span> NEW: VMware acquisition/integration discussion</li>
+  </ul>
+</div>
+
+<div class="metrics-card">
+  <div class="metric" style="grid-column: 1 / -1; background: linear-gradient(135deg, var(--company-dark), var(--company-accent)); color: #fff; border: none; padding: 8px 14px;">
+    <div class="metric-label" style="color: rgba(255,255,255,0.7);">Guidance For</div>
+    <div class="metric-value" style="color: #fff; font-size: 1rem;">FQ3 2022</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Next-Q Revenue</div>
+    <div class="metric-value">~$8.4B</div>
+    <div class="metric-delta delta-flat">Prior: $7.9B</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Next-Q Adj. EBITDA % of Rev</div>
+    <div class="metric-value">~63.5% of projected revenue</div>
+    <div class="metric-delta delta-flat">Prior: ~62.5% of projected revenue</div>
+  </div>
+</div>
+
+<!-- Full Guidance Content -->
+<div class="content-section">
+  <h3>Quarterly Guidance (FQ3 2022)</h3>
+  <ul>
+    <li><strong>Revenue:</strong> ~$8.4B (+24% YoY)</li>
+    <li><strong>Adjusted EBITDA:</strong> ~63.5% of projected revenue</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>FQ2 2022 Segment Revenue</h3>
+  <ul>
+    <li><strong>Semiconductor Solutions:</strong> $6.2B (+29% YoY), 77% of total revenue</li>
+    <li><strong>Infrastructure Software:</strong> $1.9B (+5% YoY), 23% of total revenue</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>FQ2 2022 Balance Sheet & Capital Allocation</h3>
+  <ul>
+    <li><strong>Cash & Equivalents:</strong> $9.0B (down from $10.2B in FQ1)</li>
+    <li><strong>Gross Debt:</strong> $39.5B ($302M short-term)</li>
+    <li><strong>Inventory:</strong> $1.7B (+11% QoQ)</li>
+    <li><strong>Accounts Receivable:</strong> $3.1B (+49% QoQ)</li>
+    <li><strong>Cash Dividends Paid:</strong> $1.75B ($4.10/share quarterly)</li>
+    <li><strong>Share Repurchases:</strong> $2.8B under repurchase program + $514M for tax withholdings on vesting (~5.6M shares eliminated for total $3.3B)</li>
+    <li><strong>New Repurchase Program:</strong> $10B authorized (incremental to $3B remaining under prior program), through December 31, 2023</li>
+    <li><strong>Non-GAAP Diluted Share Count:</strong> 441M</li>
+    <li><strong>Loss on Debt Extinguishment:</strong> $112M (refinancing activity; issued $1.9B new debt, repaid $2.1B)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>FQ2 2022 Cash Flow</h3>
+  <ul>
+    <li><strong>Operating Cash Flow:</strong> $4.2B</li>
+    <li><strong>Free Cash Flow:</strong> $4.2B (operating cash flow $4,243M less CapEx $85M)</li>
+    <li><strong>Cash Paid for Interest:</strong> $459M</li>
+    <li><strong>Cash Paid for Income Taxes:</strong> $240M</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>VMware Acquisition Announcement</h3>
+  <ul>
+    <li>Broadcom to acquire all outstanding VMware shares for ~$61B in cash-and-stock transaction</li>
+    <li>Additionally assuming $8B of VMware net debt</li>
+    <li>VMware shareholders elect to receive $142.50/share in cash or 0.2520 shares of AVGO per VMware share (subject to 50/50 proration)</li>
+    <li>Pro forma combined revenue: >$40B, with 49% software revenue</li>
+    <li>Expected to add ~$8.5B of pro forma EBITDA within three years post-closing</li>
+    <li>Transaction expected to close within Broadcom's fiscal year 2023</li>
+    <li>$32B committed debt financing from consortium of banks</li>
+    <li>Broadcom Software Group to rebrand and operate as VMware</li>
+    <li>Michael Dell (40.2% of VMware) and Silver Lake (10%) signed support agreements</li>
+    <li>40-day go-shop period expiring July 5, 2022</li>
+    <li>Broadcom expects to maintain investment grade rating and 50% FCF dividend payout policy</li>
+    <li>Post-close ownership: ~88% current Broadcom shareholders, ~12% current VMware shareholders (fully diluted)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Capital Return & Shareholder Policy</h3>
+  <ul>
+    <li>Quarterly common stock dividend of $4.10/share maintained</li>
+    <li>New $10B share repurchase program authorized through December 31, 2023</li>
+    <li>$3B remaining under prior December 2021 authorization</li>
+    <li>Commitment to return excess cash to shareholders via dividends and buybacks</li>
+    <li>Dividend policy: 50% of prior fiscal year free cash flow returned to shareholders</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>FQ2 2022 Actuals (Reported)</h3>
+  <ul>
+    <li><strong>Revenue:</strong> $8.1B (+23% YoY, +5% QoQ)</li>
+    <li><strong>Gross Margin:</strong> 76.3% of revenue (non-GAAP; GAAP: 67.1%)</li>
+    <li><strong>Operating Expenses:</strong> $1.2B (non-GAAP), driven by R&D investment</li>
+    <li><strong>Operating Income:</strong> $4.9B (non-GAAP)</li>
+    <li><strong>Operating Margin:</strong> 60.9% of revenue (non-GAAP)</li>
+    <li><strong>Adjusted EBITDA:</strong> $5.1B (63.1% of revenue; excludes $135M depreciation)</li>
+    <li><strong>EPS (Non-GAAP):</strong> $9.07 (+37% YoY)</li>
+    <li><strong>Free Cash Flow:</strong> $4.2B (51% of revenue)</li>
+    <li><strong>CapEx:</strong> $85M</li>
+  </ul>
+</div>
+
+<div class="prior-ref" id="priorRef">
+  <div class="prior-ref-header" onclick="var b=document.getElementById('priorBody');b.classList.toggle('open');this.querySelector('.arrow').innerHTML=b.classList.contains('open')?'&#9650;':'&#9660;';">
+    Prior Quarter Reference: FQ1 2022
+    <span class="arrow">&#9660;</span>
+  </div>
+  <div class="prior-ref-body" id="priorBody">
+    <div class="metric-grid">
+      <div class="prior-mini"><div class="pm-label">Next-Q Revenue</div><div class="pm-value">$7.9B (+20% YoY)</div></div>
+      <div class="prior-mini"><div class="pm-label">Next-Q Adj. EBITDA % of Rev</div><div class="pm-value">~62.5% of projected revenue</div></div>
+      <div class="prior-mini"><div class="pm-label">Semiconductor Revenue</div><div class="pm-value">growth to accelerate to +25% YoY (ex-wireless: +35% YoY)</div></div>
+    </div>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="FQ1_2022.html" style="color:var(--blue);">View full FQ1 2022 detail &rarr;</a></p>
+  </div>
+</div>
+
+<div class="footer-nav">
+  <a href="FQ1_2022.html">&larr; FQ1 2022</a>
+  <a href="../comparison.html">Back to Overview</a>
+  <a href="FQ3_2022.html">FQ3 2022 &rarr;</a>
+</div>
+
+</body>
+</html>

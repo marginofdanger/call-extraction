@@ -1,0 +1,224 @@
+# NVIDIA Corporation — Q1_2023 Earnings Release
+
+**Ticker:** NVDA
+**Filing Date:** 2022-05-25
+**Accession:** 0001045810-22-000073
+**Source:** [SEC EDGAR](https://www.sec.gov/Archives/edgar/data/1045810/000104581022000073/0001045810-22-000073-index.htm)
+
+## Financial Tables (from Exhibits)
+
+### 
+
+| GAAP |
+| ( in millions, except earnings per share) | Q1 FY23 | Q4 FY22 | Q1 FY22 | Q/Q | Y/Y |
+| Revenue | 8288 | 7643 | 5661 | Up 8% | Up 46% |
+| Gross margin | 65.5 | % | 65.4 | % | 64.1 | % | Up 10 bps | Up 140 bps |
+| Operating expenses | 3563 | 2029 | 1673 | Up 76% | Up 113% |
+| Operating income | 1868 | 2970 | 1956 | Down 37% | Down 4% |
+| Net income | 1618 | 3003 | 1912 | Down 46% | Down 15% |
+| Diluted earnings per share | 0.64 | 1.18 | 0.76 | Down 46% | Down 16% |
+
+### 
+
+| Non-GAAP |
+| ( in millions, except earnings per share) | Q1 FY23 | Q4 FY22 | Q1 FY22 | Q/Q | Y/Y |
+| Revenue | 8288 | 7643 | 5661 | Up 8% | Up 46% |
+| Gross margin | 67.1 | % | 67.0 | % | 66.2 | % | Up 10 bps | Up 90 bps |
+| Operating expenses | 1608 | 1447 | 1189 | Up 11% | Up 35% |
+| Operating income | 3955 | 3677 | 2557 | Up 8% | Up 55% |
+| Net income | 3443 | 3350 | 2313 | Up 3% | Up 49% |
+| Diluted earnings per share | 1.36 | 1.32 | 0.91 | Up 3% | Up 49% |
+
+### 
+
+|  |  |  | Three Months Ended |  |  |
+|  |  |  | May 1, |  | May 2, |  |  |  |  |
+|  |  |  | 2022 |  | 2021 |  |  |  |  |
+| Revenue |  | 8288 |  |  |  | 5661 |  |  |  |  |  |
+| Cost of revenue | 2857 |  |  | 2032 |  |  |  |  |  |
+| Gross profit | 5431 |  |  | 3629 |  |  |  |  |  |
+| Operating expenses |  |  |  |  |  |  |  |
+|  | Research and development | 1618 |  |  | 1153 |  |  |  |  |  |
+|  | Sales, general and administrative | 592 |  |  | 520 |  |  |  |  |  |
+|  | Acquisition termination cost | 1353 |  |  | — |  |  |  |  |  |
+|  |  | Total operating expenses | 3563 |  |  | 1673 |  |  |  |  |  |
+| Income from operations | 1868 |  |  | 1956 |  |  |  |  |  |
+|  | Interest income | 18 |  |  | 6 |  |  |  |  |  |
+|  | Interest expense | -68 |  |  | -53 |  |  |  |  |  |
+|  | Other, net | -13 |  |  | 135 |  |  |  |  |  |
+|  |  | Other income (expense), net | -63 |  |  | 88 |  |  |  |  |  |
+| Income before income tax | 1805 |  |  | 2044 |  |  |  |  |  |
+| Income tax expense | 187 |  |  | 132 |  |  |  |  |  |
+| Net income |  | 1618 |  |  |  | 1912 |  |  |  |  |  |
+| Net income per share (A): |  |  |  |  |  |  |  |
+|  | Basic |  | 0.65 |  |  |  | 0.77 |  |  |  |  |  |
+|  | Diluted |  | 0.64 |  |  |  | 0.76 |  |  |  |  |  |
+| Weighted average shares used in per share computation (A): |  |  |  |  |  |  |  |
+|  | Basic | 2506 |  |  | 2484 |  |  |  |  |  |
+|  | Diluted | 2537 |  |  | 2528 |  |  |  |  |  |
+
+### 
+
+| NVIDIA CORPORATION |
+| CONDENSED CONSOLIDATED BALANCE SHEETS |
+| (In millions) |
+| (Unaudited) |
+|  |  |  |  | May 1, |  | January 30, |
+|  |  |  |  | 2022 |  | 2022 |
+| ASSETS |  |  |  |  |
+| Current assets: |  |  |  |  |
+|  | Cash, cash equivalents and marketable securities |  |  | 20338 |  |  |  | 21208 |  |
+|  | Accounts receivable, net |  | 5438 |  |  | 4650 |  |
+|  | Inventories |  | 3163 |  |  | 2605 |  |
+|  | Prepaid expenses and other current assets |  | 636 |  |  | 366 |  |
+|  |  | Total current assets |  | 29575 |  |  | 28829 |  |
+| Property and equipment, net |  | 2916 |  |  | 2778 |  |
+| Operating lease assets |  | 856 |  |  | 829 |  |
+| Goodwill |  | 4365 |  |  | 4349 |  |
+| Intangible assets, net |  | 2211 |  |  | 2339 |  |
+| Deferred income tax assets |  | 1784 |  |  | 1222 |  |
+| Other assets |  | 3505 |  |  | 3841 |  |
+|  |  | Total assets |  |  | 45212 |  |  |  | 44187 |  |
+| LIABILITIES AND SHAREHOLDERS' EQUITY |
+| Current liabilities: |  |  |  |  |
+|  | Accounts payable |  |  | 1999 |  |  |  | 1783 |  |
+|  | Accrued and other current liabilities |  | 3563 |  |  | 2552 |  |
+|  |  | Total current liabilities |  | 5562 |  |  | 4335 |  |
+| Long-term debt |  | 10947 |  |  | 10946 |  |
+| Long-term operating lease liabilities |  | 752 |  |  | 741 |  |
+| Other long-term liabilities |  | 1631 |  |  | 1553 |  |
+|  |  | Total liabilities |  | 18892 |  |  | 17575 |  |
+| Shareholders' equity |  | 26320 |  |  | 26612 |  |
+|  |  | Total liabilities and shareholders' equity |  |  | 45212 |  |  |  | 44187 |  |
+
+### 
+
+| NVIDIA CORPORATION |
+| CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS |
+| (In millions) |
+| (Unaudited) |
+|  | Three Months Ended |  |  |
+|  | May 1, |  | May 2, |  |  |  |  |
+|  | 2022 |  | 2021 |  |  |  |  |
+| Cash flows from operating activities: |  |  |  |  |  |  |  |
+| Net income |  | 1618 |  |  |  | 1912 |  |  |  |  |  |
+| Adjustments to reconcile net income to net cash |  |  |  |  |  |  |  |
+| provided by operating activities: |  |  |  |  |  |  |  |
+| Acquisition termination cost | 1353 |  |  | — |  |  |  |  |  |
+| Stock-based compensation expense | 578 |  |  | 429 |  |  |  |  |  |
+| Depreciation and amortization | 334 |  |  | 281 |  |  |  |  |  |
+| Losses (gains) on investments in non affiliates, net | 17 |  |  | -133 |  |  |  |  |  |
+| Deferred income taxes | -542 |  |  | 24 |  |  |  |  |  |
+| Other | 23 |  |  |  |  |  |  |  |  |
+| Changes in operating assets and liabilities, net of acquisitions: |  |  |  |  |  |  |  |
+| Accounts receivable | -788 |  |  | -595 |  |  |  |  |  |
+| Inventories | -560 |  |  | -159 |  |  |  |  |  |
+| Prepaid expenses and other assets | -1261 |  |  | 2 |  |  |  |  |  |
+| Accounts payable | 255 |  |  | 36 |  |  |  |  |  |
+| Accrued and other current liabilities | 634 |  |  | 33 |  |  |  |  |  |
+| Other long-term liabilities | 70 |  |  | 47 |  |  |  |  |  |
+| Net cash provided by operating activities | 1731 |  |  | 1874 |  |  |  |  |  |
+| Cash flows from investing activities: |  |  |  |  |  |  |  |
+| Proceeds from maturities of marketable securities | 5947 |  |  | 3140 |  |  |  |  |  |
+| Proceeds from sales of marketable securities | 1029 |  |  | 358 |  |  |  |  |  |
+| Purchases of marketable securities | -3932 |  |  | -4470 |  |  |  |  |  |
+| Purchases related to property and equipment and intangible assets | -361 |  |  | -298 |  |  |  |  |  |
+| Acquisitions, net of cash acquired | -36 |  |  | — |  |  |  |  |  |
+| Investments and other, net | -35 |  |  |  |  |  |  |  |  |
+| Net cash provided by (used in) investing activities | 2612 |  |  | -1272 |  |  |  |  |  |
+| Cash flows from financing activities: |  |  |  |  |  |  |  |
+| Proceeds related to employee stock plans | 204 |  |  | 126 |  |  |  |  |  |
+| Payments related to repurchases of common stock | -1996 |  |  | — |  |  |  |  |  |
+| Payments related to tax on restricted stock units | -532 |  |  | -477 |  |  |  |  |  |
+| Dividends paid | -100 |  |  | -99 |  |  |  |  |  |
+| Principal payments on property and equipment and intangible assets | -22 |  |  | -19 |  |  |  |  |  |
+| Other | — |  |  |  |  |  |  |  |  |
+| Net cash used in financing activities | -2446 |  |  | -471 |  |  |  |  |  |
+| Change in cash and cash equivalents | 1897 |  |  | 131 |  |  |  |  |  |
+| Cash and cash equivalents at beginning of period | 1990 |  |  | 847 |  |  |  |  |  |
+| Cash and cash equivalents at end of period |  | 3887 |  |  |  | 978 |  |  |  |  |  |
+
+### 
+
+|  | NVIDIA CORPORATION |
+|  | RECONCILIATION OF GAAP TO NON-GAAP FINANCIAL MEASURES |
+|  | (In millions, except per share data) |
+|  | (Unaudited) |
+|  |  |  | Three Months Ended |  |  |
+|  |  |  | May 1, |  | January 30, |  | May 2, |  |  |  |  |
+|  |  |  | 2022 |  | 2022 |  | 2021 |  |  |  |  |
+| GAAP gross profit |  |  | 5431 |  |  |  | 4999 |  |  |  | 3629 |  |  |  |  |  |
+| GAAP gross margin |  | 65.5 | % |  | 65.4 | % |  | 64.1 | % |  |  |  |  |
+|  | Acquisition-related and other costs |  | 94 |  |  | 86 |  |  | 87 |  |  |  |  |  |
+|  | Stock-based compensation expense |  | 38 |  |  | 39 |  |  | 25 |  |  |  |  |  |
+|  | IP-related costs |  | — |  |  | — |  |  | 5 |  |  |  |  |  |
+| Non-GAAP gross profit |  |  | 5563 |  |  |  | 5124 |  |  |  | 3746 |  |  |  |  |  |
+| Non-GAAP gross margin |  | 67.1 | % |  | 67.0 | % |  | 66.2 | % |  |  |  |  |
+| GAAP operating expenses |  |  | 3563 |  |  |  | 2029 |  |  |  | 1673 |  |  |  |  |  |
+|  | Acquisition termination cost |  | -1353 |  |  | — |  |  | — |  |  |  |  |  |
+|  | Stock-based compensation expense |  | -540 |  |  | -512 |  |  | -404 |  |  |  |  |  |
+|  | Acquisition-related and other costs |  | -55 |  |  | -70 |  |  | -80 |  |  |  |  |  |
+|  | Legal settlement costs |  |  |  |  | — |  |  | — |  |  |  |  |  |
+| Non-GAAP operating expenses |  |  | 1608 |  |  |  | 1447 |  |  |  | 1189 |  |  |  |  |  |
+| GAAP income from operations |  |  | 1868 |  |  |  | 2970 |  |  |  | 1956 |  |  |  |  |  |
+|  | Total impact of non-GAAP adjustments to income from operations |  | 2087 |  |  | 707 |  |  | 601 |  |  |  |  |  |
+| Non-GAAP income from operations |  |  | 3955 |  |  |  | 3677 |  |  |  | 2557 |  |  |  |  |  |
+| GAAP other income (expense), net |  |  | -63 |  |  |  | -105 |  |  |  | 88 |  |  |  |  |  |
+|  | Losses (gains) from non-affiliated investments |  | 17 |  |  | 53 |  |  | -134 |  |  |  |  |  |
+|  | Interest expense related to amortization of debt discount |  | 1 |  |  | — |  |  | 1 |  |  |  |  |  |
+| Non-GAAP other income (expense), net |  |  | -45 |  |  |  | -52 |  |  |  | -45 |  |  |  |  |  |
+| GAAP net income |  |  | 1618 |  |  |  | 3003 |  |  |  | 1912 |  |  |  |  |  |
+|  | Total pre-tax impact of non-GAAP adjustments |  | 2105 |  |  | 760 |  |  | 468 |  |  |  |  |  |
+|  | Income tax impact of non-GAAP adjustments |  | -280 |  |  | -330 |  |  | -67 |  |  |  |  |  |
+|  | Domestication tax adjustments |  | — |  |  | 7 |  |  | — |  |  |  |  |  |
+|  | Foreign tax benefit |  | — |  |  | -90 |  |  | — |  |  |  |  |  |
+| Non-GAAP net income |  |  | 3443 |  |  |  | 3350 |  |  |  | 2313 |  |  |  |  |  |
+
+### 
+
+|  |  |  | Three Months Ended |  |  |
+|  |  |  | May 1, |  | January 30, |  | May 2, |  |  |  |  |
+|  |  |  | 2022 |  | 2022 |  | 2021 |  |  |  |  |
+| Diluted net income per share |  |  |  |  |  |  |  |  |  |  |
+|  | GAAP |  |  | 0.64 |  |  |  | 1.18 |  |  |  | 0.76 |  |  |  |  |  |
+|  | Non-GAAP |  |  | 1.36 |  |  |  | 1.32 |  |  |  | 0.91 |  |  |  |  |  |
+| Weighted average shares used in diluted net income per share computation |  | 2537 |  |  | 2545 |  |  | 2528 |  |  |  |  |  |
+| GAAP net cash provided by operating activities |  |  | 1731 |  |  |  | 3033 |  |  |  | 1874 |  |  |  |  |  |
+|  | Purchases related to property and equipment and intangible assets |  | -361 |  |  | -273 |  |  | -298 |  |  |  |  |  |
+|  | Principal payments on property and equipment and intangible assets |  | -22 |  |  | -21 |  |  | -19 |  |  |  |  |  |
+| Free cash flow |  |  | 1348 |  |  |  | 2739 |  |  |  | 1557 |  |  |  |  |  |
+
+### 
+
+| (A) Acquisition-related and other costs are comprised of amortization of intangible assets, transaction costs and certain compensation charges presented in the following line items: |  |  |  |
+|  |  |  | Three Months Ended |  |  |
+|  |  |  | May 1, |  | January 30, |  | May 2, |  |  |  |  |
+|  |  |  | 2022 |  | 2022 |  | 2021 |  |  |  |  |
+|  | Cost of revenue |  |  | 94 |  |  |  | 86 |  |  |  | 87 |  |  |  |  |  |
+|  | Research and development |  |  | 9 |  |  |  | 9 |  |  |  | 1 |  |  |  |  |  |
+|  | Sales, general and administrative |  |  | 46 |  |  |  | 61 |  |  |  | 79 |  |  |  |  |  |
+| (B) Stock-based compensation consists of the following: |  |  |  |
+|  |  |  | Three Months Ended |  |  |
+|  |  |  | May 1, |  | January 30, |  | May 2, |  |  |  |  |
+|  |  |  | 2022 |  | 2022 |  | 2021 |  |  |  |  |
+|  | Cost of revenue |  |  | 38 |  |  |  | 39 |  |  |  | 25 |  |  |  |  |  |
+|  | Research and development |  |  | 384 |  |  |  | 362 |  |  |  | 276 |  |  |  |  |  |
+|  | Sales, general and administrative |  |  | 156 |  |  |  | 150 |  |  |  | 128 |  |  |  |  |  |
+| (C) Income tax impact of non-GAAP adjustments, including the recognition of excess tax benefits or deficiencies related to stock-based compensation under GAAP accounting standard (ASU 2016-09). |  |  |  |
+| (D) Reflects a four-for-one stock split on July 19, 2021. |  |  |  |
+
+### 
+
+| NVIDIA CORPORATION |
+| RECONCILIATION OF GAAP TO NON-GAAP OUTLOOK |
+|  |  |  | Q2 FY2023 Outlook |
+|  |  |  | ( in millions) |
+| GAAP gross margin |  | 65.1 | % |
+|  | Impact of stock-based compensation expense, acquisition-related costs, and other costs | 2.0 | % |
+| Non-GAAP gross margin |  | 67.1 | % |
+| GAAP operating expenses |  |  | 2460 |  |
+|  | Stock-based compensation expense and acquisition-related costs | -710 |  |
+| Non-GAAP operating expenses |  |  | 1750 |  |
+
+---
+*Generated by edgar_download.py on 2026-03-03 23:19*

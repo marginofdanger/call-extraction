@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UNH Q1 2023 Earnings Call Detail</title>
+<style>
+:root {
+    --company-primary: #002677;
+    --company-dark: #1a1a2e;
+    --company-accent: #00BCD4;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 40px 40px 32px;
+    margin: 0 -24px 0;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .header .meta {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    font-weight: 300;
+  }
+  .header .meta span { margin-right: 24px; }
+
+  .nav-bar {
+    background: var(--company-accent);
+    margin: 0 -24px 32px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    transition: all 0.15s;
+  }
+  .nav-bar a:hover { background: rgba(255,255,255,0.2); }
+  .nav-bar a.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .nav-center {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-center a.qbtn {
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+  }
+  .nav-center a.qbtn.current {
+    background: var(--company-primary);
+    border-color: var(--company-primary);
+  }
+  .nav-center a.qbtn:hover { background: rgba(255,255,255,0.2); }
+  .nav-back {
+    background: rgba(255,255,255,0.15) !important;
+    border-color: rgba(255,255,255,0.35) !important;
+  }
+
+  .metrics-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .metric {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+  .metric-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .metric-value {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+  .metric-delta {
+    font-size: 0.72rem;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+  .delta-up { color: var(--green); }
+  .delta-down { color: var(--red); }
+  .delta-flat { color: var(--text-muted); }
+
+  .changes-box {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 5px solid var(--amber);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .changes-box h3 {
+    font-size: 1rem;
+    color: var(--company-dark);
+    margin-bottom: 10px;
+  }
+  .changes-box ul { list-style: none; padding: 0; }
+  .changes-box li {
+    padding: 5px 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .change-tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .ct-raised { background: #d5f5e3; color: #1e8449; }
+  .ct-lowered { background: #fadbd8; color: #c0392b; }
+  .ct-changed { background: #d6eaf8; color: #2471a3; }
+  .ct-new { background: #e8daef; color: #6c3483; }
+  .ct-maintained { background: #fdebd0; color: #b9770e; }
+
+  .content-section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .content-section h3 {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .content-section ul {
+    padding: 14px 18px 14px 36px;
+    margin: 0;
+  }
+  .content-section li {
+    padding: 3px 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .content-section li strong { color: var(--company-dark); }
+
+  .prior-ref {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 40px;
+    overflow: hidden;
+  }
+  .prior-ref-header {
+    background: var(--light-bg);
+    padding: 12px 18px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--company-dark);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .prior-ref-header:hover { background: #eef2f7; }
+  .prior-ref-body { padding: 18px; display: none; }
+  .prior-ref-body.open { display: block; }
+  .prior-ref-body .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .prior-mini {
+    background: var(--light-bg);
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .prior-mini .pm-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .prior-mini .pm-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border);
+  }
+  .footer-nav a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .footer-nav a:hover { text-decoration: underline; }
+
+  /* Comparison page styles */
+  .toc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .toc a {
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 4px 0;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  .comp-section {
+    margin-bottom: 40px;
+  }
+  .comp-section h2 {
+    font-size: 1.2rem;
+    color: var(--company-dark);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--company-primary);
+  }
+
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+  }
+  .comp-table th {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .comp-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .comp-table tr:nth-child(even) { background: var(--light-bg); }
+  .comp-table tr:hover { background: #e8f4fd; }
+
+  @media (max-width: 768px) {
+    .header h1 { font-size: 1.5rem; }
+    .metrics-card { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .nav-center { display: none; }
+    body { padding: 0 16px 60px; }
+    .header { margin: 0 -16px 0; padding: 28px 24px 20px; }
+    .nav-bar { margin: 0 -16px 24px; }
+    .toc { grid-template-columns: 1fr; }
+    .comp-table { font-size: 0.78rem; }
+    .comp-table th, .comp-table td { padding: 6px 8px; }
+  }
+
+  @media print {
+    .nav-bar { display: none; }
+    .header { background: #333; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>UNH Q1 2023 Earnings Call</h1>
+  <div class="meta">
+    <span>Call Date: April 14, 2023</span>
+    <span>Reporting: Q1 2023</span>
+  </div>
+</div>
+<div class="nav-bar">
+  <a href="Q4_2022.html">&larr; Q4 2022</a>
+  <div class="nav-center">
+    <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="Q4_2025.html" class="qbtn">4Q25</a>
+    <a href="Q3_2025.html" class="qbtn">3Q25</a>
+    <a href="Q2_2025.html" class="qbtn">2Q25</a>
+    <a href="Q1_2025.html" class="qbtn">1Q25</a>
+    <a href="Q4_2024.html" class="qbtn">4Q24</a>
+    <a href="Q3_2024.html" class="qbtn">3Q24</a>
+    <a href="Q2_2024.html" class="qbtn">2Q24</a>
+    <a href="Q1_2024.html" class="qbtn">1Q24</a>
+    <a href="Q4_2023.html" class="qbtn">4Q23</a>
+    <a href="Q3_2023.html" class="qbtn">3Q23</a>
+    <a href="Q2_2023.html" class="qbtn">2Q23</a>
+    <a href="Q1_2023.html" class="qbtn current">1Q23</a>
+    <a href="Q4_2022.html" class="qbtn">4Q22</a>
+    <a href="Q3_2022.html" class="qbtn">3Q22</a>
+    <a href="Q2_2022.html" class="qbtn">2Q22</a>
+    <a href="Q1_2022.html" class="qbtn">1Q22</a>
+  </div>
+  <a href="Q2_2023.html">Q2 2023 &rarr;</a>
+</div>
+
+<div class="changes-box">
+  <h3>What Changed vs Q4 2022</h3>
+  <ul>
+    <li><span class="change-tag ct-changed">Changed</span> Adjusted EPS: $24.50–$25.00 (raised from $24.40–$24.90) (prior: $22.19 (+17% YoY from $19.02))</li>
+    <li><span class="change-tag ct-changed">Changed</span> Optum Revenue: $54.06B (+25% YoY from $43.3B) (prior: $182.8B (+17.5% YoY))</li>
+    <li><span class="change-tag ct-changed">Changed</span> UnitedHealthcare Revenue: $70.47B (+13% YoY from $62.6B) (prior: $249.7B (+12% YoY))</li>
+    <li><span class="change-tag ct-changed">Changed</span> Cash from Operations: approaching $28B (~1.2x net income) (prior: $26.2B (1.3x net income))</li>
+    <li><span class="change-tag ct-new">New</span> NEW: Medicare Advantage rate/enrollment discussed</li>
+    <li><span class="change-tag ct-new">New</span> NEW: PBM / pharmacy benefit management discussed</li>
+  </ul>
+</div>
+
+<div class="metrics-card">
+  <div class="metric">
+    <div class="metric-label">Adjusted EPS</div>
+    <div class="metric-value">$24.50–$25.00</div>
+    <div class="metric-delta delta-flat">Prior: $22.19</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Optum Revenue</div>
+    <div class="metric-value">$54.06B</div>
+    <div class="metric-delta delta-flat">Prior: $182.8B</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">UnitedHealthcare Revenue</div>
+    <div class="metric-value">$70.47B</div>
+    <div class="metric-delta delta-flat">Prior: $249.7B</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Cash from Operations</div>
+    <div class="metric-value">approaching $28B</div>
+    <div class="metric-delta delta-flat">Prior: $26.2B</div>
+  </div>
+</div>
+
+<!-- Full Guidance Content -->
+<div class="content-section">
+  <h3>Full Year 2023 Guidance</h3>
+  <ul>
+    <li><strong>Adjusted EPS:</strong> $24.50–$25.00 (raised from $24.40–$24.90)</li>
+    <li><strong>GAAP EPS:</strong> $23.25–$23.75 (raised from $23.15–$23.65)</li>
+    <li><strong>Adjusted Net Earnings:</strong> $22.98B–$23.58B (raised from $22.85B–$23.45B)</li>
+    <li><strong>Intangible Amortization:</strong> ~$1.57B (~$1.65 per share, ~$0.40 tax effect per share)</li>
+    <li><strong>Cash Flows from Operations:</strong> approaching $28B (~1.2x net income)</li>
+    <li><strong>H1/H2 Earnings Split:</strong> slightly more than half in H2; consistent with pre-2019 historical patterns</li>
+    <li><strong>Medicare Advantage Growth:</strong> Expected to exceed 900,000 upper end</li>
+    <li><strong>Commercial Growth:</strong> Up to 1 million more people</li>
+    <li><strong>VBC Patients (Total):</strong> 4 million+ by year-end (about double end of 2021)</li>
+    <li><strong>Change Healthcare Integration Impact (Q1):</strong> ~$100M; expected higher in Q2</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Long-Term Targets</h3>
+  <ul>
+    <li><strong>EPS Growth Rate:</strong> 13%–16%</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q1 2023 UnitedHealthcare Segment</h3>
+  <ul>
+    <li><strong>UnitedHealthcare Revenue:</strong> $70.47B (+13% YoY from $62.6B)</li>
+    <li><strong>UHC Operating Margin:</strong> 6.2% (vs 6.1% prior year)</li>
+    <li><strong>UHC Earnings from Operations:</strong> $4.34B</li>
+    <li><strong>Employer & Individual (Domestic):</strong> $16.54B</li>
+    <li><strong>Employer & Individual (Global):</strong> $2.16B</li>
+    <li><strong>Medicare & Retirement:</strong> $33.01B</li>
+    <li><strong>Community & State:</strong> $18.76B</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q1 2023 Optum Segment</h3>
+  <ul>
+    <li><strong>Optum Revenue:</strong> $54.06B (+25% YoY from $43.3B)</li>
+    <li><strong>Optum Operating Margin:</strong> 6.9% (vs 7.3% prior year)</li>
+    <li><strong>Optum Earnings from Operations:</strong> $3.74B</li>
+    <li><strong>OptumHealth Revenue:</strong> $23.00B (+38% YoY); revenue per consumer grew 34%</li>
+    <li><strong>OptumInsight Revenue:</strong> $4.50B (+40% YoY); revenue backlog $30.7B (+$8B YoY); Change Healthcare addition contributing</li>
+    <li><strong>OptumRx Revenue:</strong> $27.42B (+15% YoY); script growth +26 million YoY; strong double-digit growth across all businesses</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q1 2023 Membership & Growth</h3>
+  <ul>
+    <li><strong>People Served (YTD):</strong> +1.2 million in U.S.; about half in commercial</li>
+    <li><strong>Medicare Advantage:</strong> On track to exceed upper end of 800,000–900,000 growth target</li>
+    <li><strong>Medicaid:</strong> +570,000 over year-ago quarter; recent wins in Indiana and Texas; North Carolina expansion advancing</li>
+    <li><strong>Commercial:</strong> Pacing well toward goal of up to 1 million more people; large employers leading gains</li>
+    <li><strong>Surest:</strong> Accounted for ~25% of commercial growth in Q1; 1 in 9 national accounts; available in 25 states (year-end target: 35 states); beginning fully insured risk-basis take-up</li>
+    <li><strong>OptumHealth VBC Patients:</strong> ~700,000 more under fully accountable arrangements vs December 2022; targeting 4 million+ total</li>
+    <li><strong>OptumRx Non-PBM Revenue:</strong> ~50% of OptumRx revenues from non-PBM activities</li>
+    <li><strong>Community Pharmacies:</strong> 700+ (just celebrated 700th opening); includes behavioral health pharmacy</li>
+    <li><strong>Redeterminations:</strong> Resumed in 20+ states</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q1 2023 Care Patterns</h3>
+  <ul>
+    <li>Largely consistent with recent trends</li>
+    <li>Inpatient: reflects long-term shift to ambulatory; nearly 2/3 of orthopedic procedures now outpatient (vs <1/4 five years ago)</li>
+    <li>Physician office: trending toward historic levels</li>
+    <li>Pediatrics: remains lower</li>
+    <li>Emergency room: modestly lower than historical; consumers more comfortable with virtual and walk-in care</li>
+    <li>Cancer and cardiac screenings: roughly pre-pandemic levels</li>
+    <li>No indications of increasing acuity emerging</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Medicare Advantage Rate Changes / V28 Risk Model</h3>
+  <ul>
+    <li>2024 MA notice provides greater short- to midterm clarity</li>
+    <li>CMS phasing in risk adjustment model changes over 3 years; "we really appreciate CMS' decision to phase-in"</li>
+    <li>Concerns about unintended consequences for diabetes, complex behavioral needs diagnosis/support</li>
+    <li>Phase-in allows time to minimize beneficiary impacts using multiple levers including cost management</li>
+    <li>Intend to grow again in 2024; expect marketplace to continue growing</li>
+    <li>Not changing the 13%–16% EPS growth target; confirmed "firmly of the view" that target holds</li>
+    <li>Competitive dynamics: "getting close to a bid cycle" and not sharing specific response strategies</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Prior Authorization Changes</h3>
+  <ul>
+    <li>Beginning Q3 2023: eliminating ~20% of authorization volumes overall</li>
+    <li>Eliminating most medical authorizations for high-quality provider groups; ~10% additional volume reduction</li>
+    <li>Driven by intensifying focus on consumer experience and streamlining processes</li>
+    <li>Leveraging new analytics in partnership with OptumInsight for surveillance capabilities</li>
+    <li>Do not anticipate any pressure on trend as a result</li>
+    <li>Change Healthcare network connectivity expected to further reduce friction</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>GLP-1 / Weight Loss Drugs</h3>
+  <ul>
+    <li>Increased trend in GLP-1s; overwhelming majority in diabetic care</li>
+    <li>Weight loss use: low single digits</li>
+    <li>On-label usage well managed with authorization requirements</li>
+    <li>Pharmacy is ~20% of overall spend; any one therapeutic class <1%</li>
+    <li>Trends consistent with plan assumptions for 2023</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>PBM / OptumRx Strategy</h3>
+  <ul>
+    <li>Responding to Washington scrutiny of PBM industry</li>
+    <li>OptumRx leads in transparency; overwhelming majority of rebates passed back to payers</li>
+    <li>Committed to lowest net cost regardless of mechanism (rebate or list price reduction)</li>
+    <li>Record selling season; one of highest retention and new client levels in recent years</li>
+    <li>Specialty NPS up nearly 10 points YoY</li>
+    <li>Biosimilar strategy: up to 3 biosimilars at parity with originator on formulary</li>
+    <li>Price Edge tool: scans market and compares cash pricing with member real-time out-of-pocket cost</li>
+    <li>Behavioral health pharmacy launched (distinctive offering)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Home-Based Care Expansion / LHC Group</h3>
+  <ul>
+    <li>LHC Group combination completed; expands in-home capabilities</li>
+    <li>LHC provides home health, hospice, post-acute care; 12 million+ patient encounters/year</li>
+    <li>Four home-based care capabilities: 1. Patient assessments: 2.5 million+ in-home visits expected in 2023 2. Care transitions: managing nearly 12 million transitions (2x vs 3 years ago) 3. Senior community care: clinical care in skilled nursing, assisted living, senior housing 4. Individual care coordination for D-SNP/chronic special needs patients: NPS ~80; 99% in 4-star+ plans; 15%+ reduction in hospitalizations; average patient managing 9 chronic conditions</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Value-Based Care Diversification</h3>
+  <ul>
+    <li>VBC model expanding beyond Medicare into commercial and Medicaid</li>
+    <li>Commercial VBC in Texas, California, Massachusetts today; meaningful part of 4 million capitated lives</li>
+    <li>Growing with multiple national and regional payers, not just UHC</li>
+    <li>Comprehensive clinical model of care appealing to all large national payers</li>
+    <li>Large fraction of 700,000 Q1 transfers are UHC but substantial non-UHC delegation growing</li>
+    <li>~10,000+ clinicians added last year; expect similar this year</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>EMIS Acquisition (UK)</h3>
+  <ul>
+    <li>CMA phase 2 investigation underway; cannot comment on regulatory specifics</li>
+    <li>EMIS connects to ~40% of British primary care providers</li>
+    <li>Strategic rationale: complement Optum software/data capabilities for primary care</li>
+    <li>Potential node of innovation for non-U.S. health care systems</li>
+    <li>Optum has had UK business for many years</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Medicaid Redeterminations</h3>
+  <ul>
+    <li>Process resumed in 20+ states</li>
+    <li>Working with state partners and members to provide information and support</li>
+    <li>Live outreach calls; extended employer enrollment periods; coverage awareness</li>
+    <li>Many will qualify for alternative plans, some with $0 monthly premium</li>
+    <li>Expect to be serving more people in benefit programs when process completes</li>
+    <li>UHC executing detailed plans for uninterrupted coverage access</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q1 2023 Actuals (Reported)</h3>
+  <ul>
+    <li><strong>Revenue:</strong> $91.93B (+15% YoY from $80.1B)</li>
+    <li><strong>Premiums:</strong> $72.79B</li>
+    <li><strong>Products Revenue:</strong> $10.27B</li>
+    <li><strong>Services Revenue:</strong> $8.08B</li>
+    <li><strong>Investment and Other Income:</strong> $798M</li>
+    <li><strong>Medical Costs:</strong> $59.85B</li>
+    <li><strong>Medical Care Ratio:</strong> 82.2% (medical costs / premiums)</li>
+    <li><strong>Operating Costs:</strong> $13.63B</li>
+    <li><strong>Operating Cost Ratio:</strong> 14.8% (operating costs / total revenues)</li>
+    <li><strong>Earnings from Operations:</strong> $8.09B</li>
+    <li><strong>Consolidated Operating Margin:</strong> 8.8% (vs 8.7% prior year)</li>
+    <li><strong>Net Earnings (attributable):</strong> $5.61B</li>
+    <li><strong>GAAP Diluted EPS:</strong> $5.95</li>
+    <li><strong>Adjusted Diluted EPS:</strong> $6.26 (+14% YoY from $5.49)</li>
+    <li><strong>Cash Flows from Operations:</strong> $16.3B (includes additional CMS payment; adjusted basis consistent with outlook)</li>
+    <li><strong>Shareholder Returns:</strong> >$3.5B (dividends + share repurchases)</li>
+    <li><strong>Capital Deployed (Growth):</strong> ~$8B</li>
+    <li><strong>Cash and Short-Term Investments:</strong> $46.5B</li>
+  </ul>
+</div>
+
+<div class="prior-ref" id="priorRef">
+  <div class="prior-ref-header" onclick="var b=document.getElementById('priorBody');b.classList.toggle('open');this.querySelector('.arrow').innerHTML=b.classList.contains('open')?'&#9650;':'&#9660;';">
+    Prior Quarter Reference: Q4 2022
+    <span class="arrow">&#9660;</span>
+  </div>
+  <div class="prior-ref-body" id="priorBody">
+    <div class="metric-grid">
+      <div class="prior-mini"><div class="pm-label">Revenue</div><div class="pm-value">$324.2B (+12.7% YoY from $287.6B, grew >$36B or 13%)</div></div>
+      <div class="prior-mini"><div class="pm-label">Adjusted EPS</div><div class="pm-value">$22.19 (+17% YoY from $19.02)</div></div>
+      <div class="prior-mini"><div class="pm-label">Optum Revenue</div><div class="pm-value">$182.8B (+17.5% YoY)</div></div>
+      <div class="prior-mini"><div class="pm-label">UnitedHealthcare Revenue</div><div class="pm-value">$249.7B (+12% YoY)</div></div>
+      <div class="prior-mini"><div class="pm-label">Cash from Operations</div><div class="pm-value">$26.2B (1.3x net income)</div></div>
+    </div>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q4_2022.html" style="color:var(--blue);">View full Q4 2022 detail &rarr;</a></p>
+  </div>
+</div>
+
+<div class="footer-nav">
+  <a href="Q4_2022.html">&larr; Q4 2022</a>
+  <a href="../comparison.html">Back to Overview</a>
+  <a href="Q2_2023.html">Q2 2023 &rarr;</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,329 @@
+# Carvana Co. — Q3_2023 Earnings Release
+
+**Ticker:** CVNA
+**Filing Date:** 2023-11-02
+**Accession:** 0001690820-23-000321
+**Source:** [SEC EDGAR](https://www.sec.gov/Archives/edgar/data/1690820/000169082023000321/0001690820-23-000321-index.htm)
+
+## Key Metrics (XBRL)
+
+| Metric | Value | Units | Source |
+|--------|------:|-------|--------|
+| Cash & Equivalents | $544.0M | USD | 10-Q |
+| EPS (Basic) | 7 | USD/shares | 10-Q |
+| EPS (Diluted) | 7 | USD/shares | 10-Q |
+| Income Tax Expense | $29.0M | USD | 10-Q |
+| Net Income | $782.0M | USD | 10-Q |
+| Net Income to Common | $782.0M | USD | 10-Q |
+| Operating Income | $48.0M | USD | 10-Q |
+| Revenue | $2.77B | USD | 10-Q |
+| Total Assets | $7.03B | USD | 10-Q |
+| Total Equity | $339.0M | USD | 10-Q |
+| Total Liabilities | $7.23B | USD | 10-Q |
+
+## Financial Tables (from Exhibits)
+
+### 
+
+|  | September 30, 2023 |  | December 31, 2022 |
+| ASSETS |  |  |  |
+| Current assets: |  |  |  |
+| Cash and cash equivalents |  | 544 |  |  |  | 434 |  |
+| Restricted cash | 72 |  |  | 194 |  |
+| Accounts receivable, net | 318 |  |  | 253 |  |
+| Finance receivables held for sale, net | 650 |  |  | 1334 |  |
+| Vehicle inventory | 1085 |  |  | 1876 |  |
+| Beneficial interests in securitizations | 371 |  |  | 321 |  |
+| Other current assets, including 0 and 6, respectively, due from related parties | 146 |  |  | 182 |  |
+| Total current assets | 3186 |  |  | 4594 |  |
+| Property and equipment, net | 3051 |  |  | 3244 |  |
+| Operating lease right-of-use assets, including 11 and 14, respectively, from leases with related parties | 473 |  |  | 536 |  |
+| Intangible assets, net | 56 |  |  | 70 |  |
+| Other assets, including 0 and 1, respectively, due from related parties | 259 |  |  | 254 |  |
+| Total assets |  | 7025 |  |  |  | 8698 |  |
+| LIABILITIES & STOCKHOLDERS' DEFICIT |  |  |  |
+| Current liabilities: |  |  |  |
+| Accounts payable and accrued liabilities, including 1 and 16, respectively, due to related parties |  | 681 |  |  |  | 777 |  |
+| Short-term revolving facilities | 429 |  |  | 1534 |  |
+| Current portion of long-term debt | 200 |  |  | 201 |  |
+| Other current liabilities, including 3 and 4, respectively, from leases with related parties | 85 |  |  | 80 |  |
+| Total current liabilities | 1395 |  |  | 2592 |  |
+| Long-term debt, excluding current portion | 5305 |  |  | 6574 |  |
+| Operating lease liabilities, excluding current portion, including 7 and 9, respectively, from leases with related parties | 450 |  |  | 507 |  |
+| Other liabilities, including 11 and 0, respectively, due to related parties | 77 |  |  | 78 |  |
+| Total liabilities | 7227 |  |  | 9751 |  |
+| Commitments and contingencies |  |  |  |
+| Stockholders' deficit: |  |  |  |
+| Preferred stock, 0.01 par value - 50,000 shares authorized; none issued and outstanding as of September 30, 2023 and December 31, 2022 | — |  |  | — |  |
+| Class A common stock, 0.001 par value - 500,000 shares authorized; 113,975 and 106,037 shares issued and outstanding as of September 30, 2023 and December 31, 2022, respectively | — |  |  | — |  |
+| Class B common stock, 0.001 par value - 125,000 shares authorized; 85,619 and 82,900 shares issued and outstanding as of September 30, 2023 and December 31, 2022, respectively | — |  |  | — |  |
+| Additional paid-in capital | 1851 |  |  | 1558 |  |
+| Accumulated deficit | -1512 |  |  | -2076 |  |
+| Total stockholders' equity (deficit) attributable to Carvana Co. | 339 |  |  | -518 |  |
+| Non-controlling interests | -541 |  |  | -535 |  |
+| Total stockholders' deficit | -202 |  |  | -1053 |  |
+| Total liabilities & stockholders' deficit |  | 7025 |  |  |  | 8698 |  |
+
+### 
+
+|  | Three Months Ended September 30, |  | Nine Months Ended September 30, |
+|  | 2023 |  | 2022 |  | 2023 |  | 2022 |
+| Sales and operating revenues: |  |  |  |  |  |  |  |
+| Retail vehicle sales, net |  | 1949 |  |  |  | 2492 |  |  |  | 5737 |  |  |  | 8186 |  |
+| Wholesale sales and revenues, including 4, 6, 14 and 27, respectively, from related parties | 610 |  |  | 697 |  |  | 2005 |  |  | 1976 |  |
+| Other sales and revenues, including 35, 39, 104 and 137, respectively, from related parties | 214 |  |  | 197 |  |  | 605 |  |  | 605 |  |
+| Net sales and operating revenues | 2773 |  |  | 3386 |  |  | 8347 |  |  | 10767 |  |
+| Cost of sales, including 1, 2, 3 and 20, respectively, to related parties | 2291 |  |  | 3027 |  |  | 7025 |  |  | 9714 |  |
+| Gross profit | 482 |  |  | 359 |  |  | 1322 |  |  | 1053 |  |
+| Selling, general and administrative expenses, including 8, 7, 26 and 20, respectively, to related parties | 433 |  |  | 656 |  |  | 1357 |  |  | 2104 |  |
+| Interest expense | 153 |  |  | 153 |  |  | 467 |  |  | 333 |  |
+| Gain on debt extinguishment | -878 |  |  | — |  |  | -878 |  |  | — |  |
+| Other (income) expense, net | 4 |  |  | 58 |  |  |  |  |  | 68 |  |
+| Net income (loss) before income taxes | 770 |  |  | -508 |  |  | 377 |  |  | -1452 |  |
+| Income tax provision | 29 |  |  | — |  |  | 27 |  |  | 1 |  |
+| Net income (loss) | 741 |  |  | -508 |  |  | 350 |  |  | -1453 |  |
+| Net loss attributable to non-controlling interests | -41 |  |  | -225 |  |  | -214 |  |  | -672 |  |
+| Net income (loss) attributable to Carvana Co. |  | 782 |  |  |  | -283 |  |  |  | 564 |  |  |  | -781 |  |
+| Net earnings (loss) per share of Class A common stock - basic |  | 7.05 |  |  |  | -2.67 |  |  |  | 5.24 |  |  |  | -7.88 |  |
+| Net earnings (loss) per share of Class A common stock - diluted |  | 3.60 |  |  |  | -2.67 |  |  |  | 1.78 |  |  |  | -7.88 |  |
+| Weighted-average shares of Class A common stock outstanding - basic | 110844 |  |  | 105857 |  |  | 107692 |  |  | 99134 |  |
+| Weighted-average shares of Class A common stock outstanding - diluted | 205958 |  |  | 105857 |  |  | 197124 |  |  | 99134 |  |
+
+### 
+
+|  | Nine Months Ended September 30, |
+|  | 2023 |  | 2022 |
+| Cash Flows from Operating Activities: |  |  |  |
+| Net income (loss) |  | 350 |  |  |  | -1453 |  |
+| Adjustments to reconcile net income (loss) to net cash provided by (used in) operating activities: |  |  |  |
+| Depreciation and amortization expense | 270 |  |  | 179 |  |
+| Equity-based compensation expense | 52 |  |  | 57 |  |
+| Loss on disposal of property and equipment | 8 |  |  | 3 |  |
+| Gain on debt extinguishment | -878 |  |  | — |  |
+| Payment-in-kind interest expense | 46 |  |  | — |  |
+| Provision for bad debt and valuation allowance | 34 |  |  | 11 |  |
+| Amortization and write-off of debt issuance costs and debt premium | 20 |  |  | 20 |  |
+| Unrealized (gain) loss on warrants to acquire Root's Class A common stock |  |  |  | 77 |  |
+| Unrealized (gain) loss on beneficial interests in securitization | -12 |  |  | 1 |  |
+| Changes in finance receivable related assets: |  |  |  |
+| Originations of finance receivables | -4509 |  |  | -5690 |  |
+| Proceeds from sale of finance receivables, net | 5207 |  |  | 5628 |  |
+| Gain on loan sales | -360 |  |  | -361 |  |
+| Principal payments received on finance receivables held for sale | 160 |  |  | 146 |  |
+| Other changes in assets and liabilities: |  |  |  |
+| Vehicle inventory | 777 |  |  | 638 |  |
+| Accounts receivable | -73 |  |  | 40 |  |
+| Other assets | 27 |  |  | -75 |  |
+| Accounts payable and accrued liabilities | -84 |  |  | 155 |  |
+| Operating lease right-of-use assets | 63 |  |  | -132 |  |
+| Operating lease liabilities | -52 |  |  | 178 |  |
+| Other liabilities |  |  |  |  |  |
+| Net cash provided by (used in) operating activities | 1042 |  |  | -585 |  |
+| Cash Flows from Investing Activities: |  |  |  |
+| Purchases of property and equipment | -69 |  |  | -451 |  |
+| Proceeds from disposal of property and equipment | 58 |  |  | — |  |
+| Payments for acquisitions, net of cash acquired |  |  |  | -2189 |  |
+| Principal payments received on and proceeds from sale of beneficial interests | 40 |  |  | 72 |  |
+| Net cash provided by (used in) investing activities | 22 |  |  | -2568 |  |
+| Cash Flows from Financing Activities: |  |  |  |
+| Proceeds from short-term revolving facilities | 5756 |  |  | 10596 |  |
+| Payments on short-term revolving facilities | -6861 |  |  | -12074 |  |
+| Proceeds from issuance of long-term debt | 110 |  |  | 3435 |  |
+| Payments on long-term debt | -470 |  |  | -111 |  |
+| Payments of debt issuance costs | -52 |  |  | -75 |  |
+| Net proceeds from issuance of Class A common stock and LLC Units | 453 |  |  | 1227 |  |
+| Proceeds from equity-based compensation plans | — |  |  | 4 |  |
+| Tax withholdings related to restricted stock units and awards | -12 |  |  |  |  |
+| Net cash (used in) provided by financing activities | -1076 |  |  | 2994 |  |
+| Net decrease in cash, cash equivalents and restricted cash | -12 |  |  | -159 |  |
+| Cash, cash equivalents and restricted cash at beginning of period | 628 |  |  | 636 |  |
+| Cash, cash equivalents and restricted cash at end of period |  | 616 |  |  |  | 477 |  |
+
+### 
+
+|  | Three Months Ended September 30, |  |  |  | Nine Months Ended September 30, |  |  |
+|  | 2023 |  | 2022 |  | Change |  | 2023 |  | 2022 |  | Change |
+|  | (in millions, except unit and per unit amounts) |  |  |  | (in millions, except unit and per unit amounts) |  |  |
+| Net sales and operating revenues: |  |  |  |  |  |  |  |  |  |  |
+| Retail vehicle sales, net |  | 1949 |  |  |  | 2492 |  |  | -21.8 | % |  |  | 5737 |  |  |  | 8186 |  |  | -29.9 | % |
+| Wholesale sales and revenues | 610 |  |  | 697 |  |  | -12.5 | % |  | 2005 |  |  | 1976 |  |  | 1.5 | % |
+| Other sales and revenues | 214 |  |  | 197 |  |  | 8.6 | % |  | 605 |  |  | 605 |  |  | — | % |
+| Total net sales and operating revenues |  | 2773 |  |  |  | 3386 |  |  | -18.1 | % |  |  | 8347 |  |  |  | 10767 |  |  | -22.5 | % |
+| Gross profit: |  |  |  |  |  |  |  |  |  |  |  |
+| Retail vehicle gross profit |  | 218 |  |  |  | 116 |  |  | 87.9 | % |  |  | 532 |  |  |  | 334 |  |  | 59.3 | % |
+| Wholesale gross profit | 50 |  |  | 46 |  |  | 8.7 | % |  | 185 |  |  | 114 |  |  | 62.3 | % |
+| Other gross profit | 214 |  |  | 197 |  |  | 8.6 | % |  | 605 |  |  | 605 |  |  | — | % |
+| Total gross profit |  | 482 |  |  |  | 359 |  |  | 34.3 | % |  |  | 1322 |  |  |  | 1053 |  |  | 25.5 | % |
+| Unit sales information: |  |  |  |  |  |  |  |  |  |  |  |
+| Retail vehicle unit sales | 80987 |  |  | 102570 |  |  | -21.0 | % |  | 236757 |  |  | 325319 |  |  | -27.2 | % |
+| Wholesale vehicle unit sales | 40886 |  |  | 47763 |  |  | -14.4 | % |  | 122449 |  |  | 153342 |  |  | -20.1 | % |
+| Per unit selling prices: |  |  |  |  |  |  |  |  |  |  |  |
+| Retail vehicles | 24066 |  |  | 24296 |  |  | -0.9 | % |  | 24232 |  |  | 25163 |  |  | -3.7 | % |
+| Wholesale vehicles | 9612 |  |  | 10552 |  |  | -8.9 | % |  | 11058 |  |  | 10923 |  |  | 1.2 | % |
+| Per retail unit gross profit: |  |  |  |  |  |  |  |  |  |  |  |
+| Retail vehicle gross profit |  | 2692 |  |  |  | 1131 |  |  | 138.0 | % |  |  | 2247 |  |  |  | 1027 |  |  | 118.8 | % |
+| Wholesale gross profit | 618 |  |  | 448 |  |  | 37.9 | % |  | 781 |  |  | 350 |  |  | 123.1 | % |
+| Other gross profit | 2642 |  |  | 1921 |  |  | 37.5 | % |  | 2555 |  |  | 1860 |  |  | 37.4 | % |
+| Total gross profit |  | 5952 |  |  |  | 3500 |  |  | 70.1 | % |  |  | 5583 |  |  |  | 3237 |  |  | 72.5 | % |
+| Per wholesale unit gross profit: |  |  |  |  |  |  |  |  |  |  |  |
+| Wholesale vehicle gross profit |  | 685 |  |  |  | 691 |  |  | -0.9 | % |  |  | 906 |  |  |  | 626 |  |  | 44.7 | % |
+| Wholesale marketplace: |  |  |  |  |  |  |  |  |  |  |  |
+| Wholesale marketplace units sold | 221368 |  |  | 193061 |  | 14.7% |  | 662830 |  |  | 304944 |  | NM |
+| Wholesale marketplace revenues |  | 217 |  |  |  | 193 |  |  | 12.4% |  |  | 651 |  |  |  | 301 |  |  | NM |
+| Wholesale marketplace gross profit |  | 22 |  |  |  | 13 |  |  | 69.2% |  |  | 74 |  |  |  | 18 |  |  | NM |
+
+### 
+
+|  | Three Months Ended |
+|  | Sep 30, 2022 |  | Dec 31, 2022 |  | Mar 31, 2023 |  | Jun 30, 2023 |  | Sep 30, 2023 |
+|  | (in millions) |
+| Compensation and benefits |  | 221 |  |  |  | 212 |  |  |  | 177 |  |  |  | 163 |  |  |  | 160 |  |
+| CEO Milestone Gift | 2 |  |  | — |  |  |  |  |  | — |  |  | — |  |
+| Advertising | 117 |  |  | 87 |  |  | 56 |  |  | 57 |  |  | 56 |  |
+| Market occupancy | 23 |  |  | 23 |  |  | 21 |  |  | 18 |  |  | 16 |  |
+| Logistics | 57 |  |  | 51 |  |  | 35 |  |  | 29 |  |  | 29 |  |
+| Other | 236 |  |  | 259 |  |  | 184 |  |  | 185 |  |  | 172 |  |
+| Total |  | 656 |  |  |  | 632 |  |  |  | 472 |  |  |  | 452 |  |  |  | 433 |  |
+
+### 
+
+|  |  |  |  |  |  | For the Three Months Ended |
+| (dollars in millions, except per unit amounts) |  |  |  |  |  | Sep 30, 2022 |  | Dec 31, 2022 |  | Mar 31, 2023 |  | Jun 30, 2023 |  | Sep 30, 2023 |
+| Net income (loss) |  |  |  |  |  |  | -508 |  |  |  | -1441 |  |  |  | -286 |  |  |  | -105 |  |  |  | 741 |  |
+| Income tax (benefit) provision |  |  |  |  |  | — |  |  | — |  |  |  |  |  | — |  |  | 29 |  |
+| Interest expense |  |  |  |  |  | 153 |  |  | 153 |  |  | 159 |  |  | 155 |  |  | 153 |  |
+| Other (income) expense, net |  |  |  |  |  | 58 |  |  | 2 |  |  |  |  |  |  |  |  | 4 |  |
+| Depreciation and amortization expense in cost of sales |  |  |  |  |  | 36 |  |  | 43 |  |  | 44 |  |  | 44 |  |  | 42 |  |
+| Depreciation and amortization expense in SG&A |  |  |  |  |  | 57 |  |  | 57 |  |  | 49 |  |  | 46 |  |  | 45 |  |
+| Share-based compensation expense in cost of sales |  |  |  |  |  | 2 |  |  | — |  |  | — |  |  | — |  |  | — |  |
+| Share-based compensation expense in SG&A |  |  |  |  |  | 16 |  |  | 12 |  |  | 15 |  |  | 20 |  |  | 18 |  |
+| Root warrant revenue |  |  |  |  |  | — |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Goodwill impairment |  |  |  |  |  | — |  |  | 847 |  |  | — |  |  | — |  |  | — |  |
+| Gain on debt extinguishment |  |  |  |  |  | — |  |  | — |  |  | — |  |  | — |  |  | -878 |  |
+| Restructuring |  |  |  |  |  | — |  |  | 43 |  |  | 4 |  |  | 3 |  |  | — |  |
+| Adjusted EBITDA |  |  |  |  |  |  | -186 |  |  |  | -291 |  |  |  | -24 |  |  |  | 155 |  |  |  | 148 |  |
+| Total revenues |  |  |  |  |  |  | 3386 |  |  |  | 2837 |  |  |  | 2606 |  |  |  | 2968 |  |  |  | 2773 |  |
+| Net income (loss) margin |  |  |  |  |  | -15.0 | % |  | -50.8 | % |  | -11.0 | % |  | -3.5 | % |  | 26.7 | % |
+| Adjusted EBITDA margin |  |  |  |  |  | -5.5 | % |  | -10.3 | % |  | -0.9 | % |  | 5.2 | % |  | 5.3 | % |
+| Gross profit |  |  |  |  |  |  | 359 |  |  |  | 193 |  |  |  | 341 |  |  |  | 499 |  |  |  | 482 |  |
+| Depreciation and amortization expense in cost of sales |  |  |  |  |  | 36 |  |  | 43 |  |  | 44 |  |  | 44 |  |  | 42 |  |
+| Share-based compensation expense in cost of sales |  |  |  |  |  | 2 |  |  | — |  |  | — |  |  | — |  |  | — |  |
+| Root warrant revenue |  |  |  |  |  | — |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Restructuring |  |  |  |  |  | — |  |  | 3 |  |  | — |  |  | — |  |  | — |  |
+| Gross profit, non-GAAP |  |  |  |  |  |  | 397 |  |  |  | 232 |  |  |  | 380 |  |  |  | 538 |  |  |  | 518 |  |
+| Retail vehicle unit sales |  |  |  |  |  | 102570 |  |  | 86977 |  |  | 79240 |  |  | 76530 |  |  | 80987 |  |
+| Total gross profit per retail unit |  |  |  |  |  |  | 3500 |  |  |  | 2219 |  |  |  | 4303 |  |  |  | 6520 |  |  |  | 5952 |  |
+| Total gross profit per retail unit, non-GAAP |  |  |  |  |  |  | 3870 |  |  |  | 2667 |  |  |  | 4796 |  |  |  | 7030 |  |  |  | 6396 |  |
+| SG&A |  |  |  |  |  |  | 656 |  |  |  | 632 |  |  |  | 472 |  |  |  | 452 |  |  |  | 433 |  |
+| Depreciation and amortization expense in SG&A |  |  |  |  |  | 57 |  |  | 57 |  |  | 49 |  |  | 46 |  |  | 45 |  |
+| Share-based compensation expense in SG&A |  |  |  |  |  | 16 |  |  | 12 |  |  | 15 |  |  | 20 |  |  | 18 |  |
+| Restructuring |  |  |  |  |  | — |  |  | 40 |  |  | 4 |  |  | 3 |  |  | — |  |
+| SG&A, non-GAAP |  |  |  |  |  |  | 583 |  |  |  | 523 |  |  |  | 404 |  |  |  | 383 |  |  |  | 370 |  |
+| Retail vehicle unit sales |  |  |  |  |  | 102570 |  |  | 86977 |  |  | 79240 |  |  | 76530 |  |  | 80987 |  |
+| Total SG&A per retail unit |  |  |  |  |  |  | 6396 |  |  |  | 7266 |  |  |  | 5957 |  |  |  | 5906 |  |  |  | 5347 |  |
+| Total SG&A per retail unit, non-GAAP |  |  |  |  |  |  | 5684 |  |  |  | 6013 |  |  |  | 5098 |  |  |  | 5005 |  |  |  | 4569 |  |
+
+### 
+
+|  |  |  |  |  |  | For the Year Ended |  | For the Three Months Ended |
+| (dollars in millions, except per unit amounts) |  |  |  |  |  | Dec 31, 2021 |  | Mar 31, 2022 |  | Jun 30, 2022 |  | Sep 30, 2022 |  | Dec 31, 2022 |  | Mar 31, 2023 |  | Jun 30, 2023 |  | Sep 30, 2023 |
+| Retail gross profit |  |  |  |  |  |  | 697 |  |  |  | 85 |  |  |  | 133 |  |  |  | 116 |  |  |  | 37 |  |  |  | 110 |  |  |  | 204 |  |  |  | 218 |  |
+| Depreciation and amortization expense in cost of sales |  |  |  |  |  | 20 |  |  | 7 |  |  | 11 |  |  | 12 |  |  | 15 |  |  | 16 |  |  | 15 |  |  | 15 |  |
+| Share-based compensation expense in cost of sales |  |  |  |  |  | — |  |  | 8 |  |  | 6 |  |  | 2 |  |  | — |  |  | — |  |  | — |  |  | — |  |
+| Restructuring |  |  |  |  |  | — |  |  | — |  |  | 4 |  |  | — |  |  | 3 |  |  | — |  |  | — |  |  | — |  |
+| Retail gross profit, non-GAAP |  |  |  |  |  |  | 717 |  |  |  | 100 |  |  |  | 154 |  |  |  | 130 |  |  |  | 55 |  |  |  | 126 |  |  |  | 219 |  |  |  | 233 |  |
+| Retail vehicle unit sales |  |  |  |  |  | 425237 |  |  | 105185 |  |  | 117564 |  |  | 102570 |  |  | 86977 |  |  | 79240 |  |  | 76530 |  |  | 80987 |  |
+| Retail gross profit per retail unit |  |  |  |  |  |  | 1639 |  |  |  | 808 |  |  |  | 1131 |  |  |  | 1131 |  |  |  | 425 |  |  |  | 1388 |  |  |  | 2666 |  |  |  | 2692 |  |
+| Retail gross profit per retail unit, non-GAAP |  |  |  |  |  |  | 1686 |  |  |  | 950 |  |  |  | 1309 |  |  |  | 1268 |  |  |  | 632 |  |  |  | 1591 |  |  |  | 2862 |  |  |  | 2877 |  |
+| Wholesale vehicle gross profit |  |  |  |  |  |  | 189 |  |  |  | 23 |  |  |  | 40 |  |  |  | 33 |  |  |  | 16 |  |  |  | 44 |  |  |  | 39 |  |  |  | 28 |  |
+| Depreciation and amortization expense in cost of sales |  |  |  |  |  | 4 |  |  | 1 |  |  | 1 |  |  | 2 |  |  | 3 |  |  | 2 |  |  | 3 |  |  | 2 |  |
+| Wholesale vehicle gross profit, non-GAAP |  |  |  |  |  |  | 193 |  |  |  | 24 |  |  |  | 41 |  |  |  | 35 |  |  |  | 19 |  |  |  | 46 |  |  |  | 42 |  |  |  | 30 |  |
+| Retail vehicle unit sales |  |  |  |  |  | 425237 |  |  | 105185 |  |  | 117564 |  |  | 102570 |  |  | 86977 |  |  | 79240 |  |  | 76530 |  |  | 80987 |  |
+| Wholesale vehicle gross profit per retail unit |  |  |  |  |  |  | 445 |  |  |  | 219 |  |  |  | 340 |  |  |  | 321 |  |  |  | 184 |  |  |  | 555 |  |  |  | 509 |  |  |  | 347 |  |
+| Wholesale vehicle gross profit per retail unit, non-GAAP |  |  |  |  |  |  | 454 |  |  |  | 229 |  |  |  | 349 |  |  |  | 340 |  |  |  | 218 |  |  |  | 580 |  |  |  | 548 |  |  |  | 372 |  |
+| Wholesale marketplace gross profit |  |  |  |  |  |  | — |  |  |  | — |  |  |  | 5 |  |  |  | 13 |  |  |  | 4 |  |  |  | 26 |  |  |  | 26 |  |  |  | 22 |  |
+| Depreciation and amortization expense in cost of sales |  |  |  |  |  | — |  |  | — |  |  | 15 |  |  | 22 |  |  | 25 |  |  | 26 |  |  | 26 |  |  | 25 |  |
+| Wholesale marketplace gross profit, non-GAAP |  |  |  |  |  |  | — |  |  |  | — |  |  |  | 20 |  |  |  | 35 |  |  |  | 29 |  |  |  | 52 |  |  |  | 52 |  |  |  | 47 |  |
+| Retail vehicle unit sales |  |  |  |  |  | 425237 |  |  | 105185 |  |  | 117564 |  |  | 102570 |  |  | 86977 |  |  | 79240 |  |  | 76530 |  |  | 80987 |  |
+| Wholesale marketplace gross profit per retail unit |  |  |  |  |  |  | — |  |  |  | — |  |  |  | 43 |  |  |  | 127 |  |  |  | 46 |  |  |  | 328 |  |  |  | 340 |  |  |  | 271 |  |
+| Wholesale marketplace gross profit per retail unit, non-GAAP |  |  |  |  |  |  | — |  |  |  | — |  |  |  | 171 |  |  |  | 341 |  |  |  | 333 |  |  |  | 656 |  |  |  | 680 |  |  |  | 579 |  |
+| Other gross profit |  |  |  |  |  |  | 1043 |  |  |  | 190 |  |  |  | 218 |  |  |  | 197 |  |  |  | 136 |  |  |  | 161 |  |  |  | 230 |  |  |  | 214 |  |
+| Root warrant revenue |  |  |  |  |  | — |  |  | — |  |  | — |  |  | — |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Other gross profit, non-GAAP |  |  |  |  |  |  | 1043 |  |  |  | 190 |  |  |  | 218 |  |  |  | 197 |  |  |  | 129 |  |  |  | 156 |  |  |  | 225 |  |  |  | 208 |  |
+| Retail vehicle unit sales |  |  |  |  |  | 425237 |  |  | 105185 |  |  | 117564 |  |  | 102570 |  |  | 86977 |  |  | 79240 |  |  | 76530 |  |  | 80987 |  |
+| Other gross profit per retail unit |  |  |  |  |  |  | 2453 |  |  |  | 1806 |  |  |  | 1854 |  |  |  | 1921 |  |  |  | 1564 |  |  |  | 2032 |  |  |  | 3005 |  |  |  | 2642 |  |
+| Other gross profit per retail unit, non-GAAP |  |  |  |  |  |  | 2453 |  |  |  | 1806 |  |  |  | 1854 |  |  |  | 1921 |  |  |  | 1483 |  |  |  | 1969 |  |  |  | 2940 |  |  |  | 2568 |  |
+
+### 
+
+|  |  |  |  |  |  | For the Years Ended December 31, |
+| (dollars in millions, except per unit amounts) |  |  |  |  |  | 2016 |  | 2017 |  | 2018 |  | 2019 |  | 2020 |  | 2021 |  | 2022 |
+| Net loss |  |  |  |  |  |  | -93 |  |  |  | -164 |  |  |  | -255 |  |  |  | -365 |  |  |  | -462 |  |  |  | -287 |  |  |  | -2894 |  |
+| Income tax provision |  |  |  |  |  | — |  |  | — |  |  | — |  |  | — |  |  | — |  |  | 1 |  |  | 1 |  |
+| Interest expense |  |  |  |  |  | 4 |  |  | 8 |  |  | 25 |  |  | 81 |  |  | 131 |  |  | 176 |  |  | 486 |  |
+| Other (income) expense, net |  |  |  |  |  | — |  |  | 1 |  |  | 1 |  |  | 4 |  |  |  |  |  | 6 |  |  | 70 |  |
+| Depreciation and amortization expense in cost of sales |  |  |  |  |  | — |  |  | — |  |  | — |  |  | — |  |  | 10 |  |  | 24 |  |  | 114 |  |
+| Depreciation and amortization expense in SG&A |  |  |  |  |  | 4 |  |  | 11 |  |  | 24 |  |  | 41 |  |  | 74 |  |  | 105 |  |  | 200 |  |
+| Share-based compensation expense in cost of sales |  |  |  |  |  | — |  |  | — |  |  | 4 |  |  | 5 |  |  | 1 |  |  | — |  |  | 16 |  |
+| Share-based compensation expense in SG&A |  |  |  |  |  | 1 |  |  | 6 |  |  | 21 |  |  | 30 |  |  | 25 |  |  | 39 |  |  | 69 |  |
+| Root warrant revenue |  |  |  |  |  | — |  |  | — |  |  | — |  |  | — |  |  | — |  |  | — |  |  |  |  |
+| Goodwill impairment |  |  |  |  |  | — |  |  | — |  |  | — |  |  | — |  |  | — |  |  | — |  |  | 847 |  |
+| Restructuring |  |  |  |  |  | — |  |  | — |  |  | — |  |  | — |  |  | — |  |  | — |  |  | 57 |  |
+| Adjusted EBITDA |  |  |  |  |  |  | -84 |  |  |  | -138 |  |  |  | -180 |  |  |  | -204 |  |  |  | -222 |  |  |  | 64 |  |  |  | -1041 |  |
+| Total revenues |  |  |  |  |  |  | 365 |  |  |  | 859 |  |  |  | 1955 |  |  |  | 3940 |  |  |  | 5587 |  |  |  | 12814 |  |  |  | 13604 |  |
+| Net loss margin |  |  |  |  |  | -25.5 | % |  | -19.1 | % |  | -13.0 | % |  | -9.3 | % |  | -8.3 | % |  | -2.2 | % |  | -21.3 | % |
+| Adjusted EBITDA margin |  |  |  |  |  | -23.0 | % |  | -16.1 | % |  | -9.2 | % |  | -5.2 | % |  | -4.0 | % |  | 0.5 | % |  | -7.7 | % |
+| Gross profit |  |  |  |  |  |  | 19 |  |  |  | 68 |  |  |  | 197 |  |  |  | 506 |  |  |  | 794 |  |  |  | 1929 |  |  |  | 1246 |  |
+| Depreciation and amortization expense in cost of sales |  |  |  |  |  | — |  |  | — |  |  | — |  |  | — |  |  | 10 |  |  | 24 |  |  | 114 |  |
+| Share-based compensation expense in cost of sales |  |  |  |  |  | — |  |  | — |  |  | 4 |  |  | 5 |  |  | 1 |  |  | — |  |  | 16 |  |
+| Root warrant revenue |  |  |  |  |  | — |  |  | — |  |  | — |  |  | — |  |  | — |  |  | — |  |  |  |  |
+| Restructuring |  |  |  |  |  | — |  |  | — |  |  | — |  |  | — |  |  | — |  |  | — |  |  | 7 |  |
+| Gross profit, non-GAAP |  |  |  |  |  |  | 19 |  |  |  | 68 |  |  |  | 201 |  |  |  | 511 |  |  |  | 805 |  |  |  | 1953 |  |  |  | 1376 |  |
+| Retail vehicle unit sales |  |  |  |  |  | 18761 |  |  | 44252 |  |  | 94108 |  |  | 177549 |  |  | 244111 |  |  | 425237 |  |  | 412296 |  |
+| Total gross profit per retail unit |  |  |  |  |  |  | 1023 |  |  |  | 1539 |  |  |  | 2090 |  |  |  | 2852 |  |  |  | 3253 |  |  |  | 4537 |  |  |  | 3022 |  |
+| Total gross profit per retail unit, non-GAAP |  |  |  |  |  |  | 1013 |  |  |  | 1537 |  |  |  | 2136 |  |  |  | 2878 |  |  |  | 3298 |  |  |  | 4593 |  |  |  | 3337 |  |
+| SG&A |  |  |  |  |  |  | 109 |  |  |  | 223 |  |  |  | 425 |  |  |  | 787 |  |  |  | 1126 |  |  |  | 2033 |  |  |  | 2736 |  |
+| Depreciation and amortization expense in SG&A |  |  |  |  |  | 4 |  |  | 11 |  |  | 24 |  |  | 41 |  |  | 74 |  |  | 105 |  |  | 200 |  |
+| Share-based compensation expense in SG&A |  |  |  |  |  | 1 |  |  | 6 |  |  | 21 |  |  | 30 |  |  | 25 |  |  | 39 |  |  | 69 |  |
+| Restructuring |  |  |  |  |  | — |  |  | — |  |  | — |  |  | — |  |  | — |  |  | — |  |  | 50 |  |
+| SG&A, non-GAAP |  |  |  |  |  |  | 104 |  |  |  | 206 |  |  |  | 380 |  |  |  | 716 |  |  |  | 1027 |  |  |  | 1889 |  |  |  | 2417 |  |
+| Retail vehicle unit sales |  |  |  |  |  | 18761 |  |  | 44252 |  |  | 94108 |  |  | 177549 |  |  | 244111 |  |  | 425237 |  |  | 412296 |  |
+| Total SG&A per retail unit |  |  |  |  |  |  | 5810 |  |  |  | 5039 |  |  |  | 4516 |  |  |  | 4433 |  |  |  | 4613 |  |  |  | 4781 |  |  |  | 6636 |  |
+| Total SG&A per retail unit, non-GAAP |  |  |  |  |  |  | 5543 |  |  |  | 4655 |  |  |  | 4038 |  |  |  | 4033 |  |  |  | 4207 |  |  |  | 4442 |  |  |  | 5862 |  |
+
+### 
+
+|  |  |  |  |  |  | For the Three Months Ended September 30, |
+| (dollars in millions, except per unit amounts) |  |  |  |  |  | 2014 |  | 2015 |  | 2016 |  | 2017 |  | 2018 |  | 2019 |  | 2020 |  | 2021 |  | 2022 |  | 2023 |
+| Net income (loss) |  |  |  |  |  |  |  |  |  |  |  |  |  |  | -23 |  |  |  | -41 |  |  |  | -64 |  |  |  | -93 |  |  |  | -18 |  |  |  | -68 |  |  |  | -508 |  |  |  | 741 |  |
+| Income tax benefit |  |  |  |  |  | — |  |  | — |  |  | — |  |  | — |  |  | — |  |  | — |  |  | — |  |  | — |  |  | — |  |  | 29 |  |
+| Interest expense |  |  |  |  |  | — |  |  | — |  |  | 1 |  |  | 1 |  |  | 6 |  |  | 21 |  |  | 20 |  |  | 48 |  |  | 153 |  |  | 153 |  |
+| Other (income) expense, net |  |  |  |  |  | — |  |  | — |  |  | — |  |  | 1 |  |  | — |  |  | 1 |  |  |  |  |  |  |  |  | 58 |  |  | 4 |  |
+| Depreciation and amortization expense in cost of sales |  |  |  |  |  | — |  |  | — |  |  | — |  |  | — |  |  | — |  |  | — |  |  | 2 |  |  | 6 |  |  | 36 |  |  | 42 |  |
+| Depreciation and amortization expense in SG&A |  |  |  |  |  | — |  |  | 1 |  |  | 1 |  |  | 3 |  |  | 6 |  |  | 11 |  |  | 19 |  |  | 26 |  |  | 57 |  |  | 45 |  |
+| Share-based compensation expense in cost of sales |  |  |  |  |  | — |  |  | — |  |  | — |  |  | — |  |  | 1 |  |  | 1 |  |  | — |  |  | — |  |  | 2 |  |  | — |  |
+| Share-based compensation expense in SG&A |  |  |  |  |  | — |  |  | — |  |  | 1 |  |  | 2 |  |  | 10 |  |  | 9 |  |  | 6 |  |  | 11 |  |  | 16 |  |  | 18 |  |
+| Root warrant revenue |  |  |  |  |  | — |  |  | — |  |  | — |  |  | — |  |  | — |  |  | — |  |  | — |  |  | — |  |  | — |  |  |  |  |
+| Gain on debt extinguishment |  |  |  |  |  | — |  |  | — |  |  | — |  |  | — |  |  | — |  |  | — |  |  | — |  |  | — |  |  | — |  |  | -878 |  |
+| Adjusted EBITDA |  |  |  |  |  |  |  |  |  |  |  |  |  |  | -20 |  |  |  | -34 |  |  |  | -41 |  |  |  | -50 |  |  |  | 20 |  |  |  | 20 |  |  |  | -186 |  |  |  | 148 |  |
+| Total revenues |  |  |  |  |  |  | 12 |  |  |  | 36 |  |  |  | 99 |  |  |  | 225 |  |  |  | 535 |  |  |  | 1095 |  |  |  | 1544 |  |  |  | 3480 |  |  |  | 3386 |  |  |  | 2773 |  |
+| Net income (loss) margin |  |  |  |  |  | -36.1 | % |  | -26.0 | % |  | -22.2 | % |  | -17.6 | % |  | -12.0 | % |  | -8.4 | % |  | -1.2 | % |  | -2.0 | % |  | -15.0 | % |  | 26.7 | % |
+| Adjusted EBITDA margin |  |  |  |  |  | -32.4 | % |  | -22.9 | % |  | -20.1 | % |  | -14.8 | % |  | -7.6 | % |  | -4.5 | % |  | 1.3 | % |  | 0.6 | % |  | -5.5 | % |  | 5.3 | % |
+| Gross profit |  |  |  |  |  |  | — |  |  |  | — |  |  |  | 7 |  |  |  | 20 |  |  |  | 58 |  |  |  | 138 |  |  |  | 262 |  |  |  | 523 |  |  |  | 359 |  |  |  | 482 |  |
+| Depreciation and amortization expense in cost of sales |  |  |  |  |  | — |  |  | — |  |  | — |  |  | — |  |  | — |  |  | — |  |  | 2 |  |  | 6 |  |  | 36 |  |  | 42 |  |
+| Share-based compensation expense in cost of sales |  |  |  |  |  | — |  |  | — |  |  | — |  |  | — |  |  | 1 |  |  | 1 |  |  | — |  |  | — |  |  | 2 |  |  | — |  |
+| Root warrant revenue |  |  |  |  |  | — |  |  | — |  |  | — |  |  | — |  |  | — |  |  | — |  |  | — |  |  | — |  |  | — |  |  |  |  |
+| Gross profit, non-GAAP |  |  |  |  |  |  | — |  |  |  | — |  |  |  | 7 |  |  |  | 20 |  |  |  | 59 |  |  |  | 139 |  |  |  | 264 |  |  |  | 529 |  |  |  | 397 |  |  |  | 518 |  |
+| Retail vehicle unit sales |  |  |  |  |  | 579 |  |  | 1776 |  |  | 5023 |  |  | 11719 |  |  | 25324 |  |  | 46413 |  |  | 64414 |  |  | 111949 |  |  | 102570 |  |  | 80987 |  |
+| Total gross profit per retail unit |  |  |  |  |  |  | -429 |  |  |  | 130 |  |  |  | 1347 |  |  |  | 1742 |  |  |  | 2263 |  |  |  | 2963 |  |  |  | 4056 |  |  |  | 4672 |  |  |  | 3500 |  |  |  | 5952 |  |
+| Total gross profit per retail unit, non-GAAP |  |  |  |  |  |  | -429 |  |  |  | 130 |  |  |  | 1347 |  |  |  | 1742 |  |  |  | 2302 |  |  |  | 2993 |  |  |  | 4098 |  |  |  | 4725 |  |  |  | 3870 |  |  |  | 6396 |  |
+| SG&A |  |  |  |  |  |  | 4 |  |  |  | 9 |  |  |  | 29 |  |  |  | 59 |  |  |  | 116 |  |  |  | 209 |  |  |  | 269 |  |  |  | 546 |  |  |  | 656 |  |  |  | 433 |  |
+| Depreciation and amortization expense in SG&A |  |  |  |  |  | — |  |  | 1 |  |  | 1 |  |  | 3 |  |  | 6 |  |  | 11 |  |  | 19 |  |  | 26 |  |  | 57 |  |  | 45 |  |
+| Share-based compensation expense in SG&A |  |  |  |  |  | — |  |  | — |  |  | 1 |  |  | 2 |  |  | 10 |  |  | 9 |  |  | 6 |  |  | 11 |  |  | 16 |  |  | 18 |  |
+| SG&A, non-GAAP |  |  |  |  |  |  | 4 |  |  |  | 8 |  |  |  | 27 |  |  |  | 54 |  |  |  | 100 |  |  |  | 189 |  |  |  | 244 |  |  |  | 509 |  |  |  | 583 |  |  |  | 370 |  |
+| Retail vehicle unit sales |  |  |  |  |  | 579 |  |  | 1776 |  |  | 5023 |  |  | 11719 |  |  | 25324 |  |  | 46413 |  |  | 64414 |  |  | 111949 |  |  | 102570 |  |  | 80987 |  |
+| Total SG&A per retail unit |  |  |  |  |  |  | 6930 |  |  |  | 5190 |  |  |  | 5573 |  |  |  | 5007 |  |  |  | 4571 |  |  |  | 4481 |  |  |  | 4158 |  |  |  | 4877 |  |  |  | 6396 |  |  |  | 5347 |  |
+| Total SG&A per retail unit, non-GAAP |  |  |  |  |  |  | 6181 |  |  |  | 4728 |  |  |  | 5308 |  |  |  | 4581 |  |  |  | 3912 |  |  |  | 4058 |  |  |  | 3779 |  |  |  | 4547 |  |  |  | 5684 |  |  |  | 4569 |  |
+
+---
+*Generated by edgar_download.py on 2026-03-03 20:11*

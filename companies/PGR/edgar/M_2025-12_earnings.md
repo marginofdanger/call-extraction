@@ -1,0 +1,162 @@
+# The Progressive Corporation — M_2026-01-28 Earnings Release
+
+**Ticker:** PGR
+**Filing Date:** 2026-01-28
+**Accession:** 0000080661-26-000071
+**Source:** [SEC EDGAR](https://www.sec.gov/Archives/edgar/data/80661/000008066126000071/0000080661-26-000071-index.htm)
+
+## Financial Tables (from Exhibits)
+
+### 
+
+|  | December | Quarter |
+| (millions, except per share amounts and ratios; unaudited) | 2025 |  | 2024 |  | Change | 2025 |  | 2024 |  | Change |
+| Net premiums written |  | 6313 |  |  |  | 5964 |  |  | 6 |  | % |  | 19508 |  |  |  | 18105 |  |  | 8 |  | % |
+| Net premiums earned |  | 7121 |  |  |  | 6717 |  |  | 6 |  | % |  | 21093 |  |  |  | 19144 |  |  | 10 |  | % |
+| Net income |  | 1147 |  |  |  | 942 |  |  | 22 |  | % |  | 2951 |  |  |  | 2356 |  |  | 25 |  | % |
+| Per share available to common shareholders |  | 1.95 |  |  |  | 1.60 |  |  | 22 |  | % |  | 5.02 |  |  |  | 4.01 |  |  | 25 |  | % |
+| Total pretax net realized gains (losses) on securities |  | 168 |  |  |  | -140 |  |  | -220 |  | % |  | 257 |  |  |  | -53 |  |  | NM |  |
+| Combined ratio | 87.1 |  | 84.1 |  | 3.0 |  | pts. | 88.0 |  | 87.9 |  | 0.1 |  | pts. |
+| Average diluted equivalent common shares | 588.0 |  | 587.7 |  | 0 | % | 588.0 |  | 587.7 |  | 0 | % |
+| NM = Not Meaningful |  |  |  |  |  |  |  |  |  |  |  |  |
+
+### 
+
+|  | Current Month |  |  |  | Comments on Monthly Results 1 |
+| Net premiums written |  | 6313 |  |  |  |  |  |
+| Revenues: |  |  |  |  |  |
+| Net premiums earned |  | 7121 |  |  |  |  |  |
+| Investment income | 333 |  |  |  |  |  |
+| Net realized gains (losses) on securities: |  |  |  |  |  |
+| Net realized gains (losses) on security sales | 216 |  |  |  |  |  |
+| Net holding period gains (losses) on securities | -48 |  |  |  |  |  |
+| Net impairment losses | 0 |  |  |  |  |  |
+| Total net realized gains (losses) on securities | 168 |  |  |  |  |  |
+| Fees and other revenues | 102 |  |  |  |  |  |
+| Service revenues | 39 |  |  |  |  |  |
+| Total revenues | 7763 |  |  |  |  |  |
+| Expenses: |  |  |  |  |  |
+| Losses and loss adjustment expenses | 4697 |  |  |  |  |  |
+| Policy acquisition costs | 530 |  |  |  |  |  |
+| Other underwriting expenses | 955 |  |  |  |  |  |
+| Policyholder credit expense | 125 |  |  |  |  |  |
+| Investment expenses | 3 |  |  |  |  |  |
+| Service expenses | 40 |  |  |  |  |  |
+| Interest expense | 23 |  |  |  |  |  |
+| Total expenses | 6373 |  |  |  |  |  |
+| Income before income taxes | 1390 |  |  |  |  |  |
+| Provision for income taxes | 243 |  |  |  |  | Includes 44 million of tax benefits primarily related to dividends that were declared in December on shares held in our ESOP within the 401(k) that are deductible for income tax purposes. |
+| Net income | 1147 |  |  |  |  |  |
+| Other comprehensive income (loss): |  |  |  |  |  |
+| Change in total net unrealized gains (losses) on fixed-maturity securities | -396 |  |  |  |  |  |
+| Total comprehensive income (loss) |  | 751 |  |  |  |  |  |
+
+### 
+
+|  | Full Year |
+|  | 2025 |  | 2024 |
+| Net premiums written |  | 83174 |  |  |  | 74424 |  |
+| Revenues: |  |  |  |
+| Net premiums earned |  | 81661 |  |  |  | 70799 |  |
+| Investment income | 3583 |  |  | 2832 |  |
+| Net realized gains (losses) on securities: |  |  |  |
+| Net realized gains (losses) on security sales | 248 |  |  | -414 |  |
+| Net holding period gains (losses) on securities | 480 |  |  | 679 |  |
+| Net impairment losses |  |  |  |  |  |
+| Total net realized gains (losses) on securities | 727 |  |  | 264 |  |
+| Fees and other revenues | 1196 |  |  | 1064 |  |
+| Service revenues | 504 |  |  | 413 |  |
+| Total revenues | 87671 |  |  | 75372 |  |
+| Expenses: |  |  |  |
+| Losses and loss adjustment expenses | 53959 |  |  | 49060 |  |
+| Policy acquisition costs | 6096 |  |  | 5383 |  |
+| Other underwriting expenses | 11329 |  |  | 9462 |  |
+| Policyholder credit expense | 1224 |  |  | 0 |  |
+| Investment expenses | 34 |  |  | 29 |  |
+| Service expenses | 528 |  |  | 446 |  |
+| Interest expense | 278 |  |  | 279 |  |
+| Total expenses | 73448 |  |  | 64659 |  |
+| Income before income taxes | 14223 |  |  | 10713 |  |
+| Provision for income taxes | 2915 |  |  | 2233 |  |
+| Net income | 11308 |  |  | 8480 |  |
+| Other comprehensive income (loss): |  |  |  |
+| Changes in: |  |  |  |
+| Total net unrealized gains (losses) on fixed-maturity securities | 1525 |  |  | 193 |  |
+| Net unrealized losses on forecasted transactions | 1 |  |  | 0 |  |
+| Other comprehensive income (loss) | 1526 |  |  | 193 |  |
+| Total comprehensive income (loss) |  | 12834 |  |  |  | 8673 |  |
+
+### 
+
+| The following table sets forth the computation of per share results: |  |  |  |  |  |  |
+|  | December |  | Full Year |  |
+|  | 2025 |  | 2025 |  | 2024 |  |
+| Net income |  | 1147 |  |  |  | 11308 |  |  |  | 8480 |  |  |
+| Less: Preferred share dividends and other | 0 |  |  | 0 |  |  | 17 |  |  |
+| Net income available to common shareholders |  | 1147 |  |  |  | 11308 |  |  |  | 8463 |  |  |
+| Per common share: |  |  |  |  |  |  |
+| Basic |  | 1.96 |  |  |  | 19.29 |  |  |  | 14.45 |  |  |
+| Diluted |  | 1.95 |  |  |  | 19.23 |  |  |  | 14.40 |  |  |
+| Comprehensive income (loss) |  | 751 |  |  |  | 12834 |  |  |  | 8673 |  |  |
+| Less: Preferred share dividends and other | 0 |  |  | 0 |  |  | 17 |  |  |
+| Comprehensive income (loss) attributable to common shareholders |  | 751 |  |  |  | 12834 |  |  |  | 8656 |  |  |
+| Per common share: |  |  |  |  |  |  |
+| Diluted |  | 1.28 |  |  |  | 21.82 |  |  |  | 14.73 |  |  |
+| Average common shares outstanding - Basic | 586.3 |  | 586.3 |  | 585.5 |  |
+| Net effect of dilutive stock-based compensation | 1.7 |  | 1.8 |  | 2.2 |  |
+| Total average equivalent common shares - Diluted | 588.0 |  | 588.1 |  | 587.7 |  |
+
+### 
+
+| The following table sets forth the investment results for the period: |  |  |  |
+|  | December |  | Full Year |  |
+|  | 2025 |  | 2025 |  | 2024 |  |
+| Fully taxable equivalent (FTE) total return: |  |  |  |  |  |  |
+| Fixed-income securities | 0.0% |  | 7.0% |  | 3.8% |  |
+| Common stocks | 0.0% |  | 16.8% |  | 22.9% |  |
+| Total portfolio | 0.0% |  | 7.3% |  | 4.6% |  |
+| Pretax annualized investment income book yield | 4.3% |  | 4.1% |  | 3.9% |  |
+
+### 
+
+|  | December 31, 2025 |
+| CONDENSED GAAP BALANCE SHEET: |  |
+| Investments, at fair value: |  |
+| Available-for-sale securities: |  |
+| Fixed maturities 1 (amortized cost: 82,704) |  | 82866 |  |
+| Short-term investments (amortized cost: 10,005) | 10005 |  |
+| Total available-for-sale securities | 92871 |  |
+| Equity securities: |  |
+| Nonredeemable preferred stocks (cost: 419) | 404 |  |
+| Common equities (cost: 819) | 4098 |  |
+| Total equity securities | 4502 |  |
+| Total investments 2, 3 | 97373 |  |
+| Net premiums receivable | 15362 |  |
+| Reinsurance recoverables (including 3,807 on unpaid loss and LAE reserves) | 4083 |  |
+| Deferred acquisition costs | 2044 |  |
+| Other assets | 4177 |  |
+| Total assets |  | 123039 |  |
+| Unearned premiums |  | 25219 |  |
+| Loss and loss adjustment expense reserves | 43310 |  |
+| Dividends payable on common shares | 7972 |  |
+| Other liabilities 2 | 9318 |  |
+| Debt | 6897 |  |
+| Total liabilities | 92716 |  |
+| Shareholders’ equity | 30323 |  |
+| Total liabilities and shareholders’ equity |  | 123039 |  |
+| Common shares outstanding | 586.1 |  |
+| Common shares repurchased in the current month | 49100 |  |
+| Average cost per common share |  | 227.55 |  |
+| Book value per common share |  | 51.74 |  |
+| Trailing 12-month return on average common shareholders’ equity |  |
+| Net income | 35.3 | % |
+| Comprehensive income | 40.1 | % |
+| Net unrealized pretax gains (losses) on fixed-maturity securities |  | 148 |  |
+| Increase (decrease) from the previous month |  | -494 |  |
+| Increase (decrease) from December 2024 |  | 1938 |  |
+| Debt-to-total capital ratio | 18.5 | % |
+| Fixed-income portfolio duration | 3.4 |  |
+| Weighted average credit quality | AA- . |
+
+---
+*Generated by edgar_download.py on 2026-03-03 20:41*

@@ -1,0 +1,233 @@
+company:
+  name: AppLovin Corporation
+  ticker: APP
+  sector: AdTech / Internet Advertising
+  fiscal_year: calendar
+  currency: USD
+  reporting_currency: USD
+  edgar_cik: 0001751008
+branding:
+  primary: '#FF6B35'
+  dark: '#1a1a2e'
+  accent: '#1E3A5F'
+quarters:
+- id: Q1_2022
+  call_date: May 11, 2022
+  reporting_quarter: Q1 2022
+  bamsec_id: 209bcbf0-7744-4267-8329-3f07a540fc38
+  edgar_8k_accession: 0001193125-22-147577
+- id: Q2_2022
+  call_date: August 10, 2022
+  reporting_quarter: Q2 2022
+  bamsec_id: a2846302-ca2b-4d01-bbe9-795b379504b3
+  edgar_8k_accession: 0001193125-22-217369
+- id: Q3_2022
+  call_date: November 9, 2022
+  reporting_quarter: Q3 2022
+  bamsec_id: c218ff83-403d-420e-a843-3c04f414dc08
+  edgar_8k_accession: 0001193125-22-281229
+- id: Q4_2022
+  call_date: February 15, 2023
+  reporting_quarter: Q4 2022 (Full Year 2022)
+  bamsec_id: 4770cc66-092a-4d2f-a709-d5191e7eef61
+  edgar_8k_accession: 0001193125-23-028420
+- id: Q1_2023
+  call_date: May 10, 2023
+  reporting_quarter: Q1 2023
+  bamsec_id: a6c5517e-d106-4eb6-a98e-cb0f454ecb6b
+  edgar_8k_accession: 0001751008-23-000047
+- id: Q2_2023
+  call_date: August 9, 2023
+  reporting_quarter: Q2 2023
+  bamsec_id: a855bec8-9189-4aea-911a-3675e332771a
+  edgar_8k_accession: 0001751008-23-000061
+- id: Q3_2023
+  call_date: November 8, 2023
+  reporting_quarter: Q3 2023
+  bamsec_id: 008b06e3-a916-4cc2-94d0-a844377cad7f
+  edgar_8k_accession: 0001751008-23-000070
+- id: Q4_2023
+  call_date: February 14, 2024
+  reporting_quarter: Q4 2023 (Full Year 2023)
+  bamsec_id: 16cba878-d1a4-4151-a52e-8da262c0efa3
+  edgar_8k_accession: 0001751008-24-000004
+- id: Q1_2024
+  call_date: May 8, 2024
+  reporting_quarter: Q1 2024
+  bamsec_id: 44a74caa-2cbf-493f-9d63-56dd99240b27
+  edgar_8k_accession: 0001751008-24-000041
+- id: Q2_2024
+  call_date: August 7, 2024
+  reporting_quarter: Q2 2024
+  bamsec_id: 5a6952e6-25fc-4922-b2aa-6a44303b608f
+  edgar_8k_accession: 0001751008-24-000053
+- id: Q3_2024
+  call_date: November 6, 2024
+  reporting_quarter: Q3 2024
+  bamsec_id: ef696c45-7d9b-40f6-b210-46771c836495
+  edgar_8k_accession: 0001751008-24-000059
+- id: Q4_2024
+  call_date: February 12, 2025
+  reporting_quarter: Q4 2024 (Full Year 2024)
+  bamsec_id: 31fa4d61-3ddb-4f79-9882-4e32299cc972
+  edgar_8k_accession: 0001751008-25-000006
+- id: Q1_2025
+  call_date: May 7, 2025
+  reporting_quarter: Q1 2025
+  bamsec_id: f727ab89-5dca-41cf-8f80-bc41fcc76de3
+  edgar_8k_accession: 0001751008-25-000051
+- id: Q2_2025
+  call_date: August 6, 2025
+  reporting_quarter: Q2 2025
+  bamsec_id: 26e7c78e-8592-4344-a3cc-7314e4ba952b
+  edgar_8k_accession: 0001751008-25-000069
+- id: Q3_2025
+  call_date: November 5, 2025
+  reporting_quarter: Q3 2025
+  bamsec_id: f89b0a3b-f9b3-4870-82b4-052111fbb577
+  edgar_8k_accession: 0001751008-25-000079
+- id: Q4_2025
+  call_date: February 11, 2026
+  reporting_quarter: Q4 2025 (Full Year 2025)
+  bamsec_id: b84f9153-b27d-4c25-95cf-88c1a30c69ae
+  edgar_8k_accession: 0001751008-26-000005
+tracked_metrics:
+  guidance_for:
+    label: Guidance For
+    section_pattern: ^Quarterly Guidance
+    extract: section_suffix
+    display: banner
+  total_revenue:
+    label: Total Revenue
+    section_pattern: (?i)(quarterly guidance|full year|key metrics)
+    item_pattern: (?i)^\*\*(Total )?Revenue:?\*\*
+    comparison: midpoint_pct
+    midpoint_format: dollar_billions
+  software_platform_revenue:
+    label: Software Platform Revenue
+    section_pattern: (?i)(quarterly guidance|software platform|segment|key metrics)
+    item_pattern: (?i)^\*\*Software Platform Revenue:?\*\*
+    comparison: text_diff
+  apps_revenue:
+    label: Apps Revenue
+    section_pattern: (?i)(quarterly guidance|apps|segment|key metrics)
+    item_pattern: (?i)^\*\*Apps Revenue:?\*\*
+    comparison: text_diff
+  adjusted_ebitda:
+    label: Adjusted EBITDA
+    section_pattern: (?i)(quarterly guidance|full year|key metrics)
+    item_pattern: (?i)^\*\*Adjusted EBITDA:?\*\*
+    comparison: midpoint_pct
+    midpoint_format: dollar_billions
+  adjusted_ebitda_margin:
+    label: Adjusted EBITDA Margin
+    section_pattern: (?i)(quarterly guidance|key metrics)
+    item_pattern: (?i)^\*\*Adjusted EBITDA Margin:?\*\*
+    comparison: midpoint_delta
+    midpoint_format: percentage
+  software_platform_margin:
+    label: Software Platform Margin
+    section_pattern: (?i)(software platform|segment|key metrics)
+    item_pattern: (?i)^\*\*Software Platform (Adjusted EBITDA )?Margin:?\*\*
+    comparison: midpoint_delta
+    midpoint_format: percentage
+  free_cash_flow:
+    label: Free Cash Flow
+    section_pattern: (?i)(quarterly guidance|key metrics|cash flow)
+    item_pattern: (?i)^\*\*Free Cash Flow:?\*\*
+    comparison: text_diff
+new_section_keywords:
+- pattern: (?i)axon
+  label: AXON 2.0 / AI engine upgrade discussed
+- pattern: (?i)e-commerce|web advertis
+  label: E-commerce / web advertising expansion discussed
+- pattern: (?i)ctv|connected tv
+  label: Connected TV advertising discussed
+- pattern: (?i)actuals
+  label: Full-year actuals reported this quarter
+- pattern: (?i)divestiture|apps sale
+  label: Apps portfolio divestiture discussed
+- pattern: (?i)self.serve
+  label: Self-serve advertising platform discussed
+comparison_sections:
+- title: Revenue Guidance
+  metrics:
+  - total_revenue
+  - software_platform_revenue
+  - apps_revenue
+  columns:
+  - Quarter
+  - Total Revenue
+  - Software Platform
+  - Apps
+- title: Profitability
+  metrics:
+  - adjusted_ebitda
+  - adjusted_ebitda_margin
+  columns:
+  - Quarter
+  - Adjusted EBITDA
+  - EBITDA Margin
+- title: Software Platform
+  metrics:
+  - software_platform_revenue
+  - software_platform_margin
+  columns:
+  - Quarter
+  - Platform Revenue
+  - Platform Margin
+- title: Cash Flow
+  metric_key: free_cash_flow
+  columns:
+  - Quarter
+  - Free Cash Flow
+extraction_context: 'AppLovin is an internet advertising technology company with two
+  segments: Software Platform (advertising) and Apps (mobile games). Key domain knowledge:
+
+  - Software Platform = AppLovin''s advertising technology (AppDiscovery, MAX, SparkLabs,
+  Wurl)
+
+  - AppDiscovery = AI-powered advertising engine for mobile app install campaigns
+
+  - MAX = in-app mediation platform (helps publishers monetize via ads)
+
+  - AXON = AppLovin''s proprietary AI/ML engine powering ad recommendations
+
+  - AXON 2.0 = major AI engine upgrade that dramatically improved ad performance
+
+  - Apps segment = portfolio of mobile games (declining/divesting)
+
+  - Software Platform is the high-margin growth driver (~70-80%+ margins)
+
+  - Apps segment has much lower margins and is being de-emphasized
+
+  - "E-commerce" expansion = extending ad platform beyond mobile gaming to web/e-commerce
+  advertisers
+
+  - ROAS = Return on Ad Spend (key metric for advertisers)
+
+  - IAP = In-App Purchases
+
+  - DAU = Daily Active Users
+
+  - ARPDAU = Average Revenue Per Daily Active User
+
+  - Company has been aggressively buying back stock and reducing debt
+
+  - Fiscal year = calendar year (Q1=Jan-Mar, Q4=Oct-Dec)
+
+  - Q4 earnings calls typically include full-year actuals
+
+  - AppLovin''s growth story is driven by AI improvements to ad targeting
+
+  '
+topic_hints:
+- Software Platform revenue growth and margin expansion
+- AXON AI engine improvements and ad performance
+- E-commerce and web advertising TAM expansion
+- Apps segment performance and potential divestiture
+- Adjusted EBITDA and free cash flow generation
+- Advertiser adoption and customer diversification beyond gaming
+- MAX mediation platform growth and publisher adoption
+- Capital allocation (buybacks, debt reduction)
+- Connected TV and new advertising verticals

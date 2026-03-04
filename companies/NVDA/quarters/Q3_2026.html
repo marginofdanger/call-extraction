@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NVDA Q3 2026 Earnings Call Detail</title>
+<style>
+:root {
+    --company-primary: #76b900;
+    --company-dark: #1a1a1a;
+    --company-accent: #333333;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 40px 40px 32px;
+    margin: 0 -24px 0;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .header .meta {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    font-weight: 300;
+  }
+  .header .meta span { margin-right: 24px; }
+
+  .nav-bar {
+    background: var(--company-accent);
+    margin: 0 -24px 32px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    transition: all 0.15s;
+  }
+  .nav-bar a:hover { background: rgba(255,255,255,0.2); }
+  .nav-bar a.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .nav-center {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-center a.qbtn {
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+  }
+  .nav-center a.qbtn.current {
+    background: var(--company-primary);
+    border-color: var(--company-primary);
+  }
+  .nav-center a.qbtn:hover { background: rgba(255,255,255,0.2); }
+  .nav-back {
+    background: rgba(255,255,255,0.15) !important;
+    border-color: rgba(255,255,255,0.35) !important;
+  }
+
+  .metrics-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .metric {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+  .metric-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .metric-value {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+  .metric-delta {
+    font-size: 0.72rem;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+  .delta-up { color: var(--green); }
+  .delta-down { color: var(--red); }
+  .delta-flat { color: var(--text-muted); }
+
+  .changes-box {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 5px solid var(--amber);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .changes-box h3 {
+    font-size: 1rem;
+    color: var(--company-dark);
+    margin-bottom: 10px;
+  }
+  .changes-box ul { list-style: none; padding: 0; }
+  .changes-box li {
+    padding: 5px 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .change-tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .ct-raised { background: #d5f5e3; color: #1e8449; }
+  .ct-lowered { background: #fadbd8; color: #c0392b; }
+  .ct-changed { background: #d6eaf8; color: #2471a3; }
+  .ct-new { background: #e8daef; color: #6c3483; }
+  .ct-maintained { background: #fdebd0; color: #b9770e; }
+
+  .content-section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .content-section h3 {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .content-section ul {
+    padding: 14px 18px 14px 36px;
+    margin: 0;
+  }
+  .content-section li {
+    padding: 3px 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .content-section li strong { color: var(--company-dark); }
+
+  .prior-ref {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 40px;
+    overflow: hidden;
+  }
+  .prior-ref-header {
+    background: var(--light-bg);
+    padding: 12px 18px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--company-dark);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .prior-ref-header:hover { background: #eef2f7; }
+  .prior-ref-body { padding: 18px; display: none; }
+  .prior-ref-body.open { display: block; }
+  .prior-ref-body .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .prior-mini {
+    background: var(--light-bg);
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .prior-mini .pm-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .prior-mini .pm-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border);
+  }
+  .footer-nav a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .footer-nav a:hover { text-decoration: underline; }
+
+  /* Comparison page styles */
+  .toc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .toc a {
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 4px 0;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  .comp-section {
+    margin-bottom: 40px;
+  }
+  .comp-section h2 {
+    font-size: 1.2rem;
+    color: var(--company-dark);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--company-primary);
+  }
+
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+  }
+  .comp-table th {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .comp-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .comp-table tr:nth-child(even) { background: var(--light-bg); }
+  .comp-table tr:hover { background: #e8f4fd; }
+
+  @media (max-width: 768px) {
+    .header h1 { font-size: 1.5rem; }
+    .metrics-card { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .nav-center { display: none; }
+    body { padding: 0 16px 60px; }
+    .header { margin: 0 -16px 0; padding: 28px 24px 20px; }
+    .nav-bar { margin: 0 -16px 24px; }
+    .toc { grid-template-columns: 1fr; }
+    .comp-table { font-size: 0.78rem; }
+    .comp-table th, .comp-table td { padding: 6px 8px; }
+  }
+
+  @media print {
+    .nav-bar { display: none; }
+    .header { background: #333; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>NVDA Q3 2026 Earnings Call</h1>
+  <div class="meta">
+    <span>Call Date: November 19, 2025</span>
+    <span>Reporting: Q3 FY2026 (Aug-Oct 2025)</span>
+  </div>
+</div>
+<div class="nav-bar">
+  <a href="Q2_2026.html">&larr; Q2 2026</a>
+  <div class="nav-center">
+    <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="Q4_2026.html" class="qbtn">4Q26</a>
+    <a href="Q3_2026.html" class="qbtn current">3Q26</a>
+    <a href="Q2_2026.html" class="qbtn">2Q26</a>
+    <a href="Q1_2026.html" class="qbtn">1Q26</a>
+    <a href="Q4_2025.html" class="qbtn">4Q25</a>
+    <a href="Q3_2025.html" class="qbtn">3Q25</a>
+    <a href="Q2_2025.html" class="qbtn">2Q25</a>
+    <a href="Q1_2025.html" class="qbtn">1Q25</a>
+    <a href="Q4_2024.html" class="qbtn">4Q24</a>
+    <a href="Q3_2024.html" class="qbtn">3Q24</a>
+    <a href="Q2_2024.html" class="qbtn">2Q24</a>
+    <a href="Q1_2024.html" class="qbtn">1Q24</a>
+    <a href="Q4_2023.html" class="qbtn">4Q23</a>
+    <a href="Q3_2023.html" class="qbtn">3Q23</a>
+    <a href="Q2_2023.html" class="qbtn">2Q23</a>
+    <a href="Q1_2023.html" class="qbtn">1Q23</a>
+  </div>
+  <a href="Q4_2026.html">Q4 2026 &rarr;</a>
+</div>
+
+<div class="changes-box">
+  <h3>What Changed vs Q2 2026</h3>
+  <ul>
+    <li><span class="change-tag ct-maintained">Maintained</span> Key metrics largely maintained from prior quarter</li>
+  </ul>
+</div>
+
+<div class="metrics-card">
+  <div class="metric" style="grid-column: 1 / -1; background: linear-gradient(135deg, var(--company-dark), var(--company-accent)); color: #fff; border: none; padding: 8px 14px;">
+    <div class="metric-label" style="color: rgba(255,255,255,0.7);">Guidance For</div>
+    <div class="metric-value" style="color: #fff; font-size: 1rem;">Q4 FY2026</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Next-Q Revenue</div>
+    <div class="metric-value">$65.0B, +/- 2%</div>
+    <div class="metric-delta delta-flat">Prior: $54.0B, +/- 2%</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Next-Q Gross Margin (Non-GAAP)</div>
+    <div class="metric-value">75.0%, +/- 50 bps</div>
+    <div class="metric-delta delta-flat">Prior: 73.5%, +/- 50 bps</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Next-Q OpEx (Non-GAAP)</div>
+    <div class="metric-value">~$5.0B</div>
+    <div class="metric-delta delta-flat">Prior: ~$4.2B</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Next-Q Gross Margin (GAAP)</div>
+    <div class="metric-value">74.8%, +/- 50 bps</div>
+    <div class="metric-delta delta-flat">Prior: 73.3%, +/- 50 bps</div>
+  </div>
+</div>
+
+<!-- Full Guidance Content -->
+<div class="content-section">
+  <h3>Quarterly Guidance (Q4 FY2026)</h3>
+  <ul>
+    <li><strong>Revenue:</strong> $65.0B, +/- 2% (14% sequential growth at midpoint)</li>
+    <li><strong>GAAP Gross Margin:</strong> 74.8%, +/- 50 bps</li>
+    <li><strong>Non-GAAP Gross Margin:</strong> 75.0%, +/- 50 bps</li>
+    <li><strong>GAAP Operating Expenses:</strong> ~$6.7B</li>
+    <li><strong>Non-GAAP Operating Expenses:</strong> ~$5.0B</li>
+    <li><strong>GAAP/Non-GAAP Other Income & Expense:</strong> ~$500M income (excluding gains/losses on nonmarketable and publicly held equity securities)</li>
+    <li><strong>Tax Rate (GAAP/Non-GAAP):</strong> 17%, +/- 1% (excluding discrete items)</li>
+    <li><strong>China:</strong> No data center compute revenue from China assumed (consistent with prior quarter)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Full Year FY2027 Outlook</h3>
+  <ul>
+    <li><strong>Gross Margin:</strong> Input costs rising; working to hold gross margins in the mid-70s% through cost improvements, cycle time optimization, and mix management</li>
+    <li><strong>Operating Expenses:</strong> Continuing to invest in innovation — new architectures, software, and systems</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Long-Term Targets</h3>
+  <ul>
+    <li><strong>$3T-$4T Annual AI Infrastructure:</strong> By end of decade; top 4 CSP CapEx ~$600B/year (doubled in 2 years); NVIDIA ~$35B per GW data center (out of $50-60B total); Rubin content per GW higher</li>
+    <li><strong>$500B Revenue Visibility:</strong> Blackwell + Rubin through end of CY2026; growing with additional demand (KSA, Anthropic, etc.)</li>
+    <li><strong>Annual Product Cadence:</strong> Blackwell → Rubin (7 chips in fab, H2 2026) → follow-ons; each generation delivers X-factor performance leap</li>
+    <li><strong>~$500B Free Cash Flow:</strong> Expected over next couple of years; funding growth, supply chain, stock buybacks, and strategic investments</li>
+    <li><strong>Five Competitive Advantages:</strong> (1) Every phase of acceleration/transition; (2) Every phase of AI (pretrain, post-train, inference); (3) Every AI model; (4) Every cloud, on-prem, edge; (5) Diverse offtake/ecosystem</li>
+    <li><strong>Three Platform Shifts:</strong> Accelerated computing (foundational), generative AI (transformational), agentic/physical AI (revolutionary) — all contribute to infrastructure growth</li>
+    <li><strong>Scaling Trajectory:</strong> Thousands of Hopper GPUs in tens-of-MW DCs → hundreds of thousands of Blackwells in 100MW → millions of Rubin GPUs in multi-GW multisite AI super factories</li>
+    <li><strong>AI-Native Startups:</strong> $180B funded this year (vs $100B last year); top AI-native revenue $20B this year (vs $2B last year)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q3 FY2026 Segment Revenue</h3>
+  <ul>
+    <li><strong>Data Center:</strong> $51.2B (record), +66% YoY — compute +56% YoY (driven by GB300 ramp); networking more than doubled YoY; GB300 crossed over GB200, contributing ~2/3 of total Blackwell revenue; Hopper ~$2B revenue (13th quarter since inception); H20 ~$50M (sizable orders never materialized due to geopolitical issues + competitive China market)</li>
+    <li><strong>Gaming:</strong> $4.3B, +30% YoY — Blackwell momentum; robust end-market sell-through; channel inventories normal heading into holiday season; Steam broke concurrent user record (42M)</li>
+    <li><strong>Professional Visualization:</strong> $760M (record), +56% YoY — DGX Spark (world's smallest AI supercomputer on Grace Blackwell) driving growth; evolved into computers for engineers and developers</li>
+    <li><strong>Automotive:</strong> $592M, +32% YoY — self-driving solutions driving growth; Uber partnership for Level 4 autonomous fleet on NVIDIA Hyperion L4 robotaxi reference architecture</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q3 FY2026 Key Operating Metrics</h3>
+  <ul>
+    <li><strong>Revenue Visibility:</strong> $500B in Blackwell and Rubin revenue from start of CY2025 through end of CY2026; on track; additional demand on top (KSA: 400K-600K GPUs over 3 years; Anthropic net new)</li>
+    <li><strong>AI Factory Projects:</strong> ~5 million GPUs in aggregate AI factory and infrastructure projects announced this quarter; xAI Colossus 2 (world's first GW-scale data center); Lilly AI Factory (pharma's most powerful); AWS + HUMAIN (up to 150K accelerators including GB300); xAI + HUMAIN (jointly developing GPU data centers, 500MW flagship)</li>
+    <li><strong>CSP CapEx:</strong> Aggregate ~$600B for 2026 expectations (top CSPs/hyperscalers); $200B+ higher than start of year</li>
+    <li><strong>Blackwell Ramp:</strong> GB300 crossed over GB200; production shipments to major CSPs, hyperscalers, GP clouds; seamless transition</li>
+    <li><strong>Hopper Platform:</strong> ~$2B revenue in Q3; 13th quarter since inception; H100/H200 still selling</li>
+    <li><strong>H20 / China:</strong> ~$50M; sizable orders never materialized; disappointed but committed to engagement with U.S. and China governments; Q4 outlook excludes China DC compute revenue</li>
+    <li><strong>Networking:</strong> $8.2B (record), +162% YoY — NVLink, InfiniBand, Spectrum-X all contributing; largest networking business in the world; majority of AI deployments include NVIDIA switches; Ethernet GPU attach rates roughly on par with InfiniBand</li>
+    <li><strong>Spectrum-X:</strong> Meta, Microsoft, Oracle, xAI building GW AI factories with Spectrum-X; each runs own OS (platform flexibility); Spectrum-XGS scale-across technology for gigascale AI super factories</li>
+    <li><strong>NVLink Fusion:</strong> Fujitsu collaboration (October); Intel collaboration (multiple generations of custom DC and PC products); Arm integrating NVLink IP for customer CPU SoCs; 5th generation NVLink = only proven scale-up technology</li>
+    <li><strong>MLPerf Training:</strong> Blackwell Ultra 5x faster than Hopper; NVIDIA swept every benchmark; only platform leveraging FP4 meeting MLPerf strict accuracy standards</li>
+    <li><strong>InferenceMAX Benchmark:</strong> Blackwell highest performance, lowest TCO across every model and use case; DeepSeek-R1: 10x higher perf/watt and 10x lower cost/token vs H200</li>
+    <li><strong>NVIDIA Dynamo:</strong> Open source inference framework; adopted by every major CSP; disaggregated inference for MoE models; AWS, Google Cloud, Microsoft Azure, OCI boosted inference performance</li>
+    <li><strong>Rubin Platform:</strong> On track for H2 2026 ramp; 7 chips; Vera Rubin platform; X-factor improvement vs Blackwell; silicon back from supply chain, bring-up proceeding well; third-gen rack-scale system; improved manufacturability while Grace Blackwell compatible; ecosystem ready for fast ramp</li>
+    <li><strong>Rubin CPX:</strong> Designed for long context workloads (reading PDFs, watching videos, 3D images); excellent perf/dollar and perf/watt</li>
+    <li><strong>CUDA Longevity:</strong> A100 GPUs shipped 6 years ago still running at full utilization; most non-CUDA accelerators become obsolete within a few years as models evolve</li>
+    <li><strong>OpenAI Partnership:</strong> Strategic partnership for 10+ GW AI data centers; opportunity to invest in the company; serving through Microsoft Azure, OCI, CoreWeave; supporting self-build infrastructure growth</li>
+    <li><strong>Anthropic Partnership:</strong> First time on NVIDIA architecture; deep technology partnership; up to 1GW compute commitment with Grace Blackwell and Vera Rubin; optimizing Claude models for CUDA</li>
+    <li><strong>Strategic Investments:</strong> OpenAI, Anthropic, Mistral, Reflection, Thinking Machines — expanding CUDA ecosystem; getting share of consequential companies in return</li>
+    <li><strong>OpenAI Growth:</strong> 800M weekly users; 1M enterprise customers; healthy gross margins</li>
+    <li><strong>Anthropic Growth:</strong> $7B annualized revenue (up from $1B at start of year)</li>
+    <li><strong>Agentic AI Proliferation:</strong> Cursor, Claude Code, OpenEvidence, Epic, Abridge experiencing surge in user growth; fastest-growing applications in history</li>
+    <li><strong>Enterprise AI:</strong> ServiceNow, CrowdStrike, SAP integrating NVIDIA stack; Palantir new partner (CUDA-X libraries for oncology platform); Lowe's supply chain; RBC analyst productivity (hours to minutes); Unilever 2x content creation, 50% cost cut; Salesforce 30% engineering productivity increase with Cursor</li>
+    <li><strong>Meta GEM:</strong> Generative AI for ad recommendations; 5%+ Instagram ad conversion increase; 3% Facebook feed gain in Q2</li>
+    <li><strong>Physical AI:</strong> Already multibillion-dollar business; PTC and Siemens new Omniverse services; Caterpillar, Foxconn, Lucid Motors, Toyota, TSMC, Wistron building digital twin factories; Agility Robotics, Amazon Robotics, Figure, Skild AI building on platform</li>
+    <li><strong>U.S. Manufacturing:</strong> First Blackwell wafer produced on U.S. soil (TSMC partnership); continuing to grow U.S. presence over next 4 years with Foxconn, Wistron, Amkor, SPIL</li>
+    <li><strong>Three Platform Shifts:</strong> (1) CPU to GPU accelerated computing (Moore's Law slowing); (2) Generative AI replacing classical ML; (3) Agentic and physical AI (revolutionary, new applications/companies)</li>
+    <li><strong>GPU Installed Base:</strong> Fully utilized — Blackwell, Hopper, Ampere all in use; clouds sold out</li>
+    <li><strong>NVIDIA Content per GW:</strong> Hopper ~$20-25B; Grace Blackwell ~$30B±; Rubin higher; increases each generation</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q4 FY2026 Segment Expectations</h3>
+  <ul>
+    <li><strong>Data Center:</strong> Continued Blackwell architecture momentum driving growth; GB300 lion's share; Hopper (H100/H200) still selling</li>
+    <li><strong>Networking:</strong> Continued growth across NVLink, InfiniBand, Spectrum-X</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Gross Margin Trajectory</h3>
+  <ul>
+    <li><strong>Q3 FY2026 (actual):</strong> Non-GAAP 73.6% (exceeded outlook)</li>
+    <li><strong>Q4 FY2026 (guided):</strong> Non-GAAP 75.0% — achieving mid-70s exit target</li>
+    <li><strong>FY2027:</strong> Input costs rising; working to hold mid-70s% through cost improvements, cycle time, and mix</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Blackwell Platform Performance</h3>
+  <ul>
+    <li>GB300 (Blackwell Ultra) crossed over GB200; ~2/3 of total Blackwell revenue</li>
+    <li>MLPerf Training: 5x faster than Hopper; only FP4 platform meeting accuracy standards</li>
+    <li>InferenceMAX: highest performance, lowest TCO across every model; DeepSeek-R1: 10x perf/watt, 10x lower cost/token vs H200</li>
+    <li>NVLink 72 for reasoning/MoE models: 10-15x higher performance vs prior architectures</li>
+    <li>GB300 NVL72 vs Hopper: order of magnitude higher perf/watt for reasoning systems</li>
+    <li>Blackwell leadership in inference: multiyear advantage</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Strategic Partnerships and Investments</h3>
+  <ul>
+    <li><strong>OpenAI:</strong> Strategic partnership for 10+ GW AI data centers; investment opportunity; deep co-development; serving through Azure, OCI, CoreWeave; 800M weekly users, 1M enterprise customers</li>
+    <li><strong>Anthropic:</strong> First time on NVIDIA; deep tech partnership; up to 1GW compute (Grace Blackwell + Vera Rubin); Claude models optimized for CUDA; $7B ARR (from $1B start of year)</li>
+    <li><strong>xAI:</strong> Deep partnership; Colossus 2 (first GW data center); connected xAI to HUMAIN/KSA</li>
+    <li><strong>Other Investments:</strong> Mistral, Reflection, Thinking Machines — all expanding CUDA ecosystem</li>
+    <li><strong>Investment Thesis:</strong> Deep technical co-development → expanding ecosystem reach → share in consequential once-in-a-generation companies → extraordinary returns expected</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Networking Leadership</h3>
+  <ul>
+    <li>$8.2B revenue, +162% YoY — largest networking business in the world for AI</li>
+    <li><strong>NVLink (Scale-Up):</strong> 5th generation; only proven scale-up technology; NVLink Fusion expanding (Fujitsu, Intel, Arm)</li>
+    <li><strong>InfiniBand (Scale-Out):</strong> Quantum-X InfiniBand; unambiguously lowest latency/jitter; model builders' choice</li>
+    <li><strong>Spectrum-X (Scale-Out Ethernet):</strong> Annualizing $10B+; Meta, Microsoft, Oracle, xAI building GW factories; Ethernet GPU attach rates now on par with InfiniBand</li>
+    <li><strong>Spectrum-XGS (Scale-Across):</strong> Gigascale AI super factories; NVIDIA only company with scale-up, scale-out, and scale-across platforms</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Custom ASICs vs NVIDIA GPUs</h3>
+  <ul>
+    <li>Many ASIC projects started, very few reach production — AI factories are extremely complex</li>
+    <li>Complexity has grown enormously: 3 types of switches (scale-up, scale-out, scale-across), memory architecture implications, model diversity (MoE, dense, diffusion, physics-based)</li>
+    <li>Five NVIDIA advantages: every phase of transition, every phase of AI, every model, every cloud, diverse offtake</li>
+    <li>After exploring alternatives, increasing number of customers returning to NVIDIA platform</li>
+    <li>Non-CUDA accelerators become obsolete within years as models evolve; CUDA provides multi-year useful life</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q3 FY2026 Actuals (Reported)</h3>
+  <ul>
+    <li><strong>Revenue:</strong> $57.0B (record), +62% YoY, +22% QoQ (record $10B sequential growth)</li>
+    <li><strong>GAAP Gross Margin:</strong> 73.4% (exceeded outlook; improved sequentially from data center mix, cycle time, cost structure)</li>
+    <li><strong>Non-GAAP Gross Margin:</strong> 73.6% (exceeded outlook)</li>
+    <li><strong>GAAP Operating Expenses:</strong> +8% QoQ (infrastructure compute + compensation/benefits + engineering development)</li>
+    <li><strong>Non-GAAP Operating Expenses:</strong> +11% QoQ</li>
+    <li><strong>Non-GAAP Effective Tax Rate:</strong> Just over 17% (above 16.5% guidance due to strong U.S. revenue)</li>
+    <li><strong>Inventory:</strong> +32% QoQ; supply commitments +63% QoQ (preparing for significant growth ahead)</li>
+  </ul>
+</div>
+
+<div class="prior-ref" id="priorRef">
+  <div class="prior-ref-header" onclick="var b=document.getElementById('priorBody');b.classList.toggle('open');this.querySelector('.arrow').innerHTML=b.classList.contains('open')?'&#9650;':'&#9660;';">
+    Prior Quarter Reference: Q2 2026
+    <span class="arrow">&#9660;</span>
+  </div>
+  <div class="prior-ref-body" id="priorBody">
+    <div class="metric-grid">
+      <div class="prior-mini"><div class="pm-label">Next-Q Revenue</div><div class="pm-value">$54.0B, +/- 2% (over $7B sequential growth)</div></div>
+      <div class="prior-mini"><div class="pm-label">Next-Q Gross Margin (Non-GAAP)</div><div class="pm-value">73.5%, +/- 50 bps</div></div>
+      <div class="prior-mini"><div class="pm-label">Next-Q OpEx (Non-GAAP)</div><div class="pm-value">~$4.2B</div></div>
+      <div class="prior-mini"><div class="pm-label">Next-Q Gross Margin (GAAP)</div><div class="pm-value">73.3%, +/- 50 bps</div></div>
+    </div>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q2_2026.html" style="color:var(--blue);">View full Q2 2026 detail &rarr;</a></p>
+  </div>
+</div>
+
+<div class="footer-nav">
+  <a href="Q2_2026.html">&larr; Q2 2026</a>
+  <a href="../comparison.html">Back to Overview</a>
+  <a href="Q4_2026.html">Q4 2026 &rarr;</a>
+</div>
+
+</body>
+</html>

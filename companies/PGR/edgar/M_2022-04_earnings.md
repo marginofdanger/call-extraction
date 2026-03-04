@@ -1,0 +1,165 @@
+# The Progressive Corporation — M_2022-05-18 Earnings Release
+
+**Ticker:** PGR
+**Filing Date:** 2022-05-18
+**Accession:** 0000080661-22-000064
+**Source:** [SEC EDGAR](https://www.sec.gov/Archives/edgar/data/80661/000008066122000064/0000080661-22-000064-index.htm)
+
+## Financial Tables (from Exhibits)
+
+### 
+
+|  | April |  |
+| (millions, except per share amounts and ratios; unaudited) | 2022 |  | 2021 |  | Change |  |  |  |  |  |
+| Net premiums written |  | 4820.7 |  |  |  | 4450.6 |  |  | 8 | % |  |  |  |  |  |
+| Net premiums earned |  | 4614.1 |  |  |  | 4133.6 |  |  | 12 | % |  |  |  |  |  |
+| Net income (loss) |  | -198.3 |  |  |  | 316.2 |  |  | -163 | % |  |  |  |  |  |
+| Per share available to common shareholders |  | -0.34 |  |  |  | 0.54 |  |  | -164 | % |  |  |  |  |  |
+| Total pretax net realized gains (losses) on securities |  | -524.5 |  |  |  | 191.3 |  |  | -374 | % |  |  |  |  |  |
+| Combined ratio | 95.5 |  | 96.0 |  | (0.5) pts. |  |  |  |  |  |
+| Average equivalent common shares | 584.3 |  | 586.8 |  | 0 | % |  |  |  |  |  |
+
+### 
+
+|  | Current Month |  | Comments on Monthly Results 1 |
+| Net premiums written |  | 4820.7 |  |  |  |
+| Revenues: |  |  |  |
+| Net premiums earned |  | 4614.1 |  |  |  |
+| Investment income | 87.3 |  |  |  |
+| Net realized gains (losses) on securities: |  |  |  |
+| Net realized gains (losses) on security sales | -26.5 |  |  |  |
+| Net holding period gains (losses) on securities | -497.3 |  |  |  |
+| Net impairment losses recognized in earnings | -0.7 |  |  |  |
+| Total net realized gains (losses) on securities | -524.5 |  |  |  |
+| Fees and other revenues | 67.6 |  |  |  |
+| Service revenues | 28.1 |  |  |  |
+| Total revenues | 4272.6 |  |  |  |
+| Expenses: |  |  |  |
+| Losses and loss adjustment expenses | 3594.7 |  |  |  |
+| Policy acquisition costs | 373.5 |  |  |  |
+| Other underwriting expenses | 506.9 |  |  |  |
+| Investment expenses | 2.4 |  |  |  |
+| Service expenses | 25.3 |  |  |  |
+| Interest expense | 21.0 |  |  |  |
+| Total expenses | 4523.8 |  |  |  |
+| Income (loss) before income taxes | -251.2 |  |  |  |
+| Provision (benefit) for income taxes | -52.9 |  |  |  |
+| Net income (loss) | -198.3 |  |  |  |
+| Other comprehensive income (loss) |  |  |  |
+| Changes in: |  |  |  |
+| Total net unrealized gains (losses) on fixed-maturity securities | -559.9 |  |  |  |
+| Net unrealized losses on forecasted transactions | 0 |  |  |  |
+| Foreign currency translation adjustment | -0.3 |  |  |  |
+| Other comprehensive income (loss) | -560.2 |  |  |  |
+| Total comprehensive income (loss) |  | -758.5 |  |  |  |
+
+### 
+
+|  | Year-to-Date |  |  |
+|  | 2022 |  | 2021 |  | % Change |
+| Net premiums written |  | 18001.7 |  |  |  | 16179.7 |  |  | 11 |
+| Revenues: |  |  |  |  |  |
+| Net premiums earned |  | 16417.0 |  |  |  | 14553.8 |  |  | 13 |
+| Investment income | 329.5 |  |  | 285.0 |  |  | 16 |
+| Net realized gains (losses) on securities: |  |  |  |  |  |
+| Net realized gains (losses) on security sales | -81.0 |  |  | 164.0 |  |  | -149 |
+| Net holding period gains (losses) on securities | -885.9 |  |  | 612.6 |  |  | -245 |
+| Net impairment losses recognized in earnings | -2.9 |  |  | 0 |  |  | NM |
+| Total net realized gains (losses) on securities | -969.8 |  |  | 776.6 |  |  | -225 |
+| Fees and other revenues | 241.6 |  |  | 236.8 |  |  | 2 |
+| Service revenues | 95.8 |  |  | 79.6 |  |  | 20 |
+| Total revenues | 16114.1 |  |  | 15931.8 |  |  | 1 |
+| Expenses: |  |  |  |  |  |
+| Losses and loss adjustment expenses | 12453.1 |  |  | 10258.9 |  |  | 21 |
+| Policy acquisition costs | 1336.9 |  |  | 1224.8 |  |  | 9 |
+| Other underwriting expenses | 2013.2 |  |  | 2020.3 |  |  | 0 |
+| Investment expenses | 8.1 |  |  | 7.7 |  |  | 5 |
+| Service expenses | 88.5 |  |  | 73.4 |  |  | 21 |
+| Interest expense | 75.3 |  |  | 75.2 |  |  | 0 |
+| Total expenses | 15975.1 |  |  | 13660.3 |  |  | 17 |
+| Income before income taxes | 139.0 |  |  | 2271.5 |  |  | -94 |
+| Provision for income taxes | 23.4 |  |  | 475.3 |  |  | -95 |
+| Net income | 115.6 |  |  | 1796.2 |  |  | -94 |
+| Other comprehensive income (loss) |  |  |  |  |  |
+| Changes in: |  |  |  |  |  |
+| Total net unrealized gains (losses) on fixed-maturity securities | -1986.8 |  |  | -454.6 |  |  | 337 |
+| Net unrealized losses on forecasted transactions | 0.2 |  |  | 0.3 |  |  | -33 |
+| Foreign currency translation adjustment | -0.1 |  |  | 0 |  |  | NM |
+| Other comprehensive income (loss) | -1986.7 |  |  | -454.3 |  |  | 337 |
+| Total comprehensive income (loss) |  | -1871.1 |  |  |  | 1341.9 |  |  | -239 |
+| NM = Not Meaningful |  |  |  |  |  |
+
+### 
+
+| The following table sets forth the computation of per share results: |  |
+|  | Current |  | Year-to-Date |  |
+|  | Month |  | 2022 |  | 2021 |  |
+| Net income (loss) |  | -198.3 |  |  |  | 115.6 |  |  |  | 1796.2 |  |  |
+| Less: Preferred share dividends | 2.2 |  |  | 8.9 |  |  | 8.9 |  |  |
+| Net income (loss) available to common shareholders |  | -200.5 |  |  |  | 106.7 |  |  |  | 1787.3 |  |  |
+| Per common share: |  |  |  |  |  |  |
+| Basic |  | -0.34 |  |  |  | 0.18 |  |  |  | 3.06 |  |  |
+| Diluted 1 |  | -0.34 |  |  |  | 0.18 |  |  |  | 3.05 |  |  |
+| Comprehensive income (loss) |  | -758.5 |  |  |  | -1871.1 |  |  |  | 1341.9 |  |  |
+| Less: Preferred share dividends | 2.2 |  |  | 8.9 |  |  | 8.9 |  |  |
+| Comprehensive income (loss) attributable to common shareholders |  | -760.7 |  |  |  | -1880.0 |  |  |  | 1333.0 |  |  |
+| Per common share: |  |  |  |  |  |  |
+| Diluted 1 |  | -1.30 |  |  |  | -3.22 |  |  |  | 2.27 |  |  |
+| Average common shares outstanding - Basic | 584.3 |  | 584.3 |  | 584.8 |  |
+| Net effect of dilutive stock-based compensation | 2.1 |  | 2.0 |  | 2.0 |  |
+| Total average equivalent common shares - Diluted | 586.4 |  | 586.3 |  | 586.8 |  |
+
+### 
+
+| The following table sets forth the investment results for the period: |  |  |  |  |  |
+|  |  | Current |  | Year-to-Date |  |
+|  |  | Month |  | 2022 |  | 2021 |  |
+|  | Fully taxable equivalent (FTE) total return: |  |  |  |  |  |  |
+|  | Fixed-income securities | (1.5)% |  | (5.1)% |  | (0.4)% |  |
+|  | Common stocks | (8.8)% |  | (13.3)% |  | 16.3% |  |
+|  | Total portfolio | (2.2)% |  | (5.8)% |  | 1.0% |  |
+|  | Pretax annualized investment income book yield | 2.1% |  | 2.0% |  | 2.0% |  |
+
+### 
+
+|  | April 2022 |
+| CONDENSED GAAP BALANCE SHEET: |  |
+| Investments, at fair value: |  |
+| Available-for-sale securities: |  |
+| Fixed maturities 1 (amortized cost: 48,156.1) |  | 45662.8 |  |
+| Short-term investments (amortized cost: 301.7) | 301.7 |  |
+| Total available-for-sale securities | 45964.5 |  |
+| Equity securities: |  |
+| Nonredeemable preferred stocks (cost: 1,524.0) | 1454.4 |  |
+| Common equities (cost: 1,279.4) | 4382.8 |  |
+| Total equity securities | 5837.2 |  |
+| Total investments 2 | 51801.7 |  |
+| Net premiums receivable | 10526.9 |  |
+| Reinsurance recoverables (including 4,751.4 on unpaid loss and LAE reserves) | 5059.7 |  |
+| Deferred acquisition costs | 1432.9 |  |
+| Goodwill and intangible assets | 553.6 |  |
+| Other assets | 3437.4 |  |
+| Total assets |  | 72812.2 |  |
+| Unearned premiums |  | 17170.9 |  |
+| Loss and loss adjustment expense reserves | 27222.5 |  |
+| Other liabilities 2 | 5732.1 |  |
+| Debt | 6385.9 |  |
+| Total liabilities | 56511.4 |  |
+| Shareholders’ equity | 16300.8 |  |
+| Total liabilities and shareholders’ equity |  | 72812.2 |  |
+| Common shares outstanding | 584.9 |  |
+| Common shares repurchased - April | 0 |  |
+| Average cost per common share |  | 0 |  |
+| Book value per common share |  | 27.02 |  |
+| Trailing 12-month return on average common shareholders’ equity |  |
+| Net income | 9.2 | % |
+| Comprehensive income | -4.4 | % |
+| Net unrealized pretax gains (losses) on fixed-maturity securities |  | -2443.6 |  |
+| Increase (decrease) from March 2022 |  | -708.8 |  |
+| Increase (decrease) from December 2021 |  | -2515.0 |  |
+| Debt-to-total capital ratio | 28.1 | % |
+| Fixed-income portfolio duration | 3.1 |  |
+| Weighted average credit quality | AA- |
+
+---
+*Generated by edgar_download.py on 2026-03-03 20:40*

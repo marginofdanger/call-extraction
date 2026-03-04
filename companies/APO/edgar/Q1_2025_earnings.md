@@ -1,0 +1,188 @@
+# Apollo Global Management, Inc. — Q1_2025 Earnings Release
+
+**Ticker:** APO
+**Filing Date:** 
+**Accession:** 0001858681-25-000045
+**Source:** [SEC EDGAR](https://www.sec.gov/Archives/edgar/data/1858681/000185868125000045/0001858681-25-000045-index.htm)
+
+## Key Metrics (XBRL)
+
+| Metric | Value | Units | Source |
+|--------|------:|-------|--------|
+| Comprehensive Income | $1.35B | USD | 10-Q |
+| EPS (Basic) | 1 | USD/shares | 10-Q |
+| EPS (Diluted) | 1 | USD/shares | 10-Q |
+| Income Tax Expense | $243.0M | USD | 10-Q |
+| Net Income | $442.0M | USD | 10-Q |
+| Net Income to Common | $418.0M | USD | 10-Q |
+| Shares Outstanding | 570.4M | shares | 10-Q |
+| Total Assets | $395.05B | USD | 10-Q |
+| Total Equity | $17.98B | USD | 10-Q |
+| Total Liabilities | $362.70B | USD | 10-Q |
+| Total Revenue | $5.55B | USD | 10-Q |
+
+## Financial Tables (from Exhibits)
+
+### (In millions, except per share amounts)
+
+|  | 1Q'24 | 4Q'24 | 1Q'25 |
+| --- | --- | --- | --- |
+| Revenues Asset Management Management fees | 438 | 523 | 508 |
+| Advisory and transaction fees, net | 169 | 205 | 195 |
+| Investment income (loss) | 402 | 395 | 303 |
+| Incentive fees | 26 | 42 | 40 |
+| Retirement Services Premiums | 101 | 155 | 127 |
+| Product charges | 238 | 260 | 265 |
+| Net investment income | 3576 | 4237 | 4341 |
+| Investment related gains (losses) | 1677 | -1037 | -828 |
+| Revenues of consolidated variable interest entities | 411 | 493 | 592 |
+| Other revenues | 2 | 10 | 5 |
+| Total Revenues | 7040 | 5283 | 5548 |
+| Expenses Asset Management Compensation and benefits | -667 | -732 | -745 |
+| Interest expense | -51 | -67 | -60 |
+| General, administrative and other | -240 | -285 | -308 |
+| Retirement Services Interest sensitive contract benefits | -2884 | -1642 | -1494 |
+| Future policy and other policy benefits | -543 | -623 | -541 |
+| Market risk benefits remeasurement gains (losses) | 154 | 456 | -385 |
+| Amortization of deferred acquisition costs, deferred sales inducements and value of business acquired | -207 | -263 | -267 |
+| Policy and other operating expenses | -453 | -535 | -542 |
+| Total Expenses | -4891 | -3691 | -4342 |
+| Other Income (Loss) – Asset Management Net gains (losses) from investment activities | 39 | 25 | -18 |
+| Net gains (losses) from investment activities of consolidated variable interest entities | 25 | 20 | 211 |
+| Other income (loss), net | -26 | 87 | -218 |
+| Total Other Income (Loss) | 38 | 132 | -25 |
+| Income (loss) before income tax (provision) benefit | 2187 | 1724 | 1181 |
+| Income tax (provision) benefit | -422 | -62 | -243 |
+| Net income (loss) | 1765 | 1662 | 938 |
+| Net (income) loss attributable to non-controlling interests | -338 | -176 | -496 |
+| Net income (loss) attributable to Apollo Global Management, Inc. | 1427 | 1486 | 442 |
+| Preferred stock dividends | -24 | -24 | -24 |
+| Net income (loss) attributable to Apollo Global Management, Inc. Common Stockholders | 1403 | 1462 | 418 |
+| Earnings (Loss) per share Net income (loss) attributable to Common Stockholders - Basic | 2.31 | 2.42 | 0.68 |
+| Net income (loss) attributable to Common Stockholders - Diluted | 2.28 | 2.39 | 0.68 |
+| Weighted average shares outstanding - Basic | 588 | 584 | 587 |
+| Weighted average shares outstanding - Diluted | 605 | 603 | 593 |
+
+### ($ in millions, except per share amounts)
+
+|  | 1Q'24 | 4Q'24 | 1Q'25 | LTM 1Q'24 | LTM 1Q'25 |
+| --- | --- | --- | --- | --- | --- |
+| Management fees | 652 | 742 | 770 | 2555 | 2894 |
+| Capital solutions fees and other, net | 141 | 160 | 154 | 541 | 681 |
+| Fee-related performance fees | 46 | 53 | 54 | 165 | 216 |
+| Fee-related compensation | -220 | -227 | -259 | -844 | -964 |
+| Non-compensation expenses | -157 | -174 | -160 | -584 | -667 |
+| Fee Related Earnings | 462 | 554 | 559 | 1833 | 2160 |
+| Net investment spread | 1022 | 1094 | 1048 | 4126 | 4173 |
+| Other operating expenses | -114 | -116 | -114 | -471 | -458 |
+| Interest and other financing costs | -91 | -137 | -130 | -418 | -504 |
+| Spread Related Earnings | 817 | 841 | 804 | 3237 | 3211 |
+| Fee and Spread Related Earnings | 1279 | 1395 | 1363 | 5070 | 5371 |
+| Principal Investing Income | 21 | 139 | 14 | 96 | 264 |
+| Segment Income | 1300 | 1534 | 1377 | 5166 | 5635 |
+| HoldCo interest and other financing costs1 | -15 | -29 | -34 | -82 | -99 |
+| Taxes and related payables | -221 | -145 | -224 | -783 | -916 |
+| Adjusted Net Income | 1064 | 1360 | 1119 | 4301 | 4620 |
+| ANI per share | 1.72 | 2.22 | 1.82 | 7.04 | 7.53 |
+
+### ($ in millions, except per share amounts)
+
+|  | 1Q'24 | 4Q'24 | 1Q'25 | LTM 1Q'24 | LTM 1Q'25 |
+| --- | --- | --- | --- | --- | --- |
+| Management fees | 652 | 742 | 770 | 2555 | 2894 |
+| Capital solutions fees and other, net | 141 | 160 | 154 | 541 | 681 |
+| Fee-related performance fees | 46 | 53 | 54 | 165 | 216 |
+| Fee-related compensation | -220 | -227 | -259 | -844 | -964 |
+| Non-compensation expenses | -157 | -174 | -160 | -584 | -667 |
+| Fee Related Earnings | 462 | 554 | 559 | 1833 | 2160 |
+| Net investment spread | 1022 | 1094 | 1048 | 4126 | 4173 |
+| Other operating expenses | -114 | -116 | -114 | -471 | -458 |
+| Interest and other financing costs | -91 | -137 | -130 | -418 | -504 |
+| Notable items1 | — | — | 22 | -90 |  |
+| Spread Related Earnings, Excluding Notable Items | 817 | 841 | 826 | 3147 | 3208 |
+| Fee and Spread Related Earnings, Excluding Notable Items | 1279 | 1395 | 1385 | 4980 | 5368 |
+| Principal Investing Income | 21 | 139 | 14 | 96 | 264 |
+| Segment Income, Excluding Notable Items | 1300 | 1534 | 1399 | 5076 | 5632 |
+| HoldCo interest and other financing costs | -15 | -29 | -34 | -82 | -99 |
+| Taxes and related payables | -221 | -145 | -229 | -764 | -916 |
+| Adjusted Net Income, Excluding Notable Items | 1064 | 1360 | 1136 | 4230 | 4617 |
+| ANI per share, Excluding Notable Items | 1.72 | 2.22 | 1.85 | 6.92 | 7.52 |
+
+### • Spread Related Earnings, Excluding Notable Items increased modestly over the last twelve months versus the prior year period as record organic growth was  mostly offset by lower net spread that was 
+
+|  | 1Q'24 | 4Q'24 | 1Q'25 | 1Q'24 | LTM 1Q'24 | LTM 1Q'25 | LTM 1Q'24 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Fixed income and other net investment income | 2454 | 2912 | 2914 | 18.7% | 9236 | 11265 | 22.0% |
+| Alternative net investment income | 266 | 269 | 315 | 18.4% | 945 | 988 | 4.6% |
+| Strategic capital management fees | 25 | 29 | 29 | 16.0% | 83 | 109 | 31.3% |
+| Cost of funds | -1723 | -2116 | -2210 | 28.3% | -6138 | -8189 | 33.4% |
+| Net Investment Spread | 1022 | 1094 | 1048 | 2.5% | 4126 | 4173 | 1.1% |
+| Other operating expenses (114) (116) (114) —% (471) (458) (2.8)% Interest and other financing costs | -91 | -137 | -130 | 42.9% | -418 | -504 | 20.6% |
+| Spread Related Earnings $817 $841 $804 (1.6)% $3,237 $3,211 (0.8)% SRE per share $1.32 $1.37 $1.31 (0.8)% $5.30 $5.23 (1.3)% Notable items — — 22 NM (90) (3) (96.7)% Spread Related Earnings, Excluding Notable Items | 817 | 841 | 826 | 1.1% | 3147 | 3208 | 1.9% |
+| SRE per share, Excluding Notable Items | 1.32 | 1.37 | 1.35 | 2.3% | 5.15 | 5.23 | 1.6% |
+
+### (% of average net invested assets)
+
+|  | 1Q'24 | 4Q'24 | 1Q'25 | 1Q'24 | LTM 1Q'24 | LTM 1Q'25 | LTM 1Q'24 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Fixed income and other net investment income 4.66% 5.00% 4.80% 14bps 4.56% 4.88% 32bps Alternative net investment income 9.10% 9.25% 10.08% 98bps 7.94% 8.26% 32bps Net Investment Earnings 4.89% 5.20% 5.06% 17bps 4.74% 5.05% 31bps Strategic capital management fees 0.04% 0.05% 0.05% 1bp 0.04% 0.04% 0bps Cost of funds (3.10)% (3.46)% (3.46)% 36bps (2.86)% (3.37)% 51bps Net Investment Spread 1.83% 1.79% 1.65% (18)bps 1.92% 1.72% (20)bps Other operating expenses (0.21)% (0.20)% (0.18)% (3)bps (0.22)% (0.19)% (3)bps Interest and other financing costs (0.15)% (0.22)% (0.21)% 6bps (0.19)% (0.21)% 2bps Net Spread 1.47% 1.37% 1.26% (21)bps 1.51% 1.32% (19)bps Notable items —% —% 0.03% NM (0.04)% —% NM Net Spread, Excluding Notable Items 1.47% 1.37% 1.29% (18)bps 1.47% 1.32% (15)bps Net investment earnings, excluding notable items 4.89% 5.20% 5.06% 17bps 4.74% 5.05% 31bps Cost of funds, excluding notable items (3.10)% (3.46)% (3.43)% 33bps (2.90)% (3.37)% 47bps Net investment spread, excluding notable items 1.83% 1.79% 1.68% (15)bps 1.88% 1.72% (16)bps Alternative net return delta to long-term expectation 1.90% 1.75% 0.92% 3.06% 2.74% Impact to Net Spread 0.10% 0.09% 0.05% 0.16% 0.13% ($ in millions) Average net invested assets | 222391 | 244796 | 255505 | 14.9% | 214659 | 242797 | 13.1% |
+| Average net invested assets - fixed income | 210688 | 233153 | 242999 | 15.3% | 202761 | 230839 | 13.8% |
+| Average net invested assets - alternatives | 11703 | 11643 | 12506 | 6.9% | 11898 | 11958 | 0.5% |
+
+### ($ in millions, except share amounts)
+
+|  | 4Q'24 | 1Q'25 |
+| --- | --- | --- |
+| Assets Asset Management Cash and cash equivalents | 2692 | 1871 |
+| Restricted cash and cash equivalents | 3 | 3 |
+| Investments | 6086 | 6591 |
+| Assets of consolidated variable interest entities Cash and cash equivalents | 158 | 231 |
+| Investments | 2806 | 1873 |
+| Other assets | 84 | 264 |
+| Due from related parties | 584 | 634 |
+| Goodwill | 264 | 264 |
+| Other assets | 2579 | 2677 |
+| Retirement Services Cash and cash equivalents | 12733 | 11023 |
+| Restricted cash and cash equivalents | 943 | 2210 |
+| Investments | 262283 | 278323 |
+| Investments in related parties | 28884 | 29834 |
+| Assets of consolidated variable interest entities Cash and cash equivalents | 583 | 175 |
+| Investments | 23424 | 24653 |
+| Other assets | 565 | 362 |
+| Reinsurance recoverable | 8194 | 8790 |
+| Deferred acquisition costs, deferred sales inducements and value of business acquired | 7173 | 7606 |
+| Goodwill | 4063 | 4067 |
+| Other assets | 13794 | 13594 |
+| Total Assets | 377895 | 395045 |
+
+### ($ in millions, except share amounts)
+
+|  | 4Q'24 | 1Q'25 |
+| --- | --- | --- |
+| Liabilities Asset Management Accounts payable, accrued expenses, and other liabilities | 3616 | 3773 |
+| Due to related parties | 710 | 708 |
+| Debt | 4279 | 4280 |
+| Liabilities of consolidated variable interest entities Other liabilities | 1363 | 785 |
+| Retirement Services Interest sensitive contract liabilities | 253637 | 273439 |
+| Future policy benefits | 49902 | 49897 |
+| Market risk benefits | 4028 | 4362 |
+| Debt | 6309 | 6301 |
+| Payables for collateral on derivatives and securities to repurchase | 11652 | 7253 |
+| Other liabilities | 9784 | 10355 |
+| Liabilities of consolidated variable interest entities Other liabilities | 1635 | 1548 |
+| Total Liabilities | 346915 | 362701 |
+| Redeemable non-controlling interests Redeemable non-controlling interests | 16 | — |
+| Equity Mandatory Convertible Preferred Stock | 1398 | 1398 |
+| Common Stock, $0.00001 par value, 90,000,000,000 shares authorized, 570,432,275 and 565,738,933 shares issued and outstanding as of March | 31 | 2025 |
+| and December | 31 | 2024 |
+| respectively | — | — |
+| Additional paid in capital | 15327 | 15527 |
+| Retained earnings (accumulated deficit) | 6022 | 5634 |
+| Accumulated other comprehensive income (loss) | -5494 | -4583 |
+| Total Apollo Global Management, Inc. Stockholders' Equity | 17253 | 17976 |
+| Non-controlling interests | 13711 | 14368 |
+| Total Equity | 30964 | 32344 |
+| Total Liabilities, Redeemable non-controlling interests and Equity | 377895 | 395045 |
+
+---
+*Generated by edgar_download.py on 2026-03-03 19:34*

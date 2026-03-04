@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AVGO FQ4 2022 Earnings Call Detail</title>
+<style>
+:root {
+    --company-primary: #CC092F;
+    --company-dark: #1a1a2e;
+    --company-accent: #16213e;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 40px 40px 32px;
+    margin: 0 -24px 0;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .header .meta {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    font-weight: 300;
+  }
+  .header .meta span { margin-right: 24px; }
+
+  .nav-bar {
+    background: var(--company-accent);
+    margin: 0 -24px 32px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    transition: all 0.15s;
+  }
+  .nav-bar a:hover { background: rgba(255,255,255,0.2); }
+  .nav-bar a.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .nav-center {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-center a.qbtn {
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+  }
+  .nav-center a.qbtn.current {
+    background: var(--company-primary);
+    border-color: var(--company-primary);
+  }
+  .nav-center a.qbtn:hover { background: rgba(255,255,255,0.2); }
+  .nav-back {
+    background: rgba(255,255,255,0.15) !important;
+    border-color: rgba(255,255,255,0.35) !important;
+  }
+
+  .metrics-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .metric {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+  .metric-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .metric-value {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+  .metric-delta {
+    font-size: 0.72rem;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+  .delta-up { color: var(--green); }
+  .delta-down { color: var(--red); }
+  .delta-flat { color: var(--text-muted); }
+
+  .changes-box {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 5px solid var(--amber);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .changes-box h3 {
+    font-size: 1rem;
+    color: var(--company-dark);
+    margin-bottom: 10px;
+  }
+  .changes-box ul { list-style: none; padding: 0; }
+  .changes-box li {
+    padding: 5px 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .change-tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .ct-raised { background: #d5f5e3; color: #1e8449; }
+  .ct-lowered { background: #fadbd8; color: #c0392b; }
+  .ct-changed { background: #d6eaf8; color: #2471a3; }
+  .ct-new { background: #e8daef; color: #6c3483; }
+  .ct-maintained { background: #fdebd0; color: #b9770e; }
+
+  .content-section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .content-section h3 {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .content-section ul {
+    padding: 14px 18px 14px 36px;
+    margin: 0;
+  }
+  .content-section li {
+    padding: 3px 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .content-section li strong { color: var(--company-dark); }
+
+  .prior-ref {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 40px;
+    overflow: hidden;
+  }
+  .prior-ref-header {
+    background: var(--light-bg);
+    padding: 12px 18px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--company-dark);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .prior-ref-header:hover { background: #eef2f7; }
+  .prior-ref-body { padding: 18px; display: none; }
+  .prior-ref-body.open { display: block; }
+  .prior-ref-body .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .prior-mini {
+    background: var(--light-bg);
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .prior-mini .pm-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .prior-mini .pm-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border);
+  }
+  .footer-nav a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .footer-nav a:hover { text-decoration: underline; }
+
+  /* Comparison page styles */
+  .toc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .toc a {
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 4px 0;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  .comp-section {
+    margin-bottom: 40px;
+  }
+  .comp-section h2 {
+    font-size: 1.2rem;
+    color: var(--company-dark);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--company-primary);
+  }
+
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+  }
+  .comp-table th {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .comp-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .comp-table tr:nth-child(even) { background: var(--light-bg); }
+  .comp-table tr:hover { background: #e8f4fd; }
+
+  @media (max-width: 768px) {
+    .header h1 { font-size: 1.5rem; }
+    .metrics-card { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .nav-center { display: none; }
+    body { padding: 0 16px 60px; }
+    .header { margin: 0 -16px 0; padding: 28px 24px 20px; }
+    .nav-bar { margin: 0 -16px 24px; }
+    .toc { grid-template-columns: 1fr; }
+    .comp-table { font-size: 0.78rem; }
+    .comp-table th, .comp-table td { padding: 6px 8px; }
+  }
+
+  @media print {
+    .nav-bar { display: none; }
+    .header { background: #333; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>AVGO FQ4 2022 Earnings Call</h1>
+  <div class="meta">
+    <span>Call Date: December 8, 2022</span>
+    <span>Reporting: Fiscal Q4 2022 (Full Year FY2022)</span>
+  </div>
+</div>
+<div class="nav-bar">
+  <a href="FQ3_2022.html">&larr; FQ3 2022</a>
+  <div class="nav-center">
+    <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="FQ4_2025.html" class="qbtn">F4Q25</a>
+    <a href="FQ3_2025.html" class="qbtn">F3Q25</a>
+    <a href="FQ2_2025.html" class="qbtn">F2Q25</a>
+    <a href="FQ1_2025.html" class="qbtn">F1Q25</a>
+    <a href="FQ4_2024.html" class="qbtn">F4Q24</a>
+    <a href="FQ3_2024.html" class="qbtn">F3Q24</a>
+    <a href="FQ2_2024.html" class="qbtn">F2Q24</a>
+    <a href="FQ1_2024.html" class="qbtn">F1Q24</a>
+    <a href="FQ4_2023.html" class="qbtn">F4Q23</a>
+    <a href="FQ3_2023.html" class="qbtn">F3Q23</a>
+    <a href="FQ2_2023.html" class="qbtn">F2Q23</a>
+    <a href="FQ1_2023.html" class="qbtn">F1Q23</a>
+    <a href="FQ4_2022.html" class="qbtn current">F4Q22</a>
+    <a href="FQ3_2022.html" class="qbtn">F3Q22</a>
+    <a href="FQ2_2022.html" class="qbtn">F2Q22</a>
+    <a href="FQ1_2022.html" class="qbtn">F1Q22</a>
+  </div>
+  <a href="FQ1_2023.html">FQ1 2023 &rarr;</a>
+</div>
+
+<div class="changes-box">
+  <h3>What Changed vs FQ3 2022</h3>
+  <ul>
+    <li><span class="change-tag ct-changed">Changed</span> Semiconductor Revenue: ~+20% YoY (prior: +25% YoY)</li>
+  </ul>
+</div>
+
+<div class="metrics-card">
+  <div class="metric" style="grid-column: 1 / -1; background: linear-gradient(135deg, var(--company-dark), var(--company-accent)); color: #fff; border: none; padding: 8px 14px;">
+    <div class="metric-label" style="color: rgba(255,255,255,0.7);">Guidance For</div>
+    <div class="metric-value" style="color: #fff; font-size: 1rem;">FQ1 2023</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Next-Q Revenue</div>
+    <div class="metric-value">$8.9B</div>
+    <div class="metric-delta delta-flat">Prior: $8.9B</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Next-Q Adj. EBITDA % of Rev</div>
+    <div class="metric-value">~63% of projected revenue</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Semiconductor Revenue</div>
+    <div class="metric-value">~+20% YoY</div>
+    <div class="metric-delta delta-flat">Prior: +25% YoY</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Free Cash Flow</div>
+    <div class="metric-value">$16.3B, 49% of revenue</div>
+  </div>
+</div>
+
+<!-- Full Guidance Content -->
+<div class="content-section">
+  <h3>Quarterly Guidance (FQ1 2023)</h3>
+  <ul>
+    <li><strong>Revenue:</strong> $8.9B (+16% YoY)</li>
+    <li><strong>Adjusted EBITDA:</strong> ~63% of projected revenue</li>
+    <li><strong>Non-GAAP Diluted Share Count:</strong> 435M (excludes potential repurchases)</li>
+    <li><strong>Non-GAAP Gross Margin:</strong> could be down ~100 bps from Q4 (product mix shift — less networking, more broadband/wireless)</li>
+    <li><strong>R&D Spending:</strong> could be up sequentially (stepping up engineer hiring for critical projects)</li>
+    <li><strong>Semiconductor Revenue:</strong> ~+20% YoY</li>
+    <li><strong>Networking:</strong> ~+20% YoY</li>
+    <li><strong>Server Storage Connectivity:</strong> above +50% YoY</li>
+    <li><strong>Broadband:</strong> ~+30% YoY</li>
+    <li><strong>Wireless:</strong> sequentially flat, up low single digits YoY</li>
+    <li><strong>Industrial:</strong> low single-digit % growth YoY</li>
+    <li><strong>Infrastructure Software:</strong> flat YoY (core software +mid-single-digit % offset by Brocade enterprise decline)</li>
+    <li><strong>Annual Outlook:</strong> fully booked for FY2023 but not providing annual guidance</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Enterprise IT Spending Outlook</h3>
+  <ul>
+    <li>CIO surveys show enterprise IT budgets for 2023 flat to up vs 2022</li>
+    <li>Compelling need to modernize platforms, digitize business models</li>
+    <li>No clear reduction seen despite global recession concerns</li>
+    <li>Infrastructure spending remains strong across hyperscale, service providers, and enterprise</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>FQ4 2022 Segment Revenue</h3>
+  <ul>
+    <li><strong>Semiconductor Solutions:</strong> $7.1B (+26% YoY), 79% of total revenue - Semiconductor GM: ~71% (+70 bps YoY) - Semiconductor OpEx: $825M (+4% YoY); R&D $731M (+4% YoY) - Semiconductor Operating Margin: 59%; operating profit grew 33% YoY</li>
+    <li><strong>Infrastructure Software:</strong> $1.8B (+4% YoY), 21% of total revenue - Software GM: 91% - Software OpEx: $348M (-1% YoY) - Software Operating Margin: 72%; operating profit grew 6% YoY</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>FQ4 2022 Semiconductor End Market Breakdown</h3>
+  <ul>
+    <li><strong>Networking:</strong> $2.5B (record), +30% YoY, 35% of semiconductor revenue — Tomahawk 4 data center switching, Jericho edge/core routing at cloud and service providers</li>
+    <li><strong>Wireless:</strong> $2.1B, +13% YoY, 29% of semiconductor revenue — higher content from North American OEM</li>
+    <li><strong>Server Storage Connectivity:</strong> $1.2B (record), +50% YoY, 17% of semiconductor revenue — next-gen MegaRAID and storage adapters; content increase from subsystem/board sales</li>
+    <li><strong>Broadband:</strong> $1.0B, +20% YoY, 15% of semiconductor revenue — multiyear 10G PON and DOCSIS 3.1 deployments with WiFi 6/6E</li>
+    <li><strong>Industrial:</strong> Resales $234M, +1% YoY — China weakness, North America/Europe automotive strength</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>FQ4 2022 Custom Silicon/ASIC</h3>
+  <ul>
+    <li><strong>Compute Offload ASIC Revenue:</strong> surpassed $2B in FY2022 (~33% increase from prior year)</li>
+    <li>Multiple hyperscaler programs for custom/semi-custom accelerators</li>
+    <li>Programs are lumpy and hard to forecast near-term</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>FQ4 2022 Software Metrics</h3>
+  <ul>
+    <li><strong>Core Software Revenue:</strong> +5% YoY</li>
+    <li><strong>ARR (Annual Recurring Revenue):</strong> $5.4B (+4% YoY)</li>
+    <li><strong>Consolidated Renewal Rates:</strong> 117% (trailing 12-month: 120%)</li>
+    <li><strong>Strategic Account Renewal Rates:</strong> 128% (trailing 12-month: 135%)</li>
+    <li><strong>Strategic Account Bookings:</strong> $357M, of which $101M cross-selling</li>
+    <li><strong>Recurring Mix:</strong> >90% recurring subscription and maintenance</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>FQ4 2022 Balance Sheet & Capital Allocation</h3>
+  <ul>
+    <li><strong>Cash & Equivalents:</strong> $12.4B</li>
+    <li><strong>Gross Debt:</strong> $39.5B ($440M short-term)</li>
+    <li><strong>DSO:</strong> 30 days</li>
+    <li><strong>Inventory:</strong> $1.9B (+5% QoQ, positioned for Q1 mix with higher cost materials)</li>
+    <li><strong>Fully Booked:</strong> for entire fiscal year 2023 (noncancelable orders)</li>
+    <li><strong>Customer Request Dates (CRDs):</strong> significantly higher than actual shipments</li>
+    <li><strong>Authorized Repurchase Program Remaining:</strong> $13B</li>
+    <li><strong>Share Repurchases:</strong> paused since VMware announcement (SEC rules); will resume when allowed</li>
+    <li><strong>Dividend Increase:</strong> Q1 FY2023 quarterly dividend of $4.60/share (+12%); implies FY2023 annual dividend of $18.40/share (record; 12th consecutive increase since FY2011)</li>
+    <li><strong>Non-GAAP Diluted Share Count:</strong> 435M</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>VMware Acquisition Update</h3>
+  <ul>
+    <li>Merger clearance received in Brazil, Canada, and South Africa</li>
+    <li>Timeline more extended in other key regions given transaction size</li>
+    <li>Still confident transaction will close in Broadcom's fiscal year 2023</li>
+    <li>Combination about enabling enterprises to accelerate innovation in multi-cloud era</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Gross Margin Dynamics</h3>
+  <ul>
+    <li>Networking has highest margins across semiconductor portfolio</li>
+    <li>Broadband margins lower than networking</li>
+    <li>Wireless has lowest margins</li>
+    <li>Q4→Q1 mix shift: less networking, more broadband; wireless remains large proportion → GM down ~100 bps</li>
+    <li>Long-term: new-generation product adoption drives 50–100 bps annual GM expansion</li>
+    <li>Price increases only pass through material cost increases — neutral to percentage margins</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>China Exposure</h3>
+  <ul>
+    <li>China represents <10% of total revenues</li>
+    <li>Slowdown in consumption across industrial and IT infrastructure</li>
+    <li>Too early to call improvement</li>
+    <li>COVID logistics impacting wireless customer shipment timing</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>FQ4 2022 Actuals (Reported)</h3>
+  <ul>
+    <li><strong>Revenue:</strong> $8.9B (+21% YoY)</li>
+    <li><strong>Gross Margin:</strong> 75% of revenue (+10 bps YoY)</li>
+    <li><strong>Operating Expenses:</strong> $1.2B (+3% YoY), driven by R&D investment</li>
+    <li><strong>Operating Income:</strong> $5.5B (+25% YoY)</li>
+    <li><strong>Operating Margin:</strong> 62% of revenue (+240 bps YoY)</li>
+    <li><strong>Adjusted EBITDA:</strong> $5.7B (64% of revenue; excludes $129M depreciation)</li>
+    <li><strong>EPS (Non-GAAP):</strong> $10.45 (consensus $10.28, beat by 1.65%)</li>
+    <li><strong>Free Cash Flow:</strong> $4.5B (50% of revenue)</li>
+    <li><strong>CapEx:</strong> $122M</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Full Year FY2022 Actuals</h3>
+  <ul>
+    <li><strong>Revenue:</strong> $33.2B (+21% YoY) — record</li>
+    <li><strong>Semiconductor Solutions Revenue:</strong> $25.8B (+27% YoY)</li>
+    <li><strong>Infrastructure Software Revenue:</strong> $7.4B (+4% YoY)</li>
+    <li><strong>Gross Margin:</strong> 76% (+110 bps YoY)</li>
+    <li><strong>Operating Expenses:</strong> $4.8B (+6% YoY)</li>
+    <li><strong>Operating Income:</strong> $20.3B (+28% YoY), 61% of revenue</li>
+    <li><strong>Adjusted EBITDA:</strong> $21.0B (+27% YoY), 63% of revenue (excludes $529M depreciation)</li>
+    <li><strong>CapEx:</strong> $424M</li>
+    <li><strong>Free Cash Flow:</strong> $16.3B (+22% YoY), 49% of revenue</li>
+    <li><strong>Free Cash Flow Per Share:</strong> +25% YoY</li>
+    <li><strong>Capital Returns (FY2022):</strong> $15.5B total — $7B dividends + $8.5B repurchases/eliminations</li>
+  </ul>
+</div>
+
+<div class="prior-ref" id="priorRef">
+  <div class="prior-ref-header" onclick="var b=document.getElementById('priorBody');b.classList.toggle('open');this.querySelector('.arrow').innerHTML=b.classList.contains('open')?'&#9650;':'&#9660;';">
+    Prior Quarter Reference: FQ3 2022
+    <span class="arrow">&#9660;</span>
+  </div>
+  <div class="prior-ref-body" id="priorBody">
+    <div class="metric-grid">
+      <div class="prior-mini"><div class="pm-label">Next-Q Revenue</div><div class="pm-value">$8.9B (+20% YoY, +5% QoQ)</div></div>
+      <div class="prior-mini"><div class="pm-label">Next-Q Adj. EBITDA % of Rev</div><div class="pm-value">~63% of projected revenue</div></div>
+      <div class="prior-mini"><div class="pm-label">Semiconductor Revenue</div><div class="pm-value">+25% YoY</div></div>
+    </div>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="FQ3_2022.html" style="color:var(--blue);">View full FQ3 2022 detail &rarr;</a></p>
+  </div>
+</div>
+
+<div class="footer-nav">
+  <a href="FQ3_2022.html">&larr; FQ3 2022</a>
+  <a href="../comparison.html">Back to Overview</a>
+  <a href="FQ1_2023.html">FQ1 2023 &rarr;</a>
+</div>
+
+</body>
+</html>

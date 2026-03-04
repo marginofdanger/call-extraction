@@ -1,0 +1,79 @@
+{
+  "ticker": "PGR",
+  "quarter": "Q1_2023",
+  "filing_date": "2023-05-15",
+  "accession": "0000080661-23-000025",
+  "tables": [],
+  "xbrl": {
+    "Total Revenue": {
+      "value": 14303200000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2023-05-02",
+      "concept": "Revenues"
+    },
+    "Net Income": {
+      "value": 447900000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2023-05-02",
+      "concept": "NetIncomeLoss"
+    },
+    "Net Income to Common": {
+      "value": 440600000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2023-05-02",
+      "concept": "NetIncomeLossAvailableToCommonStockholdersBasic"
+    },
+    "EPS (Basic)": {
+      "value": 0.75,
+      "units": "USD/shares",
+      "form": "10-Q",
+      "filed": "2023-05-02",
+      "concept": "EarningsPerShareBasic"
+    },
+    "EPS (Diluted)": {
+      "value": 0.75,
+      "units": "USD/shares",
+      "form": "10-Q",
+      "filed": "2023-05-02",
+      "concept": "EarningsPerShareDiluted"
+    },
+    "Total Assets": {
+      "value": 80407100000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2023-05-02",
+      "concept": "Assets"
+    },
+    "Total Liabilities": {
+      "value": 63538700000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2023-05-02",
+      "concept": "Liabilities"
+    },
+    "Total Equity": {
+      "value": 16868400000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2023-05-02",
+      "concept": "StockholdersEquity"
+    },
+    "Comprehensive Income": {
+      "value": 1051200000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2023-05-02",
+      "concept": "ComprehensiveIncomeNetOfTax"
+    },
+    "Income Tax Expense": {
+      "value": 106500000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2023-05-02",
+      "concept": "IncomeTaxExpenseBenefit"
+    }
+  }
+}

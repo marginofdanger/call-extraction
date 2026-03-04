@@ -1,0 +1,187 @@
+# Microsoft Corporation — Q2_FY2024 Earnings Release
+
+**Ticker:** MSFT
+**Filing Date:** 2024-01-30
+**Accession:** 0000950170-24-008809
+**Source:** [SEC EDGAR](https://www.sec.gov/Archives/edgar/data/789019/000095017024008809/0000950170-24-008809-index.htm)
+
+## Key Metrics (XBRL)
+
+| Metric | Value | Units | Source |
+|--------|------:|-------|--------|
+| Cash & Equivalents | $17.30B | USD | 10-Q |
+| Comprehensive Income | $23.86B | USD | 10-Q |
+| EPS (Basic) | 3 | USD/shares | 10-Q |
+| EPS (Diluted) | 3 | USD/shares | 10-Q |
+| Income Tax Expense | $4.66B | USD | 10-Q |
+| Net Income | $21.87B | USD | 10-Q |
+| Operating Income | $27.03B | USD | 10-Q |
+| Revenue | $62.02B | USD | 10-Q |
+| Shares Outstanding | 7,432.0M | shares | 10-Q |
+| Total Assets | $470.56B | USD | 10-Q |
+| Total Equity | $238.27B | USD | 10-Q |
+| Total Liabilities | $232.29B | USD | 10-Q |
+
+## Financial Tables (from Exhibits)
+
+### 
+
+|  |  | Three Months Ended December 31, |
+| ( in millions, except per share amounts) |  | Revenue |  | Operating Income |  | Net Income |  | Diluted Earnings per Share |
+| 2022 As Reported (GAAP) |  | 52747 |  | 20399 |  | 16425 |  | 2.20 |
+| Severance, hardware-related impairment, and lease consolidation costs |  | - |  | 1171 |  | 946 |  | 0.12 |
+| 2022 As Adjusted (non-GAAP) |  | 52747 |  | 21570 |  | 17371 |  | 2.32 |
+| 2023 As Reported (GAAP) |  | 62020 |  | 27032 |  | 21870 |  | 2.93 |
+| Percentage Change Y/Y (GAAP) |  | 18% |  | 33% |  | 33% |  | 33% |
+| Percentage Change Y/Y Constant Currency |  | 16% |  | 30% |  | 30% |  | 30% |
+| Percentage Change Y/Y (non-GAAP) |  | 18% |  | 25% |  | 26% |  | 26% |
+| Percentage Change Y/Y (non-GAAP) Constant Currency |  | 16% |  | 23% |  | 23% |  | 23% |
+
+### 
+
+|  |  | Three Months Ended December 31, |
+| ( in millions, except per share amounts) |  | Revenue |  | Operating Income |  | Net Income |  | Diluted Earnings per Share |
+| 2022 As Reported (GAAP) |  | 52747 |  | 20399 |  | 16425 |  | 2.20 |
+| 2022 As Adjusted (non-GAAP) |  | 52747 |  | 21570 |  | 17371 |  | 2.32 |
+| 2023 As Reported (GAAP) |  | 62020 |  | 27032 |  | 21870 |  | 2.93 |
+| Percentage Change Y/Y (GAAP) |  | 18% |  | 33% |  | 33% |  | 33% |
+| Percentage Change Y/Y (non-GAAP) |  | 18% |  | 25% |  | 26% |  | 26% |
+| Constant Currency Impact |  | 756 |  | 565 |  | 510 |  | 0.07 |
+| Percentage Change Y/Y Constant Currency |  | 16% |  | 30% |  | 30% |  | 30% |
+| Percentage Change Y/Y (non-GAAP) Constant Currency |  | 16% |  | 23% |  | 23% |  | 23% |
+
+### 
+
+|  |  | Three Months Ended December 31, |  | Six Months Ended December 31, |
+|  |  | 2023 |  | 2022 |  | 2023 |  | 2022 |
+| Revenue: |  |  |  |  |  |  |  |  |
+| Product |  | 18941 |  | 16517 |  | 34476 |  | 32258 |
+| Service and other |  | 43079 |  | 36230 |  | 84061 |  | 70611 |
+| Total revenue |  | 62020 |  | 52747 |  | 118537 |  | 102869 |
+| Cost of revenue: |  |  |  |  |  |  |  |  |
+| Product |  | 5964 |  | 5690 |  | 9495 |  | 9992 |
+| Service and other |  | 13659 |  | 11798 |  | 26430 |  | 22948 |
+| Total cost of revenue |  | 19623 |  | 17488 |  | 35925 |  | 32940 |
+| Gross margin |  | 42397 |  | 35259 |  | 82612 |  | 69929 |
+| Research and development |  | 7142 |  | 6844 |  | 13801 |  | 13472 |
+| Sales and marketing |  | 6246 |  | 5679 |  | 11433 |  | 10805 |
+| General and administrative |  | 1977 |  | 2337 |  | 3451 |  | 3735 |
+| Operating income |  | 27032 |  | 20399 |  | 53927 |  | 41917 |
+| Other expense, net |  | -506 |  | -60 |  | -117 |  |  |
+| Income before income taxes |  | 26526 |  | 20339 |  | 53810 |  | 41911 |
+| Provision for income taxes |  | 4656 |  | 3914 |  | 9649 |  | 7930 |
+| Net income |  | 21870 |  | 16425 |  | 44161 |  | 33981 |
+| Earnings per share: |  |  |  |  |  |  |  |  |
+| Basic |  | 2.94 |  | 2.20 |  | 5.94 |  | 4.56 |
+| Diluted |  | 2.93 |  | 2.20 |  | 5.92 |  | 4.54 |
+| Weighted average shares outstanding: |  |  |  |  |  |  |  |  |
+| Basic |  | 7432 |  | 7451 |  | 7431 |  | 7454 |
+| Diluted |  | 7468 |  | 7473 |  | 7465 |  | 7479 |
+
+### 
+
+|  |  | December 31, 2023 |  | June 30, 2023 |
+| Assets |  |  |  |  |
+| Current assets: |  |  |  |  |
+| Cash and cash equivalents |  | 17305 |  | 34704 |
+| Short-term investments |  | 63712 |  | 76558 |
+| Total cash, cash equivalents, and short-term investments |  | 81017 |  | 111262 |
+| Accounts receivable, net of allowance for doubtful accounts of 591 and 650 |  | 42831 |  | 48688 |
+| Inventories |  | 1615 |  | 2500 |
+| Other current assets |  | 21930 |  | 21807 |
+| Total current assets |  | 147393 |  | 184257 |
+| Property and equipment, net of accumulated depreciation of 72,949 and 68,251 |  | 112308 |  | 95641 |
+| Operating lease right-of-use assets |  | 16398 |  | 14346 |
+| Equity investments |  | 13367 |  | 9879 |
+| Goodwill |  | 118931 |  | 67886 |
+| Intangible assets, net |  | 29896 |  | 9366 |
+| Other long-term assets |  | 32265 |  | 30601 |
+| Total assets |  | 470558 |  | 411976 |
+| Liabilities and stockholders' equity |  |  |  |  |
+| Current liabilities: |  |  |  |  |
+| Accounts payable |  | 17695 |  | 18095 |
+| Short-term debt |  | 27041 |  | 0 |
+| Current portion of long-term debt |  | 2250 |  | 5247 |
+| Accrued compensation |  | 8813 |  | 11009 |
+| Short-term income taxes |  | 5787 |  | 4152 |
+| Short-term unearned revenue |  | 43068 |  | 50901 |
+| Other current liabilities |  | 16362 |  | 14745 |
+| Total current liabilities |  | 121016 |  | 104149 |
+| Long-term debt |  | 44928 |  | 41990 |
+| Long-term income taxes |  | 25890 |  | 25560 |
+| Long-term unearned revenue |  | 2966 |  | 2912 |
+| Deferred income taxes |  | 2548 |  | 433 |
+| Operating lease liabilities |  | 14155 |  | 12728 |
+| Other long-term liabilities |  | 20787 |  | 17981 |
+| Total liabilities |  | 232290 |  | 205753 |
+| Commitments and contingencies |  |  |  |  |
+| Stockholders' equity: |  |  |  |  |
+| Common stock and paid-in capital - shares authorized 24,000; outstanding 7,432 and 7,432 |  | 97480 |  | 93718 |
+| Retained earnings |  | 145737 |  | 118848 |
+| Accumulated other comprehensive loss |  | -4949 |  | -6343 |
+| Total stockholders' equity |  | 238268 |  | 206223 |
+| Total liabilities and stockholders' equity |  | 470558 |  | 411976 |
+
+### 
+
+|  |  | Three Months Ended |  | Six Months Ended |
+|  |  | December 31, |  | December 31, |
+|  |  | 2023 |  | 2022 |  | 2023 |  | 2022 |
+| Operations |  |  |  |  |  |  |  |  |
+| Net income |  | 21870 |  | 16425 |  | 44161 |  | 33981 |
+| Adjustments to reconcile net income to net cash from operations: |  |  |  |  |  |  |  |  |
+| Depreciation, amortization, and other |  | 5959 |  | 3648 |  | 9880 |  | 6438 |
+| Stock-based compensation expense |  | 2828 |  | 2538 |  | 5335 |  | 4730 |
+| Net recognized losses on investments and derivatives |  | 198 |  | 214 |  | 212 |  | 192 |
+| Deferred income taxes |  | -1702 |  | -1305 |  | -2270 |  | -2496 |
+| Changes in operating assets and liabilities: |  |  |  |  |  |  |  |  |
+| Accounts receivable |  | -2951 |  | -3164 |  | 8083 |  | 8565 |
+| Inventories |  | 1474 |  | 1305 |  | 969 |  | 762 |
+| Other current assets |  | 725 |  | -392 |  | -71 |  | -724 |
+| Other long-term assets |  | -1427 |  | -65 |  | -3440 |  | -731 |
+| Accounts payable |  | -2521 |  | -2058 |  | -1307 |  | -3625 |
+| Unearned revenue |  | -5538 |  | -5186 |  | -9664 |  | -8508 |
+| Income taxes |  | -1554 |  | -2863 |  | -129 |  | -2453 |
+| Other current liabilities |  | 1518 |  | 1819 |  | -2588 |  | -2205 |
+| Other long-term liabilities |  | -26 |  | 257 |  | 265 |  | 445 |
+| Net cash from operations |  | 18853 |  | 11173 |  | 49436 |  | 34371 |
+| Financing |  |  |  |  |  |  |  |  |
+| Proceeds from issuance (repayments) of debt, maturities of 90 days or less, net |  | -8490 |  | 0 |  | 10202 |  | 0 |
+| Proceeds from issuance of debt |  | 10773 |  | 0 |  | 17846 |  | 0 |
+| Repayments of debt |  | -2916 |  | -750 |  | -4416 |  | -1750 |
+| Common stock issued |  | 261 |  | 243 |  | 946 |  | 818 |
+| Common stock repurchased |  | -4000 |  | -5459 |  | -8831 |  | -11032 |
+| Common stock cash dividends paid |  | -5574 |  | -5066 |  | -10625 |  | -9687 |
+| Other, net |  | -201 |  | -317 |  | -508 |  | -581 |
+| Net cash from (used in) financing |  | -10147 |  | -11349 |  | 4614 |  | -22232 |
+| Investing |  |  |  |  |  |  |  |  |
+| Additions to property and equipment |  | -9735 |  | -6274 |  | -19652 |  | -12557 |
+| Acquisition of companies, net of cash acquired, and purchases of intangible and other assets |  | -65029 |  | -679 |  | -66215 |  | -1028 |
+| Purchases of investments |  | -4258 |  | -11599 |  | -12718 |  | -16612 |
+| Maturities of investments |  | 4150 |  | 6928 |  | 19868 |  | 13590 |
+| Sales of investments |  | 1600 |  | 4775 |  | 6930 |  | 7486 |
+| Other, net |  | 1347 |  | -301 |  | 365 |  | -1161 |
+| Net cash used in investing |  | -71925 |  | -7150 |  | -71422 |  | -10282 |
+| Effect of foreign exchange rates on cash and cash equivalents |  | 72 |  | 88 |  | -27 |  | -142 |
+| Net change in cash and cash equivalents |  | -63147 |  | -7238 |  | -17399 |  | 1715 |
+| Cash and cash equivalents, beginning of period |  | 80452 |  | 22884 |  | 34704 |  | 13931 |
+| Cash and cash equivalents, end of period |  | 17305 |  | 15646 |  | 17305 |  | 15646 |
+
+### 
+
+|  |  | Three Months Ended |  | Six Months Ended |
+|  |  | December 31, |  | December 31, |
+|  |  | 2023 |  | 2022 |  | 2023 |  | 2022 |
+| Revenue |  |  |  |  |  |  |  |  |
+| Productivity and Business Processes |  | 19249 |  | 17002 |  | 37841 |  | 33467 |
+| Intelligent Cloud |  | 25880 |  | 21508 |  | 50139 |  | 41833 |
+| More Personal Computing |  | 16891 |  | 14237 |  | 30557 |  | 27569 |
+| Total |  | 62020 |  | 52747 |  | 118537 |  | 102869 |
+| Operating Income |  |  |  |  |  |  |  |  |
+| Productivity and Business Processes |  | 10284 |  | 8175 |  | 20254 |  | 16498 |
+| Intelligent Cloud |  | 12461 |  | 8904 |  | 24212 |  | 17882 |
+| More Personal Computing |  | 4287 |  | 3320 |  | 9461 |  | 7537 |
+| Total |  | 27032 |  | 20399 |  | 53927 |  | 41917 |
+
+---
+*Generated by edgar_download.py on 2026-03-03 18:30*

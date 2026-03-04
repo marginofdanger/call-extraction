@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APO Q3 2025 Earnings Call Detail</title>
+<style>
+:root {
+    --company-primary: #003A70;
+    --company-dark: #1a1a2e;
+    --company-accent: #0066B3;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 40px 40px 32px;
+    margin: 0 -24px 0;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .header .meta {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    font-weight: 300;
+  }
+  .header .meta span { margin-right: 24px; }
+
+  .nav-bar {
+    background: var(--company-accent);
+    margin: 0 -24px 32px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    transition: all 0.15s;
+  }
+  .nav-bar a:hover { background: rgba(255,255,255,0.2); }
+  .nav-bar a.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .nav-center {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-center a.qbtn {
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+  }
+  .nav-center a.qbtn.current {
+    background: var(--company-primary);
+    border-color: var(--company-primary);
+  }
+  .nav-center a.qbtn:hover { background: rgba(255,255,255,0.2); }
+  .nav-back {
+    background: rgba(255,255,255,0.15) !important;
+    border-color: rgba(255,255,255,0.35) !important;
+  }
+
+  .metrics-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .metric {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+  .metric-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .metric-value {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+  .metric-delta {
+    font-size: 0.72rem;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+  .delta-up { color: var(--green); }
+  .delta-down { color: var(--red); }
+  .delta-flat { color: var(--text-muted); }
+
+  .changes-box {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 5px solid var(--amber);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .changes-box h3 {
+    font-size: 1rem;
+    color: var(--company-dark);
+    margin-bottom: 10px;
+  }
+  .changes-box ul { list-style: none; padding: 0; }
+  .changes-box li {
+    padding: 5px 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .change-tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .ct-raised { background: #d5f5e3; color: #1e8449; }
+  .ct-lowered { background: #fadbd8; color: #c0392b; }
+  .ct-changed { background: #d6eaf8; color: #2471a3; }
+  .ct-new { background: #e8daef; color: #6c3483; }
+  .ct-maintained { background: #fdebd0; color: #b9770e; }
+
+  .content-section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .content-section h3 {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .content-section ul {
+    padding: 14px 18px 14px 36px;
+    margin: 0;
+  }
+  .content-section li {
+    padding: 3px 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .content-section li strong { color: var(--company-dark); }
+
+  .prior-ref {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 40px;
+    overflow: hidden;
+  }
+  .prior-ref-header {
+    background: var(--light-bg);
+    padding: 12px 18px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--company-dark);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .prior-ref-header:hover { background: #eef2f7; }
+  .prior-ref-body { padding: 18px; display: none; }
+  .prior-ref-body.open { display: block; }
+  .prior-ref-body .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .prior-mini {
+    background: var(--light-bg);
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .prior-mini .pm-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .prior-mini .pm-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border);
+  }
+  .footer-nav a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .footer-nav a:hover { text-decoration: underline; }
+
+  /* Comparison page styles */
+  .toc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .toc a {
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 4px 0;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  .comp-section {
+    margin-bottom: 40px;
+  }
+  .comp-section h2 {
+    font-size: 1.2rem;
+    color: var(--company-dark);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--company-primary);
+  }
+
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+  }
+  .comp-table th {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .comp-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .comp-table tr:nth-child(even) { background: var(--light-bg); }
+  .comp-table tr:hover { background: #e8f4fd; }
+
+  @media (max-width: 768px) {
+    .header h1 { font-size: 1.5rem; }
+    .metrics-card { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .nav-center { display: none; }
+    body { padding: 0 16px 60px; }
+    .header { margin: 0 -16px 0; padding: 28px 24px 20px; }
+    .nav-bar { margin: 0 -16px 24px; }
+    .toc { grid-template-columns: 1fr; }
+    .comp-table { font-size: 0.78rem; }
+    .comp-table th, .comp-table td { padding: 6px 8px; }
+  }
+
+  @media print {
+    .nav-bar { display: none; }
+    .header { background: #333; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>APO Q3 2025 Earnings Call</h1>
+  <div class="meta">
+    <span>Call Date: November 4, 2025</span>
+    <span>Reporting: Q3 2025</span>
+  </div>
+</div>
+<div class="nav-bar">
+  <a href="Q2_2025.html">&larr; Q2 2025</a>
+  <div class="nav-center">
+    <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="Q4_2025.html" class="qbtn">4Q25</a>
+    <a href="Q3_2025.html" class="qbtn current">3Q25</a>
+    <a href="Q2_2025.html" class="qbtn">2Q25</a>
+    <a href="Q1_2025.html" class="qbtn">1Q25</a>
+    <a href="Q4_2024.html" class="qbtn">4Q24</a>
+    <a href="Q3_2024.html" class="qbtn">3Q24</a>
+    <a href="Q2_2024.html" class="qbtn">2Q24</a>
+    <a href="Q1_2024.html" class="qbtn">1Q24</a>
+    <a href="Q4_2023.html" class="qbtn">4Q23</a>
+    <a href="Q3_2023.html" class="qbtn">3Q23</a>
+    <a href="Q2_2023.html" class="qbtn">2Q23</a>
+    <a href="Q1_2023.html" class="qbtn">1Q23</a>
+    <a href="Q4_2022.html" class="qbtn">4Q22</a>
+    <a href="Q3_2022.html" class="qbtn">3Q22</a>
+    <a href="Q2_2022.html" class="qbtn">2Q22</a>
+    <a href="Q1_2022.html" class="qbtn">1Q22</a>
+  </div>
+  <a href="Q4_2025.html">Q4 2025 &rarr;</a>
+</div>
+
+<div class="changes-box">
+  <h3>What Changed vs Q2 2025</h3>
+  <ul>
+    <li><span class="change-tag ct-changed">Changed</span> Total AUM: $908 billion (+24% YoY) — record (prior: $840 billion (+22% YoY) — record)</li>
+    <li><span class="change-tag ct-changed">Changed</span> Inflows: $82 billion Q3 ($49B organic + $34B from Bridge acquisition close) - AM organic: $26 billion (~80% credit, ~20% equity) - Athene: $23 billion organic - Retail: $10B (FIA and MYGA strength) - Funding agreements: $10B (3rd strongest quarter on record; favorable issuance backdrop) - Flow reinsurance: $3B - YTD Athene: $69 billion — pacing toward record year - PGA market essentially closed for entirety of industry (prior: $61 billion Q2 (record organic inflows $49B; $12B inorganic from Redding Ridge/Irradiant acquisition) - AM: $40 billion (~80% credit, ~20% equity); broad array of investors - Athene: $21 billion organic (2nd highest on record) — retail $7B (FIA strength), funding agreements $12B (record; 2nd consecutive quarter of record FA issuance), flow reinsurance $2B)</li>
+    <li><span class="change-tag ct-new">New</span> NEW: Credit strategy discussed</li>
+  </ul>
+</div>
+
+<div class="metrics-card">
+  <div class="metric">
+    <div class="metric-label">Total AUM</div>
+    <div class="metric-value">$908 billion — record</div>
+    <div class="metric-delta delta-flat">Prior: $840 billion — record</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Inflows</div>
+    <div class="metric-value">$82 billion Q3 - AM organic: $26 billion - Athene: $23 billion organic - Retail: $10B - Funding agreements: $10B - Flow reinsurance: $3B - YTD Athene: $69 billion — pacing toward record year - PGA market essentially closed for entirety of industry</div>
+    <div class="metric-delta delta-flat">Prior: $61 billion Q2 - AM: $40 billion; broad array of investors - Athene: $21 billion organic — retail $7B, funding agreements $12B, flow reinsurance $2B</div>
+  </div>
+</div>
+
+<!-- Full Guidance Content -->
+<div class="content-section">
+  <h3>Forward Guidance</h3>
+</div>
+<div class="content-section">
+  <h3>Q4 2025 Guidance</h3>
+  <ul>
+    <li><strong>SRE ex-Notable:</strong> ~$880 million (at 11% alt return); net spread ~125 bps - Approximately stable to Q3</li>
+    <li><strong>Full Year 2025 SRE:</strong> ~$3,475 million (~8% YoY growth; above mid-single-digit target)</li>
+    <li><strong>Full Year 2025 FRE:</strong> On pace for 20% growth rate</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>2026 Guidance (New)</h3>
+  <ul>
+    <li><strong>FRE Growth:</strong> 20%+ (PLUS Bridge earnings; excludes Fund XI) - 75% of top line growth from existing businesses + annualization of 2025 growth - 25% from new initiatives (Apollo Sports Capital, Athora-PIC, other new strategies) - Fund XI: estimated to turn on sometime first half 2027 (subject to PE deployment pace) - Bridge: ~$300M annual fee revenue, ~$100M pretax FRE</li>
+    <li><strong>SRE Growth:</strong> 10% (assuming 11% alts returns, including notables YoY) - Forward curve embeds: 3 total cuts by year-end 2026; 9.5 total cuts over cycle - Assumes current tight market spread environment persists - Prepayment headwinds to diminish (reduced CLO purchases + already high prepayment levels) - COVID-era business roll-off peaked in 2025; dissipating in 2026 - SRE sensitivity on floaters: ~$10-15M per 25 bps (immunized) - Management levers: floating rate position, back book optimization, sidecar capital, crediting rates - Normal quarterly deviation expected around trend line ($400B balance sheet)</li>
+    <li><strong>FRE = SRE:</strong> Expected sometime in 2028 (one year ahead of plan); FRE exceeds SRE thereafter</li>
+    <li><strong>Athene:</strong> Written almost entire 2024 volume in 9 months; close to (but not quite at) 5-year average top line growth in year 1; robust jump-off into 2026</li>
+    <li><strong>Fixed Income Suite:</strong> Daily NAV by year-end (table stakes for traditional AM partnerships)</li>
+    <li><strong>Traditional AM Partnerships:</strong> Announcements expected Q1 2026; ~10% potential allocation (back of envelope); in-place asset allocation is the prize (not just new products)</li>
+    <li><strong>Innovation Roadmap (next call focus):</strong> Market making, leveraged share classes for evergreen funds, CLO market reinvention</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q3 2025 AUM & Flows</h3>
+  <ul>
+    <li><strong>Total AUM:</strong> $908 billion (+24% YoY) — record</li>
+    <li><strong>Fee-Generating AUM:</strong> $685 billion (+24% YoY)</li>
+    <li><strong>Total Inflows:</strong> $82 billion Q3 ($49B organic + $34B from Bridge acquisition close) - AM organic: $26 billion (~80% credit, ~20% equity) - Athene: $23 billion organic - Retail: $10B (FIA and MYGA strength) - Funding agreements: $10B (3rd strongest quarter on record; favorable issuance backdrop) - Flow reinsurance: $3B - YTD Athene: $69 billion — pacing toward record year - PGA market essentially closed for entirety of industry</li>
+    <li><strong>Emerging Athene Products:</strong> RILA >$1B inflows YTD; stable value, structured settlements, tax advantage and guaranteed income products launched</li>
+    <li><strong>Global Wealth:</strong> $5 billion Q3 (2nd best on record); YTD $14 billion (+60% YoY) - 6 strategies raised >$200M; 10 strategies raised >$100M - ABC: strongest quarter since launch (~$400M); trajectory reminiscent of early ADS with major IG counterparty risk focus - 3 new LTIPs launched in Q3 (EMEA, Asia, Lat Am) - Partners increasingly looking for comprehensive portfolio solutions, not just products</li>
+    <li><strong>Bridge Investment Group:</strong> Closed September 2; $34B AUM contributed - Enhances RE business (multifamily, industrial) - Origination capabilities synergistic with Athene demand - ~$300M annual fee-related revenues (management fees + ACS fees) - ~$100M pretax FRE - Will contribute to SRE growth as IG spread originator and PII over time</li>
+    <li><strong>Origination:</strong> $75 billion Q3 — 2nd strongest (after record Q2); LTM >$270B (+40% YoY) - Effectively achieves $275B multiyear target 3-4 years early - $69B debt: ~70% IG (avg A-), ~30% sub-IG (avg B) - Average spread across all origination: 350 bps over treasuries; avg rating BBB - IG origination: >285 bps over treasuries; ~200 bps over comparable corporates - Sub-IG origination: >400 bps over treasuries; ~220 bps over comparable HY - Stable spreads QoQ (notable given public market spreads near generational tights) - Core credit: large-cap DL, commercial mortgage lending, residential mortgage lending - 16 platforms: +20% YoY; MidCap standout (+30% YTD growth) - Sponsor solutions ecosystem: ~$70B LTM (tripled from $20B in 2022); unmatched in scale/speed - Notable transactions: Keurig Dr Pepper $7B (HGCS), Ørsted Hornsea 3 $6.5B (50% stake, 3-GW offshore wind; alongside EDF, RWE, BP in European energy infrastructure) - Athene deployment: $22B at 220 bps over treasuries, almost all IG</li>
+    <li><strong>New Origination Platforms/Strategies:</strong> - Olympus Housing Capital: homebuilder finance (structural undersupply + demographics) - Stream Data Centers: digital infrastructure - TenFifty: European CRE lending (small/medium markets) - Apollo Sports Capital: sports/live events ecosystem; permanent capital vehicle; credit + hybrid focused</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q3 2025 Investment Performance</h3>
+  <ul>
+    <li><strong>Credit Strategies:</strong> 8-12% LTM; 3-5% Q3</li>
+    <li><strong>ADS:</strong> 9% annual since inception; 2.1% Q3; 100% first lien, lower leverage, less PIC, 40% less software exposure</li>
+    <li><strong>ABC:</strong> $1.2 billion AUM (+$425M in Q3); 70% IG, 95% proprietary origination</li>
+    <li><strong>AAA:</strong> approaching $25B; ~11% LTM; 12% inception-to-date; 42 of 43 positive quarters (fraction of S&P volatility)</li>
+    <li><strong>Hybrid:</strong> $90 billion; 19% LTM; ~$12B raised YTD; expected fastest-growing business segment</li>
+    <li><strong>PE Fund X:</strong> 22% net IRR; 0.2 DPI (vs 0 industry avg)</li>
+    <li><strong>PE Fund IX:</strong> 15% net IRR; 50% higher DPI than industry avg</li>
+    <li><strong>PE Since Inception:</strong> 39% gross; 24% net over 3 decades</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q3 2025 Capital & Balance Sheet</h3>
+  <ul>
+    <li><strong>Net Balance Sheet Value:</strong> $2,951 million ($4.73/share)</li>
+    <li><strong>Cash & Cash Equivalents:</strong> $2,779 million</li>
+    <li><strong>Investments (net):</strong> $3,251 million</li>
+    <li><strong>Net Accrued Performance Fees:</strong> $1,805 million</li>
+    <li><strong>Net Clawback Payable:</strong> -$109 million</li>
+    <li><strong>Debt:</strong> $4,775 million (up from $4,280M; reflects Bridge acquisition)</li>
+    <li><strong>ANI Shares Outstanding:</strong> 624 million (up from 615M; reflects Bridge share issuance + buybacks)</li>
+    <li><strong>Goodwill:</strong> $1,828 million (up from $264M; Bridge acquisition)</li>
+    <li><strong>Total Assets:</strong> $449,543 million</li>
+    <li><strong>Total Equity:</strong> $39,797 million</li>
+    <li><strong>Athene Credit Ratings:</strong> AA ratings level achieved</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q3 2025 Credit Quality</h3>
+  <ul>
+    <li><strong>Athene Portfolio:</strong> 90%+ investment grade; <0.75% direct lending</li>
+    <li><strong>Rating Agency Coverage:</strong> 70% of assets have 2+ ratings; S&P, Moody's, Fitch each rate 50% of fixed income</li>
+    <li><strong>Private Ratings:</strong> <8% with Kroll or DBRS; does not use Egan-Jones</li>
+    <li><strong>Recent Credit Events:</strong> Idiosyncratic not systematic; 10 bps spread widening is essentially nothing</li>
+    <li><strong>Risk Posture:</strong> Firm-wide risk reduction mode — top of capital structure, less PIC, lower leverage, less concentration</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>5-Year Plan (Reaffirmed)</h3>
+  <ul>
+    <li><strong>FRE Growth:</strong> Average 20% annually through 2029</li>
+    <li><strong>SRE Growth:</strong> Average 10% annually through 2029</li>
+    <li><strong>FRE + SRE:</strong> $10 billion by 2029</li>
+    <li><strong>ANI:</strong> >$15/share by 2029</li>
+    <li><strong>Origination:</strong> $275B annual target — LTM $270B+ already achieved 3-4 years early (premature to revise upward)</li>
+    <li><strong>Global Wealth:</strong> $150B aggregate over 5 years (on pace)</li>
+    <li><strong>Earnings Mix:</strong> FRE = SRE by 2028 (one year ahead); FRE > SRE thereafter</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Market & Competitive Commentary</h3>
+  <ul>
+    <li><strong>3 Secular Drivers:</strong> (1) Global industrial renaissance (infrastructure, energy, data centers, defense, manufacturing, robotics), (2) Retirement crisis (demographics-driven, worldwide), (3) Alternative to concentrated/correlated/indexed public markets (Mag 7 escape)</li>
+    <li><strong>6 Sources of Demand (Updated Framing):</strong> (1) Institutional alternatives (original 35-year market), (2) Individuals/wealth (expected to match institutional size), (3) Insurance (global adoption of Athene model), (4) Institutional debt/equity buckets (total portfolio approach), (5) Traditional asset managers (redefining active management; potentially largest), (6) 401(k)/DC</li>
+    <li><strong>Supply vs Demand:</strong> Industry growth constrained by capacity to originate, not capacity to raise capital; origination is the scarce attribute</li>
+    <li><strong>Credit Cycle View:</strong> Isolated incidents are idiosyncratic, not systematic; public vs private credit distinction is merely about syndication; good and bad actors in banks, asset managers, and insurance companies alike; late cycle behavior means bad actors will get called out</li>
+    <li><strong>Private Letter Ratings (response to UBS/Kelleher):</strong> Colm Kelleher "just wrong" on systemic risk; Athene stats: <8% Kroll/DBRS-only rated, 70% have 2+ ratings, does not use Egan-Jones; offshore Cayman jurisdictions are real concern (not private letter ratings)</li>
+    <li><strong>Agent vs Principal:</strong> Divide growing in industry; principal = prepared to hold risk; agent = prepared to distribute; in markets priced for perfection, being a principal matters more than ever; Apollo fully aligned with clients as largest co-investor</li>
+    <li><strong>Risk Reduction Mode:</strong> Things not cheap; long rates unlikely to plummet; enhanced geopolitical risk → take risk down without reducing return needs; ADS exemplifies this (100% first lien, lower leverage, less PIC, 40% less software)</li>
+    <li><strong>Traditional AM Opportunity:</strong> Traditional AMs struggling with passive vs active; private assets in mutual funds, ETFs, interval funds; ~10% potential allocation; not just distributing Apollo products but partnerships with open architecture; leveraging their distribution is margin accretive for both sides</li>
+    <li><strong>401(k) Progress:</strong> Couple of billion in managed account platforms; information gathering phase; administration guidance helpful but need formal guidance or ruling for massive take-up; guaranteed lifetime income is the holy grail for decumulation</li>
+    <li><strong>Europe Infrastructure:</strong> EDF, RWE, BP, Ørsted transactions; Germany commitment; TenFifty CRE platform; massive capital needs for infrastructure, defense, reindustrialization, power generation</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q3 2025 Actuals (Reported)</h3>
+  <ul>
+    <li><strong>Fee-Related Earnings (FRE):</strong> $652 million — record quarterly; +23% YoY; YTD $1,838 million (+20% YoY)</li>
+    <li><strong>Spread-Related Earnings (SRE):</strong> $871 million ($1.40/share); +1.8% YoY - Notable items: -$25 million - SRE ex-Notable: $846 million ($1.36/share); +1.8% YoY; YTD $2,506 million (+6.3%)</li>
+    <li><strong>Fee & Spread Related Earnings:</strong> $1,523 million — record; YTD $4,334 million</li>
+    <li><strong>Fee & Spread Related Earnings ex-Notable:</strong> $1,498 million; YTD $4,344 million</li>
+    <li><strong>Principal Investing Income (PII):</strong> $50 million (realized perf fees $201M; -39.3% YoY); YTD $111 million - PII Compensation Ratio: 70.7%</li>
+    <li><strong>Segment Income:</strong> $1,573 million; YTD $4,445 million</li>
+    <li><strong>Segment Income ex-Notable:</strong> $1,548 million; YTD $4,455 million</li>
+    <li><strong>Adjusted Net Income (ANI):</strong> $1,357 million ($2.17/share; +17% YoY); YTD $3,655 million</li>
+    <li><strong>ANI ex-Notable:</strong> $1,337 million ($2.14/share); YTD $3,663 million</li>
+    <li><strong>Management Fees:</strong> $863 million (+22% YoY); YTD $2,449 million (+20%)</li>
+    <li><strong>Capital Solutions Fees:</strong> $212 million — 2nd strongest quarter on record; 2nd straight quarter >$200M - 50% from hybrid value, opportunistic equity, climate transition and RE businesses - 50% from high-grade and global credit businesses including ATLAS</li>
+    <li><strong>Fee-Related Performance Fees:</strong> $73 million (+28% YoY); led by ADS, complemented by Redding Ridge and MidCap</li>
+    <li><strong>Fee-Related Compensation:</strong> -$304 million (includes Bridge; reflects performance and growth investments)</li>
+    <li><strong>Non-Compensation Expenses:</strong> -$192 million</li>
+    <li><strong>FRE Margin:</strong> Excluding Bridge, stable QoQ and expanded ~120 bps YTD; including Bridge, full year 2025 expected consistent with 2024</li>
+    <li><strong>Net Spread:</strong> 1.24% (+2 bps QoQ; -20 bps YoY) - Ex-Notable: 1.21% (-1 bp QoQ; -19 bps YoY) - Adjusting for 11% LT alts expectation: +5 bps → 1.29% / 1.26% ex-notable - SRE troughed in H1 2025; Q3 trending higher than H1 average - New business at historical average spreads</li>
+    <li><strong>Net Investment Spread:</strong> 1.60% (-23 bps YoY) - Ex-Notable: 1.57%</li>
+    <li><strong>Fixed Income Net Investment Income:</strong> $3,423 million (5.12%; +16 bps YoY)</li>
+    <li><strong>Alternative Net Investment Income:</strong> $321 million (9.88% annualized; +169 bps YoY) - AAA: ~10.9% LTM (fraction below 11% target due to cash drag) - Other components: Venerable (exceeded 11% by wide margin); Athora (below 11% due to excess capital; PIC deployment expected to close gap)</li>
+    <li><strong>Cost of Funds:</strong> -$2,661 million (3.79%; +45 bps YoY)</li>
+    <li><strong>Average Net Invested Assets:</strong> $280,607 million (+18.0% YoY); YTD avg $268,056 million (+16.5%)</li>
+    <li><strong>Net Invested Assets (period end):</strong> $286 billion (+18% YoY)</li>
+    <li><strong>Net Floating Rate Assets:</strong> $6 billion (2% of NIA; significantly reduced) - Rate sensitivity: ~$10-15 million per 25 bps move (vs $30-40M previously; lowest in a decade)</li>
+    <li><strong>Share Repurchases:</strong> >$350 million in Q3 (majority opportunistic)</li>
+    <li><strong>GAAP Net Income:</strong> $1,736 million (diluted EPS $2.78)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>YTD 2025 Actuals</h3>
+  <ul>
+    <li><strong>FRE:</strong> $1,838 million (+20% YoY)</li>
+    <li><strong>SRE:</strong> $2,496 million (+4.7% YoY); SRE ex-Notable $2,506 million (+6.3%)</li>
+    <li><strong>F&SRE:</strong> $4,334 million; ex-Notable $4,344 million</li>
+    <li><strong>PII:</strong> $111 million (realized perf fees $610M; +1.7% YoY)</li>
+    <li><strong>Segment Income:</strong> $4,445 million; ex-Notable $4,455 million</li>
+    <li><strong>ANI:</strong> $3,655 million; ANI ex-Notable $3,663 million</li>
+    <li><strong>Management Fees:</strong> $2,449 million (+20%)</li>
+    <li><strong>Capital Solutions Fees:</strong> $582 million (+15%)</li>
+    <li><strong>Fee-Related Performance Fees:</strong> $190 million (+23%)</li>
+  </ul>
+</div>
+
+<div class="prior-ref" id="priorRef">
+  <div class="prior-ref-header" onclick="var b=document.getElementById('priorBody');b.classList.toggle('open');this.querySelector('.arrow').innerHTML=b.classList.contains('open')?'&#9650;':'&#9660;';">
+    Prior Quarter Reference: Q2 2025
+    <span class="arrow">&#9660;</span>
+  </div>
+  <div class="prior-ref-body" id="priorBody">
+    <div class="metric-grid">
+      <div class="prior-mini"><div class="pm-label">Total AUM</div><div class="pm-value">$840 billion (+22% YoY) — record</div></div>
+      <div class="prior-mini"><div class="pm-label">Inflows</div><div class="pm-value">$61 billion Q2 (record organic inflows $49B; $12B inorganic from Redding Ridge/Irradiant acquisition) - AM: $40 billion (~80% credit, ~20% equity); broad array of investors - Athene: $21 billion organic (2nd highest on record) — retail $7B (FIA strength), funding agreements $12B (record; 2nd consecutive quarter of record FA issuance), flow reinsurance $2B</div></div>
+    </div>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q2_2025.html" style="color:var(--blue);">View full Q2 2025 detail &rarr;</a></p>
+  </div>
+</div>
+
+<div class="footer-nav">
+  <a href="Q2_2025.html">&larr; Q2 2025</a>
+  <a href="../comparison.html">Back to Overview</a>
+  <a href="Q4_2025.html">Q4 2025 &rarr;</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+{
+  "ticker": "CVNA",
+  "quarter": "Q3_2024",
+  "filing_date": "2024-10-30",
+  "accession": "0001690820-24-000344",
+  "tables": [],
+  "xbrl": {
+    "Revenue": {
+      "value": 3655000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2024-10-30",
+      "concept": "RevenueFromContractWithCustomerExcludingAssessedTax"
+    },
+    "Net Income": {
+      "value": 85000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2024-10-30",
+      "concept": "NetIncomeLoss"
+    },
+    "Net Income to Common": {
+      "value": 85000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2024-10-30",
+      "concept": "NetIncomeLossAvailableToCommonStockholdersBasic"
+    },
+    "Total Assets": {
+      "value": 7368000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2024-10-30",
+      "concept": "Assets"
+    },
+    "Total Liabilities": {
+      "value": 7082000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2024-10-30",
+      "concept": "Liabilities"
+    },
+    "Total Equity": {
+      "value": 611000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2024-10-30",
+      "concept": "StockholdersEquity"
+    },
+    "Operating Income": {
+      "value": 337000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2024-10-30",
+      "concept": "OperatingIncomeLoss"
+    },
+    "Cash & Equivalents": {
+      "value": 871000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2024-10-30",
+      "concept": "CashAndCashEquivalentsAtCarryingValue"
+    },
+    "Income Tax Expense": {
+      "value": -1000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2024-10-30",
+      "concept": "IncomeTaxExpenseBenefit"
+    }
+  }
+}

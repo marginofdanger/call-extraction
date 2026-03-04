@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UNH Q2 2025 Earnings Call Detail</title>
+<style>
+:root {
+    --company-primary: #002677;
+    --company-dark: #1a1a2e;
+    --company-accent: #00BCD4;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 40px 40px 32px;
+    margin: 0 -24px 0;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .header .meta {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    font-weight: 300;
+  }
+  .header .meta span { margin-right: 24px; }
+
+  .nav-bar {
+    background: var(--company-accent);
+    margin: 0 -24px 32px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    transition: all 0.15s;
+  }
+  .nav-bar a:hover { background: rgba(255,255,255,0.2); }
+  .nav-bar a.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .nav-center {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-center a.qbtn {
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+  }
+  .nav-center a.qbtn.current {
+    background: var(--company-primary);
+    border-color: var(--company-primary);
+  }
+  .nav-center a.qbtn:hover { background: rgba(255,255,255,0.2); }
+  .nav-back {
+    background: rgba(255,255,255,0.15) !important;
+    border-color: rgba(255,255,255,0.35) !important;
+  }
+
+  .metrics-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .metric {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+  .metric-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .metric-value {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+  .metric-delta {
+    font-size: 0.72rem;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+  .delta-up { color: var(--green); }
+  .delta-down { color: var(--red); }
+  .delta-flat { color: var(--text-muted); }
+
+  .changes-box {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 5px solid var(--amber);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .changes-box h3 {
+    font-size: 1rem;
+    color: var(--company-dark);
+    margin-bottom: 10px;
+  }
+  .changes-box ul { list-style: none; padding: 0; }
+  .changes-box li {
+    padding: 5px 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .change-tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .ct-raised { background: #d5f5e3; color: #1e8449; }
+  .ct-lowered { background: #fadbd8; color: #c0392b; }
+  .ct-changed { background: #d6eaf8; color: #2471a3; }
+  .ct-new { background: #e8daef; color: #6c3483; }
+  .ct-maintained { background: #fdebd0; color: #b9770e; }
+
+  .content-section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .content-section h3 {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .content-section ul {
+    padding: 14px 18px 14px 36px;
+    margin: 0;
+  }
+  .content-section li {
+    padding: 3px 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .content-section li strong { color: var(--company-dark); }
+
+  .prior-ref {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 40px;
+    overflow: hidden;
+  }
+  .prior-ref-header {
+    background: var(--light-bg);
+    padding: 12px 18px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--company-dark);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .prior-ref-header:hover { background: #eef2f7; }
+  .prior-ref-body { padding: 18px; display: none; }
+  .prior-ref-body.open { display: block; }
+  .prior-ref-body .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .prior-mini {
+    background: var(--light-bg);
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .prior-mini .pm-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .prior-mini .pm-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border);
+  }
+  .footer-nav a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .footer-nav a:hover { text-decoration: underline; }
+
+  /* Comparison page styles */
+  .toc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .toc a {
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 4px 0;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  .comp-section {
+    margin-bottom: 40px;
+  }
+  .comp-section h2 {
+    font-size: 1.2rem;
+    color: var(--company-dark);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--company-primary);
+  }
+
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+  }
+  .comp-table th {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .comp-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .comp-table tr:nth-child(even) { background: var(--light-bg); }
+  .comp-table tr:hover { background: #e8f4fd; }
+
+  @media (max-width: 768px) {
+    .header h1 { font-size: 1.5rem; }
+    .metrics-card { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .nav-center { display: none; }
+    body { padding: 0 16px 60px; }
+    .header { margin: 0 -16px 0; padding: 28px 24px 20px; }
+    .nav-bar { margin: 0 -16px 24px; }
+    .toc { grid-template-columns: 1fr; }
+    .comp-table { font-size: 0.78rem; }
+    .comp-table th, .comp-table td { padding: 6px 8px; }
+  }
+
+  @media print {
+    .nav-bar { display: none; }
+    .header { background: #333; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>UNH Q2 2025 Earnings Call</h1>
+  <div class="meta">
+    <span>Call Date: July 29, 2025</span>
+    <span>Reporting: Q2 2025</span>
+  </div>
+</div>
+<div class="nav-bar">
+  <a href="Q1_2025.html">&larr; Q1 2025</a>
+  <div class="nav-center">
+    <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="Q4_2025.html" class="qbtn">4Q25</a>
+    <a href="Q3_2025.html" class="qbtn">3Q25</a>
+    <a href="Q2_2025.html" class="qbtn current">2Q25</a>
+    <a href="Q1_2025.html" class="qbtn">1Q25</a>
+    <a href="Q4_2024.html" class="qbtn">4Q24</a>
+    <a href="Q3_2024.html" class="qbtn">3Q24</a>
+    <a href="Q2_2024.html" class="qbtn">2Q24</a>
+    <a href="Q1_2024.html" class="qbtn">1Q24</a>
+    <a href="Q4_2023.html" class="qbtn">4Q23</a>
+    <a href="Q3_2023.html" class="qbtn">3Q23</a>
+    <a href="Q2_2023.html" class="qbtn">2Q23</a>
+    <a href="Q1_2023.html" class="qbtn">1Q23</a>
+    <a href="Q4_2022.html" class="qbtn">4Q22</a>
+    <a href="Q3_2022.html" class="qbtn">3Q22</a>
+    <a href="Q2_2022.html" class="qbtn">2Q22</a>
+    <a href="Q1_2022.html" class="qbtn">1Q22</a>
+  </div>
+  <a href="Q3_2025.html">Q3 2025 &rarr;</a>
+</div>
+
+<div class="changes-box">
+  <h3>What Changed vs Q1 2025</h3>
+  <ul>
+    <li><span class="change-tag ct-changed">Changed</span> Revenue: Approaching $448B (+11% YoY; vs $450–$455B prior) (prior: $450B–$455B (affirmed from December))</li>
+    <li><span class="change-tag ct-changed">Changed</span> Adjusted EPS: At least $16 (CUT from $26.00–$26.50; CUT from original $29.50–$30.00) (prior: $26.00–$26.50 (CUT from $29.50–$30.00; -12% at midpoint))</li>
+    <li><span class="change-tag ct-changed">Changed</span> UnitedHealthcare Revenue: $86.1B (+$12B or ~16% YoY from $73.87B) (prior: $84.62B (+12% YoY from $75.36B))</li>
+    <li><span class="change-tag ct-new">New</span> NEW: Medicare Advantage rate/enrollment discussed</li>
+  </ul>
+</div>
+
+<div class="metrics-card">
+  <div class="metric">
+    <div class="metric-label">Revenue</div>
+    <div class="metric-value">Approaching $448B</div>
+    <div class="metric-delta delta-flat">Prior: $450B–$455B</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Adjusted EPS</div>
+    <div class="metric-value">At least $16</div>
+    <div class="metric-delta delta-flat">Prior: $26.00–$26.50</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">UnitedHealthcare Revenue</div>
+    <div class="metric-value">$86.1B</div>
+    <div class="metric-delta delta-flat">Prior: $84.62B</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Cash from Operations</div>
+    <div class="metric-value">~$16B or 1.1x net income</div>
+  </div>
+</div>
+
+<!-- Full Guidance Content -->
+<div class="content-section">
+  <h3>Full Year 2025 Guidance (Second Major Revision)</h3>
+  <ul>
+    <li><strong>Adjusted EPS:</strong> At least $16 (CUT from $26.00–$26.50; CUT from original $29.50–$30.00)</li>
+    <li><strong>Revenue:</strong> Approaching $448B (+11% YoY; vs $450–$455B prior)</li>
+    <li><strong>Medical Care Ratio:</strong> 89.25% +/- 25 basis points (raised from 87.5% +/- 50 bps; original 86.5% +/- 50 bps)</li>
+    <li><strong>MCR Seasonality:</strong> H1 at midpoint; H2 at just under 91.5%; Q4 expected highest</li>
+    <li><strong>Discrete/Settlement Items:</strong> $1.6B total contemplated ($600M recognized in Q2 + $1B incremental in H2)</li>
+    <li><strong>Tax Rate:</strong> ~18.5% (lower due to reduced earnings; H2 rate just over 20%)</li>
+    <li><strong>Cash Flows from Operations:</strong> ~$16B or 1.1x net income</li>
+    <li><strong>Share Count:</strong> 912M–914M (vs original 918M–923M; reflects only share repurchases already completed)</li>
+    <li><strong>Dividend:</strong> Increased 5% in June</li>
+    <li><strong>VBC Patients:</strong> 300,000 net new (reduced from 650,000)</li>
+    <li><strong>OptumHealth Revenue:</strong> Revised down further (see OptumHealth section)</li>
+    <li><strong>OptumInsight:</strong> Outlook reduced by $1B (half Change recovery/cyber, half paused portfolio actions)</li>
+    <li><strong>OptumRx Revenue Growth:</strong> $18B or 13%; earnings growth just over $200M or ~4%</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>2026 Outlook</h3>
+  <ul>
+    <li><strong>Overall:</strong> "Solid but moderate earnings growth" expected</li>
+    <li><strong>2027:</strong> "Earnings growth outlook strengthening quickly"</li>
+    <li><strong>Long-term EPS Growth:</strong> Framework intact (organic growth + productivity + buybacks + business model evolution); expects to "pace back steadily to low double-digit ranges and continue to advance"</li>
+    <li><strong>80% of premium revenues reprice January 1</strong> — significant pricing reset for 2026</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Long-Term OptumHealth Targets</h3>
+  <ul>
+    <li><strong>Operating Margin:</strong> 6%–8% (revised; reflects investment in new cohorts and longer maturation timeline)</li>
+    <li><strong>VBC Margin:</strong> ~5% long-term</li>
+    <li><strong>Growth:</strong> Significant for the decade to come; addressable market much larger than 5M current patients</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 2025 UnitedHealthcare Segment</h3>
+  <ul>
+    <li><strong>UnitedHealthcare Revenue:</strong> $86.1B (+$12B or ~16% YoY from $73.87B)</li>
+    <li><strong>UHC Earnings from Operations:</strong> $2.1B (-$1.9B YoY from $4.00B)</li>
+    <li><strong>ACA Exchange Impact:</strong> Just over $600M unfavorable (includes acceleration of anticipated H2 losses with premium deficiency reserve; driven by higher patient morbidity across entire exchange market)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 2025 Optum Segment</h3>
+  <ul>
+    <li><strong>OptumHealth Revenue:</strong> $25.2B (-$1.8B or -7% YoY from $27.05B); driven by contract adjustments and Medicare funding reductions</li>
+    <li><strong>OptumInsight Revenue:</strong> $4.8B (+$285M or +6% YoY from $4.54B); revenue backlog $32.1B</li>
+    <li><strong>OptumRx Revenue:</strong> $38.5B (+$6B or +19% YoY from $32.42B); adjusted scripts 414M (vs 399M year-ago)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 2025 Membership & Growth</h3>
+  <ul>
+    <li><strong>Medicare Advantage:</strong> YTD growth of 650,000 people (including dual-eligible); growth in D-SNP and C-SNP continuing; group MA trend pressure elevated</li>
+    <li><strong>VBC Patients:</strong> Outlook reduced to 300,000 net new (from 650,000) to focus on improving operating performance</li>
+    <li><strong>Commercial:</strong> Less member growth than initially anticipated; ACA exchange drives ~1/3 of reduced commercial risk member growth; group insured comprising much of rest</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 2025 Medical Cost Dynamics</h3>
+  <ul>
+    <li><strong>Total Excess Medical Costs vs Initial 2025 Outlook:</strong> $6.5B - <strong>Medicare (~55%, $3.6B):</strong> Broad-based across individual, group, complex populations and Medicare Supplement; physician/outpatient 70% of YTD pressure; inpatient accelerating through Q2 - <strong>Commercial (~33%, $2.3B):</strong> Evenly split ACA exchange and employer; outpatient most notable; orthopedic and pharmacy infusions key drivers - <strong>Medicaid (remainder):</strong> Behavioral health trend running at 20%; elevated pharmacy and home health</li>
+    <li><strong>Additional factors beyond medical trend:</strong> ~$1B from discontinued portfolio actions; ~$850M from prior period items and onetime settlements</li>
+    <li><strong>MA Medical Cost Trend:</strong> Initially assumed just over 5%; now expect 7.5% for full year 2025</li>
+    <li><strong>Medicare Supplement Trend:</strong> Over 11% (vs 8%–9% historical); confirms broad-based nature of care activity</li>
+    <li><strong>Commercial Group Fully Insured Trend:</strong> Approaching 11% (~100 bps above initial expectations)</li>
+    <li><strong>Service Intensity Per Encounter:</strong> Increasing; more services bundled per ER visit and clinical encounter; higher physician rounding, testing and specialist services</li>
+    <li><strong>Inpatient:</strong> Accelerating through Q2; expect relatively larger portion of full year pressure vs physician/outpatient</li>
+    <li><strong>Trend Broad-Based:</strong> Geographically and across membership including large retained base</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Medicare Advantage 2026</h3>
+  <ul>
+    <li><strong>Trend Assumption:</strong> Approaching 10% (vs 7.5% in 2025; vs original 5% assumption)</li>
+    <li><strong>Target Margin Range:</strong> 2%–4% (revised from 3%–5% due to IRA revenue inflating denominator; economically equivalent)</li>
+    <li><strong>2025 MA Margins:</strong> 2%–2.5%</li>
+    <li><strong>2026 MA Margins:</strong> 2.5%–3% (lower half of new target range)</li>
+    <li><strong>2027 MA Margins:</strong> Midpoint of 2%–4% range; advancing further from there</li>
+    <li><strong>Plan Exits:</strong> Exiting plans serving 600,000+ members (primarily PPO; ~1/3 full market/submarket exits)</li>
+    <li><strong>Significant benefit adjustments</strong> across individual and group</li>
+    <li><strong>Shifting to narrower networks</strong> and more disciplined managed products</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Commercial 2026</h3>
+  <ul>
+    <li><strong>Target Margin Range:</strong> 7%–9% (unchanged)</li>
+    <li><strong>2026 Margins:</strong> Closer to but modestly short of 7%–9% target; recover into range by 2027</li>
+    <li><strong>Pricing:</strong> Double-digit premium increases for 2026</li>
+    <li><strong>Trend Outlook:</strong> Above 11% for 2026</li>
+    <li><strong>ACA Exchange:</strong> Participating in majority of 30 current markets but far more conservatively; may exit select markets if unable to achieve needed rates; premium subsidy expiration expected to reduce membership significantly; adverse selection risk</li>
+    <li><strong>Membership:</strong> Expect decline; shifts into level-funded and self-funded products</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Medicaid 2026</h3>
+  <ul>
+    <li><strong>Target Margin (C&S Segment):</strong> 2%–4% (adjusted from 3%–5% due to IRA impact on D-SNP)</li>
+    <li><strong>Core Medicaid (Non-Dual) Target:</strong> ~2% rated margin with states</li>
+    <li><strong>2025 Non-Dual Medicaid:</strong> Breakeven</li>
+    <li><strong>2026 Non-Dual Medicaid:</strong> Negative 1% to negative 1.7% margins</li>
+    <li><strong>Rate Increases:</strong> ~6% combined in 2025; expect comparable in 2026</li>
+    <li><strong>Rate-Acuity Mismatch:</strong> 12–18 month lag; expect to extend well into 2026</li>
+    <li><strong>Membership Losses:</strong> From early adoption of recent legislation factored in</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>OptumHealth Deep Dive</h3>
+</div>
+<div class="content-section">
+  <h3>2025 Earnings Gap: ~$6.6B Below Expectations</h3>
+  <ul>
+    <li><strong>Value-Based Care (~55%, $3.6B):</strong> Three roughly equal drivers: 1. Enrollment mix: more complex/dual-eligible; new-to-Optum underserved patients from plan exits; negative margins near double digits for new patients 2. Accelerated medical trend: physician/outpatient in Medicare; behavioral in Medicaid 3. V28 risk model: underestimated impact on higher-acuity population; misexecuted transition</li>
+    <li><strong>Discontinued Portfolio Actions (~30%, $2B):</strong> Previously planned divestitures/transactions paused</li>
+    <li><strong>Other (~15%, $1B):</strong> Lower service volumes (19M vs 20M planned fee-for-service visits), nonrecurring prior period impacts, slowed tuck-in acquisitions</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>V28 Impact</h3>
+  <ul>
+    <li><strong>Total 3-year headwind for OptumHealth:</strong> $11B ($2B and $1B respectively more than initial estimates)</li>
+    <li><strong>Through 2025:</strong> $7B realized</li>
+    <li><strong>Remaining 2026 headwind:</strong> ~$4B; expect pricing/benefit changes to mitigate ~50%; remainder from operating cost discipline and care program execution</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Value-Based Care Performance</h3>
+  <ul>
+    <li><strong>2025 VBC Operating Margin:</strong> ~1% (vs 3%+ in 2024; ~5% in 2023)</li>
+    <li><strong>Cohort Margins:</strong> - 2021 and prior (most mature): 8%+ margin - 2022–2023 cohorts: 2% margin - 2024–2025 cohorts (40% of patients): Negative margins</li>
+    <li><strong>Long-Term VBC Margin Target:</strong> ~5%</li>
+    <li><strong>2026 VBC Margin:</strong> Expect ~1% (relatively consistent with 2025); advance in 2027+</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Business Composition</h3>
+  <ul>
+    <li><strong>Value-Based Care:</strong> ~65% of OptumHealth revenue; 5 million patients in fully accountable arrangements</li>
+    <li><strong>Fee-for-Service Care Delivery:</strong> ~15% of revenue; most businesses at low double-digit margins; primary care/multi-specialty practices at negative margins (hundreds of millions in losses)</li>
+    <li><strong>Services (behavioral, military/veterans, health financial):</strong> ~20% of revenue; ~10% combined margins</li>
+    <li><strong>Total patients served:</strong> Nearly 20 million across 3 lines</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Remediation Actions</h3>
+  <ul>
+    <li>1. Improving clinical model consistency (primary care anchored, wraparound services) 2. Margin recovery: ceasing ~200K fully accountable PPO patients (~40% of PPO served); increasing rates; mitigate ~50% of remaining $4B V28 headwind 3. Concentrated regional operating model with 4 market leaders (from localized approach); completing technology integration; ~$1B cost reductions in 2026 4. Shifting risk back to original underwriters until hardened capacity; more disciplined risk arrangements</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>OptumRx Headwinds</h3>
+  <ul>
+    <li><strong>Portfolio actions removed:</strong> ~$150M headwind</li>
+    <li><strong>Ancillary business issues:</strong> ~$50M (taking corrective actions)</li>
+    <li><strong>Nuvaila (private label) launch:</strong> ~$150M headwind (expected to mature into strong earnings)</li>
+    <li><strong>GLP-1 impact:</strong> $160M headwind for pharmacy services businesses</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Leadership & Governance Changes</h3>
+  <ul>
+    <li><strong>Stephen Hemsley:</strong> Returned as CEO & Chairman (replacing Andrew Witty)</li>
+    <li><strong>Dan Schumacher:</strong> President</li>
+    <li><strong>Patrick Conway:</strong> CEO of Optum (expanded from OptumRx)</li>
+    <li><strong>Dhivya Suryadevara:</strong> CEO of OptumInsight (+ Optum Financial Services)</li>
+    <li><strong>Roger Connor:</strong> CFO of Optum (new)</li>
+    <li><strong>Krista Nelson:</strong> COO of OptumHealth (new role; from UHC Community & State)</li>
+    <li><strong>John Mahrt:</strong> Leading OptumRx</li>
+    <li><strong>Bobby Hunter:</strong> CEO of Government Programs & Head of Medicare Insurance</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Culture & Reform Agenda</h3>
+  <ul>
+    <li>"Tone of change and reform" — recommitment to mission, values, service, integrity, humility</li>
+    <li>Returned to monthly business reviews; returned to in-office work across enterprise</li>
+    <li>Critical processes under independent expert review (Analysis Group, FTI Consulting): risk status, care management, pharmaceutical services</li>
+    <li>Key policies/practices review by end of Q3; first performance measures report in Q4</li>
+    <li>Proactively engaged with regulators and all external stakeholders</li>
+    <li>Pursuing cost opportunities while also investing in underinvested areas (OptumInsight, AI, fintech)</li>
+    <li>Portfolio assessment paused; focused on performance of existing businesses</li>
+    <li>Some businesses require "fundamental reorientation"; others need building/nurturing; others must be "reconsidered and redirected to original purpose"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>AI & Technology</h3>
+  <ul>
+    <li>AI-powered RCM solution launched; AI-powered real-time coordination of benefits launching later in 2025</li>
+    <li>Accelerating AI-first orientation across enterprise</li>
+    <li>AI to drive efficiency, forecasting, early insights, faster decision-making</li>
+    <li>Strengthening actuarial resource base and analytics; internal audit review of guidance process</li>
+    <li>OptumInsight and Optum Financial: combined unified solutions with AI foundation; "early innings" in product journey</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Amedisys Transaction</h3>
+  <ul>
+    <li>Committed to closing; still working through regulatory process</li>
+    <li>Productive engagement with regulators</li>
+    <li>Home health capabilities viewed as foundational to value-based care</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 2025 Actuals (Reported)</h3>
+  <ul>
+    <li><strong>Revenue:</strong> ~$112B (+13% YoY from $98.86B)</li>
+    <li><strong>Adjusted Diluted EPS:</strong> $4.08 (below prior year $6.80)</li>
+    <li><strong>Discrete Items in Quarter:</strong> ~$1.2B (>half ACA exchange losses including premium deficiency reserve; remainder settlements of prior year disputes)</li>
+  </ul>
+</div>
+
+<div class="prior-ref" id="priorRef">
+  <div class="prior-ref-header" onclick="var b=document.getElementById('priorBody');b.classList.toggle('open');this.querySelector('.arrow').innerHTML=b.classList.contains('open')?'&#9650;':'&#9660;';">
+    Prior Quarter Reference: Q1 2025
+    <span class="arrow">&#9660;</span>
+  </div>
+  <div class="prior-ref-body" id="priorBody">
+    <div class="metric-grid">
+      <div class="prior-mini"><div class="pm-label">Revenue</div><div class="pm-value">$450B–$455B (affirmed from December)</div></div>
+      <div class="prior-mini"><div class="pm-label">Adjusted EPS</div><div class="pm-value">$26.00–$26.50 (CUT from $29.50–$30.00; -12% at midpoint)</div></div>
+      <div class="prior-mini"><div class="pm-label">Optum Revenue</div><div class="pm-value">$63.89B (+5% YoY from $61.05B)</div></div>
+      <div class="prior-mini"><div class="pm-label">UnitedHealthcare Revenue</div><div class="pm-value">$84.62B (+12% YoY from $75.36B)</div></div>
+    </div>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q1_2025.html" style="color:var(--blue);">View full Q1 2025 detail &rarr;</a></p>
+  </div>
+</div>
+
+<div class="footer-nav">
+  <a href="Q1_2025.html">&larr; Q1 2025</a>
+  <a href="../comparison.html">Back to Overview</a>
+  <a href="Q3_2025.html">Q3 2025 &rarr;</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1220 @@
+{
+  "ticker": "MSFT",
+  "quarter": "Q1_FY2026",
+  "filing_date": "2025-10-29",
+  "accession": "0001193125-25-256310",
+  "tables": [
+    {
+      "headers": [],
+      "rows": [
+        [
+          "",
+          "",
+          "Three Months Ended September 30,"
+        ],
+        [
+          "( in millions, except per share amounts)",
+          "",
+          "Net Income",
+          "",
+          "Diluted Earnings per Share"
+        ],
+        [
+          "2024 As Reported (GAAP)",
+          "",
+          "24667",
+          "",
+          "3.30"
+        ],
+        [
+          "Impact from investments in OpenAI",
+          "",
+          "523",
+          "",
+          "0.07"
+        ],
+        [
+          "2024 As Adjusted (non-GAAP)",
+          "",
+          "25190",
+          "",
+          "3.37"
+        ],
+        [
+          "2025 As Reported (GAAP)",
+          "",
+          "27747",
+          "",
+          "3.72"
+        ],
+        [
+          "Impact from investments in OpenAI",
+          "",
+          "3086",
+          "",
+          "0.41"
+        ],
+        [
+          "2025 As Adjusted (non-GAAP)",
+          "",
+          "30833",
+          "",
+          "4.13"
+        ],
+        [
+          "Percentage Change Y/Y (GAAP)",
+          "",
+          "12%",
+          "",
+          "13%"
+        ],
+        [
+          "Percentage Change Y/Y Constant Currency",
+          "",
+          "11%",
+          "",
+          "11%"
+        ],
+        [
+          "Percentage Change Y/Y (non-GAAP)",
+          "",
+          "22%",
+          "",
+          "23%"
+        ],
+        [
+          "Percentage Change Y/Y (non-GAAP) Constant Currency",
+          "",
+          "21%",
+          "",
+          "21%"
+        ]
+      ],
+      "caption": "The following table reconciles our financial results reported in accordance with generally accepted accounting principles (GAAP) to non-GAAP financial results. Additional information regarding our non"
+    },
+    {
+      "headers": [],
+      "rows": [
+        [
+          "",
+          "",
+          "Three Months Ended September 30,"
+        ],
+        [
+          "( in millions, except per share amounts)",
+          "",
+          "Revenue",
+          "",
+          "Operating Income",
+          "",
+          "Net Income",
+          "",
+          "Diluted Earnings per Share"
+        ],
+        [
+          "2024 As Reported (GAAP)",
+          "",
+          "65585",
+          "",
+          "30552",
+          "",
+          "24667",
+          "",
+          "3.30"
+        ],
+        [
+          "2024 As Adjusted (non-GAAP)",
+          "",
+          "65585",
+          "",
+          "30552",
+          "",
+          "25190",
+          "",
+          "3.37"
+        ],
+        [
+          "2025 As Reported (GAAP)",
+          "",
+          "77673",
+          "",
+          "37961",
+          "",
+          "27747",
+          "",
+          "3.72"
+        ],
+        [
+          "2025 As Adjusted (non-GAAP)",
+          "",
+          "77673",
+          "",
+          "37961",
+          "",
+          "30833",
+          "",
+          "4.13"
+        ],
+        [
+          "Percentage Change Y/Y (GAAP)",
+          "",
+          "18%",
+          "",
+          "24%",
+          "",
+          "12%",
+          "",
+          "13%"
+        ],
+        [
+          "Percentage Change Y/Y (non-GAAP)",
+          "",
+          "18%",
+          "",
+          "24%",
+          "",
+          "22%",
+          "",
+          "23%"
+        ],
+        [
+          "Constant Currency Impact",
+          "",
+          "1015",
+          "",
+          "730",
+          "",
+          "430",
+          "",
+          "0.06"
+        ],
+        [
+          "Percentage Change Y/Y Constant Currency",
+          "",
+          "17%",
+          "",
+          "22%",
+          "",
+          "11%",
+          "",
+          "11%"
+        ],
+        [
+          "Percentage Change Y/Y (non-GAAP) Constant Currency",
+          "",
+          "17%",
+          "",
+          "22%",
+          "",
+          "21%",
+          "",
+          "21%"
+        ]
+      ],
+      "caption": "Financial Performance Constant Currency Reconciliation"
+    },
+    {
+      "headers": [],
+      "rows": [
+        [
+          "",
+          "",
+          "Three Months Ended September 30,"
+        ],
+        [
+          "",
+          "",
+          "2025",
+          "",
+          "2024"
+        ],
+        [
+          "Revenue:",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Product",
+          "",
+          "15922",
+          "",
+          "15272"
+        ],
+        [
+          "Service and other",
+          "",
+          "61751",
+          "",
+          "50313"
+        ],
+        [
+          "Total revenue",
+          "",
+          "77673",
+          "",
+          "65585"
+        ],
+        [
+          "Cost of revenue:",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Product",
+          "",
+          "2922",
+          "",
+          "3294"
+        ],
+        [
+          "Service and other",
+          "",
+          "21121",
+          "",
+          "16805"
+        ],
+        [
+          "Total cost of revenue",
+          "",
+          "24043",
+          "",
+          "20099"
+        ],
+        [
+          "Gross margin",
+          "",
+          "53630",
+          "",
+          "45486"
+        ],
+        [
+          "Research and development",
+          "",
+          "8146",
+          "",
+          "7544"
+        ],
+        [
+          "Sales and marketing",
+          "",
+          "5717",
+          "",
+          "5717"
+        ],
+        [
+          "General and administrative",
+          "",
+          "1806",
+          "",
+          "1673"
+        ],
+        [
+          "Operating income",
+          "",
+          "37961",
+          "",
+          "30552"
+        ],
+        [
+          "Other expense, net",
+          "",
+          "-3660",
+          "",
+          "-283"
+        ],
+        [
+          "Income before income taxes",
+          "",
+          "34301",
+          "",
+          "30269"
+        ],
+        [
+          "Provision for income taxes",
+          "",
+          "6554",
+          "",
+          "5602"
+        ],
+        [
+          "Net income",
+          "",
+          "27747",
+          "",
+          "24667"
+        ],
+        [
+          "Earnings per share:",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Basic",
+          "",
+          "3.73",
+          "",
+          "3.32"
+        ],
+        [
+          "Diluted",
+          "",
+          "3.72",
+          "",
+          "3.30"
+        ],
+        [
+          "Weighted average shares outstanding:",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Basic",
+          "",
+          "7433",
+          "",
+          "7433"
+        ],
+        [
+          "Diluted",
+          "",
+          "7466",
+          "",
+          "7470"
+        ]
+      ],
+      "caption": ""
+    },
+    {
+      "headers": [],
+      "rows": [
+        [
+          "",
+          "",
+          "September 30, 2025",
+          "",
+          "June 30, 2025"
+        ],
+        [
+          "Assets",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Current assets:",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Cash and cash equivalents",
+          "",
+          "28849",
+          "",
+          "30242"
+        ],
+        [
+          "Short-term investments",
+          "",
+          "73163",
+          "",
+          "64323"
+        ],
+        [
+          "Total cash, cash equivalents, and short-term investments",
+          "",
+          "102012",
+          "",
+          "94565"
+        ],
+        [
+          "Accounts receivable, net of allowance for doubtful accounts of 687 and 944",
+          "",
+          "52894",
+          "",
+          "69905"
+        ],
+        [
+          "Inventories",
+          "",
+          "1130",
+          "",
+          "938"
+        ],
+        [
+          "Other current assets",
+          "",
+          "33030",
+          "",
+          "25723"
+        ],
+        [
+          "Total current assets",
+          "",
+          "189066",
+          "",
+          "191131"
+        ],
+        [
+          "Property and equipment, net of accumulated depreciation of 98,880 and 93,653",
+          "",
+          "230861",
+          "",
+          "204966"
+        ],
+        [
+          "Operating lease right-of-use assets",
+          "",
+          "24791",
+          "",
+          "24823"
+        ],
+        [
+          "Equity and other investments",
+          "",
+          "11465",
+          "",
+          "15405"
+        ],
+        [
+          "Goodwill",
+          "",
+          "119497",
+          "",
+          "119509"
+        ],
+        [
+          "Intangible assets, net",
+          "",
+          "21236",
+          "",
+          "22604"
+        ],
+        [
+          "Other long-term assets",
+          "",
+          "39435",
+          "",
+          "40565"
+        ],
+        [
+          "Total assets",
+          "",
+          "636351",
+          "",
+          "619003"
+        ],
+        [
+          "Liabilities and stockholders' equity",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Current liabilities:",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Accounts payable",
+          "",
+          "32580",
+          "",
+          "27724"
+        ],
+        [
+          "Current portion of long-term debt",
+          "",
+          "7832",
+          "",
+          "2999"
+        ],
+        [
+          "Accrued compensation",
+          "",
+          "9201",
+          "",
+          "13709"
+        ],
+        [
+          "Short-term income taxes",
+          "",
+          "3655",
+          "",
+          "7211"
+        ],
+        [
+          "Short-term unearned revenue",
+          "",
+          "58987",
+          "",
+          "64555"
+        ],
+        [
+          "Other current liabilities",
+          "",
+          "22741",
+          "",
+          "25020"
+        ],
+        [
+          "Total current liabilities",
+          "",
+          "134996",
+          "",
+          "141218"
+        ],
+        [
+          "Long-term debt",
+          "",
+          "35376",
+          "",
+          "40152"
+        ],
+        [
+          "Long-term income taxes",
+          "",
+          "26569",
+          "",
+          "25986"
+        ],
+        [
+          "Long-term unearned revenue",
+          "",
+          "2546",
+          "",
+          "2710"
+        ],
+        [
+          "Deferred income taxes",
+          "",
+          "2852",
+          "",
+          "2835"
+        ],
+        [
+          "Operating lease liabilities",
+          "",
+          "17348",
+          "",
+          "17437"
+        ],
+        [
+          "Other long-term liabilities",
+          "",
+          "53588",
+          "",
+          "45186"
+        ],
+        [
+          "Total liabilities",
+          "",
+          "273275",
+          "",
+          "275524"
+        ],
+        [
+          "Commitments and contingencies",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Stockholders' equity:",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Common stock and paid-in capital - shares authorized 24,000; outstanding 7,434 and 7,434",
+          "",
+          "110964",
+          "",
+          "109095"
+        ],
+        [
+          "Retained earnings",
+          "",
+          "254873",
+          "",
+          "237731"
+        ],
+        [
+          "Accumulated other comprehensive loss",
+          "",
+          "-2761",
+          "",
+          "-3347"
+        ],
+        [
+          "Total stockholders' equity",
+          "",
+          "363076",
+          "",
+          "343479"
+        ],
+        [
+          "Total liabilities and stockholders' equity",
+          "",
+          "636351",
+          "",
+          "619003"
+        ]
+      ],
+      "caption": ""
+    },
+    {
+      "headers": [],
+      "rows": [
+        [
+          "",
+          "",
+          "Three Months Ended"
+        ],
+        [
+          "",
+          "",
+          "September 30,"
+        ],
+        [
+          "",
+          "",
+          "2025",
+          "",
+          "2024"
+        ],
+        [
+          "Operations",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Net income",
+          "",
+          "27747",
+          "",
+          "24667"
+        ],
+        [
+          "Adjustments to reconcile net income to net cash from operations:",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Depreciation, amortization, and other",
+          "",
+          "13061",
+          "",
+          "7383"
+        ],
+        [
+          "Stock-based compensation expense",
+          "",
+          "2983",
+          "",
+          "2832"
+        ],
+        [
+          "Net recognized gains on investments and derivatives",
+          "",
+          "-1007",
+          "",
+          "-125"
+        ],
+        [
+          "Deferred income taxes",
+          "",
+          "2491",
+          "",
+          "-1433"
+        ],
+        [
+          "Changes in operating assets and liabilities:",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Accounts receivable",
+          "",
+          "16490",
+          "",
+          "14037"
+        ],
+        [
+          "Inventories",
+          "",
+          "-192",
+          "",
+          "-373"
+        ],
+        [
+          "Other current assets",
+          "",
+          "-1162",
+          "",
+          "-82"
+        ],
+        [
+          "Other long-term assets",
+          "",
+          "-394",
+          "",
+          "-1761"
+        ],
+        [
+          "Accounts payable",
+          "",
+          "-614",
+          "",
+          "-916"
+        ],
+        [
+          "Unearned revenue",
+          "",
+          "-5418",
+          "",
+          "-5553"
+        ],
+        [
+          "Income taxes",
+          "",
+          "-2944",
+          "",
+          "1016"
+        ],
+        [
+          "Other current liabilities",
+          "",
+          "-5507",
+          "",
+          "-5479"
+        ],
+        [
+          "Other long-term liabilities",
+          "",
+          "-477",
+          "",
+          "-33"
+        ],
+        [
+          "Net cash from operations",
+          "",
+          "45057",
+          "",
+          "34180"
+        ],
+        [
+          "Financing",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Repayments of debt, maturities of 90 days or less",
+          "",
+          "0",
+          "",
+          "-5746"
+        ],
+        [
+          "Repayments of debt",
+          "",
+          "0",
+          "",
+          "-966"
+        ],
+        [
+          "Common stock issued",
+          "",
+          "689",
+          "",
+          "706"
+        ],
+        [
+          "Common stock repurchased",
+          "",
+          "-5650",
+          "",
+          "-4107"
+        ],
+        [
+          "Common stock cash dividends paid",
+          "",
+          "-6169",
+          "",
+          "-5574"
+        ],
+        [
+          "Other, net",
+          "",
+          "-669",
+          "",
+          "-889"
+        ],
+        [
+          "Net cash used in financing",
+          "",
+          "-11799",
+          "",
+          "-16576"
+        ],
+        [
+          "Investing",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Additions to property and equipment",
+          "",
+          "-19394",
+          "",
+          "-14923"
+        ],
+        [
+          "Acquisition of companies, net of cash acquired and divestitures, and purchases of intangible and other assets",
+          "",
+          "-578",
+          "",
+          "-1849"
+        ],
+        [
+          "Purchases of investments",
+          "",
+          "-17671",
+          "",
+          "-1620"
+        ],
+        [
+          "Maturities of investments",
+          "",
+          "6031",
+          "",
+          "2136"
+        ],
+        [
+          "Sales of investments",
+          "",
+          "3262",
+          "",
+          "1968"
+        ],
+        [
+          "Other, net",
+          "",
+          "-6209",
+          "",
+          "-913"
+        ],
+        [
+          "Net cash used in investing",
+          "",
+          "-34559",
+          "",
+          "-15201"
+        ],
+        [
+          "Effect of foreign exchange rates on cash and cash equivalents",
+          "",
+          "-92",
+          "",
+          "122"
+        ],
+        [
+          "Net change in cash and cash equivalents",
+          "",
+          "-1393",
+          "",
+          "2525"
+        ],
+        [
+          "Cash and cash equivalents, beginning of period",
+          "",
+          "30242",
+          "",
+          "18315"
+        ],
+        [
+          "Cash and cash equivalents, end of period",
+          "",
+          "28849",
+          "",
+          "20840"
+        ]
+      ],
+      "caption": ""
+    },
+    {
+      "headers": [],
+      "rows": [
+        [
+          "",
+          "",
+          "Three Months Ended"
+        ],
+        [
+          "",
+          "",
+          "September 30,"
+        ],
+        [
+          "",
+          "",
+          "2025",
+          "",
+          "2024"
+        ],
+        [
+          "Productivity and Business Processes",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Revenue",
+          "",
+          "33020",
+          "",
+          "28317"
+        ],
+        [
+          "Cost of revenue",
+          "",
+          "5721",
+          "",
+          "5294"
+        ],
+        [
+          "Operating expenses",
+          "",
+          "6892",
+          "",
+          "6507"
+        ],
+        [
+          "Operating income",
+          "",
+          "20407",
+          "",
+          "16516"
+        ],
+        [
+          "Intelligent Cloud",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Revenue",
+          "",
+          "30897",
+          "",
+          "24092"
+        ],
+        [
+          "Cost of revenue",
+          "",
+          "12314",
+          "",
+          "8614"
+        ],
+        [
+          "Operating expenses",
+          "",
+          "5192",
+          "",
+          "4975"
+        ],
+        [
+          "Operating income",
+          "",
+          "13391",
+          "",
+          "10503"
+        ],
+        [
+          "More Personal Computing",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Revenue",
+          "",
+          "13756",
+          "",
+          "13176"
+        ],
+        [
+          "Cost of revenue",
+          "",
+          "6008",
+          "",
+          "6191"
+        ],
+        [
+          "Operating expenses",
+          "",
+          "3585",
+          "",
+          "3452"
+        ],
+        [
+          "Operating income",
+          "",
+          "4163",
+          "",
+          "3533"
+        ],
+        [
+          "Total",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "Revenue",
+          "",
+          "77673",
+          "",
+          "65585"
+        ],
+        [
+          "Cost of revenue",
+          "",
+          "24043",
+          "",
+          "20099"
+        ],
+        [
+          "Operating expenses",
+          "",
+          "15669",
+          "",
+          "14934"
+        ],
+        [
+          "Operating income",
+          "",
+          "37961",
+          "",
+          "30552"
+        ]
+      ],
+      "caption": ""
+    }
+  ],
+  "xbrl": {
+    "Revenue": {
+      "value": 77673000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2025-10-29",
+      "concept": "RevenueFromContractWithCustomerExcludingAssessedTax"
+    },
+    "Net Income": {
+      "value": 27747000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2025-10-29",
+      "concept": "NetIncomeLoss"
+    },
+    "EPS (Basic)": {
+      "value": 3.73,
+      "units": "USD/shares",
+      "form": "10-Q",
+      "filed": "2025-10-29",
+      "concept": "EarningsPerShareBasic"
+    },
+    "EPS (Diluted)": {
+      "value": 3.72,
+      "units": "USD/shares",
+      "form": "10-Q",
+      "filed": "2025-10-29",
+      "concept": "EarningsPerShareDiluted"
+    },
+    "Total Assets": {
+      "value": 636351000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2025-10-29",
+      "concept": "Assets"
+    },
+    "Total Liabilities": {
+      "value": 273275000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2025-10-29",
+      "concept": "Liabilities"
+    },
+    "Total Equity": {
+      "value": 363076000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2025-10-29",
+      "concept": "StockholdersEquity"
+    },
+    "Shares Outstanding": {
+      "value": 7434000000,
+      "units": "shares",
+      "form": "10-Q",
+      "filed": "2025-10-29",
+      "concept": "CommonStockSharesOutstanding"
+    },
+    "Operating Income": {
+      "value": 37961000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2025-10-29",
+      "concept": "OperatingIncomeLoss"
+    },
+    "Cash & Equivalents": {
+      "value": 28849000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2025-10-29",
+      "concept": "CashAndCashEquivalentsAtCarryingValue"
+    },
+    "Comprehensive Income": {
+      "value": 28333000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2025-10-29",
+      "concept": "ComprehensiveIncomeNetOfTax"
+    },
+    "Income Tax Expense": {
+      "value": 6554000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2025-10-29",
+      "concept": "IncomeTaxExpenseBenefit"
+    }
+  }
+}

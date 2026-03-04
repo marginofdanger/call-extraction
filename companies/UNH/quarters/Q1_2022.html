@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UNH Q1 2022 Earnings Call Detail</title>
+<style>
+:root {
+    --company-primary: #002677;
+    --company-dark: #1a1a2e;
+    --company-accent: #00BCD4;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 40px 40px 32px;
+    margin: 0 -24px 0;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .header .meta {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    font-weight: 300;
+  }
+  .header .meta span { margin-right: 24px; }
+
+  .nav-bar {
+    background: var(--company-accent);
+    margin: 0 -24px 32px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    transition: all 0.15s;
+  }
+  .nav-bar a:hover { background: rgba(255,255,255,0.2); }
+  .nav-bar a.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .nav-center {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-center a.qbtn {
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+  }
+  .nav-center a.qbtn.current {
+    background: var(--company-primary);
+    border-color: var(--company-primary);
+  }
+  .nav-center a.qbtn:hover { background: rgba(255,255,255,0.2); }
+  .nav-back {
+    background: rgba(255,255,255,0.15) !important;
+    border-color: rgba(255,255,255,0.35) !important;
+  }
+
+  .metrics-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .metric {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+  .metric-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .metric-value {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+  .metric-delta {
+    font-size: 0.72rem;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+  .delta-up { color: var(--green); }
+  .delta-down { color: var(--red); }
+  .delta-flat { color: var(--text-muted); }
+
+  .changes-box {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 5px solid var(--amber);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .changes-box h3 {
+    font-size: 1rem;
+    color: var(--company-dark);
+    margin-bottom: 10px;
+  }
+  .changes-box ul { list-style: none; padding: 0; }
+  .changes-box li {
+    padding: 5px 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .change-tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .ct-raised { background: #d5f5e3; color: #1e8449; }
+  .ct-lowered { background: #fadbd8; color: #c0392b; }
+  .ct-changed { background: #d6eaf8; color: #2471a3; }
+  .ct-new { background: #e8daef; color: #6c3483; }
+  .ct-maintained { background: #fdebd0; color: #b9770e; }
+
+  .content-section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .content-section h3 {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .content-section ul {
+    padding: 14px 18px 14px 36px;
+    margin: 0;
+  }
+  .content-section li {
+    padding: 3px 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .content-section li strong { color: var(--company-dark); }
+
+  .prior-ref {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 40px;
+    overflow: hidden;
+  }
+  .prior-ref-header {
+    background: var(--light-bg);
+    padding: 12px 18px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--company-dark);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .prior-ref-header:hover { background: #eef2f7; }
+  .prior-ref-body { padding: 18px; display: none; }
+  .prior-ref-body.open { display: block; }
+  .prior-ref-body .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .prior-mini {
+    background: var(--light-bg);
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .prior-mini .pm-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .prior-mini .pm-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border);
+  }
+  .footer-nav a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .footer-nav a:hover { text-decoration: underline; }
+
+  /* Comparison page styles */
+  .toc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .toc a {
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 4px 0;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  .comp-section {
+    margin-bottom: 40px;
+  }
+  .comp-section h2 {
+    font-size: 1.2rem;
+    color: var(--company-dark);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--company-primary);
+  }
+
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+  }
+  .comp-table th {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .comp-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .comp-table tr:nth-child(even) { background: var(--light-bg); }
+  .comp-table tr:hover { background: #e8f4fd; }
+
+  @media (max-width: 768px) {
+    .header h1 { font-size: 1.5rem; }
+    .metrics-card { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .nav-center { display: none; }
+    body { padding: 0 16px 60px; }
+    .header { margin: 0 -16px 0; padding: 28px 24px 20px; }
+    .nav-bar { margin: 0 -16px 24px; }
+    .toc { grid-template-columns: 1fr; }
+    .comp-table { font-size: 0.78rem; }
+    .comp-table th, .comp-table td { padding: 6px 8px; }
+  }
+
+  @media print {
+    .nav-bar { display: none; }
+    .header { background: #333; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>UNH Q1 2022 Earnings Call</h1>
+  <div class="meta">
+    <span>Call Date: April 14, 2022</span>
+    <span>Reporting: Q1 2022</span>
+  </div>
+</div>
+<div class="nav-bar">
+  <a class="disabled">&larr; Prev</a>
+  <div class="nav-center">
+    <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="Q4_2025.html" class="qbtn">4Q25</a>
+    <a href="Q3_2025.html" class="qbtn">3Q25</a>
+    <a href="Q2_2025.html" class="qbtn">2Q25</a>
+    <a href="Q1_2025.html" class="qbtn">1Q25</a>
+    <a href="Q4_2024.html" class="qbtn">4Q24</a>
+    <a href="Q3_2024.html" class="qbtn">3Q24</a>
+    <a href="Q2_2024.html" class="qbtn">2Q24</a>
+    <a href="Q1_2024.html" class="qbtn">1Q24</a>
+    <a href="Q4_2023.html" class="qbtn">4Q23</a>
+    <a href="Q3_2023.html" class="qbtn">3Q23</a>
+    <a href="Q2_2023.html" class="qbtn">2Q23</a>
+    <a href="Q1_2023.html" class="qbtn">1Q23</a>
+    <a href="Q4_2022.html" class="qbtn">4Q22</a>
+    <a href="Q3_2022.html" class="qbtn">3Q22</a>
+    <a href="Q2_2022.html" class="qbtn">2Q22</a>
+    <a href="Q1_2022.html" class="qbtn current">1Q22</a>
+  </div>
+  <a href="Q2_2022.html">Q2 2022 &rarr;</a>
+</div>
+
+<div class="changes-box">
+  <h3>Context</h3>
+  <ul>
+    <li><span class="change-tag ct-new">New</span> First quarter in our tracking series</li>
+  </ul>
+</div>
+
+<div class="metrics-card">
+  <div class="metric">
+    <div class="metric-label">Adjusted EPS</div>
+    <div class="metric-value">$21.20–$21.70</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Optum Revenue</div>
+    <div class="metric-value">$43.3B</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">UnitedHealthcare Revenue</div>
+    <div class="metric-value">$62.6B</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Cash from Operations</div>
+    <div class="metric-value">~$24B or 1.2x net income</div>
+  </div>
+</div>
+
+<!-- Full Guidance Content -->
+<div class="content-section">
+  <h3>Full Year 2022 Guidance</h3>
+  <ul>
+    <li><strong>Adjusted EPS:</strong> $21.20–$21.70 (raised from $21.10–$21.60, +$0.10 at both ends)</li>
+    <li><strong>GAAP EPS:</strong> $20.30–$20.80</li>
+    <li><strong>Adjusted Net Earnings:</strong> $20.1B–$20.675B</li>
+    <li><strong>Cash Flows from Operations:</strong> ~$24B or 1.2x net income</li>
+    <li><strong>Value-Based Care Patients Added:</strong> 600,000 (raised from initial estimate of 500,000)</li>
+    <li><strong>Medicare Advantage Growth:</strong> Up to 800,000 people added</li>
+    <li><strong>Seasonal Pattern:</strong> Just under 50% of full year earnings in first half, consistent with historical experience</li>
+    <li><strong>Intangible Amortization:</strong> ~$1.13B (~$1.20 per share, ~$0.30 tax effect per share)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Long-Term Targets</h3>
+  <ul>
+    <li><strong>EPS Growth Rate:</strong> 13%–16% (set at November 2021 investor conference)</li>
+    <li><strong>5 Growth Areas:</strong> Value-based care delivery, health benefits, health technology, health financial services, pharmacy services</li>
+    <li><strong>OptumRx Earnings Growth:</strong> Mid- to high single digits near-term, moderating to mid-single digits longer term</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q1 2022 UnitedHealthcare Segment</h3>
+  <ul>
+    <li><strong>UnitedHealthcare Revenue:</strong> $62.6B (+14% YoY)</li>
+    <li><strong>UHC Operating Margin:</strong> 6.1% (vs 7.5% prior year)</li>
+    <li><strong>UHC Earnings from Operations:</strong> $3.80B</li>
+    <li><strong>Employer & Individual (Domestic):</strong> $15.82B</li>
+    <li><strong>Employer & Individual (Global):</strong> $2.13B</li>
+    <li><strong>Medicare & Retirement:</strong> $29.10B</li>
+    <li><strong>Community & State:</strong> $15.54B</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q1 2022 Optum Segment</h3>
+  <ul>
+    <li><strong>Optum Revenue:</strong> $43.3B (+18.9% YoY)</li>
+    <li><strong>Optum Operating Margin:</strong> 7.3% (vs 7.2% prior year)</li>
+    <li><strong>Optum Earnings from Operations:</strong> $3.15B (+19.8% YoY)</li>
+    <li><strong>OptumHealth Revenue:</strong> $16.68B (+34% YoY); earnings from operations rose over 40%; revenue per consumer grew 33%</li>
+    <li><strong>OptumInsight Revenue:</strong> $3.22B (+13% YoY); revenue backlog $22.8B (growth of $2B or 10% YoY)</li>
+    <li><strong>OptumRx Revenue:</strong> $23.91B (+11% YoY)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q1 2022 Membership & Growth</h3>
+  <ul>
+    <li><strong>Medicare Advantage:</strong> On track to add up to 800,000 people in 2022; ~3/4 in individual and group MA, remainder in dual special needs plans</li>
+    <li><strong>Medicaid:</strong> Grew by 150,000+, approaching 8 million total</li>
+    <li><strong>Commercial:</strong> 350,000 more people in innovative offerings (physician-led, virtual-first) over past year</li>
+    <li><strong>OptumHealth Value-Based Patients:</strong> Adding 1 million+ more people; 30% more patients in value-based relationships YoY</li>
+    <li><strong>OptumRx:</strong> Providing 20 million+ more prescriptions YoY</li>
+    <li><strong>Total Health Benefits:</strong> Serving 1.5 million more people YoY</li>
+    <li><strong>Nearly 90%</strong> of newly enrolled individual exchange members selected plans with significant virtual components</li>
+    <li><strong>Nearly 30%</strong> selected a virtual-first offering</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q1 2022 Care Patterns & COVID</h3>
+  <ul>
+    <li><strong>January COVID Hospitalizations:</strong> ~40,000 (highest month since pandemic onset)</li>
+    <li><strong>March COVID Hospitalizations:</strong> ~2,000</li>
+    <li>Overall care about at baseline levels; pockets modestly below (ER, pediatric visits)</li>
+    <li>No signs of increasing acuity from deferred pandemic care; oncology diagnosis levels consistent with historical averages</li>
+    <li>Commercial utilization a little higher; government programs a little lower</li>
+    <li>Omicron hospitalizations about half of Delta levels</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Value-Based Care Expansion</h3>
+  <ul>
+    <li>Now expect 600,000 patients added under value-based arrangements in 2022 (raised from 500,000)</li>
+    <li>1/3 of value-based growth in dual special needs (D-SNP) population</li>
+    <li>In Ohio and New York, skilled nursing facility admits declining 25% in first quarter of operation</li>
+    <li>"Lot of runway left" for value-based care expansion — now includes duals, complex care, home</li>
+    <li>Highest retention, satisfaction, lowest trend, best benefits/quality/growth when UHC partners with Optum</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>LHC Group Acquisition (Pending)</h3>
+  <ul>
+    <li>Home health care company, founded 1994 in Louisiana</li>
+    <li>85% of LHC providers are 4-star or better quality rating</li>
+    <li>Quality of care 33% higher in Stars quality ratings than national average for home health care</li>
+    <li>Will reinforce in-home and ambulatory care delivery capabilities</li>
+    <li>Complements naviHealth, Landmark, and original Optima Home product</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Change Healthcare Acquisition (Pending)</h3>
+  <ul>
+    <li>Health IT company; will connect and simplify clinical, administrative, and payment processes</li>
+    <li>Extended agreement reflects "firm belief in potential benefits"</li>
+    <li>Transaction not yet closed as of call date</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Inflation & Cost Management</h3>
+  <ul>
+    <li>Response to inflation is "innovation" — productivity, virtual care, value-based care</li>
+    <li>Virtual products 15% lower than other prevailing products in those markets</li>
+    <li>Targeted investments in clinicians and customer service staff where higher attrition</li>
+    <li>Provider agreements offer some multiyear predictability</li>
+    <li>Specialty drug costs lowered by over 15% through Optum analytical capabilities</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Investment Portfolio & Interest Rate Sensitivity</h3>
+  <ul>
+    <li>~$70B in cash and investments total</li>
+    <li>~40% ($28B) tied to floating rates; ~60% in fixed rate</li>
+    <li>~$10B of floating rate liabilities (swaps, commercial paper)</li>
+    <li>100 bps increase: ~$280M impact on investment income, ~$100M offset from floating liabilities = ~$180M net benefit</li>
+    <li>Fixed rate portfolio: ~$5B/year rolling off and reinvested at higher rates</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Digital & Operational Efficiency</h3>
+  <ul>
+    <li>Provider support costs declined ~12% from historical averages</li>
+    <li>38% increase in providers using digital documents instead of paper (vs prior year)</li>
+    <li>Expect to save 80 tons of paper over next 5 years</li>
+    <li>In-home testing reaching 1 million members suspected underdiagnosed; 35% completion rates</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q1 2022 Actuals (Reported)</h3>
+  <ul>
+    <li><strong>Revenue:</strong> $80.1B (+14% YoY from $70.2B)</li>
+    <li><strong>Premiums:</strong> $64.07B</li>
+    <li><strong>Products Revenue:</strong> $9.34B</li>
+    <li><strong>Services Revenue:</strong> $6.37B</li>
+    <li><strong>Investment and Other Income:</strong> $367M</li>
+    <li><strong>Medical Costs:</strong> $52.52B</li>
+    <li><strong>Medical Care Ratio:</strong> 82.0% (medical costs / premiums)</li>
+    <li><strong>Operating Costs:</strong> $11.40B</li>
+    <li><strong>Operating Cost Ratio:</strong> 14.2% (operating costs / total revenues)</li>
+    <li><strong>Earnings from Operations:</strong> $6.95B</li>
+    <li><strong>Consolidated Operating Margin:</strong> 8.7% (vs 9.6% prior year)</li>
+    <li><strong>Net Earnings (attributable):</strong> $5.03B</li>
+    <li><strong>GAAP Diluted EPS:</strong> $5.27</li>
+    <li><strong>Adjusted Diluted EPS:</strong> $5.49 (vs $5.31 prior year, vs consensus $5.35)</li>
+    <li><strong>Cash Flows from Operations:</strong> $5.3B (1x net income)</li>
+    <li><strong>Shareholder Returns:</strong> ~$4B (dividends $1.36B + share repurchases $2.50B)</li>
+    <li><strong>Debt-to-Capital Ratio:</strong> 38%</li>
+    <li><strong>Cash and Short-Term Investments:</strong> $28.4B</li>
+    <li><strong>Long-Term Investments:</strong> $42.4B</li>
+  </ul>
+</div>
+
+<div class="footer-nav">
+  <span></span>
+  <a href="../comparison.html">Back to Overview</a>
+  <a href="Q2_2022.html">Q2 2022 &rarr;</a>
+</div>
+
+</body>
+</html>

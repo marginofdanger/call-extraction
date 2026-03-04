@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UNH Q2 2024 Earnings Call Detail</title>
+<style>
+:root {
+    --company-primary: #002677;
+    --company-dark: #1a1a2e;
+    --company-accent: #00BCD4;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 40px 40px 32px;
+    margin: 0 -24px 0;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .header .meta {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    font-weight: 300;
+  }
+  .header .meta span { margin-right: 24px; }
+
+  .nav-bar {
+    background: var(--company-accent);
+    margin: 0 -24px 32px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    transition: all 0.15s;
+  }
+  .nav-bar a:hover { background: rgba(255,255,255,0.2); }
+  .nav-bar a.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .nav-center {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-center a.qbtn {
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+  }
+  .nav-center a.qbtn.current {
+    background: var(--company-primary);
+    border-color: var(--company-primary);
+  }
+  .nav-center a.qbtn:hover { background: rgba(255,255,255,0.2); }
+  .nav-back {
+    background: rgba(255,255,255,0.15) !important;
+    border-color: rgba(255,255,255,0.35) !important;
+  }
+
+  .metrics-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .metric {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+  .metric-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .metric-value {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+  .metric-delta {
+    font-size: 0.72rem;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+  .delta-up { color: var(--green); }
+  .delta-down { color: var(--red); }
+  .delta-flat { color: var(--text-muted); }
+
+  .changes-box {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 5px solid var(--amber);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .changes-box h3 {
+    font-size: 1rem;
+    color: var(--company-dark);
+    margin-bottom: 10px;
+  }
+  .changes-box ul { list-style: none; padding: 0; }
+  .changes-box li {
+    padding: 5px 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .change-tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .ct-raised { background: #d5f5e3; color: #1e8449; }
+  .ct-lowered { background: #fadbd8; color: #c0392b; }
+  .ct-changed { background: #d6eaf8; color: #2471a3; }
+  .ct-new { background: #e8daef; color: #6c3483; }
+  .ct-maintained { background: #fdebd0; color: #b9770e; }
+
+  .content-section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .content-section h3 {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .content-section ul {
+    padding: 14px 18px 14px 36px;
+    margin: 0;
+  }
+  .content-section li {
+    padding: 3px 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .content-section li strong { color: var(--company-dark); }
+
+  .prior-ref {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 40px;
+    overflow: hidden;
+  }
+  .prior-ref-header {
+    background: var(--light-bg);
+    padding: 12px 18px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--company-dark);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .prior-ref-header:hover { background: #eef2f7; }
+  .prior-ref-body { padding: 18px; display: none; }
+  .prior-ref-body.open { display: block; }
+  .prior-ref-body .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .prior-mini {
+    background: var(--light-bg);
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .prior-mini .pm-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .prior-mini .pm-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border);
+  }
+  .footer-nav a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .footer-nav a:hover { text-decoration: underline; }
+
+  /* Comparison page styles */
+  .toc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .toc a {
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 4px 0;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  .comp-section {
+    margin-bottom: 40px;
+  }
+  .comp-section h2 {
+    font-size: 1.2rem;
+    color: var(--company-dark);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--company-primary);
+  }
+
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+  }
+  .comp-table th {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .comp-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .comp-table tr:nth-child(even) { background: var(--light-bg); }
+  .comp-table tr:hover { background: #e8f4fd; }
+
+  @media (max-width: 768px) {
+    .header h1 { font-size: 1.5rem; }
+    .metrics-card { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .nav-center { display: none; }
+    body { padding: 0 16px 60px; }
+    .header { margin: 0 -16px 0; padding: 28px 24px 20px; }
+    .nav-bar { margin: 0 -16px 24px; }
+    .toc { grid-template-columns: 1fr; }
+    .comp-table { font-size: 0.78rem; }
+    .comp-table th, .comp-table td { padding: 6px 8px; }
+  }
+
+  @media print {
+    .nav-bar { display: none; }
+    .header { background: #333; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>UNH Q2 2024 Earnings Call</h1>
+  <div class="meta">
+    <span>Call Date: July 16, 2024</span>
+    <span>Reporting: Q2 2024</span>
+  </div>
+</div>
+<div class="nav-bar">
+  <a href="Q1_2024.html">&larr; Q1 2024</a>
+  <div class="nav-center">
+    <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="Q4_2025.html" class="qbtn">4Q25</a>
+    <a href="Q3_2025.html" class="qbtn">3Q25</a>
+    <a href="Q2_2025.html" class="qbtn">2Q25</a>
+    <a href="Q1_2025.html" class="qbtn">1Q25</a>
+    <a href="Q4_2024.html" class="qbtn">4Q24</a>
+    <a href="Q3_2024.html" class="qbtn">3Q24</a>
+    <a href="Q2_2024.html" class="qbtn current">2Q24</a>
+    <a href="Q1_2024.html" class="qbtn">1Q24</a>
+    <a href="Q4_2023.html" class="qbtn">4Q23</a>
+    <a href="Q3_2023.html" class="qbtn">3Q23</a>
+    <a href="Q2_2023.html" class="qbtn">2Q23</a>
+    <a href="Q1_2023.html" class="qbtn">1Q23</a>
+    <a href="Q4_2022.html" class="qbtn">4Q22</a>
+    <a href="Q3_2022.html" class="qbtn">3Q22</a>
+    <a href="Q2_2022.html" class="qbtn">2Q22</a>
+    <a href="Q1_2022.html" class="qbtn">1Q22</a>
+  </div>
+  <a href="Q3_2024.html">Q3 2024 &rarr;</a>
+</div>
+
+<div class="changes-box">
+  <h3>What Changed vs Q1 2024</h3>
+  <ul>
+    <li><span class="change-tag ct-changed">Changed</span> Adjusted EPS: $27.50–$28.00 (reaffirmed; absorbs $0.60–$0.70/share business disruption) (prior: $27.50–$28.00 (reaffirmed; absorbs $0.30–$0.40/share cyber business disruption))</li>
+    <li><span class="change-tag ct-changed">Changed</span> Optum Revenue: $62.88B (+12% YoY from $56.34B) (prior: $61.32B (+13% YoY from $54.06B))</li>
+    <li><span class="change-tag ct-changed">Changed</span> UnitedHealthcare Revenue: $73.87B (+5% YoY from $70.23B; adjusted $74.09B) (prior: $75.36B (+7% YoY from $70.47B))</li>
+  </ul>
+</div>
+
+<div class="metrics-card">
+  <div class="metric">
+    <div class="metric-label">Adjusted EPS</div>
+    <div class="metric-value">$27.50–$28.00</div>
+    <div class="metric-delta delta-flat">Prior: $27.50–$28.00</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Optum Revenue</div>
+    <div class="metric-value">$62.88B</div>
+    <div class="metric-delta delta-flat">Prior: $61.32B</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">UnitedHealthcare Revenue</div>
+    <div class="metric-value">$73.87B</div>
+    <div class="metric-delta delta-flat">Prior: $75.36B</div>
+  </div>
+</div>
+
+<!-- Full Guidance Content -->
+<div class="content-section">
+  <h3>Full Year 2024 Guidance</h3>
+  <ul>
+    <li><strong>Adjusted EPS:</strong> $27.50–$28.00 (reaffirmed; absorbs $0.60–$0.70/share business disruption)</li>
+    <li><strong>GAAP EPS:</strong> $15.95–$16.40</li>
+    <li><strong>Medical Care Ratio:</strong> Core at upper end of November range (~84.5%); reported ~84.8% including ~30 bps cyber + South American effects</li>
+    <li><strong>OptumHealth Operating Margin:</strong> 7.7%–8.0% (reaffirmed)</li>
+    <li><strong>Cyberattack Full Year Impact:</strong> $1.90–$2.05/share total (up from $1.15–$1.35) - Direct response costs: $1.30–$1.35/share (up from $0.85–$0.95; excluded from adjusted EPS; increase for provider financial support + consumer notification) - Business disruption: $0.60–$0.70/share (up from $0.30–$0.40; included in adjusted EPS)</li>
+    <li><strong>South American Impacts:</strong> ~$8.45B total charges; ~$220M Chile regulatory reduction</li>
+    <li><strong>Provider Support:</strong> >$9B in loans and advanced payments (no cost to providers)</li>
+    <li><strong>H2 Pacing:</strong> Balanced between Q3 and Q4</li>
+    <li><strong>Share Repurchase:</strong> Expect to achieve full year objective from November investor conference</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Long-Term Targets</h3>
+  <ul>
+    <li><strong>EPS Growth Rate:</strong> 13%–16%</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 2024 First Half Performance</h3>
+  <ul>
+    <li><strong>H1 Revenue:</strong> $198.65B (+7% YoY from $184.83B)</li>
+    <li><strong>H1 Adjusted EPS:</strong> $13.71 (+11% YoY from $12.39)</li>
+    <li><strong>H1 Cash Flows from Operations:</strong> $7.89B (Q2 CFO $6.7B or 1.5x net income; lower H1 due to accelerated provider funding)</li>
+    <li><strong>Dividend Increase:</strong> 12% (June; 15th consecutive year of double-digit increases)</li>
+    <li><strong>Cash and Short-Term Investments:</strong> $31.32B</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 2024 UnitedHealthcare Segment</h3>
+  <ul>
+    <li><strong>UnitedHealthcare Revenue:</strong> $73.87B (+5% YoY from $70.23B; adjusted $74.09B)</li>
+    <li><strong>UHC Operating Margin:</strong> 5.4% (adjusted 5.9%)</li>
+    <li><strong>UHC Earnings from Operations:</strong> $4.00B (adjusted $4.37B)</li>
+    <li><strong>Employer & Individual (Domestic):</strong> $18.65B</li>
+    <li><strong>Employer & Individual (Global):</strong> $591M (decline reflects Brazil sale + SA held for sale)</li>
+    <li><strong>Medicare & Retirement:</strong> $34.90B</li>
+    <li><strong>Community & State:</strong> $19.73B</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 2024 Optum Segment</h3>
+  <ul>
+    <li><strong>Optum Revenue:</strong> $62.88B (+12% YoY from $56.34B)</li>
+    <li><strong>Optum Operating Margin:</strong> 6.2% (adjusted 6.8%)</li>
+    <li><strong>Optum Earnings from Operations:</strong> $3.87B (adjusted $4.29B)</li>
+    <li><strong>OptumHealth Revenue:</strong> $27.05B (+13% YoY); operating margin 7.1% (adjusted 7.2%); on track to approach 5M VBC patients by year-end; 75% of all members engaged (vs 62% year-ago)</li>
+    <li><strong>OptumInsight Revenue:</strong> $4.54B (-3% YoY); operating margin 12.0% (adjusted 20.7%); revenue backlog ~$33B (+$1B YoY, -$200M sequentially); Change ~15% of business; most service functionality restored</li>
+    <li><strong>OptumRx Revenue:</strong> $32.42B (+13% YoY); operating margin 4.3%; record client onboarding at 9% lower cost; strong double-digit growth in specialty/infusion/behavioral pharmacy</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 2024 Membership & Growth</h3>
+  <ul>
+    <li><strong>Commercial:</strong> +2.3 million in H1 2024; employers, consumers responding to distinctive offerings; 2025 selling season momentum encouraging</li>
+    <li><strong>Medicare Advantage:</strong> 2025 bid filed with balanced approach; operating comfortably within margin range; prioritizing balanced/durable performance over transitory market share gains</li>
+    <li><strong>Medicaid:</strong> Expect membership to stabilize in H2; visibility into majority of rates for 2024; 7/1 rates shaping up well; expect acuity-rate mismatch to even out through remainder of 2024 and early 2025</li>
+    <li><strong>OptumHealth VBC Patients:</strong> On track to approach 5 million by year-end; 75% member engagement rate (vs 62% year-ago); post-discharge visits reducing readmissions 10% in mature markets</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 2024 Care Patterns & MCR Dynamics</h3>
+  <ul>
+    <li>Full year core MCR (excluding ~30 bps cyber + South American effects): at upper end of November range (~84.5%)</li>
+    <li>Three additional MCR pressures beyond cyber/SA impacts: 1. <strong>MA member mix:</strong> shaped by unusual competitive benefit configurations in marketplace 2. <strong>Medicaid timing mismatch:</strong> between current health status of remaining members and state rate updates; expect to realign in coming months 3. <strong>Provider coding intensity upshift:</strong> believed largely induced by level of care waivers during cyber disruption; reinforced UM protocols April 15; expect impacts to dampen through remainder of year</li>
+    <li>All three factors roughly equivalent in impact</li>
+    <li>Q3 MCR expected ~84%, "very likely a few tens of basis points higher"</li>
+    <li>No favorable prior period reserve development in Q2 (same as Q1)</li>
+    <li>$800M additional IBNR reserves from Q1 still being prudently analyzed</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Change Healthcare / OptumInsight Update</h3>
+  <ul>
+    <li>Most payment, claims, and care provider connectivity restored; some specialty/custom implementations ongoing</li>
+    <li>Revenue backlog ~$33B (-$200M sequentially; some cyber-related attrition)</li>
+    <li>Change Healthcare is ~15% of OptumInsight projected revenue for 2024</li>
+    <li>Ambition: return to baseline performance in 2025 and grow strongly from there</li>
+    <li>New client interest: cyberattack transformed marketplace; providers seeking innovation and security</li>
+    <li>Rebuilt platform is more modern, secure, and capable</li>
+    <li>Business disruption: revenue pacing back taking longer than initially expected; revenues rebuilding as connectivity restores</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>V28 & Medicare Advantage Dynamics</h3>
+  <ul>
+    <li>V28 funding cut: biggest incoming dynamic on MLR at start of year; fundamentally navigating well; year 1 of 3-year cycle</li>
+    <li>2025 MA bid: balanced approach; assumes care patterns and mix at current levels; fully incorporates second of 3-year phased funding cuts; fully attuned to IRA Part D effects</li>
+    <li>Operating comfortably within target MA margin range</li>
+    <li>Prioritizing balanced and durable performance over transitory market share gains</li>
+    <li>Team UHG responding enterprise-wide (not just MA and OptumHealth) with cost management, technology, consumer agenda</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Medicaid Rate-Acuity Mismatch</h3>
+  <ul>
+    <li>Significant disenrollment from redeterminations left higher-acuity remaining members</li>
+    <li>Timing mismatch between current member health status and state rate updates</li>
+    <li>Visibility into majority of 2024 rates; 7/1 rates shaping up well</li>
+    <li>States committed to accurately reflecting acuity change in current and future adjustments</li>
+    <li>Expect mismatch to even out through remainder of 2024 and early 2025</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Provider Coding Intensity</h3>
+  <ul>
+    <li>Upshift in level of care coding patterns following cyberattack</li>
+    <li>Higher mix of inpatient vs observation after April 15 when UM protocols reactivated</li>
+    <li>Believed largely induced by level of care waivers issued during cyber disruption</li>
+    <li>Not reflected in cyberattack direct response costs (included in core results)</li>
+    <li>Being addressed; reinforced utilization management protocols; expect impacts to dampen</li>
+    <li>Awareness of this activity incorporated into 2025 MA bid</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>AI & Technology Efficiency</h3>
+  <ul>
+    <li>Hundreds of AI use case deployments running</li>
+    <li>First wave: existing processes running more quickly, reliably, efficiently</li>
+    <li>Next wave (late 2024-2025): fundamental reimagination of business process; payment integrity as front runner</li>
+    <li>OptumInsight 2025-2027: technology deployment to change decades-old processes</li>
+    <li>OptumRx: record client onboarding at 9% lower cost through digitization</li>
+    <li>OptumHealth: ~40% increase in risk-delegated lives over 2 years with zero headcount increase</li>
+    <li>Expected to generate billions of dollars of efficiency over next several years</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>South American Operations</h3>
+  <ul>
+    <li>Brazil sale completed in Q1 2024</li>
+    <li>Remaining South American operations classified as held for sale (natural step following Brazil)</li>
+    <li>Q2 charges: $1.34B total ($220M Chile regulatory action on industry premium increases dating to 2020; remainder noncash FX translation losses)</li>
+    <li>Chile impact: $220M reduction to premium revenue = ~25 bps MCR impact</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 2024 Actuals (Reported)</h3>
+  <ul>
+    <li><strong>Revenue:</strong> $98.86B (+6% YoY from $92.90B; adjusted $99.08B excluding South American impacts)</li>
+    <li><strong>Premiums:</strong> $76.90B</li>
+    <li><strong>Products Revenue:</strong> $12.21B</li>
+    <li><strong>Services Revenue:</strong> $8.75B</li>
+    <li><strong>Investment and Other Income:</strong> $997M</li>
+    <li><strong>Medical Costs:</strong> $65.46B</li>
+    <li><strong>Medical Care Ratio:</strong> 85.1% (medical costs / premiums; includes ~25 bps from Chile regulatory action + ~40 bps from suspended cyber care management = ~65 bps nonrepeating impacts)</li>
+    <li><strong>Operating Costs:</strong> $13.16B</li>
+    <li><strong>Operating Cost Ratio:</strong> 13.3% (operating costs / total revenues)</li>
+    <li><strong>Earnings from Operations:</strong> $7.88B (adjusted $8.66B, excluding $671M direct cyberattack response costs and $115M South American impacts)</li>
+    <li><strong>Consolidated Operating Margin:</strong> 8.0% (adjusted 8.7%)</li>
+    <li><strong>Net Earnings (attributable):</strong> $4.22B (includes $1.34B South American charges)</li>
+    <li><strong>GAAP Diluted EPS:</strong> $4.54</li>
+    <li><strong>Adjusted Diluted EPS:</strong> $6.80 (+11% YoY from $6.14)</li>
+    <li><strong>Days Claims Payable:</strong> 45.2 (vs 47.1 in Q1; decline from return to normal claims submission patterns + SA reclassification)</li>
+    <li><strong>Cyberattack Total Q2 Impact:</strong> $1,110M ($0.92/share; direct response $776M + business disruption $334M)</li>
+  </ul>
+</div>
+
+<div class="prior-ref" id="priorRef">
+  <div class="prior-ref-header" onclick="var b=document.getElementById('priorBody');b.classList.toggle('open');this.querySelector('.arrow').innerHTML=b.classList.contains('open')?'&#9650;':'&#9660;';">
+    Prior Quarter Reference: Q1 2024
+    <span class="arrow">&#9660;</span>
+  </div>
+  <div class="prior-ref-body" id="priorBody">
+    <div class="metric-grid">
+      <div class="prior-mini"><div class="pm-label">Adjusted EPS</div><div class="pm-value">$27.50–$28.00 (reaffirmed; absorbs $0.30–$0.40/share cyber business disruption)</div></div>
+      <div class="prior-mini"><div class="pm-label">Optum Revenue</div><div class="pm-value">$61.32B (+13% YoY from $54.06B)</div></div>
+      <div class="prior-mini"><div class="pm-label">UnitedHealthcare Revenue</div><div class="pm-value">$75.36B (+7% YoY from $70.47B)</div></div>
+      <div class="prior-mini"><div class="pm-label">Cash from Operations</div><div class="pm-value">~$24B (reduced from original ~$28B expectation due to cyber-related cash timing; ~$4B of deferred cash expected to recover in 2025)</div></div>
+    </div>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q1_2024.html" style="color:var(--blue);">View full Q1 2024 detail &rarr;</a></p>
+  </div>
+</div>
+
+<div class="footer-nav">
+  <a href="Q1_2024.html">&larr; Q1 2024</a>
+  <a href="../comparison.html">Back to Overview</a>
+  <a href="Q3_2024.html">Q3 2024 &rarr;</a>
+</div>
+
+</body>
+</html>

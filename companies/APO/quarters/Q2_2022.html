@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APO Q2 2022 Earnings Call Detail</title>
+<style>
+:root {
+    --company-primary: #003A70;
+    --company-dark: #1a1a2e;
+    --company-accent: #0066B3;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 40px 40px 32px;
+    margin: 0 -24px 0;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .header .meta {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    font-weight: 300;
+  }
+  .header .meta span { margin-right: 24px; }
+
+  .nav-bar {
+    background: var(--company-accent);
+    margin: 0 -24px 32px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    transition: all 0.15s;
+  }
+  .nav-bar a:hover { background: rgba(255,255,255,0.2); }
+  .nav-bar a.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .nav-center {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-center a.qbtn {
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+  }
+  .nav-center a.qbtn.current {
+    background: var(--company-primary);
+    border-color: var(--company-primary);
+  }
+  .nav-center a.qbtn:hover { background: rgba(255,255,255,0.2); }
+  .nav-back {
+    background: rgba(255,255,255,0.15) !important;
+    border-color: rgba(255,255,255,0.35) !important;
+  }
+
+  .metrics-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .metric {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+  .metric-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .metric-value {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+  .metric-delta {
+    font-size: 0.72rem;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+  .delta-up { color: var(--green); }
+  .delta-down { color: var(--red); }
+  .delta-flat { color: var(--text-muted); }
+
+  .changes-box {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 5px solid var(--amber);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .changes-box h3 {
+    font-size: 1rem;
+    color: var(--company-dark);
+    margin-bottom: 10px;
+  }
+  .changes-box ul { list-style: none; padding: 0; }
+  .changes-box li {
+    padding: 5px 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .change-tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .ct-raised { background: #d5f5e3; color: #1e8449; }
+  .ct-lowered { background: #fadbd8; color: #c0392b; }
+  .ct-changed { background: #d6eaf8; color: #2471a3; }
+  .ct-new { background: #e8daef; color: #6c3483; }
+  .ct-maintained { background: #fdebd0; color: #b9770e; }
+
+  .content-section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .content-section h3 {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .content-section ul {
+    padding: 14px 18px 14px 36px;
+    margin: 0;
+  }
+  .content-section li {
+    padding: 3px 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .content-section li strong { color: var(--company-dark); }
+
+  .prior-ref {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 40px;
+    overflow: hidden;
+  }
+  .prior-ref-header {
+    background: var(--light-bg);
+    padding: 12px 18px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--company-dark);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .prior-ref-header:hover { background: #eef2f7; }
+  .prior-ref-body { padding: 18px; display: none; }
+  .prior-ref-body.open { display: block; }
+  .prior-ref-body .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .prior-mini {
+    background: var(--light-bg);
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .prior-mini .pm-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .prior-mini .pm-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border);
+  }
+  .footer-nav a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .footer-nav a:hover { text-decoration: underline; }
+
+  /* Comparison page styles */
+  .toc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .toc a {
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 4px 0;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  .comp-section {
+    margin-bottom: 40px;
+  }
+  .comp-section h2 {
+    font-size: 1.2rem;
+    color: var(--company-dark);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--company-primary);
+  }
+
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+  }
+  .comp-table th {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .comp-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .comp-table tr:nth-child(even) { background: var(--light-bg); }
+  .comp-table tr:hover { background: #e8f4fd; }
+
+  @media (max-width: 768px) {
+    .header h1 { font-size: 1.5rem; }
+    .metrics-card { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .nav-center { display: none; }
+    body { padding: 0 16px 60px; }
+    .header { margin: 0 -16px 0; padding: 28px 24px 20px; }
+    .nav-bar { margin: 0 -16px 24px; }
+    .toc { grid-template-columns: 1fr; }
+    .comp-table { font-size: 0.78rem; }
+    .comp-table th, .comp-table td { padding: 6px 8px; }
+  }
+
+  @media print {
+    .nav-bar { display: none; }
+    .header { background: #333; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>APO Q2 2022 Earnings Call</h1>
+  <div class="meta">
+    <span>Call Date: August 3, 2022</span>
+    <span>Reporting: Q2 2022</span>
+  </div>
+</div>
+<div class="nav-bar">
+  <a href="Q1_2022.html">&larr; Q1 2022</a>
+  <div class="nav-center">
+    <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="Q4_2025.html" class="qbtn">4Q25</a>
+    <a href="Q3_2025.html" class="qbtn">3Q25</a>
+    <a href="Q2_2025.html" class="qbtn">2Q25</a>
+    <a href="Q1_2025.html" class="qbtn">1Q25</a>
+    <a href="Q4_2024.html" class="qbtn">4Q24</a>
+    <a href="Q3_2024.html" class="qbtn">3Q24</a>
+    <a href="Q2_2024.html" class="qbtn">2Q24</a>
+    <a href="Q1_2024.html" class="qbtn">1Q24</a>
+    <a href="Q4_2023.html" class="qbtn">4Q23</a>
+    <a href="Q3_2023.html" class="qbtn">3Q23</a>
+    <a href="Q2_2023.html" class="qbtn">2Q23</a>
+    <a href="Q1_2023.html" class="qbtn">1Q23</a>
+    <a href="Q4_2022.html" class="qbtn">4Q22</a>
+    <a href="Q3_2022.html" class="qbtn">3Q22</a>
+    <a href="Q2_2022.html" class="qbtn current">2Q22</a>
+    <a href="Q1_2022.html" class="qbtn">1Q22</a>
+  </div>
+  <a href="Q3_2022.html">Q3 2022 &rarr;</a>
+</div>
+
+<div class="changes-box">
+  <h3>What Changed vs Q1 2022</h3>
+  <ul>
+    <li><span class="change-tag ct-changed">Changed</span> Inflows: $36 billion ($24B asset management + $12B retirement services) (prior: $31 billion in Q1 ($91 billion LTM))</li>
+  </ul>
+</div>
+
+<div class="metrics-card">
+  <div class="metric" style="grid-column: 1 / -1; background: linear-gradient(135deg, var(--company-dark), var(--company-accent)); color: #fff; border: none; padding: 8px 14px;">
+    <div class="metric-label" style="color: rgba(255,255,255,0.7);">Guidance For</div>
+    <div class="metric-value" style="color: #fff; font-size: 1rem;">H2 2022 & Beyond</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Inflows</div>
+    <div class="metric-value">$36 billion</div>
+    <div class="metric-delta delta-flat">Prior: $31 billion in Q1</div>
+  </div>
+</div>
+
+<!-- Full Guidance Content -->
+<div class="content-section">
+  <h3>Forward Guidance</h3>
+</div>
+<div class="content-section">
+  <h3>Quarterly Guidance (H2 2022 & Beyond)</h3>
+  <ul>
+    <li><strong>FRE:</strong> "Expect FRE to accelerate in the back half of the year and into '23"</li>
+    <li><strong>Fund X:</strong> $13B committed (>half of $25B target); investment period commencement expected Q4 2022; all capital raised after commencement earns catch-up management fees</li>
+    <li><strong>Transaction Fees H2:</strong> Stronger vs H1 from ACS business</li>
+    <li><strong>SRE:</strong> Rate benefit "to continue to ramp through SRE"</li>
+    <li><strong>Monetizations:</strong> "Light in the back half of the year" given weak public markets</li>
+    <li><strong>PII 2022:</strong> Likely below $1/share average target given continued weakness in public markets</li>
+    <li><strong>Expenses H2:</strong> "Continue to increase as we near the end of our accelerated growth phase"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Full Year 2022 Guidance</h3>
+  <ul>
+    <li><strong>FRE:</strong> $2.35/share — "highly confident in meeting" (lower H1 growth, higher H2)</li>
+    <li><strong>Organic Inflows:</strong> Meeting/exceeding $80B target</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>2023 Guidance</h3>
+  <ul>
+    <li><strong>Fee-Related Revenue Growth:</strong> Expected to exceed 20% (broad-based momentum + operating leverage)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Long-Term Targets (5-Year Plan, reiterated)</h3>
+  <ul>
+    <li><strong>Doubling AUM:</strong> "Well within our reach"</li>
+    <li><strong>Doubling Earnings:</strong> "Well within our reach"</li>
+    <li><strong>$15 Billion Cash Flow Generation:</strong> Over 5-year period</li>
+    <li><strong>Capital Allocation:</strong> $5B base dividend, $5B growth investments, $5B opportunistic/buybacks</li>
+    <li><strong>AAA Potential:</strong> "Largest fund across the Apollo platform by this time next year"</li>
+    <li><strong>Origination Platforms:</strong> Continue scaling (fleet at $3B/year origination)</li>
+    <li><strong>LDTI Accounting Change:</strong> "Do not expect material effect on results or capital levels"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 2022 AUM & Flows</h3>
+  <ul>
+    <li><strong>Total Inflows:</strong> $36 billion ($24B asset management + $12B retirement services)</li>
+    <li><strong>Inflows Would-Be Total:</strong> ~$50 billion if Fund X first close ($13B) had been included</li>
+    <li><strong>Fee-Generating AUM:</strong> +$5 billion sequentially</li>
+    <li><strong>AUM Sequential Bridge:</strong> +$36B inflows, -$16B unrealized depreciation ($11B Athora), -$8B normal outflows, -$7B realizations</li>
+    <li><strong>LTM Inflows:</strong> Strong momentum continuing</li>
+    <li><strong>H2 Identified Inflows:</strong> ~$20 billion (before organic growth from Athene and AM fundraising)</li>
+    <li><strong>Dry Powder:</strong> $50 billion across yield, hybrid, equity strategies</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 2022 Retirement Services Metrics</h3>
+  <ul>
+    <li><strong>Net Spread:</strong> 95 bps (as-reported)</li>
+    <li><strong>Normalized Net Spread:</strong> 115 bps (+7 bps QoQ, primarily from higher floating rate income)</li>
+    <li><strong>Pretax Net Spread:</strong> 110 bps</li>
+    <li><strong>Alternative Investment Return:</strong> 6% annualized (vs S&P 500 -66% annualized); H1 average: 11% - Apollo/managed fund investments: 8% annualized (real estate strength) - Strategic origination platforms: 7% annualized - Retirement services investments: 3% annualized (drag from one public position)</li>
+    <li><strong>Gross Organic Inflows (Retirement):</strong> $12.0 billion — record - Retail: $3.7B (record; applications nearly doubling YoY); Flow reinsurance: $1.0B; Funding agreements: $1.8B; PGA: $5.5B</li>
+    <li><strong>Net Flows:</strong> $7.1 billion</li>
+    <li><strong>Net Invested Assets:</strong> $189.3 billion</li>
+    <li><strong>Gross Invested Assets:</strong> $229.5 billion</li>
+    <li><strong>Athene Excess Equity Liquidity:</strong> $3.2 billion; ~$8 billion cash in portfolio</li>
+    <li><strong>Athene Cash Upstream to Apollo:</strong> ~$750 million/year (~$188M/quarter, evenly distributed)</li>
+    <li><strong>Athene Portfolio:</strong> 95%+ fixed income, 90%+ investment grade; ~6% alternatives (no plans to change)</li>
+    <li><strong>SRE Correlation with FRE:</strong> >90% over past 8 years</li>
+    <li><strong>Historical Credit Losses:</strong> Single-digit bps per annum</li>
+    <li><strong>Athene/Athora AUM Dynamics:</strong> Higher rates/wider spreads temporarily reduce AUM but do not impact profitability</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 2022 Ratings Upgrades</h3>
+  <ul>
+    <li><strong>Athene:</strong> A+ (S&P), A+ (Fitch — upgraded from A in May), A1 (Moody's — new, assigned July)</li>
+    <li><strong>Apollo Asset Management:</strong> A2 (Moody's — new, assigned July)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 2022 Deployment & Origination</h3>
+  <ul>
+    <li><strong>Gross Deployment:</strong> $40 billion ($175B LTM)</li>
+    <li><strong>Origination Volume:</strong> $21 billion; $100 billion YTD (matching Investor Day LTM target)</li>
+    <li><strong>Large-Cap Direct Lending Spreads:</strong> Exceeding 650 bps over SOFR on new issues</li>
+    <li><strong>Large Transactions YTD through July:</strong> 11 transactions of $1 billion+ committed</li>
+    <li><strong>CLOs Issued YTD:</strong> 9; purchased $1B+ IG CLO tranches at 8-10% yields (AA-AAA risk)</li>
+    <li><strong>Notable Transaction:</strong> New Fortress Energy $2B financing (first fully financed debt+equity one-stop solution)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 2022 Investment Performance</h3>
+  <ul>
+    <li><strong>PE Outperformance vs S&P 500:</strong> +1,100 bps in Q2; +2,200 bps YTD</li>
+    <li><strong>Direct Origination Strategy:</strong> +3% in Q2</li>
+    <li><strong>Hybrid Value:</strong> +1% in Q2 (Cohort 5 final close, ~$2B raised)</li>
+    <li><strong>Mid-Market Lending:</strong> 16% ROE (vs low teens historically); 17 new deals, 12 new relationships in June; H1 origination $9B (+25% YoY)</li>
+    <li><strong>Fund IX:</strong> ~$1 billion remaining capital</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 2022 Capital & Balance Sheet</h3>
+  <ul>
+    <li><strong>Share Repurchase:</strong> ~$230 million (4.3M shares, opportunistic buyback authorization)</li>
+    <li><strong>Shares Issued (Griffin):</strong> 3.9 million</li>
+    <li><strong>Net Balance Sheet Value:</strong> $2.1 billion (~$3.50/share), including ~$2B cash</li>
+    <li><strong>Dividend:</strong> $0.40/share (fixed)</li>
+    <li><strong>Share Repurchase Program:</strong> $2.5 billion total ($1.5B opportunistic + $1.0B dilution offset)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 2022 Product Launches & Platforms</h3>
+  <ul>
+    <li><strong>AAA (Apollo Aligned Alternatives):</strong> Launched with $15B committed - $10B from Athene balance sheet, $1.5B from Sumi Trust, remainder from Asian institution + HNW money manager - 180 positions curated over 13 years; equity replacement product (benchmarks vs S&P) - Institutional: 5-year lock, lowest fees; Retail: 5% quarterly liquidity at NAV, slightly higher fees - Athene expected to grow from $10B to $20B over 5 years</li>
+    <li><strong>S3 (Sponsor & Secondary Solutions):</strong> Launched with $4B commitments - ADIA cornerstone; GP/LP solutions, secondaries, NAV loans, GP lending/staking - Already committed/deployed $13B+ in last 12 months</li>
+    <li><strong>Asia Pacific Credit:</strong> $1.25B launch ($500M Hostplus anchor from Australia)</li>
+    <li><strong>Griffin Real Estate Interval Fund:</strong> ~$7B AUM; integration complete</li>
+    <li><strong>ADS (Apollo Debt Solutions BDC):</strong> ~$1B inflows in Q2, <$2M redemptions; >50% in directly originated loans</li>
+    <li><strong>AINV (Apollo Investment Corp):</strong> Transforming to pure-play senior secured mid-market BDC; fee reduction effective January 2023</li>
+    <li><strong>Retail Products:</strong> ~9 perpetual products now (up from 3-4 at Investor Day)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 2022 Platform Growth</h3>
+  <ul>
+    <li><strong>Wheels Donlen/LeasePlan Fleet Platform:</strong> Pro forma AUM >$7B by year-end (from $2B in Q1 2021); ~$3B annual originations expected</li>
+    <li><strong>Aqua:</strong> Acquisition closed (home improvement/solar origination platform)</li>
+    <li><strong>ADIP Successor:</strong> Expected raise of $3.5-5 billion (vs ADIP 1 at $3.25B)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 2022 Headcount</h3>
+  <ul>
+    <li>Nearly 100 new hires in Q2</li>
+    <li>Key hires: Head of Family Office, Head of Insurance Marketing, Head of Digital Assets</li>
+    <li>Pace of hiring expected to slow — "vast scaling largely completed"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Athora European Expansion</h3>
+  <ul>
+    <li>AXA Germany transaction announced: ~$19B annuities portfolio, expected close by end of 2023</li>
+    <li>Germany is Europe's second largest retirement services market (~$1.2 trillion reserves)</li>
+    <li>Italy deal closed this week: adds ~$5 billion incremental fee-paying AUM</li>
+    <li>Mike Wells (former Prudential plc CEO) appointed Athora Group CEO</li>
+    <li>Sizable capital raise expected H2 2022; Athene to participate as anchor investor</li>
+    <li>Positioned as "premier consolidator in the European market"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Capital Solutions</h3>
+  <ul>
+    <li>Record quarterly transaction fees: $103 million</li>
+    <li>Zero hung deals, zero losses — "clean book"</li>
+    <li>Mubadala partnership augmenting execution scale</li>
+    <li>Pipeline growing — "tremendous deal flow" as traditional financing steps back</li>
+    <li>Collapse of growth equity markets creating hybrid/preferred equity opportunities</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Credit Market Positioning</h3>
+  <ul>
+    <li>Top of capital structure, senior secured positioning driving outperformance</li>
+    <li>BBB-rated CLO tranches can withstand ~11% annualized default rate for 5 years without impairment</li>
+    <li>Athene balance sheet showing no signs of stress from credit risk or unexpected withdrawals</li>
+    <li>Floating rate exposure continues to benefit from rising rates</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 2022 Actuals (Reported)</h3>
+  <ul>
+    <li><strong>Fee-Related Earnings (FRE):</strong> $341 million ($0.57/share) — record quarter; +7% YoY</li>
+    <li><strong>Spread-Related Earnings (SRE):</strong> $442 million ($0.74/share)</li>
+    <li><strong>Normalized SRE:</strong> $535 million ($0.89/share) — record; +10% QoQ</li>
+    <li><strong>Fee & Spread Related Earnings (Normalized):</strong> $876 million</li>
+    <li><strong>Principal Investing Income (PII):</strong> $20 million ($0.03/share)</li>
+    <li><strong>Adjusted Net Income (ANI):</strong> $566 million ($0.94/share)</li>
+    <li><strong>Normalized ANI:</strong> $640 million</li>
+    <li><strong>Total AUM:</strong> $515 billion — record; +9% YoY</li>
+    <li><strong>Management Fees:</strong> $521.9 million (includes $16M from Griffin acquisition)</li>
+    <li><strong>Advisory and Transaction Fees:</strong> $103.1 million — record quarterly</li>
+    <li><strong>Fee-Related Performance Fees:</strong> $11.7 million</li>
+    <li><strong>Fee-Related Compensation:</strong> -$187.2 million</li>
+    <li><strong>Non-Compensation Expenses:</strong> -$108.4 million</li>
+    <li><strong>Realized Performance Fees:</strong> $151 million</li>
+    <li><strong>H1 PII Comp Ratio:</strong> 57% (trending toward 60-70% long-term target)</li>
+    <li><strong>GAAP EPS:</strong> -$3.53 (unrealized investment losses from rate moves)</li>
+    <li><strong>Fee Revenue Composition YTD:</strong> ~85% management fees, ~2% fee-related performance fees</li>
+    <li><strong>Market Sensitivity on Management Fees:</strong> ~1% drag despite -16% equity / -12% treasury selloff</li>
+  </ul>
+</div>
+
+<div class="prior-ref" id="priorRef">
+  <div class="prior-ref-header" onclick="var b=document.getElementById('priorBody');b.classList.toggle('open');this.querySelector('.arrow').innerHTML=b.classList.contains('open')?'&#9650;':'&#9660;';">
+    Prior Quarter Reference: Q1 2022
+    <span class="arrow">&#9660;</span>
+  </div>
+  <div class="prior-ref-body" id="priorBody">
+    <div class="metric-grid">
+      <div class="prior-mini"><div class="pm-label">Inflows</div><div class="pm-value">$31 billion in Q1 ($91 billion LTM)</div></div>
+    </div>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q1_2022.html" style="color:var(--blue);">View full Q1 2022 detail &rarr;</a></p>
+  </div>
+</div>
+
+<div class="footer-nav">
+  <a href="Q1_2022.html">&larr; Q1 2022</a>
+  <a href="../comparison.html">Back to Overview</a>
+  <a href="Q3_2022.html">Q3 2022 &rarr;</a>
+</div>
+
+</body>
+</html>

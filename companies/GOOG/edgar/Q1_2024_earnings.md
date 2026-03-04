@@ -1,0 +1,266 @@
+# Alphabet Inc. — Q1_2024 Earnings Release
+
+**Ticker:** GOOG
+**Filing Date:** 2024-04-25
+**Accession:** 0001652044-24-000047
+**Source:** [SEC EDGAR](https://www.sec.gov/Archives/edgar/data/1652044/000165204424000047/0001652044-24-000047-index.htm)
+
+## Key Metrics (XBRL)
+
+| Metric | Value | Units | Source |
+|--------|------:|-------|--------|
+| Cash & Equivalents | $24.49B | USD | 10-Q |
+| Comprehensive Income | $23.23B | USD | 10-Q |
+| EPS (Basic) | 2 | USD/shares | 10-Q |
+| EPS (Diluted) | 2 | USD/shares | 10-Q |
+| Income Tax Expense | $4.65B | USD | 10-Q |
+| Net Income | $23.66B | USD | 10-Q |
+| Net Income to Common | $23.66B | USD | 10-Q |
+| Operating Income | $25.47B | USD | 10-Q |
+| Revenue | $80.54B | USD | 10-Q |
+| Shares Outstanding | 12,381.0M | shares | 10-Q |
+| Total Assets | $407.35B | USD | 10-Q |
+| Total Equity | $292.84B | USD | 10-Q |
+| Total Liabilities | $114.51B | USD | 10-Q |
+
+## Financial Tables (from Exhibits)
+
+### 
+
+|  | Quarter Ended March 31, |  |  |
+|  | 2023 |  | 2024 |  |  |  |  |
+|  | (unaudited) |  |  |  |  |
+| Revenues |  | 69787 |  |  |  | 80539 |  |  |  |  |  |
+| Change in revenues year over year | 3 | % |  | 15 | % |  |  |  |  |
+| Change in constant currency revenues year over year | 6 | % |  | 16 | % |  |  |  |  |
+| Operating income |  | 17415 |  |  |  | 25472 |  |  |  |  |  |
+| Operating margin | 25 | % |  | 32 | % |  |  |  |  |
+| Other income (expense), net |  | 790 |  |  |  | 2843 |  |  |  |  |  |
+| Net income |  | 15051 |  |  |  | 23662 |  |  |  |  |  |
+| Diluted EPS |  | 1.17 |  |  |  | 1.89 |  |  |  |  |  |
+
+### 
+
+|  | Quarter Ended March 31, |  |  |
+|  | 2023 |  | 2024 |  |  |  |  |
+| Google Search & other |  | 40359 |  |  |  | 46156 |  |  |  |  |  |
+| YouTube ads | 6693 |  |  | 8090 |  |  |  |  |  |
+| Google Network | 7496 |  |  | 7413 |  |  |  |  |  |
+| Google advertising | 54548 |  |  | 61659 |  |  |  |  |  |
+| Google subscriptions, platforms, and devices | 7413 |  |  | 8739 |  |  |  |  |  |
+| Google Services total | 61961 |  |  | 70398 |  |  |  |  |  |
+| Google Cloud | 7454 |  |  | 9574 |  |  |  |  |  |
+| Other Bets | 288 |  |  | 495 |  |  |  |  |  |
+| Hedging gains (losses) | 84 |  |  | 72 |  |  |  |  |  |
+| Total revenues |  | 69787 |  |  |  | 80539 |  |  |  |  |  |
+| Total TAC |  | 11721 |  |  |  | 12946 |  |  |  |  |  |
+| Number of employees | 190711 |  |  | 180895 |  |  |  |
+
+### 
+
+|  | Quarter Ended March 31, |
+|  | 2023 |  | 2024 |
+| Operating income (loss): |  |  |  |
+| Google Services |  | 21737 |  |  |  | 27897 |  |
+| Google Cloud | 191 |  |  |  | 900 |  |
+| Other Bets | -1225 |  |  |  | -1020 |  |
+| Alphabet-level activities | -3288 |  |  |  | -2305 |  |
+| Total income from operations |  | 17415 |  |  |  | 25472 |  |
+
+### 
+
+|  | As of December 31, 2023 |  | As of March 31, 2024 |
+|  |  |  | (unaudited) |
+| Assets |  |  |  |
+| Current assets: |  |  |  |
+| Cash and cash equivalents |  | 24048 |  |  |  | 24493 |  |
+| Marketable securities | 86868 |  |  | 83597 |  |
+| Total cash, cash equivalents, and marketable securities | 110916 |  |  | 108090 |  |
+| Accounts receivable, net | 47964 |  |  | 44552 |  |
+| Other current assets | 12650 |  |  | 12829 |  |
+| Total current assets | 171530 |  |  | 165471 |  |
+| Non-marketable securities | 31008 |  |  | 33994 |  |
+| Deferred income taxes | 12169 |  |  | 11687 |  |
+| Property and equipment, net | 134345 |  |  | 143182 |  |
+| Operating lease assets | 14091 |  |  | 13768 |  |
+| Goodwill | 29198 |  |  | 29183 |  |
+| Other non-current assets | 10051 |  |  | 10065 |  |
+| Total assets |  | 402392 |  |  |  | 407350 |  |
+| Liabilities and Stockholders’ Equity |  |  |  |
+| Current liabilities: |  |  |  |
+| Accounts payable |  | 7493 |  |  |  | 6198 |  |
+| Accrued compensation and benefits | 15140 |  |  | 9703 |  |
+| Accrued expenses and other current liabilities | 46168 |  |  | 48603 |  |
+| Accrued revenue share | 8876 |  |  | 8520 |  |
+| Deferred revenue | 4137 |  |  | 3973 |  |
+| Total current liabilities | 81814 |  |  | 76997 |  |
+| Long-term debt | 13253 |  |  | 13228 |  |
+| Deferred revenue, non-current | 911 |  |  | 921 |  |
+| Income taxes payable, non-current | 8474 |  |  | 9234 |  |
+| Deferred income taxes | 485 |  |  | 486 |  |
+| Operating lease liabilities | 12460 |  |  | 11957 |  |
+| Other long-term liabilities | 1616 |  |  | 1683 |  |
+| Total liabilities | 119013 |  |  | 114506 |  |
+| Commitments and contingencies |  |  |  |
+| Stockholders’ equity: |  |  |  |
+| Preferred stock, 0.001 par value per share, 100 shares authorized; no shares issued and outstanding | 0 |  |  | 0 |  |
+| Class A, Class B, and Class C stock and additional paid-in capital, 0.001 par value per share: 300,000 shares authorized (Class A 180,000, Class B 60,000, Class C 60,000); 12,460 (Class A 5,899, Class B 870, Class C 5,691) and 12,381 (Class A 5,879, Class B 867, Class C 5,635) shares issued and outstanding | 76534 |  |  | 77913 |  |
+| Accumulated other comprehensive income (loss) | -4402 |  |  | -4839 |  |
+| Retained earnings | 211247 |  |  | 219770 |  |
+| Total stockholders’ equity | 283379 |  |  | 292844 |  |
+| Total liabilities and stockholders’ equity |  | 402392 |  |  |  | 407350 |  |
+
+### 
+
+|  | Quarter Ended March 31, |  |  |
+|  | 2023 |  | 2024 |  |  |  |  |
+| Revenues |  | 69787 |  |  |  | 80539 |  |  |  |  |  |
+| Costs and expenses: |  |  |  |  |  |  |  |
+| Cost of revenues | 30612 |  |  | 33712 |  |  |  |  |  |
+| Research and development | 11468 |  |  | 11903 |  |  |  |  |  |
+| Sales and marketing | 6533 |  |  | 6426 |  |  |  |  |  |
+| General and administrative | 3759 |  |  | 3026 |  |  |  |  |  |
+| Total costs and expenses | 52372 |  |  | 55067 |  |  |  |  |  |
+| Income from operations | 17415 |  |  | 25472 |  |  |  |  |  |
+| Other income (expense), net | 790 |  |  | 2843 |  |  |  |  |  |
+| Income before income taxes | 18205 |  |  | 28315 |  |  |  |  |  |
+| Provision for income taxes | 3154 |  |  | 4653 |  |  |  |  |  |
+| Net income |  | 15051 |  |  |  | 23662 |  |  |  |  |  |
+| Basic earnings per share of Class A, Class B, and Class C stock |  | 1.18 |  |  |  | 1.91 |  |  |  |  |  |
+| Diluted earnings per share of Class A, Class B, and Class C stock |  | 1.17 |  |  |  | 1.89 |  |  |  |  |  |
+| Number of shares used in basic earnings per share calculation | 12781 |  |  | 12415 |  |  |  |  |  |
+| Number of shares used in diluted earnings per share calculation | 12823 |  |  | 12527 |  |  |  |  |  |
+
+### 
+
+|  | Quarter Ended March 31, |  |  |
+|  | 2023 |  | 2024 |  |  |  |  |
+| Operating activities |  |  |  |  |  |  |  |
+| Net income |  | 15051 |  |  |  | 23662 |  |  |  |  |  |
+| Adjustments: |  |  |  |  |  |  |  |
+| Depreciation of property and equipment | 2635 |  |  | 3413 |  |  |  |  |  |
+| Stock-based compensation expense | 5284 |  |  | 5264 |  |  |  |  |  |
+| Deferred income taxes | -1854 |  |  | 419 |  |  |  |  |  |
+| Loss (gain) on debt and equity securities, net | -84 |  |  | -1781 |  |  |  |  |  |
+| Other | 1104 |  |  | 334 |  |  |  |  |  |
+| Changes in assets and liabilities, net of effects of acquisitions: |  |  |  |  |  |  |  |
+| Accounts receivable, net | 4454 |  |  | 3167 |  |  |  |  |  |
+| Income taxes, net | 4069 |  |  | 3011 |  |  |  |  |  |
+| Other assets | -746 |  |  | -1000 |  |  |  |  |  |
+| Accounts payable | -1105 |  |  | -2124 |  |  |  |  |  |
+| Accrued expenses and other liabilities | -4496 |  |  | -5054 |  |  |  |  |  |
+| Accrued revenue share | -602 |  |  | -322 |  |  |  |  |  |
+| Deferred revenue | -201 |  |  | -141 |  |  |  |  |  |
+| Net cash provided by operating activities | 23509 |  |  | 28848 |  |  |  |  |  |
+| Investing activities |  |  |  |  |  |  |  |
+| Purchases of property and equipment | -6289 |  |  | -12012 |  |  |  |  |  |
+| Purchases of marketable securities | -14227 |  |  | -20684 |  |  |  |  |  |
+| Maturities and sales of marketable securities | 18327 |  |  | 24985 |  |  |  |  |  |
+| Purchases of non-marketable securities | -626 |  |  | -1206 |  |  |  |  |  |
+| Maturities and sales of non-marketable securities | 36 |  |  | 313 |  |  |  |  |  |
+| Acquisitions, net of cash acquired, and purchases of intangible assets | -42 |  |  | -61 |  |  |  |  |  |
+| Other investing activities | -125 |  |  | 101 |  |  |  |  |  |
+| Net cash used in investing activities | -2946 |  |  | -8564 |  |  |  |  |  |
+| Financing activities |  |  |  |  |  |  |  |
+| Net payments related to stock-based award activities | -1989 |  |  | -2929 |  |  |  |  |  |
+| Repurchases of stock | -14557 |  |  | -15696 |  |  |  |  |  |
+| Proceeds from issuance of debt, net of costs | 6927 |  |  | 1982 |  |  |  |  |  |
+| Repayments of debt | -6952 |  |  | -3079 |  |  |  |  |  |
+| Proceeds from sale of interest in consolidated entities, net | 3 |  |  | 8 |  |  |  |  |  |
+| Net cash used in financing activities | -16568 |  |  | -19714 |  |  |  |  |  |
+| Effect of exchange rate changes on cash and cash equivalents | 50 |  |  | -125 |  |  |  |  |  |
+| Net increase (decrease) in cash and cash equivalents | 4045 |  |  | 445 |  |  |  |  |  |
+| Cash and cash equivalents at beginning of period | 21879 |  |  | 24048 |  |  |  |  |  |
+| Cash and cash equivalents at end of period |  | 25924 |  |  |  | 24493 |  |  |  |  |  |
+
+### 
+
+|  | Quarter Ended March 31, |
+|  | 2023 |  | 2024 |
+| Revenues: |  |  |  |
+| Google Services |  | 61961 |  |  |  | 70398 |  |
+| Google Cloud | 7454 |  |  | 9574 |  |
+| Other Bets | 288 |  |  | 495 |  |
+| Hedging gains (losses) | 84 |  |  | 72 |  |
+| Total revenues |  | 69787 |  |  |  | 80539 |  |
+| Operating income (loss): |  |  |  |
+| Google Services |  | 21737 |  |  |  | 27897 |  |
+| Google Cloud | 191 |  |  |  | 900 |  |
+| Other Bets | -1225 |  |  |  | -1020 |  |
+| Alphabet-level activities | -3288 |  |  |  | -2305 |  |
+| Total income from operations |  | 17415 |  |  |  | 25472 |  |
+
+### 
+
+|  | Quarter Ended March 31, |
+|  | 2023 |  | 2024 |
+| Interest income |  | 797 |  |  |  | 1061 |  |
+| Interest expense | -80 |  |  | -94 |  |
+| Foreign currency exchange gain (loss), net | -210 |  |  | -238 |  |
+| Gain (loss) on debt securities, net | -293 |  |  | -462 |  |
+| Gain (loss) on equity securities, net | 377 |  |  | 2243 |  |
+| Performance fees | 118 |  |  | 104 |  |
+| Income (loss) and impairment from equity method investments, net | -51 |  |  | -26 |  |
+| Other | 132 |  |  | 255 |  |
+| Other income (expense), net |  | 790 |  |  |  | 2843 |  |
+
+### 
+
+|  |  |  |  |  | Quarter Ended March 31, 2024 |
+|  |  |  |  |  |  |  |  |  | % Change from Prior Period |
+|  | Quarter Ended March 31, |  | Less FX Effect |  | Constant Currency Revenues |  | As Reported |  | Less Hedging Effect |  | Less FX Effect |  | Constant Currency Revenues |
+|  | 2023 |  | 2024 |  |  |  |  |  |  |
+| United States |  | 32864 |  |  |  | 38737 |  |  |  | 0 |  |  |  | 38737 |  |  | 18 | % |  |  |  | 0 | % |  | 18 | % |
+| EMEA | 21078 |  |  | 23788 |  |  | 204 |  |  | 23584 |  |  | 13 | % |  |  |  | 1 | % |  | 12 | % |
+| APAC | 11681 |  |  | 13289 |  |  | -439 |  |  | 13728 |  |  | 14 | % |  |  |  |  | % |  | 18 | % |
+| Other Americas | 4080 |  |  | 4653 |  |  | -152 |  |  | 4805 |  |  | 14 | % |  |  |  |  | % |  | 18 | % |
+| Revenues, excluding hedging effect | 69703 |  |  | 80467 |  |  | -387 |  |  | 80854 |  |  | 15 | % |  |  |  |  | % |  | 16 | % |
+| Hedging gains (losses) | 84 |  |  | 72 |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Total revenues |  | 69787 |  |  |  | 80539 |  |  |  |  |  | 80854 |  |  | 15 | % |  | 0 | % |  |  | % |  | 16 | % |
+
+### 
+
+|  |  |  |  |  | Quarter Ended March 31, 2024 |
+|  |  |  |  |  |  |  |  |  | % Change from Prior Period |
+|  | Quarter Ended |  | Less FX Effect |  | Constant Currency Revenues |  | As Reported |  | Less Hedging Effect |  | Less FX Effect |  | Constant Currency Revenues |
+|  | December 31, 2023 |  | March 31, 2024 |  |  |  |  |  |  |
+| United States |  | 41995 |  |  |  | 38737 |  |  |  | 0 |  |  |  | 38737 |  |  |  | % |  |  |  | 0 | % |  |  | % |
+| EMEA | 25010 |  |  | 23788 |  |  | 360 |  |  | 23428 |  |  |  | % |  |  |  | 1 | % |  |  | % |
+| APAC | 13979 |  |  | 13289 |  |  | 85 |  |  | 13204 |  |  |  | % |  |  |  | 1 | % |  |  | % |
+| Other Americas | 5176 |  |  | 4653 |  |  | -72 |  |  | 4725 |  |  | -10 | % |  |  |  |  | % |  |  | % |
+| Revenues, excluding hedging effect | 86160 |  |  | 80467 |  |  | 373 |  |  | 80094 |  |  |  | % |  |  |  | 0 | % |  |  | % |
+| Hedging gains (losses) | 150 |  |  | 72 |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Total revenues |  | 86310 |  |  |  | 80539 |  |  |  |  |  | 80094 |  |  |  | % |  | 0 | % |  | 0 | % |  |  | % |
+
+### 
+
+|  |  |  |  |  | Quarter Ended March 31, 2023 |
+|  | Quarter Ended March 31, |  |  |  |  |  | % Change from Prior Period |
+|  |  | Less FX Effect |  | Constant Currency Revenues |  | As Reported |  | Less Hedging Effect |  | Less FX Effect |  | Constant Currency Revenues |
+|  | 2022 |  | 2023 |  |  |  |  |  |  |
+| Revenues excluding hedging effect |  | 67733 |  |  |  | 69703 |  |  |  | -2174 |  |  |  | 71877 |  |  | 3 | % |  |  |  |  | % |  | 6 | % |
+| Hedging gains (losses) |  | 278 |  |  |  | 84 |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Total revenues |  | 68011 |  |  |  | 69787 |  |  |  |  |  | 71877 |  |  | 3 | % |  | 0 | % |  |  | % |  | 6 | % |
+
+### 
+
+|  | Quarter Ended March 31, |  |  |
+|  | 2023 |  | 2024 |  | % Change |
+| Revenues |  | 69787 |  |  |  | 80539 |  |  |  |
+| Other cost of revenues |  | 18891 |  |  |  | 20766 |  |  | 10 | % |
+| Less: severance and related charges | -461 |  |  | -153 |  |  |  |
+| Less: office space charges | -220 |  |  | 0 |  |  |  |
+| Other cost of revenues, excluding severance and related and office space charges |  | 18210 |  |  |  | 20613 |  |  | 13 | % |
+| Operating expenses |  | 21760 |  |  |  | 21355 |  |  |  | % |
+| Less: severance and related charges | -1533 |  |  | -563 |  |  |  |
+| Less: office space charges | -344 |  |  | 0 |  |  |  |
+| Operating expenses, excluding severance and related and office space charges |  | 19883 |  |  |  | 20792 |  |  | 5 | % |
+| Operating income |  | 17415 |  |  |  | 25472 |  |  | 46 | % |
+| Operating margin | 25 | % |  | 32 | % |  | 7 | % |
+| Add: severance and related charges | 1994 |  |  | 716 |  |  |  |
+| Add: office space charges | 564 |  |  | 0 |  |  |  |
+| Operating income, excluding severance and related and office space charges |  | 19973 |  |  |  | 26188 |  |  | 31 | % |
+| Operating margin, excluding severance and related and office space charges | 29 | % |  | 33 | % |  | 4 | % |
+
+---
+*Generated by edgar_download.py on 2026-03-03 20:12*

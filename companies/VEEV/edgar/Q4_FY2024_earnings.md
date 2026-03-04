@@ -1,0 +1,238 @@
+# Veeva Systems Inc. — Q4_FY2024 Earnings Release
+
+**Ticker:** VEEV
+**Filing Date:** 2024-02-29
+**Accession:** 0001393052-24-000008
+**Source:** [SEC EDGAR](https://www.sec.gov/Archives/edgar/data/1393052/000139305224000008/0001393052-24-000008-index.htm)
+
+## Key Metrics (XBRL)
+
+| Metric | Value | Units | Source |
+|--------|------:|-------|--------|
+| Cash & Equivalents | $703.5M | USD | 10-K |
+| Comprehensive Income | $546.2M | USD | 10-K |
+| EPS (Basic) | 3 | USD/shares | 10-K |
+| EPS (Diluted) | 3 | USD/shares | 10-K |
+| Income Tax Expense | $62.3M | USD | 10-K |
+| Net Income | $525.7M | USD | 10-K |
+| Operating Income | $429.3M | USD | 10-K |
+| Revenue | $2.36B | USD | 10-K |
+| Shares Outstanding | 161.3M | shares | 10-K |
+| Total Assets | $5.91B | USD | 10-K |
+| Total Equity | $4.64B | USD | 10-K |
+| Total Liabilities | $1.27B | USD | 10-K |
+
+## Financial Tables (from Exhibits)
+
+### 
+
+|  | January 31, 2024 |  | January 31, 2023 |
+| Assets |  |  |  |
+| Current assets: |  |  |  |
+| Cash and cash equivalents |  | 703487 |  |  |  | 886465 |  |
+| Short-term investments | 3324269 |  |  | 2216163 |  |
+| Accounts receivable, net | 852172 |  |  | 703055 |  |
+| Unbilled accounts receivable | 36365 |  |  | 82174 |  |
+| Prepaid expenses and other current assets | 86918 |  |  | 81456 |  |
+| Total current assets | 5003211 |  |  | 3969313 |  |
+| Property and equipment, net | 58532 |  |  | 49817 |  |
+| Deferred costs, net | 23916 |  |  | 31825 |  |
+| Lease right-of-use assets | 45602 |  |  | 55336 |  |
+| Goodwill | 439877 |  |  | 439877 |  |
+| Intangible assets, net | 63017 |  |  | 82476 |  |
+| Deferred income taxes | 233463 |  |  | 136697 |  |
+| Other long-term assets | 43302 |  |  | 38955 |  |
+| Total assets |  | 5910920 |  |  |  | 4804296 |  |
+| Liabilities and stockholders ’ equity |  |  |  |
+| Current liabilities: |  |  |  |
+| Accounts payable |  | 31513 |  |  |  | 41678 |  |
+| Accrued compensation and benefits | 43433 |  |  | 44282 |  |
+| Accrued expenses and other current liabilities | 32980 |  |  | 35306 |  |
+| Income tax payable | 11862 |  |  | 4946 |  |
+| Deferred revenue | 1049761 |  |  | 869285 |  |
+| Lease liabilities | 9334 |  |  | 11306 |  |
+| Total current liabilities | 1178883 |  |  | 1006803 |  |
+| Deferred income taxes | 2052 |  |  | 1492 |  |
+| Lease liabilities, noncurrent | 46441 |  |  | 49670 |  |
+| Other long-term liabilities | 38720 |  |  | 30079 |  |
+| Total liabilities | 1266096 |  |  | 1088044 |  |
+| Stockholders’ equity: |  |  |  |
+| Class A common stock | 2 |  |  | 2 |  |
+| Class B common stock | — |  |  | — |  |
+| Additional paid-in capital | 1915002 |  |  | 1532627 |  |
+| Accumulated other comprehensive loss | -10637 |  |  | -31129 |  |
+| Retained earnings | 2740457 |  |  | 2214752 |  |
+| Total stockholders’ equity | 4644824 |  |  | 3716252 |  |
+| Total liabilities and stockholders ’ equity |  | 5910920 |  |  |  | 4804296 |  |
+| (5) Class B common stock was converted to Class A common stock on October 15, 2023. We refer to our Class A common stock as common stock. |  |  |  |
+
+### 
+
+|  | Three months ended January 31, |  | Fiscal year ended January 31, |
+|  | 2024 |  | 2023 |  | 2024 |  | 2023 |
+| Revenues: |  |  |  |  |  |  |  |
+| Subscription services |  | 521498 |  |  |  | 460152 |  |  |  | 1901593 |  |  |  | 1733002 |  |
+| Professional services and other | 109120 |  |  | 103237 |  |  | 462080 |  |  | 422058 |  |
+| Total revenues | 630618 |  |  | 563389 |  |  | 2363673 |  |  | 2155060 |  |
+| Cost of revenues (8) : |  |  |  |  |  |  |  |
+| Cost of subscription services | 77398 |  |  | 68913 |  |  | 290577 |  |  | 257635 |  |
+| Cost of professional services and other | 96530 |  |  | 95401 |  |  | 386714 |  |  | 351770 |  |
+| Total cost of revenues | 173928 |  |  | 164314 |  |  | 677291 |  |  | 609405 |  |
+| Gross profit | 456690 |  |  | 399075 |  |  | 1686382 |  |  | 1545655 |  |
+| Operating expenses (8) : |  |  |  |  |  |  |  |
+| Research and development | 163565 |  |  | 142538 |  |  | 629031 |  |  | 520278 |  |
+| Sales and marketing | 99203 |  |  | 89049 |  |  | 381472 |  |  | 348691 |  |
+| General and administrative | 58658 |  |  | 58565 |  |  | 246545 |  |  | 217595 |  |
+| Total operating expenses | 321426 |  |  | 290152 |  |  | 1257048 |  |  | 1086564 |  |
+| Operating income | 135264 |  |  | 108923 |  |  | 429334 |  |  | 459091 |  |
+| Other income, net | 47429 |  |  | 26440 |  |  | 158689 |  |  | 50005 |  |
+| Income before income taxes | 182693 |  |  | 135363 |  |  | 588023 |  |  | 509096 |  |
+| Income tax provision (benefit) | 35295 |  |  | -53170 |  |  | 62318 |  |  | 21390 |  |
+| Net income |  | 147398 |  |  |  | 188533 |  |  |  | 525705 |  |  |  | 487706 |  |
+| Net income per share: |  |  |  |  |  |  |  |
+| Basic |  | 0.92 |  |  |  | 1.20 |  |  |  | 3.27 |  |  |  | 3.14 |  |
+| Diluted |  | 0.90 |  |  |  | 1.16 |  |  |  | 3.22 |  |  |  | 3.00 |  |
+| Weighted-average shares used to compute net income per share: |  |  |  |  |  |  |  |
+| Basic | 161088 |  |  | 156512 |  |  | 160532 |  |  | 155385 |  |
+| Diluted | 164071 |  |  | 162104 |  |  | 163486 |  |  | 162437 |  |
+| Other comprehensive income: |  |  |  |  |  |  |  |
+| Net change in unrealized gain (loss) on available-for-sale investments |  | 28135 |  |  |  | 15868 |  |  |  | 22035 |  |  |  | -14854 |  |
+| Net change in cumulative foreign currency translation loss | -1237 |  |  | -1355 |  |  | -1546 |  |  | -4317 |  |
+| Comprehensive income |  | 174296 |  |  |  | 203046 |  |  |  | 546194 |  |  |  | 468535 |  |
+| (6) Includes subscription services revenues from the following product areas: |  |  |  |  |  |  |  |
+| Veeva Commercial Solutions |  | 261882 |  |  |  | 242896 |  |  |  | 995803 |  |  |  | 946252 |  |
+| Veeva R&D Solutions | 259616 |  |  | 217256 |  |  | 905790 |  |  | 786750 |  |
+| Total subscription services |  | 521498 |  |  |  | 460152 |  |  |  | 1901593 |  |  |  | 1733002 |  |
+| (7) Includes professional services and other revenues from the following product areas: |  |  |  |  |  |  |  |
+| Veeva Commercial Solutions |  | 45899 |  |  |  | 44161 |  |  |  | 185981 |  |  |  | 177188 |  |
+| Veeva R&D Solutions | 63221 |  |  | 59076 |  |  | 276099 |  |  | 244870 |  |
+| Total professional services and other |  | 109120 |  |  |  | 103237 |  |  |  | 462080 |  |  |  | 422058 |  |
+| (8) Includes stock-based compensation as follows: |  |  |  |  |  |  |  |
+| Cost of revenues: |  |  |  |  |  |  |  |
+| Cost of subscription services |  | 1626 |  |  |  | 1651 |  |  |  | 6483 |  |  |  | 6257 |  |
+| Cost of professional services and other | 13356 |  |  | 13307 |  |  | 53237 |  |  | 50341 |  |
+| Research and development | 42967 |  |  | 39430 |  |  | 172876 |  |  | 141571 |  |
+| Sales and marketing | 23781 |  |  | 23010 |  |  | 90865 |  |  | 87509 |  |
+| General and administrative | 17163 |  |  | 18147 |  |  | 70272 |  |  | 66229 |  |
+| Total stock-based compensation |  | 98893 |  |  |  | 95545 |  |  |  | 393733 |  |  |  | 351907 |  |
+
+### 
+
+|  | Three months ended January 31, |  | Fiscal year ended January 31, |
+|  | 2024 |  | 2023 |  | 2024 |  | 2023 |
+| Cash flows from operating activities |  |  |  |  |  |  |  |
+| Net income |  | 147398 |  |  |  | 188533 |  |  |  | 525705 |  |  |  | 487706 |  |
+| Adjustments to reconcile net income to net cash provided by operating activities: |  |  |  |  |  |  |  |
+| Depreciation and amortization | 8628 |  |  | 7679 |  |  | 32628 |  |  | 29122 |  |
+| Reduction of operating lease right-of-use assets | 2806 |  |  | 3136 |  |  | 11691 |  |  | 12198 |  |
+| Accretion of discount on short-term investments | -7217 |  |  | -2608 |  |  | -26515 |  |  | -3624 |  |
+| Stock-based compensation | 98893 |  |  | 95545 |  |  | 393733 |  |  | 351907 |  |
+| Amortization of deferred costs | 5334 |  |  | 4989 |  |  | 18177 |  |  | 22096 |  |
+| Deferred income taxes | -25242 |  |  | -43133 |  |  | -105374 |  |  | -127502 |  |
+| (Gain) loss on foreign currency from mark-to-market derivative | -1063 |  |  | -222 |  |  | -222 |  |  | 971 |  |
+| Bad debt expense (recovery) | 63 |  |  | -954 |  |  | 693 |  |  | 256 |  |
+| Changes in operating assets and liabilities: |  |  |  |  |  |  |  |
+| Accounts receivable | -596731 |  |  | -459243 |  |  | -149810 |  |  | -72177 |  |
+| Unbilled accounts receivable | 8472 |  |  | -89 |  |  | 45809 |  |  | -18908 |  |
+| Deferred costs | -9517 |  |  | -8939 |  |  | -10268 |  |  | -20815 |  |
+| Other current and long-term assets | 7220 |  |  | -43649 |  |  | 414 |  |  | -47399 |  |
+| Accounts payable | -4728 |  |  | 766 |  |  | -10230 |  |  | 21429 |  |
+| Accrued expenses and other current liabilities | 5323 |  |  | 6622 |  |  | -4249 |  |  | 9276 |  |
+| Income taxes payable | 5302 |  |  | -49520 |  |  | 6916 |  |  | -2815 |  |
+| Deferred revenue | 416284 |  |  | 362485 |  |  | 188164 |  |  | 140472 |  |
+| Operating lease liabilities | -2616 |  |  | -2908 |  |  | -6879 |  |  | -10644 |  |
+| Other long-term liabilities | -840 |  |  | 4808 |  |  | 956 |  |  | 8921 |  |
+| Net cash provided by operating activities | 57769 |  |  | 63298 |  |  | 911339 |  |  | 780470 |  |
+| Cash flows from investing activities |  |  |  |  |  |  |  |
+| Purchases of short-term investments | -555900 |  |  | -280628 |  |  | -2697968 |  |  | -1996878 |  |
+| Maturities and sales of short-term investments | 476932 |  |  | 245273 |  |  | 1647813 |  |  | 1002707 |  |
+| Long-term assets | -7735 |  |  | -3907 |  |  | -26196 |  |  | -13512 |  |
+| Net cash used in investing activities | -86703 |  |  | -39262 |  |  | -1076351 |  |  | -1007683 |  |
+| Cash flows from financing activities |  |  |  |  |  |  |  |
+| Proceeds from exercise of common stock options | 10503 |  |  | 13538 |  |  | 62687 |  |  | 43654 |  |
+| Taxes paid related to net share settlement of equity awards | -20987 |  |  | -15779 |  |  | -78875 |  |  | -63030 |  |
+| Net cash used in financing activities | -10484 |  |  | -2241 |  |  | -16188 |  |  | -19376 |  |
+| Effect of exchange rate changes on cash, cash equivalents, and restricted cash | -807 |  |  | -489 |  |  | -1780 |  |  | -4986 |  |
+| Net change in cash, cash equivalents, and restricted cash | -40225 |  |  | 21306 |  |  | -182980 |  |  | -251575 |  |
+| Cash, cash equivalents, and restricted cash at beginning of period | 746895 |  |  | 868344 |  |  | 889650 |  |  | 1141225 |  |
+| Cash, cash equivalents, and restricted cash at end of period |  | 706670 |  |  |  | 889650 |  |  |  | 706670 |  |  |  | 889650 |  |
+| Supplemental disclosures of other cash flow information: |  |  |  |  |  |  |  |
+| Excess tax benefits from employee stock plans |  | 2474 |  |  |  | 76028 |  |  |  | 71049 |  |  |  | 82009 |  |
+
+### 
+
+| Reconciliation of Net Cash Provided by Operating Activities (GAAP basis to non-GAAP basis) | Three months ended January 31, |  | Fiscal year ended January 31, |
+|  | 2024 |  | 2023 |  | 2024 |  | 2023 |
+| Net cash provided by operating activities on a GAAP basis |  | 57769 |  |  |  | 63298 |  |  |  | 911339 |  |  |  | 780470 |  |
+| Excess tax benefits from employee stock plans | -2474 |  |  | -76028 |  |  | -71049 |  |  | -82009 |  |
+| Net cash provided by (used in) operating activities on a non-GAAP basis |  | 55295 |  |  |  | -12730 |  |  |  | 840290 |  |  |  | 698461 |  |
+| Net cash used in investing activities on a GAAP basis |  | -86703 |  |  |  | -39262 |  |  |  | -1076351 |  |  |  | -1007683 |  |
+| Net cash used in financing activities on a GAAP basis |  | -10484 |  |  |  | -2241 |  |  |  | -16188 |  |  |  | -19376 |  |
+| Reconciliation of Financial Measures (GAAP basis to non-GAAP basis) | Three months ended January 31, |  | Fiscal year ended January 31, |
+|  | 2024 |  | 2023 |  | 2024 |  | 2023 |
+| Cost of subscription services revenues on a GAAP basis |  | 77398 |  |  |  | 68913 |  |  |  | 290577 |  |  |  | 257635 |  |
+| Stock-based compensation expense | -1626 |  |  | -1651 |  |  | -6483 |  |  | -6257 |  |
+| Amortization of purchased intangibles | -1125 |  |  | -1126 |  |  | -4468 |  |  | -4469 |  |
+| Cost of subscription services revenues on a non-GAAP basis |  | 74647 |  |  |  | 66136 |  |  |  | 279626 |  |  |  | 246909 |  |
+| Gross margin on subscription services revenues on a GAAP basis | 85.2 | % |  | 85.0 | % |  | 84.7 | % |  | 85.1 | % |
+| Stock-based compensation expense | 0.3 |  |  | 0.4 |  |  | 0.4 |  |  | 0.4 |  |
+| Amortization of purchased intangibles | 0.2 |  |  | 0.2 |  |  | 0.2 |  |  | 0.3 |  |
+| Gross margin on subscription services revenues on a non-GAAP basis | 85.7 | % |  | 85.6 | % |  | 85.3 | % |  | 85.8 | % |
+| Cost of professional services and other revenues on a GAAP basis |  | 96530 |  |  |  | 95401 |  |  |  | 386714 |  |  |  | 351770 |  |
+| Stock-based compensation expense | -13356 |  |  | -13307 |  |  | -53237 |  |  | -50341 |  |
+| Amortization of purchased intangibles | -139 |  |  | -139 |  |  | -550 |  |  | -550 |  |
+| Cost of professional services and other revenues on a non-GAAP basis |  | 83035 |  |  |  | 81955 |  |  |  | 332927 |  |  |  | 300879 |  |
+| Gross margin on professional services and other revenues on a GAAP basis | 11.5 | % |  | 7.6 | % |  | 16.3 | % |  | 16.7 | % |
+| Stock-based compensation expense | 12.3 |  |  | 12.9 |  |  | 11.6 |  |  | 11.9 |  |
+| Amortization of purchased intangibles | 0.1 |  |  | 0.1 |  |  | 0.1 |  |  | 0.1 |  |
+| Gross margin on professional services and other revenues on a non-GAAP basis | 23.9 | % |  | 20.6 | % |  | 28.0 | % |  | 28.7 | % |
+| Gross profit on a GAAP basis |  | 456690 |  |  |  | 399075 |  |  |  | 1686382 |  |  |  | 1545655 |  |
+| Stock-based compensation expense | 14982 |  |  | 14958 |  |  | 59720 |  |  | 56598 |  |
+| Amortization of purchased intangibles | 1264 |  |  | 1265 |  |  | 5018 |  |  | 5019 |  |
+| Gross profit on a non-GAAP basis |  | 472936 |  |  |  | 415298 |  |  |  | 1751120 |  |  |  | 1607272 |  |
+| Gross margin on total revenues on a GAAP basis | 72.4 | % |  | 70.8 | % |  | 71.3 | % |  | 71.7 | % |
+| Stock-based compensation expense | 2.4 |  |  | 2.7 |  |  | 2.6 |  |  | 2.7 |  |
+| Amortization of purchased intangibles | 0.2 |  |  | 0.2 |  |  | 0.2 |  |  | 0.2 |  |
+| Gross margin on total revenues on a non-GAAP basis | 75.0 | % |  | 73.7 | % |  | 74.1 | % |  | 74.6 | % |
+| Research and development expense on a GAAP basis |  | 163565 |  |  |  | 142538 |  |  |  | 629031 |  |  |  | 520278 |  |
+| Stock-based compensation expense | -42967 |  |  | -39430 |  |  | -172876 |  |  | -141571 |  |
+| Amortization of purchased intangibles | -29 |  |  | -29 |  |  | -114 |  |  | -113 |  |
+| Research and development expense on a non-GAAP basis |  | 120569 |  |  |  | 103079 |  |  |  | 456041 |  |  |  | 378594 |  |
+
+### 
+
+|  | Three months ended January 31, |  | Fiscal year ended January 31, |
+|  | 2024 |  | 2023 |  | 2024 |  | 2023 |
+| Sales and marketing expense on a GAAP basis |  | 99203 |  |  |  | 89049 |  |  |  | 381472 |  |  |  | 348691 |  |
+| Stock-based compensation expense | -23781 |  |  | -23010 |  |  | -90865 |  |  | -87509 |  |
+| Amortization of purchased intangibles | -3552 |  |  | -3555 |  |  | -14102 |  |  | -14105 |  |
+| Sales and marketing expense on a non-GAAP basis |  | 71870 |  |  |  | 62484 |  |  |  | 276505 |  |  |  | 247077 |  |
+| General and administrative expense on a GAAP basis |  | 58658 |  |  |  | 58565 |  |  |  | 246545 |  |  |  | 217595 |  |
+| Stock-based compensation expense | -17163 |  |  | -18147 |  |  | -70272 |  |  | -66229 |  |
+| Amortization of purchased intangibles | -56 |  |  | -57 |  |  | -225 |  |  | -227 |  |
+| General and administrative expense on a non-GAAP basis |  | 41439 |  |  |  | 40361 |  |  |  | 176048 |  |  |  | 151139 |  |
+| Operating expense on a GAAP basis |  | 321426 |  |  |  | 290152 |  |  |  | 1257048 |  |  |  | 1086564 |  |
+| Stock-based compensation expense | -83911 |  |  | -80587 |  |  | -334013 |  |  | -295309 |  |
+| Amortization of purchased intangibles | -3637 |  |  | -3641 |  |  | -14441 |  |  | -14445 |  |
+| Operating expense on a non-GAAP basis |  | 233878 |  |  |  | 205924 |  |  |  | 908594 |  |  |  | 776810 |  |
+| Operating income on a GAAP basis |  | 135264 |  |  |  | 108923 |  |  |  | 429334 |  |  |  | 459091 |  |
+| Stock-based compensation expense | 98893 |  |  | 95545 |  |  | 393733 |  |  | 351907 |  |
+| Amortization of purchased intangibles | 4901 |  |  | 4906 |  |  | 19459 |  |  | 19464 |  |
+| Operating income on a non-GAAP basis |  | 239058 |  |  |  | 209374 |  |  |  | 842526 |  |  |  | 830462 |  |
+| Operating margin on a GAAP basis | 21.4 | % |  | 19.3 | % |  | 18.2 | % |  | 21.3 | % |
+| Stock-based compensation expense | 15.7 |  |  | 17.0 |  |  | 16.6 |  |  | 16.3 |  |
+| Amortization of purchased intangibles | 0.8 |  |  | 0.9 |  |  | 0.8 |  |  | 0.9 |  |
+| Operating margin on a non-GAAP basis | 37.9 | % |  | 37.2 | % |  | 35.6 | % |  | 38.5 | % |
+| Net income on a GAAP basis |  | 147398 |  |  |  | 188533 |  |  |  | 525705 |  |  |  | 487706 |  |
+| Stock-based compensation expense | 98893 |  |  | 95545 |  |  | 393733 |  |  | 351907 |  |
+| Amortization of purchased intangibles | 4901 |  |  | 4906 |  |  | 19459 |  |  | 19464 |  |
+| Income tax effect on non-GAAP adjustments | -24867 |  |  | -102691 |  |  | -147937 |  |  | -163508 |  |
+| Net income on a non-GAAP basis |  | 226325 |  |  |  | 186293 |  |  |  | 790960 |  |  |  | 695569 |  |
+| Diluted net income per share on a GAAP basis |  | 0.90 |  |  |  | 1.16 |  |  |  | 3.22 |  |  |  | 3.00 |  |
+| Stock-based compensation expense | 0.60 |  |  | 0.59 |  |  | 2.41 |  |  | 2.17 |  |
+| Amortization of purchased intangibles | 0.03 |  |  | 0.03 |  |  | 0.12 |  |  | 0.12 |  |
+| Income tax effect on non-GAAP adjustments | -0.15 |  |  | -0.63 |  |  | -0.91 |  |  | -1.01 |  |
+| Diluted net income per share on a non-GAAP basis |  | 1.38 |  |  |  | 1.15 |  |  |  | 4.84 |  |  |  | 4.28 |  |
+
+---
+*Generated by edgar_download.py on 2026-03-03 21:25*

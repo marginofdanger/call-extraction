@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NVDA Q1 2026 Earnings Call Detail</title>
+<style>
+:root {
+    --company-primary: #76b900;
+    --company-dark: #1a1a1a;
+    --company-accent: #333333;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 40px 40px 32px;
+    margin: 0 -24px 0;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .header .meta {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    font-weight: 300;
+  }
+  .header .meta span { margin-right: 24px; }
+
+  .nav-bar {
+    background: var(--company-accent);
+    margin: 0 -24px 32px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    transition: all 0.15s;
+  }
+  .nav-bar a:hover { background: rgba(255,255,255,0.2); }
+  .nav-bar a.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .nav-center {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-center a.qbtn {
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+  }
+  .nav-center a.qbtn.current {
+    background: var(--company-primary);
+    border-color: var(--company-primary);
+  }
+  .nav-center a.qbtn:hover { background: rgba(255,255,255,0.2); }
+  .nav-back {
+    background: rgba(255,255,255,0.15) !important;
+    border-color: rgba(255,255,255,0.35) !important;
+  }
+
+  .metrics-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .metric {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+  .metric-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .metric-value {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+  .metric-delta {
+    font-size: 0.72rem;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+  .delta-up { color: var(--green); }
+  .delta-down { color: var(--red); }
+  .delta-flat { color: var(--text-muted); }
+
+  .changes-box {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 5px solid var(--amber);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .changes-box h3 {
+    font-size: 1rem;
+    color: var(--company-dark);
+    margin-bottom: 10px;
+  }
+  .changes-box ul { list-style: none; padding: 0; }
+  .changes-box li {
+    padding: 5px 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .change-tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .ct-raised { background: #d5f5e3; color: #1e8449; }
+  .ct-lowered { background: #fadbd8; color: #c0392b; }
+  .ct-changed { background: #d6eaf8; color: #2471a3; }
+  .ct-new { background: #e8daef; color: #6c3483; }
+  .ct-maintained { background: #fdebd0; color: #b9770e; }
+
+  .content-section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .content-section h3 {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .content-section ul {
+    padding: 14px 18px 14px 36px;
+    margin: 0;
+  }
+  .content-section li {
+    padding: 3px 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .content-section li strong { color: var(--company-dark); }
+
+  .prior-ref {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 40px;
+    overflow: hidden;
+  }
+  .prior-ref-header {
+    background: var(--light-bg);
+    padding: 12px 18px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--company-dark);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .prior-ref-header:hover { background: #eef2f7; }
+  .prior-ref-body { padding: 18px; display: none; }
+  .prior-ref-body.open { display: block; }
+  .prior-ref-body .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .prior-mini {
+    background: var(--light-bg);
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .prior-mini .pm-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .prior-mini .pm-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border);
+  }
+  .footer-nav a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .footer-nav a:hover { text-decoration: underline; }
+
+  /* Comparison page styles */
+  .toc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .toc a {
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 4px 0;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  .comp-section {
+    margin-bottom: 40px;
+  }
+  .comp-section h2 {
+    font-size: 1.2rem;
+    color: var(--company-dark);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--company-primary);
+  }
+
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+  }
+  .comp-table th {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .comp-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .comp-table tr:nth-child(even) { background: var(--light-bg); }
+  .comp-table tr:hover { background: #e8f4fd; }
+
+  @media (max-width: 768px) {
+    .header h1 { font-size: 1.5rem; }
+    .metrics-card { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .nav-center { display: none; }
+    body { padding: 0 16px 60px; }
+    .header { margin: 0 -16px 0; padding: 28px 24px 20px; }
+    .nav-bar { margin: 0 -16px 24px; }
+    .toc { grid-template-columns: 1fr; }
+    .comp-table { font-size: 0.78rem; }
+    .comp-table th, .comp-table td { padding: 6px 8px; }
+  }
+
+  @media print {
+    .nav-bar { display: none; }
+    .header { background: #333; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>NVDA Q1 2026 Earnings Call</h1>
+  <div class="meta">
+    <span>Call Date: May 28, 2025</span>
+    <span>Reporting: Q1 FY2026 (Feb-Apr 2025)</span>
+  </div>
+</div>
+<div class="nav-bar">
+  <a href="Q4_2025.html">&larr; Q4 2025</a>
+  <div class="nav-center">
+    <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="Q4_2026.html" class="qbtn">4Q26</a>
+    <a href="Q3_2026.html" class="qbtn">3Q26</a>
+    <a href="Q2_2026.html" class="qbtn">2Q26</a>
+    <a href="Q1_2026.html" class="qbtn current">1Q26</a>
+    <a href="Q4_2025.html" class="qbtn">4Q25</a>
+    <a href="Q3_2025.html" class="qbtn">3Q25</a>
+    <a href="Q2_2025.html" class="qbtn">2Q25</a>
+    <a href="Q1_2025.html" class="qbtn">1Q25</a>
+    <a href="Q4_2024.html" class="qbtn">4Q24</a>
+    <a href="Q3_2024.html" class="qbtn">3Q24</a>
+    <a href="Q2_2024.html" class="qbtn">2Q24</a>
+    <a href="Q1_2024.html" class="qbtn">1Q24</a>
+    <a href="Q4_2023.html" class="qbtn">4Q23</a>
+    <a href="Q3_2023.html" class="qbtn">3Q23</a>
+    <a href="Q2_2023.html" class="qbtn">2Q23</a>
+    <a href="Q1_2023.html" class="qbtn">1Q23</a>
+  </div>
+  <a href="Q2_2026.html">Q2 2026 &rarr;</a>
+</div>
+
+<div class="changes-box">
+  <h3>What Changed vs Q4 2025</h3>
+  <ul>
+    <li><span class="change-tag ct-new">New</span> NEW: Sovereign AI demand emerges</li>
+  </ul>
+</div>
+
+<div class="metrics-card">
+  <div class="metric" style="grid-column: 1 / -1; background: linear-gradient(135deg, var(--company-dark), var(--company-accent)); color: #fff; border: none; padding: 8px 14px;">
+    <div class="metric-label" style="color: rgba(255,255,255,0.7);">Guidance For</div>
+    <div class="metric-value" style="color: #fff; font-size: 1rem;">Q2 FY2026</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Next-Q Revenue</div>
+    <div class="metric-value">$45.0B, +/- 2%</div>
+    <div class="metric-delta delta-flat">Prior: $43.0B, +/- 2%</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Next-Q Gross Margin (Non-GAAP)</div>
+    <div class="metric-value">72.0%, +/- 50 bps</div>
+    <div class="metric-delta delta-flat">Prior: 71.0%, +/- 50 bps</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Next-Q OpEx (Non-GAAP)</div>
+    <div class="metric-value">~$4.0B</div>
+    <div class="metric-delta delta-flat">Prior: ~$3.6B</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Next-Q Gross Margin (GAAP)</div>
+    <div class="metric-value">71.8%, +/- 50 bps</div>
+    <div class="metric-delta delta-flat">Prior: 70.6%, +/- 50 bps</div>
+  </div>
+</div>
+
+<!-- Full Guidance Content -->
+<div class="content-section">
+  <h3>Quarterly Guidance (Q2 FY2026)</h3>
+  <ul>
+    <li><strong>Revenue:</strong> $45.0B, +/- 2%</li>
+    <li><strong>GAAP Gross Margin:</strong> 71.8%, +/- 50 bps</li>
+    <li><strong>Non-GAAP Gross Margin:</strong> 72.0%, +/- 50 bps (better Blackwell profitability driving modest sequential improvement)</li>
+    <li><strong>GAAP Operating Expenses:</strong> ~$5.7B</li>
+    <li><strong>Non-GAAP Operating Expenses:</strong> ~$4.0B</li>
+    <li><strong>GAAP/Non-GAAP Other Income & Expense:</strong> ~$450M income (excluding gains/losses on nonmarketable and publicly held equity securities)</li>
+    <li><strong>Tax Rate (GAAP/Non-GAAP):</strong> 16.5%, +/- 1% (excluding discrete items)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Full Year FY2026 Guidance</h3>
+  <ul>
+    <li><strong>Operating Expenses:</strong> GAAP and Non-GAAP expected to grow in the mid-30% range (reaffirmed from Q4 FY2025 call)</li>
+    <li><strong>Gross Margin Trajectory:</strong> Working towards mid-70s% range late this year (reaffirmed)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Long-Term Targets</h3>
+  <ul>
+    <li><strong>Four Growth Drivers:</strong> (1) Inference/reasoning AI exponential demand growth; (2) AI Diffusion Rule rescinded — sovereign AI unlocked globally; (3) Enterprise AI — agents work, agentic AI is game-changing; (4) Industrial AI — onshoring/reshoring creating AI factory demand alongside physical factories</li>
+    <li><strong>AI as Infrastructure:</strong> Intelligence is essential infrastructure for every country, industry, society; AI factories produce tokens like energy factories produce electricity; build-out is very early stages</li>
+    <li><strong>Enterprise AI Systems:</strong> RTX Pro enterprise server, DGX Spark, DGX Station — modernize $500B on-prem IT infrastructure; every major IT provider partnering with NVIDIA</li>
+    <li><strong>Robotics Era:</strong> Billions of robots, hundreds of millions of autonomous vehicles, hundreds of thousands of robotic factories and warehouses</li>
+    <li><strong>Product Roadmap:</strong> Annual cadence extending through 2028; GB300 → Blackwell Ultra → future generations</li>
+    <li><strong>Sovereign AI:</strong> New growth engine; every nation investing in AI infrastructure like electricity and Internet before it</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q1 FY2026 Segment Revenue</h3>
+  <ul>
+    <li><strong>Data Center:</strong> $39.0B, +73% YoY — Blackwell contributed nearly 70% of DC compute revenue; Hopper transition nearly complete; AI workloads transitioned strongly to inference; AI factory build-outs driving significant revenue; customer commitments firm</li>
+    <li><strong>Gaming:</strong> $3.8B (record), +48% QoQ, +42% YoY — Blackwell fastest gaming ramp ever; GeForce RTX 5060/5060 Ti launched at $299; RTX 5060 laptops from $1,099; 100M+ RTX installed base; supply and availability greatly improved in Q1; Nintendo Switch 2 with NVIDIA custom RTX GPUs and DLSS</li>
+    <li><strong>Professional Visualization:</strong> $509M, flat QoQ, +19% YoY — tariff-related uncertainty temporarily impacted Q1 systems demand; AI workstation demand strong; DGX Spark (1 PFLOP) and DGX Station (20 PFLOPS, GB300 Superchip) announced</li>
+    <li><strong>Automotive:</strong> $567M, -1% QoQ, +72% YoY — self-driving ramps and NEV demand driving YoY growth; GM partnership for next-gen vehicles, factories, and robots; Mercedes-Benz CLA in production (full-stack solution); Isaac GR00T N1 humanoid robot foundation model announced; Cosmos World Foundation models launched</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q1 FY2026 Key Operating Metrics</h3>
+  <ul>
+    <li><strong>H20 Export Controls (April 9):</strong> $4.6B H20 revenue recognized before April 9; $2.5B unable to ship; $4.5B charge (inventory write-down + purchase obligations); charge less than initially anticipated (reused certain materials); total Q1 H20 should have been $7B; China AI TAM ~$50B effectively closed; no replacement product at present; Hopper cannot be reduced further to comply with new limits</li>
+    <li><strong>Blackwell Ramp:</strong> Fastest ramp in company history; nearly 70% of DC compute revenue; GB200 NVL racks generally available; significant manufacturing yield improvement; rack shipments at strong rates</li>
+    <li><strong>Hyperscaler Deployments:</strong> Major hyperscalers each deploying ~1,000 NVL72 racks (72,000 GPUs) per week; on track to further ramp output this quarter; Microsoft deployed tens of thousands of Blackwell GPUs, ramping to hundreds of thousands of GB200s</li>
+    <li><strong>GB300:</strong> Sampling began earlier this month at major CSPs; production shipments expected later this quarter; same architecture/footprint/electrical/mechanical specs as GB200 (drop-in design); 50% more HBM; 50% more dense FP4 inference compute vs B200; CSPs can seamlessly transition manufacturing</li>
+    <li><strong>Product Roadmap:</strong> Annual cadence; extends through 2028; tightly aligned with customer multi-year planning cycles; Blackwell Ultra is next phase after GB200</li>
+    <li><strong>Inference Demand:</strong> Sharp jump; Microsoft processed 100+ trillion tokens in Q1 (5x YoY); inference serving startups tripling token generation rate on B200; reasoning AI requires 100-1,000x more tokens per task</li>
+    <li><strong>NVIDIA Dynamo:</strong> On Blackwell NVL72: 30x inference throughput for reasoning models; Capital One reduced agentic chatbot latency by 5x</li>
+    <li><strong>MLPerf Inference:</strong> First GB200 NVL72 results: up to 30x higher throughput vs 8-GPU H200 on Llama 3.1 (3x per-GPU performance + 9x more GPUs on single NVLink domain)</li>
+    <li><strong>Blackwell Software Optimizations:</strong> 1.5x improvement in last month alone; Hopper inference improved 4x over 2 years (CUDA architecture benefit)</li>
+    <li><strong>Grace Blackwell vs Hopper:</strong> ~40x higher speed and throughput for inference</li>
+    <li><strong>AI Factories:</strong> ~100 NVIDIA-powered AI factories in flight (2x YoY); average GPUs per factory also doubled; line of sight to projects requiring tens of gigawatts of NVIDIA AI infrastructure</li>
+    <li><strong>Llama Nemotron:</strong> Open reasoning models for agentic AI; 20% accuracy boost; 5x inference speed increase; adopted by Accenture, Cadence, Deloitte, Microsoft</li>
+    <li><strong>NeMo Microservices GA:</strong> Cisco 40% accuracy improvement + 10x response time; NASDAQ 30% accuracy improvement; Shell 30% accuracy increase; 20% training time acceleration vs other frameworks</li>
+    <li><strong>Enterprise AI:</strong> Yum! Brands partnership: 500 restaurants this year → 61,000 over time; CrowdStrike 2x faster detection with 50% less compute cost; RTX Pro enterprise AI server announced</li>
+    <li><strong>Networking:</strong> Revenue $5.0B, +64% QoQ; NVLink shipments exceeded $1B; NVLink Fusion announced at COMPUTEX (hyperscale semi-custom CCUs/accelerators connect via NVLink); partners: MediaTek, Marvell, Alchip, Astera Labs, Fujitsu, Qualcomm</li>
+    <li><strong>Spectrum-X:</strong> Annualizing over $8B revenue; added Google Cloud and Meta as customers; silicon photonics switches announced (3.5x power efficiency, 10x network resiliency, 1.3x time-to-market); customers: CoreWeave, Microsoft Azure, Oracle Cloud, xAI, Google Cloud, Meta</li>
+    <li><strong>Four Networking Platforms:</strong> NVLink (scale-up), InfiniBand (supercomputing), Spectrum-X (Ethernet for AI), BlueField (control plane for security/storage/multi-tenancy)</li>
+    <li><strong>Omniverse:</strong> Integrated with Databricks, SAP, Schneider Electric; TSMC saves months in fab design; Foxconn 150x thermal simulation acceleration; Pegatron 67% assembly defect reduction</li>
+    <li><strong>Robotics:</strong> Isaac GR00T N1 (first open humanoid robot foundation model); new Cosmos World Foundation models; adopted by 1X, Agility Robotics, Figure AI, Uber, Waabi, Boston Dynamics, XPENG Robotics; GE Healthcare using Isaac for robotic imaging/surgery</li>
+    <li><strong>China Geography:</strong> Singapore ~20% of Q1 billed revenue; 99% of H100/H200/Blackwell billed to Singapore was for U.S.-based customers; China DC revenue slightly below expectations, down sequentially</li>
+    <li><strong>U.S. Manufacturing:</strong> TSMC building 6 fabs + 2 advanced packaging in Arizona (volume production by year-end); SPIL and Amkor also investing in Arizona; Foxconn 1M sq ft factory in Houston; Wistron in Fort Worth; goal: chip to supercomputer built in America within a year</li>
+    <li><strong>AI Diffusion Rule:</strong> Rescinded by President Trump; new policy to promote U.S. AI tech with trusted partners; Saudi Arabia 500MW AI infrastructure project; UAE 5GW AI campus</li>
+    <li><strong>Sovereign AI:</strong> Taiwan first AI factory (Foxconn + Taiwan government); Sweden national AI infrastructure; Japan, Korea, India, Canada, France, U.K., Germany, Italy, Spain building national AI factories</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 FY2026 Segment Expectations</h3>
+  <ul>
+    <li><strong>Data Center:</strong> Continued Blackwell ramp partially offset by decline in China revenue; ~$8B H20 revenue loss in Q2; meaningful decrease in China DC revenue expected</li>
+    <li><strong>Gaming:</strong> Continued strong demand expected; supply improvements continuing</li>
+    <li><strong>Professional Visualization:</strong> Sequential revenue growth expected to resume</li>
+    <li><strong>All Platforms:</strong> Modest sequential growth expected across all platforms</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Gross Margin Trajectory</h3>
+  <ul>
+    <li><strong>Q1 FY2026 (actual):</strong> Non-GAAP 61.0% (71.3% excluding $4.5B H20 charge)</li>
+    <li><strong>Q2 FY2026 (guided):</strong> Non-GAAP 72.0% — better Blackwell profitability driving modest sequential improvement</li>
+    <li><strong>Late FY2026 Target:</strong> Mid-70s% range as Blackwell fully ramps and cost improvements realized</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>H20 Export Controls and China Market</h3>
+  <ul>
+    <li>April 9: U.S. government issued new export controls on H20 (no grace period)</li>
+    <li>H20 had been sold with approval of previous administration; in market for over 1 year; no market outside China</li>
+    <li>Q1 H20 revenue: $4.6B (recognized before April 9)</li>
+    <li>Unable to ship: $2.5B in Q1</li>
+    <li>Total Q1 H20 should have been: $7B</li>
+    <li>Write-down: $4.5B (inventory + purchase obligations for orders received before April 9); less than initially anticipated (reused certain materials)</li>
+    <li>Q2 impact: ~$8B in planned H20 orders lost</li>
+    <li>Forward impact: additional orders beyond Q2 that cannot be fulfilled (incorporated in $4.5B write-down)</li>
+    <li>China AI TAM: ~$50B, effectively closed to U.S. industry</li>
+    <li>No replacement product: new limits make it impossible to reduce Hopper further for productive use; "end of the road for Hopper" in China</li>
+    <li>Limited options being explored but nothing to announce</li>
+    <li>China has enormous manufacturing capability; assumption it cannot make AI chips "was always questionable, and now it's clearly wrong"</li>
+    <li>Export controls have spurred China's innovation and scale; risk of strengthening foreign competitors</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Reasoning AI and Inference Scaling</h3>
+  <ul>
+    <li>Reasoning AI (DeepSeek-R1, ChatGPT reasoning) requires 100-1,000x more tokens per task vs one-shot chatbots</li>
+    <li>Step-function surge in inference demand; inference is now significant part of compute workload</li>
+    <li>AI scaling laws intact for both training and inference at massive scale</li>
+    <li>Grace Blackwell NVL72: ideal "thinking machine" for reasoning AI; ~40x higher speed vs Hopper</li>
+    <li>Open source AI strategic value: DeepSeek and Qwen among best open source models; U.S. platforms must remain preferred for open source AI</li>
+    <li>Microsoft processed 100+ trillion tokens in Q1 (5x YoY); exponential growth in Azure OpenAI</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Sovereign AI and Onshore Manufacturing</h3>
+  <ul>
+    <li>AI Diffusion Rule rescinded; President Trump proposed new policy promoting U.S. AI tech with trusted partners</li>
+    <li>Saudi Arabia: 500MW AI infrastructure project</li>
+    <li>UAE: 5GW AI campus</li>
+    <li>Taiwan: first AI factory (Foxconn + Taiwan government)</li>
+    <li>Sweden: national AI infrastructure launched</li>
+    <li>Japan, Korea, India, Canada, France, U.K., Germany, Italy, Spain building national AI factories</li>
+    <li>U.S. manufacturing: TSMC 6 fabs + 2 packaging in Arizona; SPIL and Amkor also in Arizona; Foxconn Houston; Wistron Fort Worth</li>
+    <li>Goal: chip to supercomputer built in America within a year</li>
+    <li>GB200 NVL72 rack: 1.2M components, weighs nearly 2 tons</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Networking Growth</h3>
+  <ul>
+    <li>Four networking platforms: NVLink (scale-up), InfiniBand (supercomputing), Spectrum-X (Ethernet for AI), BlueField (control plane)</li>
+    <li>NVLink: 5th generation, 14x bandwidth of PCIe Gen 5; NVLink 72 carries 130 TB/s per rack (equivalent to world's peak Internet traffic); Q1 shipments exceeded $1B; NVLink Fusion announced at COMPUTEX</li>
+    <li>Spectrum-X: annualizing $8B+; improved Ethernet cluster utilization from ~50% to 85-90%; on $10B cluster, 40% utilization improvement = $4B value; silicon photonics switches announced</li>
+    <li>BlueField: used for storage, security, multi-tenant isolation; bare-metal performance in shared clusters</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q1 FY2026 Actuals (Reported)</h3>
+  <ul>
+    <li><strong>Revenue:</strong> $44.0B, +69% YoY (exceeded outlook in challenging operating environment)</li>
+    <li><strong>GAAP Gross Margin:</strong> 60.5% (includes $4.5B H20 charge)</li>
+    <li><strong>Non-GAAP Gross Margin:</strong> 61.0% (includes $4.5B H20 charge); excluding charge: 71.3% (slightly above outlook)</li>
+    <li><strong>GAAP Operating Expenses:</strong> +7% QoQ</li>
+    <li><strong>Non-GAAP Operating Expenses:</strong> +6% QoQ (higher compensation and employee growth)</li>
+    <li><strong>Share Repurchases & Dividends:</strong> $14.3B returned to shareholders (record)</li>
+  </ul>
+</div>
+
+<div class="prior-ref" id="priorRef">
+  <div class="prior-ref-header" onclick="var b=document.getElementById('priorBody');b.classList.toggle('open');this.querySelector('.arrow').innerHTML=b.classList.contains('open')?'&#9650;':'&#9660;';">
+    Prior Quarter Reference: Q4 2025
+    <span class="arrow">&#9660;</span>
+  </div>
+  <div class="prior-ref-body" id="priorBody">
+    <div class="metric-grid">
+      <div class="prior-mini"><div class="pm-label">Next-Q Revenue</div><div class="pm-value">$43.0B, +/- 2%</div></div>
+      <div class="prior-mini"><div class="pm-label">Next-Q Gross Margin (Non-GAAP)</div><div class="pm-value">71.0%, +/- 50 bps</div></div>
+      <div class="prior-mini"><div class="pm-label">Next-Q OpEx (Non-GAAP)</div><div class="pm-value">~$3.6B</div></div>
+      <div class="prior-mini"><div class="pm-label">Next-Q Gross Margin (GAAP)</div><div class="pm-value">70.6%, +/- 50 bps</div></div>
+    </div>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q4_2025.html" style="color:var(--blue);">View full Q4 2025 detail &rarr;</a></p>
+  </div>
+</div>
+
+<div class="footer-nav">
+  <a href="Q4_2025.html">&larr; Q4 2025</a>
+  <a href="../comparison.html">Back to Overview</a>
+  <a href="Q2_2026.html">Q2 2026 &rarr;</a>
+</div>
+
+</body>
+</html>

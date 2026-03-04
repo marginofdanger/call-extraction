@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AVGO FQ4 2024 Earnings Call Detail</title>
+<style>
+:root {
+    --company-primary: #CC092F;
+    --company-dark: #1a1a2e;
+    --company-accent: #16213e;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 40px 40px 32px;
+    margin: 0 -24px 0;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .header .meta {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    font-weight: 300;
+  }
+  .header .meta span { margin-right: 24px; }
+
+  .nav-bar {
+    background: var(--company-accent);
+    margin: 0 -24px 32px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    transition: all 0.15s;
+  }
+  .nav-bar a:hover { background: rgba(255,255,255,0.2); }
+  .nav-bar a.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .nav-center {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-center a.qbtn {
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+  }
+  .nav-center a.qbtn.current {
+    background: var(--company-primary);
+    border-color: var(--company-primary);
+  }
+  .nav-center a.qbtn:hover { background: rgba(255,255,255,0.2); }
+  .nav-back {
+    background: rgba(255,255,255,0.15) !important;
+    border-color: rgba(255,255,255,0.35) !important;
+  }
+
+  .metrics-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .metric {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+  .metric-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .metric-value {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+  .metric-delta {
+    font-size: 0.72rem;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+  .delta-up { color: var(--green); }
+  .delta-down { color: var(--red); }
+  .delta-flat { color: var(--text-muted); }
+
+  .changes-box {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 5px solid var(--amber);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .changes-box h3 {
+    font-size: 1rem;
+    color: var(--company-dark);
+    margin-bottom: 10px;
+  }
+  .changes-box ul { list-style: none; padding: 0; }
+  .changes-box li {
+    padding: 5px 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .change-tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .ct-raised { background: #d5f5e3; color: #1e8449; }
+  .ct-lowered { background: #fadbd8; color: #c0392b; }
+  .ct-changed { background: #d6eaf8; color: #2471a3; }
+  .ct-new { background: #e8daef; color: #6c3483; }
+  .ct-maintained { background: #fdebd0; color: #b9770e; }
+
+  .content-section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .content-section h3 {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .content-section ul {
+    padding: 14px 18px 14px 36px;
+    margin: 0;
+  }
+  .content-section li {
+    padding: 3px 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .content-section li strong { color: var(--company-dark); }
+
+  .prior-ref {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 40px;
+    overflow: hidden;
+  }
+  .prior-ref-header {
+    background: var(--light-bg);
+    padding: 12px 18px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--company-dark);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .prior-ref-header:hover { background: #eef2f7; }
+  .prior-ref-body { padding: 18px; display: none; }
+  .prior-ref-body.open { display: block; }
+  .prior-ref-body .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .prior-mini {
+    background: var(--light-bg);
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .prior-mini .pm-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .prior-mini .pm-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border);
+  }
+  .footer-nav a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .footer-nav a:hover { text-decoration: underline; }
+
+  /* Comparison page styles */
+  .toc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .toc a {
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 4px 0;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  .comp-section {
+    margin-bottom: 40px;
+  }
+  .comp-section h2 {
+    font-size: 1.2rem;
+    color: var(--company-dark);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--company-primary);
+  }
+
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+  }
+  .comp-table th {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .comp-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .comp-table tr:nth-child(even) { background: var(--light-bg); }
+  .comp-table tr:hover { background: #e8f4fd; }
+
+  @media (max-width: 768px) {
+    .header h1 { font-size: 1.5rem; }
+    .metrics-card { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .nav-center { display: none; }
+    body { padding: 0 16px 60px; }
+    .header { margin: 0 -16px 0; padding: 28px 24px 20px; }
+    .nav-bar { margin: 0 -16px 24px; }
+    .toc { grid-template-columns: 1fr; }
+    .comp-table { font-size: 0.78rem; }
+    .comp-table th, .comp-table td { padding: 6px 8px; }
+  }
+
+  @media print {
+    .nav-bar { display: none; }
+    .header { background: #333; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>AVGO FQ4 2024 Earnings Call</h1>
+  <div class="meta">
+    <span>Call Date: December 12, 2024</span>
+    <span>Reporting: Fiscal Q4 2024 (Aug - Oct '24) & Full Year FY2024</span>
+  </div>
+</div>
+<div class="nav-bar">
+  <a href="FQ3_2024.html">&larr; FQ3 2024</a>
+  <div class="nav-center">
+    <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="FQ4_2025.html" class="qbtn">F4Q25</a>
+    <a href="FQ3_2025.html" class="qbtn">F3Q25</a>
+    <a href="FQ2_2025.html" class="qbtn">F2Q25</a>
+    <a href="FQ1_2025.html" class="qbtn">F1Q25</a>
+    <a href="FQ4_2024.html" class="qbtn current">F4Q24</a>
+    <a href="FQ3_2024.html" class="qbtn">F3Q24</a>
+    <a href="FQ2_2024.html" class="qbtn">F2Q24</a>
+    <a href="FQ1_2024.html" class="qbtn">F1Q24</a>
+    <a href="FQ4_2023.html" class="qbtn">F4Q23</a>
+    <a href="FQ3_2023.html" class="qbtn">F3Q23</a>
+    <a href="FQ2_2023.html" class="qbtn">F2Q23</a>
+    <a href="FQ1_2023.html" class="qbtn">F1Q23</a>
+    <a href="FQ4_2022.html" class="qbtn">F4Q22</a>
+    <a href="FQ3_2022.html" class="qbtn">F3Q22</a>
+    <a href="FQ2_2022.html" class="qbtn">F2Q22</a>
+    <a href="FQ1_2022.html" class="qbtn">F1Q22</a>
+  </div>
+  <a href="FQ1_2025.html">FQ1 2025 &rarr;</a>
+</div>
+
+<div class="changes-box">
+  <h3>What Changed vs FQ3 2024</h3>
+  <ul>
+    <li><span class="change-tag ct-changed">Changed</span> Semiconductor Revenue: ~$8.1B (+10% YoY) - AI Revenue: ~$3.8B (+65% YoY) — strong demand continues - Non-AI Semiconductor Revenue: down mid-teens % YoY (prior: ~$8.0B (+9% YoY))</li>
+    <li><span class="change-tag ct-changed">Changed</span> Infrastructure Software Revenue: ~$6.5B (+41% YoY, +11% QoQ); includes VMware deals that slipped from Q4 (not a one-time boost; Q2 not expected lower) (prior: ~$6.0B)</li>
+    <li><span class="change-tag ct-changed">Changed</span> AI Revenue: $3.7B (+150% YoY), part of networking segment - AI XPU shipments: doubled in Q4 - AI connectivity revenue: grew 4x (Tomahawk, Jericho3-AI shipments globally) - AI networking revenue: 76% of total networking revenue - Mix: 2/3 XPUs, 1/3 networking in Q3; similar in Q4; expect networking proportion to increase in 1H FY2025 before 3nm XPUs ramp in 2H FY2025 (prior: ~$3.1B in Q3 (in line with expectations); 2/3 compute, 1/3 networking mix)</li>
+  </ul>
+</div>
+
+<div class="metrics-card">
+  <div class="metric" style="grid-column: 1 / -1; background: linear-gradient(135deg, var(--company-dark), var(--company-accent)); color: #fff; border: none; padding: 8px 14px;">
+    <div class="metric-label" style="color: rgba(255,255,255,0.7);">Guidance For</div>
+    <div class="metric-value" style="color: #fff; font-size: 1rem;">FQ1 2025</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Next-Q Revenue</div>
+    <div class="metric-value">~$14.6B</div>
+    <div class="metric-delta delta-flat">Prior: ~$14.0B</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Next-Q Adj. EBITDA % of Rev</div>
+    <div class="metric-value">~66% of revenue</div>
+    <div class="metric-delta delta-flat">Prior: ~64% of revenue</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Semiconductor Revenue</div>
+    <div class="metric-value">~$8.1B - AI Revenue: ~$3.8B — strong demand continues - Non-AI Semiconductor Revenue: down mid-teens % YoY</div>
+    <div class="metric-delta delta-flat">Prior: ~$8.0B</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Infrastructure Software Revenue</div>
+    <div class="metric-value">~$6.5B; includes VMware deals that slipped from Q4</div>
+    <div class="metric-delta delta-flat">Prior: ~$6.0B</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">AI Revenue</div>
+    <div class="metric-value">$3.7B, part of networking segment - AI XPU shipments: doubled in Q4 - AI connectivity revenue: grew 4x - AI networking revenue: 76% of total networking revenue - Mix: 2/3 XPUs, 1/3 networking in Q3; similar in Q4; expect networking proportion to increase in 1H FY2025 before 3nm XPUs ramp in 2H FY2025</div>
+    <div class="metric-delta delta-flat">Prior: ~$3.1B in Q3; 2/3 compute, 1/3 networking mix</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Free Cash Flow</div>
+    <div class="metric-value">$19.4B; $21.9B ex-restructuring/integration</div>
+  </div>
+</div>
+
+<!-- Full Guidance Content -->
+<div class="content-section">
+  <h3>Quarterly Guidance (FQ1 2025)</h3>
+  <ul>
+    <li><strong>Revenue:</strong> ~$14.6B (+22% YoY; note: Q1 FY2024 was 14-week quarter, Q1 FY2025 is 13-week quarter)</li>
+    <li><strong>Adjusted EBITDA:</strong> ~66% of revenue (record)</li>
+    <li><strong>Gross Margin:</strong> up ~100 bps sequentially (higher software mix + product mix within semis)</li>
+    <li><strong>Non-GAAP Diluted Share Count:</strong> ~4.9B (split-adjusted)</li>
+    <li><strong>Semiconductor Revenue:</strong> ~$8.1B (+10% YoY) - AI Revenue: ~$3.8B (+65% YoY) — strong demand continues - Non-AI Semiconductor Revenue: down mid-teens % YoY</li>
+    <li><strong>Infrastructure Software Revenue:</strong> ~$6.5B (+41% YoY, +11% QoQ); includes VMware deals that slipped from Q4 (not a one-time boost; Q2 not expected lower)</li>
+    <li><strong>Wireless:</strong> down sequentially (seasonal), flat YoY</li>
+    <li><strong>Broadband:</strong> recovery beginning in Q1</li>
+    <li><strong>Server Storage:</strong> continuing to grow</li>
+    <li><strong>Industrial:</strong> recovery in 2H FY2025</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>AI Revenue 3-Year Outlook (FY2027 SAM)</h3>
+  <ul>
+    <li><strong>FY2027 AI SAM:</strong> $60B-$90B for XPUs and AI networking from 3 existing hyperscale customers alone</li>
+    <li><strong>SAM Definition:</strong> serviceable addressable market (not TAM); bottoms-up from specific customer plans, not top-down</li>
+    <li><strong>FY2024 Baseline SAM:</strong> $15B-$20B (these 3 customers); implies 3-4x growth to $60B-$90B by FY2027</li>
+    <li><strong>FY2027 Deployment Plan:</strong> each of 3 customers plans to deploy 1 million XPU clusters on single fabric by 2027</li>
+    <li><strong>AI Networking as % of AI Content:</strong> currently 5-10% of total AI silicon content; expected to reach 15-20% by 500K-1M XPU cluster scale (exponential increase due to scale-out requirements)</li>
+    <li><strong>Non-Linear Ramp:</strong> expect quarterly variability; only 3 customers deploying in large chunks</li>
+    <li><strong>2 Additional Hyperscalers:</strong> selected Broadcom; in advanced development for next-gen AI XPUs; have taped out chips; expect to become revenue-generating customers before FY2027; could expand SAM significantly (at least one has similar $20B-$30B potential)</li>
+    <li><strong>Next-Gen 3nm XPUs:</strong> first-of-kind in 3nm process node; on track for volume shipments in 2H FY2025</li>
+    <li><strong>Architecture:</strong> scale-up within racks + scale-out between racks; customers have road maps from 100K → 1M XPU clusters on similar architecture basis over next 3-4 years</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Non-AI Recovery Outlook</h3>
+  <ul>
+    <li><strong>Non-AI Semiconductor:</strong> FY2024 was cyclical bottom at $17.8B; expect recovery at mid-single-digit historical growth rate</li>
+    <li><strong>AI-Driven Refresh:</strong> AI workloads permeating enterprises will drive need to upgrade servers, storage, and networking across entire ecosystem</li>
+    <li><strong>Broadband:</strong> reached bottom in Q4 FY2024; significant new orders; recovery starting Q1 FY2025</li>
+    <li><strong>Server Storage:</strong> recovered ~20% from bottom; continuing growth</li>
+    <li><strong>Enterprise IT:</strong> past the bottom; bookings up 20% QoQ in Q3</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>FQ4 2024 Segment Revenue</h3>
+  <ul>
+    <li><strong>Semiconductor Solutions:</strong> $8.2B (+12% YoY, +13% QoQ), 59% of total revenue - Semiconductor GM: ~67% (-220 bps YoY, higher mix of AI XPUs) - Semiconductor OpEx: $914M (+11% YoY, increased R&D) - Semiconductor Operating Margin: 56%</li>
+    <li><strong>Infrastructure Software:</strong> $5.8B (+196% YoY, flat QoQ), 41% of total revenue (multiple deals slipped into Q1) - Software GM: 91% - Software OpEx: $1.1B - Software Operating Margin: 72% (73% ex-transition costs)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>FQ4 2024 Semiconductor End Market Breakdown (New AI/Non-AI Segmentation)</h3>
+  <ul>
+    <li><strong>AI Revenue:</strong> $3.7B (+150% YoY), part of networking segment - AI XPU shipments: doubled in Q4 - AI connectivity revenue: grew 4x (Tomahawk, Jericho3-AI shipments globally) - AI networking revenue: 76% of total networking revenue - Mix: 2/3 XPUs, 1/3 networking in Q3; similar in Q4; expect networking proportion to increase in 1H FY2025 before 3nm XPUs ramp in 2H FY2025</li>
+    <li><strong>Non-AI Semiconductor Revenue:</strong> $4.5B (-23% YoY, but +10% recovery from bottom 6 months ago)</li>
+    <li><strong>Networking:</strong> $4.5B, +45% YoY — AI networking 76% of networking</li>
+    <li><strong>Wireless:</strong> $2.2B, +7% YoY, +30% QoQ (seasonal launch); engagement with North American customer across RF, WiFi, Bluetooth, sensing, touch</li>
+    <li><strong>Server Storage Connectivity:</strong> $992M, recovered ~20% from bottom 6 months ago</li>
+    <li><strong>Broadband:</strong> $465M, -51% YoY — reached bottom; significant orders from multiple service providers in Q4; recovery beginning in Q1 FY2025</li>
+    <li><strong>Industrial:</strong> $173M, -27% YoY, ~1% of total revenue — recovery expected 2H FY2025</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>FQ4 2024 VMware Integration Metrics</h3>
+  <ul>
+    <li><strong>VCF Customers Signed:</strong> over 4,500 of largest 10,000 customers (up from 3,000 at Q2)</li>
+    <li><strong>VMware ABV:</strong> $2.7B in Q4 (up from $2.5B in Q3); VCF ~70% of total VMware bookings</li>
+    <li><strong>CPU Cores Booked:</strong> 21M in Q4 (vs 19M prior quarter, vs 15M in Q3)</li>
+    <li><strong>VMware Spending:</strong> $1.2B in Q4 (down from $1.3B Q3; was $2.4B pre-acquisition; operating margin <30% pre-acquisition)</li>
+    <li><strong>VMware Operating Margin:</strong> reached 70% exiting FY2024 (vs <30% pre-acquisition)</li>
+    <li><strong>VMware EBITDA Target:</strong> well on path to significantly exceed original $8.5B target; expect to achieve much earlier than original 3-year timeline</li>
+    <li><strong>Integration Status:</strong> largely complete; starting FQ1 FY2025, will no longer break out VMware revenue/costs separately; reported within Infrastructure Software segment</li>
+    <li><strong>Software Segment Composition (going forward):</strong> Brocade Fibre Channel SAN, CA mainframe, Enterprise Security (Symantec + Carbon Black), and VMware</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>FQ4 2024 Balance Sheet & Capital Allocation</h3>
+  <ul>
+    <li><strong>Cash & Equivalents:</strong> $9.3B</li>
+    <li><strong>Gross Debt:</strong> $69.8B (principal) - Fixed rate: $56B at 3.7% WAC, 7.6 years maturity - Floating rate: $14B at 5.9% WAC, 3.2 years maturity</li>
+    <li><strong>Debt Reduction:</strong> replaced $5B floating rate with fixed rate notes; used cash to pay due notes + additional floating rate, reducing debt by $2.5B total; expect to repay ~$495M fixed rate notes due in Q1</li>
+    <li><strong>DSO:</strong> 29 days (vs 31 year-ago)</li>
+    <li><strong>Inventory:</strong> $1.8B (-7% QoQ)</li>
+    <li><strong>Cash Dividends Paid (Q4):</strong> split-adjusted $0.53/share</li>
+    <li><strong>Tax on Vesting:</strong> $1.4B (8.4M shares eliminated, per Q3 data)</li>
+    <li><strong>Non-GAAP Diluted Share Count:</strong> ~4.91B (split-adjusted); Q1 FY2025 expected ~4.9B</li>
+    <li><strong>Dividend Increase (Q1 FY2025):</strong> $0.59/share (+11% QoQ); implies FY2025 annual dividend of $2.36/share (+12% YoY); 14th consecutive increase since FY2011</li>
+    <li><strong>Capital Allocation Priority FY2025:</strong> debt paydown (focus on reducing interest expense; paying down term loans); no near-term M&A plans but always open</li>
+    <li><strong>Non-GAAP Tax Rate FY2025:</strong> ~14.5% (tax deductions for interest reduce as debt is paid down/refinanced)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>New Semiconductor Reporting Framework</h3>
+  <ul>
+    <li>Starting FY2025, guiding semiconductor business by <strong>AI revenue</strong> and <strong>non-AI revenue</strong> segments instead of by end market</li>
+    <li>AI semiconductor business expected to rapidly outgrow non-AI business</li>
+    <li>Non-AI semiconductor: $17.8B cyclical bottom in FY2024; expect recovery at industry historical mid-single-digit growth rate</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Gross Margin Dynamics</h3>
+  <ul>
+    <li><strong>Semiconductor GM Dilution:</strong> AI XPU growth will continue to dilute semiconductor gross margin (HBM memory content)</li>
+    <li><strong>Operating Margin Improvement:</strong> revenue leverage will more than offset gross margin dilution; operating margin expected to improve from current levels</li>
+    <li><strong>Software GM:</strong> ~91%; will remain around 90%+ level</li>
+    <li><strong>Consolidated GM Trajectory:</strong> impacted by revenue mix between software and semiconductors + product mix within semiconductors</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Sovereign AI / Enterprise AI</h3>
+  <ul>
+    <li>Sovereign data centers and enterprises will use merchant silicon (GPUs); do not have capability to create custom silicon or software stack</li>
+    <li>VMware Cloud Foundation (VCF) is the play for Broadcom in sovereign/enterprise AI — enables private cloud with GPU virtualization on-prem</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>FQ4 2024 Actuals (Reported)</h3>
+  <ul>
+    <li><strong>Revenue:</strong> $14.1B (+51% YoY; ex-VMware +11% YoY)</li>
+    <li><strong>Gross Margin:</strong> 76.9% of revenue (+260 bps YoY)</li>
+    <li><strong>Operating Expenses:</strong> $2.0B; R&D $1.4B (up YoY due to VMware)</li>
+    <li><strong>Operating Income:</strong> $8.8B (+53% YoY), 63% of revenue</li>
+    <li><strong>Adjusted EBITDA:</strong> $9.1B (65% of revenue; excludes $156M depreciation)</li>
+    <li><strong>Free Cash Flow:</strong> $5.5B (39% of revenue); ex-restructuring/integration $506M → $6.0B (+22% YoY), 43% of revenue</li>
+    <li><strong>CapEx:</strong> $122M</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Full Year FY2024 Actuals</h3>
+  <ul>
+    <li><strong>Revenue:</strong> $51.6B (+44% YoY; +9% ex-VMware organic) — record</li>
+    <li><strong>Semiconductor Solutions Revenue:</strong> $30.1B (+7% YoY) - AI Revenue: $12.2B (+220% YoY from $3.8B in FY2023); 41% of semiconductor revenue - Non-AI Semiconductor: $17.8B (cyclical bottom)</li>
+    <li><strong>Infrastructure Software Revenue:</strong> $21.5B (+181% YoY; +19% ex-VMware YoY)</li>
+    <li><strong>Adjusted EBITDA:</strong> $31.9B (62% of revenue)</li>
+    <li><strong>Free Cash Flow:</strong> $19.4B (+10% YoY); $21.9B ex-restructuring/integration (+22% YoY)</li>
+    <li><strong>Capital Returns (FY2024):</strong> $22.2B total ($9.8B dividends + $12.4B repurchases/eliminations) — record; up 45% YoY</li>
+    <li><strong>Operating Profit (ex-transition costs):</strong> +42% YoY</li>
+  </ul>
+</div>
+
+<div class="prior-ref" id="priorRef">
+  <div class="prior-ref-header" onclick="var b=document.getElementById('priorBody');b.classList.toggle('open');this.querySelector('.arrow').innerHTML=b.classList.contains('open')?'&#9650;':'&#9660;';">
+    Prior Quarter Reference: FQ3 2024
+    <span class="arrow">&#9660;</span>
+  </div>
+  <div class="prior-ref-body" id="priorBody">
+    <div class="metric-grid">
+      <div class="prior-mini"><div class="pm-label">Next-Q Revenue</div><div class="pm-value">~$14.0B (+51% YoY)</div></div>
+      <div class="prior-mini"><div class="pm-label">Next-Q Adj. EBITDA % of Rev</div><div class="pm-value">~64% of revenue</div></div>
+      <div class="prior-mini"><div class="pm-label">Semiconductor Revenue</div><div class="pm-value">~$8.0B (+9% YoY)</div></div>
+      <div class="prior-mini"><div class="pm-label">Infrastructure Software Revenue</div><div class="pm-value">~$6.0B</div></div>
+      <div class="prior-mini"><div class="pm-label">AI Revenue</div><div class="pm-value">~$3.1B in Q3 (in line with expectations); 2/3 compute, 1/3 networking mix</div></div>
+      <div class="prior-mini"><div class="pm-label">FY Revenue</div><div class="pm-value">raised to $51.5B (prior: $51B)</div></div>
+    </div>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="FQ3_2024.html" style="color:var(--blue);">View full FQ3 2024 detail &rarr;</a></p>
+  </div>
+</div>
+
+<div class="footer-nav">
+  <a href="FQ3_2024.html">&larr; FQ3 2024</a>
+  <a href="../comparison.html">Back to Overview</a>
+  <a href="FQ1_2025.html">FQ1 2025 &rarr;</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,263 @@
+# Alphabet Inc. — Q2_2022 Earnings Release
+
+**Ticker:** GOOG
+**Filing Date:** 2022-07-26
+**Accession:** 0001652044-22-000068
+**Source:** [SEC EDGAR](https://www.sec.gov/Archives/edgar/data/1652044/000165204422000068/0001652044-22-000068-index.htm)
+
+## Key Metrics (XBRL)
+
+| Metric | Value | Units | Source |
+|--------|------:|-------|--------|
+| Cash & Equivalents | $17.94B | USD | 10-Q |
+| Comprehensive Income | $14.22B | USD | 10-Q |
+| EPS (Basic) | 1 | USD/shares | 10-Q |
+| EPS (Diluted) | 1 | USD/shares | 10-Q |
+| Income Tax Expense | $3.01B | USD | 10-Q |
+| Net Income | $16.00B | USD | 10-Q |
+| Operating Income | $19.45B | USD | 10-Q |
+| Revenue | $69.69B | USD | 10-Q |
+| Shares Outstanding | 13,078.0M | shares | 10-Q |
+| Total Assets | $355.19B | USD | 10-Q |
+| Total Equity | $255.42B | USD | 10-Q |
+| Total Liabilities | $99.77B | USD | 10-Q |
+
+## Financial Tables (from Exhibits)
+
+### 
+
+|  | Quarter Ended June 30, |  |  |
+|  | 2021 |  | 2022 |  |  |  |  |
+| Revenues |  | 61880 |  |  |  | 69685 |  |  |  |  |  |
+| Change in revenues year over year | 62 | % |  | 13 | % |  |  |  |  |
+| Change in constant currency revenues year over year (1) | 57 | % |  | 16 | % |  |  |  |  |
+| Operating income |  | 19361 |  |  |  | 19453 |  |  |  |  |  |
+| Operating margin | 31 | % |  | 28 | % |  |  |  |  |
+| Other income (expense), net |  | 2624 |  |  |  | -439 |  |  |  |  |  |
+| Net income |  | 18525 |  |  |  | 16002 |  |  |  |  |  |
+| Diluted EPS |  | 1.36 |  |  |  | 1.21 |  |  |  |  |  |
+
+### 
+
+|  | Quarter Ended June 30, |  |  |
+|  | 2021 |  | 2022 |  |  |  |  |
+| Google Search & other |  | 35845 |  |  |  | 40689 |  |  |  |  |  |
+| YouTube ads | 7002 |  |  | 7340 |  |  |  |  |  |
+| Google Network | 7597 |  |  | 8259 |  |  |  |  |  |
+| Google advertising | 50444 |  |  | 56288 |  |  |  |  |  |
+| Google other | 6623 |  |  | 6553 |  |  |  |  |  |
+| Google Services total | 57067 |  |  | 62841 |  |  |  |  |  |
+| Google Cloud | 4628 |  |  | 6276 |  |  |  |  |  |
+| Other Bets | 192 |  |  | 193 |  |  |  |  |  |
+| Hedging gains (losses) |  |  |  | 375 |  |  |  |  |  |
+| Total revenues |  | 61880 |  |  |  | 69685 |  |  |  |  |  |
+| Total TAC |  | 10929 |  |  |  | 12214 |  |  |  |  |  |
+| Number of employees | 144056 |  |  | 174014 |  |  |  |
+
+### 
+
+|  | Quarter Ended June 30, |
+|  | 2021 |  | 2022 |
+| Operating income (loss): |  |  |  |
+| Google Services |  | 22343 |  |  |  | 22770 |  |
+| Google Cloud | -591 |  |  | -858 |  |
+| Other Bets | -1398 |  |  | -1686 |  |
+| Corporate costs, unallocated | -993 |  |  | -773 |  |
+| Total income from operations |  | 19361 |  |  |  | 19453 |  |
+
+### 
+
+|  | As of December 31, |  | As of June 30, |
+|  | 2021 |  | 2022 |
+|  |  |  | (unaudited) |
+| Assets |  |  |  |
+| Current assets: |  |  |  |
+| Cash and cash equivalents |  | 20945 |  |  |  | 17936 |  |
+| Marketable securities | 118704 |  |  | 107061 |  |
+| Total cash, cash equivalents, and marketable securities | 139649 |  |  | 124997 |  |
+| Accounts receivable, net | 39304 |  |  | 35707 |  |
+| Income taxes receivable, net | 966 |  |  | 1366 |  |
+| Inventory | 1170 |  |  | 1980 |  |
+| Other current assets | 7054 |  |  | 8321 |  |
+| Total current assets | 188143 |  |  | 172371 |  |
+| Non-marketable securities | 29549 |  |  | 30665 |  |
+| Deferred income taxes | 1284 |  |  | 1490 |  |
+| Property and equipment, net | 97599 |  |  | 106223 |  |
+| Operating lease assets | 12959 |  |  | 13398 |  |
+| Intangible assets, net | 1417 |  |  | 1377 |  |
+| Goodwill | 22956 |  |  | 23949 |  |
+| Other non-current assets | 5361 |  |  | 5712 |  |
+| Total assets |  | 359268 |  |  |  | 355185 |  |
+| Liabilities and Stockholders’ Equity |  |  |  |
+| Current liabilities: |  |  |  |
+| Accounts payable |  | 6037 |  |  |  | 4409 |  |
+| Accrued compensation and benefits | 13889 |  |  | 10852 |  |
+| Accrued expenses and other current liabilities | 31236 |  |  | 32976 |  |
+| Accrued revenue share | 8996 |  |  | 7889 |  |
+| Deferred revenue | 3288 |  |  | 3272 |  |
+| Income taxes payable, net | 808 |  |  | 1956 |  |
+| Total current liabilities | 64254 |  |  | 61354 |  |
+| Long-term debt | 14817 |  |  | 14734 |  |
+| Deferred revenue, non-current | 535 |  |  | 472 |  |
+| Income taxes payable, non-current | 9176 |  |  | 8163 |  |
+| Deferred income taxes | 5257 |  |  | 924 |  |
+| Operating lease liabilities | 11389 |  |  | 11697 |  |
+| Other long-term liabilities | 2205 |  |  | 2422 |  |
+| Total liabilities | 107633 |  |  | 99766 |  |
+| Contingencies |  |  |  |
+| Stockholders’ equity: |  |  |  |
+| Preferred stock, 0.001 par value per share, 100 shares authorized; no shares issued and outstanding | 0 |  |  | 0 |  |
+| Class A, Class B, and Class C stock and additional paid-in capital, 0.001 par value per share: 300,000 shares authorized (Class A 180,000, Class B 60,000, Class C 60,000); 13,242 (Class A 6,015, Class B 893, Class C 6,334) and 13,078 (Class A 6,002, Class B 885, Class C 6,191) shares issued and outstanding | 61774 |  |  | 64402 |  |
+| Accumulated other comprehensive income (loss) | -1623 |  |  | -5828 |  |
+| Retained earnings | 191484 |  |  | 196845 |  |
+| Total stockholders’ equity | 251635 |  |  | 255419 |  |
+| Total liabilities and stockholders’ equity |  | 359268 |  |  |  | 355185 |  |
+
+### 
+
+|  | Quarter Ended June 30, |  | Year To Date June 30, |
+|  | 2021 |  | 2022 |  | 2021 |  | 2022 |
+| Revenues |  | 61880 |  |  |  | 69685 |  |  |  | 117194 |  |  |  | 137696 |  |
+| Costs and expenses: |  |  |  |  |  |  |  |
+| Cost of revenues | 26227 |  |  | 30104 |  |  | 50330 |  |  | 59703 |  |
+| Research and development | 7675 |  |  | 9841 |  |  | 15160 |  |  | 18960 |  |
+| Sales and marketing | 5276 |  |  | 6630 |  |  | 9792 |  |  | 12455 |  |
+| General and administrative | 3341 |  |  | 3657 |  |  | 6114 |  |  | 7031 |  |
+| Total costs and expenses | 42519 |  |  | 50232 |  |  | 81396 |  |  | 98149 |  |
+| Income from operations | 19361 |  |  | 19453 |  |  | 35798 |  |  | 39547 |  |
+| Other income (expense), net | 2624 |  |  | -439 |  |  | 7470 |  |  | -1599 |  |
+| Income before income taxes | 21985 |  |  | 19014 |  |  | 43268 |  |  | 37948 |  |
+| Provision for income taxes | 3460 |  |  | 3012 |  |  | 6813 |  |  | 5510 |  |
+| Net income |  | 18525 |  |  |  | 16002 |  |  |  | 36455 |  |  |  | 32438 |  |
+| Basic earnings per share of Class A, Class B, and Class C stock |  | 1.38 |  |  |  | 1.22 |  |  |  | 2.72 |  |  |  | 2.46 |  |
+| Diluted earnings per share of Class A, Class B, and Class C stock |  | 1.36 |  |  |  | 1.21 |  |  |  | 2.68 |  |  |  | 2.44 |  |
+| Number of shares used in basic earnings per share calculation | 13379 |  |  | 13133 |  |  | 13422 |  |  | 13168 |  |
+| Number of shares used in diluted earnings per share calculation | 13592 |  |  | 13239 |  |  | 13617 |  |  | 13295 |  |
+
+### 
+
+|  | Quarter Ended June 30, |  | Year To Date June 30, |
+|  | 2021 |  | 2022 |  | 2021 |  | 2022 |
+| Operating activities |  |  |  |  |  |  |  |
+| Net income |  | 18525 |  |  |  | 16002 |  |  |  | 36455 |  |  |  | 32438 |  |
+| Adjustments: |  |  |  |  |  |  |  |
+| Depreciation and impairment of property and equipment | 2730 |  |  | 3698 |  |  | 5255 |  |  | 7289 |  |
+| Amortization and impairment of intangible assets | 215 |  |  | 201 |  |  | 443 |  |  | 392 |  |
+| Stock-based compensation expense | 3803 |  |  | 4782 |  |  | 7548 |  |  | 9286 |  |
+| Deferred income taxes | 379 |  |  | -2147 |  |  | 1479 |  |  | -4237 |  |
+| (Gain) loss on debt and equity securities, net | -2883 |  |  | 1041 |  |  | -7634 |  |  | 2478 |  |
+| Other |  |  |  | 62 |  |  | -263 |  |  | 202 |  |
+| Changes in assets and liabilities, net of effects of acquisitions: |  |  |  |  |  |  |  |
+| Accounts receivable | -3661 |  |  | -1969 |  |  | -867 |  |  | 2395 |  |
+| Income taxes, net | -1082 |  |  | -4073 |  |  | -297 |  |  | -253 |  |
+| Other assets | -199 |  |  | -845 |  |  | -192 |  |  | -1621 |  |
+| Accounts payable | -130 |  |  | 1201 |  |  | -1112 |  |  | -1172 |  |
+| Accrued expenses and other liabilities | 3731 |  |  | 1497 |  |  | 201 |  |  | -1719 |  |
+| Accrued revenue share | 473 |  |  | -114 |  |  | 29 |  |  | -942 |  |
+| Deferred revenue |  |  |  | 86 |  |  | 134 |  |  |  |  |
+| Net cash provided by operating activities | 21890 |  |  | 19422 |  |  | 41179 |  |  | 44528 |  |
+| Investing activities |  |  |  |  |  |  |  |
+| Purchases of property and equipment | -5496 |  |  | -6828 |  |  | -11438 |  |  | -16614 |  |
+| Purchases of marketable securities | -24183 |  |  | -21737 |  |  | -60609 |  |  | -50199 |  |
+| Maturities and sales of marketable securities | 21419 |  |  | 25595 |  |  | 60667 |  |  | 55374 |  |
+| Purchases of non-marketable securities | -766 |  |  | -488 |  |  | -1412 |  |  | -1264 |  |
+| Maturities and sales of non-marketable securities | 237 |  |  | 113 |  |  | 256 |  |  | 125 |  |
+| Acquisitions, net of cash acquired, and purchases of intangible assets | -308 |  |  | -1063 |  |  | -1974 |  |  | -1236 |  |
+| Other investing activities | 23 |  |  | 221 |  |  | 53 |  |  | 576 |  |
+| Net cash used in investing activities | -9074 |  |  | -4187 |  |  | -14457 |  |  | -13238 |  |
+| Financing activities |  |  |  |  |  |  |  |
+| Net payments related to stock-based award activities | -2453 |  |  | -2264 |  |  | -4637 |  |  | -5180 |  |
+| Repurchases of stock | -12796 |  |  | -15197 |  |  | -24191 |  |  | -28497 |  |
+| Proceeds from issuance of debt, net of costs | 6699 |  |  | 12806 |  |  | 7599 |  |  | 29228 |  |
+| Repayments of debt | -7741 |  |  | -13162 |  |  | -8678 |  |  | -29582 |  |
+| Proceeds from sale of interest in consolidated entities, net | 300 |  |  | 0 |  |  | 310 |  |  | 0 |  |
+| Net cash used in financing activities | -15991 |  |  | -17817 |  |  | -29597 |  |  | -34031 |  |
+| Effect of exchange rate changes on cash and cash equivalents | 183 |  |  | -368 |  |  | 40 |  |  | -268 |  |
+| Net decrease in cash and cash equivalents | -2992 |  |  | -2950 |  |  | -2835 |  |  | -3009 |  |
+| Cash and cash equivalents at beginning of period | 26622 |  |  | 20886 |  |  | 26465 |  |  | 20945 |  |
+| Cash and cash equivalents at end of period |  | 23630 |  |  |  | 17936 |  |  |  | 23630 |  |  |  | 17936 |  |
+
+### 
+
+|  | Quarter Ended |  |  |
+|  | June 30, 2020 |  | June 30, 2021 |  | % Change from Prior Year |
+| EMEA revenues |  | 11363 |  |  |  | 19084 |  |  | 68 | % |
+| EMEA constant currency revenues |  |  | 17659 |  |  | 55 | % |
+| APAC revenues | 6945 |  |  | 11231 |  |  | 62 | % |
+| APAC constant currency revenues |  |  | 10881 |  |  | 57 | % |
+| Other Americas revenues | 1839 |  |  | 3364 |  |  | 83 | % |
+| Other Americas constant currency revenues |  |  | 3252 |  |  | 77 | % |
+| United States revenues | 17999 |  |  | 28208 |  |  | 57 | % |
+| Hedging gains (losses) | 151 |  |  |  |  |  |  |
+| Total revenues |  | 38297 |  |  |  | 61880 |  |  | 62 | % |
+| Revenues, excluding hedging effect |  | 38146 |  |  |  | 61887 |  |  |  |
+| Exchange rate effect |  |  | -1887 |  |  |  |
+| Total constant currency revenues |  |  |  | 60000 |  |  | 57 | % |
+
+### 
+
+|  | Quarter Ended |  |  |
+|  | June 30, 2021 |  | June 30, 2022 |  | % Change from Prior Year |
+| EMEA revenues |  | 19084 |  |  |  | 20533 |  |  | 8 | % |
+| EMEA constant currency revenues |  |  | 22489 |  |  | 18 | % |
+| APAC revenues | 11231 |  |  | 11710 |  |  | 4 | % |
+| APAC constant currency revenues |  |  | 12466 |  |  | 11 | % |
+| Other Americas revenues | 3364 |  |  | 4340 |  |  | 29 | % |
+| Other Americas constant currency revenues |  |  | 4310 |  |  | 28 | % |
+| United States revenues | 28208 |  |  | 32727 |  |  | 16 | % |
+| Hedging gains (losses) |  |  |  | 375 |  |  |  |
+| Total revenues |  | 61880 |  |  |  | 69685 |  |  | 13 | % |
+| Revenues, excluding hedging effect |  | 61887 |  |  |  | 69310 |  |  |  |
+| Exchange rate effect |  |  | 2682 |  |  |  |
+| Total constant currency revenues |  |  |  | 71992 |  |  | 16 | % |
+
+### 
+
+|  | Quarter Ended |  |  |
+|  | March 31, 2022 |  | June 30, 2022 |  | % Change from Prior Quarter |
+| EMEA revenues |  | 20317 |  |  |  | 20533 |  |  | 1 | % |
+| EMEA constant currency revenues |  |  | 21164 |  |  | 4 | % |
+| APAC revenues | 11841 |  |  | 11710 |  |  |  | % |
+| APAC constant currency revenues |  |  | 12044 |  |  | 2 | % |
+| Other Americas revenues | 3842 |  |  | 4340 |  |  | 13 | % |
+| Other Americas constant currency revenues |  |  | 4231 |  |  | 10 | % |
+| United States revenues | 31733 |  |  | 32727 |  |  | 3 | % |
+| Hedging gains (losses) | 278 |  |  | 375 |  |  |  |
+| Total revenues |  | 68011 |  |  |  | 69685 |  |  | 2 | % |
+| Revenues, excluding hedging effect |  | 67733 |  |  |  | 69310 |  |  |  |
+| Exchange rate effect |  |  | 856 |  |  |  |
+| Total constant currency revenues |  |  |  | 70166 |  |  | 4 | % |
+
+### 
+
+|  | Quarter Ended June 30, |  |  |
+|  | 2021 |  | 2022 |  |  |  |  |
+| Interest income |  | 389 |  |  |  | 486 |  |  |  |  |  |
+| Interest expense | -76 |  |  | -83 |  |  |  |  |  |
+| Foreign currency exchange gain (loss), net | -51 |  |  | -260 |  |  |  |  |  |
+| Gain (loss) on debt securities, net | 111 |  |  | -790 |  |  |  |  |  |
+| Gain (loss) on equity securities, net | 2772 |  |  | -251 |  |  |  |  |  |
+| Performance fees | -523 |  |  | 318 |  |  |  |  |  |
+| Income (loss) and impairment from equity method investments, net | 92 |  |  | -118 |  |  |  |  |  |
+| Other | -90 |  |  | 259 |  |  |  |  |  |
+| Other income (expense), net |  | 2624 |  |  |  | -439 |  |  |  |  |  |
+
+### 
+
+|  | Quarter Ended June 30, |
+|  | 2021 |  | 2022 |
+| Revenues: |  |  |  |
+| Google Services |  | 57067 |  |  |  | 62841 |  |
+| Google Cloud | 4628 |  |  | 6276 |  |
+| Other Bets | 192 |  |  | 193 |  |
+| Hedging gains (losses) |  |  |  | 375 |  |
+| Total revenues |  | 61880 |  |  |  | 69685 |  |
+| Operating income (loss): |  |  |  |
+| Google Services |  | 22343 |  |  |  | 22770 |  |
+| Google Cloud | -591 |  |  | -858 |  |
+| Other Bets | -1398 |  |  | -1686 |  |
+| Corporate costs, unallocated | -993 |  |  | -773 |  |
+| Total income from operations |  | 19361 |  |  |  | 19453 |  |
+
+---
+*Generated by edgar_download.py on 2026-03-03 20:12*

@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NVIDIA Results vs Guidance &mdash; 16-Quarter Scorecard</title>
+<style>
+  :root {
+    --company-primary: #76b900;
+    --company-dark: #1a1a1a;
+    --company-accent: #333333;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 48px 40px;
+    margin: 0 -24px 40px;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; }
+  .header .subtitle { font-size: 1.1rem; opacity: 0.85; font-weight: 300; }
+
+  .quarter-nav {
+    background: var(--company-accent);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+  .quarter-nav .label { color: #fff; font-weight: 600; font-size: 0.85rem; margin-right: 8px; white-space: nowrap; }
+  .quarter-nav .year-group { display: flex; gap: 4px; align-items: center; }
+  .quarter-nav .year-label { color: rgba(255,255,255,0.5); font-size: 0.72rem; font-weight: 600; margin-right: 2px; letter-spacing: 0.5px; }
+  .quarter-nav a {
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+  .quarter-nav a:hover { background: rgba(255,255,255,0.25); }
+  .quarter-nav a.overview-link {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.35);
+    padding: 4px 14px;
+    font-size: 0.82rem;
+    margin-left: auto;
+  }
+
+  .toc {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 32px;
+    margin-bottom: 40px;
+  }
+  .toc h2 { font-size: 1.1rem; color: var(--company-accent); margin-bottom: 12px; }
+  .toc a { display: block; color: var(--blue); text-decoration: none; padding: 3px 0; font-size: 0.9rem; }
+  .toc a:hover { text-decoration: underline; }
+
+  .section { margin-bottom: 48px; scroll-margin-top: 20px; }
+  .section h2 { font-size: 1.4rem; color: var(--company-dark); border-bottom: 3px solid var(--company-primary); padding-bottom: 8px; margin-bottom: 16px; }
+  .section h2 .num {
+    display: inline-block;
+    background: var(--company-primary);
+    color: #fff;
+    width: 28px; height: 28px; line-height: 28px;
+    text-align: center; border-radius: 50%;
+    font-size: 0.85rem; margin-right: 8px; vertical-align: middle;
+  }
+
+  .scorecard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .score-card {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+  }
+  .score-card .metric-value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--company-dark);
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+  .score-card .metric-value.green { color: var(--green); }
+  .score-card .metric-label {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+  .score-card .metric-sub {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+  .score-card.highlight {
+    border-color: var(--green);
+    background: #eafaf1;
+  }
+
+  table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 0.88rem; }
+  thead th {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+  thead th.right { text-align: right; }
+  tbody td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tbody td.right { text-align: right; }
+  tbody tr:nth-child(even) { background: var(--light-bg); }
+  tbody tr:hover { background: #eef2f7; }
+
+  .pos { color: var(--green); font-weight: 600; }
+  .neg { color: var(--red); font-weight: 600; }
+  .neutral { color: var(--amber); font-weight: 600; }
+  .raised { background: #eafaf1 !important; }
+  .lowered { background: #fef0ef !important; }
+  .bold { font-weight: 700; }
+  .muted { color: var(--text-muted); font-style: italic; }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    vertical-align: middle;
+  }
+  .tag-beat { background: #d5f5e3; color: #1e8449; }
+  .tag-miss { background: #fadbd8; color: #c0392b; }
+  .tag-met { background: #fdebd0; color: #b9770e; }
+  .tag-pending { background: #d6eaf8; color: #2471a3; }
+
+  .insight {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 4px solid var(--amber);
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.9rem;
+  }
+  .insight strong { color: var(--company-dark); }
+
+  .takeaways { counter-reset: takeaway; }
+  .takeaway {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 18px;
+    padding: 14px 18px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .takeaway-num {
+    flex-shrink: 0;
+    width: 32px; height: 32px; line-height: 32px;
+    text-align: center;
+    background: var(--company-primary);
+    color: #fff;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+  .takeaway-text { font-size: 0.92rem; }
+  .takeaway-text strong { color: var(--company-dark); }
+
+  .year-divider td {
+    background: var(--company-accent) !important;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.82rem;
+    padding: 6px 12px;
+    letter-spacing: 0.5px;
+  }
+
+  .footnote {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 8px;
+    font-style: italic;
+  }
+
+  .fy-block {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+  }
+  .fy-block h3 {
+    font-size: 1.1rem;
+    color: var(--company-dark);
+    margin-bottom: 12px;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 6px;
+  }
+  .fy-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.88rem;
+  }
+  .fy-row:last-child { border-bottom: none; }
+  .fy-label { color: var(--text-muted); font-weight: 500; }
+  .fy-value { font-weight: 600; }
+
+  .footer {
+    text-align: center;
+    padding: 32px 0 0;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.82rem;
+  }
+
+  @media (max-width: 768px) {
+    .toc { columns: 1; }
+    .header h1 { font-size: 1.6rem; }
+    table { font-size: 0.8rem; }
+    thead th, tbody td { padding: 6px 8px; }
+    .quarter-nav { gap: 4px; }
+    .scorecard { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media print {
+    .header { background: #333; }
+    .section { page-break-inside: avoid; }
+    table { font-size: 0.75rem; }
+    .quarter-nav { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>NVIDIA Results vs Guidance &mdash; 16-Quarter Scorecard</h1>
+  <div class="subtitle">How actuals compared to management guidance | Q1 FY2023 &ndash; Q4 FY2026 (15 guidance&ndash;actual pairs + 1 pending)</div>
+</div>
+
+<!-- Quarter Navigation -->
+<div class="quarter-nav" id="qnav">
+  <span class="label">Quarter detail:</span>
+  <div class="year-group">
+    <span class="year-label">FY26</span>
+    <a href="quarters/Q4_2026.html">Q4</a>
+    <a href="quarters/Q3_2026.html">Q3</a>
+    <a href="quarters/Q2_2026.html">Q2</a>
+    <a href="quarters/Q1_2026.html">Q1</a>
+  </div>
+  <div class="year-group">
+    <span class="year-label">FY25</span>
+    <a href="quarters/Q4_2025.html">Q4</a>
+    <a href="quarters/Q3_2025.html">Q3</a>
+    <a href="quarters/Q2_2025.html">Q2</a>
+    <a href="quarters/Q1_2025.html">Q1</a>
+  </div>
+  <div class="year-group">
+    <span class="year-label">FY24</span>
+    <a href="quarters/Q4_2024.html">Q4</a>
+    <a href="quarters/Q3_2024.html">Q3</a>
+    <a href="quarters/Q2_2024.html">Q2</a>
+    <a href="quarters/Q1_2024.html">Q1</a>
+  </div>
+  <div class="year-group">
+    <span class="year-label">FY23</span>
+    <a href="quarters/Q4_2023.html">Q4</a>
+    <a href="quarters/Q3_2023.html">Q3</a>
+    <a href="quarters/Q2_2023.html">Q2</a>
+    <a href="quarters/Q1_2023.html">Q1</a>
+  </div>
+  <a href="comparison.html" class="overview-link">Guidance Overview &rarr;</a>
+</div>
+
+<!-- Table of Contents -->
+<nav class="toc">
+  <h2>Table of Contents</h2>
+  <a href="#s0">Summary Scorecard</a>
+  <a href="#s1">1. Quarterly Revenue &mdash; Actuals vs Guidance</a>
+  <a href="#s2">2. Non-GAAP Gross Margin &mdash; Actuals vs Guidance</a>
+  <a href="#s3">3. Full-Year Revenue Trajectory</a>
+  <a href="#s4">4. Data Center Revenue Trajectory</a>
+  <a href="#s5">5. Key Takeaways</a>
+</nav>
+
+<!-- ====== SUMMARY SCORECARD ====== -->
+<div class="section" id="s0">
+  <h2>Summary Scorecard</h2>
+  <div class="scorecard">
+    <div class="score-card highlight">
+      <div class="metric-value green">14/15</div>
+      <div class="metric-label">Revenue beat rate vs midpoint</div>
+      <div class="metric-sub">Only Q2 FY2023 missed (gaming collapse)</div>
+    </div>
+    <div class="score-card">
+      <div class="metric-value">+5.7%</div>
+      <div class="metric-label">Avg revenue beat vs midpoint</div>
+      <div class="metric-sub">+7.3% excl Q2 FY2023</div>
+    </div>
+    <div class="score-card highlight">
+      <div class="metric-value green">12/15</div>
+      <div class="metric-label">Revenue exceeded high end</div>
+      <div class="metric-sub">12 consecutive since Q1 FY2024</div>
+    </div>
+    <div class="score-card">
+      <div class="metric-value">1/15</div>
+      <div class="metric-label">Revenue missed low end</div>
+      <div class="metric-sub">Q2 FY2023 only (&minus;17.3% vs mid)</div>
+    </div>
+    <div class="score-card highlight">
+      <div class="metric-value green">12/12</div>
+      <div class="metric-label">GM beat rate (excl charges)</div>
+      <div class="metric-sub">Perfect when no one-time charges</div>
+    </div>
+    <div class="score-card">
+      <div class="metric-value">+70 bps</div>
+      <div class="metric-label">Avg GM beat (excl charges)</div>
+      <div class="metric-sub">Systematic upside in clean quarters</div>
+    </div>
+    <div class="score-card">
+      <div class="metric-value">3/15</div>
+      <div class="metric-label">GM missed (all quarters)</div>
+      <div class="metric-sub">All 3 from extraordinary charges</div>
+    </div>
+    <div class="score-card">
+      <div class="metric-value">+22.8%</div>
+      <div class="metric-label">Largest revenue beat vs mid</div>
+      <div class="metric-sub">Q2 FY2024 &mdash; AI demand explosion</div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== SECTION 1: Revenue ====== -->
+<div class="section" id="s1">
+  <h2><span class="num">1</span> Quarterly Revenue &mdash; Actuals vs Guidance</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Quarter</th>
+        <th>Guided From</th>
+        <th>Guidance Range</th>
+        <th class="right">Actual</th>
+        <th class="right">vs Low</th>
+        <th class="right">vs Mid</th>
+        <th class="right">vs High</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Pending -->
+      <tr class="year-divider"><td colspan="7">FY2027 (PENDING)</td></tr>
+      <tr>
+        <td class="bold">Q1 FY2027</td>
+        <td>Q4 &rsquo;26 call (Feb &rsquo;26)</td>
+        <td>$76.4B &ndash; $79.6B</td>
+        <td class="right muted">Pending</td>
+        <td class="right muted">&mdash;</td>
+        <td class="right muted">&mdash;</td>
+        <td class="right muted">&mdash;</td>
+      </tr>
+      <!-- FY2026 -->
+      <tr class="year-divider"><td colspan="7">FY2026 &mdash; BLACKWELL DOMINANCE ($215.7B REVENUE)</td></tr>
+      <tr class="raised">
+        <td class="bold">Q4 FY2026</td>
+        <td>Q3 &rsquo;26 call (Nov &rsquo;25)</td>
+        <td>$63.7B &ndash; $66.3B</td>
+        <td class="right bold">$68.0B</td>
+        <td class="right pos">+6.7%</td>
+        <td class="right pos">+4.6%</td>
+        <td class="right pos">+2.6%</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q3 FY2026</td>
+        <td>Q2 &rsquo;26 call (Aug &rsquo;25)</td>
+        <td>$52.9B &ndash; $55.1B</td>
+        <td class="right bold">$57.0B</td>
+        <td class="right pos">+7.7%</td>
+        <td class="right pos">+5.6%</td>
+        <td class="right pos">+3.5%</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q2 FY2026</td>
+        <td>Q1 &rsquo;26 call (May &rsquo;25)</td>
+        <td>$44.1B &ndash; $45.9B</td>
+        <td class="right bold">$46.7B</td>
+        <td class="right pos">+5.9%</td>
+        <td class="right pos">+3.8%</td>
+        <td class="right pos">+1.7%</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q1 FY2026</td>
+        <td>Q4 &rsquo;25 call (Feb &rsquo;25)</td>
+        <td>$42.1B &ndash; $43.9B</td>
+        <td class="right bold">$44.0B</td>
+        <td class="right pos">+4.4%</td>
+        <td class="right pos">+2.3%</td>
+        <td class="right pos">+0.3%</td>
+      </tr>
+      <!-- FY2025 -->
+      <tr class="year-divider"><td colspan="7">FY2025 &mdash; AI INFRASTRUCTURE BUILD-OUT ($130.5B REVENUE)</td></tr>
+      <tr class="raised">
+        <td class="bold">Q4 FY2025</td>
+        <td>Q3 &rsquo;25 call (Nov &rsquo;24)</td>
+        <td>$36.8B &ndash; $38.3B</td>
+        <td class="right bold">$39.3B</td>
+        <td class="right pos">+6.9%</td>
+        <td class="right pos">+4.8%</td>
+        <td class="right pos">+2.7%</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q3 FY2025</td>
+        <td>Q2 &rsquo;25 call (Aug &rsquo;24)</td>
+        <td>$31.9B &ndash; $33.2B</td>
+        <td class="right bold">$35.1B</td>
+        <td class="right pos">+10.2%</td>
+        <td class="right pos">+8.0%</td>
+        <td class="right pos">+5.9%</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q2 FY2025</td>
+        <td>Q1 &rsquo;25 call (May &rsquo;24)</td>
+        <td>$27.4B &ndash; $28.6B</td>
+        <td class="right bold">$30.0B</td>
+        <td class="right pos">+9.3%</td>
+        <td class="right pos">+7.1%</td>
+        <td class="right pos">+5.0%</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q1 FY2025</td>
+        <td>Q4 &rsquo;24 call (Feb &rsquo;24)</td>
+        <td>$23.5B &ndash; $24.5B</td>
+        <td class="right bold">$26.0B</td>
+        <td class="right pos">+10.5%</td>
+        <td class="right pos">+8.3%</td>
+        <td class="right pos">+6.2%</td>
+      </tr>
+      <!-- FY2024 -->
+      <tr class="year-divider"><td colspan="7">FY2024 &mdash; GENERATIVE AI EXPLOSION ($60.9B REVENUE)</td></tr>
+      <tr class="raised">
+        <td class="bold">Q4 FY2024</td>
+        <td>Q3 &rsquo;24 call (Nov &rsquo;23)</td>
+        <td>$19.6B &ndash; $20.4B</td>
+        <td class="right bold">$22.1B</td>
+        <td class="right pos">+12.8%</td>
+        <td class="right pos">+10.5%</td>
+        <td class="right pos">+8.3%</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q3 FY2024</td>
+        <td>Q2 &rsquo;24 call (Aug &rsquo;23)</td>
+        <td>$15.7B &ndash; $16.3B</td>
+        <td class="right bold">$18.1B</td>
+        <td class="right pos">+15.6%</td>
+        <td class="right pos">+13.3%</td>
+        <td class="right pos">+11.0%</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q2 FY2024</td>
+        <td>Q1 &rsquo;24 call (May &rsquo;23)</td>
+        <td>$10.8B &ndash; $11.2B</td>
+        <td class="right bold">$13.5B</td>
+        <td class="right pos">+25.3%</td>
+        <td class="right pos">+22.8%</td>
+        <td class="right pos">+20.4%</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q1 FY2024</td>
+        <td>Q4 &rsquo;23 call (Feb &rsquo;23)</td>
+        <td>$6.4B &ndash; $6.6B</td>
+        <td class="right bold">$7.2B</td>
+        <td class="right pos">+12.9%</td>
+        <td class="right pos">+10.6%</td>
+        <td class="right pos">+8.4%</td>
+      </tr>
+      <!-- FY2023 -->
+      <tr class="year-divider"><td colspan="7">FY2023 &mdash; GAMING CORRECTION &amp; AI DAWN ($27.0B REVENUE)</td></tr>
+      <tr>
+        <td class="bold">Q4 FY2023</td>
+        <td>Q3 &rsquo;23 call (Nov &rsquo;22)</td>
+        <td>$5.9B &ndash; $6.1B</td>
+        <td class="right bold">$6.1B</td>
+        <td class="right pos">+2.9%</td>
+        <td class="right pos">+0.8%</td>
+        <td class="right neg">&minus;1.1%</td>
+      </tr>
+      <tr>
+        <td class="bold">Q3 FY2023</td>
+        <td>Q2 &rsquo;23 call (Aug &rsquo;22)</td>
+        <td>$5.8B &ndash; $6.0B</td>
+        <td class="right bold">$5.9B</td>
+        <td class="right pos">+2.6%</td>
+        <td class="right pos">+0.5%</td>
+        <td class="right neg">&minus;1.5%</td>
+      </tr>
+      <tr class="lowered">
+        <td class="bold">Q2 FY2023</td>
+        <td>Q1 &rsquo;23 call (May &rsquo;22)</td>
+        <td>$7.9B &ndash; $8.3B</td>
+        <td class="right bold">$6.7B</td>
+        <td class="right neg">&minus;15.6%</td>
+        <td class="right neg">&minus;17.3%</td>
+        <td class="right neg">&minus;18.9%</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="footnote">Revenue guidance given as midpoint &plusmn;2%. Low/high computed from midpoint. Q2 FY2023 miss driven by sudden gaming channel inventory correction, crypto collapse, and China COVID lockdowns.</p>
+  <div class="insight"><strong>Key Insight:</strong> NVIDIA has beaten revenue guidance midpoint in 14 of 15 quarters and exceeded the high end in 12 consecutive quarters since Q1 FY2024. The single miss (Q2 FY2023, &minus;17.3%) coincided with a gaming market collapse and crypto unwinding. Since then, management has consistently under-guided, with the AI demand explosion making even aggressive-sounding guidance conservative. The average beat narrowed from +16.8% in FY2024 to +4.1% in FY2026, suggesting guidance is catching up to reality.</div>
+</div>
+
+<!-- ====== SECTION 2: Non-GAAP Gross Margin ====== -->
+<div class="section" id="s2">
+  <h2><span class="num">2</span> Non-GAAP Gross Margin &mdash; Actuals vs Guidance</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Quarter</th>
+        <th>Guided From</th>
+        <th>Guidance Range</th>
+        <th class="right">Actual</th>
+        <th class="right">vs Low</th>
+        <th class="right">vs Mid</th>
+        <th class="right">vs High</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Pending -->
+      <tr class="year-divider"><td colspan="8">FY2027 (PENDING)</td></tr>
+      <tr>
+        <td class="bold">Q1 FY2027</td>
+        <td>Q4 &rsquo;26 call</td>
+        <td>74.5% &ndash; 75.5%</td>
+        <td class="right muted">Pending</td>
+        <td class="right muted">&mdash;</td>
+        <td class="right muted">&mdash;</td>
+        <td class="right muted">&mdash;</td>
+        <td class="muted">&mdash;</td>
+      </tr>
+      <!-- FY2026 -->
+      <tr class="year-divider"><td colspan="8">FY2026 &mdash; BLACKWELL MARGIN RECOVERY</td></tr>
+      <tr>
+        <td class="bold">Q4 FY2026</td>
+        <td>Q3 &rsquo;26 call</td>
+        <td>74.5% &ndash; 75.5%</td>
+        <td class="right bold">75.2%</td>
+        <td class="right pos">+70 bps</td>
+        <td class="right pos">+20 bps</td>
+        <td class="right neg">&minus;30 bps</td>
+        <td><span class="tag tag-beat">Beat</span> Achieved mid-70s% exit target</td>
+      </tr>
+      <tr>
+        <td class="bold">Q3 FY2026</td>
+        <td>Q2 &rsquo;26 call</td>
+        <td>73.0% &ndash; 74.0%</td>
+        <td class="right bold">73.6%</td>
+        <td class="right pos">+60 bps</td>
+        <td class="right pos">+10 bps</td>
+        <td class="right neg">&minus;40 bps</td>
+        <td><span class="tag tag-beat">Beat</span> Improved mix, cycle time</td>
+      </tr>
+      <tr>
+        <td class="bold">Q2 FY2026</td>
+        <td>Q1 &rsquo;26 call</td>
+        <td>71.5% &ndash; 72.5%</td>
+        <td class="right bold">72.7%</td>
+        <td class="right pos">+120 bps</td>
+        <td class="right pos">+70 bps</td>
+        <td class="right pos">+20 bps</td>
+        <td><span class="tag tag-beat">Beat</span> Incl 40 bps H20 inventory release&sup1;</td>
+      </tr>
+      <tr class="lowered">
+        <td class="bold">Q1 FY2026</td>
+        <td>Q4 &rsquo;25 call</td>
+        <td>70.5% &ndash; 71.5%</td>
+        <td class="right bold">61.0%</td>
+        <td class="right neg">&minus;950 bps</td>
+        <td class="right neg">&minus;1000 bps</td>
+        <td class="right neg">&minus;1050 bps</td>
+        <td><span class="tag tag-miss">Miss</span> $4.5B H20 charge&sup2;; excl: 71.3% (+30 bps)</td>
+      </tr>
+      <!-- FY2025 -->
+      <tr class="year-divider"><td colspan="8">FY2025 &mdash; PEAK &amp; TRANSITION</td></tr>
+      <tr>
+        <td class="bold">Q4 FY2025</td>
+        <td>Q3 &rsquo;25 call</td>
+        <td>73.0% &ndash; 74.0%</td>
+        <td class="right bold">73.5%</td>
+        <td class="right pos">+50 bps</td>
+        <td class="right neutral">0 bps</td>
+        <td class="right neg">&minus;50 bps</td>
+        <td><span class="tag tag-met">Met</span> Blackwell ramp began</td>
+      </tr>
+      <tr>
+        <td class="bold">Q3 FY2025</td>
+        <td>Q2 &rsquo;25 call</td>
+        <td>74.5% &ndash; 75.5%</td>
+        <td class="right bold">75.0%</td>
+        <td class="right pos">+50 bps</td>
+        <td class="right neutral">0 bps</td>
+        <td class="right neg">&minus;50 bps</td>
+        <td><span class="tag tag-met">Met</span> H100&rarr;H200 mix shift</td>
+      </tr>
+      <tr>
+        <td class="bold">Q2 FY2025</td>
+        <td>Q1 &rsquo;25 call</td>
+        <td>75.0% &ndash; 76.0%</td>
+        <td class="right bold">75.7%</td>
+        <td class="right pos">+70 bps</td>
+        <td class="right pos">+20 bps</td>
+        <td class="right neg">&minus;30 bps</td>
+        <td><span class="tag tag-beat">Beat</span> Blackwell yield provisions</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q1 FY2025</td>
+        <td>Q4 &rsquo;24 call</td>
+        <td>76.5% &ndash; 77.5%</td>
+        <td class="right bold">78.9%</td>
+        <td class="right pos">+240 bps</td>
+        <td class="right pos">+190 bps</td>
+        <td class="right pos">+140 bps</td>
+        <td><span class="tag tag-beat">Beat</span> Favorable component costs (2nd Q)</td>
+      </tr>
+      <!-- FY2024 -->
+      <tr class="year-divider"><td colspan="8">FY2024 &mdash; AI MARGIN EXPANSION</td></tr>
+      <tr class="raised">
+        <td class="bold">Q4 FY2024</td>
+        <td>Q3 &rsquo;24 call</td>
+        <td>75.0% &ndash; 76.0%</td>
+        <td class="right bold">76.7%</td>
+        <td class="right pos">+170 bps</td>
+        <td class="right pos">+120 bps</td>
+        <td class="right pos">+70 bps</td>
+        <td><span class="tag tag-beat">Beat</span> Favorable component costs</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q3 FY2024</td>
+        <td>Q2 &rsquo;24 call</td>
+        <td>72.0% &ndash; 73.0%</td>
+        <td class="right bold">75.0%</td>
+        <td class="right pos">+300 bps</td>
+        <td class="right pos">+250 bps</td>
+        <td class="right pos">+200 bps</td>
+        <td><span class="tag tag-beat">Beat</span> ~100 bps Ampere inventory release</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q2 FY2024</td>
+        <td>Q1 &rsquo;24 call</td>
+        <td>69.5% &ndash; 70.5%</td>
+        <td class="right bold">71.2%</td>
+        <td class="right pos">+170 bps</td>
+        <td class="right pos">+120 bps</td>
+        <td class="right pos">+70 bps</td>
+        <td><span class="tag tag-beat">Beat</span> Data Center mix &amp; software</td>
+      </tr>
+      <tr>
+        <td class="bold">Q1 FY2024</td>
+        <td>Q4 &rsquo;23 call</td>
+        <td>66.0% &ndash; 67.0%</td>
+        <td class="right bold">66.8%</td>
+        <td class="right pos">+80 bps</td>
+        <td class="right pos">+30 bps</td>
+        <td class="right neg">&minus;20 bps</td>
+        <td><span class="tag tag-beat">Beat</span> Recovery from FY2023 trough</td>
+      </tr>
+      <!-- FY2023 -->
+      <tr class="year-divider"><td colspan="8">FY2023 &mdash; INVENTORY CRISIS</td></tr>
+      <tr>
+        <td class="bold">Q4 FY2023</td>
+        <td>Q3 &rsquo;23 call</td>
+        <td>65.5% &ndash; 66.5%</td>
+        <td class="right bold">66.1%</td>
+        <td class="right pos">+60 bps</td>
+        <td class="right pos">+10 bps</td>
+        <td class="right neg">&minus;40 bps</td>
+        <td><span class="tag tag-beat">Beat</span> Charges behind; normalization</td>
+      </tr>
+      <tr class="lowered">
+        <td class="bold">Q3 FY2023</td>
+        <td>Q2 &rsquo;23 call</td>
+        <td>64.5% &ndash; 65.5%</td>
+        <td class="right bold">56.1%</td>
+        <td class="right neg">&minus;840 bps</td>
+        <td class="right neg">&minus;890 bps</td>
+        <td class="right neg">&minus;940 bps</td>
+        <td><span class="tag tag-miss">Miss</span> $702M A100 China write-down</td>
+      </tr>
+      <tr class="lowered">
+        <td class="bold">Q2 FY2023</td>
+        <td>Q1 &rsquo;23 call</td>
+        <td>66.6% &ndash; 67.6%</td>
+        <td class="right bold">45.9%</td>
+        <td class="right neg">&minus;2070 bps</td>
+        <td class="right neg">&minus;2120 bps</td>
+        <td class="right neg">&minus;2170 bps</td>
+        <td><span class="tag tag-miss">Miss</span> $1.22B inventory charge + $122M warranty</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="footnote">&sup1; Q2 FY2026 actual of 72.7% includes 40 bps benefit from releasing previously reserved H20 inventory; excluding: 72.3% (still beat midpoint by +30 bps).<br>
+  &sup2; Q1 FY2026 actual of 61.0% includes $4.5B H20 export control write-down (April 2025). Excluding the charge: 71.3% (would have beat midpoint by +30 bps).<br>
+  GM guidance given as midpoint &plusmn;50 basis points. Delta shown in basis points.</p>
+  <div class="insight"><strong>Key Insight:</strong> NVIDIA&rsquo;s gross margin guidance has been remarkably accurate in &ldquo;clean&rdquo; quarters (12/12 beat or met, averaging +70 bps vs midpoint). The three misses were all caused by extraordinary one-time charges that could not have been anticipated in the prior quarter&rsquo;s guidance: the FY2023 gaming inventory crisis ($1.9B combined) and the FY2026 H20 export control write-down ($4.5B). Excluding these charges, actual margins would have beaten guidance in all 15 quarters. The V-shaped margin recovery from 45.9% (Q2 FY2023) to 78.9% (Q1 FY2025) and then from 61.0% (Q1 FY2026) to 75.2% (Q4 FY2026) demonstrates NVIDIA&rsquo;s pricing power and operational resilience.</div>
+</div>
+
+<!-- ====== SECTION 3: Full-Year Revenue Trajectory ====== -->
+<div class="section" id="s3">
+  <h2><span class="num">3</span> Full-Year Revenue Trajectory</h2>
+  <p style="margin-bottom: 16px; font-size: 0.9rem; color: var(--text-muted);">NVIDIA does not provide explicit full-year revenue dollar guidance. This section tracks reported FY revenue and compares to the sum of guided quarterly midpoints where available.</p>
+
+  <div class="fy-block">
+    <h3>FY2026 (Feb 2025 &ndash; Jan 2026)</h3>
+    <div class="fy-row">
+      <span class="fy-label">Q1 + Q2 + Q3 + Q4 Actuals</span>
+      <span class="fy-value">$44.0B + $46.7B + $57.0B + $68.0B = <strong>$215.7B</strong></span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">YoY Growth</span>
+      <span class="fy-value pos">+65% vs FY2025</span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">Data Center Revenue</span>
+      <span class="fy-value">$194B (+68% YoY)</span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">Free Cash Flow</span>
+      <span class="fy-value">$97B</span>
+    </div>
+  </div>
+
+  <div class="fy-block">
+    <h3>FY2025 (Feb 2024 &ndash; Jan 2025)</h3>
+    <div class="fy-row">
+      <span class="fy-label">Revenue</span>
+      <span class="fy-value"><strong>$130.5B</strong></span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">YoY Growth</span>
+      <span class="fy-value pos">+114% vs FY2024</span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">Data Center Revenue</span>
+      <span class="fy-value">$115.2B (more than 2x YoY)</span>
+    </div>
+  </div>
+
+  <div class="fy-block">
+    <h3>FY2024 (Feb 2023 &ndash; Jan 2024)</h3>
+    <div class="fy-row">
+      <span class="fy-label">Revenue</span>
+      <span class="fy-value"><strong>$60.9B</strong></span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">YoY Growth</span>
+      <span class="fy-value pos">+126% vs FY2023</span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">Data Center Revenue</span>
+      <span class="fy-value">$47.5B (more than 3x YoY)</span>
+    </div>
+  </div>
+
+  <div class="fy-block">
+    <h3>FY2023 (Feb 2022 &ndash; Jan 2023)</h3>
+    <div class="fy-row">
+      <span class="fy-label">Revenue</span>
+      <span class="fy-value"><strong>$27.0B</strong></span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">YoY Growth</span>
+      <span class="fy-value neutral">Flat YoY</span>
+    </div>
+    <div class="fy-row">
+      <span class="fy-label">Data Center Revenue</span>
+      <span class="fy-value">$15.0B (+41% YoY)</span>
+    </div>
+  </div>
+
+  <div class="insight"><strong>Key Insight:</strong> NVIDIA&rsquo;s revenue trajectory from FY2023 to FY2026 is one of the most extraordinary growth stories in technology history: $27.0B &rarr; $60.9B &rarr; $130.5B &rarr; $215.7B, an 8x expansion in just 4 fiscal years. Data Center revenue alone went from $15B to $194B (13x). FY2023 was the last &ldquo;normal&rdquo; year before the generative AI explosion fundamentally altered the company&rsquo;s trajectory.</div>
+</div>
+
+<!-- ====== SECTION 4: Data Center Revenue Trajectory ====== -->
+<div class="section" id="s4">
+  <h2><span class="num">4</span> Data Center Revenue Trajectory</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Quarter</th>
+        <th class="right">DC Revenue</th>
+        <th class="right">QoQ</th>
+        <th class="right">YoY</th>
+        <th>Architecture</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">FY2026</td></tr>
+      <tr>
+        <td class="bold">Q4 FY2026</td>
+        <td class="right bold">$62.0B</td>
+        <td class="right pos">+22%</td>
+        <td class="right pos">+75%</td>
+        <td>Grace Blackwell ~2/3 of DC; Vera Rubin samples shipped</td>
+      </tr>
+      <tr>
+        <td class="bold">Q3 FY2026</td>
+        <td class="right bold">$51.2B</td>
+        <td class="right pos">+22%</td>
+        <td class="right pos">+66%</td>
+        <td>GB300 ~2/3 of Blackwell; Hopper ~$2B</td>
+      </tr>
+      <tr>
+        <td class="bold">Q2 FY2026</td>
+        <td class="right">~$42B</td>
+        <td class="right pos">+8%</td>
+        <td class="right pos">+56%</td>
+        <td>GB300 production began; Blackwell record; H20 declined</td>
+      </tr>
+      <tr>
+        <td class="bold">Q1 FY2026</td>
+        <td class="right bold">$39.0B</td>
+        <td class="right pos">+10%</td>
+        <td class="right pos">+73%</td>
+        <td>Blackwell ~70% of DC compute; H20 $4.6B before cutoff</td>
+      </tr>
+      <tr class="year-divider"><td colspan="5">FY2025</td></tr>
+      <tr>
+        <td class="bold">Q4 FY2025</td>
+        <td class="right bold">$35.6B</td>
+        <td class="right pos">+16%</td>
+        <td class="right pos">+93%</td>
+        <td>Blackwell $11B (first quarter); H200 grew</td>
+      </tr>
+      <tr>
+        <td class="bold">Q3 FY2025</td>
+        <td class="right bold">$30.8B</td>
+        <td class="right pos">+17%</td>
+        <td class="right pos">+112%</td>
+        <td>H200 double-digit billions; Blackwell sampling</td>
+      </tr>
+      <tr>
+        <td class="bold">Q2 FY2025</td>
+        <td class="right bold">$26.3B</td>
+        <td class="right pos">+16%</td>
+        <td class="right pos">+154%</td>
+        <td>H200 ramp began; Hopper strong</td>
+      </tr>
+      <tr>
+        <td class="bold">Q1 FY2025</td>
+        <td class="right bold">$22.6B</td>
+        <td class="right pos">+23%</td>
+        <td class="right pos">+427%</td>
+        <td>Hopper compute 5x+ YoY; 100+ AI factories</td>
+      </tr>
+      <tr class="year-divider"><td colspan="5">FY2024</td></tr>
+      <tr>
+        <td class="bold">Q4 FY2024</td>
+        <td class="right bold">$18.4B</td>
+        <td class="right pos">+27%</td>
+        <td class="right pos">+409%</td>
+        <td>Hopper HGX dominant; China mid-single-digit %</td>
+      </tr>
+      <tr>
+        <td class="bold">Q3 FY2024</td>
+        <td class="right bold">$14.5B</td>
+        <td class="right pos">+41%</td>
+        <td class="right pos">+279%</td>
+        <td>Hopper HGX vast majority; networking ~$10B run rate</td>
+      </tr>
+      <tr>
+        <td class="bold">Q2 FY2024</td>
+        <td class="right bold">$10.3B</td>
+        <td class="right pos">+141%</td>
+        <td class="right pos">+171%</td>
+        <td>Hopper + Ampere; compute nearly tripled YoY</td>
+      </tr>
+      <tr>
+        <td class="bold">Q1 FY2024</td>
+        <td class="right bold">$4.3B</td>
+        <td class="right pos">+18%</td>
+        <td class="right pos">+14%</td>
+        <td>GenAI demand explosion began; DGX H100 shipping</td>
+      </tr>
+      <tr class="year-divider"><td colspan="5">FY2023</td></tr>
+      <tr>
+        <td class="bold">Q4 FY2023</td>
+        <td class="right">$3.6B</td>
+        <td class="right neg">&minus;6%</td>
+        <td class="right pos">+11%</td>
+        <td>CSPs recalibrated; H100 revenue &gt; A100; ChatGPT inflection</td>
+      </tr>
+      <tr>
+        <td class="bold">Q3 FY2023</td>
+        <td class="right">$3.8B</td>
+        <td class="right neutral">+1%</td>
+        <td class="right pos">+31%</td>
+        <td>First H100 shipments; China export controls announced</td>
+      </tr>
+      <tr>
+        <td class="bold">Q2 FY2023</td>
+        <td class="right">$3.8B</td>
+        <td class="right neutral">+1%</td>
+        <td class="right pos">+61%</td>
+        <td>China hyperscalers slowed; North America doubled</td>
+      </tr>
+      <tr>
+        <td class="bold">Q1 FY2023</td>
+        <td class="right">$3.8B</td>
+        <td class="right pos">+15%</td>
+        <td class="right pos">+83%</td>
+        <td>A100 dominant; H100 announced at GTC</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Data Center revenue went from ~$3.8B per quarter in FY2023 to $62.0B in Q4 FY2026 &mdash; a 16x increase in just 4 years. The inflection point was Q1 FY2024 (May 2023 call), when ChatGPT-driven demand began materializing. Each architecture transition (Ampere &rarr; Hopper &rarr; H200 &rarr; Blackwell &rarr; Grace Blackwell) accelerated revenue growth rather than creating digestion pauses. Hopper continued selling even as Blackwell ramped, and even 6-year-old Ampere remained in use through FY2026.</div>
+</div>
+
+<!-- ====== SECTION 5: Key Takeaways ====== -->
+<div class="section" id="s5">
+  <h2><span class="num">5</span> Key Takeaways</h2>
+  <div class="takeaways">
+    <div class="takeaway">
+      <div class="takeaway-num">1</div>
+      <div class="takeaway-text"><strong>Systematic under-guidance became the norm.</strong> From Q1 FY2024 onward, NVIDIA beat revenue guidance high-end in 12 consecutive quarters. The average beat vs midpoint was +5.7% across all 15 quarters, and +7.3% excluding the single miss. Management consistently could not (or chose not to) fully price in AI demand acceleration.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">2</div>
+      <div class="takeaway-text"><strong>Q2 FY2024 was the all-time guidance surprise.</strong> Revenue of $13.5B vs $11.0B guidance midpoint (+22.8%) was the largest single-quarter beat in NVIDIA history. This quarter, when Hopper demand for generative AI first fully materialized, marked the moment AI demand outstripped any framework management had for guidance-setting.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">3</div>
+      <div class="takeaway-text"><strong>One-time charges were the only margin misses.</strong> In all 12 &ldquo;clean&rdquo; quarters (no extraordinary charges), non-GAAP GM met or beat guidance 12/12 times, averaging +70 bps above midpoint. The 3 misses were caused by $1.22B (Q2 FY2023), $702M (Q3 FY2023), and $4.5B (Q1 FY2026) inventory write-downs &mdash; events that were inherently unpredictable at guidance time.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">4</div>
+      <div class="takeaway-text"><strong>Gross margin showed remarkable V-shaped recoveries.</strong> From 45.9% (Q2 FY2023 trough) to 78.9% (Q1 FY2025 peak) in 10 quarters, and from 61.0% (Q1 FY2026, H20 charge) to 75.2% (Q4 FY2026) in just 3 quarters. These recoveries demonstrate NVIDIA&rsquo;s pricing power and the structural profitability of AI infrastructure.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">5</div>
+      <div class="takeaway-text"><strong>Revenue grew 8x in 4 fiscal years.</strong> From $27.0B (FY2023) to $215.7B (FY2026), with Data Center alone going from $15.0B to $194B (13x). This is unprecedented for a company of NVIDIA&rsquo;s scale and makes it the fastest company in history to cross $200B in annual revenue from a $27B base.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">6</div>
+      <div class="takeaway-text"><strong>Beat magnitude narrowed as scale grew.</strong> The average revenue beat shrank from +16.8% in FY2024 (when AI demand was most unpredictable) to +7.5% in FY2025 and +4.1% in FY2026. This suggests management&rsquo;s supply chain visibility and demand forecasting improved with scale, though they maintained a conservative bias throughout.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">7</div>
+      <div class="takeaway-text"><strong>Architecture transitions did not create margin troughs in revenue.</strong> Unlike many semiconductor companies, NVIDIA experienced zero digestion pauses. Each architecture transition (Hopper &rarr; H200 &rarr; Blackwell) was additive to the prior. In Q4 FY2025, $11B in Blackwell revenue came on top of continued Hopper growth. Margins dipped during transitions but revenue never did.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">8</div>
+      <div class="takeaway-text"><strong>The Q2 FY2023 miss was the exception that proved the rule.</strong> Revenue of $6.7B vs $8.1B guidance (&minus;17.3%) during the gaming/crypto collapse was the only quarter in 15 that missed the midpoint. It also established a pattern: NVIDIA guided conservatively after the miss, setting up the string of beats that followed as AI demand emerged.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">9</div>
+      <div class="takeaway-text"><strong>Export controls created margin volatility but not revenue shortfalls.</strong> The $4.5B H20 write-down in Q1 FY2026 crushed GAAP/non-GAAP GM to 61%, but revenue still beat guidance ($44.0B vs $43.0B, +2.3%). NVIDIA&rsquo;s ability to redirect supply from China to the rest of the world neutralized the revenue impact of export controls.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">10</div>
+      <div class="takeaway-text"><strong>Data Center revenue was the guidance engine.</strong> Data Center went from $3.8B/quarter (FY2023) to $62B/quarter (Q4 FY2026), composing 91% of total revenue by FY2026. Every revenue guidance beat was primarily driven by Data Center upside, as Gaming, Pro Viz, and Automotive were relatively predictable.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">11</div>
+      <div class="takeaway-text"><strong>Free cash flow scaled with revenue.</strong> NVIDIA generated $97B in FCF in FY2026, up from negligible levels in FY2023. At 45% FCF margins, the business model proved that massive revenue growth was translating to proportional cash generation, with $41B returned to shareholders in FY2026 alone.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">12</div>
+      <div class="takeaway-text"><strong>Q1 FY2027 guidance of $78.0B signals continued acceleration.</strong> The pending quarter represents a $10B sequential increase from Q4 FY2026 ($68.0B), a +15% QoQ jump. If NVIDIA maintains its average +4% beat vs midpoint, actual revenue could approach $81B &mdash; which would make a single quarter larger than FY2024&rsquo;s entire $60.9B annual revenue.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>Data sourced from NVIDIA Corporation earnings call transcripts (Q1 FY2023 &ndash; Q4 FY2026).<br>
+  Revenue guidance format: midpoint &plusmn;2%. Gross margin guidance format: midpoint &plusmn;50 bps.<br>
+  &ldquo;Guided From&rdquo; refers to the earnings call where forward guidance was provided. &ldquo;Actual&rdquo; is the reported result from the subsequent quarter&rsquo;s call.<br>
+  Charges excluded from adjusted GM analysis: Q2 FY2023 ($1.22B inventory + $122M warranty), Q3 FY2023 ($702M A100 write-down), Q1 FY2026 ($4.5B H20 export control charge).<br>
+  <a href="comparison.html">Guidance Evolution Overview</a></p>
+</div>
+
+</body>
+</html>

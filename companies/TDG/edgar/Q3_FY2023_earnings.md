@@ -1,0 +1,227 @@
+# TransDigm Group Incorporated — Q3_FY2023 Earnings Release
+
+**Ticker:** TDG
+**Filing Date:** 2023-08-08
+**Accession:** 0001260221-23-000054
+**Source:** [SEC EDGAR](https://www.sec.gov/Archives/edgar/data/1260221/000126022123000054/0001260221-23-000054-index.htm)
+
+## Financial Tables (from Exhibits)
+
+### 
+
+| TRANSDIGM GROUP INCORPORATED |  |  |
+| CONDENSED CONSOLIDATED STATEMENTS OF INCOME |  |  |
+| FOR THE THIRTEEN AND THIRTY-NINE WEEK PERIODS ENDED |  | Table 1 |
+| JULY 1, 2023 AND JULY 2, 2022 |  |
+| (Amounts in millions, except per share amounts) |  |  |
+| (Unaudited) |  |  |  |  |  |  |  |  |
+|  |  | Thirteen Week Periods Ended |  | Thirty-Nine Week Periods Ended |
+|  |  | July 1, 2023 |  | July 2, 2022 |  | July 1, 2023 |  | July 2, 2022 |
+| NET SALES |  |  | 1744 |  |  |  | 1398 |  |  |  | 4733 |  |  |  | 3919 |  |
+| COST OF SALES |  | 715 |  |  | 582 |  |  | 1983 |  |  | 1706 |  |
+| GROSS PROFIT |  | 1029 |  |  | 816 |  |  | 2750 |  |  | 2213 |  |
+| SELLING AND ADMINISTRATIVE EXPENSES |  | 209 |  |  | 184 |  |  | 578 |  |  | 537 |  |
+| AMORTIZATION OF INTANGIBLE ASSETS |  | 37 |  |  | 33 |  |  | 105 |  |  | 102 |  |
+| INCOME FROM OPERATIONS |  | 783 |  |  | 599 |  |  | 2067 |  |  | 1574 |  |
+| INTEREST EXPENSE—NET |  | 291 |  |  | 269 |  |  | 872 |  |  | 799 |  |
+| REFINANCING COSTS |  | 32 |  |  | — |  |  | 41 |  |  | — |  |
+| OTHER (INCOME) EXPENSE |  |  |  |  | 18 |  |  | -12 |  |  | 9 |  |
+| INCOME FROM CONTINUING OPERATIONS BEFORE INCOME TAXES |  | 469 |  |  | 312 |  |  | 1166 |  |  | 766 |  |
+| INCOME TAX PROVISION |  | 117 |  |  | 73 |  |  | 281 |  |  | 165 |  |
+| INCOME FROM CONTINUING OPERATIONS |  | 352 |  |  | 239 |  |  | 885 |  |  | 601 |  |
+| INCOME FROM DISCONTINUED OPERATIONS, NET OF TAX |  | — |  |  | — |  |  | — |  |  | 1 |  |
+| NET INCOME |  | 352 |  |  | 239 |  |  | 885 |  |  | 602 |  |
+| LESS: NET INCOME ATTRIBUTABLE TO NONCONTROLLING INTERESTS |  |  |  |  |  |  |  |  |  |  |  |  |
+| NET INCOME ATTRIBUTABLE TO TD GROUP |  |  | 351 |  |  |  | 238 |  |  |  | 883 |  |  |  | 600 |  |
+| NET INCOME APPLICABLE TO TD GROUP COMMON STOCKHOLDERS |  |  | 351 |  |  |  | 238 |  |  |  | 845 |  |  |  | 554 |  |
+| Earnings per share attributable to TD Group common stockholders: |  |  |  |  |  |  |  |  |
+| Earnings per share from continuing operations—basic and diluted |  |  | 6.14 |  |  |  | 4.10 |  |  |  | 14.80 |  |  |  | 9.42 |  |
+| Earnings per share from discontinued operations—basic and diluted |  | — |  |  | — |  |  | — |  |  | 0.02 |  |
+| Earnings per share |  |  | 6.14 |  |  |  | 4.10 |  |  |  | 14.80 |  |  |  | 9.44 |  |
+| Weighted-average shares outstanding: |  |  |  |  |  |  |  |  |
+| Basic and diluted |  | 57.2 |  |  | 58.0 |  |  | 57.1 |  |  | 58.7 |  |
+
+### 
+
+| TRANSDIGM GROUP INCORPORATED |  |  |
+| SUPPLEMENTAL INFORMATION - RECONCILIATION OF EBITDA, |  |  |
+| EBITDA AS DEFINED TO INCOME FROM CONTINUING OPERATIONS |  |  |
+| FOR THE THIRTEEN AND THIRTY-NINE WEEK PERIODS ENDED |  | Table 2 |
+| JULY 1, 2023 AND JULY 2, 2022 |  |
+| (Amounts in millions, except per share amounts) |  |  |
+| (Unaudited) |  |  |  |  |  |  |  |  |
+|  |  | Thirteen Week Periods Ended |  | Thirty-Nine Week Periods Ended |
+|  |  | July 1, 2023 |  | July 2, 2022 |  | July 1, 2023 |  | July 2, 2022 |
+| Income from continuing operations |  |  | 352 |  |  |  | 239 |  |  |  | 885 |  |  |  | 601 |  |
+| Adjustments: |  |  |  |  |  |  |  |  |
+| Depreciation and amortization expense |  | 70 |  |  | 61 |  |  | 199 |  |  | 188 |  |
+| Interest expense, net |  | 291 |  |  | 269 |  |  | 872 |  |  | 799 |  |
+| Income tax provision |  | 117 |  |  | 74 |  |  | 281 |  |  | 165 |  |
+| EBITDA |  | 830 |  |  | 643 |  |  | 2237 |  |  | 1753 |  |
+| Adjustments: |  |  |  |  |  |  |  |  |
+| Acquisition and divestiture transaction-related expenses and adjustments |  | 6 |  |  | 5 |  |  | 12 |  |  | 13 |  |
+| Non-cash stock and deferred compensation expense |  | 53 |  |  | 47 |  |  | 131 |  |  | 129 |  |
+| Refinancing costs |  | 32 |  |  | — |  |  | 41 |  |  | — |  |
+| Other, net |  |  |  |  | 1 |  |  | 11 |  |  |  |  |
+| Gross Adjustments to EBITDA |  | 85 |  |  | 53 |  |  | 195 |  |  | 141 |  |
+| EBITDA As Defined |  |  | 915 |  |  |  | 696 |  |  |  | 2432 |  |  |  | 1894 |  |
+| EBITDA As Defined, Margin |  | 52.5 | % |  | 49.8 | % |  | 51.4 | % |  | 48.3 | % |
+
+### 
+
+|  |  | Represents accounting adjustments to inventory associated with acquisitions of businesses and product lines that were charged to cost of sales when inventory was sold; costs incurred to integrate acquired businesses and product lines into TD Group’s operations, facility relocation costs and other acquisition-related costs; transaction-related costs for both acquisitions and divestitures comprising deal fees, legal, financial and tax due diligence expenses, and valuation costs that are required to be expensed as incurred. |
+|  |  | Represents the compensation expense recognized by TD Group under our stock incentive plans and deferred compensation plans. |
+|  |  | Represents costs expensed related to debt financing activities, including new issuances, extinguishments, refinancings and amendments to existing agreements. |
+|  |  | Primarily represents foreign currency transaction (gains) or losses, payroll withholding taxes related to dividend equivalent payments and stock option exercises, deferred compensation payments, non-service related pension costs including the pension settlement (gain) loss for the Esterline Retirement Plan, and for fiscal 2022, proceeds received from a final working capital settlement for the ScioTeq and TREALITY divestiture. |
+|  |  | The EBITDA As Defined margin represents the amount of EBITDA As Defined as a percentage of net sales. |
+
+### 
+
+| TRANSDIGM GROUP INCORPORATED |  |  |  |  |
+| SUPPLEMENTAL INFORMATION - RECONCILIATION OF |  |  |  |  |
+| REPORTED EARNINGS PER SHARE TO |  |  |  |  |
+| ADJUSTED EARNINGS PER SHARE |  |  |  |  |
+| FOR THE THIRTEEN AND THIRTY-NINE WEEK PERIODS ENDED |  |  |  | Table 3 |
+| JULY 1, 2023 AND JULY 2, 2022 |  |  |  |
+| (Amounts in millions, except per share amounts) |  |  |  |  |
+| (Unaudited) |  |  |  |  |  |  |  |  |
+|  |  | Thirteen Week Periods Ended |  | Thirty-Nine Week Periods Ended |
+|  |  | July 1, 2023 |  | July 2, 2022 |  | July 1, 2023 |  | July 2, 2022 |
+| Reported Earnings Per Share |  |  |  |  |  |  |  |  |
+| Income from continuing operations |  |  | 352 |  |  |  | 239 |  |  |  | 885 |  |  |  | 601 |  |
+| Less: Net income attributable to noncontrolling interests |  |  |  |  |  |  |  |  |  |  |  |  |
+| Net income from continuing operations attributable to TD Group |  | 351 |  |  | 238 |  |  | 883 |  |  | 599 |  |
+| Less: Dividends paid on participating securities |  | — |  |  | — |  |  | -38 |  |  | -46 |  |
+| Income from discontinued operations, net of tax |  | — |  |  | — |  |  | — |  |  | 1 |  |
+| Net income applicable to TD Group common stockholders—basic and diluted |  |  | 351 |  |  |  | 238 |  |  |  | 845 |  |  |  | 554 |  |
+| Weighted-average shares outstanding under the two-class method |  |  |  |  |  |  |  |  |
+| Weighted-average common shares outstanding |  | 55.0 |  |  | 54.4 |  |  | 54.7 |  |  | 55.0 |  |
+| Vested options deemed participating securities |  | 2.2 |  |  | 3.6 |  |  | 2.4 |  |  | 3.7 |  |
+| Total shares for basic and diluted earnings per share |  | 57.2 |  |  | 58.0 |  |  | 57.1 |  |  | 58.7 |  |
+| Earnings per share from continuing operations—basic and diluted |  |  | 6.14 |  |  |  | 4.10 |  |  |  | 14.80 |  |  |  | 9.42 |  |
+| Earnings per share from discontinued operations—basic and diluted |  | — |  |  | — |  |  | — |  |  | 0.02 |  |
+| Earnings per share |  |  | 6.14 |  |  |  | 4.10 |  |  |  | 14.80 |  |  |  | 9.44 |  |
+| Adjusted Earnings Per Share |  |  |  |  |  |  |  |  |
+| Income from continuing operations |  |  | 352 |  |  |  | 239 |  |  |  | 885 |  |  |  | 601 |  |
+| Gross Adjustments to EBITDA |  | 85 |  |  | 53 |  |  | 195 |  |  | 141 |  |
+| Purchase accounting backlog amortization |  | 2 |  |  | 1 |  |  | 4 |  |  | 6 |  |
+| Tax adjustment |  | -25 |  |  | -12 |  |  | -67 |  |  | -63 |  |
+| Adjusted net income |  |  | 414 |  |  |  | 281 |  |  |  | 1017 |  |  |  | 685 |  |
+| Adjusted diluted earnings per share under the two-class method |  |  | 7.25 |  |  |  | 4.85 |  |  |  | 17.80 |  |  |  | 11.68 |  |
+| Diluted Earnings Per Share to Adjusted Earnings Per Share |  |  |  |  |  |  |  |  |
+| Diluted earnings per share from continuing operations |  |  | 6.14 |  |  |  | 4.10 |  |  |  | 14.80 |  |  |  | 9.42 |  |
+| Adjustments to diluted earnings per share: |  |  |  |  |  |  |  |  |
+| Inclusion of the dividend equivalent payments |  | — |  |  | — |  |  | 0.67 |  |  | 0.78 |  |
+| Acquisition and divestiture transaction-related expenses and adjustments |  | 0.10 |  |  | 0.09 |  |  | 0.20 |  |  | 0.24 |  |
+| Non-cash stock and deferred compensation expense |  | 0.70 |  |  | 0.62 |  |  | 1.71 |  |  | 1.65 |  |
+| Refinancing costs |  | 0.42 |  |  | — |  |  | 0.54 |  |  | — |  |
+| Tax adjustment on income from continuing operations before taxes |  | -0.05 |  |  | — |  |  | -0.28 |  |  | -0.44 |  |
+| Other, net |  | -0.06 |  |  | 0.04 |  |  | 0.16 |  |  | 0.03 |  |
+| Adjusted earnings per share |  |  | 7.25 |  |  |  | 4.85 |  |  |  | 17.80 |  |  |  | 11.68 |  |
+
+### 
+
+| TRANSDIGM GROUP INCORPORATED |  |  |
+| SUPPLEMENTAL INFORMATION - RECONCILIATION OF NET CASH |  |  |
+| PROVIDED BY OPERATING ACTIVITIES TO EBITDA, |  |  |
+| EBITDA AS DEFINED |  |  |
+| FOR THE THIRTY-NINE WEEK PERIODS ENDED |  | Table 4 |
+| JULY 1, 2023 AND JULY 2, 2022 |  |
+| (Amounts in millions) |  |  |
+| (Unaudited) |  |  |  |  |
+|  |  | Thirty-Nine Week Periods Ended |
+|  |  | July 1, 2023 |  | July 2, 2022 |
+| Net cash provided by operating activities |  |  | 913 |  |  |  | 675 |  |
+| Adjustments: |  |  |  |  |
+| Changes in assets and liabilities, net of effects from acquisitions of businesses |  | 345 |  |  | 240 |  |
+| Interest expense, net |  | 842 |  |  | 773 |  |
+| Income tax provision - current |  | 282 |  |  | 166 |  |
+| Loss contract amortization |  | 27 |  |  | 28 |  |
+| Non-cash stock and deferred compensation expense |  | -131 |  |  | -129 |  |
+| Refinancing costs |  | -41 |  |  | — |  |
+| EBITDA |  | 2237 |  |  | 1753 |  |
+| Adjustments: |  |  |  |  |
+| Acquisition and divestiture transaction-related expenses and adjustments |  | 12 |  |  | 13 |  |
+| Non-cash stock and deferred compensation expense |  | 131 |  |  | 129 |  |
+| Refinancing costs |  | 41 |  |  | — |  |
+| Other, net |  | 11 |  |  |  |  |
+| EBITDA As Defined |  |  | 2432 |  |  |  | 1894 |  |
+
+### 
+
+|  |  | Represents interest expense, net of interest income, excluding the amortization of debt issuance costs and premium and discount on debt. |
+|  |  | Represents the compensation expense recognized by TD Group under our stock incentive plans and deferred compensation plans. |
+|  |  | Represents costs expensed related to debt financing activities, including new issuances, extinguishments, refinancings and amendments to existing agreements. |
+|  |  | Represents accounting adjustments to inventory associated with acquisitions of businesses and product lines that were charged to cost of sales when inventory was sold; costs incurred to integrate acquired businesses and product lines into TD Group’s operations, facility relocation costs and other acquisition-related costs; transaction-related costs for both acquisitions and divestitures comprising deal fees, legal, financial and tax due diligence expenses, and valuation costs that are required to be expensed as incurred. |
+|  |  | Primarily represents foreign currency transaction (gains) or losses, payroll withholding taxes related to dividend equivalent payments and stock option exercises, deferred compensation payments, non-service related pension costs including the pension settlement (gain) loss for the Esterline Retirement Plan, and for fiscal 2022, proceeds received from a final working capital settlement for the ScioTeq and TREALITY divestiture. |
+
+### 
+
+| TRANSDIGM GROUP INCORPORATED |  |  |
+| SUPPLEMENTAL INFORMATION - BALANCE SHEET DATA |  | Table 5 |
+| (Amounts in millions) |  |
+| (Unaudited) |  |  |  |  |
+|  |  | July 1, 2023 |  | September 30, 2022 |
+| Cash and cash equivalents |  |  | 3071 |  |  |  | 3001 |  |
+| Trade accounts receivable—Net |  | 1159 |  |  | 967 |  |
+| Inventories—Net |  | 1603 |  |  | 1332 |  |
+| Current portion of long-term debt |  | 67 |  |  | 76 |  |
+| Short-term borrowings—trade receivable securitization facility |  | 350 |  |  | 350 |  |
+| Accounts payable |  | 292 |  |  | 279 |  |
+| Accrued and other current liabilities |  | 824 |  |  | 721 |  |
+| Long-term debt |  | 19348 |  |  | 19369 |  |
+| Total TD Group stockholders’ deficit |  | -2394 |  |  | -3773 |  |
+
+### 
+
+| TRANSDIGM GROUP INCORPORATED |  |
+| SUPPLEMENTAL INFORMATION - RECONCILIATION OF EBITDA, |
+| EBITDA AS DEFINED TO NET INCOME AND REPORTED EARNINGS |
+| PER SHARE TO ADJUSTED EARNINGS PER SHARE GUIDANCE MID-POINT |
+| FOR THE FISCAL YEAR ENDING SEPTEMBER 30, 2023 | Table 6 |
+| (Amounts in millions, except per share amounts) |
+| (Unaudited) |  |  |
+|  |  | GUIDANCE MID-POINT |
+|  |  | Fiscal Year Ended September 30, 2023 |
+| Net Income |  |  | 1239 |  |
+| Adjustments: |  |  |
+| Depreciation and amortization expense |  | 278 |  |
+| Interest expense - net |  | 1180 |  |
+| Income tax provision - current |  | 414 |  |
+| EBITDA |  | 3111 |  |
+| Adjustments: |  |  |
+| Acquisition transaction-related expenses and adjustments |  | 16 |  |
+| Non-cash stock and deferred compensation expense |  | 175 |  |
+| Refinancing costs |  | 41 |  |
+| Other, net |  | 22 |  |
+| Gross Adjustments to EBITDA |  | 254 |  |
+| EBITDA As Defined |  |  | 3365 |  |
+| EBITDA As Defined, Margin |  | 51.3 | % |
+| Earnings per share |  |  | 20.99 |  |
+| Adjustments to earnings per share: |  |  |
+| Inclusion of the dividend equivalent payments |  | 0.67 |  |
+| Non-cash stock and deferred compensation expense |  | 2.31 |  |
+| Acquisition related expenses and adjustments |  | 0.35 |  |
+| Refinancing costs |  | 0.54 |  |
+| Other, net |  | 0.29 |  |
+| Adjusted earnings per share |  |  | 25.15 |  |
+| Weighted-average shares outstanding |  | 57.15 |  |
+
+### 
+
+| TRANSDIGM GROUP INCORPORATED |  |  |
+| SUPPLEMENTAL INFORMATION |
+| CURRENT FISCAL YEAR 2023 GUIDANCE VERSUS |
+| PRIOR FISCAL YEAR 2023 GUIDANCE |  | Table 7 |
+| (Amounts in millions, except per share amounts) |  |
+| (Unaudited) |  |  |  |  |  |  |
+|  |  | Current Fiscal Year 2023 Guidance Issued August 8, 2023 |  | Prior Fiscal Year 2023 Guidance Issued May 9, 2023 |  | Change at Mid-Point |
+| Net Sales |  | 6,525 to 6,585 |  | 6,410 to 6,500 |  | 100 |
+| GAAP Net Income from Continuing Operations |  | 1,227 to 1,251 |  | 1,141 to 1,191 |  | 73 |
+| GAAP Earnings Per Share from Continuing Operations |  | 20.78 to 21.20 |  | 19.30 to 20.18 |  | 1.25 |
+| EBITDA As Defined |  | 3,350 to 3,380 |  | 3,230 to 3,290 |  | 105 |
+| Adjusted Earnings Per Share |  | 24.94 to 25.36 |  | 23.31 to 24.19 |  | 1.40 |
+| Weighted-Average Shares Outstanding |  | 57.15 |  | 57.1 | 0.05 |
+
+---
+*Generated by edgar_download.py on 2026-03-03 19:21*

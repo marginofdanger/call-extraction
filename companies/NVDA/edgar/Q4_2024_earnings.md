@@ -1,0 +1,252 @@
+# NVIDIA Corporation — Q4_2024 Earnings Release
+
+**Ticker:** NVDA
+**Filing Date:** 2024-02-21
+**Accession:** 0001045810-24-000028
+**Source:** [SEC EDGAR](https://www.sec.gov/Archives/edgar/data/1045810/000104581024000028/0001045810-24-000028-index.htm)
+
+## Financial Tables (from Exhibits)
+
+### 
+
+| GAAP |
+| ( in millions, except earnings per share) | Q4 FY24 | Q3 FY24 | Q4 FY23 | Q/Q | Y/Y |
+| Revenue | 22103 | 18120 | 6051 | Up 22% | Up 265% |
+| Gross margin | 76.0 | % | 74.0 | % | 63.3 | % | Up 2.0 pts | Up 12.7 pts |
+| Operating expenses | 3176 | 2983 | 2576 | Up 6% | Up 23% |
+| Operating income | 13615 | 10417 | 1257 | Up 31% | Up 983% |
+| Net income | 12285 | 9243 | 1414 | Up 33% | Up 769% |
+| Diluted earnings per share | 4.93 | 3.71 | 0.57 | Up 33% | Up 765% |
+
+### 
+
+| Non-GAAP |
+| ( in millions, except earnings per share) | Q4 FY24 | Q3 FY24 | Q4 FY23 | Q/Q | Y/Y |
+| Revenue | 22103 | 18120 | 6051 | Up 22% | Up 265% |
+| Gross margin | 76.7 | % | 75.0 | % | 66.1 | % | Up 1.7 pts | Up 10.6 pts |
+| Operating expenses | 2210 | 2026 | 1775 | Up 9% | Up 25% |
+| Operating income | 14749 | 11557 | 2224 | Up 28% | Up 563% |
+| Net income | 12839 | 10020 | 2174 | Up 28% | Up 491% |
+| Diluted earnings per share | 5.16 | 4.02 | 0.88 | Up 28% | Up 486% |
+
+### 
+
+| GAAP |
+| ( in millions, except earnings per share) | FY24 | FY23 | Y/Y |
+| Revenue | 60922 | 26974 | Up 126% |
+| Gross margin | 72.7 | % | 56.9 | % | Up 15.8 pts |
+| Operating expenses | 11329 | 11132 | Up 2% |
+| Operating income | 32972 | 4224 | Up 681% |
+| Net income | 29760 | 4368 | Up 581% |
+| Diluted earnings per share | 11.93 | 1.74 | Up 586% |
+
+### 
+
+| Non-GAAP |
+| ( in millions, except earnings per share) | FY24 | FY23 | Y/Y |
+| Revenue | 60922 | 26974 | Up 126% |
+| Gross margin | 73.8 | % | 59.2 | % | Up 14.6 pts |
+| Operating expenses | 7825 | 6925 | Up 13% |
+| Operating income | 37134 | 9040 | Up 311% |
+| Net income | 32312 | 8366 | Up 286% |
+| Diluted earnings per share | 12.96 | 3.34 | Up 288% |
+
+### 
+
+|  |  |  | Three Months Ended |  | Twelve Months Ended |
+|  |  |  | January 28, |  | January 29, |  | January 28, |  | January 29, |
+|  |  |  | 2024 |  | 2023 |  | 2024 |  | 2023 |
+| Revenue |  | 22103 |  |  |  | 6051 |  |  |  | 60922 |  |  |  | 26974 |  |
+| Cost of revenue | 5312 |  |  | 2218 |  |  | 16621 |  |  | 11618 |  |
+| Gross profit | 16791 |  |  | 3833 |  |  | 44301 |  |  | 15356 |  |
+| Operating expenses |  |  |  |  |  |  |  |
+|  | Research and development | 2465 |  |  | 1951 |  |  | 8675 |  |  | 7339 |  |
+|  | Sales, general and administrative | 711 |  |  | 625 |  |  | 2654 |  |  | 2440 |  |
+|  | Acquisition termination cost | — |  |  | — |  |  | — |  |  | 1353 |  |
+|  |  | Total operating expenses | 3176 |  |  | 2576 |  |  | 11329 |  |  | 11132 |  |
+| Operating income | 13615 |  |  | 1257 |  |  | 32972 |  |  | 4224 |  |
+|  | Interest income | 294 |  |  | 115 |  |  | 866 |  |  | 267 |  |
+|  | Interest expense | -63 |  |  | -65 |  |  | -257 |  |  | -262 |  |
+|  | Other, net | 260 |  |  | -18 |  |  | 237 |  |  | -48 |  |
+|  |  | Other income (expense), net | 491 |  |  | 32 |  |  | 846 |  |  | -43 |  |
+| Income before income tax | 14106 |  |  | 1289 |  |  | 33818 |  |  | 4181 |  |
+| Income tax expense (benefit) | 1821 |  |  | -125 |  |  | 4058 |  |  | -187 |  |
+| Net income |  | 12285 |  |  |  | 1414 |  |  |  | 29760 |  |  |  | 4368 |  |
+| Net income per share: |  |  |  |  |  |  |  |
+|  | Basic |  | 4.98 |  |  |  | 0.57 |  |  |  | 12.05 |  |  |  | 1.76 |  |
+|  | Diluted |  | 4.93 |  |  |  | 0.57 |  |  |  | 11.93 |  |  |  | 1.74 |  |
+| Weighted average shares used in per share computation: |  |  |  |  |  |  |  |
+|  | Basic | 2466 |  |  | 2464 |  |  | 2469 |  |  | 2487 |  |
+|  | Diluted | 2490 |  |  | 2477 |  |  | 2494 |  |  | 2507 |  |
+
+### 
+
+| NVIDIA CORPORATION |
+| CONDENSED CONSOLIDATED BALANCE SHEETS |
+| (In millions) |
+| (Unaudited) |
+|  |  |  |  | January 28, |  | January 29, |
+|  |  |  |  | 2024 |  | 2023 |
+| ASSETS |  |  |  |  |
+| Current assets: |  |  |  |  |
+|  | Cash, cash equivalents and marketable securities |  |  | 25984 |  |  |  | 13296 |  |
+|  | Accounts receivable, net |  | 9999 |  |  | 3827 |  |
+|  | Inventories |  | 5282 |  |  | 5159 |  |
+|  | Prepaid expenses and other current assets |  | 3080 |  |  | 791 |  |
+|  |  | Total current assets |  | 44345 |  |  | 23073 |  |
+| Property and equipment, net |  | 3914 |  |  | 3807 |  |
+| Operating lease assets |  | 1346 |  |  | 1038 |  |
+| Goodwill |  | 4430 |  |  | 4372 |  |
+| Intangible assets, net |  | 1112 |  |  | 1676 |  |
+| Deferred income tax assets |  | 6081 |  |  | 3396 |  |
+| Other assets |  | 4500 |  |  | 3820 |  |
+|  |  | Total assets |  |  | 65728 |  |  |  | 41182 |  |
+| LIABILITIES AND SHAREHOLDERS' EQUITY |
+| Current liabilities: |  |  |  |  |
+|  | Accounts payable |  |  | 2699 |  |  |  | 1193 |  |
+|  | Accrued and other current liabilities |  | 6682 |  |  | 4120 |  |
+|  | Short-term debt |  | 1250 |  |  | 1250 |  |
+|  |  | Total current liabilities |  | 10631 |  |  | 6563 |  |
+| Long-term debt |  | 8459 |  |  | 9703 |  |
+| Long-term operating lease liabilities |  | 1119 |  |  | 902 |  |
+| Other long-term liabilities |  | 2541 |  |  | 1913 |  |
+|  |  | Total liabilities |  | 22750 |  |  | 19081 |  |
+| Shareholders' equity |  | 42978 |  |  | 22101 |  |
+|  |  | Total liabilities and shareholders' equity |  |  | 65728 |  |  |  | 41182 |  |
+
+### 
+
+| NVIDIA CORPORATION |
+| CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS |
+| (In millions) |
+| (Unaudited) |
+|  | Three Months Ended |  | Twelve Months Ended |
+|  | January 28, |  | January 29, |  | January 28, |  | January 29, |
+|  | 2024 |  | 2023 |  | 2024 |  | 2023 |
+| Cash flows from operating activities: |  |  |  |  |  |  |  |
+| Net income |  | 12285 |  |  |  | 1414 |  |  |  | 29760 |  |  |  | 4368 |  |
+| Adjustments to reconcile net income to net cash |  |  |  |  |  |  |  |
+| provided by operating activities: |  |  |  |  |  |  |  |
+| Stock-based compensation expense | 993 |  |  | 738 |  |  | 3549 |  |  | 2709 |  |
+| Depreciation and amortization | 387 |  |  | 426 |  |  | 1508 |  |  | 1544 |  |
+| Deferred income taxes | -78 |  |  | -647 |  |  | -2489 |  |  | -2164 |  |
+| (Gains) losses on investments in non-affiliated entities, net | -260 |  |  | 10 |  |  | -238 |  |  | 45 |  |
+| Acquisition termination cost | — |  |  | — |  |  | — |  |  | 1353 |  |
+| Other | -109 |  |  | 20 |  |  | -278 |  |  |  |  |
+| Changes in operating assets and liabilities, net of acquisitions: |  |  |  |  |  |  |  |
+| Accounts receivable | -1690 |  |  | 1081 |  |  | -6172 |  |  | 822 |  |
+| Inventories | -503 |  |  | -706 |  |  | -98 |  |  | -2554 |  |
+| Prepaid expenses and other assets | -1184 |  |  | -210 |  |  | -1522 |  |  | -1517 |  |
+| Accounts payable | 281 |  |  | -193 |  |  | 1531 |  |  | -551 |  |
+| Accrued and other current liabilities | 1072 |  |  | 166 |  |  | 2025 |  |  | 1341 |  |
+| Other long-term liabilities | 305 |  |  | 150 |  |  | 514 |  |  | 252 |  |
+| Net cash provided by operating activities | 11499 |  |  | 2249 |  |  | 28090 |  |  | 5641 |  |
+| Cash flows from investing activities: |  |  |  |  |  |  |  |
+| Proceeds from maturities of marketable securities | 1731 |  |  | 2633 |  |  | 9732 |  |  | 19425 |  |
+| Proceeds from sales of marketable securities | 50 |  |  | — |  |  | 50 |  |  | 1806 |  |
+| Purchases of marketable securities | -7524 |  |  | -2133 |  |  | -18211 |  |  | -11897 |  |
+| Purchase related to property and equipment and intangible assets | -253 |  |  | -509 |  |  | -1069 |  |  | -1833 |  |
+| Acquisitions, net of cash acquired | — |  |  | — |  |  | -83 |  |  | -49 |  |
+| Investments in non-affiliated entities and other, net | -113 |  |  | 5 |  |  | -985 |  |  | -77 |  |
+| Net cash provided by (used in) investing activities | -6109 |  |  |  |  |  | -10566 |  |  | 7375 |  |
+| Cash flows from financing activities: |  |  |  |  |  |  |  |
+| Proceeds related to employee stock plans | — |  |  | 5 |  |  | 403 |  |  | 355 |  |
+| Payments related to repurchases of common stock | -2660 |  |  | -1212 |  |  | -9533 |  |  | -10039 |  |
+| Payments related to tax on restricted stock units | -841 |  |  | -344 |  |  | -2783 |  |  | -1475 |  |
+| Repayment of debt | — |  |  | — |  |  | -1250 |  |  | — |  |
+| Dividends paid | -99 |  |  | -98 |  |  | -395 |  |  | -398 |  |
+
+### 
+
+| Principal payments on property and equipment and intangible assets | -29 |  |  |  |  |  | -74 |  |  | -58 |  |
+| Other | — |  |  |  |  |  |  |  |  |  |  |
+| Net cash used in financing activities | -3629 |  |  | -1656 |  |  | -13633 |  |  | -11617 |  |
+| Change in cash and cash equivalents | 1761 |  |  | 589 |  |  | 3891 |  |  | 1399 |  |
+| Cash and cash equivalents at beginning of period | 5519 |  |  | 2800 |  |  | 3389 |  |  | 1990 |  |
+| Cash and cash equivalents at end of period |  | 7280 |  |  |  | 3389 |  |  |  | 7280 |  |  |  | 3389 |  |
+| Supplemental disclosure of cash flow information: |  |  |  |  |  |  |  |
+| Cash paid for income taxes, net |  | 1874 |  |  |  | 32 |  |  |  | 6549 |  |  |  | 1404 |  |
+| Cash paid for interest |  | 26 |  |  |  | 28 |  |  |  | 252 |  |  |  | 254 |  |
+
+### 
+
+|  | NVIDIA CORPORATION |
+|  | RECONCILIATION OF GAAP TO NON-GAAP FINANCIAL MEASURES |
+|  | (In millions, except per share data) |
+|  | (Unaudited) |
+|  |  |  | Three Months Ended |  | Twelve Months Ended |
+|  |  |  | January 28, |  | October 29 |  | January 29, |  | January 28, |  | January 29, |
+|  |  |  | 2024 |  | 2023 |  | 2023 |  | 2024 |  | 2023 |
+| GAAP gross profit |  |  | 16791 |  |  |  | 13400 |  |  |  | 3833 |  |  |  | 44301 |  |  |  | 15356 |  |
+| GAAP gross margin |  | 76.0 | % |  | 74.0 | % |  | 63.3 | % |  | 72.7 | % |  | 56.9 | % |
+|  | Acquisition-related and other costs |  | 119 |  |  | 119 |  |  | 120 |  |  | 477 |  |  | 455 |  |
+|  | Stock-based compensation expense |  | 45 |  |  | 38 |  |  | 30 |  |  | 141 |  |  | 138 |  |
+|  | IP-related costs |  | 4 |  |  | 26 |  |  | 16 |  |  | 40 |  |  | 16 |  |
+| Non-GAAP gross profit |  |  | 16959 |  |  |  | 13583 |  |  |  | 3999 |  |  |  | 44959 |  |  |  | 15965 |  |
+| Non-GAAP gross margin |  | 76.7 | % |  | 75.0 | % |  | 66.1 | % |  | 73.8 | % |  | 59.2 | % |
+| GAAP operating expenses |  |  | 3176 |  |  |  | 2983 |  |  |  | 2576 |  |  |  | 11329 |  |  |  | 11132 |  |
+|  | Stock-based compensation expense |  | -948 |  |  | -941 |  |  | -709 |  |  | -3408 |  |  | -2572 |  |
+|  | Acquisition-related and other costs |  | -18 |  |  | -16 |  |  | -54 |  |  | -106 |  |  | -219 |  |
+|  | Acquisition termination cost |  | — |  |  | — |  |  | — |  |  | — |  |  | -1353 |  |
+|  | Other |  | — |  |  | — |  |  | -38 |  |  | 10 |  |  | -63 |  |
+| Non-GAAP operating expenses |  |  | 2210 |  |  |  | 2026 |  |  |  | 1775 |  |  |  | 7825 |  |  |  | 6925 |  |
+| GAAP operating income |  |  | 13615 |  |  |  | 10417 |  |  |  | 1257 |  |  |  | 32972 |  |  |  | 4224 |  |
+|  | Total impact of non-GAAP adjustments to operating income |  | 1134 |  |  | 1140 |  |  | 967 |  |  | 4162 |  |  | 4816 |  |
+| Non-GAAP operating income |  |  | 14749 |  |  |  | 11557 |  |  |  | 2224 |  |  |  | 37134 |  |  |  | 9040 |  |
+| GAAP other income (expense), net |  |  | 491 |  |  |  | 105 |  |  |  | 32 |  |  |  | 846 |  |  |  | -43 |  |
+|  | (Gains) losses from non-affiliated investments |  | -260 |  |  | 69 |  |  | 10 |  |  | -238 |  |  | 45 |  |
+|  | Interest expense related to amortization of debt discount |  | 1 |  |  | 1 |  |  | 1 |  |  | 4 |  |  | 5 |  |
+| Non-GAAP other income (expense), net |  |  | 232 |  |  |  | 175 |  |  |  | 43 |  |  |  | 612 |  |  |  | 7 |  |
+| GAAP net income |  |  | 12285 |  |  |  | 9243 |  |  |  | 1414 |  |  |  | 29760 |  |  |  | 4368 |  |
+|  | Total pre-tax impact of non-GAAP adjustments |  | 875 |  |  | 1210 |  |  | 978 |  |  | 3928 |  |  | 4865 |  |
+|  | Income tax impact of non-GAAP adjustments |  | -321 |  |  | -433 |  |  | -218 |  |  | -1376 |  |  | -867 |  |
+| Non-GAAP net income |  |  | 12839 |  |  |  | 10020 |  |  |  | 2174 |  |  |  | 32312 |  |  |  | 8366 |  |
+
+### 
+
+|  |  |  | Three Months Ended |  | Twelve Months Ended |
+|  |  |  | January 28, |  | October 29 |  | January 29, |  | January 28, |  | January 29, |
+|  |  |  | 2024 |  | 2023 |  | 2023 |  | 2024 |  | 2023 |
+| Diluted net income per share |  |  |  |  |  |  |  |  |  |  |
+|  | GAAP |  |  | 4.93 |  |  |  | 3.71 |  |  |  | 0.57 |  |  |  | 11.93 |  |  |  | 1.74 |  |
+|  | Non-GAAP |  |  | 5.16 |  |  |  | 4.02 |  |  |  | 0.88 |  |  |  | 12.96 |  |  |  | 3.34 |  |
+| Weighted average shares used in diluted net income per share computation |  | 2490 |  |  | 2494 |  |  | 2477 |  |  | 2494 |  |  | 2507 |  |
+| GAAP net cash provided by operating activities |  |  | 11499 |  |  |  | 7333 |  |  |  | 2249 |  |  |  | 28090 |  |  |  | 5641 |  |
+|  | Purchases related to property and equipment and intangible assets |  | -253 |  |  | -278 |  |  | -509 |  |  | -1069 |  |  | -1833 |  |
+|  | Principal payments on property and equipment and intangible assets |  | -29 |  |  | -13 |  |  |  |  |  | -74 |  |  | -58 |  |
+| Free cash flow |  |  | 11217 |  |  |  | 7042 |  |  |  | 1736 |  |  |  | 26947 |  |  |  | 3750 |  |
+
+### 
+
+| (A) Acquisition-related and other costs are comprised of amortization of intangible assets and transaction costs, and are included in the following line items: |
+|  |  |  | Three Months Ended |  | Twelve Months Ended |
+|  |  |  | January 28, |  | October 29 |  | January 29, |  | January 28, |  | January 29, |
+|  |  |  | 2024 |  | 2023 |  | 2023 |  | 2024 |  | 2023 |
+|  | Cost of revenue |  |  | 119 |  |  |  | 119 |  |  |  | 120 |  |  |  | 477 |  |  |  | 455 |  |
+|  | Research and development |  |  | 12 |  |  |  | 12 |  |  |  | 10 |  |  |  | 49 |  |  |  | 39 |  |
+|  | Sales, general and administrative |  |  | 6 |  |  |  | 4 |  |  |  | 44 |  |  |  | 57 |  |  |  | 180 |  |
+| (B) Stock-based compensation consists of the following: |
+|  |  |  | Three Months Ended |  | Twelve Months Ended |
+|  |  |  | January 28, |  | October 29 |  | January 29, |  | January 28, |  | January 29, |
+|  |  |  | 2024 |  | 2023 |  | 2023 |  | 2024 |  | 2023 |
+|  | Cost of revenue |  |  | 45 |  |  |  | 38 |  |  |  | 30 |  |  |  | 141 |  |  |  | 138 |  |
+|  | Research and development |  |  | 706 |  |  |  | 701 |  |  |  | 527 |  |  |  | 2532 |  |  |  | 1892 |  |
+|  | Sales, general and administrative |  |  | 242 |  |  |  | 240 |  |  |  | 182 |  |  |  | 876 |  |  |  | 680 |  |
+| (C) Other consists of costs related to Russia branch office closure, assets held for sale related adjustments, legal settlement costs, and contributions. |
+| (D) Income tax impact of non-GAAP adjustments, including the recognition of excess tax benefits or deficiencies related to stock-based compensation under GAAP accounting standard (ASU 2016-09). |
+
+### 
+
+| NVIDIA CORPORATION |
+| RECONCILIATION OF GAAP TO NON-GAAP OUTLOOK |
+|  |  |  | Q1 FY2025 Outlook |
+|  |  |  | ( in millions) |
+| GAAP gross margin |  | 76.3 | % |
+|  | Impact of stock-based compensation expense, acquisition-related costs, and other costs | 0.7 | % |
+| Non-GAAP gross margin |  | 77.0 | % |
+| GAAP operating expenses |  |  | 3480 |  |
+|  | Stock-based compensation expense, acquisition-related costs, and other costs | -980 |  |
+| Non-GAAP operating expenses |  |  | 2500 |  |
+
+---
+*Generated by edgar_download.py on 2026-03-03 23:19*

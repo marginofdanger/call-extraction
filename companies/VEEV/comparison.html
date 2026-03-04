@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VEEV Metrics Evolution — 15-Quarter Comparison</title>
+<style>
+:root {
+  --veev-orange: #F58220;
+  --veev-dark: #1a1a2e;
+  --veev-accent: #2C5234;
+  --green: #27ae60;
+  --red: #e74c3c;
+  --amber: #f39c12;
+  --blue: #2980b9;
+  --light-bg: #f8f9fa;
+  --border: #dee2e6;
+  --text: #2c3e50;
+  --text-muted: #6c757d;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); background: #fff; line-height: 1.6; max-width: 1100px; margin: 0 auto; padding: 0 24px 80px; }
+.header { background: linear-gradient(135deg, var(--veev-dark), var(--veev-accent)); color: #fff; padding: 40px 40px 32px; margin: 0 -24px 0; border-bottom: 4px solid var(--veev-orange); }
+.header h1 { font-size: 2rem; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.5px; }
+.header .meta { font-size: 0.95rem; opacity: 0.85; font-weight: 300; }
+.nav-bar { background: var(--veev-dark); padding: 12px 20px; margin: 0 -24px 32px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.nav-bar .nav-label { color: var(--veev-orange); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; margin-right: 8px; }
+.nav-bar a { color: #ccc; text-decoration: none; font-size: 0.78rem; padding: 3px 8px; border-radius: 3px; transition: all 0.2s; }
+.nav-bar a:hover { background: rgba(245,130,32,0.2); color: #fff; }
+.nav-bar .year-sep { color: var(--veev-orange); margin: 0 4px; font-size: 0.7rem; }
+.results-link { background: var(--veev-orange) !important; color: #fff !important; font-weight: 600 !important; }
+.toc { background: var(--light-bg); border: 1px solid var(--border); border-radius: 8px; padding: 24px 28px; margin-bottom: 36px; }
+.toc h3 { font-size: 1rem; color: var(--veev-accent); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px; }
+.toc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 24px; }
+.toc a { color: var(--text); text-decoration: none; font-size: 0.88rem; padding: 3px 0; display: block; }
+.toc a:hover { color: var(--veev-orange); }
+.toc .num { color: var(--veev-orange); font-weight: 700; margin-right: 6px; }
+section { margin-bottom: 40px; }
+h2 { font-size: 1.25rem; font-weight: 700; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid var(--veev-orange); display: flex; align-items: center; gap: 10px; }
+h2 .circle { background: var(--veev-orange); color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; flex-shrink: 0; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 0.85rem; }
+th { background: var(--veev-accent); color: #fff; padding: 10px 12px; text-align: left; font-weight: 600; font-size: 0.8rem; white-space: nowrap; }
+td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+tr:hover { background: rgba(245,130,32,0.04); }
+.year-divider td { background: var(--veev-dark); color: #fff; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; padding: 6px 12px; }
+.raised { background: rgba(39,174,96,0.08) !important; }
+.lowered { background: rgba(231,76,60,0.08) !important; }
+.pos { color: var(--green); font-weight: 600; }
+.neg { color: var(--red); font-weight: 600; }
+.neutral { color: var(--amber); font-weight: 600; }
+.bold { font-weight: 700; }
+.muted { color: var(--text-muted); font-style: italic; }
+.tag-beat, .tag-raised, .tag-new { background: rgba(39,174,96,0.12); color: var(--green); padding: 2px 8px; border-radius: 10px; font-size: 0.72rem; font-weight: 600; }
+.tag-miss, .tag-lowered { background: rgba(231,76,60,0.12); color: var(--red); padding: 2px 8px; border-radius: 10px; font-size: 0.72rem; font-weight: 600; }
+.tag-maintained { background: rgba(243,156,18,0.12); color: var(--amber); padding: 2px 8px; border-radius: 10px; font-size: 0.72rem; font-weight: 600; }
+.insight { background: rgba(245,130,32,0.06); border-left: 4px solid var(--veev-orange); padding: 14px 18px; margin: 16px 0 8px; border-radius: 0 6px 6px 0; font-size: 0.88rem; line-height: 1.5; }
+.takeaway { display: flex; gap: 14px; padding: 16px; margin-bottom: 12px; background: var(--light-bg); border-radius: 8px; border: 1px solid var(--border); }
+.takeaway-num { background: var(--veev-orange); color: #fff; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; flex-shrink: 0; }
+.takeaway-text { font-size: 0.9rem; line-height: 1.5; }
+.footer { margin-top: 48px; padding-top: 20px; border-top: 2px solid var(--border); font-size: 0.8rem; color: var(--text-muted); text-align: center; }
+.footer a { color: var(--veev-orange); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Veeva Systems — 15-Quarter Metrics Evolution</h1>
+  <div class="meta">Q1 FY2023 (May 2022) through Q3 FY2026 (Nov 2025) | SaaS / Life Sciences Cloud</div>
+</div>
+
+<div class="nav-bar">
+  <span class="nav-label">Quarters:</span>
+  <span class="year-sep">FY2026</span>
+  <a href="quarters/Q3_FY2026.html">Q3</a>
+  <a href="quarters/Q2_FY2026.html">Q2</a>
+  <a href="quarters/Q1_FY2026.html">Q1</a>
+  <span class="year-sep">FY2025</span>
+  <a href="quarters/Q4_FY2025.html">Q4</a>
+  <a href="quarters/Q3_FY2025.html">Q3</a>
+  <a href="quarters/Q2_FY2025.html">Q2</a>
+  <a href="quarters/Q1_FY2025.html">Q1</a>
+  <span class="year-sep">FY2024</span>
+  <a href="quarters/Q4_FY2024.html">Q4</a>
+  <a href="quarters/Q3_FY2024.html">Q3</a>
+  <a href="quarters/Q2_FY2024.html">Q2</a>
+  <a href="quarters/Q1_FY2024.html">Q1</a>
+  <span class="year-sep">FY2023</span>
+  <a href="quarters/Q4_FY2023.html">Q4</a>
+  <a href="quarters/Q3_FY2023.html">Q3</a>
+  <a href="quarters/Q2_FY2023.html">Q2</a>
+  <a href="quarters/Q1_FY2023.html">Q1</a>
+  <a href="results.html" class="results-link" style="margin-left:auto;">Results Scorecard</a>
+</div>
+
+<div class="toc">
+  <h3>Table of Contents</h3>
+  <div class="toc-grid">
+    <a href="#s1"><span class="num">1</span> Next-Quarter Revenue Guidance</a>
+    <a href="#s2"><span class="num">2</span> Next-Quarter Non-GAAP OI & EPS</a>
+    <a href="#s3"><span class="num">3</span> Full-Year Revenue Guidance Evolution</a>
+    <a href="#s4"><span class="num">4</span> Full-Year Non-GAAP OI & Margin</a>
+    <a href="#s5"><span class="num">5</span> Subscription Revenue by Segment</a>
+    <a href="#s6"><span class="num">6</span> Non-GAAP Operating Margin Trajectory</a>
+    <a href="#s7"><span class="num">7</span> Vault CRM Migration Progress</a>
+    <a href="#s8"><span class="num">8</span> TFC Contracting Change & Recovery</a>
+    <a href="#s9"><span class="num">9</span> Development Cloud / EDC Expansion</a>
+    <a href="#s10"><span class="num">10</span> Safety Suite Emergence</a>
+    <a href="#s11"><span class="num">11</span> Crossix Growth Acceleration</a>
+    <a href="#s12"><span class="num">12</span> Data Cloud, Compass & IQVIA Resolution</a>
+    <a href="#s13"><span class="num">13</span> AI Strategy Evolution</a>
+    <a href="#s14"><span class="num">14</span> CRM Competitive Landscape</a>
+    <a href="#s15"><span class="num">15</span> 2030 Revenue Targets & Milestones</a>
+    <a href="#s16"><span class="num">16</span> Cash Generation & Capital Allocation</a>
+    <a href="#s17"><span class="num">17</span> Macro Environment Assessment</a>
+    <a href="#s18"><span class="num">18</span> Key Takeaways</a>
+  </div>
+</div>
+
+<!-- Section 1: Next-Quarter Revenue Guidance -->
+<section id="s1">
+<h2><span class="circle">1</span> Next-Quarter Revenue Guidance</h2>
+<table>
+<tr><th>Guided From</th><th>Guidance For</th><th>Revenue Range</th><th>Midpoint</th><th>Actual</th><th>vs Mid</th><th>Tag</th></tr>
+<tr class="year-divider"><td colspan="7">FY2026 — ACCELERATING MOMENTUM</td></tr>
+<tr><td>Q3 FY2026 (Nov '25)</td><td>Q4 FY2026</td><td>$807–810M</td><td>$808.5M</td><td class="muted">Pending</td><td class="muted">—</td><td></td></tr>
+<tr class="raised"><td>Q2 FY2026 (Aug '25)</td><td>Q3 FY2026</td><td>$790–793M</td><td>$791.5M</td><td class="bold">$811.2M</td><td class="pos">+2.5%</td><td><span class="tag-beat">Beat</span></td></tr>
+<tr class="raised"><td>Q1 FY2026 (May '25)</td><td>Q2 FY2026</td><td>$766–769M</td><td>$767.5M</td><td class="bold">$789.1M</td><td class="pos">+2.8%</td><td><span class="tag-beat">Beat</span></td></tr>
+<tr class="raised"><td>Q4 FY2025 (Mar '25)</td><td>Q1 FY2026</td><td>$726–729M</td><td>$727.5M</td><td class="bold">$759.0M</td><td class="pos">+4.3%</td><td><span class="tag-beat">Beat</span></td></tr>
+<tr class="year-divider"><td colspan="7">FY2025 — TFC RECOVERY & MARGIN EXPANSION</td></tr>
+<tr class="raised"><td>Q3 FY2025 (Dec '24)</td><td>Q4 FY2025</td><td>$696–699M</td><td>$697.5M</td><td class="bold">$720.9M</td><td class="pos">+3.4%</td><td><span class="tag-beat">Beat</span></td></tr>
+<tr class="raised"><td>Q2 FY2025 (Aug '24)</td><td>Q3 FY2025</td><td>$682–685M</td><td>$683.5M</td><td class="bold">$699.2M</td><td class="pos">+2.3%</td><td><span class="tag-beat">Beat</span></td></tr>
+<tr class="raised"><td>Q1 FY2025 (May '24)</td><td>Q2 FY2025</td><td>$666–669M</td><td>$667.5M</td><td class="bold">$676.2M</td><td class="pos">+1.3%</td><td><span class="tag-beat">Beat</span></td></tr>
+<tr class="raised"><td>Q4 FY2024 (Feb '24)</td><td>Q1 FY2025</td><td>$640–643M</td><td>$641.5M</td><td class="bold">$650.3M</td><td class="pos">+1.4%</td><td><span class="tag-beat">Beat</span></td></tr>
+<tr class="year-divider"><td colspan="7">FY2024 — TFC HEADWIND YEAR</td></tr>
+<tr class="raised"><td>Q3 FY2024 (Dec '23)</td><td>Q4 FY2024</td><td>$620–622M</td><td>$621M</td><td class="bold">$630.6M</td><td class="pos">+1.5%</td><td><span class="tag-beat">Beat</span></td></tr>
+<tr class="raised"><td>Q2 FY2024 (Aug '23)</td><td>Q3 FY2024</td><td>$614–616M</td><td>$615M</td><td class="bold">$616.5M</td><td class="pos">+0.2%</td><td><span class="tag-beat">Beat</span></td></tr>
+<tr class="raised"><td>Q1 FY2024 (May '23)</td><td>Q2 FY2024</td><td>$580–582M</td><td>$581M</td><td class="bold">$590.2M</td><td class="pos">+1.6%</td><td><span class="tag-beat">Beat</span></td></tr>
+<tr class="raised"><td>Q4 FY2023 (Feb '23)</td><td>Q1 FY2024</td><td>$514–516M</td><td>$515M</td><td class="bold">$526.3M</td><td class="pos">+2.2%</td><td><span class="tag-beat">Beat</span></td></tr>
+<tr class="year-divider"><td colspan="7">FY2023 — MACRO HEADWINDS & FX</td></tr>
+<tr class="raised"><td>Q3 FY2023 (Nov '22)</td><td>Q4 FY2023</td><td>$551–553M</td><td>$552M</td><td class="bold">$563.4M</td><td class="pos">+2.1%</td><td><span class="tag-beat">Beat</span></td></tr>
+<tr class="raised"><td>Q2 FY2023 (Aug '22)</td><td>Q3 FY2023</td><td>$545–547M</td><td>$546M</td><td class="bold">$552.4M</td><td class="pos">+1.2%</td><td><span class="tag-beat">Beat</span></td></tr>
+<tr class="raised"><td>Q1 FY2023 (Jun '22)</td><td>Q2 FY2023</td><td>$529–531M</td><td>$530M</td><td class="bold">$534.2M</td><td class="pos">+0.8%</td><td><span class="tag-beat">Beat</span></td></tr>
+</table>
+<div class="insight"><strong>Key Insight:</strong> Veeva has beaten next-quarter revenue guidance in all 14 reported quarters — a perfect 14/14 record. The magnitude of beats has been growing: FY2023 averaged +1.3% vs midpoint; FY2024 averaged +1.4%; FY2025 averaged +2.1%; and FY2026 is averaging +3.2% through three quarters. The Q1 FY2026 beat of +4.3% (+$31.5M) was the largest absolute and percentage beat in the dataset.</div>
+</section>
+
+<!-- Section 2: Next-Quarter Non-GAAP OI & EPS -->
+<section id="s2">
+<h2><span class="circle">2</span> Next-Quarter Non-GAAP Operating Income & EPS</h2>
+<table>
+<tr><th>Guided From</th><th>For Quarter</th><th>OI Guide</th><th>OI Actual</th><th>OI Beat</th><th>EPS Guide</th><th>EPS Actual</th></tr>
+<tr class="year-divider"><td colspan="7">FY2026</td></tr>
+<tr><td>Q3 FY2026</td><td>Q4 FY2026</td><td>~$350M</td><td class="muted">Pending</td><td class="muted">—</td><td>~$1.92</td><td class="muted">Pending</td></tr>
+<tr class="raised"><td>Q2 FY2026</td><td>Q3 FY2026</td><td>$348–350M</td><td class="bold">$364.9M</td><td class="pos">+$15M</td><td>$1.94–1.95</td><td class="pos bold">$2.04</td></tr>
+<tr class="raised"><td>Q1 FY2026</td><td>Q2 FY2026</td><td>$335–337M</td><td class="bold">$352.6M</td><td class="pos">+$17M</td><td>$1.89–1.90</td><td class="pos bold">$1.99</td></tr>
+<tr class="raised"><td>Q4 FY2025</td><td>Q1 FY2026</td><td>$307–309M</td><td class="bold">$349.9M</td><td class="pos">+$42M</td><td>$1.74–1.75</td><td class="pos bold">$1.97</td></tr>
+<tr class="year-divider"><td colspan="7">FY2025</td></tr>
+<tr class="raised"><td>Q3 FY2025</td><td>Q4 FY2025</td><td>~$275M</td><td class="bold">$307.7M</td><td class="pos">+$33M</td><td>~$1.57</td><td class="pos bold">$1.74</td></tr>
+<tr class="raised"><td>Q2 FY2025</td><td>Q3 FY2025</td><td>$273–275M</td><td class="bold">$304.0M</td><td class="pos">+$30M</td><td>$1.57–1.58</td><td class="pos bold">$1.75</td></tr>
+<tr class="raised"><td>Q1 FY2025</td><td>Q2 FY2025</td><td>$265–267M</td><td class="bold">$279.8M</td><td class="pos">+$14M</td><td>$1.53–1.54</td><td class="pos bold">$1.62</td></tr>
+<tr class="raised"><td>Q4 FY2024</td><td>Q1 FY2025</td><td>$245–247M</td><td class="bold">$260.9M</td><td class="pos">+$15M</td><td>$1.42–1.43</td><td class="pos bold">$1.50</td></tr>
+<tr class="year-divider"><td colspan="7">FY2024</td></tr>
+<tr class="raised"><td>Q3 FY2024</td><td>Q4 FY2024</td><td>~$227M</td><td class="bold">$239.1M</td><td class="pos">+$12M</td><td>~$1.30</td><td class="pos bold">$1.38</td></tr>
+<tr class="raised"><td>Q2 FY2024</td><td>Q3 FY2024</td><td>$223–225M</td><td class="bold">$234.6M</td><td class="pos">+$11M</td><td>$1.26–1.27</td><td class="pos bold">$1.34</td></tr>
+<tr class="raised"><td>Q1 FY2024</td><td>Q2 FY2024</td><td>$199–201M</td><td class="bold">$211.9M</td><td class="pos">+$12M</td><td>$1.12–1.13</td><td class="pos bold">$1.21</td></tr>
+<tr class="raised"><td>Q4 FY2023</td><td>Q1 FY2024</td><td>$141–143M</td><td class="bold">$157.0M</td><td class="pos">+$15M</td><td>$0.79–0.80</td><td class="pos bold">$0.91</td></tr>
+<tr class="year-divider"><td colspan="7">FY2023</td></tr>
+<tr class="raised"><td>Q3 FY2023</td><td>Q4 FY2023</td><td>~$199M</td><td class="bold">$209.4M</td><td class="pos">+$10M</td><td>~$1.05</td><td class="pos bold">$1.15</td></tr>
+<tr class="raised"><td>Q2 FY2023</td><td>Q3 FY2023</td><td>$209–211M</td><td class="bold">$219.5M</td><td class="pos">+$10M</td><td>$1.07–1.08</td><td class="pos bold">$1.13</td></tr>
+<tr><td>Q1 FY2023</td><td>Q2 FY2023</td><td>$201–203M</td><td class="bold">$202.0M</td><td class="neutral">At mid</td><td>$1.00–1.01</td><td class="bold">$1.03</td></tr>
+</table>
+<div class="insight"><strong>Key Insight:</strong> Non-GAAP operating income beats have been accelerating dramatically. FY2023 averaged ~$7M per quarter; FY2024 averaged ~$13M; FY2025 averaged ~$23M; and FY2026 is averaging +$25M. The Q1 FY2026 beat of +$42M vs guidance was the largest ever — driven by Crossix usage-based revenue and expense timing. Management has been consistently conservative on profitability guidance throughout the 15-quarter period.</div>
+</section>
+
+<!-- Section 3: Full-Year Revenue Guidance Evolution -->
+<section id="s3">
+<h2><span class="circle">3</span> Full-Year Revenue Guidance Evolution</h2>
+<table>
+<tr><th>Call</th><th>FY2023</th><th>FY2024</th><th>FY2025</th><th>FY2026</th></tr>
+<tr class="year-divider"><td colspan="5">FY2026 GUIDANCE PROGRESSION</td></tr>
+<tr class="raised"><td>Q3 FY2026 (Nov '25)</td><td></td><td></td><td></td><td class="bold">$3,166–3,169M <span class="tag-raised">Raised</span></td></tr>
+<tr class="raised"><td>Q2 FY2026 (Aug '25)</td><td></td><td></td><td></td><td>$3,134–3,140M <span class="tag-raised">Raised</span></td></tr>
+<tr class="raised"><td>Q1 FY2026 (May '25)</td><td></td><td></td><td></td><td>$3,090–3,100M <span class="tag-raised">Raised</span></td></tr>
+<tr><td>Q4 FY2025 (Mar '25)</td><td></td><td></td><td></td><td>$3,040–3,055M <span class="tag-new">Initial</span></td></tr>
+<tr class="year-divider"><td colspan="5">FY2025 GUIDANCE PROGRESSION</td></tr>
+<tr class="raised"><td>Q3 FY2025 (Dec '24)</td><td></td><td></td><td class="bold">$2,722–2,725M <span class="tag-raised">Raised</span></td><td></td></tr>
+<tr><td>Q2 FY2025 (Aug '24)</td><td></td><td></td><td>$2,704–2,710M <span class="tag-raised">Raised</span></td><td></td></tr>
+<tr class="lowered"><td>Q1 FY2025 (May '24)</td><td></td><td></td><td>$2,700–2,710M <span class="tag-lowered">Lowered</span></td><td></td></tr>
+<tr><td>Q4 FY2024 (Feb '24)</td><td></td><td></td><td>$2,725–2,740M <span class="tag-new">Initial</span></td><td></td></tr>
+<tr><td>Q3 FY2024 (Dec '23)</td><td></td><td></td><td>≥$2,750M</td><td></td></tr>
+<tr><td>Q4 FY2023 (Feb '23)</td><td></td><td></td><td>≥$2,800M</td><td></td></tr>
+<tr class="year-divider"><td colspan="5">FY2025 ACTUAL: $2,746.6M (beat $2,725M high end by $22M)</td></tr>
+<tr class="year-divider"><td colspan="5">FY2024 GUIDANCE PROGRESSION</td></tr>
+<tr class="lowered"><td>Q3 FY2024 (Dec '23)</td><td></td><td class="bold">$2,353–2,355M <span class="tag-lowered">Lowered</span></td><td></td><td></td></tr>
+<tr><td>Q2 FY2024 (Aug '23)</td><td></td><td>$2,365–2,370M <span class="tag-raised">Raised</span></td><td></td><td></td></tr>
+<tr><td>Q1 FY2024 (May '23)</td><td></td><td>$2,360–2,370M <span class="tag-raised">Raised</span></td><td></td><td></td></tr>
+<tr><td>Q4 FY2023 (Feb '23)</td><td></td><td>$2,350–2,360M <span class="tag-new">Initial</span></td><td></td><td></td></tr>
+<tr class="year-divider"><td colspan="5">FY2024 ACTUAL: $2,363.7M (beat $2,355M high end by $9M)</td></tr>
+<tr class="year-divider"><td colspan="5">FY2023 GUIDANCE PROGRESSION</td></tr>
+<tr><td>Q3 FY2023 (Nov '22)</td><td class="bold">$2,143–2,145M <span class="tag-raised">Raised</span></td><td></td><td></td><td></td></tr>
+<tr class="lowered"><td>Q2 FY2023 (Aug '22)</td><td>$2,140–2,145M <span class="tag-lowered">Lowered</span></td><td></td><td></td><td></td></tr>
+<tr><td>Q1 FY2023 (Jun '22)</td><td>$2,165–2,175M <span class="tag-new">Initial</span></td><td></td><td></td><td></td></tr>
+<tr class="year-divider"><td colspan="5">FY2023 ACTUAL: $2,155.1M (beat $2,145M high end by $10M)</td></tr>
+</table>
+<div class="insight"><strong>Key Insight:</strong> Veeva has beaten full-year revenue guidance every year. FY2025 had the most dramatic trajectory: the early target of "at least $2,800M" (set Q4 FY2023) was cut twice before the detailed guidance of $2,725–2,740M was set, then lowered to $2,700M at Q1 FY2025, before being raised back and ultimately beaten with $2,746.6M actual. FY2026 has been raised at every opportunity — cumulative raise of +$114–126M from initial guidance of $3,040–3,055M.</div>
+</section>
+
+<!-- Section 4: Full-Year Non-GAAP OI & Margin -->
+<section id="s4">
+<h2><span class="circle">4</span> Full-Year Non-GAAP Operating Income & Margin Evolution</h2>
+<table>
+<tr><th>Fiscal Year</th><th>Initial OI Guide</th><th>Final OI Guide</th><th>OI Actual</th><th>Beat</th><th>OI Margin</th></tr>
+<tr class="raised"><td class="bold">FY2026</td><td>~$1,300M (42.7%)</td><td>~$1,417M (44.8%)</td><td class="muted">Pending</td><td class="muted">—</td><td class="muted">—</td></tr>
+<tr class="raised"><td class="bold">FY2025</td><td>~$1,070M (39.2%)</td><td>~$1,120M (41.1%)</td><td class="pos bold">$1,152.3M</td><td class="pos">+$32M</td><td class="pos bold">42.0%</td></tr>
+<tr class="raised"><td class="bold">FY2024</td><td>~$800M (34.0%)</td><td>~$830M (35.3%)</td><td class="pos bold">$842.5M</td><td class="pos">+$13M</td><td class="bold">35.6%</td></tr>
+<tr class="raised"><td class="bold">FY2023</td><td>~$835M (38.5%)</td><td>~$820M (38.3%)</td><td class="pos bold">$830.5M</td><td class="pos">+$11M</td><td class="bold">38.5%</td></tr>
+</table>
+<div class="insight"><strong>Key Insight:</strong> The FY2024 margin trough (35.6%) was entirely driven by the TFC contracting change and T&E normalization, not a structural shift. Management guided FY2024 at ~34% initially and delivered 35.6%. The recovery has been swift: FY2025 delivered 42.0% — the highest full-year non-GAAP operating margin in the dataset — and FY2026 is tracking toward ~44.8%. This 920bps improvement from FY2024 to FY2026 reflects both TFC recovery and operational leverage from subscription revenue scaling.</div>
+</section>
+
+<!-- Section 5: Subscription Revenue by Segment -->
+<section id="s5">
+<h2><span class="circle">5</span> Subscription Revenue by Segment</h2>
+<table>
+<tr><th>Quarter</th><th>Commercial Sub</th><th>YoY</th><th>R&D Sub</th><th>YoY</th><th>Total Sub</th><th>R&D % of Sub</th></tr>
+<tr class="year-divider"><td colspan="7">FY2026</td></tr>
+<tr><td>Q3 FY2026</td><td>$317.7M</td><td>+14%</td><td class="bold">$364.8M</td><td class="pos">+21%</td><td>$682.5M</td><td>53%</td></tr>
+<tr><td>Q2 FY2026</td><td>$307.5M</td><td>+13%</td><td class="bold">$351.7M</td><td class="pos">+21%</td><td>$659.2M</td><td>53%</td></tr>
+<tr><td>Q1 FY2026</td><td>$305.4M</td><td>+17%</td><td class="bold">$329.4M</td><td class="pos">+21%</td><td>$634.8M</td><td>52%</td></tr>
+<tr class="year-divider"><td colspan="7">FY2025</td></tr>
+<tr><td>Q4 FY2025</td><td>$293.4M</td><td>+12%</td><td class="bold">$315.2M</td><td class="pos">+21%</td><td>$608.6M</td><td>52%</td></tr>
+<tr><td>Q3 FY2025</td><td>$278.4M</td><td>+11%</td><td class="bold">$302.5M</td><td class="pos">+24%</td><td>$580.9M</td><td>52%</td></tr>
+<tr><td>Q2 FY2025</td><td>$271.8M</td><td>+12%</td><td class="bold">$289.5M</td><td class="pos">+27%</td><td>$561.3M</td><td>52%</td></tr>
+<tr><td>Q1 FY2025</td><td>$261.3M</td><td>+9%</td><td class="bold">$272.6M</td><td class="pos">+56%</td><td>$534.0M</td><td>51%</td></tr>
+<tr class="year-divider"><td colspan="7">FY2024</td></tr>
+<tr><td>Q4 FY2024</td><td>$261.9M</td><td>+8%</td><td>$259.6M</td><td>+20%</td><td>$521.5M</td><td>50%</td></tr>
+<tr><td>Q3 FY2024</td><td>$251.2M</td><td>+5%</td><td>$243.7M</td><td>+20%</td><td>$494.9M</td><td>49%</td></tr>
+<tr><td>Q2 FY2024</td><td>$243.4M</td><td>+3%</td><td>$227.2M</td><td>+18%</td><td>$470.6M</td><td>48%</td></tr>
+<tr><td>Q1 FY2024</td><td>$239.3M</td><td>+5%</td><td>$175.2M</td><td>0%</td><td>$414.5M</td><td>42%</td></tr>
+<tr class="year-divider"><td colspan="7">FY2023</td></tr>
+<tr><td>Q4 FY2023</td><td>$242.9M</td><td>+7%</td><td>$217.3M</td><td>+29%</td><td>$460.2M</td><td>47%</td></tr>
+<tr><td>Q3 FY2023</td><td>$239.3M</td><td>+7%</td><td>$202.3M</td><td>+28%</td><td>$441.6M</td><td>46%</td></tr>
+<tr><td>Q2 FY2023</td><td>$236.4M</td><td>+8%</td><td>$192.3M</td><td>+30%</td><td>$428.6M</td><td>45%</td></tr>
+<tr><td>Q1 FY2023</td><td>$227.7M</td><td>+10%</td><td>$174.9M</td><td>+31%</td><td>$402.6M</td><td>43%</td></tr>
+</table>
+<div class="insight"><strong>Key Insight:</strong> R&D Solutions has surpassed Commercial Solutions as the majority of subscription revenue — crossing 50% at Q4 FY2024 and reaching 53% by Q3 FY2026. R&D subscription has grown from $174.9M to $364.8M (+109%) over 15 quarters while Commercial grew from $227.7M to $317.7M (+40%). The Q1 FY2025 R&D growth of +56% was inflated by TFC recovery (normalized ~15%), but organic R&D growth of 20%+ has been sustained. Commercial acceleration from ~5% in FY2024 to ~14% in FY2026 reflects Crossix and commercial content strength.</div>
+</section>
+
+<!-- Section 6: Non-GAAP Operating Margin Trajectory -->
+<section id="s6">
+<h2><span class="circle">6</span> Non-GAAP Operating Margin Trajectory</h2>
+<table>
+<tr><th>Quarter</th><th>Non-GAAP OI</th><th>Non-GAAP OM</th><th>QoQ Change</th><th>Commentary</th></tr>
+<tr class="year-divider"><td colspan="5">FY2026 — PEAK MARGINS</td></tr>
+<tr class="raised"><td>Q3 FY2026</td><td>$364.9M</td><td class="pos bold">45.0%</td><td>+30bps</td><td>Broad-based strength; deal timing</td></tr>
+<tr><td>Q2 FY2026</td><td>$352.6M</td><td class="pos bold">44.7%</td><td>-140bps</td><td>Normalizing from Q1 peak; IQVIA charge excl.</td></tr>
+<tr class="raised"><td>Q1 FY2026</td><td>$349.9M</td><td class="pos bold">46.1%</td><td>+340bps</td><td>Record high; Crossix + expense timing</td></tr>
+<tr class="year-divider"><td colspan="5">FY2025 — RECOVERY</td></tr>
+<tr><td>Q4 FY2025</td><td>$307.7M</td><td class="pos bold">42.7%</td><td>-80bps</td><td>Seasonal Q4 dip; still record Q4</td></tr>
+<tr><td>Q3 FY2025</td><td>$304.0M</td><td class="pos bold">43.5%</td><td>+210bps</td><td>Record high (at time); biggest beat in 3 yrs</td></tr>
+<tr><td>Q2 FY2025</td><td>$279.8M</td><td class="pos">41.4%</td><td>+130bps</td><td>Back above 40% for first time in 3 years</td></tr>
+<tr><td>Q1 FY2025</td><td>$260.9M</td><td>40.1%</td><td>+220bps</td><td>TFC fully lapped; margin recovery begins</td></tr>
+<tr class="year-divider"><td colspan="5">FY2024 — TROUGH</td></tr>
+<tr><td>Q4 FY2024</td><td>$239.1M</td><td>37.9%</td><td>-20bps</td><td>Vault CRM services investment</td></tr>
+<tr><td>Q3 FY2024</td><td>$234.6M</td><td>38.1%</td><td>+220bps</td><td>Improving; TFC headwind diminishing</td></tr>
+<tr><td>Q2 FY2024</td><td>$211.9M</td><td>35.9%</td><td>+610bps</td><td>Step-up from TFC-hit Q1</td></tr>
+<tr class="lowered"><td>Q1 FY2024</td><td>$157.0M</td><td class="neg bold">29.8%</td><td>-780bps</td><td class="neg">TFC trough; $52M rev hit + T&E normalization</td></tr>
+<tr class="year-divider"><td colspan="5">FY2023 — STEADY STATE PRE-TFC</td></tr>
+<tr><td>Q4 FY2023</td><td>$209.4M</td><td>37.2%</td><td>-250bps</td><td>Seasonal Q4 dip</td></tr>
+<tr><td>Q3 FY2023</td><td>$219.5M</td><td>39.7%</td><td>+190bps</td><td>Strongest quarter of FY2023</td></tr>
+<tr><td>Q2 FY2023</td><td>$202.0M</td><td>37.8%</td><td>-170bps</td><td>Macro headwinds; FX impact</td></tr>
+<tr><td>Q1 FY2023</td><td>$199.6M</td><td>39.5%</td><td></td><td>Starting point; ~40% steady state</td></tr>
+</table>
+<div class="insight"><strong>Key Insight:</strong> The margin journey describes a V-shaped recovery: ~40% pre-TFC steady state (FY2023) → 29.8% trough (Q1 FY2024 from TFC + T&E) → 46.1% peak (Q1 FY2026). The 1,630bps swing from trough to peak is remarkable. Management attributes this to lean team philosophy, subscription mix shift toward Vault (no Salesforce royalty), and operational leverage. The FY2026 full-year guidance of ~44.8% implies margins are structurally higher than pre-TFC levels.</div>
+</section>
+
+<!-- Section 7: Vault CRM Migration Progress -->
+<section id="s7">
+<h2><span class="circle">7</span> Vault CRM Migration Progress</h2>
+<table>
+<tr><th>Quarter</th><th>Vault CRM Customers Live</th><th>CRM Wins (Qtr)</th><th>Top 20 Committed</th><th>Key Milestone</th></tr>
+<tr class="year-divider"><td colspan="5">FY2026 — SCALING MIGRATIONS</td></tr>
+<tr><td>Q3 FY2026</td><td class="bold">115</td><td>23</td><td>9 (incl. verbal)</td><td>Top 20 live in Japan; 14 of 20 expected to migrate</td></tr>
+<tr><td>Q2 FY2026</td><td>100+</td><td>13</td><td>7 formal / 9 incl. verbal</td><td>2 top 20s live across major regions; IQVIA resolved</td></tr>
+<tr><td>Q1 FY2026</td><td>80+</td><td>28</td><td>4 public</td><td>Top 20 going live globally (~20,000 reps)</td></tr>
+<tr class="year-divider"><td colspan="5">FY2025 — GA & EARLY ADOPTION</td></tr>
+<tr><td>Q4 FY2025</td><td class="muted">Not disclosed</td><td>20</td><td>4 (Boehringer added)</td><td>9 of top 20 committed to EDC; "red zone" concept introduced</td></tr>
+<tr><td>Q3 FY2025</td><td>30+</td><td>13</td><td>4 (Boehringer added)</td><td>Full functionality parity reached</td></tr>
+<tr><td>Q2 FY2025</td><td>15</td><td>14</td><td>3</td><td>Full parity targeted Q4; Campaign Manager on track</td></tr>
+<tr><td>Q1 FY2025</td><td>Multiple</td><td>8 (Veeva CRM)</td><td>3</td><td>Vault CRM GA April 1, 2024; med tech win</td></tr>
+<tr class="year-divider"><td colspan="5">FY2024 — DEVELOPMENT & COMMITMENT</td></tr>
+<tr><td>Q4 FY2024</td><td class="muted">Pre-GA</td><td>9 (5 Vault, 4 Veeva)</td><td>3</td><td>Third top 20 committed; GA on track for April 2024</td></tr>
+<tr><td>Q3 FY2024</td><td>1 (first live)</td><td>9 (3 Vault, 6 Veeva)</td><td>2 (Bayer, GSK)</td><td>First customer live; Bayer + GSK committed</td></tr>
+<tr><td>Q2 FY2024</td><td>0</td><td>8</td><td class="muted">—</td><td>First Vault CRM customer win; go-live Q4 FY2024</td></tr>
+<tr><td>Q1 FY2024</td><td>0</td><td>11</td><td class="muted">—</td><td>Vault CRM demo at Summit; strong reception</td></tr>
+<tr class="year-divider"><td colspan="5">FY2023 — ANNOUNCEMENT & PLANNING</td></tr>
+<tr><td>Q3 FY2023</td><td colspan="4">Vault CRM transition announced; early adopters expected 2024; 2025–2030 migration window</td></tr>
+<tr><td>Q1–Q2 FY2023</td><td colspan="4" class="muted">Pre-announcement; CRM on Salesforce platform</td></tr>
+</table>
+<div class="insight"><strong>Key Insight:</strong> From announcement (Q3 FY2023) to 115 live customers (Q3 FY2026) in just 3 years. The top 20 commitment pace accelerated: 0 → 2 → 3 → 4 → 9 (including verbal). Management framed 2025–2026 as the critical decision window with "red zone" pressure starting 2027. The 14-of-20 expected migration rate implies ~6 top 20s may go with Salesforce — management expects to win back 4 of those 6 over time. Revenue is "roughly neutral" during migration; margin improves long-term as Salesforce royalties roll off.</div>
+</section>
+
+<!-- Section 8: TFC Contracting Change -->
+<section id="s8">
+<h2><span class="circle">8</span> TFC Contracting Change & Recovery</h2>
+<table>
+<tr><th>Quarter</th><th>TFC Status</th><th>Revenue Impact</th><th>Commentary</th></tr>
+<tr class="year-divider"><td colspan="4">RESOLUTION — TFC FULLY LAPPED</td></tr>
+<tr><td>Q1 FY2025+</td><td class="pos">Fully lapped</td><td>None</td><td>TFC ~2% headwind to YoY sub growth ended; normalized growth ~15%</td></tr>
+<tr class="year-divider"><td colspan="4">FY2024 — IMPACT YEAR</td></tr>
+<tr class="lowered"><td>Q1 FY2024</td><td class="neg">Peak impact</td><td class="neg bold">~$52M hit</td><td>Largest quarterly impact; mostly unbilled AR runoff</td></tr>
+<tr><td>Q2–Q4 FY2024</td><td>Diminishing</td><td>~$43M (balance)</td><td>Spread across 3 quarters; total FY2024 ~$95M</td></tr>
+<tr class="year-divider"><td colspan="4">ANNOUNCEMENT & SETUP</td></tr>
+<tr><td>Q3 FY2023 (Nov '22)</td><td class="tag-new">Disclosed</td><td>$60M (initial)</td><td>Effective Feb 1, 2023; ~60% hits Q1 FY2024; majority R&D side</td></tr>
+<tr><td>Q4 FY2023 (Feb '23)</td><td>Expanded</td><td>$95M (revised up)</td><td>+$15M from Q4 CMS deals, +$20M expected new deals</td></tr>
+</table>
+<div class="insight"><strong>Key Insight:</strong> The TFC standardization was a one-time accounting headwind — purely revenue timing with zero impact on billings or cash flow. It depressed FY2024 operating margin by ~250bps and created a misleading Q1 FY2024 margin trough of 29.8%. The recovery was clean: by Q1 FY2025, growth normalized and margins returned above 40%. In hindsight, TFC created a buying opportunity as the reported numbers obscured underlying business strength.</div>
+</section>
+
+<!-- Section 9: Development Cloud / EDC -->
+<section id="s9">
+<h2><span class="circle">9</span> Development Cloud / EDC Expansion</h2>
+<table>
+<tr><th>Quarter</th><th>Top 20 EDC</th><th>Top 20 eTMF</th><th>Top 20 CTMS</th><th>Key Win / Milestone</th></tr>
+<tr class="year-divider"><td colspan="5">FY2026 — PLATFORM EXPANSION</td></tr>
+<tr><td>Q3 FY2026</td><td>9 (lost 1)</td><td class="pos bold">20 of 20</td><td>17</td><td>3 top 20 enterprise standard selections (Safety, Study Startup, Training)</td></tr>
+<tr><td>Q2 FY2026</td><td>9</td><td>19</td><td class="muted">—</td><td>R&D sub +21% YoY; "rose the most in 2 years" sequentially</td></tr>
+<tr><td>Q1 FY2026</td><td>9</td><td>19</td><td class="muted">—</td><td>R&D sub growth guidance: 19% for FY2026</td></tr>
+<tr class="year-divider"><td colspan="5">FY2025 — RAMP ACCELERATION</td></tr>
+<tr><td>Q4 FY2025</td><td class="pos bold">9 (ninth win)</td><td class="muted">—</td><td class="muted">—</td><td>Largest-ever clinical platform deal (6 apps, top 20, ~5yr ramp)</td></tr>
+<tr><td>Q3 FY2025</td><td>8</td><td class="muted">—</td><td class="muted">—</td><td>EDC ramps "proceeding as expected"</td></tr>
+<tr><td>Q1 FY2025</td><td>8</td><td class="muted">—</td><td class="muted">—</td><td>3 top 20 R&D wins spanning multiple products</td></tr>
+<tr class="year-divider"><td colspan="5">FY2024 — ENTERPRISE WINS</td></tr>
+<tr><td>Q4 FY2024</td><td class="pos">8 (5 in last 12mo)</td><td class="muted">—</td><td class="muted">—</td><td>First full Vault Clinical Ops Suite customer; 3x opportunity vs eTMF alone</td></tr>
+<tr><td>Q3 FY2024</td><td>6</td><td class="muted">—</td><td class="muted">—</td><td>24 clinical wins, 23 quality wins, 15 regulatory wins</td></tr>
+<tr><td>Q2 FY2024</td><td>6</td><td class="muted">—</td><td class="muted">—</td><td>500+ Vault Clinical customers; 85 with both clinical ops + data mgmt</td></tr>
+<tr class="year-divider"><td colspan="5">FY2023 — EDC PROVING GROUND</td></tr>
+<tr><td>Q4 FY2023</td><td class="pos">6 (3 added in Q4)</td><td class="muted">—</td><td class="muted">—</td><td>EDC revenue ramp "3 to 5 years"; ~5% clinical data penetration</td></tr>
+<tr><td>Q3 FY2023</td><td>2 (first disclosed)</td><td class="muted">450+</td><td>175+</td><td>2 top 20 EDC displacements; first top 20 Safety go-live</td></tr>
+</table>
+<div class="insight"><strong>Key Insight:</strong> Development Cloud is Veeva's largest growth engine, with R&D subscription revenue more than doubling from $174.9M (Q1 FY2023) to $364.8M (Q3 FY2026). The eTMF milestone of 20/20 top 20 pharma adoption validates the platform strategy. EDC penetration at 9 of top 20 (from 0 three years ago) is remarkable, though these are multi-year ramp deals with 3–5 year revenue curves. The Q4 FY2025 "all-in" clinical platform deal (6 apps from one top 20) signals a shift from point-product to platform purchasing.</div>
+</section>
+
+<!-- Section 10: Safety Suite -->
+<section id="s10">
+<h2><span class="circle">10</span> Safety Suite Emergence</h2>
+<table>
+<tr><th>Quarter</th><th>Status</th><th>Key Commentary</th></tr>
+<tr class="year-divider"><td colspan="3">FY2026 — MOMENTUM BUILDING</td></tr>
+<tr><td>Q3 FY2026</td><td>3rd top 20 live; enterprise standard selections</td><td>"A lot of momentum"; AI + Safety "game changer"; 10-year customer decisions</td></tr>
+<tr><td>Q2 FY2026</td><td>AI agents for safety planned ~Apr 2026</td><td>"Hundreds of millions of outsourced labor" addressable by agentic AI</td></tr>
+<tr class="year-divider"><td colspan="3">FY2025 — FIRST SCALE DEPLOYMENTS</td></tr>
+<tr><td>Q4 FY2025</td><td>2nd top 20 live (Feb 2025); full Safety Suite rollout</td><td>"First true cloud integrated set of safety applications"</td></tr>
+<tr><td>Q3 FY2025</td><td>"Approaching a tipping point"</td><td>Safety Signal + Safety Workbench available; advanced clinical-safety integration</td></tr>
+<tr><td>Q2 FY2025</td><td>Some live customers; legacy competitors aging</td><td>"At some point" legacy providers unable to keep up</td></tr>
+<tr class="year-divider"><td colspan="3">FY2024 — EARLY ADOPTION</td></tr>
+<tr><td>Q3 FY2024</td><td class="muted">Not prominently discussed</td><td class="muted">Focus on EDC wins</td></tr>
+<tr class="year-divider"><td colspan="3">FY2023 — FIRST GO-LIVE</td></tr>
+<tr><td>Q3 FY2023</td><td class="pos">First top 20 live</td><td>"Half the time" of expected implementation; cloud-native drug safety first</td></tr>
+</table>
+<div class="insight"><strong>Key Insight:</strong> Safety has progressed from "very early" (FY2023) to "a lot of momentum" (Q3 FY2026) with 3 top 20 go-lives. Management describes customers as making "10-year decisions" — once committed, these are deeply embedded. The AI angle is particularly significant: safety processing involves massive outsourced labor for case intake and narrative writing, which agentic AI could reduce by ~50%. Safety Suite agent availability planned for ~Q1 FY2027 could accelerate adoption.</div>
+</section>
+
+<!-- Section 11: Crossix Growth -->
+<section id="s11">
+<h2><span class="circle">11</span> Crossix Growth Acceleration</h2>
+<table>
+<tr><th>Quarter</th><th>Crossix Status</th><th>Commentary</th></tr>
+<tr class="year-divider"><td colspan="3">FY2026 — SUSTAINED OUTPERFORMANCE</td></tr>
+<tr><td>Q3 FY2026</td><td class="pos">In line with expectations (strong)</td><td>"Well-growing business for 3, 4, 5 years"; digital marketing spending compounding</td></tr>
+<tr><td>Q2 FY2026</td><td class="pos">Continued strong</td><td>Audiences "primary growth driver"; expanding into HCP measurement</td></tr>
+<tr><td>Q1 FY2026</td><td class="pos bold">30%+ YoY growth</td><td>Usage-based outperformance; comprehensive deal value "maybe double 3 years ago"</td></tr>
+<tr class="year-divider"><td colspan="3">FY2025 — BREAKOUT YEAR</td></tr>
+<tr><td>Q4 FY2025</td><td class="pos">"Major driver of commercial outperformance"</td><td>FY2026 deceleration mostly hard compare from FY2025 outperformance</td></tr>
+<tr><td>Q3 FY2025</td><td class="pos">Continued strength</td><td>"Competition had some stumbles"; micro audiences getting more fine-tuned</td></tr>
+<tr><td>Q2 FY2025</td><td class="pos">Second consecutive solid quarter</td><td>Not cyclical; attributed to quality and market leadership</td></tr>
+<tr><td>Q1 FY2025</td><td class="pos">"Great quarter"</td><td>First customer on enterprise license model; audiences investment paying off</td></tr>
+<tr class="year-divider"><td colspan="3">FY2024 — RECOVERY BEGINS</td></tr>
+<tr><td>Q3 FY2024</td><td>Solid bookings; brand expansions</td><td>Competitors "oversold what they could actually deliver"</td></tr>
+<tr><td>Q2 FY2024</td><td>"Ups and downs quarter-to-quarter"</td><td>Moving toward enterprise license agreements</td></tr>
+<tr class="year-divider"><td colspan="3">FY2023 — MACRO HEADWINDS</td></tr>
+<tr><td>Q3 FY2023</td><td class="neg">~10% growth; under pressure</td><td>Advertising market tightening</td></tr>
+<tr><td>Q2 FY2023</td><td class="neg">"More pronounced macro impact"</td><td>Advertising budgets tightened; moved to multiyear agreements</td></tr>
+<tr><td>Q1 FY2023</td><td class="muted">Not specifically discussed</td><td></td></tr>
+</table>
+<div class="insight"><strong>Key Insight:</strong> Crossix's arc from headwind (~10% growth in FY2023 under macro pressure) to breakout (30%+ growth in Q1 FY2026) is one of the most dramatic storylines. Two drivers: (1) the audiences business, a relatively new usage-based revenue stream, grew rapidly as competitors stumbled; (2) comprehensive deal sizes roughly doubled in 3 years. Management now sees Crossix potentially equaling the entire CRM suite in revenue by 2030. The business is becoming a structural growth driver, not a cyclical one.</div>
+</section>
+
+<!-- Section 12: Data Cloud, Compass & IQVIA -->
+<section id="s12">
+<h2><span class="circle">12</span> Data Cloud, Compass & IQVIA Resolution</h2>
+<table>
+<tr><th>Quarter</th><th>Compass Progress</th><th>IQVIA Dynamics</th><th>Commentary</th></tr>
+<tr class="year-divider"><td colspan="4">FY2026 — IQVIA RESOLVED</td></tr>
+<tr><td>Q3 FY2026</td><td>~100 Basics customers; Veeva Pulse launched</td><td class="pos">Partnership; "positive customer experience"</td><td>3 positive macro trends: digital/AI, IQVIA partnership, Salesforce freedom</td></tr>
+<tr class="raised"><td>Q2 FY2026</td><td>Prescriber "slower than expected"</td><td class="pos bold">~10-year dispute resolved; $30.6M settlement</td><td>"Biggest news in commercial for a long time"; Network/Nitro freed</td></tr>
+<tr><td>Q1 FY2026</td><td>~10 brands added; CRM Pulse launched</td><td class="muted">Pre-resolution</td><td>Compass "marathon"; prescriber pipeline growing</td></tr>
+<tr class="year-divider"><td colspan="4">FY2025 — FULL SUITE AVAILABLE</td></tr>
+<tr><td>Q4 FY2025</td><td>100+ brands; prescriber no IC-grade yet</td><td>IQVIA restrictions ongoing</td><td>"Next year we will" have IC-grade prescriber data; Veeva Pulse first deal</td></tr>
+<tr><td>Q3 FY2025</td><td>Record 13 brands (Q3 FY2024); growing</td><td>IQVIA "out of the game" (OCE sunset)</td><td>Walgreens partnership for data sourcing</td></tr>
+<tr><td>Q2 FY2025</td><td>Good progress; prescriber education phase</td><td>IQVIA restrictions persist</td><td>"Very bullish" but "big hill to climb"</td></tr>
+<tr><td>Q1 FY2025</td><td>Full suite commercially available (Jan 2024)</td><td>IQVIA restrictions persist</td><td>"Not going to be a $50M business anytime soon"</td></tr>
+<tr class="year-divider"><td colspan="4">FY2024 — BUILDING SUITE</td></tr>
+<tr><td>Q3 FY2024</td><td>Record 13 new brands in quarter</td><td>"Anticompetitive behavior" called out</td><td>IQVIA-free small companies expected next year</td></tr>
+<tr><td>Q1 FY2024</td><td>5 wins; Compass Prescriber coming Jan 2024</td><td>"Questionable business practices" acknowledged</td><td>Compass to be full IQVIA replacement by Jan 2024</td></tr>
+<tr class="year-divider"><td colspan="4">FY2023 — EARLY ADOPTER PHASE</td></tr>
+<tr><td>Q2 FY2023</td><td>4 wins; early adopter</td><td>Entrenched competitor; "20+ year standard"</td><td>"Too early to call that race"</td></tr>
+<tr><td>Q1 FY2023</td><td>Veeva Data Cloud announced</td><td>Competitive dynamics noted</td><td>"Definitely early adopter" stage</td></tr>
+</table>
+<div class="insight"><strong>Key Insight:</strong> The Q2 FY2026 IQVIA resolution was a watershed moment. For 10+ years, IQVIA's data restrictions made products like Veeva Network and Nitro "impractical." Combined with the Salesforce liberation (Vault CRM), two of the three historical barriers to commercial expansion are now removed. Management estimates ~25% of the benefit is direct revenue (Network, Nitro, consulting) and ~75% is network effects across the broader commercial portfolio. Compass itself remains a "marathon" — prescriber data adoption is slower than expected — but the competitive landscape is fundamentally more favorable.</div>
+</section>
+
+<!-- Section 13: AI Strategy Evolution -->
+<section id="s13">
+<h2><span class="circle">13</span> AI Strategy Evolution</h2>
+<table>
+<tr><th>Quarter</th><th>AI Stance</th><th>Products / Plans</th><th>Revenue Impact</th></tr>
+<tr class="year-divider"><td colspan="4">FY2026 — AGENTIC AI ACCELERATION</td></tr>
+<tr><td>Q3 FY2026</td><td class="pos">Agents in "all applications" by end 2026</td><td>CRM + Content agents Dec '25; Safety/Quality ~Apr '26; Clinical through CY2026</td><td>No material revenue FY2027-FY2028</td></tr>
+<tr><td>Q2 FY2026</td><td>Platform-first; MCP for interoperability</td><td>Custom agent platform + Veeva agents</td><td>"Significant increase in market size" over many years</td></tr>
+<tr><td>Q1 FY2026</td><td>Veeva AI first release Dec 2025</td><td>CRM Bot, Voice, MLR Bot, Safety AI, Free Text</td><td>Pricing "reasonable and broadly adopted"</td></tr>
+<tr class="year-divider"><td colspan="4">FY2025 — PRODUCTS TAKING SHAPE</td></tr>
+<tr><td>Q4 FY2025</td><td>AI organization centralized</td><td>TMF bot, CRM voice, MLR bot; multiple in pipeline</td><td>"AI distraction largely behind" for customers</td></tr>
+<tr><td>Q3 FY2025</td><td>CRM Bot + MLR Bot announced</td><td>CRM Bot: no charge; MLR Bot: separate license</td><td>"No material impact to gross margin"</td></tr>
+<tr><td>Q2 FY2025</td><td>AI Partner Program; early traction</td><td>Direct Data API as enabler</td><td>API is a purchased product</td></tr>
+<tr class="year-divider"><td colspan="4">FY2024 — STRATEGIC FRAMING</td></tr>
+<tr><td>Q4 FY2024</td><td>Data assets + Direct Data API</td><td>~100x faster data extraction; 2 years development</td><td>"Durable thing about AI is the data sources"</td></tr>
+<tr><td>Q1 FY2024</td><td>Three-pronged: own AI apps + data + open platform</td><td>CRM Bot (first AI app)</td><td>Core systems always needed; AI additive</td></tr>
+<tr class="year-divider"><td colspan="4">FY2023 — SKEPTICISM</td></tr>
+<tr><td>Q4 FY2023</td><td class="neg">"I don't think it's a revolution"</td><td>No specific products</td><td>No cost savings expected internally</td></tr>
+<tr><td>Q1 FY2024</td><td>AI as competing priority / distraction</td><td class="muted">None</td><td>AI experimentation delaying core system deals</td></tr>
+</table>
+<div class="insight"><strong>Key Insight:</strong> Peter Gassner's AI stance evolved from skepticism ("I don't think it's a revolution" — Q4 FY2023) to aggressive investment ("agents in literally all of our software applications by end of 2026"). The shift happened gradually: FY2024 was about positioning data assets, FY2025 was about first products (CRM Bot, MLR Bot), and FY2026 is about comprehensive agentic AI across every product line. Critically, no material revenue is expected until FY2028+, but management sees AI as a "significant increase in market size" — particularly in Safety and Clinical where outsourced labor could be reduced ~50% by AI agents.</div>
+</section>
+
+<!-- Section 14: CRM Competitive Landscape -->
+<section id="s14">
+<h2><span class="circle">14</span> CRM Competitive Landscape</h2>
+<table>
+<tr><th>Quarter</th><th>Salesforce</th><th>IQVIA</th><th>Veeva Position</th></tr>
+<tr class="year-divider"><td colspan="4">FY2026</td></tr>
+<tr><td>Q3 FY2026</td><td>3 top 20 wins (incl. verbal); go-live end 2026 earliest</td><td>Resolved; partnership</td><td>14 of 20 expected to migrate; 4 of remaining 6 "winnable"</td></tr>
+<tr><td>Q2 FY2026</td><td>3 top 20 wins; "contingency plan is Veeva"</td><td>Dispute resolved</td><td>9 top 20 vs Salesforce 3; Salesforce go-lives at risk</td></tr>
+<tr class="year-divider"><td colspan="4">FY2025</td></tr>
+<tr><td>Q3 FY2025</td><td>Called out life sciences cloud in 3 of top 10 deals</td><td>OCE product sunset</td><td>"Salesforce doesn't have a product yet"; IQVIA "out of the game"</td></tr>
+<tr><td>Q2 FY2025</td><td>First release toward end CY2025</td><td>OCE "hasn't performed well"</td><td>"Winning virtually every CRM deal"</td></tr>
+<tr class="year-divider"><td colspan="4">FY2024</td></tr>
+<tr><td>Q2 FY2024</td><td>"Don't see as attractive market for them"</td><td>"Nothing has really changed"</td><td>"Win most of the deals"; ~25% of rev is CRM suite</td></tr>
+<tr class="year-divider"><td colspan="4">FY2023</td></tr>
+<tr><td>Q1 FY2024</td><td>Licensed IQVIA OCE; industry "lukewarm to slightly negative"</td><td>OCE "hasn't worked well" for big customers</td><td>"Potentially even more of a distraction for competitors"</td></tr>
+<tr><td>Q3 FY2023</td><td>Preferred partner through 2025</td><td class="muted">Pre-competitive</td><td>Vault CRM transition announced</td></tr>
+</table>
+<div class="insight"><strong>Key Insight:</strong> The competitive scorecard by Q3 FY2026: Veeva has 9 top 20 commitments vs Salesforce's 3. Management pointedly noted that Salesforce's wins are not equivalent to Veeva wins — Salesforce's earliest go-live in a single region is end of 2026, and the chance all 3 fully deploy "is actually low." Each Salesforce customer has a contingency plan that is Veeva. Meanwhile IQVIA exited the CRM market entirely (OCE sunset). CRM has shifted from ~25% of revenue to ~20%, and management expects it to be "significantly less than 20%" by 2030 as other products scale.</div>
+</section>
+
+<!-- Section 15: 2030 Revenue Targets -->
+<section id="s15">
+<h2><span class="circle">15</span> 2030 Revenue Targets & Milestones</h2>
+<table>
+<tr><th>Quarter</th><th>Target</th><th>Progress / Commentary</th></tr>
+<tr class="year-divider"><td colspan="3">CURRENT TARGETS</td></tr>
+<tr class="raised"><td>Q1 FY2026 (May '25)</td><td class="pos bold">$3B run rate ACHIEVED</td><td>Crossed $3B run rate (Q1 annualized ~$3.04B); set in CY2025</td></tr>
+<tr><td>Q3 FY2026 (Nov '25)</td><td>$6B by 2030</td><td>"Multiple paths to get there"; "very good progress"; diverse business</td></tr>
+<tr><td>Q2 FY2026 (Aug '25)</td><td>$6B by 2030</td><td>"A lot of confidence in our $6B revenue plan"</td></tr>
+<tr><td>Q4 FY2025 (Mar '25)</td><td class="bold">$6B goal set</td><td>Double the $3B run rate by ~CY2030</td></tr>
+<tr class="year-divider"><td colspan="3">PRIOR TARGETS</td></tr>
+<tr><td>Q3 FY2025 (Dec '24)</td><td>2030 goals: "excited"</td><td>"Trains are big and they're moving"; TAM $20B</td></tr>
+<tr><td>Q3 FY2023 (Nov '22)</td><td>Tracking ~1 year ahead of FY2025 targets</td><td>FY2025 targets: $2,800M revenue, $1,000M OI</td></tr>
+<tr><td>Q2 FY2023 (Aug '22)</td><td>Cross $3B by CY2025</td><td>"Continue to track ahead of our goal"</td></tr>
+<tr><td>Q1 FY2023 (Jun '22)</td><td>Crossed $2B run rate</td><td>First time; R&D TAM $7B, 15% penetrated</td></tr>
+</table>
+<div class="insight"><strong>Key Insight:</strong> Revenue milestones: $2B run rate (Q1 FY2023) → $3B run rate (Q1 FY2026) — achieved in ~3 years. The $3B goal was originally set for CY2025 and was hit on schedule. The new $6B 2030 target implies ~15% revenue CAGR from current levels. TAM has expanded from $7B (R&D only, FY2023) to $20B (total, FY2025) as Veeva added new product areas. Management emphasizes "multiple paths" to $6B — no single product dependency — which is credible given the diversification from CRM (25% → 20% of revenue) and R&D's rapid scaling.</div>
+</section>
+
+<!-- Section 16: Cash Generation -->
+<section id="s16">
+<h2><span class="circle">16</span> Cash Generation & Capital Allocation</h2>
+<table>
+<tr><th>Period</th><th>Cash + Investments</th><th>Annual OCF (GAAP)</th><th>Use of Cash</th></tr>
+<tr class="year-divider"><td colspan="4">GROWING CASH PILE</td></tr>
+<tr><td>Q3 FY2026 (Oct '25)</td><td class="bold">$6.6B</td><td>$1,308M (9-month)</td><td>M&A focused; "really wide aperture"</td></tr>
+<tr><td>Q1 FY2026 (Apr '25)</td><td>$6.1B</td><td></td><td>Horizontal CRM M&A possible</td></tr>
+<tr><td>FY2025 (Jan '25)</td><td>$5.2B</td><td class="pos bold">$1,090M (first $1B+ year)</td><td>M&A: "if we saw $3B we would go for it"</td></tr>
+<tr><td>FY2024 (Jan '24)</td><td>$4.0B</td><td>$911M</td><td>Disciplined M&A approach</td></tr>
+<tr><td>FY2023 (Jan '23)</td><td>$3.1B</td><td>$781M</td><td>"More active" M&A search</td></tr>
+<tr><td>Q1 FY2023 (Apr '22)</td><td>$2.8B</td><td></td><td>M&A primary; cited Crossix, Zinc successes</td></tr>
+</table>
+<div class="insight"><strong>Key Insight:</strong> Cash has more than doubled from $2.8B (Q1 FY2023) to $6.6B (Q3 FY2026) with no acquisitions, no buybacks, and no dividends. Annual operating cash flow crossed $1B in FY2025. Management has consistently signaled M&A as the primary use but remains "careful and surgical." The mention of horizontal CRM M&A (Q1 FY2026) suggests cash deployment could finally accelerate — Gassner said they'd "go for it" if they saw a $3B opportunity.</div>
+</section>
+
+<!-- Section 17: Macro Environment -->
+<section id="s17">
+<h2><span class="circle">17</span> Macro Environment Assessment</h2>
+<table>
+<tr><th>Quarter</th><th>Characterization</th><th>Key Factors</th></tr>
+<tr class="year-divider"><td colspan="3">FY2026 — ELEVATED UNCERTAINTY, NO IMPACT</td></tr>
+<tr><td>Q3 FY2026</td><td>"Pretty healthy"; "a bit of chaos" but adapted</td><td>Political tariffs, conflicts; science driving demand; no material behavior change</td></tr>
+<tr><td>Q2 FY2026</td><td>"Fairly stable in that level of uncertainty"</td><td>Pipeline building; deals progressing; no area of concern</td></tr>
+<tr><td>Q1 FY2026</td><td>"More uncertain today" but no financial impact</td><td>FDA staffing, drug pricing EO, biotech funding concerns</td></tr>
+<tr class="year-divider"><td colspan="3">FY2025 — STABILIZING</td></tr>
+<tr><td>Q4 FY2025</td><td>Government policy changes watched; no impact yet</td><td>Tariffs very early; life sciences "adaptable industry"</td></tr>
+<tr><td>Q3 FY2025</td><td>"A bit better" vs year ago</td><td>"Marginally better" visibility; customers settled in</td></tr>
+<tr><td>Q2 FY2025</td><td>"Unchanged from 90 days ago"; pushed back on "thawing"</td><td>"Flowing a little bit better"; some pent-up demand</td></tr>
+<tr><td>Q1 FY2025</td><td>"Macro environment remains challenging"</td><td>AI as competing priority / distraction for IT budgets</td></tr>
+<tr class="year-divider"><td colspan="3">FY2024 — PERSISTENT HEADWINDS</td></tr>
+<tr><td>Q4 FY2024</td><td>"A little more optimism"</td><td>IRA more acute on R&D decisions; emerging biotech "tough slog"</td></tr>
+<tr><td>Q3 FY2024</td><td>"Staying stable"; not worse, not better</td><td>Pent-up demand building; IRA becoming "new normal"</td></tr>
+<tr><td>Q1 FY2024</td><td>"Stable; no change in last 90 days"</td><td>SMB ~4% of revenue; tighter funding for small biotechs</td></tr>
+<tr class="year-divider"><td colspan="3">FY2023 — HEADWINDS EMERGE</td></tr>
+<tr><td>Q3 FY2023</td><td>"Not better, not worse" vs 90 days ago</td><td>SMB not improving; deals that slipped Q2 closed in Q3</td></tr>
+<tr><td>Q2 FY2023</td><td>Headwinds started late June; continued at similar pace</td><td>Crossix/advertising, SMB add-on users; R&D not impacted</td></tr>
+<tr><td>Q1 FY2023</td><td class="pos">"Strong; not seeing macro effects"</td><td>Life sciences not cyclical; hiring easier</td></tr>
+</table>
+<div class="insight"><strong>Key Insight:</strong> The macro narrative has been remarkably consistent: management always characterizes the environment as "stable" or "unchanged" with occasional directional qualifiers. Through FX headwinds, rising rates, IRA concerns, AI disruption, tariff uncertainty, and political turbulence, Veeva has beaten guidance every single quarter. Life sciences' recession-resistant characteristics — long-term enterprise agreements, non-discretionary core systems — have proven out. The most notable observation: management refused to let favorable macro commentary creep into guidance, maintaining conservative assumptions throughout.</div>
+</section>
+
+<!-- Section 18: Key Takeaways -->
+<section id="s18">
+<h2><span class="circle">18</span> Key Takeaways</h2>
+
+<div class="takeaway">
+  <div class="takeaway-num">1</div>
+  <div class="takeaway-text"><strong>Perfect guidance beat record.</strong> Veeva beat next-quarter revenue guidance in all 14 reported quarters (14/14) and non-GAAP operating income in 13 of 14 (with Q2 FY2023 at midpoint). No quarter ever missed the low end. The magnitude of beats has been increasing — FY2026 averages +3.2% revenue vs midpoint.</div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-num">2</div>
+  <div class="takeaway-text"><strong>V-shaped margin recovery.</strong> Non-GAAP operating margin went from 39.5% (Q1 FY2023) to 29.8% (Q1 FY2024 TFC trough) to 46.1% (Q1 FY2026 peak) — a 1,630bps swing from trough to peak. FY2026 full-year margins are guided at ~44.8%, structurally 500bps+ above pre-TFC levels, driven by subscription mix shift, Salesforce royalty reduction, and lean operations.</div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-num">3</div>
+  <div class="takeaway-text"><strong>R&D Solutions is now the majority engine.</strong> R&D subscription revenue grew from 43% of total subscription (Q1 FY2023) to 53% (Q3 FY2026), more than doubling from $174.9M to $364.8M quarterly. The Development Cloud — clinical, quality, regulatory, safety — is where the TAM is largest and penetration is lowest.</div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-num">4</div>
+  <div class="takeaway-text"><strong>Vault CRM migration is executing ahead.</strong> From announcement (Q3 FY2023) to 115 live customers in 3 years, with 9 of top 20 committed vs Salesforce's 3. The "red zone" deadline pressure (2027+) will drive remaining decisions. Revenue is margin-neutral near-term but margin-accretive long-term as Salesforce royalties roll off post-2025.</div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-num">5</div>
+  <div class="takeaway-text"><strong>Crossix became a breakout growth driver.</strong> From macro headwinds (~10% growth in FY2023) to 30%+ growth (Q1 FY2026), Crossix transformed from a headwind narrative to a major outperformance driver. Deal sizes roughly doubled in 3 years. Management sees Crossix potentially equaling the entire CRM suite (~$600M run-rate) by 2030.</div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-num">6</div>
+  <div class="takeaway-text"><strong>IQVIA resolution removed the last major barrier.</strong> The Q2 FY2026 settlement ended a 10-year dispute, freeing Veeva Network and Nitro products. Combined with the Salesforce liberation (Vault CRM), two of three historical commercial barriers are now removed. Management frames this as "the biggest news in commercial for a long time."</div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-num">7</div>
+  <div class="takeaway-text"><strong>EDC penetration validates the clinical platform.</strong> EDC went from 0 to 9 of top 20 pharma in 3 years. eTMF reached 20/20. The Q4 FY2025 "all-in" deal (6 clinical apps from one top 20) signals platform-level purchasing is emerging, which multiplies per-customer revenue by 3x+ vs eTMF alone.</div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-num">8</div>
+  <div class="takeaway-text"><strong>AI strategy evolved from skepticism to full commitment.</strong> Peter Gassner's stance shifted from "I don't think it's a revolution" (Q4 FY2023) to agents in "literally all applications" by end of 2026. No material revenue expected until FY2028+, but Safety and Clinical areas could see ~50% reduction in outsourced labor — expanding addressable market significantly.</div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-num">9</div>
+  <div class="takeaway-text"><strong>$6.6B cash pile with no deployment.</strong> Cash more than doubled from $2.8B to $6.6B over 15 quarters with zero acquisitions, buybacks, or dividends. Management consistently signals M&A as the primary use — now focused on horizontal CRM opportunities outside life sciences. Annual OCF crossed $1B in FY2025.</div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-num">10</div>
+  <div class="takeaway-text"><strong>Revenue target progression: $2B → $3B → $6B.</strong> Crossed $2B run rate (Q1 FY2023), achieved $3B run rate on schedule (Q1 FY2026), now targeting $6B by 2030. FY2026 guidance of ~$3.17B implies ~15% CAGR needed to reach $6B by FY2031 — achievable given current growth trajectory of ~14% with multiple product ramps ahead.</div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-num">11</div>
+  <div class="takeaway-text"><strong>Horizontal expansion is the next chapter.</strong> First disclosed at Q4 FY2024, horizontal CRM outside life sciences has progressed from concept to "first customers by end of year" (Q1 FY2026). A separate team with a distinct operating model is being built. This represents a new S-curve opportunity but is too early to quantify.</div>
+</div>
+
+<div class="takeaway">
+  <div class="takeaway-num">12</div>
+  <div class="takeaway-text"><strong>Guidance philosophy: consistently conservative.</strong> In 15 quarters, management never once over-promised and under-delivered. Full-year guidance was beaten every year. The pattern is clear: set guidance ~2-3% below likely outcomes, raise through the year, then beat the raised number. This predictability is a key part of the Veeva investment thesis.</div>
+</div>
+
+</section>
+
+<div class="footer">
+  <p><strong>Veeva Systems Inc. (VEEV)</strong> — 15-Quarter Metrics Evolution Analysis</p>
+  <p>Data sourced from quarterly earnings call transcripts, 8-K filings, and SEC XBRL data (Q1 FY2023 through Q3 FY2026)</p>
+  <p>Generated by <a href="https://github.com/anthropics/claude-code" target="_blank">Claude Code</a> | Metrics Tracker</p>
+</div>
+
+</body>
+</html>

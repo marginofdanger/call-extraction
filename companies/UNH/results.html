@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UnitedHealth Group Results vs Guidance &mdash; Full-Year Scorecard</title>
+<style>
+  :root {
+    --company-primary: #002677;
+    --company-dark: #1a1a2e;
+    --company-accent: #00BCD4;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), #0d2137);
+    color: #fff;
+    padding: 48px 40px;
+    margin: 0 -24px 40px;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+  .header .subtitle {
+    font-size: 1.1rem;
+    opacity: 0.85;
+    font-weight: 300;
+  }
+
+  /* Quarter Navigation */
+  .quarter-nav {
+    background: var(--company-dark);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+  .quarter-nav .label {
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-right: 8px;
+    white-space: nowrap;
+  }
+  .quarter-nav .year-group {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+  .quarter-nav .year-label {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.72rem;
+    font-weight: 600;
+    margin-right: 2px;
+    letter-spacing: 0.5px;
+  }
+  .quarter-nav a {
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+  .quarter-nav a:hover { background: rgba(255,255,255,0.25); }
+  .quarter-nav a.overview-link {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.35);
+    padding: 4px 14px;
+    font-size: 0.82rem;
+    margin-left: auto;
+  }
+
+  /* Table of Contents */
+  .toc {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 32px;
+    margin-bottom: 40px;
+  }
+  .toc h2 {
+    font-size: 1.1rem;
+    color: var(--company-primary);
+    margin-bottom: 12px;
+  }
+  .toc a {
+    display: block;
+    color: var(--blue);
+    text-decoration: none;
+    padding: 3px 0;
+    font-size: 0.9rem;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  /* Section */
+  .section {
+    margin-bottom: 48px;
+    scroll-margin-top: 20px;
+  }
+  .section h2 {
+    font-size: 1.4rem;
+    color: var(--company-dark);
+    border-bottom: 3px solid var(--company-primary);
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+  }
+  .section h2 .num {
+    display: inline-block;
+    background: var(--company-primary);
+    color: #fff;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 0.85rem;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+
+  /* Scorecard grid */
+  .scorecard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .score-card {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+  }
+  .score-card .metric-value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--company-dark);
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+  .score-card .metric-value.green { color: var(--green); }
+  .score-card .metric-value.red { color: var(--red); }
+  .score-card .metric-label {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+  .score-card .metric-sub {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+  .score-card.highlight {
+    border-color: var(--green);
+    background: #eafaf1;
+  }
+  .score-card.warn {
+    border-color: var(--red);
+    background: #fef0ef;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 0.88rem;
+  }
+  thead th {
+    background: var(--company-primary);
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+  thead th.right { text-align: right; }
+  tbody td {
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tbody td.right { text-align: right; }
+  tbody tr:nth-child(even) { background: var(--light-bg); }
+  tbody tr:hover { background: #eef2f7; }
+
+  /* Color helpers */
+  .pos { color: var(--green); font-weight: 600; }
+  .neg { color: var(--red); font-weight: 600; }
+  .neutral { color: var(--amber); font-weight: 600; }
+  .raised { background: #eafaf1 !important; }
+  .lowered { background: #fef0ef !important; }
+  .bold { font-weight: 700; }
+  .muted { color: var(--text-muted); font-style: italic; }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    vertical-align: middle;
+  }
+  .tag-beat { background: #d5f5e3; color: #1e8449; }
+  .tag-miss { background: #fadbd8; color: #c0392b; }
+  .tag-met { background: #fdebd0; color: #b9770e; }
+  .tag-pending { background: #d6eaf8; color: #2471a3; }
+  .tag-raised { background: #d5f5e3; color: #1e8449; }
+  .tag-lowered { background: #fadbd8; color: #c0392b; }
+  .tag-maintained { background: #fdebd0; color: #b9770e; }
+  .tag-new { background: #d6eaf8; color: #2471a3; }
+
+  /* Insight boxes */
+  .insight {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 4px solid var(--amber);
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.9rem;
+  }
+  .insight strong { color: var(--company-dark); }
+
+  /* Takeaways */
+  .takeaways { counter-reset: takeaway; }
+  .takeaway {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 18px;
+    padding: 14px 18px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .takeaway-num {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    background: var(--company-primary);
+    color: #fff;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+  .takeaway-text { font-size: 0.92rem; }
+  .takeaway-text strong { color: var(--company-dark); }
+
+  /* Year divider rows */
+  .year-divider td {
+    background: var(--company-primary) !important;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.82rem;
+    padding: 6px 12px;
+    letter-spacing: 0.5px;
+  }
+
+  /* Footnote */
+  .footnote {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 8px;
+    font-style: italic;
+  }
+
+  /* Guidance evolution blocks */
+  .evo-block {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+  }
+  .evo-block h3 {
+    font-size: 1.1rem;
+    color: var(--company-dark);
+    margin-bottom: 12px;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 6px;
+  }
+  .evo-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.88rem;
+  }
+  .evo-row:last-child { border-bottom: none; }
+  .evo-label { color: var(--text-muted); font-weight: 500; min-width: 140px; }
+  .evo-value { font-weight: 600; }
+
+  @media (max-width: 768px) {
+    .toc { columns: 1; }
+    .header h1 { font-size: 1.6rem; }
+    table { font-size: 0.8rem; }
+    thead th, tbody td { padding: 6px 8px; }
+    .quarter-nav { gap: 4px; }
+    .scorecard { grid-template-columns: repeat(2, 1fr); }
+    .evo-row { flex-direction: column; gap: 2px; }
+  }
+
+  @media print {
+    .header { background: #333; }
+    .section { page-break-inside: avoid; }
+    table { font-size: 0.75rem; }
+    .quarter-nav { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>UnitedHealth Group Results vs Guidance &mdash; Full-Year Scorecard</h1>
+  <div class="subtitle">How FY actuals compared to management guidance | FY 2022 &ndash; FY 2025 (4 completed fiscal years)</div>
+</div>
+
+<!-- Quarter Navigation -->
+<div class="quarter-nav" id="qnav">
+  <span class="label">Quarter detail:</span>
+  <div class="year-group">
+    <span class="year-label">2025</span>
+    <a href="quarters/Q4_2025.html">4Q25</a>
+    <a href="quarters/Q3_2025.html">3Q25</a>
+    <a href="quarters/Q2_2025.html">2Q25</a>
+    <a href="quarters/Q1_2025.html">1Q25</a>
+  </div>
+  <div class="year-group">
+    <span class="year-label">2024</span>
+    <a href="quarters/Q4_2024.html">4Q24</a>
+    <a href="quarters/Q3_2024.html">3Q24</a>
+    <a href="quarters/Q2_2024.html">2Q24</a>
+    <a href="quarters/Q1_2024.html">1Q24</a>
+  </div>
+  <div class="year-group">
+    <span class="year-label">2023</span>
+    <a href="quarters/Q4_2023.html">4Q23</a>
+    <a href="quarters/Q3_2023.html">3Q23</a>
+    <a href="quarters/Q2_2023.html">2Q23</a>
+    <a href="quarters/Q1_2023.html">1Q23</a>
+  </div>
+  <div class="year-group">
+    <span class="year-label">2022</span>
+    <a href="quarters/Q4_2022.html">4Q22</a>
+    <a href="quarters/Q3_2022.html">3Q22</a>
+    <a href="quarters/Q2_2022.html">2Q22</a>
+    <a href="quarters/Q1_2022.html">1Q22</a>
+  </div>
+  <a href="comparison.html" class="overview-link">Guidance Overview &rarr;</a>
+</div>
+
+<!-- Table of Contents -->
+<nav class="toc">
+  <h2>Table of Contents</h2>
+  <a href="#s0">Summary Scorecard</a>
+  <a href="#s1">1. FY Adjusted EPS &mdash; Actuals vs Guidance</a>
+  <a href="#s2">2. FY Medical Care Ratio &mdash; Actuals vs Guidance</a>
+  <a href="#s3">3. FY Revenue &amp; Cash Flow from Operations</a>
+  <a href="#s4">4. Guidance Evolution</a>
+  <a href="#s5">5. Key Takeaways</a>
+</nav>
+
+<!-- ====== SUMMARY SCORECARD ====== -->
+<div class="section" id="s0">
+  <h2>Summary Scorecard</h2>
+  <div class="scorecard">
+    <div class="score-card highlight">
+      <div class="metric-value green">2/4</div>
+      <div class="metric-label">EPS beat initial midpoint</div>
+      <div class="metric-sub">FY 2022 &amp; FY 2023</div>
+    </div>
+    <div class="score-card highlight">
+      <div class="metric-value green">2/4</div>
+      <div class="metric-label">EPS beat final high end</div>
+      <div class="metric-sub">$0.14 avg beat in &rsquo;22/&rsquo;23</div>
+    </div>
+    <div class="score-card">
+      <div class="metric-value">6</div>
+      <div class="metric-label">Intra-year guidance raises</div>
+      <div class="metric-sub">3 in FY &rsquo;22, 3 in FY &rsquo;23</div>
+    </div>
+    <div class="score-card warn">
+      <div class="metric-value red">3</div>
+      <div class="metric-label">Intra-year guidance cuts</div>
+      <div class="metric-sub">1 in FY &rsquo;24, 2 in FY &rsquo;25</div>
+    </div>
+    <div class="score-card warn">
+      <div class="metric-value red">0/3</div>
+      <div class="metric-label">MCR below initial guide</div>
+      <div class="metric-sub">Missed every year (FY &rsquo;23&ndash;&rsquo;25)</div>
+    </div>
+    <div class="score-card warn">
+      <div class="metric-value red">+160 bps</div>
+      <div class="metric-label">Avg MCR miss vs initial mid</div>
+      <div class="metric-sub">Accelerating: +60 &rarr; +160 &rarr; +260</div>
+    </div>
+    <div class="score-card">
+      <div class="metric-value">11.3%</div>
+      <div class="metric-label">Revenue CAGR FY22&rarr;FY25</div>
+      <div class="metric-sub">$324B &rarr; $448B</div>
+    </div>
+    <div class="score-card warn">
+      <div class="metric-value red">&minus;26%</div>
+      <div class="metric-label">EPS change FY22&rarr;FY25</div>
+      <div class="metric-sub">$22.19 &rarr; $16.35</div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== SECTION 1: FY Adjusted EPS ====== -->
+<div class="section" id="s1">
+  <h2><span class="num">1</span> FY Adjusted EPS &mdash; Actuals vs Guidance</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>FY</th>
+        <th>Guided From</th>
+        <th>Initial Range</th>
+        <th>Final Range</th>
+        <th class="right">Actual</th>
+        <th class="right">vs Init Mid</th>
+        <th class="right">vs Final Mid</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Pending -->
+      <tr class="year-divider"><td colspan="7">FY 2026 (Pending)</td></tr>
+      <tr>
+        <td class="bold">FY 2026</td>
+        <td>Q4 &rsquo;25 call (Jan &rsquo;26)</td>
+        <td>&gt;$17.75</td>
+        <td class="muted">In progress</td>
+        <td class="right muted">Pending</td>
+        <td class="right muted">&mdash;</td>
+        <td class="right muted">&mdash;</td>
+      </tr>
+      <!-- FY 2025 -->
+      <tr class="year-divider"><td colspan="7">FY 2025 &mdash; YEAR OF RECKONING</td></tr>
+      <tr class="lowered">
+        <td class="bold">FY 2025</td>
+        <td>Q4 &rsquo;24 call (Jan &rsquo;25)</td>
+        <td>$29.50 &ndash; $30.00</td>
+        <td>&ge;$16.00</td>
+        <td class="right bold">$16.35</td>
+        <td class="right neg">&minus;$13.40 (&minus;45.0%)</td>
+        <td class="right pos">+$0.35 above floor</td>
+      </tr>
+      <!-- FY 2024 -->
+      <tr class="year-divider"><td colspan="7">FY 2024 &mdash; CYBERATTACK &amp; COST PRESSURE</td></tr>
+      <tr>
+        <td class="bold">FY 2024</td>
+        <td>Q1 &rsquo;24 call (Apr &rsquo;24)<sup>1</sup></td>
+        <td>$27.50 &ndash; $28.00</td>
+        <td>$27.50 &ndash; $27.75</td>
+        <td class="right bold">$27.66</td>
+        <td class="right neg">&minus;$0.09 (&minus;0.3%)</td>
+        <td class="right pos">+$0.04 (+0.1%)</td>
+      </tr>
+      <!-- FY 2023 -->
+      <tr class="year-divider"><td colspan="7">FY 2023 &mdash; GROWTH &amp; EXPANSION</td></tr>
+      <tr class="raised">
+        <td class="bold">FY 2023</td>
+        <td>Q4 &rsquo;22 call (Jan &rsquo;23)</td>
+        <td>$24.40 &ndash; $24.90</td>
+        <td>$24.85 &ndash; $25.00</td>
+        <td class="right bold">$25.12</td>
+        <td class="right pos">+$0.47 (+1.9%)</td>
+        <td class="right pos">+$0.20 (+0.8%)</td>
+      </tr>
+      <!-- FY 2022 -->
+      <tr class="year-divider"><td colspan="7">FY 2022 &mdash; RETURN TO NORMALCY</td></tr>
+      <tr class="raised">
+        <td class="bold">FY 2022</td>
+        <td>Q4 &rsquo;21 call (Jan &rsquo;22)</td>
+        <td>$21.10 &ndash; $21.60</td>
+        <td>$21.85 &ndash; $22.05</td>
+        <td class="right bold">$22.19</td>
+        <td class="right pos">+$0.84 (+3.9%)</td>
+        <td class="right pos">+$0.24 (+1.1%)</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="footnote"><sup>1</sup> FY 2024 initial guidance was referenced at the November 2023 investor conference as &ldquo;13%&ndash;16% growth&rdquo; from $25.12 (implying $28.39&ndash;$29.14). The first explicit dollar range of $27.50&ndash;$28.00 was given at the Q1 &rsquo;24 call and described as &ldquo;reaffirmed&rdquo; despite absorbing cyberattack impact. We use this as the initial range for comparability.</p>
+  <div class="insight">
+    <strong>Two distinct eras.</strong> FY 2022&ndash;2023 saw classic guide-and-raise: EPS beat the final high end both years, with 6 cumulative raises. FY 2024&ndash;2025 reversed dramatically. FY 2024 absorbed $3.1B in cyberattack costs and ended near the bottom of a narrowed range. FY 2025 collapsed: initial $29.75 midpoint was slashed to &ldquo;at least $16&rdquo; by the Q2 call&mdash;a 46% cut&mdash;driven by $6.5B in excess medical costs, leadership change, and portfolio restructuring charges. The $16.35 actual barely cleared the revised floor by $0.35.
+  </div>
+</div>
+
+<!-- ====== SECTION 2: FY MCR ====== -->
+<div class="section" id="s2">
+  <h2><span class="num">2</span> FY Medical Care Ratio &mdash; Actuals vs Guidance</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>FY</th>
+        <th>Guided From</th>
+        <th>Initial Range</th>
+        <th>Final Range</th>
+        <th class="right">Actual</th>
+        <th class="right">vs Init Mid (bps)</th>
+        <th class="right">vs Final Mid (bps)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Pending -->
+      <tr class="year-divider"><td colspan="7">FY 2026 (Pending)</td></tr>
+      <tr>
+        <td class="bold">FY 2026</td>
+        <td>Q4 &rsquo;25 call (Jan &rsquo;26)</td>
+        <td>88.8% &plusmn;50 bps</td>
+        <td class="muted">In progress</td>
+        <td class="right muted">Pending</td>
+        <td class="right muted">&mdash;</td>
+        <td class="right muted">&mdash;</td>
+      </tr>
+      <!-- FY 2025 -->
+      <tr class="year-divider"><td colspan="7">FY 2025</td></tr>
+      <tr class="lowered">
+        <td class="bold">FY 2025</td>
+        <td>Q4 &rsquo;24 call (Jan &rsquo;25)</td>
+        <td>86.5% &plusmn;50 bps</td>
+        <td>89.25% &plusmn;25 bps</td>
+        <td class="right bold">89.1%</td>
+        <td class="right neg">+260 bps</td>
+        <td class="right pos">&minus;15 bps</td>
+      </tr>
+      <!-- FY 2024 -->
+      <tr class="year-divider"><td colspan="7">FY 2024</td></tr>
+      <tr class="lowered">
+        <td class="bold">FY 2024</td>
+        <td>Q4 &rsquo;23 call (Jan &rsquo;24)</td>
+        <td>84.0% &plusmn;50 bps</td>
+        <td>~85.5%<sup>2</sup></td>
+        <td class="right bold">85.6%</td>
+        <td class="right neg">+160 bps</td>
+        <td class="right neg">+10 bps</td>
+      </tr>
+      <!-- FY 2023 -->
+      <tr class="year-divider"><td colspan="7">FY 2023</td></tr>
+      <tr>
+        <td class="bold">FY 2023</td>
+        <td>Q4 &rsquo;22 call (Jan &rsquo;23)</td>
+        <td>82.6% &plusmn;50 bps</td>
+        <td>~83.1%<sup>3</sup></td>
+        <td class="right bold">83.2%</td>
+        <td class="right neg">+60 bps</td>
+        <td class="right neg">+10 bps</td>
+      </tr>
+      <!-- FY 2022 -->
+      <tr class="year-divider"><td colspan="7">FY 2022</td></tr>
+      <tr>
+        <td class="bold">FY 2022</td>
+        <td>&mdash;</td>
+        <td class="muted">Not explicitly guided</td>
+        <td class="muted">&mdash;</td>
+        <td class="right bold">82.0%</td>
+        <td class="right muted">&mdash;</td>
+        <td class="right muted">&mdash;</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="footnote"><sup>2</sup> FY 2024 final MCR: management guided &ldquo;core upper end of November range&rdquo; (~84.5%) at Q2 call, with ~30 bps from cyberattack/South American effects. Q3 actual was 85.2%. <sup>3</sup> FY 2023 final MCR: management guided &ldquo;toward upper end&rdquo; of 82.6% &plusmn;50 bps at Q3 call, implying ~83.1%. Higher MCR = worse for insurer (more medical costs per premium dollar).</p>
+  <div class="insight">
+    <strong>Systematically underestimating medical costs.</strong> UNH missed its initial MCR guidance in all 3 years it was explicitly provided, with misses accelerating from +60 bps (FY 2023) to +160 bps (FY 2024) to +260 bps (FY 2025). The FY 2025 miss was staggering: initial guidance of 86.5% actual of 89.1% reflects $6.5B in excess medical costs driven by a 2&times; acceleration in Medicare care activity, provider coding intensity, and specialty drug adoption. By contrast, once guidance was revised, the final MCR landed within 15 bps of the updated midpoint in all 3 years&mdash;indicating management can estimate near-term trends but consistently underestimates the pace of medical cost escalation at the start of each year.
+  </div>
+</div>
+
+<!-- ====== SECTION 3: Revenue & CFO ====== -->
+<div class="section" id="s3">
+  <h2><span class="num">3</span> FY Revenue &amp; Cash Flow from Operations</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>FY</th>
+        <th class="right">Revenue</th>
+        <th class="right">YoY Growth</th>
+        <th class="right">CFO (Guided)</th>
+        <th class="right">CFO (Actual)</th>
+        <th class="right">vs Guide</th>
+        <th>Commentary</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="7">FY 2026 (Guidance)</td></tr>
+      <tr>
+        <td class="bold">FY 2026</td>
+        <td class="right muted">~$440B</td>
+        <td class="right muted">&minus;1.7%</td>
+        <td class="right muted">&ge;$18B</td>
+        <td class="right muted">Pending</td>
+        <td class="right muted">&mdash;</td>
+        <td>Revenue decline reflects membership contraction (~5M lives); CFO reset to ~1.1&times; net income</td>
+      </tr>
+      <tr class="year-divider"><td colspan="7">Completed Fiscal Years</td></tr>
+      <tr>
+        <td class="bold">FY 2025</td>
+        <td class="right bold">$447.6B</td>
+        <td class="right">+11.8%</td>
+        <td class="right">~$33B &rarr; ~$16B</td>
+        <td class="right bold">$19.7B</td>
+        <td class="right pos">+23% vs revised</td>
+        <td>Initial CFO of ~$33B slashed alongside EPS; actual exceeded revised guide by $3.7B</td>
+      </tr>
+      <tr>
+        <td class="bold">FY 2024</td>
+        <td class="right bold">$400.3B</td>
+        <td class="right">+7.7%</td>
+        <td class="right">~$28B &rarr; ~$24B</td>
+        <td class="right bold">$24.2B</td>
+        <td class="right neutral">Met revised</td>
+        <td>CFO cut from ~$28B to ~$24B due to ~$4B cyberattack cash timing deferral to 2025</td>
+      </tr>
+      <tr>
+        <td class="bold">FY 2023</td>
+        <td class="right bold">$371.6B</td>
+        <td class="right">+14.6%</td>
+        <td class="right">~$28B</td>
+        <td class="right bold">$29.1B</td>
+        <td class="right pos">+3.9%</td>
+        <td>Exceeded guide; 1.3&times; net income; driven by strong OptumRx and UHC growth</td>
+      </tr>
+      <tr>
+        <td class="bold">FY 2022</td>
+        <td class="right bold">$324.2B</td>
+        <td class="right">+12.7%</td>
+        <td class="right">~$24B</td>
+        <td class="right bold">$26.2B</td>
+        <td class="right pos">+9.2%</td>
+        <td>Beat guide by $2.2B; 1.3&times; net income; strong membership growth</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="footnote">UNH does not typically provide explicit full-year revenue guidance until FY 2025. Revenue figures from EDGAR filings. CFO guidance from earnings call transcripts.</p>
+  <div class="insight">
+    <strong>Revenue growth resilient even as earnings collapsed.</strong> Revenue grew from $324B to $448B (+38%) over 4 years while adjusted EPS fell 26% ($22.19 to $16.35). This disconnect reflects the structural compression: medical costs grew faster than premiums (MCR expanded 710 bps from 82.0% to 89.1%), and the $3.1B cyberattack plus $1.6B restructuring charge consumed operating earnings. Cash flow deteriorated sharply: CFO/net income fell from 1.3&times; (FY 2022&ndash;2023) to ~1.5&times; in FY 2025 on a much lower net income base, and guided CFO fell from ~$33B to ~$16B before actual came in at $19.7B.
+  </div>
+</div>
+
+<!-- ====== SECTION 4: Guidance Evolution ====== -->
+<div class="section" id="s4">
+  <h2><span class="num">4</span> Guidance Evolution</h2>
+
+  <!-- FY 2025 -->
+  <div class="evo-block">
+    <h3>FY 2025 &mdash; Historic Collapse</h3>
+    <div class="evo-row">
+      <span class="evo-label">Initial (Jan &rsquo;25)</span>
+      <span class="evo-value">EPS: $29.50&ndash;$30.00 &nbsp;|&nbsp; MCR: 86.5% &plusmn;50 bps &nbsp;|&nbsp; CFO: ~$33B</span>
+    </div>
+    <div class="evo-row">
+      <span class="evo-label">Q1 Update (Apr &rsquo;25)</span>
+      <span class="evo-value"><span class="tag tag-lowered">Cut</span> EPS: $26.00&ndash;$26.50 (&minus;12%) &nbsp;|&nbsp; MCR: 87.5% &plusmn;50 bps &nbsp;|&nbsp; Revenue: $450&ndash;$455B</span>
+    </div>
+    <div class="evo-row">
+      <span class="evo-label">Q2 Update (Jul &rsquo;25)</span>
+      <span class="evo-value"><span class="tag tag-lowered">Cut</span> EPS: &ge;$16 (&minus;39%) &nbsp;|&nbsp; MCR: 89.25% &plusmn;25 bps &nbsp;|&nbsp; Revenue: ~$448B &nbsp;|&nbsp; CFO: ~$16B &nbsp;|&nbsp; New CEO</span>
+    </div>
+    <div class="evo-row">
+      <span class="evo-label">Q3 Update (Oct &rsquo;25)</span>
+      <span class="evo-value"><span class="tag tag-maintained">Maintained</span> EPS: &ge;$16 &nbsp;|&nbsp; MCR: lower end of 89.25% &plusmn;25 bps &nbsp;|&nbsp; CFO: ~$16B</span>
+    </div>
+    <div class="evo-row">
+      <span class="evo-label bold">Actual</span>
+      <span class="evo-value bold">EPS: $16.35 &nbsp;|&nbsp; MCR: 89.1% &nbsp;|&nbsp; Revenue: $447.6B &nbsp;|&nbsp; CFO: $19.7B</span>
+    </div>
+    <div class="evo-row" style="border-bottom: none; padding-top: 8px;">
+      <span class="evo-label">Verdict</span>
+      <span class="evo-value"><span class="neg">EPS fell 45% from initial midpoint.</span> Worst guidance miss in company history. Two cuts totaling &minus;$13.40/share. MCR 260 bps above initial guide. CFO of $19.7B exceeded revised $16B guide, partly from working capital timing.</span>
+    </div>
+  </div>
+
+  <!-- FY 2024 -->
+  <div class="evo-block">
+    <h3>FY 2024 &mdash; Cyberattack &amp; Cost Pressure</h3>
+    <div class="evo-row">
+      <span class="evo-label">Initial (Inv Conf Nov &rsquo;23)</span>
+      <span class="evo-value">EPS: 13%&ndash;16% growth from $25.12 (implied $28.39&ndash;$29.14) &nbsp;|&nbsp; MCR: 84.0% &plusmn;50 bps</span>
+    </div>
+    <div class="evo-row">
+      <span class="evo-label">Q1 Update (Apr &rsquo;24)</span>
+      <span class="evo-value"><span class="tag tag-maintained">Reaffirmed</span> EPS: $27.50&ndash;$28.00 &nbsp;|&nbsp; MCR: 84.0% &plusmn;50 bps &nbsp;|&nbsp; Absorbed $0.30&ndash;$0.40 cyber disruption</span>
+    </div>
+    <div class="evo-row">
+      <span class="evo-label">Q2 Update (Jul &rsquo;24)</span>
+      <span class="evo-value"><span class="tag tag-maintained">Reaffirmed</span> EPS: $27.50&ndash;$28.00 &nbsp;|&nbsp; MCR core: upper end &nbsp;|&nbsp; Cyber disruption: $0.60&ndash;$0.70/share</span>
+    </div>
+    <div class="evo-row">
+      <span class="evo-label">Q3 Update (Oct &rsquo;24)</span>
+      <span class="evo-value"><span class="tag tag-lowered">Narrowed</span> EPS: $27.50&ndash;$27.75 (high end cut $0.25)</span>
+    </div>
+    <div class="evo-row">
+      <span class="evo-label bold">Actual</span>
+      <span class="evo-value bold">EPS: $27.66 &nbsp;|&nbsp; MCR: 85.6% &nbsp;|&nbsp; Revenue: $400.3B &nbsp;|&nbsp; CFO: $24.2B</span>
+    </div>
+    <div class="evo-row" style="border-bottom: none; padding-top: 8px;">
+      <span class="evo-label">Verdict</span>
+      <span class="evo-value">EPS of $27.66 landed within the narrowed final range. MCR of 85.6% was 160 bps above initial guide (84.0%). Cyber total impact: $3.09B ($2.60/share). Management absorbed $0.77/share business disruption in adjusted EPS yet still delivered $27.66.</span>
+    </div>
+  </div>
+
+  <!-- FY 2023 -->
+  <div class="evo-block">
+    <h3>FY 2023 &mdash; Guide-and-Raise Perfection</h3>
+    <div class="evo-row">
+      <span class="evo-label">Initial (Jan &rsquo;23)</span>
+      <span class="evo-value">EPS: $24.40&ndash;$24.90 &nbsp;|&nbsp; MCR: 82.6% &plusmn;50 bps &nbsp;|&nbsp; CFO: ~$28B</span>
+    </div>
+    <div class="evo-row">
+      <span class="evo-label">Q1 Update (Apr &rsquo;23)</span>
+      <span class="evo-value"><span class="tag tag-raised">Raised</span> EPS: $24.50&ndash;$25.00</span>
+    </div>
+    <div class="evo-row">
+      <span class="evo-label">Q2 Update (Jul &rsquo;23)</span>
+      <span class="evo-value"><span class="tag tag-raised">Raised/Narrowed</span> EPS: $24.70&ndash;$25.00 &nbsp;|&nbsp; MCR: trending upper end</span>
+    </div>
+    <div class="evo-row">
+      <span class="evo-label">Q3 Update (Oct &rsquo;23)</span>
+      <span class="evo-value"><span class="tag tag-raised">Raised/Narrowed</span> EPS: $24.85&ndash;$25.00 &nbsp;|&nbsp; MCR: toward upper end of 82.6% &plusmn;50 bps</span>
+    </div>
+    <div class="evo-row">
+      <span class="evo-label bold">Actual</span>
+      <span class="evo-value bold">EPS: $25.12 &nbsp;|&nbsp; MCR: 83.2% &nbsp;|&nbsp; Revenue: $371.6B &nbsp;|&nbsp; CFO: $29.1B</span>
+    </div>
+    <div class="evo-row" style="border-bottom: none; padding-top: 8px;">
+      <span class="evo-label">Verdict</span>
+      <span class="evo-value"><span class="pos">Beat the final high end by $0.12.</span> Three consecutive raises. MCR of 83.2% was 60 bps above initial mid but within the guided range. CFO of $29.1B exceeded ~$28B guide. Revenue grew 15% to $371.6B. OptumHealth VBC patients grew by 900,000 to 4.1M.</span>
+    </div>
+  </div>
+
+  <!-- FY 2022 -->
+  <div class="evo-block">
+    <h3>FY 2022 &mdash; Return to Normalcy</h3>
+    <div class="evo-row">
+      <span class="evo-label">Initial (Jan &rsquo;22)</span>
+      <span class="evo-value">EPS: $21.10&ndash;$21.60 &nbsp;|&nbsp; CFO: ~$24B</span>
+    </div>
+    <div class="evo-row">
+      <span class="evo-label">Q1 Update (Apr &rsquo;22)</span>
+      <span class="evo-value"><span class="tag tag-raised">Raised</span> EPS: $21.20&ndash;$21.70</span>
+    </div>
+    <div class="evo-row">
+      <span class="evo-label">Q2 Update (Jul &rsquo;22)</span>
+      <span class="evo-value"><span class="tag tag-raised">Raised</span> EPS: $21.40&ndash;$21.90</span>
+    </div>
+    <div class="evo-row">
+      <span class="evo-label">Q3 Update (Oct &rsquo;22)</span>
+      <span class="evo-value"><span class="tag tag-raised">Raised/Narrowed</span> EPS: $21.85&ndash;$22.05</span>
+    </div>
+    <div class="evo-row">
+      <span class="evo-label bold">Actual</span>
+      <span class="evo-value bold">EPS: $22.19 &nbsp;|&nbsp; MCR: 82.0% &nbsp;|&nbsp; Revenue: $324.2B &nbsp;|&nbsp; CFO: $26.2B</span>
+    </div>
+    <div class="evo-row" style="border-bottom: none; padding-top: 8px;">
+      <span class="evo-label">Verdict</span>
+      <span class="evo-value"><span class="pos">Beat the final high end by $0.14.</span> Three consecutive raises. CFO of $26.2B exceeded ~$24B guide by 9.2%. MA grew by 900,000. Revenue grew 12.7% to $324B. The last &ldquo;normal&rdquo; year before cost pressures emerged.</span>
+    </div>
+  </div>
+
+  <!-- FY 2026 -->
+  <div class="evo-block">
+    <h3>FY 2026 &mdash; Initial Guidance (Pending)</h3>
+    <div class="evo-row">
+      <span class="evo-label">Initial (Jan &rsquo;26)</span>
+      <span class="evo-value">EPS: &gt;$17.75 &nbsp;|&nbsp; GAAP EPS: &ge;$17.10 &nbsp;|&nbsp; MCR: 88.8% &plusmn;50 bps &nbsp;|&nbsp; Revenue: ~$440B &nbsp;|&nbsp; CFO: &ge;$18B</span>
+    </div>
+    <div class="evo-row" style="border-bottom: none;">
+      <span class="evo-label">Context</span>
+      <span class="evo-value">EPS floor implies +8.6% growth from depressed $16.35 base. Revenue declining for first time (membership contracting 2.3M&ndash;2.8M at UHC). MCR guided down 30 bps from FY 2025. Segment margin expansion of 20&ndash;90 bps targeted across portfolio. AI investment ~$1.5B. Return to capital deployment in H2.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ====== SECTION 5: Key Takeaways ====== -->
+<div class="section" id="s5">
+  <h2><span class="num">5</span> Key Takeaways</h2>
+  <div class="takeaways">
+    <div class="takeaway">
+      <div class="takeaway-num">1</div>
+      <div class="takeaway-text"><strong>A tale of two eras.</strong> FY 2022&ndash;2023 saw 6 consecutive guidance raises, with EPS beating the final high end both years. FY 2024&ndash;2025 reversed completely: 3 guidance cuts, a $3.1B cyberattack, and the largest EPS collapse in company history (&minus;45% vs initial FY 2025 guidance).</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">2</div>
+      <div class="takeaway-text"><strong>Medical costs were chronically underestimated.</strong> MCR exceeded initial guidance midpoint in all 3 years it was explicitly guided, with misses accelerating: +60 bps (FY 2023), +160 bps (FY 2024), +260 bps (FY 2025). The cumulative miss reflects a structural failure to anticipate Medicare care activity acceleration, provider coding intensity, and specialty drug adoption.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">3</div>
+      <div class="takeaway-text"><strong>Revenue growth masked earnings deterioration.</strong> Revenue compounded at 11.3% annually ($324B to $448B), yet adjusted EPS fell 26% ($22.19 to $16.35) over the same period. The divergence was driven entirely by MCR expansion: medical costs grew faster than premium revenue in every year from FY 2023 onward.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">4</div>
+      <div class="takeaway-text"><strong>FY 2025 was the worst guidance year in UNH history.</strong> Initial EPS of $29.50&ndash;$30.00 was cut twice to &ldquo;at least $16,&rdquo; a 46% reduction from the initial midpoint. The $13.40 miss vs initial midpoint dwarfs any prior variance. Drivers: $6.5B excess medical costs, $1.6B restructuring charge, leadership change, and portfolio exits.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">5</div>
+      <div class="takeaway-text"><strong>Cash flow provided a buffer in the down years.</strong> CFO exceeded the revised guide in both FY 2024 (met $24B) and FY 2025 ($19.7B vs $16B guide, +23%). Even in the worst year, cash conversion remained above 1.0&times; net income. However, CFO fell from $29.1B (FY 2023) to $19.7B (FY 2025)&mdash;a 32% decline.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">6</div>
+      <div class="takeaway-text"><strong>The cyberattack was a $3.1B event with lasting effects.</strong> The February 2024 Change Healthcare attack produced $2.2B in direct response costs and $867M in business disruption, yet management held EPS guidance at $27.50&ndash;$28.00 through Q2 before narrowing by just $0.25 in Q3. The cash flow impact (~$4B timing shift) recovered in FY 2025.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">7</div>
+      <div class="takeaway-text"><strong>V28 created an $11B headwind at OptumHealth.</strong> The CMS V28 risk model phase-in (2024&ndash;2026) generated $11B in cumulative headwind for OptumHealth&mdash;$2B and $1B more than initially estimated. Through FY 2025, $7B was realized with $4B remaining for 2026, only ~50% expected to be offset through pricing and benefit changes.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">8</div>
+      <div class="takeaway-text"><strong>OptumHealth VBC margins collapsed.</strong> Value-based care margins fell from ~5% (FY 2023) to ~1% (FY 2025), driven by V28 risk model impacts, negative-margin new patient cohorts, and network overexpansion. The 2024&ndash;2025 cohorts (40% of patients) ran at negative margins. Long-term target of 6%&ndash;8% was revised down from the original range, with recovery now expected in 2027+.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">9</div>
+      <div class="takeaway-text"><strong>Once revised, guidance was accurate.</strong> In FY 2022&ndash;2023, final guidance midpoints missed actuals by only $0.22 on average. In FY 2024, the narrowed $27.50&ndash;$27.75 range captured the $27.66 actual precisely. In FY 2025, the &ldquo;at least $16&rdquo; floor was cleared by just $0.35. Management can estimate near-term trajectory but consistently fails to anticipate the pace of structural deterioration at the start of each year.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">10</div>
+      <div class="takeaway-text"><strong>FY 2026 is a reset, not a recovery.</strong> EPS guidance of &gt;$17.75 implies only +8.6% growth from the depressed $16.35 base&mdash;still 40% below the FY 2022 peak of $22.19. Revenue is guided down for the first time (~$440B vs $448B) as UHC sheds 2.3M&ndash;2.8M members. Management frames 2026 as a &ldquo;stepping off point&rdquo; for a return to 13%&ndash;16% long-term EPS growth, but that target now looks aspirational given 3 consecutive years of margin compression.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">11</div>
+      <div class="takeaway-text"><strong>The long-term growth target was never formally lowered.</strong> The 13%&ndash;16% EPS CAGR target was reaffirmed in every Q4 call from FY 2022 through FY 2025, even as actual EPS compounded at &minus;10% over 3 years (FY 2022&ndash;2025). Management consistently described it as the &ldquo;long-term potential&rdquo; while acknowledging near-term headwinds. Credibility of this target depends entirely on whether the 2026&ndash;2027 recovery materializes.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">12</div>
+      <div class="takeaway-text"><strong>Medicare funding cuts compounded the problem.</strong> CMS imposed ~$130B in cumulative Medicare funding reductions over 3 years (2024&ndash;2026), including V28 risk model changes (>$6B enterprise headwind) and inadequate rate updates. The 2027 Advance Notice was described as &ldquo;disappointing&rdquo; and will likely require further benefit reductions and geographic exits&mdash;extending the margin recovery timeline.</div>
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center; padding:40px 0 20px; color:var(--text-muted); font-size:0.8rem; border-top:1px solid var(--border); margin-top:40px;">
+  UNH Metrics Tracker &mdash; Results Scorecard &mdash; Q1 2022 through Q4 2025<br>
+  Data extracted from BamSEC transcripts and EDGAR
+</div>
+
+</body>
+</html>

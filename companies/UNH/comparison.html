@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UnitedHealth Group Metrics Evolution — 16-Quarter Comparison</title>
+<style>
+  :root {
+    --company-primary: #002677;
+    --company-dark: #1a1a2e;
+    --company-accent: #00BCD4;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), #0d2137);
+    color: #fff;
+    padding: 48px 40px;
+    margin: 0 -24px 40px;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; }
+  .header .subtitle { font-size: 1.1rem; opacity: 0.85; font-weight: 300; }
+
+  .quarter-nav {
+    background: var(--company-dark);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+  .quarter-nav .label { color: #fff; font-weight: 600; font-size: 0.85rem; margin-right: 8px; white-space: nowrap; }
+  .quarter-nav .year-group { display: flex; gap: 4px; align-items: center; }
+  .quarter-nav .year-label { color: rgba(255,255,255,0.5); font-size: 0.72rem; font-weight: 600; margin-right: 2px; letter-spacing: 0.5px; }
+  .quarter-nav a {
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+  .quarter-nav a:hover { background: rgba(255,255,255,0.25); }
+
+  .toc {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 32px;
+    margin-bottom: 40px;
+    columns: 2;
+    column-gap: 40px;
+  }
+  .toc h2 { font-size: 1.1rem; color: var(--company-dark); margin-bottom: 12px; column-span: all; }
+  .toc a { display: block; color: var(--blue); text-decoration: none; padding: 3px 0; font-size: 0.9rem; break-inside: avoid; }
+  .toc a:hover { text-decoration: underline; }
+
+  .section { margin-bottom: 48px; scroll-margin-top: 20px; }
+  .section h2 { font-size: 1.4rem; color: var(--company-dark); border-bottom: 3px solid var(--company-primary); padding-bottom: 8px; margin-bottom: 16px; }
+  .section h2 .num {
+    display: inline-block;
+    background: var(--company-primary);
+    color: #fff;
+    width: 28px; height: 28px; line-height: 28px;
+    text-align: center; border-radius: 50%;
+    font-size: 0.85rem; margin-right: 8px; vertical-align: middle;
+  }
+
+  table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 0.88rem; }
+  thead th {
+    background: var(--company-dark);
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+  tbody td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tbody tr:nth-child(even) { background: var(--light-bg); }
+  tbody tr:hover { background: #eef2f7; }
+
+  .pos { color: var(--green); font-weight: 600; }
+  .neg { color: var(--red); font-weight: 600; }
+  .neutral { color: var(--amber); font-weight: 600; }
+  .raised { background: #eafaf1 !important; }
+  .lowered { background: #fef0ef !important; }
+  .bold { font-weight: 700; }
+  .muted { color: var(--text-muted); font-style: italic; }
+  .tag {
+    display: inline-block; padding: 2px 8px; border-radius: 4px;
+    font-size: 0.75rem; font-weight: 600; vertical-align: middle;
+  }
+  .tag-raised { background: #d5f5e3; color: #1e8449; }
+  .tag-lowered { background: #fadbd8; color: #c0392b; }
+  .tag-maintained { background: #fdebd0; color: #b9770e; }
+  .tag-new { background: #d6eaf8; color: #2471a3; }
+  .tag-beat { background: #d5f5e3; color: #1e8449; }
+  .tag-miss { background: #fadbd8; color: #c0392b; }
+  .tag-met { background: #fdebd0; color: #b9770e; }
+
+  .insight {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 4px solid var(--amber);
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.9rem;
+  }
+  .insight strong { color: var(--company-dark); }
+
+  .takeaways { counter-reset: takeaway; }
+  .takeaway {
+    display: flex; gap: 16px; margin-bottom: 18px; padding: 14px 18px;
+    background: var(--light-bg); border-radius: 8px; border: 1px solid var(--border);
+  }
+  .takeaway-num {
+    flex-shrink: 0; width: 32px; height: 32px; line-height: 32px;
+    text-align: center; background: var(--company-primary); color: #fff;
+    border-radius: 50%; font-weight: 700; font-size: 0.85rem;
+  }
+  .takeaway-text { font-size: 0.92rem; }
+  .takeaway-text strong { color: var(--company-dark); }
+
+  .year-divider td {
+    background: var(--company-dark) !important;
+    color: #fff; font-weight: 700; font-size: 0.82rem;
+    padding: 6px 12px; letter-spacing: 0.5px;
+  }
+
+  .footer {
+    margin-top: 60px; padding-top: 24px;
+    border-top: 2px solid var(--border);
+    font-size: 0.82rem; color: var(--text-muted);
+  }
+  .footer a { color: var(--blue); }
+
+  @media (max-width: 768px) {
+    .toc { columns: 1; }
+    .header h1 { font-size: 1.6rem; }
+    table { font-size: 0.8rem; }
+    thead th, tbody td { padding: 6px 8px; }
+    .quarter-nav { gap: 4px; }
+  }
+  @media print {
+    .header { background: #333; }
+    .section { page-break-inside: avoid; }
+    table { font-size: 0.75rem; }
+    .quarter-nav { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>UnitedHealth Group Metrics Evolution</h1>
+  <div class="subtitle">16-Quarter Comparison &mdash; Q1 2022 through Q4 2025 (Call Dates: April 2022 &ndash; January 2026)</div>
+</div>
+
+<!-- Quarter Navigation -->
+<div class="quarter-nav" id="qnav">
+  <span class="label">Quarter detail:</span>
+  <div class="year-group">
+    <span class="year-label">2025</span>
+    <a href="quarters/Q4_2025/">4Q25</a>
+    <a href="quarters/Q3_2025/">3Q25</a>
+    <a href="quarters/Q2_2025/">2Q25</a>
+    <a href="quarters/Q1_2025/">1Q25</a>
+  </div>
+  <div class="year-group">
+    <span class="year-label">2024</span>
+    <a href="quarters/Q4_2024/">4Q24</a>
+    <a href="quarters/Q3_2024/">3Q24</a>
+    <a href="quarters/Q2_2024/">2Q24</a>
+    <a href="quarters/Q1_2024/">1Q24</a>
+  </div>
+  <div class="year-group">
+    <span class="year-label">2023</span>
+    <a href="quarters/Q4_2023/">4Q23</a>
+    <a href="quarters/Q3_2023/">3Q23</a>
+    <a href="quarters/Q2_2023/">2Q23</a>
+    <a href="quarters/Q1_2023/">1Q23</a>
+  </div>
+  <div class="year-group">
+    <span class="year-label">2022</span>
+    <a href="quarters/Q4_2022/">4Q22</a>
+    <a href="quarters/Q3_2022/">3Q22</a>
+    <a href="quarters/Q2_2022/">2Q22</a>
+    <a href="quarters/Q1_2022/">1Q22</a>
+  </div>
+</div>
+
+<nav class="toc">
+  <h2>Table of Contents</h2>
+  <a href="#s1">1. Full Year Adjusted EPS Guidance</a>
+  <a href="#s2">2. Medical Care Ratio (MCR) Evolution</a>
+  <a href="#s3">3. Revenue Scale &amp; Growth</a>
+  <a href="#s4">4. Medicare Advantage Membership</a>
+  <a href="#s5">5. MA Margins &amp; Trend Assumptions</a>
+  <a href="#s6">6. Medical Cost Dynamics</a>
+  <a href="#s7">7. Value-Based Care Patient Scale</a>
+  <a href="#s8">8. OptumHealth Operating Margins</a>
+  <a href="#s9">9. V28 Risk Model Headwinds</a>
+  <a href="#s10">10. Change Healthcare Cyberattack</a>
+  <a href="#s11">11. IRA &amp; Part D Effects</a>
+  <a href="#s12">12. Commercial Business &amp; Surest</a>
+  <a href="#s13">13. Medicaid Rate-Acuity Dynamics</a>
+  <a href="#s14">14. OptumRx &amp; PBM Transparency</a>
+  <a href="#s15">15. OptumInsight &amp; AI Products</a>
+  <a href="#s16">16. AI Investment &amp; Technology</a>
+  <a href="#s17">17. Operating Cost Ratio Trend</a>
+  <a href="#s18">18. Leadership &amp; Governance</a>
+  <a href="#s19">19. Capital Allocation</a>
+  <a href="#s20">20. Long-Term EPS Growth Target</a>
+  <a href="#s21">21. Key Takeaways</a>
+</nav>
+
+<!-- ====== SECTION 1 ====== -->
+<div class="section" id="s1">
+  <h2><span class="num">1</span> Full Year Adjusted EPS Guidance Evolution</h2>
+  <table>
+    <thead>
+      <tr><th>Call Date</th><th>For Year</th><th>Guidance</th><th>Prior Guidance</th><th>Change</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">2026 GUIDANCE</td></tr>
+      <tr><td>Jan &rsquo;26</td><td>2026</td><td class="bold">&gt;$17.75</td><td class="muted">N/A (new year)</td><td><span class="tag tag-new">Initial</span></td></tr>
+
+      <tr class="year-divider"><td colspan="5">2025 &mdash; YEAR OF RECKONING</td></tr>
+      <tr><td>Jan &rsquo;25</td><td>2025</td><td>$29.50&ndash;$30.00</td><td class="muted">N/A (new year)</td><td><span class="tag tag-new">Initial</span></td></tr>
+      <tr class="lowered"><td>Apr &rsquo;25</td><td>2025</td><td>$26.00&ndash;$26.50</td><td>$29.50&ndash;$30.00</td><td><span class="tag tag-lowered">Cut &ndash;12%</span></td></tr>
+      <tr class="lowered"><td>Jul &rsquo;25</td><td>2025</td><td>At least $16</td><td>$26.00&ndash;$26.50</td><td><span class="tag tag-lowered">Cut &ndash;39%</span></td></tr>
+      <tr><td>Oct &rsquo;25</td><td>2025</td><td>At least $16</td><td>At least $16</td><td><span class="tag tag-maintained">Maintained</span></td></tr>
+      <tr><td colspan="2" class="bold">FY2025 Actual</td><td class="bold">$16.35</td><td colspan="2" class="neg">&ndash;41% vs 2024; &ndash;45% vs initial guide midpoint</td></tr>
+
+      <tr class="year-divider"><td colspan="5">2024 &mdash; CYBERATTACK &amp; COST PRESSURE</td></tr>
+      <tr><td>Jan &rsquo;24</td><td>2024</td><td>13&ndash;16% growth<sup>1</sup></td><td class="muted">N/A (new year)</td><td><span class="tag tag-new">Initial</span></td></tr>
+      <tr><td>Apr &rsquo;24</td><td>2024</td><td>$27.50&ndash;$28.00</td><td>~$28.39&ndash;$29.14</td><td><span class="tag tag-lowered">Absorbs cyber</span></td></tr>
+      <tr><td>Jul &rsquo;24</td><td>2024</td><td>$27.50&ndash;$28.00</td><td>$27.50&ndash;$28.00</td><td><span class="tag tag-maintained">Maintained</span></td></tr>
+      <tr><td>Oct &rsquo;24</td><td>2024</td><td>$27.50&ndash;$27.75</td><td>$27.50&ndash;$28.00</td><td><span class="tag tag-lowered">Narrowed down</span></td></tr>
+      <tr><td colspan="2" class="bold">FY2024 Actual</td><td class="bold">$27.66</td><td colspan="2" class="pos">+10% YoY; at midpoint of final range</td></tr>
+
+      <tr class="year-divider"><td colspan="5">2023 &mdash; GROWTH &amp; EXPANSION</td></tr>
+      <tr><td>Jan &rsquo;23</td><td>2023</td><td>$24.40&ndash;$24.90</td><td class="muted">N/A (new year)</td><td><span class="tag tag-new">Initial</span></td></tr>
+      <tr class="raised"><td>Apr &rsquo;23</td><td>2023</td><td>$24.50&ndash;$25.00</td><td>$24.40&ndash;$24.90</td><td><span class="tag tag-raised">Raised</span></td></tr>
+      <tr class="raised"><td>Jul &rsquo;23</td><td>2023</td><td>$24.70&ndash;$25.00</td><td>$24.50&ndash;$25.00</td><td><span class="tag tag-raised">Raised low end</span></td></tr>
+      <tr class="raised"><td>Oct &rsquo;23</td><td>2023</td><td>$24.85&ndash;$25.00</td><td>$24.70&ndash;$25.00</td><td><span class="tag tag-raised">Raised low end</span></td></tr>
+      <tr><td colspan="2" class="bold">FY2023 Actual</td><td class="bold">$25.12</td><td colspan="2" class="pos">+13% YoY; beat high end by $0.12</td></tr>
+
+      <tr class="year-divider"><td colspan="5">2022 &mdash; RETURN TO NORMALCY</td></tr>
+      <tr><td>Apr &rsquo;22</td><td>2022</td><td>$21.20&ndash;$21.70</td><td>$21.10&ndash;$21.60</td><td><span class="tag tag-raised">Raised +$0.10</span></td></tr>
+      <tr class="raised"><td>Jul &rsquo;22</td><td>2022</td><td>$21.40&ndash;$21.90</td><td>$21.20&ndash;$21.70</td><td><span class="tag tag-raised">Raised +$0.20</span></td></tr>
+      <tr class="raised"><td>Oct &rsquo;22</td><td>2022</td><td>$21.85&ndash;$22.05</td><td>$21.40&ndash;$21.90</td><td><span class="tag tag-raised">Raised +$0.45</span></td></tr>
+      <tr><td colspan="2" class="bold">FY2022 Actual</td><td class="bold">$22.19</td><td colspan="2" class="pos">+17% YoY; beat high end by $0.14</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:8px;"><sup>1</sup> 2024 initial guidance set at November 2023 investor conference as 13&ndash;16% growth from $25.12 base (&asymp;$28.39&ndash;$29.14). Reaffirmed in Q4 2023 call. First explicit dollar range ($27.50&ndash;$28.00) given at Q1 2024 call, absorbing Change Healthcare cyber impact.</p>
+  <div class="insight"><strong>Key Insight:</strong> UNH ran a textbook beat-and-raise cycle in 2022&ndash;2023, consistently raising guidance each quarter and beating the high end at year-end. The 2024 cycle was the first crack &mdash; guidance absorbed rather than raised. Then 2025 became an unprecedented collapse: initial $29.50&ndash;$30.00 was slashed twice to &ldquo;at least $16,&rdquo; ultimately delivering $16.35 (&ndash;41% YoY). The 2026 guide of &gt;$17.75 resets from this trough with &ldquo;solid but moderate&rdquo; 8.6%+ growth.</div>
+</div>
+
+<!-- ====== SECTION 2 ====== -->
+<div class="section" id="s2">
+  <h2><span class="num">2</span> Medical Care Ratio (MCR) Evolution</h2>
+  <table>
+    <thead>
+      <tr><th>Period</th><th>Initial MCR Guide</th><th>Final MCR Guide</th><th>Actual MCR</th><th>Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">2026</td></tr>
+      <tr><td>FY2026</td><td class="bold">88.8% &plusmn;50 bps</td><td class="muted">Pending</td><td class="muted">Pending</td><td>H1 below midpoint, H2 above</td></tr>
+
+      <tr class="year-divider"><td colspan="5">2025 &mdash; MCR SURGED 710 BPS IN 3 YEARS</td></tr>
+      <tr class="lowered"><td>FY2025</td><td>86.5% &plusmn;50 bps</td><td>89.25% &plusmn;25 bps</td><td class="neg bold">89.1%</td><td>+275 bps vs initial guide; +350 bps YoY</td></tr>
+
+      <tr class="year-divider"><td colspan="5">2024</td></tr>
+      <tr class="lowered"><td>FY2024</td><td>84.0% &plusmn;50 bps</td><td>~84.8% reported</td><td class="neg">85.6%</td><td>+150 bps vs initial midpoint; cyber + SA ~30 bps</td></tr>
+
+      <tr class="year-divider"><td colspan="5">2023</td></tr>
+      <tr><td>FY2023</td><td>82.6% &plusmn;50 bps</td><td>Upper end of range</td><td>83.2%</td><td>Senior outpatient trend + behavioral</td></tr>
+
+      <tr class="year-divider"><td colspan="5">2022</td></tr>
+      <tr><td>FY2022</td><td colspan="2" class="muted">No explicit MCR guide</td><td class="pos">82.0%</td><td>Post-COVID normalization; well managed</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> The MCR trajectory tells the story of UNH&rsquo;s 2022&ndash;2025 arc. From a benign 82.0% in 2022 (post-COVID tailwind), it rose steadily: 83.2% (2023, senior outpatient trend), 85.6% (2024, cyberattack + V28 + coding intensity), and 89.1% (2025, broad-based medical cost explosion). The 2026 guide of 88.8% signals the first reversal &mdash; driven by aggressive repricing across all lines. For context, 89.1% MCR means $0.89 of every premium dollar goes to medical costs, leaving razor-thin margins for the insurance business.</div>
+</div>
+
+<!-- ====== SECTION 3 ====== -->
+<div class="section" id="s3">
+  <h2><span class="num">3</span> Revenue Scale &amp; Growth</h2>
+  <table>
+    <thead>
+      <tr><th>Year</th><th>Revenue</th><th>YoY Growth</th><th>Key Drivers</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">OUTLOOK</td></tr>
+      <tr><td>FY2026 Guide</td><td class="bold">~$440B</td><td class="neg">&ndash;2%</td><td>Membership contraction 2.3&ndash;2.8M; partially offset by pricing</td></tr>
+      <tr class="year-divider"><td colspan="4">ACTUALS</td></tr>
+      <tr><td>FY2025</td><td class="bold">$447.6B</td><td class="pos">+12%</td><td>MA growth +415K; commercial strength; OptumRx +14%</td></tr>
+      <tr><td>FY2024</td><td>$400.3B</td><td>+8%</td><td>Lower growth from Brazil sale, cyber disruption</td></tr>
+      <tr><td>FY2023</td><td>$371.6B</td><td class="pos">+15%</td><td>Peak growth: MA +1M, VBC expansion, OptumInsight/Change</td></tr>
+      <tr><td>FY2022</td><td>$324.2B</td><td class="pos">+13%</td><td>MA +900K, VBC +1M, acquisitions (Change, LHC)</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> UNH grew from $324B to $448B in just 3 years (+38%), adding over $120B in annual revenue. The 2023 peak growth of 15% was fueled by Medicare Advantage expansion and the Change Healthcare/LHC Group acquisitions. The 2026 revenue guide of ~$440B marks the first expected decline, driven by deliberate membership contraction across MA (&ndash;1.3&ndash;1.4M), commercial (&ndash;1.3&ndash;1.4M), and Medicaid (&ndash;565&ndash;715K) as UNH prioritizes margin recovery over growth.</div>
+</div>
+
+<!-- ====== SECTION 4 ====== -->
+<div class="section" id="s4">
+  <h2><span class="num">4</span> Medicare Advantage Membership</h2>
+  <table>
+    <thead>
+      <tr><th>Call Date</th><th>Period</th><th>MA Growth / Contraction</th><th>Status</th><th>Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">2026 &mdash; DELIBERATE CONTRACTION</td></tr>
+      <tr class="lowered"><td>Jan &rsquo;26</td><td>FY2026</td><td class="neg bold">&ndash;1.3M to &ndash;1.4M</td><td><span class="tag tag-new">Initial</span></td><td>~600K plan exits (PPO), balance from pricing discipline</td></tr>
+
+      <tr class="year-divider"><td colspan="5">2025 &mdash; GROWTH MODERATED</td></tr>
+      <tr><td>Jan &rsquo;25</td><td>FY2025</td><td class="pos">Up to +800,000</td><td><span class="tag tag-new">Initial</span></td><td>&gt;50% from AEP; strength in HMO and full dual</td></tr>
+      <tr><td>Apr &rsquo;25</td><td>FY2025</td><td class="pos">Up to +800,000</td><td><span class="tag tag-maintained">Affirmed</span></td><td>521K through April; near-half from C-SNP plans</td></tr>
+      <tr><td>Jul &rsquo;25</td><td>FY2025</td><td>+650,000 YTD</td><td><span class="tag tag-maintained">On track</span></td><td>Group MA pressure elevated; D-SNP/C-SNP growing</td></tr>
+      <tr><td colspan="2" class="bold">FY2025 Actual</td><td>+415,000 domestic total</td><td colspan="2">Below initial target; elevated medical costs weighed on growth</td></tr>
+
+      <tr class="year-divider"><td colspan="5">2024 &mdash; COMPETITIVE HEADWINDS</td></tr>
+      <tr><td>Jan &rsquo;24</td><td>FY2024</td><td>+450,000&ndash;550,000</td><td><span class="tag tag-new">Initial</span></td><td>AEP ~100K; majority Feb&ndash;Dec; competitive benefit designs</td></tr>
+      <tr><td>Apr &rsquo;24</td><td>FY2024</td><td>+450,000&ndash;550,000</td><td><span class="tag tag-maintained">On track</span></td><td>Strong commercial offsetting lighter MA</td></tr>
+      <tr><td colspan="2" class="bold">FY2024 Actual</td><td class="muted">Growth impacted</td><td colspan="2">Unusual competitor benefit designs drove higher switching</td></tr>
+
+      <tr class="year-divider"><td colspan="5">2023 &mdash; PEAK GROWTH</td></tr>
+      <tr><td>Jan &rsquo;23</td><td>FY2023</td><td>Up to +900,000</td><td><span class="tag tag-new">Initial</span></td><td>8th consecutive year above-market growth</td></tr>
+      <tr class="raised"><td>Apr &rsquo;23</td><td>FY2023</td><td>Exceed +900,000</td><td><span class="tag tag-raised">Raised</span></td><td>On track to exceed upper end</td></tr>
+      <tr><td colspan="2" class="bold">FY2023 Actual</td><td class="pos bold">~1,000,000</td><td colspan="2">Nearly 1M new MA members; record growth year</td></tr>
+
+      <tr class="year-divider"><td colspan="5">2022 &mdash; STRONG GROWTH</td></tr>
+      <tr><td>Apr &rsquo;22</td><td>FY2022</td><td>Up to +800,000</td><td><span class="tag tag-new">Initial</span></td><td>~3/4 individual &amp; group MA, remainder D-SNP</td></tr>
+      <tr class="raised"><td>Oct &rsquo;22</td><td>FY2022</td><td class="pos">On pace for +900,000</td><td><span class="tag tag-raised">Raised</span></td><td>Exceeded target; 7th consecutive year above-market</td></tr>
+      <tr><td colspan="2" class="bold">FY2022 Actual</td><td class="pos bold">+900,000</td><td colspan="2">Strong growth across individual, group, and D-SNP</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Medicare Advantage membership went from a growth engine (+900K in 2022, ~1M in 2023) to deliberate contraction (&ndash;1.3&ndash;1.4M guided for 2026). The inflection came from V28 funding cuts, IRA changes, and surging medical costs making many plans economically unviable. UNH is exiting plans serving 600K+ members (primarily PPO), executing &ldquo;significant benefit adjustments,&rdquo; and shifting toward narrower, more managed HMO-style products.</div>
+</div>
+
+<!-- ====== SECTION 5 ====== -->
+<div class="section" id="s5">
+  <h2><span class="num">5</span> MA Margins &amp; Trend Assumptions</h2>
+  <table>
+    <thead>
+      <tr><th>Call Date</th><th>Period</th><th>MA Margin Target</th><th>MA Cost Trend</th><th>Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">2027 &amp; BEYOND</td></tr>
+      <tr><td>Jan &rsquo;26</td><td>2027+</td><td>Upper half of 2%&ndash;4%</td><td class="muted">TBD</td><td>Disappointing 2027 Advance Notice; further benefit cuts likely</td></tr>
+
+      <tr class="year-divider"><td colspan="5">2026</td></tr>
+      <tr><td>Jul &rsquo;25</td><td>2026</td><td>2.5%&ndash;3%</td><td>~10%</td><td>Lower half of new 2%&ndash;4% range</td></tr>
+      <tr><td>Oct &rsquo;25</td><td>2026</td><td>Margin improvements</td><td class="neg bold">~10%</td><td>Confirmed; reflects elevated utilization + fee schedules</td></tr>
+      <tr><td>Jan &rsquo;26</td><td>2026</td><td>~50 bps improvement</td><td class="neg bold">10%</td><td>Medicare margin improvement ~50 bps from 2025</td></tr>
+
+      <tr class="year-divider"><td colspan="5">2025</td></tr>
+      <tr><td>Jan &rsquo;25</td><td>2025</td><td>Within target range</td><td>~5%</td><td>Initial assumption; appeared manageable</td></tr>
+      <tr class="lowered"><td>Apr &rsquo;25</td><td>2025</td><td>Still within range</td><td class="neg">2x expected</td><td>Care activity increased at 2x expected rate</td></tr>
+      <tr class="lowered"><td>Jul &rsquo;25</td><td>2025</td><td class="neg">2%&ndash;2.5%</td><td class="neg bold">7.5%</td><td>Target range revised from 3%&ndash;5% to 2%&ndash;4% (IRA denominator effect)</td></tr>
+
+      <tr class="year-divider"><td colspan="5">2024</td></tr>
+      <tr><td>Jan &rsquo;24</td><td>2024</td><td>Within 3%&ndash;5% range</td><td class="muted">Embedded in bids</td><td>V28 year 1 absorbed; operating comfortably within range</td></tr>
+      <tr><td>Jul &rsquo;24</td><td>2024</td><td>Within target range</td><td class="muted">Per bid design</td><td>Balanced/durable approach prioritized over share gains</td></tr>
+
+      <tr class="year-divider"><td colspan="5">2022&ndash;2023</td></tr>
+      <tr><td>2022&ndash;2023</td><td colspan="4" class="muted">MA margin targets not explicitly disclosed at quarterly level; management described performance as within historical ranges. Industry growth 8%&ndash;9%.</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> The MA medical cost trend assumption tells the story of 2025&rsquo;s collapse: initial 5% &rarr; &ldquo;2x expected&rdquo; by Q1 &rarr; 7.5% by Q2 &rarr; 10% for 2026 pricing. This doubling of the trend assumption forced a complete repricing of the MA book. Meanwhile, the target margin range was quietly revised from 3%&ndash;5% down to 2%&ndash;4%, attributed to IRA inflating the revenue denominator but effectively lowering the bar.</div>
+</div>
+
+<!-- ====== SECTION 6 ====== -->
+<div class="section" id="s6">
+  <h2><span class="num">6</span> Medical Cost Dynamics &amp; Care Activity</h2>
+  <table>
+    <thead>
+      <tr><th>Call Date</th><th>Key Trend</th><th>Magnitude</th><th>Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025 &mdash; COST EXPLOSION</td></tr>
+      <tr class="lowered"><td>Jul &rsquo;25</td><td>Total excess vs initial outlook</td><td class="neg bold">$6.5B</td><td>Medicare ~55% ($3.6B), Commercial ~33% ($2.3B), Medicaid remainder</td></tr>
+      <tr class="lowered"><td>Jul &rsquo;25</td><td>MA medical trend (full year)</td><td class="neg bold">7.5%</td><td>Up from initial 5% assumption; physician/outpatient 70% of pressure</td></tr>
+      <tr class="lowered"><td>Jul &rsquo;25</td><td>Medicare Supplement trend</td><td class="neg">Over 11%</td><td>vs 8%&ndash;9% historical; confirms broad-based nature</td></tr>
+      <tr class="lowered"><td>Jul &rsquo;25</td><td>Commercial group fully insured</td><td class="neg">~11%</td><td>~100 bps above initial expectations</td></tr>
+      <tr><td>Jul &rsquo;25</td><td>Service intensity per encounter</td><td class="neg">Increasing</td><td>More services bundled per visit; higher specialist rounding</td></tr>
+      <tr><td>Apr &rsquo;25</td><td>MA care activity vs plan</td><td class="neg">2x expected</td><td>Limited to senior MA; NOT seen in commercial, Medicaid, D-SNP</td></tr>
+
+      <tr class="year-divider"><td colspan="4">2024 &mdash; THREE EMERGING PRESSURES</td></tr>
+      <tr><td>Oct &rsquo;24</td><td>Provider coding intensity</td><td class="neg">&gt;20% upshift</td><td>Few large systems with aggressive upcoding; actively addressing</td></tr>
+      <tr><td>Oct &rsquo;24</td><td>Specialty Rx acceleration</td><td class="neg">Rapid</td><td>IRA eliminated catastrophic coinsurance; manufacturer campaigns pulled forward</td></tr>
+      <tr><td>Oct &rsquo;24</td><td>Medicaid rate-acuity gap</td><td class="neg">Pronounced</td><td>States use data &gt;1 year old; lagging rate adjustments</td></tr>
+      <tr><td>Jul &rsquo;24</td><td>Provider coding upshift</td><td class="neg">Emerging</td><td>Initially attributed to cyber-era care waivers; proved more persistent</td></tr>
+
+      <tr class="year-divider"><td colspan="4">2023 &mdash; SENIOR OUTPATIENT TREND EMERGES</td></tr>
+      <tr><td>Jul &rsquo;23</td><td>Senior outpatient activity</td><td class="neg">Few hundred bps above</td><td>Orthopedic and cardiac procedures &ldquo;far above that level&rdquo;</td></tr>
+      <tr><td>Jul &rsquo;23</td><td>Behavioral health</td><td class="neg">Double-digit YoY</td><td>Broad-based across age spectrum; anxiety, depression, SUD</td></tr>
+
+      <tr class="year-divider"><td colspan="4">2022 &mdash; POST-COVID NORMALIZATION</td></tr>
+      <tr><td>Apr &rsquo;22</td><td>Overall care patterns</td><td class="pos">At baseline</td><td>COVID hospitalizations collapsed: 40K (Jan) to 2K (Mar)</td></tr>
+      <tr><td>Jul &rsquo;22</td><td>Utilization</td><td>Near normal</td><td>Inpatient below baseline; outpatient near normal; ER lower</td></tr>
+      <tr><td>Oct &rsquo;22</td><td>Care patterns</td><td>Normalizing</td><td>Inpatient most notable deviation below baseline</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Care activity followed a clear arc: post-COVID normalization in 2022 &rarr; senior outpatient trend emerging mid-2023 &rarr; provider coding intensity and specialty Rx pressures in 2024 &rarr; full-blown cost explosion in 2025 ($6.5B above initial outlook). The 2025 trend was broad-based across Medicare, commercial, and Medicaid, with service intensity per encounter rising (more services bundled per visit) and inpatient accelerating through Q2. The shift from &ldquo;localized senior outpatient trend&rdquo; in 2023 to &ldquo;broad-based across all populations&rdquo; in 2025 was the critical evolution management initially underestimated.</div>
+</div>
+
+<!-- ====== SECTION 7 ====== -->
+<div class="section" id="s7">
+  <h2><span class="num">7</span> Value-Based Care Patient Scale</h2>
+  <table>
+    <thead>
+      <tr><th>Call Date</th><th>VBC Patients (Total)</th><th>Net Added</th><th>Engagement Rate</th><th>Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">2026</td></tr>
+      <tr class="lowered"><td>Oct &rsquo;25</td><td class="neg">~10% decline</td><td class="neg">Contraction</td><td class="muted">TBD</td><td>Return to growth in 2027; PPO exits + market repositioning</td></tr>
+
+      <tr class="year-divider"><td colspan="5">2025 &mdash; SCALE-BACK</td></tr>
+      <tr><td>Jan &rsquo;25</td><td>~5.4M target</td><td>+650,000</td><td class="muted">N/A</td><td>Continued expansion from 4.7M</td></tr>
+      <tr><td>Apr &rsquo;25</td><td>~5.4M target</td><td>+650,000</td><td>75% complex</td><td>Affirmed; new patient profile challenges emerging</td></tr>
+      <tr class="lowered"><td>Jul &rsquo;25</td><td>~5.0M</td><td class="neg">+300,000</td><td class="muted">N/A</td><td>Reduced from 650K to focus on operating performance</td></tr>
+
+      <tr class="year-divider"><td colspan="5">2024 &mdash; APPROACHING 5 MILLION</td></tr>
+      <tr><td>Jan &rsquo;24</td><td>Exceeding 2x 2021</td><td>+750,000</td><td>Starting 50%</td><td>vs 20% engagement for 2023 cohort at start</td></tr>
+      <tr><td>Apr &rsquo;24</td><td>Tracking to ~5M</td><td>+750,000</td><td>75%</td><td>Complex patient engagement rate up from 50% year-ago</td></tr>
+      <tr><td>Oct &rsquo;24</td><td>~4.7M by year-end</td><td class="muted">Refined</td><td>85%; 90% highest-risk</td><td>Portfolio refinement reduced consumer count ~4M</td></tr>
+
+      <tr class="year-divider"><td colspan="5">2023 &mdash; RAPID EXPANSION</td></tr>
+      <tr><td>Jan &rsquo;23</td><td>4M+ by year-end</td><td>+750,000 organic</td><td class="muted">N/A</td><td>Doubling from ~1.8M at end of 2021</td></tr>
+      <tr><td>Apr &rsquo;23</td><td>4M+ on track</td><td>+700,000 in Q1</td><td class="muted">N/A</td><td>Strong complex patient additions</td></tr>
+      <tr><td>Oct &rsquo;23</td><td class="pos bold">4.1M+</td><td>~900,000</td><td class="muted">N/A</td><td>100+ payer partners; diversified growth</td></tr>
+
+      <tr class="year-divider"><td colspan="5">2022 &mdash; FOUNDATION</td></tr>
+      <tr><td>Apr &rsquo;22</td><td>Adding 1M+ more</td><td>+600,000 target</td><td class="muted">N/A</td><td>30% more VBC patients YoY; raised from 500K</td></tr>
+      <tr><td>Jul &rsquo;22</td><td>~3M total</td><td>+600,000 target</td><td class="muted">N/A</td><td>Value-based care in &ldquo;third inning&rdquo;</td></tr>
+      <tr><td colspan="2" class="bold">End of 2022</td><td class="bold">~3.2M</td><td>+~1M</td><td>Revenue per consumer +29%; &ldquo;overnight success that took 15 years&rdquo;</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> VBC patients grew from ~1.8M (end of 2021) to ~5.0M (2025) &mdash; nearly tripling in 4 years. But the rapid expansion came at a cost: 2024&ndash;2025 cohorts (40% of patients) were running at negative margins by mid-2025. Management described new-to-Optum patients from plan exits as having &ldquo;negative margins near double digits.&rdquo; For 2026, UNH is deliberately contracting VBC membership ~10% by exiting PPO arrangements and reducing network size, prioritizing quality over quantity for the first time in the VBC journey.</div>
+</div>
+
+<!-- ====== SECTION 8 ====== -->
+<div class="section" id="s8">
+  <h2><span class="num">8</span> OptumHealth Operating Margins</h2>
+  <table>
+    <thead>
+      <tr><th>Call Date</th><th>Period</th><th>OH Margin Target</th><th>Actual / Expected</th><th>VBC Margin</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">LONG-TERM</td></tr>
+      <tr><td>Jul &rsquo;25</td><td>Long-term</td><td class="bold">6%&ndash;8%</td><td class="muted">Back-end weighted</td><td>~5%</td></tr>
+
+      <tr class="year-divider"><td colspan="5">2026</td></tr>
+      <tr><td>Jan &rsquo;26</td><td>FY2026</td><td>6%&ndash;8% path</td><td>~30 bps expansion</td><td class="muted">Progress from 2025</td></tr>
+      <tr><td>Oct &rsquo;25</td><td>FY2026</td><td>6%&ndash;8% path</td><td>Improvement across all OH</td><td class="muted">TBD</td></tr>
+
+      <tr class="year-divider"><td colspan="5">2025 &mdash; MARGIN COLLAPSE</td></tr>
+      <tr class="lowered"><td>Jul &rsquo;25</td><td>FY2025</td><td class="neg">6%&ndash;8% (revised down)</td><td class="neg bold">~3% (VBC under 1%)</td><td class="neg">~1%</td></tr>
+      <tr><td>Oct &rsquo;25</td><td>FY2025</td><td>6%&ndash;8%</td><td>Just under 3%</td><td class="neg">Under 1%</td></tr>
+
+      <tr class="year-divider"><td colspan="5">2024</td></tr>
+      <tr><td>Jan &rsquo;24</td><td>FY2024</td><td>7.7%&ndash;8.0%</td><td>Adjusted 7.5%</td><td>~3%+</td></tr>
+      <tr><td>Oct &rsquo;24</td><td>FY2024</td><td>7.7%&ndash;8.0%</td><td>Q3 at 8.3%</td><td class="muted">Improved with portfolio refinement</td></tr>
+
+      <tr class="year-divider"><td colspan="5">2023</td></tr>
+      <tr><td>Jul &rsquo;23</td><td>FY2023</td><td class="muted">Long-term build</td><td>6.6%&ndash;6.9%</td><td>~5%</td></tr>
+      <tr><td>Oct &rsquo;23</td><td>FY2023</td><td class="muted">Strengthening into 2024</td><td>6.9%</td><td>~5%</td></tr>
+
+      <tr class="year-divider"><td colspan="5">2022</td></tr>
+      <tr><td>Jul &rsquo;22</td><td>FY2022</td><td>8%&ndash;10% (build phase)</td><td>7.3%</td><td class="muted">Described as &ldquo;third inning&rdquo;</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> OptumHealth margins tell a dramatic story: from 7.3% in 2022 (with an 8%&ndash;10% build-phase target) to &ldquo;just under 3%&rdquo; in 2025. The VBC margin specifically collapsed from ~5% (2023) to under 1% (2025). The long-term target was quietly revised from 8%&ndash;10% to 7.7%&ndash;8.0% to 6%&ndash;8%. Three drivers converged: V28 risk model headwinds ($11B over 3 years), rapid onboarding of complex/underserved patients at negative margins, and accelerated medical cost trends. Mature 2021-and-prior cohorts still run at 8%+ margins, demonstrating the model works when given time.</div>
+</div>
+
+<!-- ====== SECTION 9 ====== -->
+<div class="section" id="s9">
+  <h2><span class="num">9</span> V28 Risk Model Headwinds</h2>
+  <table>
+    <thead>
+      <tr><th>Call Date</th><th>Phase</th><th>Estimated Impact</th><th>Mitigation Strategy</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">CUMULATIVE INDUSTRY IMPACT</td></tr>
+      <tr><td>Oct &rsquo;25</td><td>3-year total</td><td class="neg bold">~$50B industry-wide</td><td>&ldquo;Nearly $50B in industry-wide Medicare cuts over 3 years&rdquo;</td></tr>
+
+      <tr class="year-divider"><td colspan="4">OPTUMHEALTH V28 IMPACT</td></tr>
+      <tr class="lowered"><td>Jul &rsquo;25</td><td>3-year total</td><td class="neg bold">$11B to OptumHealth</td><td>$2B and $1B more than initial estimates respectively</td></tr>
+      <tr><td>Jul &rsquo;25</td><td>Through 2025</td><td class="neg">$7B realized</td><td>Pricing/benefit changes + operating discipline</td></tr>
+      <tr><td>Jul &rsquo;25</td><td>2026 remaining</td><td class="neg">~$4B</td><td>Expect to mitigate ~50% through rates + benefit adjustments</td></tr>
+
+      <tr class="year-divider"><td colspan="4">PHASE-IN TIMELINE</td></tr>
+      <tr><td>Apr &rsquo;23</td><td>Year 0 (Notice)</td><td class="muted">CMS announced 3-year phase-in</td><td>&ldquo;We really appreciate CMS&rsquo; decision to phase-in&rdquo;</td></tr>
+      <tr><td>Jan &rsquo;24</td><td>Year 1 (2024)</td><td>Modeled into guidance</td><td>Multi-year plan; multiple levers; no change to 13&ndash;16% target</td></tr>
+      <tr><td>Apr &rsquo;24</td><td>Year 1</td><td>~60 bps MCR impact</td><td>Absorbed alongside cyber disruption</td></tr>
+      <tr><td>Apr &rsquo;25</td><td>Year 2 (2025)</td><td>~60 bps MCR impact</td><td>V28 execution &ldquo;below standards&rdquo; for higher-acuity population</td></tr>
+      <tr><td>Oct &rsquo;25</td><td>Year 3 (2026)</td><td>&gt;$6B enterprise</td><td>Final phase-in; 90%+ payer contracting for 2026 complete</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> The V28 risk adjustment model change &mdash; phased in over 2024&ndash;2026 &mdash; proved far more damaging than initially modeled. OptumHealth&rsquo;s 3-year headwind reached $11B, exceeding initial estimates by $3B. Management admitted they &ldquo;underestimated impact on higher-acuity population&rdquo; and &ldquo;misexecuted the transition.&rdquo; The V28 cuts, combined with insufficient CMS rate increases, created a vicious cycle: plan exits &rarr; disengaged patients flowing to Optum &rarr; negative margins on new cohorts. The $130B in cumulative Medicare funding reductions cited by management over 3 years of prior-administration policy represents a structural headwind the industry is still absorbing.</div>
+</div>
+
+<!-- ====== SECTION 10 ====== -->
+<div class="section" id="s10">
+  <h2><span class="num">10</span> Change Healthcare Cyberattack</h2>
+  <table>
+    <thead>
+      <tr><th>Call Date</th><th>Period</th><th>Total Impact</th><th>Direct Response</th><th>Business Disruption</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">TIMELINE &amp; CUMULATIVE IMPACT</td></tr>
+      <tr><td colspan="5" style="font-size:0.85rem;">Cyberattack discovered February 21, 2024. Largest healthcare data breach in U.S. history. Affected pharmacy processing, claims submission, payments, clinical data exchange. &gt;$9B in provider funding/loans advanced.</td></tr>
+
+      <tr class="year-divider"><td colspan="5">FY2024 &mdash; TOTAL FINANCIAL IMPACT</td></tr>
+      <tr class="lowered"><td>Jan &rsquo;25</td><td>Full Year 2024</td><td class="neg bold">$3.09B ($2.60/share)</td><td>$2.22B ($2.39/sh)</td><td>$867M ($0.77/sh)</td></tr>
+
+      <tr class="year-divider"><td colspan="5">QUARTERLY PROGRESSION (2024)</td></tr>
+      <tr><td>Apr &rsquo;24</td><td>Q1 2024</td><td>$870M ($0.74/sh)</td><td>$593M</td><td>$279M</td></tr>
+      <tr><td>Jul &rsquo;24</td><td>Q2 2024</td><td>$1,110M ($0.92/sh)</td><td>$776M</td><td>$334M</td></tr>
+      <tr><td>Oct &rsquo;24</td><td>Q3 2024</td><td>$475M ($0.40/sh)</td><td>$341M</td><td>$134M</td></tr>
+      <tr><td>Jan &rsquo;25</td><td>Q4 2024</td><td>$633M ($0.54/sh)</td><td>$513M</td><td>$120M</td></tr>
+
+      <tr class="year-divider"><td colspan="5">GUIDANCE EVOLUTION</td></tr>
+      <tr><td>Apr &rsquo;24</td><td>FY2024 estimate</td><td>$1.15&ndash;$1.35/sh</td><td>$0.85&ndash;$0.95/sh</td><td>$0.30&ndash;$0.40/sh</td></tr>
+      <tr class="lowered"><td>Jul &rsquo;24</td><td>FY2024 estimate</td><td>$1.90&ndash;$2.05/sh</td><td>$1.30&ndash;$1.35/sh</td><td>$0.60&ndash;$0.70/sh</td></tr>
+      <tr class="lowered"><td>Oct &rsquo;24</td><td>FY2024 estimate</td><td class="neg">~$2.40/sh</td><td>~$2.15/sh</td><td>~$0.75/sh</td></tr>
+
+      <tr class="year-divider"><td colspan="5">2025 RESIDUAL</td></tr>
+      <tr><td>Jan &rsquo;26</td><td>FY2025</td><td>~$800M charge</td><td colspan="2">Net collection expectations on provider loans; included in special charge</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> The Change Healthcare cyberattack (February 2024) was the largest healthcare data breach in U.S. history and cost UNH $3.09B in 2024 alone. The initial impact estimate of $1.15&ndash;$1.35/share more than doubled to $2.60/share as the full extent of disruption became clear. Beyond the direct financial impact, the attack disrupted care management protocols, contributed to provider coding intensity upshifts, and delayed OptumInsight&rsquo;s growth trajectory. An additional ~$800M residual charge was taken in 2025 for uncollectable provider loans.</div>
+</div>
+
+<!-- ====== SECTION 11 ====== -->
+<div class="section" id="s11">
+  <h2><span class="num">11</span> IRA &amp; Part D Effects</h2>
+  <table>
+    <thead>
+      <tr><th>Call Date</th><th>IRA Element</th><th>Impact</th><th>Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">PART D CATASTROPHIC COVERAGE CHANGES</td></tr>
+      <tr><td>Oct &rsquo;24</td><td>Specialty Rx pull-forward</td><td class="neg">Rapid acceleration</td><td>IRA eliminated individual coinsurance in catastrophic phase; manufacturers pulled demand forward from 2025 into 2024</td></tr>
+      <tr><td>Apr &rsquo;25</td><td>Q1 MCR seasonality</td><td class="neg">~90 bps MCR impact</td><td>Part D seasonality shift; tracking as expected</td></tr>
+      <tr><td>Jul &rsquo;25</td><td>Part D impact on MCR</td><td class="neg">Persistent</td><td>Changed MCR seasonality: H2 significantly above H1</td></tr>
+      <tr><td>Jan &rsquo;26</td><td>2026 earnings seasonality</td><td class="neutral">Structural shift</td><td>Slightly under 2/3 of earnings in H1; reflects Part D IRA changes + business mix</td></tr>
+
+      <tr class="year-divider"><td colspan="4">MA MARGIN DENOMINATOR EFFECT</td></tr>
+      <tr><td>Jul &rsquo;25</td><td>Target margin revision</td><td class="neg">3%&ndash;5% &rarr; 2%&ndash;4%</td><td>IRA inflates revenue denominator; management says &ldquo;economically equivalent&rdquo;</td></tr>
+      <tr><td>Jul &rsquo;25</td><td>C&amp;S target revision</td><td class="neg">3%&ndash;5% &rarr; 2%&ndash;4%</td><td>Similar effect on Medicaid/D-SNP margins</td></tr>
+
+      <tr class="year-divider"><td colspan="4">BENEFIT DESIGN RESPONSE</td></tr>
+      <tr><td>Oct &rsquo;25</td><td>Part D benefit adjustment</td><td class="neutral">Co-pay to co-insurance</td><td>Tier 3 branded drugs across most MAPD/PDP; cautious given demo uncertainty</td></tr>
+      <tr><td>Jan &rsquo;26</td><td>2026 Part D</td><td class="muted">Similarly positioned</td><td>Prudent pricing alongside Medicare Supplement</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> The Inflation Reduction Act&rsquo;s Part D changes created multiple headwinds: (1) specialty Rx pull-forward in 2024 as manufacturers exploited the eliminated catastrophic coinsurance, (2) ~90 bps MCR seasonality impact in Q1 2025, (3) structural shift in earnings seasonality favoring H1, and (4) a technical revision of margin targets (3%&ndash;5% &rarr; 2%&ndash;4%) due to the inflated revenue denominator. The IRA combined with V28 and care trend acceleration to create what management called a &ldquo;convergence&rdquo; of headwinds unprecedented in UNH&rsquo;s history.</div>
+</div>
+
+<!-- ====== SECTION 12 ====== -->
+<div class="section" id="s12">
+  <h2><span class="num">12</span> Commercial Business &amp; Surest Growth</h2>
+  <table>
+    <thead>
+      <tr><th>Call Date</th><th>Commercial Growth</th><th>Surest Adoption</th><th>Exchange Posture</th><th>Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">2026 &mdash; CONTRACTION &amp; REPRICING</td></tr>
+      <tr class="lowered"><td>Jan &rsquo;26</td><td class="neg">&ndash;1.3M to &ndash;1.4M risk</td><td>Growing; 2027 pipeline robust</td><td class="neg">500K+ exchange decline</td><td>Double-digit premium increases; shift to self-funded</td></tr>
+
+      <tr class="year-divider"><td colspan="5">2025</td></tr>
+      <tr><td>Jan &rsquo;25</td><td class="pos">Continue strong growth</td><td class="muted">Growing</td><td class="muted">Participating</td><td>Self-funded sophisticated buyers leading demand</td></tr>
+      <tr><td>Apr &rsquo;25</td><td>Self-funded +700K in Q1</td><td class="muted">Growing</td><td>Attrition from pricing</td><td>Disciplined exchange pricing causing some membership loss</td></tr>
+      <tr class="lowered"><td>Jul &rsquo;25</td><td class="neg">Less than anticipated</td><td class="muted">Growing</td><td class="neg">ACA driving ~1/3 of decline</td><td>Exchange losses + reduced group insured growth</td></tr>
+
+      <tr class="year-divider"><td colspan="5">2024 &mdash; RECORD COMMERCIAL GROWTH</td></tr>
+      <tr><td>Jan &rsquo;24</td><td class="pos">~1.5M additional people</td><td>1 in 6 national accounts</td><td>Per 2024 bid</td><td>Growing across national, mid-market, exchange</td></tr>
+      <tr class="raised"><td>Apr &rsquo;24</td><td class="pos bold">+2.1M in Q1</td><td>30+ states</td><td>Balanced approach</td><td>Largest quarterly commercial increase in years</td></tr>
+      <tr><td colspan="2" class="bold">FY2024 Actual</td><td class="pos bold">+2.4M</td><td colspan="2">Record commercial growth driven by product innovation</td></tr>
+
+      <tr class="year-divider"><td colspan="5">2023 &mdash; ACCELERATING GROWTH</td></tr>
+      <tr><td>Jan &rsquo;23</td><td>~1M additional</td><td>1 in 9 national accounts</td><td>Expanding to 4 new states</td><td>~2/3 of addressable exchange market by year-end</td></tr>
+      <tr><td>Jul &rsquo;23</td><td>Nearly +500K in H1</td><td>~25% of Q1 growth</td><td>25 states; target 35</td><td>Surest beginning fully insured take-up</td></tr>
+      <tr><td colspan="2" class="bold">FY2023 Actual</td><td class="pos">~700K through Q3</td><td colspan="2">Strong national accounts + Surest momentum</td></tr>
+
+      <tr class="year-divider"><td colspan="5">2022</td></tr>
+      <tr><td>Jul &rsquo;22</td><td>+80K in Q2</td><td>1 in 25 national accounts</td><td class="muted">~40% of market</td><td>Fully insured +60K from Q1</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Surest&rsquo;s adoption trajectory tells a remarkable product-innovation story: from 1 in 25 national accounts (2022) to 1 in 6 (2024), with expansion from a few states to 30+. The no-deductible, pre-service transparency model resonated strongly with employers. However, the broader commercial story pivoted sharply: from record +2.4M growth in 2024 to guided contraction of 1.3&ndash;1.4M in 2026 as UNH implements double-digit premium increases, exits select ACA exchange markets, and watches membership shift from fully insured to self-funded/level-funded products. Self-funded growth (where UNH takes less risk) remains strong even as risk membership contracts.</div>
+</div>
+
+<!-- ====== SECTION 13 ====== -->
+<div class="section" id="s13">
+  <h2><span class="num">13</span> Medicaid Rate-Acuity Dynamics</h2>
+  <table>
+    <thead>
+      <tr><th>Call Date</th><th>Key Dynamic</th><th>Margin Outlook</th><th>Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2026&ndash;2027 OUTLOOK</td></tr>
+      <tr class="lowered"><td>Jan &rsquo;26</td><td>Rate increases 6&ndash;7% (below trend)</td><td class="neg">Contraction from 2025; trough</td><td>Membership &ndash;565K to &ndash;715K; one state exit</td></tr>
+      <tr><td>Oct &rsquo;25</td><td>Rate-acuity mismatch continues</td><td class="neg">Further decline; 2026 trough</td><td>Return to ~2% margins in 18&ndash;24 months (2027&ndash;2028)</td></tr>
+
+      <tr class="year-divider"><td colspan="4">2025</td></tr>
+      <tr><td>Jan &rsquo;25</td><td>New state awards (GA)</td><td>Expected improvement</td><td>Redeterminations concluded; rate gap narrowing</td></tr>
+      <tr><td>Apr &rsquo;25</td><td>Gap narrowing each cycle</td><td>Optimistic</td><td>7/1 cycle: 35% of revenue; base data improving</td></tr>
+      <tr><td>Jul &rsquo;25</td><td>Rate-acuity gap: 12&ndash;18 month lag</td><td class="neg">Breakeven for 2025</td><td>Non-dual Medicaid breakeven; behavioral health trend at 20%</td></tr>
+
+      <tr class="year-divider"><td colspan="4">2024 &mdash; POST-REDETERMINATION MISMATCH</td></tr>
+      <tr><td>Jul &rsquo;24</td><td>Mismatch more pronounced</td><td>Even out through H2 + early 2025</td><td>States use data &gt;1 year old; lagging current health status</td></tr>
+      <tr><td>Oct &rsquo;24</td><td>More pronounced than anticipated</td><td class="neg">Ongoing</td><td>Annual rate cycle timing compounds data lag</td></tr>
+
+      <tr class="year-divider"><td colspan="4">2023 &mdash; REDETERMINATIONS BEGIN</td></tr>
+      <tr><td>Apr &rsquo;23</td><td>Resumed in 20+ states</td><td>~75% revenue visibility</td><td>Comprehensive outreach to retain members</td></tr>
+      <tr><td>Oct &rsquo;23</td><td>Significant procedural disenrollment</td><td>~45% of 2024 visibility</td><td>15&ndash;20% re-enrollment rates; &ldquo;stops and starts&rdquo;</td></tr>
+
+      <tr class="year-divider"><td colspan="4">2022 &mdash; PRE-REDETERMINATION</td></tr>
+      <tr><td>Oct &rsquo;22</td><td>PHE ending; redeterminations anticipated Q1 2023</td><td class="pos">Stable</td><td>+350K YTD; growing and profitable</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> The Medicaid redetermination process that began in 2023 created a persistent rate-acuity mismatch that extended well beyond anyone&rsquo;s initial expectations. As healthier members disenrolled, the remaining population was sicker, but state rates &mdash; based on data more than a year old &mdash; didn&rsquo;t reflect the change. This mismatch persisted through 2024 and into 2025 (breakeven), with 2026 viewed as the trough (negative margins for non-dual Medicaid). Management now targets a return to ~2% margins over 18&ndash;24 months (2027&ndash;2028). Behavioral health trend running at 20% and specialty pharmacy costs are the key ongoing Medicaid cost drivers.</div>
+</div>
+
+<!-- ====== SECTION 14 ====== -->
+<div class="section" id="s14">
+  <h2><span class="num">14</span> OptumRx &amp; PBM Transparency</h2>
+  <table>
+    <thead>
+      <tr><th>Call Date</th><th>Key Metric</th><th>Value</th><th>Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">REBATE PASS-THROUGH EVOLUTION</td></tr>
+      <tr><td>Apr &rsquo;25</td><td>Commercial pass-through</td><td class="pos bold">100%</td><td>First large PBM to implement 100% commercial pass-through</td></tr>
+      <tr><td>Jan &rsquo;25</td><td>2024 pass-through rate</td><td class="pos">98%</td><td>100% in fully insured; phasing out remaining non-pass-through</td></tr>
+      <tr><td>Oct &rsquo;25</td><td>Full pass-through customers</td><td>~85%</td><td>Expect 95% by 2027; 100% by 2028</td></tr>
+      <tr><td>Jan &rsquo;26</td><td>2026 target</td><td class="pos">95%+</td><td>All remaining by end of 2027</td></tr>
+
+      <tr class="year-divider"><td colspan="4">REVENUE SCALE</td></tr>
+      <tr><td>FY2022</td><td>OptumRx Revenue</td><td>$99.8B</td><td>Approaching $100B; non-PBM 50% of revenue</td></tr>
+      <tr><td>FY2023</td><td>OptumRx Revenue</td><td class="pos">$116.1B</td><td>+16% YoY; 1.5B prescriptions; record retention</td></tr>
+      <tr><td>FY2024</td><td>OptumRx Revenue</td><td class="pos">$133.2B</td><td>+15% YoY; 1.6B prescriptions; 750 new clients; 98% retention</td></tr>
+
+      <tr class="year-divider"><td colspan="4">REFORM &amp; INNOVATION</td></tr>
+      <tr><td>Apr &rsquo;25</td><td>Prior auth reduction</td><td>80 drugs removed</td><td>&gt;10% of pharmaceutical PAs eliminated; 25% of PA categories</td></tr>
+      <tr><td>Jan &rsquo;26</td><td>PA elimination</td><td class="pos">180 drugs</td><td>&gt;10% of remaining PAs eliminated</td></tr>
+      <tr><td>Apr &rsquo;25</td><td>Cost-based pharmacy reimbursement</td><td><span class="tag tag-new">New</span></td><td>All pharmacies, all drugs, all clients (rolling out)</td></tr>
+      <tr><td>Jan &rsquo;26</td><td>Annual member savings</td><td class="pos bold">&gt;$2,200/member</td><td>&gt;$100B total annual savings from manufacturer price moderation</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> OptumRx&rsquo;s transparency evolution reflects both genuine reform and regulatory pressure. Rebate pass-through went from industry-standard opacity to 100% commercial pass-through by 2025, with a path to 100% across all clients by 2028. Prior authorization reductions accelerated from 20% of volumes (2023) to 180 drugs removed (2026). Cost-based pharmacy reimbursement &mdash; a structural change from the traditional spread-pricing model &mdash; was rolled out starting 2025. This positions OptumRx favorably against potential PBM regulation while the revenue base grew from ~$100B to $133B in just 2 years.</div>
+</div>
+
+<!-- ====== SECTION 15 ====== -->
+<div class="section" id="s15">
+  <h2><span class="num">15</span> OptumInsight &amp; AI Products</h2>
+  <table>
+    <thead>
+      <tr><th>Call Date</th><th>Key Development</th><th>Metric</th><th>Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">AI PRODUCT LAUNCHES (2025&ndash;2026)</td></tr>
+      <tr class="raised"><td>Oct &rsquo;25</td><td>Optum Real</td><td><span class="tag tag-new">Launched</span></td><td>First real-time claims/reimbursements platform; dramatic pilot results</td></tr>
+      <tr class="raised"><td>Oct &rsquo;25</td><td>Optum Integrity One</td><td class="pos">73% productivity gain</td><td>AI auto-coding: 73% ambulatory outpatient; 23% hospital inpatient</td></tr>
+      <tr class="raised"><td>Oct &rsquo;25</td><td>Crimson AI</td><td>13:1 ROI</td><td>Surgical cost/OR optimization; 6 wins in 90 days</td></tr>
+      <tr><td>Jan &rsquo;26</td><td>Optum Real + Financial</td><td><span class="tag tag-new">Integration</span></td><td>Closed-loop: real-time approval + financing; replacing post-service model</td></tr>
+
+      <tr class="year-divider"><td colspan="4">CHANGE HEALTHCARE RECOVERY</td></tr>
+      <tr><td>Oct &rsquo;22</td><td>Change acquired</td><td>$800M Q4 revenue</td><td>Combined with OptumInsight; integration begins</td></tr>
+      <tr><td>Jul &rsquo;23</td><td>Integration progressed</td><td>Backlog $31B+</td><td>Change well integrated; growth complementary</td></tr>
+      <tr class="lowered"><td>Apr &rsquo;24</td><td>Cyberattack devastation</td><td class="neg">~15% revenue impacted</td><td>Systems disconnected; backlog held at ~$33B (client retention)</td></tr>
+      <tr><td>Oct &rsquo;24</td><td>Partial recovery</td><td>Backlog ~$33B</td><td>Non-Change business performing well; customers seeking vendor redundancy</td></tr>
+      <tr><td>Jan &rsquo;25</td><td>Rebuilding</td><td>Backlog ~$35B</td><td>New product sales driving backlog growth despite Change headwind</td></tr>
+
+      <tr class="year-divider"><td colspan="4">REVENUE BACKLOG EVOLUTION</td></tr>
+      <tr><td>Apr &rsquo;22</td><td>Pre-Change</td><td>$22.8B</td><td>+$2B YoY; health system partnerships ~1/4</td></tr>
+      <tr><td>Jan &rsquo;23</td><td>Post-Change</td><td class="pos">$30.0B</td><td>+$7.6B YoY; Change contribution</td></tr>
+      <tr><td>Jan &rsquo;26</td><td>Current</td><td class="pos bold">$35B+ (2026)</td><td>Growth from new AI product sales; OptumInsight earnings growth &gt;4%</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> OptumInsight&rsquo;s story is one of transformation through crisis. The Change Healthcare acquisition initially propelled backlog from $22.8B to $30B, but the February 2024 cyberattack devastated ~15% of revenue and drove customers toward vendor redundancy. Despite this, backlog grew to $35B+ by 2026 through new AI product sales. The pivot to an AI-first model &mdash; Optum Real (real-time claims), Integrity One (73% coding productivity gain), and Crimson AI (13:1 ROI) &mdash; represents a fundamental reorientation from traditional services to AI-powered platforms. Management describes this as &ldquo;early innings&rdquo; of the product journey.</div>
+</div>
+
+<!-- ====== SECTION 16 ====== -->
+<div class="section" id="s16">
+  <h2><span class="num">16</span> AI Investment &amp; Technology Progression</h2>
+  <table>
+    <thead>
+      <tr><th>Call Date</th><th>AI Capability</th><th>Impact</th><th>Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2026 &mdash; AI AT SCALE</td></tr>
+      <tr class="raised"><td>Jan &rsquo;26</td><td>AI investment</td><td class="pos bold">~$1.5B in 2026</td><td>At least as much in 2027</td></tr>
+      <tr class="raised"><td>Jan &rsquo;26</td><td>UHC operating cost reductions</td><td class="pos bold">Nearly $1B</td><td>Many AI-enabled; higher customer satisfaction at lower cost</td></tr>
+      <tr><td>Jan &rsquo;26</td><td>Member calls using AI</td><td class="pos">80%+ of calls</td><td>Leverage AI tools for routing, summarization, resolution</td></tr>
+      <tr><td>Jan &rsquo;26</td><td>EMR consolidation</td><td>18 &rarr; 3 platforms</td><td>Nearly 100% of employed providers; enables faster AI adoption</td></tr>
+
+      <tr class="year-divider"><td colspan="4">2025 &mdash; AI ACCELERATION</td></tr>
+      <tr><td>Apr &rsquo;25</td><td>AI-directed consumer calls</td><td>26M calls in Q1</td><td>Expect &gt;50% of all calls AI-directed during 2025</td></tr>
+      <tr><td>Apr &rsquo;25</td><td>Sparq tool</td><td>40% digital engagement increase</td><td>Among seniors; improved access and navigation</td></tr>
+      <tr><td>Apr &rsquo;25</td><td>Claims efficiency (OptumInsight)</td><td>20%+ productivity increase</td><td>AI-powered for RCM customers</td></tr>
+
+      <tr class="year-divider"><td colspan="4">2024 &mdash; HUNDREDS OF USE CASES</td></tr>
+      <tr><td>Jul &rsquo;24</td><td>Business process reimagination</td><td>Payment integrity first</td><td>Late 2024&ndash;2025 wave: fundamental process redesign</td></tr>
+      <tr><td>Oct &rsquo;24</td><td>Clinical summaries for nurses</td><td>Hundreds of hours saved</td><td>Generative AI for patient history summarization</td></tr>
+      <tr><td>Jan &rsquo;25</td><td>Call center efficiency</td><td>10% fewer calls</td><td>Same consumer base, fewer calls needed; full scaling by end 2025</td></tr>
+
+      <tr class="year-divider"><td colspan="4">2023 &mdash; EARLY ADOPTION</td></tr>
+      <tr><td>Jul &rsquo;23</td><td>GenAI for medical appeals</td><td><span class="tag tag-new">New</span></td><td>Appeal letter writing efficiency</td></tr>
+      <tr><td>Jul &rsquo;23</td><td>Benefit bots</td><td><span class="tag tag-new">New</span></td><td>Reducing call center labor for simple coverage queries</td></tr>
+      <tr><td>Oct &rsquo;23</td><td>AI for documentation</td><td>Saving millions</td><td>NLP for call documentation; freeing capacity for higher-value engagement</td></tr>
+
+      <tr class="year-divider"><td colspan="4">2022 &mdash; PRE-AI ERA</td></tr>
+      <tr><td>2022</td><td colspan="3" class="muted">AI not discussed in earnings calls. Focus on digital engagement, virtual care, and operational efficiency.</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> AI was not mentioned in UNH&rsquo;s 2022 earnings calls. By Q2 2023, generative AI appeared for the first time (medical appeal letters, benefit bots). By 2026, AI investment reached $1.5B annually, with 80%+ of member calls leveraging AI tools and nearly $1B in AI-enabled operating cost reductions at UHC alone. The progression from &ldquo;benefit bots&rdquo; to &ldquo;fundamental business process reimagination&rdquo; reflects AI&rsquo;s rapid maturation from a cost-optimization tool to a strategic platform, with payment integrity and real-time claims processing as the frontier applications.</div>
+</div>
+
+<!-- ====== SECTION 17 ====== -->
+<div class="section" id="s17">
+  <h2><span class="num">17</span> Operating Cost Ratio Trend</h2>
+  <table>
+    <thead>
+      <tr><th>Year</th><th>Operating Cost Ratio</th><th>YoY Change</th><th>Key Drivers</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">OUTLOOK</td></tr>
+      <tr class="raised"><td>FY2026 Guide</td><td class="pos bold">12.8% &plusmn;50 bps</td><td class="pos">&ndash;50 bps</td><td>AI-driven efficiency; continued digital adoption</td></tr>
+      <tr class="year-divider"><td colspan="4">ACTUALS</td></tr>
+      <tr><td>FY2025</td><td>13.3%</td><td class="muted">Includes charges</td><td>Includes ~40 bps charge-related + ~$800M employee incentives/Foundation</td></tr>
+      <tr class="raised"><td>FY2024</td><td class="pos">13.2%</td><td class="pos">&ndash;150 bps</td><td>~Half portfolio initiatives, ~half operating efficiencies; AI early contributions</td></tr>
+      <tr><td>FY2023</td><td>14.7%</td><td>Flat</td><td>Change Healthcare integration spend; scale growth</td></tr>
+      <tr><td>FY2022</td><td>14.7%</td><td>+30 bps</td><td>Acquisition integration costs (Change, LHC); strong revenue growth offset</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> The operating cost ratio has been a consistent bright spot, improving from 14.7% (2022&ndash;2023) to 13.2% (2024) and guided to 12.8% for 2026. The 2024 improvement of 150 bps was split between portfolio initiatives (Brazil sale, business exits) and genuine operating efficiencies (AI-driven automation, digital adoption). With 80%+ of member calls now leveraging AI, 10% fewer calls for the same consumer base, and $1B in AI-enabled cost reductions at UHC alone for 2026, this is the one metric where the trajectory has been consistently favorable throughout the period.</div>
+</div>
+
+<!-- ====== SECTION 18 ====== -->
+<div class="section" id="s18">
+  <h2><span class="num">18</span> Leadership &amp; Governance</h2>
+  <table>
+    <thead>
+      <tr><th>Date</th><th>Change</th><th>Context</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="3">2025&ndash;2026 &mdash; LEADERSHIP RESET</td></tr>
+      <tr><td>Dec 2024</td><td class="neg bold">Brian Thompson murdered</td><td>CEO of UnitedHealthcare; over 20 years at UNH; tribute opened Q4 2024 call</td></tr>
+      <tr><td>Mid-2025</td><td class="bold">Stephen Hemsley returns as CEO &amp; Chairman</td><td>Replaces Andrew Witty; brings &ldquo;tone of change and reform&rdquo;</td></tr>
+      <tr><td>Mid-2025</td><td>Dan Schumacher named President</td><td>Day-to-day operational oversight</td></tr>
+      <tr><td>Mid-2025</td><td>Patrick Conway named CEO of Optum</td><td>Expanded from OptumRx; unified Optum leadership</td></tr>
+      <tr><td>Mid-2025</td><td>Sandeep Dadlani named CEO of OptumInsight</td><td>From CDO/CTO role; AI-first mandate</td></tr>
+      <tr><td>Q3 2023</td><td>Roger Connor named CEO of OptumInsight</td><td>Replaced by Dadlani in 2025; moved to Optum CFO</td></tr>
+
+      <tr class="year-divider"><td colspan="3">GOVERNANCE &amp; CULTURE REFORM</td></tr>
+      <tr><td>Jul &rsquo;25</td><td>Independent expert reviews launched</td><td>Analysis Group, FTI Consulting reviewing risk status, care management, pharmaceutical services</td></tr>
+      <tr><td>Oct &rsquo;25</td><td>Monthly business reviews reinstated</td><td>Return to in-office work; strengthened actuarial base</td></tr>
+      <tr><td>Jan &rsquo;26</td><td>Independent reviews published</td><td>Positive findings; remediation by March 2026; 3&ndash;4 more in 2026</td></tr>
+      <tr><td>Jan &rsquo;26</td><td>Public reporting commitment</td><td>PA/claim approval rates, performance stats, rebate practices, management policies</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> The leadership changes in 2025 were extraordinary: Brian Thompson&rsquo;s murder in December 2024 shocked the industry, and Stephen Hemsley&rsquo;s return as CEO mid-2025 (replacing Andrew Witty) signaled a fundamental reset. Hemsley brought sweeping changes: monthly business reviews reinstated, in-office work mandated, independent expert reviews of core processes, and a public commitment to transparency on prior authorizations, claim approvals, and rebate practices. The language shifted from Witty-era growth ambition to Hemsley-era &ldquo;change and reform&rdquo; focused on operational discipline, integrity, and humility.</div>
+</div>
+
+<!-- ====== SECTION 19 ====== -->
+<div class="section" id="s19">
+  <h2><span class="num">19</span> Capital Allocation</h2>
+  <table>
+    <thead>
+      <tr><th>Year</th><th>Cash from Ops</th><th>Share Repurchases</th><th>Dividends</th><th>Growth Capital</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">2026 OUTLOOK</td></tr>
+      <tr><td>FY2026</td><td class="bold">&ge;$18B</td><td class="muted">H2 resumption</td><td>Well supported</td><td class="muted">H2 resumption</td></tr>
+
+      <tr class="year-divider"><td colspan="5">ACTUALS</td></tr>
+      <tr><td>FY2025</td><td>$19.7B</td><td class="neg">Paused</td><td>+5% increase</td><td class="neg">Paused</td></tr>
+      <tr><td>FY2024</td><td>$24.2B</td><td>$9.0B</td><td>$7.5B (+12%)</td><td>&gt;$17B</td></tr>
+      <tr><td>FY2023</td><td class="pos">$29.1B</td><td>$8.0B</td><td>$6.8B (+14%)</td><td>&gt;$10B</td></tr>
+      <tr><td>FY2022</td><td>$26.2B</td><td>$7.0B</td><td>$6.0B (+14%)</td><td>&gt;$20B (M&amp;A)</td></tr>
+    </tbody>
+  </table>
+
+  <table>
+    <thead>
+      <tr><th>Call Date</th><th>Balance Sheet Metric</th><th>Value</th><th>Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Jan &rsquo;26</td><td>Debt-to-Capital</td><td class="neg">44.1%</td><td>Target ~40% before year-end 2026</td></tr>
+      <tr><td>Oct &rsquo;25</td><td>Capital deployment</td><td class="neg">Paused</td><td>Buybacks and strategic acquisitions paused</td></tr>
+      <tr><td>Jan &rsquo;26</td><td>2026 plan</td><td>H2 resumption</td><td>Return to historical buyback/acquisition practices</td></tr>
+      <tr><td>Oct &rsquo;25</td><td>Amedisys closed</td><td>$3.4B net cash</td><td>Home health capabilities foundational to VBC</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Capital allocation pivoted dramatically from offense to defense. In 2022&ndash;2023, UNH deployed &gt;$30B in M&amp;A (Change Healthcare, LHC Group), returned &gt;$28B to shareholders, and generated $55B in operating cash flow. By 2025, share buybacks were paused, strategic acquisitions frozen, and debt-to-capital rose to 44.1% (vs 38% target). The 15th consecutive year of double-digit dividend increases ended with a 5% increase in 2025. Management plans to resume historical capital deployment in H2 2026 as leverage returns to ~40%. Cash from operations fell from $29.1B (2023) to $16B initially guided for 2025, ultimately coming in at $19.7B.</div>
+</div>
+
+<!-- ====== SECTION 20 ====== -->
+<div class="section" id="s20">
+  <h2><span class="num">20</span> Long-Term EPS Growth Target (13%&ndash;16%)</h2>
+  <table>
+    <thead>
+      <tr><th>Call Date</th><th>Target</th><th>Status</th><th>Context</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">THROUGH THE CRISIS</td></tr>
+      <tr><td>Jan &rsquo;26</td><td>13%&ndash;16%</td><td><span class="tag tag-maintained">Reaffirmed</span></td><td>&ldquo;More compelling than ever&rdquo;; long-term potential</td></tr>
+      <tr><td>Oct &rsquo;25</td><td>13%&ndash;16%</td><td><span class="tag tag-maintained">Reaffirmed</span></td><td>&ldquo;Pace back steadily to low double-digit and continue to advance&rdquo;</td></tr>
+      <tr><td>Jul &rsquo;25</td><td>13%&ndash;16%</td><td><span class="tag tag-maintained">Reaffirmed</span></td><td>Framework intact despite unprecedented EPS cut</td></tr>
+      <tr><td>Apr &rsquo;25</td><td>13%&ndash;16%</td><td><span class="tag tag-maintained">Reaffirmed</span></td><td>Committed to returning to this range</td></tr>
+      <tr><td>Jan &rsquo;25</td><td>13%&ndash;16%</td><td><span class="tag tag-maintained">Reaffirmed</span></td><td>MA penetration path to 70%+ over time</td></tr>
+
+      <tr class="year-divider"><td colspan="4">CONSISTENT THROUGHOUT 2022&ndash;2024</td></tr>
+      <tr><td>Apr &rsquo;22 &ndash; Oct &rsquo;24</td><td>13%&ndash;16%</td><td><span class="tag tag-maintained">Maintained</span></td><td>Set at November 2021 investor conference; never revised</td></tr>
+
+      <tr class="year-divider"><td colspan="4">ACTUAL EPS GROWTH VS TARGET</td></tr>
+      <tr class="raised"><td>FY2022</td><td colspan="3"><span class="pos">+17%</span> ($22.19 from $19.02) &mdash; exceeded high end</td></tr>
+      <tr class="raised"><td>FY2023</td><td colspan="3"><span class="pos">+13%</span> ($25.12 from $22.19) &mdash; within range</td></tr>
+      <tr><td>FY2024</td><td colspan="3"><span class="neutral">+10%</span> ($27.66 from $25.12) &mdash; below range (cyber + V28 + coding)</td></tr>
+      <tr class="lowered"><td>FY2025</td><td colspan="3"><span class="neg">&ndash;41%</span> ($16.35 from $27.66) &mdash; unprecedented miss</td></tr>
+      <tr><td>FY2026 Guide</td><td colspan="3"><span class="neutral">+8.6%+</span> (&gt;$17.75 from $16.35) &mdash; below range; &ldquo;solid but moderate&rdquo;</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Perhaps the most remarkable aspect of UNH&rsquo;s 2025 crisis is that management never revised the 13%&ndash;16% long-term EPS growth target &mdash; not even when EPS fell 41%. They reaffirmed it on every single call from 2022 through Q4 2025. The reasoning: organic growth + AI-driven productivity + innovation + capital stewardship provide structural drivers that persist through cyclical headwinds. However, actual delivery tells a different story: 17% (2022), 13% (2023), 10% (2024), &ndash;41% (2025), 8.6%+ (2026 guide). Management expects to &ldquo;pace back steadily to low double-digit ranges&rdquo; starting in 2027.</div>
+</div>
+
+<!-- ====== SECTION 21 ====== -->
+<div class="section" id="s21">
+  <h2><span class="num">21</span> Key Takeaways</h2>
+  <div class="takeaways">
+
+    <div class="takeaway">
+      <div class="takeaway-num">1</div>
+      <div class="takeaway-text"><strong>The most dramatic EPS collapse in UNH history.</strong> Adjusted EPS fell from $27.66 (2024) to $16.35 (2025) &mdash; a 41% decline. Initial 2025 guidance of $29.50&ndash;$30.00 was cut twice, ultimately landing 45% below the original midpoint. No single factor caused this; it was a convergence of V28, IRA, medical cost acceleration, and OptumHealth margin compression.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">2</div>
+      <div class="takeaway-text"><strong>Medical care ratio surged 710 basis points in 3 years.</strong> MCR went from 82.0% (2022) to 89.1% (2025), with the sharpest move in 2025 (+350 bps YoY). The 2025 total excess medical costs versus initial outlook was $6.5B, with Medicare (~55%), commercial (~33%), and Medicaid accounting for the remainder. Service intensity per encounter &mdash; more services bundled per visit &mdash; proved a novel and persistent cost driver.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">3</div>
+      <div class="takeaway-text"><strong>The MA medical cost trend doubled from plan.</strong> Management initially assumed ~5% MA trend for 2025; actual was 7.5%. For 2026 pricing, the assumed trend jumped to 10%. Medicare Supplement ran over 11% (vs 8&ndash;9% historical). This wasn&rsquo;t just utilization &mdash; it was service intensity (more tests per visit, more specialists rounding per inpatient stay, higher DRG weighting).</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">4</div>
+      <div class="takeaway-text"><strong>V28 proved far more damaging than modeled.</strong> The CMS risk adjustment model change created an $11B headwind for OptumHealth over 3 years &mdash; $3B more than initial estimates. Management admitted they &ldquo;underestimated impact on higher-acuity population&rdquo; and &ldquo;misexecuted the transition.&rdquo; Across the broader industry, management cited nearly $50B in cumulative Medicare funding reductions over 3 years.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">5</div>
+      <div class="takeaway-text"><strong>Value-based care&rsquo;s rapid scale-up created margin fragility.</strong> VBC patients nearly tripled from ~1.8M (end 2021) to ~5.0M (2025), but the 2024&ndash;2025 cohorts (40% of patients) ran at negative margins &mdash; near double-digit losses for new-to-Optum patients from plan exits. For 2026, UNH is deliberately contracting VBC membership ~10% and exiting 40%+ of its PPO footprint.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">6</div>
+      <div class="takeaway-text"><strong>The Change Healthcare cyberattack cost $3.09B in 2024.</strong> Discovered February 21, 2024, it was the largest healthcare data breach in U.S. history. Initial impact estimates of $1.15&ndash;$1.35/share more than doubled to $2.60/share. Beyond direct costs, the attack disrupted care management, contributed to provider coding upshifts, and delayed OptumInsight recovery &mdash; with an additional ~$800M residual charge in 2025.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">7</div>
+      <div class="takeaway-text"><strong>2026 is a deliberate reset: membership contraction, margin repair.</strong> UNH guides 2.3&ndash;2.8M total membership contraction for 2026 (MA &ndash;1.3&ndash;1.4M, commercial &ndash;1.3&ndash;1.4M, Medicaid &ndash;565&ndash;715K). Revenue declines to ~$440B from $448B. The focus shifts entirely to margin recovery: 20&ndash;90 bps expansion across all segments, double-digit earnings growth at UHC, and the beginning of OptumHealth&rsquo;s path back toward 6%&ndash;8% margins.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">8</div>
+      <div class="takeaway-text"><strong>AI investment scaled from zero to $1.5B in 3 years.</strong> AI wasn&rsquo;t mentioned in 2022 calls. By 2026, UNH invests $1.5B annually, with 80%+ of member calls leveraging AI tools and nearly $1B in AI-enabled cost reductions at UHC. EMR consolidation from 18 systems to 3 platforms enables faster AI deployment. New AI products (Optum Real, Integrity One, Crimson AI) represent a strategic pivot from services to platforms.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">9</div>
+      <div class="takeaway-text"><strong>Operating cost ratio is the one consistent bright spot.</strong> OCR improved from 14.7% (2022&ndash;2023) to 13.2% (2024) and is guided to 12.8% for 2026. The 150 bps improvement in 2024 was roughly half from portfolio actions and half from genuine operating efficiencies. This has been the one metric with an unbroken positive trajectory through the entire period.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">10</div>
+      <div class="takeaway-text"><strong>Leadership reset signals cultural transformation.</strong> Brian Thompson&rsquo;s murder (December 2024) and Stephen Hemsley&rsquo;s return as CEO (mid-2025, replacing Andrew Witty) marked a fundamental shift. Hemsley reinstated monthly business reviews, mandated in-office work, launched independent expert reviews, and committed to public reporting of PA/claim approval rates and rebate practices &mdash; a transparency agenda unprecedented for UNH.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">11</div>
+      <div class="takeaway-text"><strong>The 13&ndash;16% EPS growth target has never been revised.</strong> Despite EPS falling 41% in 2025, management reaffirmed the long-term 13&ndash;16% growth target on every call for 4 years. Actual delivery: +17% (2022), +13% (2023), +10% (2024), &ndash;41% (2025), +8.6%+ (2026 guide). Management expects &ldquo;solid but moderate&rdquo; growth in 2026 with &ldquo;earnings growth outlook strengthening quickly&rdquo; in 2027.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">12</div>
+      <div class="takeaway-text"><strong>Surest represents a genuine product innovation success.</strong> UNH&rsquo;s no-deductible, pre-service transparency commercial product went from 1 in 25 national accounts (2022) to 1 in 6 (2024), expanding to 30+ states with strong 2027 pipeline. Even as overall commercial membership contracts in 2026, self-funded and Surest growth remain robust, suggesting the innovation model works despite broader industry headwinds.</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="footer">
+  <p><strong>Data Sources:</strong> UnitedHealth Group quarterly earnings call transcripts (Q1 2022 &ndash; Q4 2025). All figures from company-reported guidance and actuals as disclosed in earnings calls and press releases.</p>
+  <p style="margin-top:8px;"><strong>Metrics Tracker:</strong> <a href="results.html">Actuals vs Guidance Scorecard</a></p>
+  <p style="margin-top:4px;">Generated for the Earnings Guidance Analysis project. All quantitative data sourced from official company disclosures.</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+{
+  "ticker": "PGR",
+  "quarter": "Q1_2025",
+  "filing_date": "2025-05-13",
+  "accession": "0000080661-25-000025",
+  "tables": [],
+  "xbrl": {
+    "Total Revenue": {
+      "value": 20409000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2025-05-05",
+      "concept": "Revenues"
+    },
+    "Net Income": {
+      "value": 2567000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2025-05-05",
+      "concept": "NetIncomeLoss"
+    },
+    "Net Income to Common": {
+      "value": 2567000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2025-05-05",
+      "concept": "NetIncomeLossAvailableToCommonStockholdersBasic"
+    },
+    "EPS (Basic)": {
+      "value": 4.38,
+      "units": "USD/shares",
+      "form": "10-Q",
+      "filed": "2025-05-05",
+      "concept": "EarningsPerShareBasic"
+    },
+    "EPS (Diluted)": {
+      "value": 4.37,
+      "units": "USD/shares",
+      "form": "10-Q",
+      "filed": "2025-05-05",
+      "concept": "EarningsPerShareDiluted"
+    },
+    "Total Assets": {
+      "value": 111409000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2025-05-05",
+      "concept": "Assets"
+    },
+    "Total Liabilities": {
+      "value": 82455000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2025-05-05",
+      "concept": "Liabilities"
+    },
+    "Total Equity": {
+      "value": 28954000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2025-05-05",
+      "concept": "StockholdersEquity"
+    },
+    "Comprehensive Income": {
+      "value": 3466000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2025-05-05",
+      "concept": "ComprehensiveIncomeNetOfTax"
+    },
+    "Income Tax Expense": {
+      "value": 669000000,
+      "units": "USD",
+      "form": "10-Q",
+      "filed": "2025-05-05",
+      "concept": "IncomeTaxExpenseBenefit"
+    }
+  }
+}

@@ -1,0 +1,177 @@
+# HCA Healthcare — Q1_2023 Earnings Release
+
+**Ticker:** HCA
+**Filing Date:** 2023-04-21
+**Accession:** 0001193125-23-109258
+**Source:** [SEC EDGAR](https://www.sec.gov/Archives/edgar/data/860730/000119312523109258/0001193125-23-109258-index.htm)
+
+## Key Metrics (XBRL)
+
+| Metric | Value | Units | Source |
+|--------|------:|-------|--------|
+| Cash & Equivalents | $842.0M | USD | 10-Q |
+| Comprehensive Income | $1.38B | USD | 10-Q |
+| EPS (Basic) | 5 | USD/shares | 10-Q |
+| EPS (Diluted) | 5 | USD/shares | 10-Q |
+| Income Tax Expense | $379.0M | USD | 10-Q |
+| Net Income | $1.36B | USD | 10-Q |
+| Shares Outstanding | 275.9M | shares | 10-Q |
+| Total Assets | $52.71B | USD | 10-Q |
+| Total Equity | $-2.50B | USD | 10-Q |
+| Total Revenue | $15.59B | USD | 10-Q |
+
+## Financial Tables (from Exhibits)
+
+### 
+
+|  |  | Previous 2023 Guidance Range as of January 27, 2023 |  | 2023 Guidance Range as of April 21, 2023 |
+| Revenues |  | 61.5 to 63.5 billion |  | 62.5 to 64.5 billion |
+| Net Income Attributable to HCA Healthcare, Inc. |  | 4.525 to 4.895 billion |  | 4.750 to 5.160 billion |
+| Adjusted EBITDA |  | 11.8 to 12.4 billion |  | 12.1 to 12.7 billion |
+| EPS (diluted) |  | 16.40 to 17.60 per diluted share |  | 17.25 to 18.55 per diluted share |
+
+### 
+
+| HCA Healthcare, Inc. |  |
+| Condensed Consolidated Comprehensive Income Statements |  |
+| First Quarter |  |
+| Unaudited |  |
+| (Dollars in millions, except per share amounts) |  |
+|  |  | 2023 |  |  | 2022 |  |
+|  |  | Amount |  |  | Ratio |  |  | Amount |  |  | Ratio |  |
+| Revenues |  |  | 15591 |  |  |  | 100.0 | % |  |  | 14945 |  |  |  | 100.0 | % |
+| Salaries and benefits |  |  | 7084 |  |  |  | 45.4 |  |  |  | 6939 |  |  |  | 46.4 |  |
+| Supplies |  |  | 2423 |  |  |  | 15.5 |  |  |  | 2321 |  |  |  | 15.5 |  |
+| Other operating expenses |  |  | 2894 |  |  |  | 18.7 |  |  |  | 2752 |  |  |  | 18.5 |  |
+| Equity in losses (earnings) of affiliates |  |  | 18 |  |  |  | 0.1 |  |  |  | (11 | ) |  |  | -0.1 |  |
+| Depreciation and amortization |  |  | 756 |  |  |  | 4.8 |  |  |  | 732 |  |  |  | 5.0 |  |
+| Interest expense |  |  | 479 |  |  |  | 3.1 |  |  |  | 408 |  |  |  | 2.7 |  |
+| Losses (gains) on sales of facilities |  |  | 15 |  |  |  | 0.1 |  |  |  | (10 | ) |  |  | -0.1 |  |
+|  |  |  | 13669 |  |  |  | 87.7 |  |  |  | 13131 |  |  |  | 87.9 |  |
+| Income before income taxes |  |  | 1922 |  |  |  | 12.3 |  |  |  | 1814 |  |  |  | 12.1 |  |
+| Provision for income taxes |  |  | 379 |  |  |  | 2.4 |  |  |  | 349 |  |  |  | 2.3 |  |
+| Net income |  |  | 1543 |  |  |  | 9.9 |  |  |  | 1465 |  |  |  | 9.8 |  |
+| Net income attributable to noncontrolling interests |  |  | 180 |  |  |  | 1.2 |  |  |  | 192 |  |  |  | 1.3 |  |
+| Net income attributable to HCA Healthcare, Inc. |  |  | 1363 |  |  |  | 8.7 |  |  |  | 1273 |  |  |  | 8.5 |  |
+| Diluted earnings per share |  |  | 4.85 |  |  |  |  |  |  |  | 4.14 |  |  |  |  |  |
+| Shares used in computing diluted earnings per share (millions) |  |  | 280.961 |  |  |  |  |  |  |  | 307.374 |  |  |  |  |  |
+| Comprehensive income attributable to HCA Healthcare, Inc. |  |  | 1383 |  |  |  |  |  |  |  | 1230 |  |  |  |  |  |
+
+### 
+
+|  |  | March 31, |  | December 31, |
+|  |  | 2023 |  | 2022 |
+| ASSETS |  |  |  |  |  |  |  |  |
+| Current assets: |  |  |  |  |  |  |  |  |
+| Cash and cash equivalents |  |  | 842 |  |  |  | 908 |  |
+| Accounts receivable |  |  | 8657 |  |  |  | 8891 |  |
+| Inventories |  |  | 2085 |  |  |  | 2068 |  |
+| Other |  |  | 1957 |  |  |  | 1776 |  |
+|  |  |  | 13541 |  |  |  | 13643 |  |
+| Property and equipment, at cost |  |  | 55463 |  |  |  | 54757 |  |
+| Accumulated depreciation |  |  | (29,410 | ) |  |  | (29,182 | ) |
+|  |  |  | 26053 |  |  |  | 25575 |  |
+| Investments of insurance subsidiaries |  |  | 390 |  |  |  | 381 |  |
+| Investments in and advances to affiliates |  |  | 786 |  |  |  | 823 |  |
+| Goodwill and other intangible assets |  |  | 9590 |  |  |  | 9653 |  |
+| Right-of-use operating lease
+assets |  |  | 2032 |  |  |  | 2065 |  |
+| Other |  |  | 319 |  |  |  | 298 |  |
+|  |  |  | 52711 |  |  |  | 52438 |  |
+| LIABILITIES AND STOCKHOLDERS’ EQUITY (DEFICIT) |  |  |  |  |  |  |  |  |
+| Current liabilities: |  |  |  |  |  |  |  |  |
+| Accounts payable |  |  | 3769 |  |  |  | 4239 |  |
+| Accrued salaries |  |  | 1565 |  |  |  | 1712 |  |
+| Other accrued expenses |  |  | 3316 |  |  |  | 3581 |  |
+| Long-term debt due within one year |  |  | 2378 |  |  |  | 370 |  |
+|  |  |  | 11028 |  |  |  | 9902 |  |
+| Long-term debt, less debt issuance costs and discounts of 295 and 301 |  |  | 36478 |  |  |  | 37714 |  |
+| Professional liability risks |  |  | 1565 |  |  |  | 1528 |  |
+| Right-of-use operating lease
+obligations |  |  | 1716 |  |  |  | 1752 |  |
+| Income taxes and other liabilities |  |  | 1692 |  |  |  | 1615 |  |
+| Stockholders’ equity (deficit): |  |  |  |  |  |  |  |  |
+| Stockholders’ deficit attributable to HCA Healthcare, Inc. |  |  | (2,495 | ) |  |  | (2,767 | ) |
+| Noncontrolling interests |  |  | 2727 |  |  |  | 2694 |  |
+|  |  |  | 232 |  |  |  | (73 | ) |
+|  |  |  | 52711 |  |  |  | 52438 |  |
+
+### 
+
+|  |  | 2023 |  | 2022 |
+| Cash flows from operating activities: |  |  |  |  |  |  |  |  |
+| Net income |  |  | 1543 |  |  |  | 1465 |  |
+| Adjustments to reconcile net income to net cash provided by operating activities: |  |  |  |  |  |  |  |  |
+| Increase (decrease) in cash from operating assets and liabilities: |  |  |  |  |  |  |  |  |
+| Accounts receivable |  |  | 238 |  |  |  | (427 | ) |
+| Inventories and other assets |  |  | (214 | ) |  |  | (121 | ) |
+| Accounts payable and accrued expenses |  |  | (1,066 | ) |  |  | (771 | ) |
+| Depreciation and amortization |  |  | 756 |  |  |  | 732 |  |
+| Income taxes |  |  | 372 |  |  |  | 346 |  |
+| Losses (gains) on sales of facilities |  |  | 15 |  |  |  | (10 | ) |
+| Amortization of debt issuance costs and discounts |  |  | 9 |  |  |  | 7 |  |
+| Share-based compensation |  |  | 77 |  |  |  | 86 |  |
+| Other |  |  | 73 |  |  |  | 38 |  |
+| Net cash provided by operating activities |  |  | 1803 |  |  |  | 1345 |  |
+| Cash flows from investing activities: |  |  |  |  |  |  |  |  |
+| Purchase of property and equipment |  |  | (1,197 | ) |  |  | (861 | ) |
+| Acquisition of hospitals and health care entities |  |  | (115 | ) |  |  | (2 | ) |
+| Sales of hospitals and health care entities |  |  | 165 |  |  |  | 14 |  |
+| Change in investments |  |  | (13 | ) |  |  | 10 |  |
+| Other |  |  | 9 |  |  |  | (6 | ) |
+| Net cash used in investing activities |  |  | (1,151 | ) |  |  | (845 | ) |
+| Cash flows from financing activities: |  |  |  |  |  |  |  |  |
+| Issuances of long-term debt |  |  | - |  |  |  | 5966 |  |
+| Net change in revolving credit facilities |  |  | 1240 |  |  |  | (2,780 | ) |
+| Repayment of long-term debt |  |  | (550 | ) |  |  | (66 | ) |
+| Distributions to noncontrolling interests |  |  | (187 | ) |  |  | (171 | ) |
+| Payment of debt issuance costs |  |  | (3 | ) |  |  | (49 | ) |
+| Payment of dividends |  |  | (175 | ) |  |  | (177 | ) |
+| Repurchase of common stock |  |  | (846 | ) |  |  | (2,101 | ) |
+| Other |  |  | (204 | ) |  |  | (197 | ) |
+| Net cash (used in) provided by financing activities |  |  | (725 | ) |  |  | 425 |  |
+| Effect of exchange rate changes on cash and cash equivalents |  |  | 7 |  |  |  | (5 | ) |
+| Change in cash and cash equivalents |  |  | (66 | ) |  |  | 920 |  |
+| Cash and cash equivalents at beginning of period |  |  | 908 |  |  |  | 1451 |  |
+| Cash and cash equivalents at end of period |  |  | 842 |  |  |  | 2371 |  |
+| Interest payments |  |  | 574 |  |  |  | 408 |  |
+| Income tax payments, net |  |  | 7 |  |  |  | 3 |  |
+
+### 
+
+|  |  | First Quarter |  |
+|  |  | 2023 |  |  | 2022 |  |
+| Revenues |  |  | 15591 |  |  |  | 14945 |  |
+| Net income attributable to HCA Healthcare, Inc. |  |  | 1363 |  |  |  | 1273 |  |
+| Losses (gains) on sales of facilities (net of tax) |  |  | 22 |  |  |  |  |  |
+| Net income attributable to HCA Healthcare, Inc., excluding losses (gains) on sales of facilities |  |  | 1385 |  |  |  | 1265 |  |
+| Depreciation and amortization |  |  | 756 |  |  |  | 732 |  |
+| Interest expense |  |  | 479 |  |  |  | 408 |  |
+| Provision for income taxes |  |  | 372 |  |  |  | 347 |  |
+| Net income attributable to noncontrolling interests |  |  | 180 |  |  |  | 192 |  |
+| Adjusted EBITDA |  |  | 3172 |  |  |  | 2944 |  |
+| Adjusted EBITDA margin |  |  | 20.3% |  |  |  | 19.7% |  |
+| Diluted earnings per share: |  |  |  |  |  |  |  |  |
+| Net income attributable to HCA Healthcare, Inc. |  |  | 4.85 |  |  |  | 4.14 |  |
+| Losses (gains) on sales of facilities |  |  | 0.08 |  |  |  | -0.02 |  |
+| Net income attributable to HCA Healthcare, Inc., excluding losses (gains) on sales of facilities |  |  | 4.93 |  |  |  | 4.12 |  |
+| Shares used in computing diluted earnings per share (millions) |  |  | 280.961 |  |  |  | 307.374 |  |
+
+### 
+
+|  |  | For the Year Ending |
+|  |  | December 31, 2023 |
+|  |  | Low |  | High |
+| Revenues |  |  | 62500 |  |  |  | 64500 |  |
+| Net income attributable to HCA Healthcare, Inc. |  |  | 4750 |  |  |  | 5160 |  |
+| Depreciation and amortization |  |  | 3070 |  |  |  | 3100 |  |
+| Interest expense |  |  | 1960 |  |  |  | 1980 |  |
+| Provision for income taxes |  |  | 1480 |  |  |  | 1590 |  |
+| Net income attributable to noncontrolling interests |  |  | 840 |  |  |  | 870 |  |
+| Adjusted EBITDA (a) |  |  | 12100 |  |  |  | 12700 |  |
+| Diluted earnings per share: |  |  |  |  |  |  |  |  |
+| Net income attributable to HCA Healthcare, Inc. |  |  | 17.25 |  |  |  | 18.55 |  |
+| Shares used in computing diluted earnings per share (millions) |  |  | 278.000 |  |  |  | 278.000 |  |
+
+---
+*Generated by edgar_download.py on 2026-03-03 14:35*

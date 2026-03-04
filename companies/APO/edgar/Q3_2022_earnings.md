@@ -1,0 +1,224 @@
+# Apollo Global Management, Inc. — Q3_2022 Earnings Release
+
+**Ticker:** APO
+**Filing Date:** 
+**Accession:** 0001858681-22-000049
+**Source:** [SEC EDGAR](https://www.sec.gov/Archives/edgar/data/1858681/000185868122000049/0001858681-22-000049-index.htm)
+
+## Key Metrics (XBRL)
+
+| Metric | Value | Units | Source |
+|--------|------:|-------|--------|
+| Cash & Equivalents | $10.94B | USD | 10-Q |
+| Comprehensive Income | $-4.84B | USD | 10-Q |
+| EPS (Basic) | -2 | USD/shares | 10-Q |
+| EPS (Diluted) | -2 | USD/shares | 10-Q |
+| Income Tax Expense | $-185.0M | USD | 10-Q |
+| Net Income | $-563.0M | USD | 10-K |
+| Net Income to Common | $-876.0M | USD | 10-Q |
+| Shares Outstanding | 572.7M | shares | 10-Q |
+| Total Assets | $250.34B | USD | 10-Q |
+| Total Equity | $-1.34B | USD | 10-Q |
+| Total Liabilities | $247.45B | USD | 10-Q |
+| Total Revenue | $2.98B | USD | 10-K |
+
+## Financial Tables (from Exhibits)
+
+### ($ in millions, except per share amounts)
+
+|  | 3Q'21 | 2Q'22 | 3Q'22 |
+| --- | --- | --- | --- |
+| YTD'21 YTD'22 Revenues Asset Management Management fees | 475 | 375 | 389 |
+| $1,402 $1,100 Advisory and transaction fees, net | 63 | 110 | 110 |
+| 205 286 Investment income (loss) | 535 | -195 | -31 |
+| 3,125 475 Incentive fees | 5 | 2 | 9 |
+| 24 17 Retirement Services Premiums | — | 5614 | 3045 |
+| — 10,769 Product charges | — | 175 | 184 |
+| — 525 Net investment income | — | 1903 | 2033 |
+| — 5,667 Investment related gains (losses) | — | -5759 | -2847 |
+| — (12,823) Revenues of consolidated variable interest entities | — | 55 | 114 |
+| — 148 Other revenues | — |  | -27 |
+| — (38) Total Revenues | 1078 | 2272 | 2979 |
+| 4,756 6,126 Expenses Asset Management Compensation and benefits | -501 | -309 | -386 |
+| (1,984) (1,429) Interest expense | -35 | -31 | -31 |
+| (105) (94) General, administrative and other | -112 | -157 | -167 |
+| (328) (472) Retirement Services Interest sensitive contract benefits | — | 621 | -89 |
+| — 573 Future policy and other policy benefits | — | -5609 | -3294 |
+| — (10,988) Amortization of deferred acquisition costs, deferred sales inducements and value of business acquired | — | -125 | -125 |
+| — (375) Policy and other operating expenses | — | -331 | -343 |
+| — (982) Total Expenses | -648 | -5941 | -4435 |
+| (2,417) (13,767) Other Income (Loss) – Asset Management Net gains (losses) from investment activities | 173 | 146 | -16 |
+| 1,439 164 Net gains from investment activities of consolidated variable interest entities | 142 | 13 | 85 |
+| 400 465 Other income (loss), net | -13 | 21 | 28 |
+| (25) 26 Total Other Income (Loss) | 302 | 180 | 97 |
+| 1,814 655 Income (loss) before income tax (provision) benefit | 732 | -3489 | -1359 |
+| 4,153 (6,986) Income tax (provision) benefit | -101 | 487 | 185 |
+| (498) 1,280 Net income (loss) | 631 | -3002 | -1174 |
+| 3,655 (5,706) Net (income) loss attributable to non-controlling interests | -373 | 951 | 298 |
+| (2,060) 1,909 Net income (loss) attributable to Apollo Global Management, Inc. | 258 | -2051 | -876 |
+| 1,595 (3,797) Preferred stock dividends |  | — | — |
+| (27) — Net income (loss) attributable to Apollo Global Management, Inc. Common Stockholders | 249 | -2051 | -876 |
+| $1,568 $(3,797) Earnings (Loss) per share Net income (loss) attributable to Common Stockholders - Basic | 1.01 | -3.53 | -1.52 |
+| $6.47 $(6.55) Net income (loss) attributable to Common Stockholders - Diluted | 1.01 | -3.53 | -1.52 |
+| $6.47 $(6.55) Weighted average shares outstanding – Basic | 239 | 585 | 584 |
+| 234 585 Weighted average shares outstanding – Diluted | 239 | 585 | 584 |
+
+### ($ in millions, except per share amounts)
+
+|  | 3Q'21 | 2Q'22 | 3Q'22 |
+| --- | --- | --- | --- |
+| YTD'21 YTD'22 Management fees | 472.5 | 521.9 | 545.9 |
+| $1,395.2 $1,573.2 Advisory and transaction fees, net | 65.2 | 103.1 | 104.6 |
+| 203.8 271.8 Fee-related performance fees | 19.8 | 11.7 | 20.0 |
+| 36.7 45.9 Fee-related compensation | -160.7 | -187.2 | -193.8 |
+| (476.7) (556.4) Non-compensation expenses | -76.7 | -108.4 | -112.1 |
+| (218.3) (318.8) Fee Related Earnings | 320.1 | 341.1 | 364.6 |
+| $940.7 $1,015.7 Net investment spread | — | 615.1 | 768.1 |
+| — 2,223.7 Other operating expenses | — | -109.1 | -117.1 |
+| — (334.9) Interest and other financing costs | — | -64.3 | -72.9 |
+| — (198.8) Normalization of alternative investment income to 11%, net of offsets1 | — | 128.0 | 78.9 |
+| — 63.5 Other notable items2 | — | -35.0 | -59.0 |
+| — (78.0) Spread Related Earnings - Normalized3 $— $534.7 $598.0 $— $1,675.5 Fee and Spread Related Earnings - Normalized | 320.1 | 875.8 | 962.6 |
+| $940.7 $2,691.2 Principal Investing Income | 582.4 | 19.7 | 50.1 |
+| $915.8 $256.8 Adjusted Segment Income - Normalized | 902.5 | 895.5 | 1012.7 |
+| $1,856.5 $2,948.0 HoldCo interest and other financing costs | -41.7 | -34.8 | -28.9 |
+| (127.9) (102.7) Taxes and related payables | -108.2 | -221.2 | -167.6 |
+| (180.1) (575.2) Adjusted Net Income - Normalized | 752.6 | 639.5 | 816.2 |
+| $1,548.5 $2,270.1 ANI per share - Normalized | 1.06 | 1.36 | 3.78 |
+
+### • Spread related earnings increased in the third quarter, driven by robust organic growth trends and an expanding net investment spread that benefited from  rising interest rates and resilient perform
+
+|  | 3Q'21 | 2Q'22 | 3Q'22 | 3Q'21 |
+| --- | --- | --- | --- | --- |
+| YTD'21 YTD'22 % Change vs. YTD'21 Fixed income and other investment income, net $— $1,302.1 $1,470.4 NM $— $3,979.3 NM Alternative investment income, net | — | 186.3 | 249.6 | NM |
+| — 883.6 NM Strategic capital management fees | — | 12.6 | 13.6 | NM |
+| — 38.6 NM Cost of funds | — | -885.9 | -965.5 | NM |
+| — (2,677.8) NM Net Investment Spread | — | 615.1 | 768.1 | NM |
+| — 2,223.7 NM Other operating expenses | — | -109.1 | -117.1 | NM |
+| — (334.9) NM Interest and other financing costs | — | -64.3 | -72.9 | NM |
+| — (198.8) NM Spread Relating Earnings $— $441.7 $578.1 NM $— $1,690.0 NM SRE per share $— $0.74 $0.96 NM $— $2.82 NM Normalization of alternative investment income to 11%, net of offsets | — | 128.0 | 78.9 | NM |
+| — 63.5 NM Other notable items1 | — | -35.0 | -59.0 | NM |
+
+### • Realized performance fees of $93 million moderated year-over-year as equity market volatility delayed monetization activity from two flagship private equity  funds (Fund VIII & IX) • PII compensatio
+
+|  | 3Q'21 | 2Q'22 | 3Q'22 | 3Q'21 |
+| --- | --- | --- | --- | --- |
+| YTD'21 YTD'22 % Change vs. YTD'21 Realized performance fees $608.0 $150.9 $92.9 (84.7)% $1,183.6 $371.0 (68.7)% Realized investment income 295.2 36.9 61.4 (79.2)% 397.6 324.7 (18.3)% Realized principal investing compensation (309.0) (155.0) (90.3) (70.8)% (631.3) (401.3) (36.4)% Other operating expenses | -11.8 | -13.1 | -13.9 | 17.8% |
+| (34.1) (37.6) 10.3% Principal Investing Income $582.4 $19.7 $50.1 (91.4)% $915.8 $256.8 (72.0)% PII Per Share $1.32 $0.03 $0.08 (93.9)% $2.08 $0.42 (79.8)% PII Compensation Ratio | 34.2% | 82.5% | 58.5% | 39.9% |
+
+### • On January 1, 2022, Apollo established a share repurchase program for $2.5 billion of common stock comprised of up to an aggregate of $1.5 billion of shares  for opportunistic repurchases and an agg
+
+|  | 2Q'22 | 3Q'22 |
+| --- | --- | --- |
+| Cash and cash equivalents | 1544 | 1119 |
+| U.S. Treasury securities, at fair value | 474 | 1025 |
+| Investments | 2218 | 2195 |
+| Net accrued performance fees receivable2 | 1237 | 1154 |
+| Net clawback payable3 | -19 | -23 |
+| Debt | -2813 | -2810 |
+| Preferred stock4 | -554 | -554 |
+| Net Balance Sheet Value | 2087 | 2106 |
+| Net Balance Sheet Value per share | 3.48 | 3.51 |
+| Net Balance Sheet Value / AUM | 0.41% | 0.40% |
+| Adjusted Net Income Shares Outstanding | 601 | 600 |
+
+### ($ in millions) Three Months Ended  September 30, 2022
+
+|  | LTM 3Q'22 | LTM 3Q'22 |
+| --- | --- | --- |
+| Outflows attributable to Athene by type Maturity-driven, contractual based outflows7 | -2398 | -4683 |
+| Policyholder-driven withdrawals8 | -3405 | -12847 |
+| Outflows attributable to Athene | -5803 | -17530 |
+
+### ($ in millions, except share amounts)
+
+|  | 4Q'21 | 3Q'22 |
+| --- | --- | --- |
+| Assets Asset Management Cash and cash equivalents | 917 | 1119 |
+| Restricted cash and cash equivalents | 708 | 697 |
+| Investments | 11354 | 5854 |
+| Assets of consolidated variable interest entities Cash and cash equivalents | 463 | 155 |
+| Investments | 14737 | 3032 |
+| Other assets | 252 | 48 |
+| Due from related parties | 490 | 430 |
+| Goodwill | 117 | 264 |
+| Other assets | 1464 | 2291 |
+| Retirement Services Cash and cash equivalents | — | 9823 |
+| Restricted cash and cash equivalents | — | 1024 |
+| Investments | — | 162088 |
+| Investments in related parties | — | 23134 |
+| Assets of consolidated variable interest entities Cash and cash equivalents | — | 418 |
+| Investments | — | 15040 |
+| Other assets | — | 94 |
+| Reinsurance recoverable | — | 4356 |
+| Deferred acquisition costs, deferred sales inducements and value of business acquired | — | 5191 |
+| Goodwill | — | 4058 |
+| Other assets | — | 11224 |
+| Total Assets | 30502 | 250340 |
+
+### ($ in millions, except share amounts)
+
+|  | 4Q'21 | 3Q'22 |
+| --- | --- | --- |
+| Liabilities Asset Management Accounts payable, accrued expenses, and other liabilities | 2847 | 3032 |
+| Due to related parties | 1222 | 1023 |
+| Debt | 3134 | 2810 |
+| Liabilities of consolidated variable interest entities Debt, at fair value | 7943 | 1709 |
+| Notes payable | 2611 | 50 |
+| Other liabilities | 781 | 660 |
+| Retirement Services Interest sensitive contract liabilities | — | 166894 |
+| Future policy benefits | — | 54709 |
+| Debt | — | 3271 |
+| Payables for collateral on derivatives and securities to repurchase | — | 7015 |
+| Other liabilities | — | 5010 |
+| Liabilities of consolidated variable interest entities Other liabilities | — | 1271 |
+| Total Liabilities | 18538 | 247454 |
+| Redeemable non-controlling interests Redeemable non-controlling interests | 1770 | 1024 |
+| Equity Series A&B Preferred Stock | 554 | — |
+| Common Stock, $0.00001 par value, 90,000,000,000 shares authorized, 572,670,634 shares issued and outstanding as of September | 30 | 2022 |
+| Additional paid in capital | 2096 | 15256 |
+| Retained earnings (accumulated deficit) | 1144 | -2837 |
+| Accumulated other comprehensive income (loss) |  | -13758 |
+| Total Apollo Global Management Inc. Stockholders' Equity (Deficit) | 3789 | -1339 |
+| Non-controlling interests | 6405 | 3201 |
+| Total Equity | 10194 | 1862 |
+| Total Liabilities, Redeemable non-controlling interests and Equity | 30502 | 250340 |
+
+### ($ in millions)
+
+|  | 3Q'21 | 4Q'21 | 1Q'22 | 2Q'22 | 3Q'22 |
+| --- | --- | --- | --- | --- | --- |
+| YTD'21 YTD'22 GAAP Net income (loss) attributable to Apollo Global Management, Inc. Common Stockholders | 249 | 234 | -870 | -2051 | -876 |
+| $1,568 $(3,797) Preferred dividends | 9 | 10 | — | — | — |
+| 27 — Net income (loss) attributable to non-controlling interests | 373 | 368 | -660 | -951 | -298 |
+| 2,060 (1,909) GAAP Net income (loss) | 631 | 612 | -1530 | -3002 | -1174 |
+| $3,655 $(5,706) Income tax provision (benefit) | 101 | 96 | -608 | -487 | -185 |
+| 498 (1,280) GAAP Income (loss) before Income tax provision (benefit) | 732 | 708 | -2138 | -3489 | -1359 |
+| $4,153 $(6,986) Asset Management Adjustments: Equity-based profit sharing expense and other1 | 32 | 52 | 97 | 67 | 55 |
+| 94 219 Equity-based compensation | 20 | 25 | 56 | 37 | 46 |
+| 55 139 Preferred dividends |  | -10 | — | — | — |
+| (27) — Transaction-related charges2 |  | 8 |  | — |  |
+| 27 (6) Merger-related transaction and integration costs3 | 15 | 28 | 18 | 18 | 14 |
+| 39 50 (Gains) losses from changes in tax receivable agreement liability | — |  | 14 | — | — |
+| (2) 14 Net (income) loss attributable to non-controlling interests in consolidated entities | -113 | -118 | 651 | 903 | 328 |
+| (300) 1,882 Unrealized performance fees | 159 | -54 | -445 | 488 | 66 |
+| (1,411) 109 Unrealized profit sharing expense | -41 | 3 | 191 | -188 | -19 |
+| 646 (16) One-time equity-based compensation charges4 | — | 949 | — | — | — |
+| — — HoldCo interest and other financing costs | 42 | 42 | 39 | 35 | 29 |
+| 128 103 Unrealized principal investment (income) loss | 219 | -68 | 82 | -72 | 128 |
+| (154) 138 Unrealized net (gains) losses from investment activities and other | -152 | -1040 | -18 | -105 | -15 |
+| (1,391) (138) Retirement Services Adjustments: Investment (gains) losses, net of offsets | — | — | 2494 | 2682 | 1737 |
+| — 6,913 Non-operating change in insurance liabilities and related derivatives, net of offsets | — | — | 81 | 381 | -64 |
+| — 398 Integration, restructuring and other non-operating expenses | — | — | 34 | 33 | 37 |
+| — 104 Equity-based compensation expense | — | — | 12 | 13 | 15 |
+| — 40 Adjusted Segment Income | 903 | 517 | 1167 | 803 | 993 |
+| $1,857 $2,963 HoldCo interest and other financing costs | -42 | -42 | -39 | -35 | -29 |
+| (128) (103) Taxes and related payables | -108 | 8 | -213 | -202 | -163 |
+| (180) (578) Adjusted Net Income | 753 | 483 | 915 | 566 | 801 |
+| $1,549 $2,282 Normalization of alternative investment income to 11%, net of offsets | — | — | -143 | 128 | 79 |
+| — 64 Other notable items | — | — | -39 | -35 | -59 |
+| — (78) Tax impact of normalization and other notable items | — | — | 38 | -19 |  |
+| — 2 Adjusted Net Income - Normalized | 753 | 483 | 771 | 640 | 816 |
+
+---
+*Generated by edgar_download.py on 2026-03-03 19:34*

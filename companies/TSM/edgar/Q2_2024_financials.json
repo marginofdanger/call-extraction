@@ -1,0 +1,97 @@
+{
+  "ticker": "TSM",
+  "quarter": "Q2_2024",
+  "filing_date": "2024-07-18",
+  "accession": "0001046179-24-000083",
+  "tables": [
+    {
+      "headers": [
+        "",
+        "2Q24",
+        "1Q24",
+        "2Q23"
+      ],
+      "rows": [
+        [
+          "Beginning Balance",
+          "1698.20",
+          "1465.43",
+          "1385.23"
+        ],
+        [
+          "Cash from operating activities",
+          "377.67",
+          "436.31",
+          "167.25"
+        ],
+        [
+          "Capital expenditures",
+          "-205.68",
+          "-181.30",
+          "-250.53"
+        ],
+        [
+          "Cash dividends",
+          "-90.76",
+          "-77.80",
+          "-71.30"
+        ],
+        [
+          "Bonds payable",
+          "11.50",
+          "22.80",
+          "40.70"
+        ],
+        [
+          "Investments and others",
+          "8.20",
+          "32.76",
+          "5.37"
+        ],
+        [
+          "Ending Balance",
+          "1799.13",
+          "1698.20",
+          "1276.72"
+        ]
+      ],
+      "caption": "Unleash Innovation TSMC, Ltd© 72024 TSMC Property Cash Flows * Free cash flow  = Cash from operating activities  – Capital expenditures (In NT$ billions)",
+      "source": "workiva_hidden_text"
+    },
+    {
+      "headers": [
+        "",
+        "3Q24"
+      ],
+      "rows": [
+        [
+          "Guidance ◼ Revenue to be between US$22.4 billion and US$23.2 billion Based on our current business outlook, management expects: And, based on the exchange rate assumption of",
+          "1"
+        ],
+        [
+          "US dollar to",
+          "32.5"
+        ],
+        [
+          "NT dollars, management expects: ◼ Gross profit margin to be between",
+          "53.5%"
+        ],
+        [
+          "and",
+          "55.5%"
+        ],
+        [
+          "◼ Operating profit margin to be between",
+          "42.5%"
+        ],
+        [
+          "and",
+          "44.5%"
+        ]
+      ],
+      "caption": "Unleash Innovation TSMC, Ltd© 82024 TSMC Property",
+      "source": "workiva_hidden_text"
+    }
+  ],
+  "xbrl": {}
+}

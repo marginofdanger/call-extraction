@@ -1,0 +1,219 @@
+# Broadcom Inc. — FQ2_2022 Earnings Release
+
+**Ticker:** AVGO
+**Filing Date:** 2022-05-26
+**Accession:** 0001193125-22-160304
+**Source:** [SEC EDGAR](https://www.sec.gov/Archives/edgar/data/1730168/000119312522160304/0001193125-22-160304-index.htm)
+
+## Financial Tables (from Exhibits)
+
+### 
+
+|  |  | GAAP |  |  | Non-GAAP |  |
+| (Dollars in millions, except per share data) |  | Q2 22 |  |  | Q2 21 |  |  | Change |  |  | Q2 22 |  |  | Q2 21 |  |  | Change |  |
+| Net revenue |  |  | 8103 |  |  |  | 6610 |  |  |  | +23 | % |  |  | 8103 |  |  |  | 6610 |  |  |  | +23 | % |
+| Net income |  |  | 2590 |  |  |  | 1493 |  |  | + | 1097 |  |  |  | 4000 |  |  |  | 2980 |  |  | + | 1020 |  |
+| Earnings per common share - diluted |  |  | 5.93 |  |  |  | 3.30 |  |  | + | 2.63 |  |  |  | 9.07 |  |  |  | 6.62 |  |  | + | 2.45 |  |
+
+### 
+
+| Net revenue by segment (Dollars in millions) |  | Q2 22 |  |  | Q2 21 |  |  | Change |  |
+| Semiconductor solutions |  |  | 6229 |  |  |  | 77 | % |  |  | 4820 |  |  |  | 73 | % |  |  | +29 | % |
+| Infrastructure software |  |  | 1874 |  |  |  | 23 |  |  |  | 1790 |  |  |  | 27 |  |  |  | +5 | % |
+| Total net revenue |  |  | 8103 |  |  |  | 100 | % |  |  | 6610 |  |  |  | 100 | % |  |  |  |  |
+
+### 
+
+|  |  | Fiscal Quarter Ended |  |  | Two Fiscal Quarters Ended |  |
+|  |  | May 1, |  |  | January 30, |  |  | May 2, |  |  | May 1, |  |  | May 2, |  |
+|  |  | 2022 |  |  | 2022 |  |  | 2021 |  |  | 2022 |  |  | 2021 |  |
+| Net revenue |  |  | 8103 |  |  |  | 7706 |  |  |  | 6610 |  |  |  | 15809 |  |  |  | 13265 |  |
+| Cost of revenue: |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Cost of revenue |  |  | 1956 |  |  |  | 1925 |  |  |  | 1699 |  |  |  | 3881 |  |  |  | 3513 |  |
+| Amortization of acquisition-related intangible assets |  |  | 707 |  |  |  | 730 |  |  |  | 853 |  |  |  | 1437 |  |  |  | 1727 |  |
+| Restructuring charges |  |  | 1 |  |  |  | 2 |  |  |  | 1 |  |  |  | 3 |  |  |  | 16 |  |
+| Total cost of revenue |  |  | 2664 |  |  |  | 2657 |  |  |  | 2553 |  |  |  | 5321 |  |  |  | 5256 |  |
+| Gross margin |  |  | 5439 |  |  |  | 5049 |  |  |  | 4057 |  |  |  | 10488 |  |  |  | 8009 |  |
+| Research and development |  |  | 1261 |  |  |  | 1206 |  |  |  | 1238 |  |  |  | 2467 |  |  |  | 2449 |  |
+| Selling, general and administrative |  |  | 368 |  |  |  | 321 |  |  |  | 325 |  |  |  | 689 |  |  |  | 664 |  |
+| Amortization of acquisition-related intangible assets |  |  | 398 |  |  |  | 397 |  |  |  | 494 |  |  |  | 795 |  |  |  | 988 |  |
+| Restructuring, impairment and disposal charges |  |  | 18 |  |  |  | 17 |  |  |  | 25 |  |  |  | 35 |  |  |  | 96 |  |
+| Total operating expenses |  |  | 2045 |  |  |  | 1941 |  |  |  | 2082 |  |  |  | 3986 |  |  |  | 4197 |  |
+| Operating income |  |  | 3394 |  |  |  | 3108 |  |  |  | 1975 |  |  |  | 6502 |  |  |  | 3812 |  |
+| Interest expense |  |  | (518 | ) |  |  | (407 | ) |  |  | (466 | ) |  |  | (925 | ) |  |  | (1,036 | ) |
+| Other income (expense), net |  |  | (86 | ) |  |  | (14 | ) |  |  | (23 | ) |  |  | (100 | ) |  |  | 94 |  |
+| Income before income taxes |  |  | 2790 |  |  |  | 2687 |  |  |  | 1486 |  |  |  | 5477 |  |  |  | 2870 |  |
+| Provision for (benefit from) income taxes |  |  | 200 |  |  |  | 215 |  |  |  | (7 | ) |  |  | 415 |  |  |  | (1 | ) |
+| Net income |  |  | 2590 |  |  |  | 2472 |  |  |  | 1493 |  |  |  | 5062 |  |  |  | 2871 |  |
+| Dividends on preferred stock |  |  | (75 | ) |  |  | (74 | ) |  |  | (76 | ) |  |  | (149 | ) |  |  | (150 | ) |
+| Net income attributable to common stock |  |  | 2515 |  |  |  | 2398 |  |  |  | 1417 |  |  |  | 4913 |  |  |  | 2721 |  |
+| Net income per share attributable to common stock: |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Basic |  |  | 6.16 |  |  |  | 5.82 |  |  |  | 3.46 |  |  |  | 11.98 |  |  |  | 6.67 |  |
+| Diluted |  |  | 5.93 |  |  |  | 5.59 |  |  |  | 3.30 |  |  |  | 11.53 |  |  |  | 6.34 |  |
+| Weighted-average shares used in per share calculations: |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Basic |  |  | 408 |  |  |  | 412 |  |  |  | 409 |  |  |  | 410 |  |  |  | 408 |  |
+| Diluted |  |  | 424 |  |  |  | 429 |  |  |  | 429 |  |  |  | 426 |  |  |  | 429 |  |
+| Stock-based compensation expense: |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Cost of revenue |  |  | 36 |  |  |  | 36 |  |  |  | 38 |  |  |  | 72 |  |  |  | 70 |  |
+| Research and development |  |  | 261 |  |  |  | 268 |  |  |  | 307 |  |  |  | 529 |  |  |  | 635 |  |
+| Selling, general and administrative |  |  | 89 |  |  |  | 83 |  |  |  | 80 |  |  |  | 172 |  |  |  | 164 |  |
+| Total stock-based compensation expense |  |  | 386 |  |  |  | 387 |  |  |  | 425 |  |  |  | 773 |  |  |  | 869 |  |
+
+### 
+
+|  |  | Fiscal Quarter Ended |  |  | Two Fiscal Quarters Ended |  |
+|  |  | May 1, |  |  | January 30, |  |  | May 2, |  |  | May 1, |  |  | May 2, |  |
+|  |  | 2022 |  |  | 2022 |  |  | 2021 |  |  | 2022 |  |  | 2021 |  |
+| Gross margin on GAAP basis |  |  | 5439 |  |  |  | 5049 |  |  |  | 4057 |  |  |  | 10488 |  |  |  | 8009 |  |
+| Amortization of acquisition-related intangible assets |  |  | 707 |  |  |  | 730 |  |  |  | 853 |  |  |  | 1437 |  |  |  | 1727 |  |
+| Stock-based compensation expense |  |  | 36 |  |  |  | 36 |  |  |  | 38 |  |  |  | 72 |  |  |  | 70 |  |
+| Restructuring charges |  |  | 1 |  |  |  | 2 |  |  |  | 1 |  |  |  | 3 |  |  |  | 16 |  |
+| Acquisition-related costs |  |  | 3 |  |  |  | 4 |  |  |  | 3 |  |  |  | 7 |  |  |  | 6 |  |
+| Gross margin on non-GAAP basis |  |  | 6186 |  |  |  | 5821 |  |  |  | 4952 |  |  |  | 12007 |  |  |  | 9828 |  |
+| Research and development on GAAP basis |  |  | 1261 |  |  |  | 1206 |  |  |  | 1238 |  |  |  | 2467 |  |  |  | 2449 |  |
+| Stock-based compensation expense |  |  | 261 |  |  |  | 268 |  |  |  | 307 |  |  |  | 529 |  |  |  | 635 |  |
+| Acquisition-related costs |  |  | — |  |  |  | — |  |  |  | 1 |  |  |  | — |  |  |  | 2 |  |
+| Research and development on non-GAAP basis |  |  | 1000 |  |  |  | 938 |  |  |  | 930 |  |  |  | 1938 |  |  |  | 1812 |  |
+| Selling, general and administrative expense on GAAP basis |  |  | 368 |  |  |  | 321 |  |  |  | 325 |  |  |  | 689 |  |  |  | 664 |  |
+| Stock-based compensation expense |  |  | 89 |  |  |  | 83 |  |  |  | 80 |  |  |  | 172 |  |  |  | 164 |  |
+| Acquisition-related costs |  |  | 32 |  |  |  | 11 |  |  |  | 25 |  |  |  | 43 |  |  |  | 66 |  |
+| Selling, general and administrative expense on non-GAAP basis |  |  | 247 |  |  |  | 227 |  |  |  | 220 |  |  |  | 474 |  |  |  | 434 |  |
+| Total operating expenses on GAAP basis |  |  | 2045 |  |  |  | 1941 |  |  |  | 2082 |  |  |  | 3986 |  |  |  | 4197 |  |
+| Amortization of acquisition-related intangible assets |  |  | 398 |  |  |  | 397 |  |  |  | 494 |  |  |  | 795 |  |  |  | 988 |  |
+| Stock-based compensation expense |  |  | 350 |  |  |  | 351 |  |  |  | 387 |  |  |  | 701 |  |  |  | 799 |  |
+| Restructuring, impairment and disposal charges |  |  | 18 |  |  |  | 17 |  |  |  | 25 |  |  |  | 35 |  |  |  | 96 |  |
+| Acquisition-related costs |  |  | 32 |  |  |  | 11 |  |  |  | 26 |  |  |  | 43 |  |  |  | 68 |  |
+| Total operating expenses on non-GAAP basis |  |  | 1247 |  |  |  | 1165 |  |  |  | 1150 |  |  |  | 2412 |  |  |  | 2246 |  |
+| Operating income on GAAP basis |  |  | 3394 |  |  |  | 3108 |  |  |  | 1975 |  |  |  | 6502 |  |  |  | 3812 |  |
+| Amortization of acquisition-related intangible assets |  |  | 1105 |  |  |  | 1127 |  |  |  | 1347 |  |  |  | 2232 |  |  |  | 2715 |  |
+| Stock-based compensation expense |  |  | 386 |  |  |  | 387 |  |  |  | 425 |  |  |  | 773 |  |  |  | 869 |  |
+| Restructuring, impairment and disposal charges |  |  | 19 |  |  |  | 19 |  |  |  | 26 |  |  |  | 38 |  |  |  | 112 |  |
+| Acquisition-related costs |  |  | 35 |  |  |  | 15 |  |  |  | 29 |  |  |  | 50 |  |  |  | 74 |  |
+| Operating income on non-GAAP basis |  |  | 4939 |  |  |  | 4656 |  |  |  | 3802 |  |  |  | 9595 |  |  |  | 7582 |  |
+| Interest expense on GAAP basis |  |  | (518 | ) |  |  | (407 | ) |  |  | (466 | ) |  |  | (925 | ) |  |  | (1,036 | ) |
+| Loss on debt extinguishment |  |  | 112 |  |  |  | — |  |  |  | 50 |  |  |  | 112 |  |  |  | 222 |  |
+| Interest expense on non-GAAP basis |  |  | (406 | ) |  |  | (407 | ) |  |  | (416 | ) |  |  | (813 | ) |  |  | (814 | ) |
+| Other income (expense), net on GAAP basis |  |  | (86 | ) |  |  | (14 | ) |  |  | (23 | ) |  |  | (100 | ) |  |  | 94 |  |
+| (Gains) losses on investments |  |  | 99 |  |  |  | 16 |  |  |  | 25 |  |  |  | 115 |  |  |  | (94 | ) |
+| Other |  |  | — |  |  |  | — |  |  |  | (1 | ) |  |  | — |  |  |  | (3 | ) |
+| Other income (expense), net on non-GAAP basis |  |  | 13 |  |  |  | 2 |  |  |  | 1 |  |  |  | 15 |  |  |  | (3 | ) |
+| Provision for (benefit from) income taxes on GAAP basis |  |  | 200 |  |  |  | 215 |  |  |  | (7 | ) |  |  | 415 |  |  |  | (1 | ) |
+| Non-GAAP tax reconciling adjustments |  |  | 346 |  |  |  | 295 |  |  |  | 414 |  |  |  | 641 |  |  |  | 813 |  |
+| Provision for income taxes on non-GAAP basis |  |  | 546 |  |  |  | 510 |  |  |  | 407 |  |  |  | 1056 |  |  |  | 812 |  |
+| Net income on GAAP basis |  |  | 2590 |  |  |  | 2472 |  |  |  | 1493 |  |  |  | 5062 |  |  |  | 2871 |  |
+| Amortization of acquisition-related intangible assets |  |  | 1105 |  |  |  | 1127 |  |  |  | 1347 |  |  |  | 2232 |  |  |  | 2715 |  |
+| Stock-based compensation expense |  |  | 386 |  |  |  | 387 |  |  |  | 425 |  |  |  | 773 |  |  |  | 869 |  |
+| Restructuring, impairment and disposal charges |  |  | 19 |  |  |  | 19 |  |  |  | 26 |  |  |  | 38 |  |  |  | 112 |  |
+| Acquisition-related costs |  |  | 35 |  |  |  | 15 |  |  |  | 28 |  |  |  | 50 |  |  |  | 71 |  |
+| Loss on debt extinguishment |  |  | 112 |  |  |  | — |  |  |  | 50 |  |  |  | 112 |  |  |  | 222 |  |
+| (Gains) losses on investments |  |  | 99 |  |  |  | 16 |  |  |  | 25 |  |  |  | 115 |  |  |  | (94 | ) |
+| Non-GAAP tax reconciling adjustments |  |  | (346 | ) |  |  | (295 | ) |  |  | (414 | ) |  |  | (641 | ) |  |  | (813 | ) |
+| Net income on non-GAAP basis |  |  | 4000 |  |  |  | 3741 |  |  |  | 2980 |  |  |  | 7741 |  |  |  | 5953 |  |
+| Weighted-average shares used in per share calculations - diluted on GAAP basis |  |  | 424 |  |  |  | 429 |  |  |  | 429 |  |  |  | 426 |  |  |  | 429 |  |
+| Non-GAAP adjustment |  |  | 17 |  |  |  | 17 |  |  |  | 21 |  |  |  | 17 |  |  |  | 21 |  |
+| Weighted-average shares used in per share calculations - diluted on non-GAAP basis |  |  | 441 |  |  |  | 446 |  |  |  | 450 |  |  |  | 443 |  |  |  | 450 |  |
+| Net income on non-GAAP basis |  |  | 4000 |  |  |  | 3741 |  |  |  | 2980 |  |  |  | 7741 |  |  |  | 5953 |  |
+| Interest expense on non-GAAP basis |  |  | 406 |  |  |  | 407 |  |  |  | 416 |  |  |  | 813 |  |  |  | 814 |  |
+| Provision for income taxes on non-GAAP basis |  |  | 546 |  |  |  | 510 |  |  |  | 407 |  |  |  | 1056 |  |  |  | 812 |  |
+| Depreciation |  |  | 135 |  |  |  | 136 |  |  |  | 133 |  |  |  | 271 |  |  |  | 271 |  |
+| Amortization of purchased intangibles and right-of-use assets |  |  | 24 |  |  |  | 24 |  |  |  | 24 |  |  |  | 48 |  |  |  | 51 |  |
+| Adjusted EBITDA |  |  | 5111 |  |  |  | 4818 |  |  |  | 3960 |  |  |  | 9929 |  |  |  | 7901 |  |
+| Net cash provided by operating activities |  |  | 4243 |  |  |  | 3486 |  |  |  | 3569 |  |  |  | 7729 |  |  |  | 6682 |  |
+| Purchases of property, plant and equipment |  |  | (85 | ) |  |  | (101 | ) |  |  | (126 | ) |  |  | (186 | ) |  |  | (240 | ) |
+| Free cash flow |  |  | 4158 |  |  |  | 3385 |  |  |  | 3443 |  |  |  | 7543 |  |  |  | 6442 |  |
+
+### 
+
+|  |  | Fiscal Quarter Ending |  |
+|  |  | July 31, 2022 |  |
+| Expected average diluted share count (2) : |  |  |  |  |
+| Weighted-average shares used in per share calculation - diluted on GAAP basis |  |  | 421 |  |
+| Non-GAAP adjustment |  |  | 18 |  |
+| Weighted-average shares used in per share calculation - diluted on non-GAAP basis |  |  | 439 |  |
+
+### 
+
+|  |  | May 1, 2022 |  |  | October 31, 2021 |  |
+| ASSETS |  |  |  |  |  |  |  |  |
+| Current assets: |  |  |  |  |  |  |  |  |
+| Cash and cash equivalents |  |  | 9005 |  |  |  | 12163 |  |
+| Trade accounts receivable, net |  |  | 3083 |  |  |  | 2071 |  |
+| Inventory |  |  | 1668 |  |  |  | 1297 |  |
+| Other current assets |  |  | 1054 |  |  |  | 1055 |  |
+| Total current assets |  |  | 14810 |  |  |  | 16586 |  |
+| Long-term assets: |  |  |  |  |  |  |  |  |
+| Property, plant and equipment, net |  |  | 2262 |  |  |  | 2348 |  |
+| Goodwill |  |  | 43603 |  |  |  | 43450 |  |
+| Intangible assets, net |  |  | 9241 |  |  |  | 11374 |  |
+| Other long-term assets |  |  | 1803 |  |  |  | 1812 |  |
+| Total assets |  |  | 71719 |  |  |  | 75570 |  |
+| LIABILITIES AND EQUITY |  |  |  |  |  |  |  |  |
+| Current liabilities: |  |  |  |  |  |  |  |  |
+| Accounts payable |  |  | 1069 |  |  |  | 1086 |  |
+| Employee compensation and benefits |  |  | 751 |  |  |  | 1066 |  |
+| Current portion of long-term debt |  |  | 302 |  |  |  | 290 |  |
+| Other current liabilities |  |  | 4788 |  |  |  | 3839 |  |
+| Total current liabilities |  |  | 6910 |  |  |  | 6281 |  |
+| Long-term liabilities: |  |  |  |  |  |  |  |  |
+| Long-term debt |  |  | 39164 |  |  |  | 39440 |  |
+| Other long-term liabilities |  |  | 4655 |  |  |  | 4860 |  |
+| Total liabilities |  |  | 50729 |  |  |  | 50581 |  |
+| Preferred stock dividend obligation |  |  | 27 |  |  |  | 27 |  |
+| Stockholders’ equity: |  |  |  |  |  |  |  |  |
+| Preferred stock |  |  | — |  |  |  | — |  |
+| Common stock |  |  | — |  |  |  | — |  |
+| Additional paid-in capital |  |  | 21078 |  |  |  | 24330 |  |
+| Retained earnings |  |  | — |  |  |  | 748 |  |
+| Accumulated other comprehensive loss |  |  | (115 | ) |  |  | (116 | ) |
+| Total stockholders’ equity |  |  | 20963 |  |  |  | 24962 |  |
+| Total liabilities and equity |  |  | 71719 |  |  |  | 75570 |  |
+
+### 
+
+|  |  | Fiscal Quarter Ended |  |  | Two Fiscal Quarters Ended |  |
+|  |  | May 1, |  |  | January 30, |  |  | May 2, |  |  | May 1, |  |  | May 2, |  |
+|  |  | 2022 |  |  | 2022 |  |  | 2021 |  |  | 2022 |  |  | 2021 |  |
+| Cash flows from operating activities: |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Net income |  |  | 2590 |  |  |  | 2472 |  |  |  | 1493 |  |  |  | 5062 |  |  |  | 2871 |  |
+| Adjustments to reconcile net income to net cash provided by operating
+activities: |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Amortization of intangible and right-of-use assets |  |  | 1129 |  |  |  | 1151 |  |  |  | 1371 |  |  |  | 2280 |  |  |  | 2766 |  |
+| Depreciation |  |  | 135 |  |  |  | 136 |  |  |  | 133 |  |  |  | 271 |  |  |  | 271 |  |
+| Stock-based compensation |  |  | 386 |  |  |  | 387 |  |  |  | 425 |  |  |  | 773 |  |  |  | 869 |  |
+| Deferred taxes and other non-cash taxes |  |  | — |  |  |  | 70 |  |  |  | (177 | ) |  |  | 70 |  |  |  | (326 | ) |
+| Loss on debt extinguishment |  |  | 100 |  |  |  | — |  |  |  | 26 |  |  |  | 100 |  |  |  | 198 |  |
+| (Gains) losses on investments |  |  | 99 |  |  |  | 16 |  |  |  | 25 |  |  |  | 115 |  |  |  | (94 | ) |
+| Non-cash interest expense |  |  | 33 |  |  |  | 32 |  |  |  | 21 |  |  |  | 65 |  |  |  | 43 |  |
+| Other |  |  | 11 |  |  |  | (1 | ) |  |  | 9 |  |  |  | 10 |  |  |  | 19 |  |
+| Changes in assets and liabilities, net of acquisitions and disposals: |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Trade accounts receivable, net |  |  | (536 | ) |  |  | (468 | ) |  |  | 106 |  |  |  | (1,004 | ) |  |  | (141 | ) |
+| Inventory |  |  | (147 | ) |  |  | (223 | ) |  |  | (52 | ) |  |  | (370 | ) |  |  | (1 | ) |
+| Accounts payable |  |  | (31 | ) |  |  | — |  |  |  | (58 | ) |  |  | (31 | ) |  |  | (14 | ) |
+| Employee compensation and benefits |  |  | 215 |  |  |  | (528 | ) |  |  | 135 |  |  |  | (313 | ) |  |  | (240 | ) |
+| Other current assets and current liabilities |  |  | 287 |  |  |  | 521 |  |  |  | 182 |  |  |  | 808 |  |  |  | 590 |  |
+| Other long-term assets and long-term liabilities |  |  | (28 | ) |  |  | (79 | ) |  |  | (70 | ) |  |  | (107 | ) |  |  | (129 | ) |
+| Net cash provided by operating activities |  |  | 4243 |  |  |  | 3486 |  |  |  | 3569 |  |  |  | 7729 |  |  |  | 6682 |  |
+| Cash flows from investing activities: |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Acquisitions of businesses, net of cash acquired |  |  | (225 | ) |  |  | (9 | ) |  |  | — |  |  |  | (234 | ) |  |  | (8 | ) |
+| Purchases of property, plant and equipment |  |  | (85 | ) |  |  | (101 | ) |  |  | (126 | ) |  |  | (186 | ) |  |  | (240 | ) |
+| Purchases of investments |  |  | — |  |  |  | (200 | ) |  |  | — |  |  |  | (200 | ) |  |  | — |  |
+| Other |  |  | — |  |  |  | 1 |  |  |  | — |  |  |  | 1 |  |  |  | — |  |
+| Net cash used in investing activities |  |  | (310 | ) |  |  | (309 | ) |  |  | (126 | ) |  |  | (619 | ) |  |  | (248 | ) |
+| Cash flows from financing activities: |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Proceeds from long-term borrowings |  |  | 1935 |  |  |  | — |  |  |  | — |  |  |  | 1935 |  |  |  | 9904 |  |
+| Payments on debt obligations |  |  | (2,097 | ) |  |  | (255 | ) |  |  | (1,533 | ) |  |  | (2,352 | ) |  |  | (10,733 | ) |
+| Payments of dividends |  |  | (1,750 | ) |  |  | (1,764 | ) |  |  | (1,552 | ) |  |  | (3,514 | ) |  |  | (3,095 | ) |
+| Repurchases of common stock - repurchase program |  |  | (2,776 | ) |  |  | (2,724 | ) |  |  | — |  |  |  | (5,500 | ) |  |  | — |  |
+| Shares repurchased for tax withholdings on vesting of equity awards |  |  | (514 | ) |  |  | (375 | ) |  |  | (461 | ) |  |  | (889 | ) |  |  | (686 | ) |
+| Issuance of common stock |  |  | 59 |  |  |  | 1 |  |  |  | 71 |  |  |  | 60 |  |  |  | 106 |  |
+| Other |  |  | (4 | ) |  |  | (4 | ) |  |  | (2 | ) |  |  | (8 | ) |  |  | (30 | ) |
+| Net cash used in financing activities |  |  | (5,147 | ) |  |  | (5,121 | ) |  |  | (3,477 | ) |  |  | (10,268 | ) |  |  | (4,534 | ) |
+| Net change in cash and cash equivalents |  |  | (1,214 | ) |  |  | (1,944 | ) |  |  | (34 | ) |  |  | (3,158 | ) |  |  | 1900 |  |
+| Cash and cash equivalents at beginning of period |  |  | 10219 |  |  |  | 12163 |  |  |  | 9552 |  |  |  | 12163 |  |  |  | 7618 |  |
+| Cash and cash equivalents at end of period |  |  | 9005 |  |  |  | 10219 |  |  |  | 9518 |  |  |  | 9005 |  |  |  | 9518 |  |
+| Supplemental disclosure of cash flow information: |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Cash paid for interest |  |  | 459 |  |  |  | 240 |  |  |  | 369 |  |  |  | 699 |  |  |  | 741 |  |
+| Cash paid for income taxes |  |  | 240 |  |  |  | 186 |  |  |  | 293 |  |  |  | 426 |  |  |  | 440 |  |
+
+---
+*Generated by edgar_download.py on 2026-03-03 18:30*

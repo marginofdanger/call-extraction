@@ -1,0 +1,209 @@
+# TransDigm Group Incorporated — Q1_FY2026 Earnings Release
+
+**Ticker:** TDG
+**Filing Date:** 2026-02-03
+**Accession:** 0001260221-26-000015
+**Source:** [SEC EDGAR](https://www.sec.gov/Archives/edgar/data/1260221/000126022126000015/0001260221-26-000015-index.htm)
+
+## Financial Tables (from Exhibits)
+
+### 
+
+| TRANSDIGM GROUP INCORPORATED |  |  |
+| CONSOLIDATED STATEMENTS OF INCOME |  |  |
+| FOR THE THIRTEEN WEEK PERIODS ENDED |  | Table 1 |
+| DECEMBER 27, 2025 AND DECEMBER 28, 2024 |  |
+| (Amounts in millions, except per share amounts) |  |  |
+| (Unaudited) |  |  |  |  |  |  |  |  |
+|  |  |  |  | Thirteen Week Periods Ended |
+|  |  |  |  |  |  | December 27, 2025 |  | December 28, 2024 |
+| NET SALES |  |  |  |  |  |  | 2285 |  |  |  | 2006 |  |
+| COST OF SALES |  |  |  |  |  | 933 |  |  | 771 |  |
+| GROSS PROFIT |  |  |  |  |  | 1352 |  |  | 1235 |  |
+| SELLING AND ADMINISTRATIVE EXPENSES |  |  |  |  |  | 254 |  |  | 211 |  |
+| AMORTIZATION OF INTANGIBLE ASSETS |  |  |  |  |  | 56 |  |  | 50 |  |
+| INCOME FROM OPERATIONS |  |  |  |  |  | 1042 |  |  | 974 |  |
+| INTEREST EXPENSE—NET |  |  |  |  |  | 475 |  |  | 378 |  |
+| OTHER INCOME |  |  |  |  |  |  |  |  | -23 |  |
+| INCOME FROM CONTINUING OPERATIONS BEFORE INCOME TAXES |  |  |  |  |  | 572 |  |  | 619 |  |
+| INCOME TAX PROVISION |  |  |  |  |  | 127 |  |  | 126 |  |
+| NET INCOME |  |  |  |  |  | 445 |  |  | 493 |  |
+| LESS: NET INCOME ATTRIBUTABLE TO NONCONTROLLING INTERESTS |  |  |  |  |  | — |  |  | — |  |
+| NET INCOME ATTRIBUTABLE TO TD GROUP |  |  |  |  |  |  | 445 |  |  |  | 493 |  |
+| NET INCOME APPLICABLE TO TD GROUP COMMON STOCKHOLDERS |  |  |  |  |  |  | 386 |  |  |  | 444 |  |
+| Earnings per share attributable to TD Group common stockholders: |  |  |  |  |  |  |  |  |
+| Earnings per share—Basic and diluted |  |  |  |  |  |  | 6.62 |  |  |  | 7.62 |  |
+| Weighted-average shares outstanding: |  |  |  |  |  |  |  |  |
+| Basic and diluted |  |  |  |  |  | 58.2 |  |  | 58.3 |  |
+
+### 
+
+| TRANSDIGM GROUP INCORPORATED |  |  |
+| SUPPLEMENTAL INFORMATION - RECONCILIATION OF |  |  |
+| EBITDA, EBITDA AS DEFINED TO NET INCOME |  |  |
+| FOR THE THIRTEEN WEEK PERIODS ENDED |  | Table 2 |
+| DECEMBER 27, 2025 AND DECEMBER 28, 2024 |  |
+| (Amounts in millions, except per share amounts) |  |  |
+| (Unaudited) |  |  |  |  |  |  |  |  |
+|  |  |  |  | Thirteen Week Periods Ended |
+|  |  |  |  |  |  | December 27, 2025 |  | December 28, 2024 |
+| Net Income |  |  |  |  |  |  | 445 |  |  |  | 493 |  |
+| Adjustments: |  |  |  |  |  |  |  |  |
+| Depreciation and amortization expense |  |  |  |  |  | 100 |  |  | 90 |  |
+| Interest expense-net |  |  |  |  |  | 475 |  |  | 378 |  |
+| Income tax provision |  |  |  |  |  | 127 |  |  | 126 |  |
+| EBITDA |  |  |  |  |  | 1147 |  |  | 1087 |  |
+| Adjustments: |  |  |  |  |  |  |  |  |
+| Acquisition transaction and integration-related expenses |  |  |  |  |  | 12 |  |  | 13 |  |
+| Non-cash stock and deferred compensation expense |  |  |  |  |  | 27 |  |  | 25 |  |
+| Other, net |  |  |  |  |  | 11 |  |  | -64 |  |
+| Gross Adjustments to EBITDA |  |  |  |  |  | 50 |  |  | -26 |  |
+| EBITDA As Defined |  |  |  |  |  |  | 1197 |  |  |  | 1061 |  |
+| EBITDA As Defined Margin |  |  |  |  |  | 52.4 | % |  | 52.9 | % |
+
+### 
+
+|  |  | Represents costs incurred to integrate acquired businesses into our operations; facility relocation costs and other acquisition-related costs; transaction and valuation-related costs for acquisitions comprising deal fees, legal, financial and tax due diligence expenses; and amortization expense of inventory step-up recorded in connection with the purchase accounting of acquired businesses. |
+|  |  | Represents the compensation expense recognized under our stock option plans and deferred compensation plans. |
+|  |  | Primarily represents foreign currency transaction gains or losses, payroll withholding taxes related to dividend equivalent payments and stock option exercises, non-service related pension costs, deferred compensation payments and other miscellaneous income or expense, such as gain on sale of business. |
+|  |  | The EBITDA As Defined Margin represents the amount of EBITDA As Defined as a percentage of net sales. |
+
+### 
+
+| TRANSDIGM GROUP INCORPORATED |  |  |
+| SUPPLEMENTAL INFORMATION - RECONCILIATION OF REPORTED |  |  |
+| EARNINGS PER SHARE TO ADJUSTED EARNINGS PER SHARE |  |  |
+| FOR THE THIRTEEN WEEK PERIODS ENDED |  | Table 3 |
+| DECEMBER 27, 2025 AND DECEMBER 28, 2024 |  |
+| (Amounts in millions, except per share amounts) |  |  |
+| (Unaudited) |  |  |  |  |  |  |  |  |
+|  |  |  |  | Thirteen Week Periods Ended |
+|  |  |  |  |  |  | December 27, 2025 |  | December 28, 2024 |
+| Reported Earnings Per Share |  |  |  |  |  |  |  |  |
+| Net income |  |  |  |  |  |  | 445 |  |  |  | 493 |  |
+| Less: Net income attributable to noncontrolling interests |  |  |  |  |  | — |  |  | — |  |
+| Net income attributable to TD Group |  |  |  |  |  | 445 |  |  | 493 |  |
+| Less: Dividends paid on participating securities |  |  |  |  |  | -59 |  |  | -49 |  |
+| Net income applicable to TD Group common stockholders—basic and diluted |  |  |  |  |  |  | 386 |  |  |  | 444 |  |
+| Weighted-average shares outstanding under the two-class method |  |  |  |  |  |  |  |  |
+| Weighted-average common shares outstanding |  |  |  |  |  | 56.4 |  |  | 56.2 |  |
+| Vested options deemed participating securities |  |  |  |  |  | 1.8 |  |  | 2.1 |  |
+| Total shares for basic and diluted earnings per share |  |  |  |  |  | 58.2 |  |  | 58.3 |  |
+| Earnings per share—basic and diluted |  |  |  |  |  |  | 6.62 |  |  |  | 7.62 |  |
+| Adjusted Earnings Per Share |  |  |  |  |  |  |  |  |
+| Net income |  |  |  |  |  |  | 445 |  |  |  | 493 |  |
+| Gross Adjustments to EBITDA |  |  |  |  |  | 50 |  |  | -26 |  |
+| Purchase Accounting Backlog Amortization |  |  |  |  |  | 8 |  |  | 6 |  |
+| Tax adjustment |  |  |  |  |  | -24 |  |  | -17 |  |
+| Adjusted net income |  |  |  |  |  |  | 479 |  |  |  | 456 |  |
+| Adjusted diluted earnings per share under the two-class method |  |  |  |  |  |  | 8.23 |  |  |  | 7.83 |  |
+| Diluted Earnings Per Share to Adjusted Earnings Per Share |  |  |  |  |  |  |  |  |
+| Diluted earnings per share from net income attributable to TD Group |  |  |  |  |  |  | 6.62 |  |  |  | 7.62 |  |
+| Adjustments to diluted earnings per share: |  |  |  |  |  |  |  |  |
+| Inclusion of the dividend equivalent payments |  |  |  |  |  | 1.02 |  |  | 0.83 |  |
+| Acquisition transaction and integration-related expenses |  |  |  |  |  | 0.25 |  |  | 0.26 |  |
+| Non-cash stock and deferred compensation expense |  |  |  |  |  | 0.35 |  |  | 0.33 |  |
+| Tax adjustment on income from continuing operations before taxes |  |  |  |  |  | -0.15 |  |  | -0.37 |  |
+| Other, net |  |  |  |  |  | 0.14 |  |  | -0.84 |  |
+| Adjusted earnings per share |  |  |  |  |  |  | 8.23 |  |  |  | 7.83 |  |
+
+### 
+
+| TRANSDIGM GROUP INCORPORATED |  |  |
+| SUPPLEMENTAL INFORMATION - RECONCILIATION OF NET CASH |  |  |
+| PROVIDED BY OPERATING ACTIVITIES TO EBITDA, EBITDA AS DEFINED |  |  |
+| FOR THE THIRTEEN WEEK PERIODS ENDED |  | Table 4 |
+| DECEMBER 27, 2025 AND DECEMBER 28, 2024 |  |
+| (Amounts in millions) |  |  |
+| (Unaudited) |  |  |  |  |
+|  |  | Thirteen Week Periods Ended |
+|  |  | December 27, 2025 |  | December 28, 2024 |
+| Net cash provided by operating activities |  |  | 832 |  |  |  | 752 |  |
+| Adjustments: |  |  |  |  |
+| Changes in assets and liabilities, net of effects from acquisitions and sales of businesses |  | -250 |  |  | -156 |  |
+| Interest expense-net |  | 464 |  |  | 369 |  |
+| Income tax provision-current |  | 128 |  |  | 128 |  |
+| Gain on sale of businesses, net |  | — |  |  | 19 |  |
+| Non-cash stock and deferred compensation expense |  | -27 |  |  | -25 |  |
+| EBITDA |  | 1147 |  |  | 1087 |  |
+| Adjustments: |  |  |  |  |
+| Acquisition transaction and integration-related expenses |  | 12 |  |  | 13 |  |
+| Non-cash stock and deferred compensation expense |  | 27 |  |  | 25 |  |
+| Other, net |  | 11 |  |  | -64 |  |
+| EBITDA As Defined |  |  | 1197 |  |  |  | 1061 |  |
+
+### 
+
+|  |  | Represents interest expense, net of interest income, excluding the amortization of debt issuance costs and discount on debt. |
+|  |  | Represents the compensation expense recognized under our stock option plans and deferred compensation plans. |
+|  |  | Represents costs incurred to integrate acquired businesses into our operations; facility relocation costs and other acquisition-related costs; transaction and valuation-related costs for acquisitions comprising deal fees, legal, financial and tax due diligence expenses; and amortization expense of inventory step-up recorded in connection with the purchase accounting of acquired businesses. |
+|  |  | Primarily represents foreign currency transaction gains or losses, payroll withholding taxes related to dividend equivalent payments and stock option exercises, non-service related pension costs, deferred compensation payments and other miscellaneous income or expense, such as gain on sale of business. |
+
+### 
+
+| TRANSDIGM GROUP INCORPORATED |  |  |
+| SUPPLEMENTAL INFORMATION - BALANCE SHEET DATA |  | Table 5 |
+| (Amounts in millions) |  |
+| (Unaudited) |  |  |  |  |
+|  |  | December 27, 2025 |  | September 30, 2025 |
+| Cash and cash equivalents |  |  | 2528 |  |  |  | 2808 |  |
+| Trade accounts receivable—Net |  | 1564 |  |  | 1617 |  |
+| Inventories—Net |  | 2373 |  |  | 2095 |  |
+| Current portion of long-term debt |  | 125 |  |  | 124 |  |
+| Short-term borrowings—trade receivable securitization facility |  | 724 |  |  | 724 |  |
+| Accounts payable |  | 385 |  |  | 368 |  |
+| Accrued and other current liabilities |  | 1301 |  |  | 966 |  |
+| Long-term debt |  | 29197 |  |  | 29167 |  |
+| Total TD Group stockholders’ deficit |  | -9270 |  |  | -9686 |  |
+
+### 
+
+| TRANSDIGM GROUP INCORPORATED |
+| SUPPLEMENTAL INFORMATION - RECONCILIATION OF EBITDA, |
+| EBITDA AS DEFINED TO NET INCOME AND REPORTED EARNINGS PER |
+| SHARE TO ADJUSTED EARNINGS PER SHARE GUIDANCE MIDPOINT |
+| FOR THE FISCAL YEAR ENDING SEPTEMBER 30, 2026 | Table 6 |
+| (Amounts in millions, except per share amounts) |
+| (Unaudited) |  |  |
+|  |  | GUIDANCE MIDPOINT |
+|  |  | Fiscal Year Ended September 30, 2026 |
+| Net Income |  |  | 2008 |  |
+| Adjustments: |  |  |
+| Depreciation and amortization expense |  | 415 |  |
+| Interest expense-net |  | 1900 |  |
+| Income tax provision |  | 619 |  |
+| EBITDA |  | 4942 |  |
+| Adjustments: |  |  |
+| Acquisition transaction and integration-related expenses |  | 54 |  |
+| Non-cash stock and deferred compensation expense |  | 190 |  |
+| Other, net |  | 24 |  |
+| Gross Adjustments to EBITDA |  | 268 |  |
+| EBITDA As Defined |  |  | 5210 |  |
+| EBITDA As Defined Margin |  | 52.4 | % |
+| Earnings per share |  |  | 33.43 |  |
+| Adjustments to earnings per share: |  |  |
+| Inclusion of the dividend equivalent payments |  | 1.02 |  |
+| Acquisition transaction and integration-related expenses |  | 1.17 |  |
+| Non-cash stock and deferred compensation expense |  | 2.50 |  |
+| Other, net |  | 0.26 |  |
+| Adjusted earnings per share |  |  | 38.38 |  |
+| Weighted-average shares outstanding |  | 58.3 |  |
+
+### 
+
+| TRANSDIGM GROUP INCORPORATED |  |  |
+| SUPPLEMENTAL INFORMATION |
+| CURRENT FISCAL YEAR 2026 GUIDANCE VERSUS |
+| PRIOR FISCAL YEAR 2026 GUIDANCE |  | Table 7 |
+| (Amounts in millions, except per share amounts) |  |
+| (Unaudited) |  |  |  |  |  |  |
+|  |  | Current Fiscal Year 2026 Guidance Issued February 3, 2026 |  | Prior Fiscal Year 2026 Guidance Issued November 12, 2025 |  | Change at Midpoint |
+| Net Sales |  | 9,845 to 10,035 |  | 9,750 to 9,950 |  | 90 |
+| GAAP Net Income |  | 1,952 to 2,064 |  | 1,906 to 2,026 |  | 42 |
+| GAAP Earnings Per Share |  | 32.47 to 34.39 |  | 31.55 to 33.59 |  | 0.86 |
+| EBITDA As Defined |  | 5,140 to 5,280 |  | 5,075 to 5,225 |  | 60 |
+| Adjusted Earnings Per Share |  | 37.42 to 39.34 |  | 36.49 to 38.53 |  | 0.87 |
+| Weighted-Average Shares Outstanding |  | 58.3 |  | 58.5 | -0.2 |
+
+---
+*Generated by edgar_download.py on 2026-03-03 20:16*

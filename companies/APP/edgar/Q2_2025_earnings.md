@@ -1,0 +1,177 @@
+# AppLovin Corporation — Q2_2025 Earnings Release
+
+**Ticker:** APP
+**Filing Date:** 
+**Accession:** 0001751008-25-000069
+**Source:** [SEC EDGAR](https://www.sec.gov/Archives/edgar/data/1751008/000175100825000069/0001751008-25-000069-index.htm)
+
+## Key Metrics (XBRL)
+
+| Metric | Value | Units | Source |
+|--------|------:|-------|--------|
+| Cash & Equivalents | $1.19B | USD | 10-Q |
+| Comprehensive Income | $887.6M | USD | 10-Q |
+| EPS (Basic) | 2 | USD/shares | 10-Q |
+| EPS (Diluted) | 2 | USD/shares | 10-Q |
+| Income Tax Expense | $112.1M | USD | 10-Q |
+| Net Income | $819.5M | USD | 10-Q |
+| Net Income to Common | $819.3M | USD | 10-Q |
+| Operating Income | $957.7M | USD | 10-Q |
+| Revenue | $1.26B | USD | 10-Q |
+| Shares Outstanding | 338.8M | shares | 10-Q |
+| Total Assets | $5.96B | USD | 10-Q |
+| Total Equity | $1.17B | USD | 10-Q |
+| Total Liabilities | $4.79B | USD | 10-Q |
+
+## Financial Tables (from Exhibits)
+
+### 
+
+| (In millions, except percentages) | Quarter Ended June 30, |  |  |  | Six Months Ended June 30, |  |  |
+|  | 2025 |  | 2024 |  | % Change |  | 2025 |  | 2024 |  | % Change |
+| Revenue | 1259 |  | 711 |  | 77 | % |  | 2418 |  | 1389 |  | 74 | % |
+| Net Income | 820 |  | 310 |  | 164 | % |  | 1396 |  | 546 |  | 156 | % |
+| Net Income from Continuing Operations | 772 |  | 301 |  | 156 | % |  | 1495 |  | 560 |  | 167 | % |
+| Adjusted EBITDA | 1018 |  | 511 |  | 99 | % |  | 1956 |  | 995 |  | 97 | % |
+
+### 
+
+| (In millions, except percentages) | 3Q25 |
+|  | Low |  | High |
+| Revenue | 1320 |  | 1340 |
+| Adjusted EBITDA | 1070 |  | 1090 |
+| Adjusted EBITDA margin | 81% |  | 81% |
+
+### 
+
+|  | June 30, 2025 |  | December 31, 2024 |
+| Assets |  |  |  |
+| Current assets: |  |  |  |
+| Cash and cash equivalents |  | 1192608 |  |  |  | 697030 |  |
+| Accounts receivable, net | 1581679 |  |  | 1283335 |  |
+| Prepaid expenses and other current assets | 218402 |  |  | 140470 |  |
+| Current assets of discontinued operations | — |  |  | 191355 |  |
+| Total current assets | 2992689 |  |  | 2312190 |  |
+| Property and equipment, net | 129600 |  |  | 159970 |  |
+| Goodwill | 1539301 |  |  | 1457685 |  |
+| Intangible assets, net | 448179 |  |  | 472851 |  |
+| Other non-current assets | 849728 |  |  | 529314 |  |
+| Non-current assets of discontinued operations | — |  |  | 937249 |  |
+| Total assets |  | 5959497 |  |  |  | 5869259 |  |
+| Liabilities and Stockholders’ Equity |  |  |  |
+| Current liabilities: |  |  |  |
+| Accounts payable |  | 553692 |  |  |  | 504302 |  |
+| Accrued and other current liabilities | 495218 |  |  | 379004 |  |
+| Deferred revenue | 44975 |  |  | 37053 |  |
+| Current liabilities of discontinued operations | — |  |  | 137113 |  |
+| Total current liabilities | 1093885 |  |  | 1057472 |  |
+| Long-term debt | 3510958 |  |  | 3508983 |  |
+| Other non-current liabilities | 187527 |  |  | 211572 |  |
+| Non-current liabilities of discontinued operations | — |  |  | 1414 |  |
+| Total liabilities | 4792370 |  |  | 4779441 |  |
+| Stockholders’ equity: |  |  |  |
+| Preferred stock, 0.00003 par value—100,000,000 shares authorized, no shares issued and outstanding as of June 30, 2025 and December 31, 2024 | — |  |  | — |  |
+| Class A, Class B, and Class C Common Stock, 0.00003 par value—1,850,000,000 (Class A 1,500,000,000, Class B 200,000,000, Class C 150,000,000) shares authorized, 338,782,503 (Class A 308,168,962, Class B 30,613,541, Class C nil) and 340,041,739 (Class A 309,353,198, Class B 30,688,541, Class C nil) shares issued and outstanding as of June 30, 2025 and December 31, 2024, respectively | 11 |  |  | 11 |  |
+| Additional paid-in capital | 448899 |  |  | 593699 |  |
+| Accumulated other comprehensive loss | -5149 |  |  | -103096 |  |
+| Retained earnings | 723366 |  |  | 599204 |  |
+| Total stockholders’ equity | 1167127 |  |  | 1089818 |  |
+| Total liabilities and stockholders’ equity |  | 5959497 |  |  |  | 5869259 |  |
+
+### 
+
+|  | Three Months Ended June 30, |  |  | Six Months Ended June 30, |
+|  | 2025 |  | 2024 |  |  | 2025 |  | 2024 |
+| Revenue |  | 1258754 |  |  |  | 711015 |  |  |  |  | 2417728 |  |  |  | 1389385 |  |
+| Costs and expenses: |  |  |  |  |  |  |  |  |
+| Cost of revenue | 155076 |  |  | 121759 |  |  |  | 306756 |  |  | 246301 |  |
+| Sales and marketing | 46917 |  |  | 66965 |  |  |  | 106300 |  |  | 127875 |  |
+| Research and development | 44032 |  |  | 99123 |  |  |  | 100438 |  |  | 188071 |  |
+| General and administrative | 55047 |  |  | 38746 |  |  |  | 106570 |  |  | 78815 |  |
+| Total costs and expenses | 301072 |  |  | 326593 |  |  |  | 620064 |  |  | 641062 |  |
+| Income from operations | 957682 |  |  | 384422 |  |  |  | 1797664 |  |  | 748323 |  |
+| Other income (expense): |  |  |  |  |  |  |  |  |
+| Interest expense | -51409 |  |  | -74418 |  |  |  | -104297 |  |  | -148343 |  |
+| Other income (expense), net | -22269 |  |  | 7872 |  |  |  | -14757 |  |  | 9506 |  |
+| Total other expense, net | -73678 |  |  | -66546 |  |  |  | -119054 |  |  | -138837 |  |
+| Income before income taxes | 884004 |  |  | 317876 |  |  |  | 1678610 |  |  | 609486 |  |
+| Provision for income taxes | 112148 |  |  | 16894 |  |  |  | 183216 |  |  | 49147 |  |
+| Net income from continuing operations | 771856 |  |  | 300982 |  |  |  | 1495394 |  |  | 560339 |  |
+| Income (loss) from discontinued operations, net of income taxes | 47675 |  |  | 8987 |  |  |  | -99444 |  |  | -14187 |  |
+| Net income |  | 819531 |  |  |  | 309969 |  |  |  |  | 1395950 |  |  |  | 546152 |  |
+| Net income (loss) per share attributed to Class A and Class B common stockholders - Basic: |  |  |  |  |  |  |  |  |
+| Continuing operations |  | 2.28 |  |  |  | 0.90 |  |  |  |  | 4.41 |  |  |  | 1.66 |  |
+| Discontinued operations | 0.14 |  |  | 0.02 |  |  |  | -0.30 |  |  | -0.04 |  |
+| Basic net income per share |  | 2.42 |  |  |  | 0.92 |  |  |  |  | 4.11 |  |  |  | 1.62 |  |
+| Net income (loss) per share attributed to Class A and Class B common stockholders - Diluted: |  |  |  |  |  |  |  |  |
+| Continuing operations |  | 2.26 |  |  |  | 0.86 |  |  |  |  | 4.35 |  |  |  | 1.60 |  |
+| Discontinued operations | 0.13 |  |  | 0.03 |  |  |  | -0.29 |  |  | -0.04 |  |
+| Diluted net income per share |  | 2.39 |  |  |  | 0.89 |  |  |  |  | 4.06 |  |  |  | 1.56 |  |
+| Weighted-average common shares used to compute net income (loss) per share attributable to Class A and Class B common stockholders: |  |  |  |  |  |  |  |  |
+| Basic | 338617184 |  |  | 335681788 |  |  |  | 339223841 |  |  | 335785864 |  |
+| Diluted | 342194433 |  |  | 347964201 |  |  |  | 343528576 |  |  | 348327848 |  |
+
+### 
+
+|  | Six Months Ended June 30, |
+|  | 2025 |  | 2024 |
+| Operating Activities |  |  |  |
+| Net income |  | 1395950 |  |  |  | 546152 |  |
+| Adjustments to reconcile net income to net cash provided by operating activities: |  |  |  |
+| Amortization, depreciation and write-offs | 126940 |  |  | 221208 |  |
+| Goodwill impairment | 188943 |  |  | — |  |
+| Stock-based compensation, excluding cash-settled awards | 97026 |  |  | 193977 |  |
+| Gain on divestiture, net of transaction costs | -106229 |  |  | — |  |
+| Other | 41617 |  |  | 10300 |  |
+| Changes in operating assets and liabilities: |  |  |  |
+| Accounts receivable | -291551 |  |  | -125185 |  |
+| Prepaid expenses and other assets | 20691 |  |  | 26161 |  |
+| Accounts payable | 39040 |  |  | 15453 |  |
+| Accrued and other liabilities | 91511 |  |  | -40760 |  |
+| Net cash provided by operating activities | 1603938 |  |  | 847306 |  |
+| Investing Activities |  |  |  |
+| Proceeds from divestiture, net of cash divested | 424702 |  |  | — |  |
+| Purchase of non-marketable equity securities | -18678 |  |  | -76333 |  |
+| Other investing activities | -27140 |  |  | -23658 |  |
+| Net cash provided by (used in) investing activities | 378884 |  |  | -99991 |  |
+| Financing Activities |  |  |  |
+| Repurchases of common stock | -1272429 |  |  | -752224 |  |
+| Payment of withholding taxes related to net share settlement | -256650 |  |  | -436480 |  |
+| Principal repayments of debt | -200000 |  |  | -677863 |  |
+| Payments of licensed asset obligation | -13532 |  |  | — |  |
+| Proceeds from issuance of debt | 200000 |  |  | 1072330 |  |
+| Proceeds from issuance of common stock upon exercise of stock options and purchase of ESPP shares | 14824 |  |  | 19098 |  |
+| Other financing activities | -11807 |  |  | -10473 |  |
+| Net cash used in financing activities | -1539594 |  |  | -785612 |  |
+| Effect of foreign exchange rate on cash and cash equivalents | 7969 |  |  | -3406 |  |
+| Net increase (decrease) in cash and cash equivalents, including cash classified within current assets of discontinued operations | 451197 |  |  | -41703 |  |
+| Less: net (decrease) in cash classified within current assets of discontinued operations | -44381 |  |  | — |  |
+| Net increase (decrease) in cash and cash equivalents | 495578 |  |  | -41703 |  |
+| Cash and cash equivalents at beginning of the period | 697030 |  |  | 502152 |  |
+| Cash and cash equivalents at end of the period |  | 1192608 |  |  |  | 460449 |  |
+
+### 
+
+|  | Three Months Ended June 30, |  |  | Six Months Ended June 30, |
+|  | 2025 |  | 2024 |  |  | 2025 |  | 2024 |
+| Revenue |  | 1258754 |  |  |  | 711015 |  |  |  |  | 2417728 |  |  |  | 1389385 |  |
+| Net income | 819531 |  |  | 309969 |  |  |  | 1395950 |  |  | 546152 |  |
+| Net margin | 65 | % |  | 44 | % |  |  | 58 | % |  | 39 | % |
+| Loss (income) from discontinued operations, net of income taxes | -47675 |  |  | -8987 |  |  |  | 99444 |  |  | 14187 |  |
+| Net income from continuing operations | 771856 |  |  | 300982 |  |  |  | 1495394 |  |  | 560339 |  |
+| Net margin from continuing operations | 61% |  | 42% |  |  | 62% |  | 40% |
+| Adjusted as follows: |  |  |  |  |  |  |  |  |
+| Interest expense |  | 51409 |  |  |  | 74418 |  |  |  |  | 104297 |  |  |  | 148343 |  |
+| Other (income) expense, net | 12798 |  |  | -8763 |  |  |  | 4154 |  |  | -11777 |  |
+| Provision for income taxes | 112148 |  |  | 16894 |  |  |  | 183216 |  |  | 49147 |  |
+| Amortization, depreciation and write-offs | 31064 |  |  | 31242 |  |  |  | 63010 |  |  | 62159 |  |
+| Non-operating foreign exchange (gain) loss | -1210 |  |  | 412 |  |  |  | -1530 |  |  | 1411 |  |
+| Stock-based compensation | 34552 |  |  | 93559 |  |  |  | 93667 |  |  | 182503 |  |
+| Transaction-related expense | 5097 |  |  | 485 |  |  |  | 9680 |  |  | 854 |  |
+| Restructuring costs | 633 |  |  | 1936 |  |  |  | 4231 |  |  | 1936 |  |
+| Total adjustments | 246491 |  |  | 210183 |  |  |  | 460725 |  |  | 434576 |  |
+| Adjusted EBITDA |  | 1018347 |  |  |  | 511165 |  |  |  |  | 1956119 |  |  |  | 994915 |  |
+| Adjusted EBITDA margin | 81 | % |  | 72 | % |  |  | 81 | % |  | 72 | % |
+
+---
+*Generated by edgar_download.py on 2026-03-03 19:45*

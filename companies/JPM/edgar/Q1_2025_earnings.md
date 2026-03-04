@@ -1,0 +1,99 @@
+# JPMorgan Chase & Co. — Q1_2025 Earnings Release
+
+**Ticker:** JPM
+**Filing Date:** 2025-04-11
+**Accession:** 0000019617-25-000332
+**Source:** [SEC EDGAR](https://www.sec.gov/Archives/edgar/data/19617/000001961725000332/0000019617-25-000332-index.htm)
+
+## Key Metrics (XBRL)
+
+| Metric | Value | Units | Source |
+|--------|------:|-------|--------|
+| Comprehensive Income | $17.99B | USD | 10-Q |
+| EPS (Basic) | 5 | USD/shares | 10-Q |
+| EPS (Diluted) | 5 | USD/shares | 10-Q |
+| Income Tax Expense | $3.77B | USD | 10-Q |
+| Net Income | $14.64B | USD | 10-Q |
+| Net Income to Common | $14.32B | USD | 10-Q |
+| Net Interest Income | $23.27B | USD | 10-Q |
+| Noninterest Expense | $23.60B | USD | 10-Q |
+| Noninterest Revenue | $22.04B | USD | 10-Q |
+| Provision for Credit Losses | $3.31B | USD | 10-Q |
+| Total Assets | $4,357.86B | USD | 10-Q |
+| Total Equity | $351.42B | USD | 10-Q |
+| Total Liabilities | $4,006.44B | USD | 10-Q |
+
+## Financial Tables (from Exhibits)
+
+### 
+
+| Firmwide Metrics | n | Reported revenue of 45.3 billion and managed revenue of 46.0 billion 2 |
+| n | Expense of 23.6 billion; reported overhead ratio of 52% and managed overhead ratio 2 of 51% |
+| n | Credit costs of 3.3 billion with 2.3 billion of net charge-offs and a 973 million net reserve build |
+| n | Average loans up 2% YoY, flat QoQ; average deposits up 2% YoY, up 1% QoQ |
+| CCB ROE 31% | n | Average deposits down 2% YoY, flat QoQ; client investment assets up 7% YoY |
+| n | Average loans up 1% YoY, down 1% QoQ; Card Services net charge-off rate of 3.58% |
+| n | Debit and credit card sales volume 5 up 7% YoY |
+| n | Active mobile customers 6 up 8% YoY |
+| CIB 7 ROE 18% | n | Investment Banking fees up 12% YoY, down 9% QoQ; #1 ranking for Global Investment Banking fees with 9.0% wallet share in 1Q25 |
+| n | Markets revenue up 21% YoY, with Fixed Income Markets up 8% and Equity Markets up 48% |
+| n | Average Banking & Payments loans 8 down 3% YoY, down 1% QoQ; average client deposits 9 up 11% YoY, up 2% QoQ |
+| AWM ROE 39% | n | AUM 10 of 4.1 trillion, up 15% YoY |
+| n | Average loans up 5% YoY, flat QoQ; average deposits up 7% YoY, down 2% QoQ |
+
+### 
+
+| Results for JPM |  |  |  |  |  |  | 4Q24 |  | 1Q24 |
+| ( millions, except per share data) | 1Q25 |  | 4Q24 |  | 1Q24 |  | O/ | O/(U) % |  | O/ | O/(U) % |
+| Net revenue - reported |  | 45310 |  |  |  | 42768 |  |  |  | 41934 |  |  |  | 2542 |  | 6 | % |  |  | 3376 |  | 8 | % |
+| Net revenue - managed | 46014 |  |  | 43738 |  |  | 42548 |  |  | 2276 |  | 5 |  |  | 3466 |  | 8 |  |
+| Noninterest expense | 23597 |  |  | 22762 |  |  | 22757 |  |  | 835 |  | 4 |  |  | 840 |  | 4 |  |
+| Provision for credit losses | 3305 |  |  | 2631 |  |  | 1884 |  |  | 674 |  | 26 |  |  | 1421 |  | 75 |  |
+| Net income |  | 14643 |  |  |  | 14005 |  |  |  | 13419 |  |  |  | 638 |  | 5 | % |  |  | 1224 |  | 9 | % |
+| Earnings per share - diluted |  | 5.07 |  |  |  | 4.81 |  |  |  | 4.44 |  |  |  | 0.26 |  | 5 | % |  |  | 0.63 |  | 14 | % |
+| Return on common equity | 18 | % |  | 17 | % |  | 17 | % |  |  |  |  |  |  |
+| Return on tangible common equity | 21 |  |  | 21 |  |  | 21 |  |  |  |  |  |  |  |
+
+### 
+
+| Results for CCB |  |  |  |  |  |  | 4Q24 |  | 1Q24 |
+| ( millions) | 1Q25 |  | 4Q24 |  | 1Q24 |  | O/ | O/(U) % |  | O/ | O/(U) % |
+| Net revenue 16 |  | 18313 |  |  |  | 18362 |  |  |  | 17653 |  |  |  | -49 |  | — | % |  |  | 660 |  | 4 | % |
+| Banking & Wealth Management | 10254 |  |  | 10154 |  |  | 10324 |  |  | 100 |  | 1 |  |  | -70 |  |  |  |
+| Home Lending | 1207 |  |  | 1297 |  |  | 1186 |  |  | -90 |  |  |  |  | 21 |  | 2 |  |
+| Card Services & Auto | 6852 |  |  | 6911 |  |  | 6143 |  |  | -59 |  |  |  |  | 709 |  | 12 |  |
+| Noninterest expense | 9857 |  |  | 9728 |  |  | 9297 |  |  | 129 |  | 1 |  |  | 560 |  | 6 |  |
+| Provision for credit losses | 2629 |  |  | 2623 |  |  | 1913 |  |  | 6 |  | — |  |  | 716 |  | 37 |  |
+| Net income |  | 4425 |  |  |  | 4516 |  |  |  | 4831 |  |  |  | -91 |  |  | % |  |  | -406 |  |  | % |
+
+### 
+
+| Results for CIB |  |  |  |  |  |  | 4Q24 |  | 1Q24 |
+| ( millions) | 1Q25 |  | 4Q24 |  | 1Q24 |  | O/ | O/(U) % |  | O/ | O/(U) % |
+| Net revenue |  | 19666 |  |  |  | 17598 |  |  |  | 17584 |  |  |  | 2068 |  | 12 | % |  |  | 2082 |  | 12 | % |
+| Banking & Payments | 8754 |  |  | 9268 |  |  | 8403 |  |  | -514 |  |  |  |  | 351 |  | 4 |  |
+| Markets & Securities Services | 10912 |  |  | 8330 |  |  | 9181 |  |  | 2582 |  | 31 |  |  | 1731 |  | 19 |  |
+| Noninterest expense | 9842 |  |  | 8712 |  |  | 8724 |  |  | 1130 |  | 13 |  |  | 1118 |  | 13 |  |
+| Provision for credit losses | 705 |  |  | 61 |  |  | 1 |  |  | 644 |  | NM |  | 704 |  | NM |
+| Net income |  | 6942 |  |  |  | 6636 |  |  |  | 6622 |  |  |  | 306 |  | 5 | % |  |  | 320 |  | 5 | % |
+
+### 
+
+| Results for AWM |  |  |  |  |  |  | 4Q24 |  | 1Q24 |
+| ( millions) | 1Q25 |  | 4Q24 |  | 1Q24 |  | O/ | O/(U) % |  | O/ | O/(U) % |
+| Net revenue |  | 5731 |  |  |  | 5778 |  |  |  | 5109 |  |  |  | -47 |  |  | % |  |  | 622 |  | 12 | % |
+| Noninterest expense | 3713 |  |  | 3772 |  |  | 3460 |  |  | -59 |  |  |  |  | 253 |  | 7 |  |
+| Provision for credit losses | -10 |  |  | -35 |  |  | -57 |  |  | 25 |  | 71 |  |  | 47 |  | 82 |  |
+| Net income |  | 1583 |  |  |  | 1517 |  |  |  | 1290 |  |  |  | 66 |  | 4 | % |  |  | 293 |  | 23 | % |
+
+### 
+
+| Results for Corporate |  |  |  |  |  |  | 4Q24 |  | 1Q24 |
+| ( millions) | 1Q25 |  | 4Q24 |  | 1Q24 |  | O/ | O/(U) % |  | O/ | O/(U) % |
+| Net revenue 16 |  | 2304 |  |  |  | 2000 |  |  |  | 2202 |  |  |  | 304 |  | 15 | % |  |  | 102 |  | 5 | % |
+| Noninterest expense | 185 |  |  | 550 |  |  | 1276 |  |  | -365 |  | -66 |  |  | -1091 |  | -86 |  |
+| Provision for credit losses | -19 |  |  | -18 |  |  | 27 |  |  |  |  |  |  |  | -46 |  | NM |
+| Net income |  | 1693 |  |  |  | 1336 |  |  |  | 676 |  |  |  | 357 |  | 27 | % |  |  | 1017 |  | 150 | % |
+
+---
+*Generated by edgar_download.py on 2026-03-03 20:13*

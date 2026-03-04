@@ -1,0 +1,194 @@
+# AppLovin Corporation — Q1_2025 Earnings Release
+
+**Ticker:** APP
+**Filing Date:** 
+**Accession:** 0001751008-25-000051
+**Source:** [SEC EDGAR](https://www.sec.gov/Archives/edgar/data/1751008/000175100825000051/0001751008-25-000051-index.htm)
+
+## Key Metrics (XBRL)
+
+| Metric | Value | Units | Source |
+|--------|------:|-------|--------|
+| Cash & Equivalents | $551.0M | USD | 10-Q |
+| EPS (Basic) | 2 | USD/shares | 10-Q |
+| EPS (Diluted) | 2 | USD/shares | 10-Q |
+| Income Tax Expense | $42.0M | USD | 10-Q |
+| Net Income | $576.4M | USD | 10-Q |
+| Net Income to Common | $576.3M | USD | 10-Q |
+| Operating Income | $663.5M | USD | 10-Q |
+| Revenue | $1.48B | USD | 10-Q |
+| Shares Outstanding | 338.4M | shares | 10-Q |
+| Total Assets | $5.71B | USD | 10-Q |
+| Total Equity | $575.4M | USD | 10-Q |
+| Total Liabilities | $5.13B | USD | 10-Q |
+
+## Financial Tables (from Exhibits)
+
+### 
+
+| (In thousands, except percentages) | Quarter Ended March 31, |  |  |
+|  | 2025 |  | 2024 |  | % Change |
+| Advertising Revenue | 1158974 |  | 678370 |  | 71 | % |
+| Apps Revenue | 325047 |  | 379745 |  | -14 | % |
+| Total Revenue | 1484021 |  | 1058115 |  | 40 | % |
+| Advertising Adjusted EBITDA | 943228 |  | 492020 |  | 92 | % |
+| Apps Adjusted EBITDA | 61799 |  | 56751 |  | 9 | % |
+| Adjusted EBITDA | 1005027 |  | 548771 |  | 83 | % |
+| Net Income | 576419 |  | 236183 |  | 144 | % |
+
+### 
+
+| (In millions, except percentages) | 2Q25 |
+|  | Low |  | High |
+| Total Advertising Revenue | 1195 |  | 1215 |
+| Total Advertising Adjusted EBITDA | 970 |  | 990 |
+| Total Advertising Adjusted EBITDA Margin | 81% |  | 81% |
+
+### 
+
+|  | March 31, 2025 |  | December 31, 2024 |
+| Assets |  |  |  |
+| Current assets: |  |  |  |
+| Cash and cash equivalents |  | 551024 |  |  |  | 741411 |  |
+| Accounts receivable, net | 1577812 |  |  | 1414246 |  |
+| Prepaid expenses and other current assets | 238498 |  |  | 156533 |  |
+| Total current assets | 2367334 |  |  | 2312190 |  |
+| Property and equipment, net | 161655 |  |  | 160530 |  |
+| Goodwill | 1639796 |  |  | 1803426 |  |
+| Intangible assets, net | 855046 |  |  | 896677 |  |
+| Other assets | 682870 |  |  | 696436 |  |
+| Total assets |  | 5706701 |  |  |  | 5869259 |  |
+| Liabilities and Stockholders’ Equity |  |  |  |
+| Current liabilities: |  |  |  |
+| Accounts payable |  | 595219 |  |  |  | 563427 |  |
+| Accrued and other current liabilities | 541381 |  |  | 424206 |  |
+| Short-term debt | 200000 |  |  | — |  |
+| Deferred revenue | 72624 |  |  | 69839 |  |
+| Total current liabilities | 1409224 |  |  | 1057472 |  |
+| Long-term debt | 3509964 |  |  | 3508983 |  |
+| Other non-current liabilities | 212092 |  |  | 212986 |  |
+| Total liabilities | 5131280 |  |  | 4779441 |  |
+| Stockholders’ equity: |  |  |  |
+| Preferred stock, 0.00003 par value—100,000,000 shares authorized, no shares issued and outstanding as of March 31, 2025 and December 31, 2024 | — |  |  | — |  |
+| Class A, Class B, and Class C Common Stock, 0.00003 par value—1,850,000,000 (Class A 1,500,000,000, Class B 200,000,000, Class C 150,000,000) shares authorized, 338,361,559 (Class A 307,673,018, Class B 30,688,541, Class C nil) and 340,041,739 (Class A 309,353,198, Class B 30,688,541, Class C nil) shares issued and outstanding as of March 31, 2025 and December 31, 2024, respectively | 11 |  |  | 11 |  |
+| Additional paid-in capital | 474642 |  |  | 593699 |  |
+| Accumulated other comprehensive loss | -73185 |  |  | -103096 |  |
+| Retained earnings | 173953 |  |  | 599204 |  |
+| Total stockholders’ equity | 575421 |  |  | 1089818 |  |
+| Total liabilities and stockholders’ equity |  | 5706701 |  |  |  | 5869259 |  |
+
+### 
+
+|  | Quarter Ended March 31, |
+|  | 2025 |  | 2024 |
+| Revenue |  | 1484021 |  |  |  | 1058115 |  |
+| Costs and expenses: |  |  |  |
+| Cost of revenue | 271232 |  |  | 294148 |  |
+| Sales and marketing | 182956 |  |  | 226687 |  |
+| Research and development | 122918 |  |  | 155323 |  |
+| General and administrative | 54501 |  |  | 42398 |  |
+| Goodwill impairment | 188943 |  |  | — |  |
+| Total costs and expenses | 820550 |  |  | 718556 |  |
+| Income from operations | 663471 |  |  | 339559 |  |
+| Other income (expense): |  |  |  |
+| Interest expense | -52888 |  |  | -74182 |  |
+| Other income, net | 7811 |  |  | 2568 |  |
+| Total other expense, net | -45077 |  |  | -71614 |  |
+| Income before income taxes | 618394 |  |  | 267945 |  |
+| Provision for income taxes | 41975 |  |  | 31762 |  |
+| Net income |  | 576419 |  |  |  | 236183 |  |
+| Less: Net income attributable to participating securities | 144 |  |  | 1451 |  |
+| Net income attributable to common stock—Basic |  | 576275 |  |  |  | 234732 |  |
+| Net income attributable to common stock—Diluted |  | 576277 |  |  |  | 234784 |  |
+| Net income per share attributable to Class A and Class B common stockholders: |  |  |  |
+| Basic |  | 1.70 |  |  |  | 0.70 |  |
+| Diluted |  | 1.67 |  |  |  | 0.67 |  |
+| Weighted-average common shares used to compute net income per share attributable to Class A and Class B common stockholders: |  |  |  |
+| Basic | 339837238 |  |  | 335794739 |  |
+| Diluted | 344877542 |  |  | 348596295 |  |
+
+### 
+
+|  | Quarter Ended March 31, |
+|  | 2025 |  | 2024 |
+| Operating Activities |  |  |  |
+| Net income |  | 576419 |  |  |  | 236183 |  |
+| Adjustments to reconcile net income to operating activities: |  |  |  |
+| Amortization, depreciation and write-offs | 79887 |  |  | 112667 |  |
+| Goodwill impairment | 188943 |  |  | — |  |
+| Stock-based compensation, excluding cash-settled awards | 61281 |  |  | 95253 |  |
+| Other | 8086 |  |  | 8540 |  |
+| Changes in operating assets and liabilities: |  |  |  |
+| Accounts receivable | -167382 |  |  | -84836 |  |
+| Prepaid expenses and other assets | -51861 |  |  | 26813 |  |
+| Accounts payable | 32545 |  |  | 18056 |  |
+| Accrued and other liabilities | 103794 |  |  | -19897 |  |
+| Net cash provided by operating activities | 831712 |  |  | 392779 |  |
+| Investing Activities |  |  |  |
+| Purchase of non-marketable equity securities | -18678 |  |  | -28333 |  |
+| Other investing activities | -3986 |  |  | -3302 |  |
+| Net cash used in investing activities | -22664 |  |  | -31635 |  |
+| Financing Activities |  |  |  |
+| Repurchases of common stock | -1000911 |  |  | -752224 |  |
+| Principal repayments of debt | — |  |  | -668972 |  |
+| Payment of withholding taxes related to net share settlement | -185667 |  |  | -80144 |  |
+| Payments of licensed asset obligation | -13532 |  |  | — |  |
+| Proceeds from issuance of debt | 200000 |  |  | 1072330 |  |
+| Proceeds from exercise of stock options | 5329 |  |  | 9782 |  |
+| Other financing activities | -7436 |  |  | -5384 |  |
+| Net cash used in financing activities | -1002217 |  |  | -424612 |  |
+| Effect of foreign exchange rate on cash and cash equivalents | 2782 |  |  | -2348 |  |
+| Net decrease in cash and cash equivalents | -190387 |  |  | -65816 |  |
+| Cash and cash equivalents at beginning of the period | 741411 |  |  | 502152 |  |
+| Cash and cash equivalents at end of the period |  | 551024 |  |  |  | 436336 |  |
+
+### 
+
+|  | Quarter Ended March 31, |  |  |  |
+|  | 2025 |  | 2024 |  |  |  |  |  |
+| Revenue |  | 1484021 |  |  |  | 1058115 |  |  |  |  |  |  |
+| Net income | 576419 |  |  | 236183 |  |  |  |  |  |  |
+| Net margin | 39% |  | 22% |  |  |  |  |  |
+| Adjusted as follows: |  |  |  |  |  |  |  |  |
+| Interest expense | 52888 |  |  | 74182 |  |  |  |  |  |  |
+| Other income, net | -9042 |  |  | -3397 |  |  |  |  |  |  |
+| Provision for income taxes | 41975 |  |  | 31762 |  |  |  |  |  |  |
+| Amortization, depreciation and write-offs | 79887 |  |  | 112667 |  |  |  |  |  |  |
+| Goodwill impairment | 188943 |  |  | — |  |  |  |  |  |  |
+| Loss on disposal of long-lived assets | — |  |  | 1646 |  |  |  |  |  |  |
+| Non-operating foreign exchange (gain) loss | -40 |  |  | 106 |  |  |  |  |  |  |
+| Stock-based compensation | 61383 |  |  | 95253 |  |  |  |  |  |  |
+| Transaction-related expense | 6005 |  |  | 369 |  |  |  |  |  |  |
+| Restructuring costs | 6609 |  |  | — |  |  |  |  |  |  |
+| Total adjustments | 428608 |  |  | 312588 |  |  |  |  |  |  |
+| Adjusted EBITDA |  | 1005027 |  |  |  | 548771 |  |  |  |  |  |  |
+| Adjusted EBITDA Margin | 68 | % |  | 52 | % |  |  |  |  |  |
+
+### 
+
+|  |  |  |  |  |  |  | Quarter Ended March 31, |  |  |  |
+|  |  |  |  |  |  |  | 2025 |  | 2024 |  |  |  |  |  |
+| Revenue: |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Advertising |  |  |  |  |  |  |  | 1158974 |  |  |  | 678370 |  |  |  |  |  |  |
+| Apps |  |  |  |  |  |  | 325047 |  |  | 379745 |  |  |  |  |  |  |
+| Total Revenue |  |  |  |  |  |  |  | 1484021 |  |  |  | 1058115 |  |  |  |  |  |  |
+| Segment Adjusted EBITDA: |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Advertising |  |  |  |  |  |  |  | 943228 |  |  |  | 492020 |  |  |  |  |  |  |
+| Apps |  |  |  |  |  |  | 61799 |  |  | 56751 |  |  |  |  |  |  |
+| Total Segment Adjusted EBITDA |  |  |  |  |  |  |  | 1005027 |  |  |  | 548771 |  |  |  |  |  |  |
+| Interest expense |  |  |  |  |  |  |  | -52888 |  |  |  | -74182 |  |  |  |  |  |  |
+| Other income, net |  |  |  |  |  |  | 9042 |  |  | 3397 |  |  |  |  |  |  |
+| Amortization, depreciation and write-offs |  |  |  |  |  |  | -79887 |  |  | -112667 |  |  |  |  |  |  |
+| Goodwill impairment |  |  |  |  |  |  | -188943 |  |  | — |  |  |  |  |  |  |
+| Loss on disposal of long-lived assets |  |  |  |  |  |  | — |  |  | -1646 |  |  |  |  |  |  |
+| Non-operating foreign exchange gain (loss) |  |  |  |  |  |  | 40 |  |  | -106 |  |  |  |  |  |  |
+| Stock-based compensation |  |  |  |  |  |  | -61383 |  |  | -95253 |  |  |  |  |  |  |
+| Transaction-related expense |  |  |  |  |  |  | -6005 |  |  | -369 |  |  |  |  |  |  |
+| Restructuring costs |  |  |  |  |  |  | -6609 |  |  | — |  |  |  |  |  |  |
+| Income before income taxes |  |  |  |  |  |  |  | 618394 |  |  |  | 267945 |  |  |  |  |  |  |
+| Segment Adjusted EBITDA Margin: |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Advertising |  |  |  |  |  |  | 81 | % |  | 73 | % |  |  |  |  |  |
+| Apps |  |  |  |  |  |  | 19 | % |  | 15 | % |  |  |  |  |  |
+
+---
+*Generated by edgar_download.py on 2026-03-03 19:45*

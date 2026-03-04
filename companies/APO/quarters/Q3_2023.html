@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APO Q3 2023 Earnings Call Detail</title>
+<style>
+:root {
+    --company-primary: #003A70;
+    --company-dark: #1a1a2e;
+    --company-accent: #0066B3;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 40px 40px 32px;
+    margin: 0 -24px 0;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .header .meta {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    font-weight: 300;
+  }
+  .header .meta span { margin-right: 24px; }
+
+  .nav-bar {
+    background: var(--company-accent);
+    margin: 0 -24px 32px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    transition: all 0.15s;
+  }
+  .nav-bar a:hover { background: rgba(255,255,255,0.2); }
+  .nav-bar a.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .nav-center {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-center a.qbtn {
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+  }
+  .nav-center a.qbtn.current {
+    background: var(--company-primary);
+    border-color: var(--company-primary);
+  }
+  .nav-center a.qbtn:hover { background: rgba(255,255,255,0.2); }
+  .nav-back {
+    background: rgba(255,255,255,0.15) !important;
+    border-color: rgba(255,255,255,0.35) !important;
+  }
+
+  .metrics-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .metric {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+  .metric-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .metric-value {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+  .metric-delta {
+    font-size: 0.72rem;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+  .delta-up { color: var(--green); }
+  .delta-down { color: var(--red); }
+  .delta-flat { color: var(--text-muted); }
+
+  .changes-box {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 5px solid var(--amber);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .changes-box h3 {
+    font-size: 1rem;
+    color: var(--company-dark);
+    margin-bottom: 10px;
+  }
+  .changes-box ul { list-style: none; padding: 0; }
+  .changes-box li {
+    padding: 5px 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .change-tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .ct-raised { background: #d5f5e3; color: #1e8449; }
+  .ct-lowered { background: #fadbd8; color: #c0392b; }
+  .ct-changed { background: #d6eaf8; color: #2471a3; }
+  .ct-new { background: #e8daef; color: #6c3483; }
+  .ct-maintained { background: #fdebd0; color: #b9770e; }
+
+  .content-section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .content-section h3 {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .content-section ul {
+    padding: 14px 18px 14px 36px;
+    margin: 0;
+  }
+  .content-section li {
+    padding: 3px 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .content-section li strong { color: var(--company-dark); }
+
+  .prior-ref {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 40px;
+    overflow: hidden;
+  }
+  .prior-ref-header {
+    background: var(--light-bg);
+    padding: 12px 18px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--company-dark);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .prior-ref-header:hover { background: #eef2f7; }
+  .prior-ref-body { padding: 18px; display: none; }
+  .prior-ref-body.open { display: block; }
+  .prior-ref-body .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .prior-mini {
+    background: var(--light-bg);
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .prior-mini .pm-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .prior-mini .pm-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border);
+  }
+  .footer-nav a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .footer-nav a:hover { text-decoration: underline; }
+
+  /* Comparison page styles */
+  .toc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .toc a {
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 4px 0;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  .comp-section {
+    margin-bottom: 40px;
+  }
+  .comp-section h2 {
+    font-size: 1.2rem;
+    color: var(--company-dark);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--company-primary);
+  }
+
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+  }
+  .comp-table th {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .comp-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .comp-table tr:nth-child(even) { background: var(--light-bg); }
+  .comp-table tr:hover { background: #e8f4fd; }
+
+  @media (max-width: 768px) {
+    .header h1 { font-size: 1.5rem; }
+    .metrics-card { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .nav-center { display: none; }
+    body { padding: 0 16px 60px; }
+    .header { margin: 0 -16px 0; padding: 28px 24px 20px; }
+    .nav-bar { margin: 0 -16px 24px; }
+    .toc { grid-template-columns: 1fr; }
+    .comp-table { font-size: 0.78rem; }
+    .comp-table th, .comp-table td { padding: 6px 8px; }
+  }
+
+  @media print {
+    .nav-bar { display: none; }
+    .header { background: #333; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>APO Q3 2023 Earnings Call</h1>
+  <div class="meta">
+    <span>Call Date: November 1, 2023</span>
+    <span>Reporting: Q3 2023</span>
+  </div>
+</div>
+<div class="nav-bar">
+  <a href="Q2_2023.html">&larr; Q2 2023</a>
+  <div class="nav-center">
+    <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="Q4_2025.html" class="qbtn">4Q25</a>
+    <a href="Q3_2025.html" class="qbtn">3Q25</a>
+    <a href="Q2_2025.html" class="qbtn">2Q25</a>
+    <a href="Q1_2025.html" class="qbtn">1Q25</a>
+    <a href="Q4_2024.html" class="qbtn">4Q24</a>
+    <a href="Q3_2024.html" class="qbtn">3Q24</a>
+    <a href="Q2_2024.html" class="qbtn">2Q24</a>
+    <a href="Q1_2024.html" class="qbtn">1Q24</a>
+    <a href="Q4_2023.html" class="qbtn">4Q23</a>
+    <a href="Q3_2023.html" class="qbtn current">3Q23</a>
+    <a href="Q2_2023.html" class="qbtn">2Q23</a>
+    <a href="Q1_2023.html" class="qbtn">1Q23</a>
+    <a href="Q4_2022.html" class="qbtn">4Q22</a>
+    <a href="Q3_2022.html" class="qbtn">3Q22</a>
+    <a href="Q2_2022.html" class="qbtn">2Q22</a>
+    <a href="Q1_2022.html" class="qbtn">1Q22</a>
+  </div>
+  <a href="Q4_2023.html">Q4 2023 &rarr;</a>
+</div>
+
+<div class="changes-box">
+  <h3>What Changed vs Q2 2023</h3>
+  <ul>
+    <li><span class="change-tag ct-maintained">Maintained</span> Key metrics largely maintained from prior quarter</li>
+  </ul>
+</div>
+
+<div class="metrics-card">
+  <div class="metric">
+    <div class="metric-label">Inflows</div>
+    <div class="metric-value">$33 billion in Q3; $125 billion YTD</div>
+  </div>
+</div>
+
+<!-- Full Guidance Content -->
+<div class="content-section">
+  <h3>Forward Guidance</h3>
+</div>
+<div class="content-section">
+  <h3>Q4 2023 Guidance</h3>
+  <ul>
+    <li><strong>Inflows:</strong> Expect ~$30 billion+, bringing FY total to ~$150 billion</li>
+    <li><strong>Normalized Net Spread:</strong> ~165 bps</li>
+    <li><strong>Normalized SRE Growth (FY2023):</strong> Exceeding 30% YoY</li>
+    <li><strong>FRE Growth (FY2023):</strong> 25% — confident in achieving (reaffirmed)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>2024 Guidance</h3>
+  <ul>
+    <li><strong>FRE Growth:</strong> 15-20% (consistent with non-flagship PE fundraising year); current expectations around middle of range - Driven by: strong fundraising outlook (>$45B uninvested capital with fee potential), Capital Solutions repeat 2023 (assumed flat), low double-digit expense growth</li>
+    <li><strong>FRE Margin:</strong> ~100 bps further improvement expected in 2024</li>
+    <li><strong>Normalized SRE Growth:</strong> Low double-digit (after adjusting for ADIP buy-down and Venerable) - Athene organic inflows: at least $70 billion in 2024 - Normalized net spread: ~165 bps (assuming current forward curve) - Athene capital efficiency: $0.08-0.10 of capital per $1 of liability; underwriting new business at ~115 bps or better at product level; marginal SRE spread ~170 bps YTD</li>
+    <li><strong>PII:</strong> Continued delays in PE monetization impacting timing but not expected quantum of carry</li>
+    <li><strong>Floating Rate Position:</strong> ~$30 billion net; $10-15B excess above long-term prudent level; expect to reduce short-term mismatch "over the near term"</li>
+    <li><strong>FRE Compensation Ratio:</strong> Expected ~23% by 2026 (before further reallocations from senior leader compensation exchange)</li>
+    <li><strong>PII Compensation Ratio:</strong> Expected 65-75% (increased from prior levels due to compensation exchange)</li>
+    <li><strong>Share Count Target:</strong> 600 million shares outstanding; immunizing dilution from MCPS and vested stock awards</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Long-Term Targets (5-Year Plan)</h3>
+  <ul>
+    <li><strong>Earnings:</strong> Doubling by 2026 — on track; Athene exceeded 5-year SRE target in just 2 years</li>
+    <li><strong>Capital Solutions:</strong> Hit 5-year revenue plan in 2 years</li>
+    <li><strong>Origination and Global Wealth:</strong> Well on track for 5-year targets</li>
+    <li><strong>Next Investor Day:</strong> Later in 2024 — to discuss "where we go from here"</li>
+    <li><strong>Private Credit AUM:</strong> Nearly $500 billion; 16 platforms; 4,000 platform employees; $6-8B invested building ecosystem</li>
+    <li><strong>DOL Rule Impact:</strong> ~10% of business through wholesalers potentially impacted; not significantly concerning; prepared 7 years ago</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q3 2023 AUM & Flows</h3>
+  <ul>
+    <li><strong>Total Inflows:</strong> $33 billion in Q3; $125 billion YTD</li>
+    <li><strong>Athene Organic Inflows:</strong> $13 billion in Q3; $44 billion YTD; on pace for $60B+ for year - Retail annuities: ~50% of Q3 inflows; ~$2.5B sold in October alone - Flow reinsurance: steady build; new Japan/U.S. distribution partnerships; expect >$10B FY2023 - PRT: low Q3 activity but solid pipeline; 1 deal closed in October; $50B cumulative since 2017 (industry-leading)</li>
+    <li><strong>AM Third-Party Fundraising:</strong> $14 billion in Q3 - Next 6 growth initiatives: >25% of third-party capital raised in Q3 - Sidecars, direct origination, multi-credit, AAA all active</li>
+    <li><strong>Capital Deployment:</strong> $36 billion in Q3 - PE: $11B LTM; Univar and Arconic closings in August - Yield: vast majority of Q3 deployment - Hybrid value: expanding pipeline; 2nd vintage deployment strong; S3 >$1B into equity/hybrid solutions YTD</li>
+    <li><strong>ADIP Invested Assets:</strong> >$50 billion (20% of Athene's total invested assets)</li>
+    <li><strong>Net Invested Assets (Athene):</strong> $208 billion (down $6B QoQ: -$7B ADIP buy-down, -$3B Venerable, offset by positive net flows)</li>
+    <li><strong>Uninvested Capital with Fee Potential:</strong> >$45 billion</li>
+    <li><strong>Origination Volume:</strong> Tracking >$100 billion annualized</li>
+    <li><strong>AAA Sales:</strong> Best quarter yet at >$700 million; continuing to add selling platforms</li>
+    <li><strong>Global Wealth Products:</strong> 7 perpetual product families in market; handful more in pipeline for 2024</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q3 2023 Investment Performance</h3>
+  <ul>
+    <li><strong>Corporate Credit:</strong> +3-4% in Q3; +12-17% LTM</li>
+    <li><strong>Structured Credit:</strong> +3-4% in Q3</li>
+    <li><strong>Direct Origination:</strong> +3-4% in Q3</li>
+    <li><strong>ADS (Apollo Debt Solutions):</strong> +16.5% total net return LTM (Class 1)</li>
+    <li><strong>Hybrid Value:</strong> +4% in Q3; +11% YTD</li>
+    <li><strong>PE Flagship:</strong> +3% in Q3; +16% LTM; Fund IX +22% LTM - Average purchase multiple: slightly over 6x; healthy earnings growth across portfolio companies</li>
+    <li><strong>Alts Portfolio Return:</strong> Below 11% normalized for several quarters (slower appreciation vs broader market); expect 8% in bad year, 18% in good year, 12-15% expected range</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q3 2023 Capital & Balance Sheet</h3>
+  <ul>
+    <li><strong>Net Balance Sheet Value:</strong> $2,766 million ($4.52/share)</li>
+    <li><strong>Cash & Cash Equivalents:</strong> $2,349 million</li>
+    <li><strong>Investments:</strong> $2,471 million</li>
+    <li><strong>Net Accrued Performance Fees:</strong> $1,400 million</li>
+    <li><strong>Debt:</strong> $3,392 million</li>
+    <li><strong>Preferred Stock:</strong> Redeemed in full during Q3 (6.375% Series A & B)</li>
+    <li><strong>Mandatory Convertible Preferred:</strong> Issued in August</li>
+    <li><strong>ANI Shares Outstanding:</strong> 612 million (up from 595M due to MCPS issuance)</li>
+    <li><strong>Share Repurchases YTD:</strong> $232 million (opportunistic)</li>
+    <li><strong>Credit Ratings:</strong> AM: A / A2 / A- (Fitch/Moody's/S&P); Athene: A+ / A+ / A1 / A (Fitch/S&P/Moody's/AM Best)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Compensation Restructuring (Next-Gen Leadership)</h3>
+  <ul>
+    <li><strong>Awards:</strong> ~$550 million at grant value (~1% of share count)</li>
+    <li><strong>4 Senior Leaders:</strong> Matt Nord, David Sambur, John Zito, Grant Kvalheim - Exchange majority of FRE/SRE/carry/stock compensation for newly issued vested stock - Creates room to redistribute PII to others in firm - Aligned with shareholders via direct stock ownership</li>
+    <li><strong>Expected Impact:</strong> Accretive; reduces FRE comp ratio toward 23% by 2026; increases PII comp ratio to 65-75%</li>
+    <li><strong>Immunization:</strong> Committed to immunizing all dilutive impacts; targeting 600M shares outstanding</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Market Structure & Private Credit Commentary</h3>
+  <ul>
+    <li>4 historical tailwinds ending: falling rates, money printing, fiscal stimulus, globalization</li>
+    <li>Public market liquidity: dealer capital ~10% of 2008 levels; markets 3x larger; expect more volatility</li>
+    <li>Debanking: banks now ~20% of U.S. debt capital; Basel III to Basel IV further constraining; worldwide phenomenon</li>
+    <li>Indexation/concentration: 80% of trading volume in S&P 500; 60% in ETFs; 10 stocks = 35% of S&P at 44-52x PE</li>
+    <li>Private credit: secular trend, not cyclical; levered lending is "fraction of a fraction" of debanking opportunity</li>
+    <li>IG private credit education: "Is single-A private security an alternative or fixed income?" — paradigm-shifting question</li>
+    <li>Cost of funds: key competitive metric; late entrants buying degraded back books at high cost of funds</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q3 2023 Actuals (Reported)</h3>
+  <ul>
+    <li><strong>Fee-Related Earnings (FRE):</strong> $472 million ($0.77/share) — record quarterly; +29% YoY; +7% QoQ</li>
+    <li><strong>Spread-Related Earnings (SRE):</strong> $873 million ($1.43/share) — record quarterly; +36% YoY</li>
+    <li><strong>Normalized SRE:</strong> $879 million (roughly in line with as-reported after offsetting items)</li>
+    <li><strong>Fee & Spread Related Earnings - Normalized:</strong> $1,351 million; +30% YoY</li>
+    <li><strong>Principal Investing Income (PII):</strong> $4 million ($0.01/share)</li>
+    <li><strong>Adjusted Net Income (ANI):</strong> $1,045 million ($1.71/share); +23% YoY</li>
+    <li><strong>Normalized ANI:</strong> $1,050 million ($1.72/share)</li>
+    <li><strong>Management Fees:</strong> $648 million (incl. $24M Fund X catch-up; Fund X fees $14M higher than prior quarter net of catch-ups)</li>
+    <li><strong>Capital Solutions Fees:</strong> $146 million — new quarterly high; on track to meet 5-year plan in 2 years</li>
+    <li><strong>Fee-Related Performance Fees:</strong> $40 million</li>
+    <li><strong>Fee-Related Compensation:</strong> -$212 million (flat QoQ)</li>
+    <li><strong>Non-Compensation Expenses:</strong> -$150 million</li>
+    <li><strong>FRE Margin:</strong> +150 bps YTD margin expansion vs prior year</li>
+    <li><strong>YTD FRE Revenue Growth:</strong> +25%; FRE Expense Growth: +21%; FRE Growth: +29%</li>
+    <li><strong>Normalized Net Spread:</strong> 168 bps (as-reported); ~165 bps normalized (after Venerable and ADIP adjustments)</li>
+    <li><strong>Net Spread (as-reported):</strong> 168 bps</li>
+    <li><strong>Credit Impairments (LTM):</strong> 13 bps (close to long-term average of 9 bps) - Losses disproportionately in public IG corporates purchased in market, not originated private IG credit</li>
+    <li><strong>Compensation Comp Ratio:</strong> Flat QoQ; +14% YTD</li>
+    <li><strong>India Headcount:</strong> >500 employees (~20% of total)</li>
+  </ul>
+</div>
+
+<div class="prior-ref" id="priorRef">
+  <div class="prior-ref-header" onclick="var b=document.getElementById('priorBody');b.classList.toggle('open');this.querySelector('.arrow').innerHTML=b.classList.contains('open')?'&#9650;':'&#9660;';">
+    Prior Quarter Reference: Q2 2023
+    <span class="arrow">&#9660;</span>
+  </div>
+  <div class="prior-ref-body" id="priorBody">
+    <div class="metric-grid">
+      <div class="prior-mini"><div class="pm-label">Total AUM</div><div class="pm-value">~$617 billion</div></div>
+    </div>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q2_2023.html" style="color:var(--blue);">View full Q2 2023 detail &rarr;</a></p>
+  </div>
+</div>
+
+<div class="footer-nav">
+  <a href="Q2_2023.html">&larr; Q2 2023</a>
+  <a href="../comparison.html">Back to Overview</a>
+  <a href="Q4_2023.html">Q4 2023 &rarr;</a>
+</div>
+
+</body>
+</html>

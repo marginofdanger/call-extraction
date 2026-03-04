@@ -1,0 +1,246 @@
+# UnitedHealth Group Incorporated — Q3_2024 Earnings Release
+
+**Ticker:** UNH
+**Filing Date:** 2024-10-15
+**Accession:** 0000731766-24-000320
+**Source:** [SEC EDGAR](https://www.sec.gov/Archives/edgar/data/731766/000073176624000320/0000731766-24-000320-index.htm)
+
+## Key Metrics (XBRL)
+
+| Metric | Value | Units | Source |
+|--------|------:|-------|--------|
+| Cash & Equivalents | $32.40B | USD | 10-Q |
+| Comprehensive Income | $7.03B | USD | 10-Q |
+| EPS (Basic) | 7 | USD/shares | 10-Q |
+| EPS (Diluted) | 7 | USD/shares | 10-Q |
+| Income Tax Expense | $1.36B | USD | 10-Q |
+| Net Income | $6.05B | USD | 10-Q |
+| Operating Income | $8.71B | USD | 10-Q |
+| Shares Outstanding | 923.0M | shares | 10-Q |
+| Total Assets | $299.31B | USD | 10-Q |
+| Total Liabilities | $194.85B | USD | 10-Q |
+| Total Revenue | $100.82B | USD | 10-Q |
+
+## Financial Tables (from Exhibits)
+
+### 
+
+| Quarterly Financial Performance |  |
+|  | Three Months Ended |  |
+|  | September 30, |  | September 30, |  | September 30, |  | December 31, |  |
+|  | 2024 |  | 2024 (Adj) |  | 2023 |  | 2023 |  |
+| Revenues | 100.8 billion |  | 100.8 billion |  | 92.4 billion |  | 94.4 billion |  |
+| Earnings from Operations | 8.7 billion |  | 9.0 billion |  | 8.5 billion |  | 7.7 billion |  |
+| Net Margin | 6.0% |  | 6.3% |  | 6.3% |  | 5.8% |  |
+
+### 
+
+| Quarterly Financial Performance |  |
+|  | Three Months Ended |  |
+|  | September 30, |  | September 30, |  | December 31, |  |
+|  | 2024 |  | 2023 |  | 2023 |  |
+| Revenues | 74.9 billion |  | 69.9 billion |  | 70.8 billion |  |
+| Earnings from Operations | 4.2 billion |  | 4.6 billion |  | 3.1 billion |  |
+| Operating Margin | 5.6% |  | 6.6% |  | 4.4% |  |
+
+### 
+
+| Quarterly Financial Performance |  |
+|  | Three Months Ended |  |
+|  | September 30, |  | September 30, |  | September 30, |  | December 31, |  |
+|  | 2024 |  | 2024 (Adj) |  | 2023 |  | 2023 |  |
+| Revenues | 63.9 billion |  | 63.9 billion |  | 56.7 billion |  | 59.5 billion |  |
+| Earnings from Operations | 4.5 billion |  | 4.8 billion |  | 3.9 billion |  | 4.6 billion |  |
+| Operating Margin | 7.0% |  | 7.4% |  | 6.9% |  | 7.7% |  |
+
+### 
+
+|  |  | Three Months Ended September 30, |  | Nine Months Ended September 30, |
+|  |  | 2024 |  | 2023 |  | 2024 |  | 2023 |
+| Revenues |  |  |  |  |  |  |  |  |
+| Premiums |  | 77442 |  | 72339 |  | 232327 |  | 217599 |
+| Products |  | 12631 |  | 10354 |  | 36751 |  | 31272 |
+| Services |  | 9104 |  | 8671 |  | 26742 |  | 25414 |
+| Investment and other income |  | 1643 |  | 997 |  | 3651 |  | 2910 |
+| Total revenues |  | 100820 |  | 92361 |  | 299471 |  | 277195 |
+| Operating costs |  |  |  |  |  |  |  |  |
+| Medical costs |  | 65957 |  | 59550 |  | 197150 |  | 179663 |
+| Operating costs |  | 13280 |  | 13855 |  | 40519 |  | 41289 |
+| Cost of products sold |  | 11834 |  | 9423 |  | 34230 |  | 28576 |
+| Depreciation and amortization |  | 1041 |  | 1007 |  | 3058 |  | 2998 |
+| Total operating costs |  | 92112 |  | 83835 |  | 274957 |  | 252526 |
+| Earnings from operations |  | 8708 |  | 8526 |  | 24514 |  | 24669 |
+| Interest expense |  | -1074 |  | -834 |  | -2903 |  | -2416 |
+| Loss on sale of subsidiary and subsidiaries held for sale |  | -20 |  | — |  | -8331 |  | — |
+| Earnings before income taxes |  | 7614 |  | 7692 |  | 13280 |  | 22253 |
+| Provision for income taxes |  | -1356 |  | -1654 |  | -3822 |  | -4784 |
+| Net earnings |  | 6258 |  | 6038 |  | 9458 |  | 17469 |
+| Earnings attributable to noncontrolling interests |  | -203 |  | -197 |  | -596 |  | -543 |
+| Net earnings attributable to UnitedHealth Group common shareholders |  | 6055 |  | 5841 |  | 8862 |  | 16926 |
+| Diluted earnings per share attributable to UnitedHealth Group common shareholders |  | 6.51 |  | 6.24 |  | 9.53 |  | 18.01 |
+| Adjusted earnings per share attributable to UnitedHealth Group common shareholders |  | 7.15 |  | 6.56 |  | 20.85 |  | 18.95 |
+| Diluted weighted-average common shares outstanding |  | 930 |  | 936 |  | 930 |  | 940 |
+
+### 
+
+|  |  | September 30, 2024 |  | December 31, 2023 |
+| Assets |  |  |  |  |
+| Cash and short-term investments |  | 37134 |  | 29628 |
+| Accounts receivable, net |  | 20024 |  | 21276 |
+| Other current assets |  | 35100 |  | 27533 |
+| Total current assets |  | 92258 |  | 78437 |
+| Long-term investments |  | 48689 |  | 47609 |
+| Other long-term assets |  | 158362 |  | 147674 |
+| Total assets |  | 299309 |  | 273720 |
+| Liabilities, redeemable noncontrolling interests and equity |  |  |  |  |
+| Medical costs payable |  | 33951 |  | 32395 |
+| Short-term borrowings and current maturities of long-term debt |  | 3909 |  | 4274 |
+| Other current liabilities |  | 63705 |  | 62385 |
+| Total current liabilities |  | 101565 |  | 99054 |
+| Long-term debt, less current maturities |  | 74101 |  | 58263 |
+| Other long-term liabilities |  | 19188 |  | 17484 |
+| Redeemable noncontrolling interests |  | 4574 |  | 4498 |
+| Equity |  | 99881 |  | 94421 |
+| Total liabilities, redeemable noncontrolling interests and equity |  | 299309 |  | 273720 |
+
+### 
+
+|  |  | Nine Months Ended September 30, |
+|  |  | 2024 |  | 2023 |
+| Operating Activities |  |  |  |  |
+| Net earnings |  | 9458 |  | 17469 |
+| Noncash items: |  |  |  |  |
+| Depreciation and amortization |  | 3058 |  | 2998 |
+| Deferred income taxes and other |  | -844 |  | -553 |
+| Share-based compensation |  | 831 |  | 851 |
+| Loss on sale of subsidiary and subsidiaries held for sale |  | 8331 |  | — |
+| Net changes in operating assets and liabilities |  | 1001 |  | 13496 |
+| Cash flows from operating activities |  | 21835 |  | 34261 |
+| Investing Activities |  |  |  |  |
+| Sales and maturities of investments, net of purchases (purchases, net of sales and maturities) |  | 1852 |  | -2850 |
+| Purchases of property, equipment and capitalized software |  | -2587 |  | -2427 |
+| Cash paid for acquisitions and other transactions, net |  | -11674 |  | -8389 |
+| Loans to care providers - cyberattack |  | -8904 |  | — |  |
+| Repayment of care provider loans - cyberattack |  | 3189 |  | — |  |
+| Other, net |  | -1284 |  | -721 |
+| Cash flows used for investing activities |  | -19408 |  | -14387 |
+| Financing Activities |  |  |  |  |
+| Common share repurchases |  | -4028 |  | -6500 |
+| Dividends paid |  | -5601 |  | -5023 |
+| Net change in short-term borrowings and long-term debt |  | 15120 |  | 5848 |
+| Other, net |  | -661 |  | 1302 |
+| Cash flows from (used for) financing activities |  | 4830 |  | -4373 |
+| Effect of exchange rate changes on cash and cash equivalents |  | -30 |  | 49 |
+| Increase in cash and cash equivalents, including cash within businesses held for sale |  | 7227 |  | 15550 |
+| Less: cash within businesses held for sale |  | -254 |  | — |
+| Net increase in cash and cash equivalents |  | 6973 |  | 15550 |
+| Cash and cash equivalents, beginning of period |  | 25427 |  | 23365 |
+| Cash and cash equivalents, end of period |  | 32400 |  | 38915 |
+
+### 
+
+|  |  |  |  | Optum |  | UnitedHealth Group Consolidated |
+|  |  | UnitedHealthcare |  | Optum Health |  | Optum Insight |  | Optum Rx |  | Total Optum |  |
+| Three Months Ended September 30, 2024 |  |  |  |  |  |  |  |  |  |  |  |  |
+| Total revenues |  | 74853 |  | 25917 |  | 4931 |  | 34207 |  | 63925 |  | 100820 |
+| Business disruption impacts - cyberattack |  | — |  | — |  | 134 |  | — |  | 134 |  | 134 |
+| Three Months Ended September 30, 2023 |  |  |  |  |  |  |  |  |  |  |  |  |
+| Total revenues |  | 69853 |  | 23864 |  | 4977 |  | 28857 |  | 56737 |  | 92361 |
+| Nine Months Ended September 30, 2024 |  |  |  |  |  |  |  |  |  |  |  |  |
+| Total revenues |  | 224076 |  | 79698 |  | 13976 |  | 97457 |  | 187856 |  | 299471 |
+| South American impacts |  | 220 |  | — |  | — |  | — |  | — |  | 220 |
+| Adjusted revenues |  | 224296 |  | 79698 |  | 13976 |  | 97457 |  | 187856 |  | 299691 |
+| Business disruption impacts - cyberattack |  | — |  | — |  | 747 |  | — |  | 747 |  | 747 |
+| Nine Months Ended September 30, 2023 |  |  |  |  |  |  |  |  |  |  |  |  |
+| Total revenues |  | 210552 |  | 70785 |  | 14147 |  | 84921 |  | 167140 |  | 277195 |
+
+### 
+
+|  |  | Employer & Individual (E&I) |  | Medicare & Retirement |  | Community & State |  | Total UnitedHealthcare |
+|  |  | Domestic |  | Global |  | Total E&I |  |  |  |
+| Three Months Ended September 30, 2024 |  |  |  |  |  |  |  |  |  |  |  |  |
+| Total revenues |  | 18985 |  | 769 |  | 19754 |  | 34904 |  | 20195 |  | 74853 |
+| Three Months Ended September 30, 2023 |  |  |  |  |  |  |  |  |  |  |  |  |
+| Total revenues |  | 16854 |  | 2417 |  | 19271 |  | 32022 |  | 18560 |  | 69853 |
+| Nine Months Ended September 30, 2024 |  |  |  |  |  |  |  |  |  |  |  |  |
+| Total revenues |  | 55470 |  | 2892 |  | 58362 |  | 105294 |  | 60420 |  | 224076 |
+| Nine Months Ended September 30, 2023 |  |  |  |  |  |  |  |  |  |  |  |  |
+| Total revenues |  | 50157 |  | 6905 |  | 57062 |  | 97468 |  | 56022 |  | 210552 |
+
+### 
+
+|  |  |  |  |  | Optum |  | UnitedHealth Group Consolidated |
+|  |  | UnitedHealthcare |  |  | Optum Health |  | Optum Insight |  | Optum Rx |  | Total Optum |  |
+| Three Months Ended September 30, 2024 |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Earnings from operations |  | 4212 |  |  | 2161 |  | 791 |  | 1544 |  | 4496 |  | 8708 |
+| Direct response costs - cyberattack |  | — |  |  | — |  | 257 |  | — |  | 257 |  | 257 |
+| Adjusted earnings from operations |  | 4212 |  |  | 2161 |  | 1048 |  | 1544 |  | 4753 |  | 8965 |
+| Total direct response costs - cyberattack |  | — |  |  | — |  | 257 |  | — |  | 257 |  | 341 |
+| Operating margin |  | 5.6 | % |  |  | 8.3 | % |  | 16.0 | % |  | 4.5 | % |  | 7.0 | % |  | 8.6 | % |
+| Adjusted operating margin |  | 5.6 | % |  |  | 8.3 | % |  | 21.3 | % |  | 4.5 | % |  | 7.4 | % |  | 8.9 | % |
+| Business disruption impacts - cyberattack |  | — |  |  | — |  | 134 |  | — |  | 134 |  | 134 |
+| Total cyberattack impacts |  | — |  |  | — |  | 391 |  | — |  | 391 |  | 475 |
+| Three Months Ended September 30, 2023 |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Earnings from operations |  | 4592 |  |  | 1568 |  | 1109 |  | 1257 |  | 3934 |  | 8526 |
+| Operating margin |  | 6.6 | % |  |  | 6.6 | % |  | 22.3 | % |  | 4.4 | % |  | 6.9 | % |  | 9.2 | % |
+| Nine Months Ended September 30, 2024 |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Earnings from operations |  | 12611 |  |  | 5979 |  | 1827 |  | 4097 |  | 11903 |  | 24514 |
+| Direct response costs - cyberattack |  | 485 |  |  | 160 |  | 876 |  | — |  | 1036 |  | 1521 |
+| South American impacts |  | 115 |  |  | — |  | — |  | — |  | — |  | 115 |
+| Adjusted earnings from operations |  | 13211 |  |  | 6139 |  | 2703 |  | 4097 |  | 12939 |  | 26150 |
+| Total direct response costs - cyberattack |  | 485 |  |  | 160 |  | 876 |  | — |  | 1036 |  | 1710 |
+| Operating margin |  | 5.6 | % |  |  | 7.5 | % |  | 13.1 | % |  | 4.2 | % |  | 6.3 | % |  | 8.2 | % |
+| Adjusted operating margin |  | 5.9 | % |  |  | 7.7 | % |  | 19.3 | % |  | 4.2 | % |  | 6.9 | % |  | 8.7 | % |
+| Business disruption impacts - cyberattack |  | — |  |  | — |  | 747 |  | — |  | 747 |  | 747 |
+| Total cyberattack impacts |  | 485 |  |  | 160 |  | 1623 |  | — |  | 1783 |  | 2457 |
+| Nine Months Ended September 30, 2023 |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Earnings from operations |  | 13293 |  |  | 4869 |  | 2984 |  | 3523 |  | 11376 |  | 24669 |
+| Operating margin |  | 6.3 | % |  |  | 6.9 | % |  | 21.1 | % |  | 4.1 | % |  | 6.8 | % |  | 8.9 | % |
+
+### 
+
+|  |  | Three Months Ended September 30, |  | Nine Months Ended September 30, |  | Projected Year Ended December 31, |
+|  |  | 2024 |  | 2023 |  | 2024 |  | 2023 |  | 2024 |
+| Net earnings attributable to UnitedHealth Group common shareholders |  | 6055 |  | 5841 |  | 8862 |  | 16926 |  | 14,375 - 14,650 |
+| Intangible amortization |  | 426 |  | 392 |  | 1242 |  | 1178 |  | ~1,650 |
+| Tax effect of intangible amortization |  | -104 |  | -96 |  | -305 |  | -292 |  | ~(410) |
+| South American impacts |  | 9 |  | — |  | 8435 |  | — |  | ~8,515 |
+| Tax effect of South American impacts |  | 4 |  | — |  | -153 |  | — |  | ~(175) |
+| Direct response costs - cyberattack |  | 341 |  | — |  | 1710 |  | — |  | ~2,000 |
+| Tax effect of direct response costs - cyberattack |  | -80 |  | — |  | -403 |  | — |  | ~(470) |
+| Adjusted net earnings attributable to UnitedHealth Group common shareholders |  | 6651 |  | 6137 |  | 19388 |  | 17812 |  | 25,475 - 25,750 |
+| Diluted earnings per share |  | 6.51 |  | 6.24 |  | 9.53 |  | 18.01 |  | 15.50 - 15.75 |
+| Intangible amortization per share |  | 0.46 |  | 0.42 |  | 1.34 |  | 1.25 |  | ~1.80 |
+| Tax effect of intangible amortization per share |  | -0.11 |  |  | -0.10 |  |  | -0.33 |  |  | -0.31 |  |  | ~(0.45) |
+| South American impacts per share |  | 0.01 |  |  | — |  | 9.07 |  |  | — |  | ~9.15 |
+| Tax effect of South American impacts per share |  | — |  |  | — |  | -0.17 |  |  | — |  | ~(0.15) |
+| Direct response costs - cyberattack per share |  | 0.37 |  | — |  | 1.84 |  | — |  | ~2.15 |
+| Tax effects of direct response costs - cyberattack per share |  | -0.09 |  | — |  | -0.43 |  | — |  | ~(0.50) |
+| Adjusted diluted earnings per share |  | 7.15 |  | 6.56 |  | 20.85 |  | 18.95 |  | 27.50 - 27.75 |
+| Additional Information: Total Cyberattack Impacts |  |  |  |  |  |  |  |  |  |  |
+| Business disruption impacts |  | 134 |  | — |  | 747 |  | — |  | ~870 |
+| Tax effect of business disruption impacts |  | -21 |  | — |  | -139 |  | — |  | ~(165) |
+| Business disruption impacts, net of tax |  | 113 |  | — |  | 608 |  | — |  | ~705 |
+| Business disruption impacts per share |  | 0.12 |  | — |  | 0.65 |  | — |  | ~0.75 |
+| Total cyberattack impacts |  | 475 |  | — |  | 2457 |  | — |  | ~2,870 |
+| Tax effect of total cyberattack impacts |  | -101 |  | — |  | -542 |  | — |  | ~(635) |
+| Total cyberattack impacts, net of tax |  | 374 |  | — |  | 1915 |  | — |  | ~2,235 |
+| Total cyberattack impacts per share |  | 0.40 |  | — |  | 2.06 |  | — |  | ~2.40 |
+
+### 
+
+|  |  | Three Months Ended September 30, 2024 |  | Nine Months Ended September 30, 2024 |
+| Consolidated revenue |  | 100820 |  | 299471 |
+| South American impacts |  | — |  | 220 |
+| Adjusted consolidated revenues |  | 100820 |  | 299691 |
+| Net earnings attributable to UnitedHealth Group common shareholders |  | 6055 |  | 8862 |
+| South American impacts |  | 9 |  | 8435 |
+| Tax effect of South American impacts |  | 4 |  | -153 |
+| Direct response costs - cyberattack |  | 341 |  | 1710 |
+| Tax effect of direct response costs - cyberattack |  | -80 |  | -403 |
+| Adjusted net earnings attributable to UnitedHealth Group common shareholders for South American impacts and direct response costs |  | 6329 |  | 18451 |
+| Net margin attributable to UnitedHealth Group common shareholders |  | 6.0 | % |  | 3.0 | % |
+| Adjusted net margin attributable to UnitedHealth Group common shareholders for South American impacts and direct response costs |  | 6.3 | % |  | 6.2 | % |
+
+---
+*Generated by edgar_download.py on 2026-03-03 20:17*

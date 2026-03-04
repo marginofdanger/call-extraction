@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NVDA Q2 2023 Earnings Call Detail</title>
+<style>
+:root {
+    --company-primary: #76b900;
+    --company-dark: #1a1a1a;
+    --company-accent: #333333;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 40px 40px 32px;
+    margin: 0 -24px 0;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .header .meta {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    font-weight: 300;
+  }
+  .header .meta span { margin-right: 24px; }
+
+  .nav-bar {
+    background: var(--company-accent);
+    margin: 0 -24px 32px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    transition: all 0.15s;
+  }
+  .nav-bar a:hover { background: rgba(255,255,255,0.2); }
+  .nav-bar a.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .nav-center {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-center a.qbtn {
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+  }
+  .nav-center a.qbtn.current {
+    background: var(--company-primary);
+    border-color: var(--company-primary);
+  }
+  .nav-center a.qbtn:hover { background: rgba(255,255,255,0.2); }
+  .nav-back {
+    background: rgba(255,255,255,0.15) !important;
+    border-color: rgba(255,255,255,0.35) !important;
+  }
+
+  .metrics-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .metric {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+  .metric-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .metric-value {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+  .metric-delta {
+    font-size: 0.72rem;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+  .delta-up { color: var(--green); }
+  .delta-down { color: var(--red); }
+  .delta-flat { color: var(--text-muted); }
+
+  .changes-box {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 5px solid var(--amber);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .changes-box h3 {
+    font-size: 1rem;
+    color: var(--company-dark);
+    margin-bottom: 10px;
+  }
+  .changes-box ul { list-style: none; padding: 0; }
+  .changes-box li {
+    padding: 5px 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .change-tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .ct-raised { background: #d5f5e3; color: #1e8449; }
+  .ct-lowered { background: #fadbd8; color: #c0392b; }
+  .ct-changed { background: #d6eaf8; color: #2471a3; }
+  .ct-new { background: #e8daef; color: #6c3483; }
+  .ct-maintained { background: #fdebd0; color: #b9770e; }
+
+  .content-section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .content-section h3 {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .content-section ul {
+    padding: 14px 18px 14px 36px;
+    margin: 0;
+  }
+  .content-section li {
+    padding: 3px 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .content-section li strong { color: var(--company-dark); }
+
+  .prior-ref {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 40px;
+    overflow: hidden;
+  }
+  .prior-ref-header {
+    background: var(--light-bg);
+    padding: 12px 18px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--company-dark);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .prior-ref-header:hover { background: #eef2f7; }
+  .prior-ref-body { padding: 18px; display: none; }
+  .prior-ref-body.open { display: block; }
+  .prior-ref-body .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .prior-mini {
+    background: var(--light-bg);
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .prior-mini .pm-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .prior-mini .pm-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border);
+  }
+  .footer-nav a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .footer-nav a:hover { text-decoration: underline; }
+
+  /* Comparison page styles */
+  .toc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .toc a {
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 4px 0;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  .comp-section {
+    margin-bottom: 40px;
+  }
+  .comp-section h2 {
+    font-size: 1.2rem;
+    color: var(--company-dark);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--company-primary);
+  }
+
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+  }
+  .comp-table th {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .comp-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .comp-table tr:nth-child(even) { background: var(--light-bg); }
+  .comp-table tr:hover { background: #e8f4fd; }
+
+  @media (max-width: 768px) {
+    .header h1 { font-size: 1.5rem; }
+    .metrics-card { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .nav-center { display: none; }
+    body { padding: 0 16px 60px; }
+    .header { margin: 0 -16px 0; padding: 28px 24px 20px; }
+    .nav-bar { margin: 0 -16px 24px; }
+    .toc { grid-template-columns: 1fr; }
+    .comp-table { font-size: 0.78rem; }
+    .comp-table th, .comp-table td { padding: 6px 8px; }
+  }
+
+  @media print {
+    .nav-bar { display: none; }
+    .header { background: #333; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>NVDA Q2 2023 Earnings Call</h1>
+  <div class="meta">
+    <span>Call Date: August 24, 2022</span>
+    <span>Reporting: Q2 FY2023 (May-Jul 2022)</span>
+  </div>
+</div>
+<div class="nav-bar">
+  <a href="Q1_2023.html">&larr; Q1 2023</a>
+  <div class="nav-center">
+    <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="Q4_2026.html" class="qbtn">4Q26</a>
+    <a href="Q3_2026.html" class="qbtn">3Q26</a>
+    <a href="Q2_2026.html" class="qbtn">2Q26</a>
+    <a href="Q1_2026.html" class="qbtn">1Q26</a>
+    <a href="Q4_2025.html" class="qbtn">4Q25</a>
+    <a href="Q3_2025.html" class="qbtn">3Q25</a>
+    <a href="Q2_2025.html" class="qbtn">2Q25</a>
+    <a href="Q1_2025.html" class="qbtn">1Q25</a>
+    <a href="Q4_2024.html" class="qbtn">4Q24</a>
+    <a href="Q3_2024.html" class="qbtn">3Q24</a>
+    <a href="Q2_2024.html" class="qbtn">2Q24</a>
+    <a href="Q1_2024.html" class="qbtn">1Q24</a>
+    <a href="Q4_2023.html" class="qbtn">4Q23</a>
+    <a href="Q3_2023.html" class="qbtn">3Q23</a>
+    <a href="Q2_2023.html" class="qbtn current">2Q23</a>
+    <a href="Q1_2023.html" class="qbtn">1Q23</a>
+  </div>
+  <a href="Q3_2023.html">Q3 2023 &rarr;</a>
+</div>
+
+<div class="changes-box">
+  <h3>What Changed vs Q1 2023</h3>
+  <ul>
+    <li><span class="change-tag ct-changed">Changed</span> LT Gross Margin Target: Long-term gross margin profile believed to be intact (despite Q2 charges) (prior: Opportunities to increase longer term as new products ramp and software becomes a larger percent of revenue)</li>
+  </ul>
+</div>
+
+<div class="metrics-card">
+  <div class="metric" style="grid-column: 1 / -1; background: linear-gradient(135deg, var(--company-dark), var(--company-accent)); color: #fff; border: none; padding: 8px 14px;">
+    <div class="metric-label" style="color: rgba(255,255,255,0.7);">Guidance For</div>
+    <div class="metric-value" style="color: #fff; font-size: 1rem;">Q3 FY2023</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Next-Q Revenue</div>
+    <div class="metric-value">$5.9B, +/- 2%</div>
+    <div class="metric-delta delta-flat">Prior: $8.1B, +/- 2%</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Next-Q Gross Margin (Non-GAAP)</div>
+    <div class="metric-value">65.0%, +/- 50 bps</div>
+    <div class="metric-delta delta-flat">Prior: 67.1%, +/- 50 bps</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Next-Q OpEx (Non-GAAP)</div>
+    <div class="metric-value">~$1.82B</div>
+    <div class="metric-delta delta-flat">Prior: $1.75B</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Next-Q Gross Margin (GAAP)</div>
+    <div class="metric-value">62.4%, +/- 50 bps</div>
+    <div class="metric-delta delta-flat">Prior: 65.1%, +/- 50 bps</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">LT Gross Margin Target</div>
+    <div class="metric-value">Long-term gross margin profile believed to be intact</div>
+    <div class="metric-delta delta-flat">Prior: Opportunities to increase longer term as new products ramp and software becomes a larger percent of revenue</div>
+  </div>
+</div>
+
+<!-- Full Guidance Content -->
+<div class="content-section">
+  <h3>Quarterly Guidance (Q3 FY2023)</h3>
+  <ul>
+    <li><strong>Revenue:</strong> $5.9B, +/- 2%</li>
+    <li><strong>GAAP Gross Margin:</strong> 62.4%, +/- 50 bps</li>
+    <li><strong>Non-GAAP Gross Margin:</strong> 65.0%, +/- 50 bps</li>
+    <li><strong>GAAP Operating Expenses:</strong> ~$2.59B</li>
+    <li><strong>Non-GAAP Operating Expenses:</strong> ~$1.82B</li>
+    <li><strong>GAAP/Non-GAAP Other Income & Expense:</strong> ~$10M expense (excluding gains/losses on nonaffiliated investments)</li>
+    <li><strong>Tax Rate (GAAP/Non-GAAP):</strong> 9.5%, +/- 1% (excluding discrete items)</li>
+    <li><strong>CapEx:</strong> $550M–$600M</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Full Year FY2023 Guidance</h3>
+  <ul>
+    <li><strong>Non-GAAP OpEx Growth:</strong> Over 30% for the full year</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Long-Term Targets</h3>
+  <ul>
+    <li><strong>Gross Margin:</strong> Long-term gross margin profile believed to be intact (despite Q2 charges)</li>
+    <li><strong>Gaming ASP Trend:</strong> Drifting toward ~$500, in line with game console pricing (per Jensen)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 FY2023 Segment Revenue</h3>
+  <ul>
+    <li><strong>Data Center:</strong> $3.81B (record), +1% QoQ, +61% YoY — impacted by supply chain disruptions; North American hyperscale increased sequentially but offset by lower China hyperscale sales</li>
+    <li><strong>Gaming:</strong> $2.04B, -44% QoQ, -33% YoY — macroeconomic slowdown, channel inventory correction, crypto decline</li>
+    <li><strong>Professional Visualization:</strong> $496M, -20% QoQ, -4% YoY — OEM inventory correction, enterprise demand slowed</li>
+    <li><strong>Automotive:</strong> $220M, +59% QoQ, +45% YoY — Q2 described as "inflection point"; strong self-driving and new energy vehicle wins</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 FY2023 Key Operating Metrics</h3>
+  <ul>
+    <li><strong>Share Repurchases (H1 FY2023):</strong> $5.5B returned (repurchases + dividends)</li>
+    <li><strong>Share Repurchase Authorization Remaining:</strong> ~$12B through December 2023</li>
+    <li><strong>Gaming Sell-Through:</strong> Up 70%+ since pre-pandemic; estimated Q2+Q3 combined end demand ~$5B</li>
+    <li><strong>Hyperscaler vs Vertical Split (Data Center):</strong> Approximately 50/50</li>
+    <li><strong>Automotive Design Win Pipeline:</strong> $11B over next 6 years (unchanged from Q1)</li>
+    <li><strong>Supercomputer Rankings:</strong> 72% of top 500 systems powered by NVIDIA; 22 of top 30 Green500</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q3 FY2023 Segment Expectations</h3>
+  <ul>
+    <li><strong>Gaming:</strong> Expected to decline sequentially — ~3/4 of combined Gaming+ProViz decline; OEMs and channel partners reducing inventory</li>
+    <li><strong>Professional Visualization:</strong> Expected to decline — ~1/4 of combined decline; enterprise demand slowdown expected to persist</li>
+    <li><strong>Data Center:</strong> Expected to grow sequentially, roughly similar magnitude to Q1→Q2 growth; potential for more upside</li>
+    <li><strong>Automotive:</strong> Continued growth expected; Q2 was inflection point</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Gaming Inventory Correction</h3>
+  <ul>
+    <li>Sell-in intentionally set "far below" market sell-through to allow channel/OEM inventory correction</li>
+    <li>Macro conditions turned "sharply worse"; sudden slowdown in consumer demand</li>
+    <li>Price-positioning programs implemented with channel partners for current high-end desktop GPUs</li>
+    <li>Expect to be "in a good shape going into next year" (FY2024)</li>
+    <li>Lower units AND lower ASPs contributed to decline</li>
+    <li>Next-gen architecture launch preparation (Ada Lovelace) underway</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>H100 Hopper Production Status</h3>
+  <ul>
+    <li>H100 in full production; racing to get it to all CSPs</li>
+    <li>Expect to ship "substantial Hoppers in Q4" (Q4 FY2023 = Nov 2022-Jan 2023)</li>
+    <li>Designed specifically for Transformer-type AI models with Transformer Engine</li>
+    <li>Not affected by inventory charges — charges relate to prior architecture only</li>
+    <li>Supports previous-gen and next-gen CPUs (Sapphire Rapids, Genoa, Graviton)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Data Center and China Demand</h3>
+  <ul>
+    <li>China hyperscalers "really slowed down infrastructure investment" — accelerated slowdown in Q2</li>
+    <li>North American hyperscale revenue doubled YoY, offsetting China decline</li>
+    <li>Supply chain challenges: complex system integration (GPUs, HGX boards, networking, cables, switches)</li>
+    <li>Some supply arrived late in the quarter causing logistics disruption</li>
+    <li>Networking led growth — strong sequential and YoY; ConnectX-6 and ConnectX-7 design win momentum</li>
+    <li>Growing CSP interest in Spectrum-4 400G Ethernet platform</li>
+    <li>GPU supply in shortage in the cloud; demand for GPU rentals far exceeds supply</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Large Language Models and Transformers</h3>
+  <ul>
+    <li>LLMs described as "one of the most important neural networks today"</li>
+    <li>Ranging from tens of billions to over 1 trillion parameters</li>
+    <li>Use cases: content generation, summarization, chat, Q&A, conversational AI</li>
+    <li>Also applied to life sciences: chemistry (MegaMolBART), proteins, DNA, genomics</li>
+    <li>"Nobody could have predicted the profound importance of large language models"</li>
+    <li>NeMo Megatron framework update: up to 30% faster LLM training</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Cryptocurrency and Ethereum Merge</h3>
+  <ul>
+    <li>Crypto mining contribution diminishing as expected</li>
+    <li>Ethereum merge approaching — unable to quantify exact impact on Gaming demand decline</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Automotive (NVIDIA DRIVE Orin)</h3>
+  <ul>
+    <li>New vehicle rollout plans from NIO, Li Auto, JIDU, Human Horizons</li>
+    <li>Pony.ai self-driving trucks and robotaxis on NVIDIA DRIVE</li>
+    <li>$11B design win pipeline expected to translate to continued growth</li>
+    <li>Automotive expected to be "next billion-dollar business"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 FY2023 Actuals (Reported)</h3>
+  <ul>
+    <li><strong>Revenue:</strong> $6.7B, -19% QoQ, +3% YoY (below $8.1B guidance from Q1 call)</li>
+    <li><strong>GAAP Gross Margin:</strong> 43.5% (includes $1.22B inventory charges + $122M warranty reserves)</li>
+    <li><strong>Non-GAAP Gross Margin:</strong> 45.9% (includes charges)</li>
+    <li><strong>Non-GAAP Operating Expenses:</strong> up 38% YoY, up 9% QoQ — driven by employee growth costs, salary increases, engineering development</li>
+    <li><strong>EPS (Non-GAAP):</strong> $0.51</li>
+    <li><strong>Inventory & Related Charges:</strong> $1.22B — purchase commitments from shortage period, primarily prior architectures (NOT Hopper-related)</li>
+    <li><strong>Warranty Reserves:</strong> $122M</li>
+  </ul>
+</div>
+
+<div class="prior-ref" id="priorRef">
+  <div class="prior-ref-header" onclick="var b=document.getElementById('priorBody');b.classList.toggle('open');this.querySelector('.arrow').innerHTML=b.classList.contains('open')?'&#9650;':'&#9660;';">
+    Prior Quarter Reference: Q1 2023
+    <span class="arrow">&#9660;</span>
+  </div>
+  <div class="prior-ref-body" id="priorBody">
+    <div class="metric-grid">
+      <div class="prior-mini"><div class="pm-label">Next-Q Revenue</div><div class="pm-value">$8.1B, +/- 2%</div></div>
+      <div class="prior-mini"><div class="pm-label">Next-Q Gross Margin (Non-GAAP)</div><div class="pm-value">67.1%, +/- 50 bps</div></div>
+      <div class="prior-mini"><div class="pm-label">Next-Q OpEx (Non-GAAP)</div><div class="pm-value">$1.75B</div></div>
+      <div class="prior-mini"><div class="pm-label">Next-Q Gross Margin (GAAP)</div><div class="pm-value">65.1%, +/- 50 bps</div></div>
+      <div class="prior-mini"><div class="pm-label">LT Gross Margin Target</div><div class="pm-value">Opportunities to increase longer term as new products ramp and software becomes a larger percent of revenue</div></div>
+    </div>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q1_2023.html" style="color:var(--blue);">View full Q1 2023 detail &rarr;</a></p>
+  </div>
+</div>
+
+<div class="footer-nav">
+  <a href="Q1_2023.html">&larr; Q1 2023</a>
+  <a href="../comparison.html">Back to Overview</a>
+  <a href="Q3_2023.html">Q3 2023 &rarr;</a>
+</div>
+
+</body>
+</html>

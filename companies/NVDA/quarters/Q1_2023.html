@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NVDA Q1 2023 Earnings Call Detail</title>
+<style>
+:root {
+    --company-primary: #76b900;
+    --company-dark: #1a1a1a;
+    --company-accent: #333333;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 40px 40px 32px;
+    margin: 0 -24px 0;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .header .meta {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    font-weight: 300;
+  }
+  .header .meta span { margin-right: 24px; }
+
+  .nav-bar {
+    background: var(--company-accent);
+    margin: 0 -24px 32px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    transition: all 0.15s;
+  }
+  .nav-bar a:hover { background: rgba(255,255,255,0.2); }
+  .nav-bar a.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .nav-center {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-center a.qbtn {
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+  }
+  .nav-center a.qbtn.current {
+    background: var(--company-primary);
+    border-color: var(--company-primary);
+  }
+  .nav-center a.qbtn:hover { background: rgba(255,255,255,0.2); }
+  .nav-back {
+    background: rgba(255,255,255,0.15) !important;
+    border-color: rgba(255,255,255,0.35) !important;
+  }
+
+  .metrics-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .metric {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+  .metric-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .metric-value {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+  .metric-delta {
+    font-size: 0.72rem;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+  .delta-up { color: var(--green); }
+  .delta-down { color: var(--red); }
+  .delta-flat { color: var(--text-muted); }
+
+  .changes-box {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 5px solid var(--amber);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .changes-box h3 {
+    font-size: 1rem;
+    color: var(--company-dark);
+    margin-bottom: 10px;
+  }
+  .changes-box ul { list-style: none; padding: 0; }
+  .changes-box li {
+    padding: 5px 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .change-tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .ct-raised { background: #d5f5e3; color: #1e8449; }
+  .ct-lowered { background: #fadbd8; color: #c0392b; }
+  .ct-changed { background: #d6eaf8; color: #2471a3; }
+  .ct-new { background: #e8daef; color: #6c3483; }
+  .ct-maintained { background: #fdebd0; color: #b9770e; }
+
+  .content-section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .content-section h3 {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .content-section ul {
+    padding: 14px 18px 14px 36px;
+    margin: 0;
+  }
+  .content-section li {
+    padding: 3px 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .content-section li strong { color: var(--company-dark); }
+
+  .prior-ref {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 40px;
+    overflow: hidden;
+  }
+  .prior-ref-header {
+    background: var(--light-bg);
+    padding: 12px 18px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--company-dark);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .prior-ref-header:hover { background: #eef2f7; }
+  .prior-ref-body { padding: 18px; display: none; }
+  .prior-ref-body.open { display: block; }
+  .prior-ref-body .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .prior-mini {
+    background: var(--light-bg);
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .prior-mini .pm-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .prior-mini .pm-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border);
+  }
+  .footer-nav a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .footer-nav a:hover { text-decoration: underline; }
+
+  /* Comparison page styles */
+  .toc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .toc a {
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 4px 0;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  .comp-section {
+    margin-bottom: 40px;
+  }
+  .comp-section h2 {
+    font-size: 1.2rem;
+    color: var(--company-dark);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--company-primary);
+  }
+
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+  }
+  .comp-table th {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .comp-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .comp-table tr:nth-child(even) { background: var(--light-bg); }
+  .comp-table tr:hover { background: #e8f4fd; }
+
+  @media (max-width: 768px) {
+    .header h1 { font-size: 1.5rem; }
+    .metrics-card { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .nav-center { display: none; }
+    body { padding: 0 16px 60px; }
+    .header { margin: 0 -16px 0; padding: 28px 24px 20px; }
+    .nav-bar { margin: 0 -16px 24px; }
+    .toc { grid-template-columns: 1fr; }
+    .comp-table { font-size: 0.78rem; }
+    .comp-table th, .comp-table td { padding: 6px 8px; }
+  }
+
+  @media print {
+    .nav-bar { display: none; }
+    .header { background: #333; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>NVDA Q1 2023 Earnings Call</h1>
+  <div class="meta">
+    <span>Call Date: May 25, 2022</span>
+    <span>Reporting: Q1 FY2023 (Feb-Apr 2022)</span>
+  </div>
+</div>
+<div class="nav-bar">
+  <a class="disabled">&larr; Prev</a>
+  <div class="nav-center">
+    <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="Q4_2026.html" class="qbtn">4Q26</a>
+    <a href="Q3_2026.html" class="qbtn">3Q26</a>
+    <a href="Q2_2026.html" class="qbtn">2Q26</a>
+    <a href="Q1_2026.html" class="qbtn">1Q26</a>
+    <a href="Q4_2025.html" class="qbtn">4Q25</a>
+    <a href="Q3_2025.html" class="qbtn">3Q25</a>
+    <a href="Q2_2025.html" class="qbtn">2Q25</a>
+    <a href="Q1_2025.html" class="qbtn">1Q25</a>
+    <a href="Q4_2024.html" class="qbtn">4Q24</a>
+    <a href="Q3_2024.html" class="qbtn">3Q24</a>
+    <a href="Q2_2024.html" class="qbtn">2Q24</a>
+    <a href="Q1_2024.html" class="qbtn">1Q24</a>
+    <a href="Q4_2023.html" class="qbtn">4Q23</a>
+    <a href="Q3_2023.html" class="qbtn">3Q23</a>
+    <a href="Q2_2023.html" class="qbtn">2Q23</a>
+    <a href="Q1_2023.html" class="qbtn current">1Q23</a>
+  </div>
+  <a href="Q2_2023.html">Q2 2023 &rarr;</a>
+</div>
+
+<div class="changes-box">
+  <h3>Context</h3>
+  <ul>
+    <li><span class="change-tag ct-new">New</span> First quarter in our tracking series</li>
+  </ul>
+</div>
+
+<div class="metrics-card">
+  <div class="metric" style="grid-column: 1 / -1; background: linear-gradient(135deg, var(--company-dark), var(--company-accent)); color: #fff; border: none; padding: 8px 14px;">
+    <div class="metric-label" style="color: rgba(255,255,255,0.7);">Guidance For</div>
+    <div class="metric-value" style="color: #fff; font-size: 1rem;">Q2 FY2023</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Next-Q Revenue</div>
+    <div class="metric-value">$8.1B, +/- 2%</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Next-Q Gross Margin (Non-GAAP)</div>
+    <div class="metric-value">67.1%, +/- 50 bps</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Next-Q OpEx (Non-GAAP)</div>
+    <div class="metric-value">$1.75B</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Next-Q Gross Margin (GAAP)</div>
+    <div class="metric-value">65.1%, +/- 50 bps</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">LT Gross Margin Target</div>
+    <div class="metric-value">Opportunities to increase longer term as new products ramp and software becomes a larger percent of revenue</div>
+  </div>
+</div>
+
+<!-- Full Guidance Content -->
+<div class="content-section">
+  <h3>Quarterly Guidance (Q2 FY2023)</h3>
+  <ul>
+    <li><strong>Revenue:</strong> $8.1B, +/- 2%</li>
+    <li><strong>GAAP Gross Margin:</strong> 65.1%, +/- 50 bps</li>
+    <li><strong>Non-GAAP Gross Margin:</strong> 67.1%, +/- 50 bps</li>
+    <li><strong>GAAP Operating Expenses:</strong> $2.46B</li>
+    <li><strong>Non-GAAP Operating Expenses:</strong> $1.75B</li>
+    <li><strong>GAAP/Non-GAAP Other Income & Expense:</strong> ~$40M expense (excluding gains/losses on nonaffiliated investments)</li>
+    <li><strong>Tax Rate (GAAP/Non-GAAP):</strong> 12.5%, +/- 1% (excluding discrete items)</li>
+    <li><strong>CapEx:</strong> $400M–$450M</li>
+    <li><strong>Russia & China COVID Impact Assumption:</strong> ~$500M total ($400M Gaming sell-in, $100M Data Center from absence of Russia sales)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Full Year FY2023 Guidance</h3>
+  <ul>
+    <li><strong>Non-GAAP OpEx Growth:</strong> High 20s % range for the year</li>
+    <li><strong>OpEx Trajectory:</strong> Sequential increases to level off after Q2; first half includes significant expenses for bring-up of multiple new products that should not recur in second half</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Long-Term Targets</h3>
+  <ul>
+    <li><strong>Gross Margin:</strong> Opportunities to increase longer term as new products ramp and software becomes a larger percent of revenue</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q1 FY2023 Segment Revenue</h3>
+  <ul>
+    <li><strong>Data Center:</strong> $3.8B (record), +15% QoQ, +83% YoY — hyperscale and cloud computing revenue more than doubled YoY</li>
+    <li><strong>Gaming:</strong> $3.6B, +6% QoQ, +31% YoY — powered by GeForce RTX 30 Series</li>
+    <li><strong>Professional Visualization:</strong> $622M, -3% QoQ, +67% YoY</li>
+    <li><strong>Automotive:</strong> $138M, +10% QoQ, -10% YoY</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q1 FY2023 Key Operating Metrics</h3>
+  <ul>
+    <li><strong>Share Repurchases:</strong> $2.0B in Q1</li>
+    <li><strong>Share Repurchase Authorization:</strong> $15B through December 2023 (Board increased and extended)</li>
+    <li><strong>Automotive Design Win Pipeline:</strong> $11B over next 6 years (up from $8B a year ago)</li>
+    <li><strong>Channel Inventory (Gaming):</strong> Nearly normalized, expected to remain around these levels in Q2</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 FY2023 Segment Expectations</h3>
+  <ul>
+    <li><strong>Gaming:</strong> Expected to decline sequentially "in the teens" — driven by China COVID lockdowns and Russia impact; end demand expected to still grow YoY in Q2</li>
+    <li><strong>Data Center:</strong> Expected to grow sequentially to another record quarter; continued strong demand across hyperscale, cloud, and vertical industries</li>
+    <li><strong>Automotive:</strong> Significant sequential growth expected as DRIVE Orin ramps in Q2 and beyond</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>H100 Hopper Architecture</h3>
+  <ul>
+    <li>Announced at GTC as next-generation Data Center GPU</li>
+    <li>80 billion transistors, "order of magnitude leap in performance over A100"</li>
+    <li>Ideal for large language models and deep recommender systems</li>
+    <li>Working with leading server makers and hyperscale customers to qualify</li>
+    <li>Ramp in volume late calendar year (late 2022)</li>
+    <li>DGX H100 AI supercomputing system also ramping in volume late calendar year</li>
+    <li>Hopper expected in Q3 FY2023, starting to ramp closer to end of calendar year</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Grace CPU</h3>
+  <ul>
+    <li>NVIDIA's first-ever Data Center CPU, on track to launch first half of 2023</li>
+    <li>"Ideal CPU for AI factories"</li>
+    <li>Dozens of server models announced at Computex by ASUS, Foxconn, GIGABYTE, QCT, Supermicro, Wiwynn</li>
+    <li>Grace CPU Superchip: 2 CPUs; Grace Hopper Superchip: Hopper GPU + Grace CPU integrated</li>
+    <li>New reference designs: CGX (cloud graphics/gaming), OVX (digital twins/Omniverse), HGX (HPC/AI)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>NVLink and Interconnect Strategy</h3>
+  <ul>
+    <li>Fourth generation of NVLink — chip-to-chip, die-to-die, system-to-system coherent interconnect</li>
+    <li>NVLink being made open to customers and partners for custom chip integration</li>
+    <li>Enables mix-and-match of chips, dies, packages, systems across configurations</li>
+    <li>Future NVIDIA chips (CPUs, GPUs, DPUs, NICs, SoCs) will all integrate NVLink</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Networking (Spectrum-4 and InfiniBand)</h3>
+  <ul>
+    <li>Spectrum-4: world's first 400-gigabit per second end-to-end Ethernet networking platform</li>
+    <li>Includes Spectrum-4 switch, ConnectX-7 SmartNIC, BlueField-3 DPU, DOCA software</li>
+    <li>Networking revenue accelerated on strong broad-based demand for 25-, 50-, 100-gig ethernet adapters</li>
+    <li>Networking products still supply constrained; continued improvement expected throughout rest of year</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Gaming Market Dynamics</h3>
+  <ul>
+    <li>100 million new PC gamers added in past 2 years (per Newzoo)</li>
+    <li>~1/3 of GeForce Gaming GPU installed base now on RTX</li>
+    <li>250+ RTX-optimized games and apps (double from last year)</li>
+    <li>Softness in parts of Europe (Ukraine war) and China (COVID lockdowns)</li>
+    <li>Cryptocurrency mining contribution: "diminishing contribution going forward"; reduced pace of increase in Ethereum network hash rate</li>
+    <li>Preparing for new architectural transition later in the year (Ada Lovelace)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Automotive and Robotics (DRIVE Orin)</h3>
+  <ul>
+    <li>DRIVE Orin SoC now in production — kicks off major product cycle</li>
+    <li>35+ customer wins from automakers, truck makers, and robo taxi companies</li>
+    <li>BYD and Lucid announced next-generation fleets on DRIVE Orin</li>
+    <li>Design win pipeline: $11B over next 6 years (up from $8B a year ago)</li>
+    <li>4 pillars of robotics strategy: AI training, simulation (Omniverse), mapping, robotics processor/application</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Data Center and AI Demand</h3>
+  <ul>
+    <li>Hyperscale and cloud computing customers remain supply constrained in infrastructure needs</li>
+    <li>Vertical industries growth: strong double-digit % YoY; top verticals: consumer Internet, financial services, telecom</li>
+    <li>Top workloads: recommender systems, conversational AI, large language models, cloud graphics</li>
+    <li>10,000+ AI inception startups working with NVIDIA</li>
+    <li>Transformers enabling unsupervised learning and breakthrough NLP capabilities</li>
+    <li>Large language models (GPT-3, Megatron 530B) driving enormous compute demand</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Omniverse</h3>
+  <ul>
+    <li>In second quarter of general availability for enterprise software</li>
+    <li>10% of world's top 100 companies are licensing customers</li>
+    <li>Downloaded nearly 200,000 times, tried in ~700 companies</li>
+    <li>Key customers: Amazon (warehouse digital twins), Kroger (store optimization), PepsiCo (supply chain)</li>
+    <li>Expanding GPU sales pipeline, driving higher-end and multiple GPU configurations</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Russia and China Impact</h3>
+  <ul>
+    <li>Russia: ~2% of historical company revenue; NVIDIA not selling to Russia</li>
+    <li>China COVID lockdowns: impacting both supply (logistics) and demand (Gaming)</li>
+    <li>Expected to resolve; demand for products expected to come back</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q1 FY2023 Actuals (Reported)</h3>
+  <ul>
+    <li><strong>Revenue:</strong> $8.3B (record), +8% QoQ, +46% YoY</li>
+    <li><strong>GAAP Gross Margin:</strong> 65.5%</li>
+    <li><strong>Non-GAAP Gross Margin:</strong> 67.1%, +90 bps YoY, +10 bps QoQ</li>
+    <li><strong>GAAP Operating Margin:</strong> 22.5% (impacted by $1.35B Arm acquisition termination charge)</li>
+    <li><strong>Non-GAAP Operating Margin:</strong> 47.7%</li>
+    <li><strong>EPS (Non-GAAP):</strong> $1.36</li>
+  </ul>
+</div>
+
+<div class="footer-nav">
+  <span></span>
+  <a href="../comparison.html">Back to Overview</a>
+  <a href="Q2_2023.html">Q2 2023 &rarr;</a>
+</div>
+
+</body>
+</html>

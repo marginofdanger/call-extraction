@@ -1,0 +1,220 @@
+# TransDigm Group Incorporated — Q4_FY2024 Earnings Release
+
+**Ticker:** TDG
+**Filing Date:** 2024-11-07
+**Accession:** 0001260221-24-000082
+**Source:** [SEC EDGAR](https://www.sec.gov/Archives/edgar/data/1260221/000126022124000082/0001260221-24-000082-index.htm)
+
+## Key Metrics (XBRL)
+
+| Metric | Value | Units | Source |
+|--------|------:|-------|--------|
+| Cash & Equivalents | $6.26B | USD | 10-K |
+| Comprehensive Income | $1.77B | USD | 10-K |
+| EPS (Basic) | 26 | USD/shares | 10-K |
+| EPS (Diluted) | 26 | USD/shares | 10-K |
+| Income Tax Expense | $500.0M | USD | 10-K |
+| Net Income | $1.71B | USD | 10-K |
+| Net Interest Income | $-1.29B | USD | 10-K |
+| Operating Income | $3.53B | USD | 10-K |
+| Revenue | $7.94B | USD | 10-K |
+| Total Assets | $25.59B | USD | 10-K |
+| Total Equity | $-6.29B | USD | 10-K |
+| Total Liabilities | $31.87B | USD | 10-K |
+| Total Revenue | $7.94B | USD | 10-K |
+
+## Financial Tables (from Exhibits)
+
+### 
+
+| TRANSDIGM GROUP INCORPORATED |  |  |
+| CONSOLIDATED STATEMENTS OF INCOME |  |  |
+| FOR THE THIRTEEN WEEK PERIODS AND FISCAL YEARS ENDED |  | Table 1 |
+| SEPTEMBER 30, 2024 AND SEPTEMBER 30, 2023 |  |
+| (Amounts in millions, except per share amounts) |  |  |
+| (Unaudited) |  |  |  |  |  |  |  |  |
+|  |  | Thirteen Week Periods Ended |  | Fiscal Years Ended |
+|  |  | September 30, 2024 |  | September 30, 2023 |  | September 30, 2024 |  | September 30, 2023 |
+| NET SALES |  |  | 2185 |  |  |  | 1852 |  |  |  | 7940 |  |  |  | 6585 |  |
+| COST OF SALES |  | 927 |  |  | 761 |  |  | 3268 |  |  | 2743 |  |
+| GROSS PROFIT |  | 1258 |  |  | 1091 |  |  | 4672 |  |  | 3842 |  |
+| SELLING AND ADMINISTRATIVE EXPENSES |  | 264 |  |  | 202 |  |  | 980 |  |  | 780 |  |
+| AMORTIZATION OF INTANGIBLE ASSETS |  | 51 |  |  | 33 |  |  | 161 |  |  | 139 |  |
+| INCOME FROM OPERATIONS |  | 943 |  |  | 856 |  |  | 3531 |  |  | 2923 |  |
+| INTEREST EXPENSE—NET |  | 343 |  |  | 292 |  |  | 1286 |  |  | 1164 |  |
+| REFINANCING COSTS |  |  |  |  | 15 |  |  | 58 |  |  | 56 |  |
+| OTHER INCOME |  |  |  |  | — |  |  | -28 |  |  | -13 |  |
+| INCOME FROM OPERATIONS BEFORE INCOME TAXES |  | 605 |  |  | 549 |  |  | 2215 |  |  | 1716 |  |
+| INCOME TAX PROVISION |  | 137 |  |  | 135 |  |  | 500 |  |  | 417 |  |
+| NET INCOME |  | 468 |  |  | 414 |  |  | 1715 |  |  | 1299 |  |
+| LESS: NET INCOME ATTRIBUTABLE TO NONCONTROLLING INTERESTS |  | — |  |  | — |  |  |  |  |  |  |  |
+| NET INCOME ATTRIBUTABLE TO TD GROUP |  |  | 468 |  |  |  | 414 |  |  |  | 1714 |  |  |  | 1298 |  |
+| NET INCOME APPLICABLE TO TD GROUP COMMON STOCKHOLDERS |  |  | 336 |  |  |  | 414 |  |  |  | 1481 |  |  |  | 1260 |  |
+| Earnings per share attributable to TD Group common stockholders: |  |  |  |  |  |  |  |  |
+| Earnings per share—Basic and diluted |  |  | 5.80 |  |  |  | 7.23 |  |  |  | 25.62 |  |  |  | 22.03 |  |
+| Cash dividends declared per common share |  |  | 75.00 |  |  |  | — |  |  |  | 110.00 |  |  |  | — |  |
+| Weighted-average shares outstanding: |  |  |  |  |  |  |  |  |
+| Basic and diluted |  | 58.0 |  |  | 57.3 |  |  | 57.8 |  |  | 57.2 |  |
+
+### 
+
+| TRANSDIGM GROUP INCORPORATED |  |  |
+| SUPPLEMENTAL INFORMATION - RECONCILIATION OF |  |  |
+| EBITDA, EBITDA AS DEFINED TO NET INCOME |  |  |
+| FOR THE THIRTEEN WEEK PERIODS AND FISCAL YEARS ENDED |  | Table 2 |
+| SEPTEMBER 30, 2024 AND SEPTEMBER 30, 2023 |  |
+| (Amounts in millions, except per share amounts) |  |  |
+| (Unaudited) |  |  |  |  |  |  |  |  |
+|  |  | Thirteen Week Periods Ended |  | Fiscal Years Ended |
+|  |  | September 30, 2024 |  | September 30, 2023 |  | September 30, 2024 |  | September 30, 2023 |
+| Net Income |  |  | 468 |  |  |  | 414 |  |  |  | 1715 |  |  |  | 1299 |  |
+| Adjustments: |  |  |  |  |  |  |  |  |
+| Depreciation and amortization expense |  | 93 |  |  | 70 |  |  | 312 |  |  | 268 |  |
+| Interest expense-net |  | 343 |  |  | 292 |  |  | 1286 |  |  | 1164 |  |
+| Income tax provision |  | 137 |  |  | 135 |  |  | 500 |  |  | 417 |  |
+| EBITDA |  | 1041 |  |  | 911 |  |  | 3813 |  |  | 3148 |  |
+| Adjustments: |  |  |  |  |  |  |  |  |
+| Acquisition transaction and integration-related expenses |  | 28 |  |  | 6 |  |  | 70 |  |  | 18 |  |
+| Non-cash stock and deferred compensation expense |  | 59 |  |  | 26 |  |  | 217 |  |  | 157 |  |
+| Refinancing costs |  |  |  |  | 15 |  |  | 58 |  |  | 56 |  |
+| Other, net |  | 22 |  |  | 5 |  |  | 15 |  |  | 16 |  |
+| Gross Adjustments to EBITDA |  | 108 |  |  | 52 |  |  | 360 |  |  | 247 |  |
+| EBITDA As Defined |  |  | 1149 |  |  |  | 963 |  |  |  | 4173 |  |  |  | 3395 |  |
+| EBITDA As Defined, Margin |  | 52.6 | % |  | 52.0 | % |  | 52.6 | % |  | 51.6 | % |
+
+### 
+
+|  |  | Represents costs incurred to integrate acquired businesses into TD Group’s operations; facility relocation costs and other acquisition-related costs; transaction and valuation-related costs for acquisitions comprising deal fees, legal, financial and tax due diligence expenses; and amortization expense of inventory step-up recorded in connection with the purchase accounting of acquired businesses. |
+|  |  | Represents the compensation expense recognized by TD Group under our stock incentive plans and deferred compensation plans. |
+|  |  | Represents costs expensed related to debt financing activities, including new issuances, extinguishments, refinancings and amendments to existing agreements. |
+|  |  | Primarily represents foreign currency transaction (gains) or losses, payroll withholding taxes related to dividend equivalent payments and stock option exercises, non-service related pension costs, deferred compensation payments and other miscellaneous (income) expense. |
+|  |  | The EBITDA As Defined margin represents the amount of EBITDA As Defined as a percentage of net sales. |
+
+### 
+
+| TRANSDIGM GROUP INCORPORATED |  |  |
+| SUPPLEMENTAL INFORMATION - RECONCILIATION OF REPORTED |  |  |
+| EARNINGS PER SHARE TO ADJUSTED EARNINGS PER SHARE |  |  |
+| FOR THE THIRTEEN WEEK PERIODS AND FISCAL YEARS ENDED |  | Table 3 |
+| SEPTEMBER 30, 2024 AND SEPTEMBER 30, 2023 |  |
+| (Amounts in millions, except per share amounts) |  |  |
+| (Unaudited) |  |  |  |  |  |  |  |  |
+|  |  | Thirteen Week Periods Ended |  | Fiscal Years Ended |
+|  |  | September 30, 2024 |  | September 30, 2023 |  | September 30, 2024 |  | September 30, 2023 |
+| Reported Earnings Per Share |  |  |  |  |  |  |  |  |
+| Net income |  |  | 468 |  |  |  | 414 |  |  |  | 1715 |  |  |  | 1299 |  |
+| Less: Net income attributable to noncontrolling interests |  | — |  |  | — |  |  |  |  |  |  |  |
+| Net income attributable to TD Group |  | 468 |  |  | 414 |  |  | 1714 |  |  | 1298 |  |
+| Less: Dividends declared or paid on participating securities |  | -132 |  |  | — |  |  | -233 |  |  | -38 |  |
+| Net income applicable to TD Group common stockholders—basic and diluted |  |  | 336 |  |  |  | 414 |  |  |  | 1481 |  |  |  | 1260 |  |
+| Weighted-average shares outstanding under the two-class method |  |  |  |  |  |  |  |  |
+| Weighted-average common shares outstanding |  | 56.2 |  |  | 55.3 |  |  | 55.8 |  |  | 54.9 |  |
+| Vested options deemed participating securities |  | 1.8 |  |  | 2.0 |  |  | 2.0 |  |  | 2.3 |  |
+| Total shares for basic and diluted earnings per share |  | 58.0 |  |  | 57.3 |  |  | 57.8 |  |  | 57.2 |  |
+| Earnings per share—basic and diluted |  |  | 5.80 |  |  |  | 7.23 |  |  |  | 25.62 |  |  |  | 22.03 |  |
+| Adjusted Earnings Per Share |  |  |  |  |  |  |  |  |
+| Net income |  |  | 468 |  |  |  | 414 |  |  |  | 1715 |  |  |  | 1299 |  |
+| Gross Adjustments to EBITDA |  | 108 |  |  | 52 |  |  | 360 |  |  | 247 |  |
+| Purchase accounting backlog amortization |  | 8 |  |  | — |  |  | 13 |  |  | 4 |  |
+| Tax adjustment |  | -14 |  |  |  |  |  | -122 |  |  | -73 |  |
+| Adjusted net income |  |  | 570 |  |  |  | 460 |  |  |  | 1966 |  |  |  | 1477 |  |
+| Adjusted diluted earnings per share under the two-class method |  |  | 9.83 |  |  |  | 8.03 |  |  |  | 33.99 |  |  |  | 25.84 |  |
+| Diluted Earnings Per Share to Adjusted Earnings Per Share |  |  |  |  |  |  |  |  |
+| Diluted earnings per share from net income attributable to TD Group |  |  | 5.80 |  |  |  | 7.23 |  |  |  | 25.62 |  |  |  | 22.03 |  |
+| Adjustments to diluted earnings per share: |  |  |  |  |  |  |  |  |
+| Inclusion of the dividend equivalent payments |  | 2.27 |  |  | — |  |  | 4.02 |  |  | 0.67 |  |
+| Acquisition transaction and integration-related expenses |  | 0.49 |  |  | 0.08 |  |  | 1.10 |  |  | 0.28 |  |
+| Non-cash stock and deferred compensation expense |  | 0.81 |  | 0.35 |  |  | 2.85 |  |  | 2.07 |  |
+| Refinancing costs |  | -0.01 |  |  | 0.20 |  |  | 0.76 |  |  | 0.74 |  |
+| Tax adjustment on income from operations before taxes |  | 0.18 |  |  | 0.11 |  |  | -0.56 |  |  | -0.18 |  |
+| Other, net |  | 0.29 |  |  | 0.06 |  |  | 0.20 |  |  | 0.23 |  |
+| Adjusted earnings per share |  |  | 9.83 |  |  |  | 8.03 |  |  |  | 33.99 |  |  |  | 25.84 |  |
+
+### 
+
+| TRANSDIGM GROUP INCORPORATED |  |  |
+| SUPPLEMENTAL INFORMATION - RECONCILIATION OF NET CASH |  |  |
+| PROVIDED BY OPERATING ACTIVITIES TO EBITDA, EBITDA AS DEFINED |  |  |
+| FOR THE FISCAL YEARS ENDED |  | Table 4 |
+| SEPTEMBER 30, 2024 AND SEPTEMBER 30, 2023 |  |
+| (Amounts in millions) |  |  |
+| (Unaudited) |  |  |  |  |
+|  |  | Fiscal Years Ended |
+|  |  | September 30, 2024 |  | September 30, 2023 |
+| Net cash provided by operating activities |  |  | 2045 |  |  |  | 1375 |  |
+| Adjustments: |  |  |  |  |
+| Changes in assets and liabilities, net of effects from acquisitions and sales of businesses |  | 272 |  |  | 415 |  |
+| Interest expense-net |  | 1246 |  |  | 1123 |  |
+| Income tax provision-current |  | 490 |  |  | 414 |  |
+| Loss contract amortization |  | 35 |  |  | 34 |  |
+| Non-cash stock and deferred compensation expense |  | -217 |  |  | -157 |  |
+| Refinancing costs |  | -58 |  |  | -56 |  |
+| EBITDA |  | 3813 |  |  | 3148 |  |
+| Adjustments: |  |  |  |  |
+| Acquisition transaction and integration-related expenses |  | 70 |  |  | 18 |  |
+| Non-cash stock and deferred compensation expense |  | 217 |  |  | 157 |  |
+| Refinancing costs |  | 58 |  |  | 56 |  |
+| Other, net |  | 15 |  |  | 16 |  |
+| EBITDA As Defined |  |  | 4173 |  |  |  | 3395 |  |
+
+### 
+
+|  |  | Represents interest expense, net of interest income, excluding the amortization of debt issuance costs and premium and discount on debt. |
+|  |  | Represents the compensation expense recognized by TD Group under our stock incentive plans and deferred compensation plans. |
+|  |  | Represents costs expensed related to debt financing activities, including new issuances, extinguishments, refinancings and amendments to existing agreements. |
+|  |  | Represents costs incurred to integrate acquired businesses into TD Group’s operations; facility relocation costs and other acquisition-related costs; transaction and valuation-related costs for acquisitions comprising deal fees, legal, financial and tax due diligence expenses; and amortization expense of inventory step-up recorded in connection with the purchase accounting of acquired businesses. |
+|  |  | Primarily represents foreign currency transaction (gains) or losses, payroll withholding taxes related to dividend equivalent payments and stock option exercises, non-service related pension costs, deferred compensation payments and other miscellaneous (income) expense. |
+
+### 
+
+| TRANSDIGM GROUP INCORPORATED |  |  |
+| SUPPLEMENTAL INFORMATION - BALANCE SHEET DATA |  | Table 5 |
+| (Amounts in millions) |  |
+| (Unaudited) |  |  |  |  |
+|  |  | September 30, 2024 |  | September 30, 2023 |
+| Cash and cash equivalents |  |  | 6261 |  |  |  | 3472 |  |
+| Trade accounts receivable—Net |  | 1381 |  |  | 1230 |  |
+| Inventories—Net |  | 1876 |  |  | 1616 |  |
+| Current portion of long-term debt |  | 98 |  |  | 71 |  |
+| Short-term borrowings—trade receivable securitization facility |  | 486 |  |  | 349 |  |
+| Accounts payable |  | 323 |  |  | 305 |  |
+| Dividends payable |  | 4216 |  |  | — |  |
+| Accrued and other current liabilities |  | 1216 |  |  | 854 |  |
+| Long-term debt |  | 24296 |  |  | 19330 |  |
+| Total TD Group stockholders’ deficit |  | -6290 |  |  | -1984 |  |
+
+### 
+
+| TRANSDIGM GROUP INCORPORATED |
+| SUPPLEMENTAL INFORMATION - RECONCILIATION OF EBITDA, |
+| EBITDA AS DEFINED TO NET INCOME AND REPORTED EARNINGS PER |
+| SHARE TO ADJUSTED EARNINGS PER SHARE GUIDANCE MIDPOINT |
+| FOR THE FISCAL YEAR ENDING SEPTEMBER 30, 2025 | Table 6 |
+| (Amounts in millions, except per share amounts) |
+| (Unaudited) |  |  |
+|  |  | GUIDANCE MIDPOINT |
+|  |  | Fiscal Year Ended September 30, 2025 |
+| Net Income |  |  | 1943 |  |
+| Adjustments: |  |  |
+| Depreciation and amortization expense |  | 380 |  |
+| Interest expense-net |  | 1540 |  |
+| Income tax provision |  | 616 |  |
+| EBITDA |  | 4479 |  |
+| Adjustments: |  |  |
+| Acquisition transaction-related expenses and adjustments |  | 30 |  |
+| Non-cash stock and deferred compensation expense |  | 180 |  |
+| Other, net |  |  |  |
+| Gross Adjustments to EBITDA |  | 206 |  |
+| EBITDA As Defined |  |  | 4685 |  |
+| EBITDA As Defined Margin |  | 52.9 | % |
+| Earnings per share |  |  | 32.43 |  |
+| Adjustments to earnings per share: |  |  |
+| Inclusion of the dividend equivalent payments |  | 0.83 |  |
+| Acquisition transaction-related expenses and adjustments |  | 0.76 |  |
+| Non-cash stock and deferred compensation expense |  | 2.35 |  |
+| Other, net |  | -0.05 |  |
+| Adjusted earnings per share |  |  | 36.32 |  |
+| Weighted-average shares outstanding |  | 58.4 |  |
+
+---
+*Generated by edgar_download.py on 2026-03-03 20:16*

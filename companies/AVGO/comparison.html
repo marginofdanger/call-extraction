@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Broadcom Metrics Evolution &mdash; 16-Quarter Comparison</title>
+<style>
+  :root {
+    --company-primary: #CC092F;
+    --company-dark: #1a1a2e;
+    --company-accent: #16213e;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 48px 40px;
+    margin: 0 -24px 40px;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+  .header .subtitle {
+    font-size: 1.1rem;
+    opacity: 0.85;
+    font-weight: 300;
+  }
+
+  /* Quarter Navigation */
+  .quarter-nav {
+    background: var(--company-accent);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+  .quarter-nav .label {
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-right: 8px;
+    white-space: nowrap;
+  }
+  .quarter-nav .year-group {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+  .quarter-nav .year-label {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.72rem;
+    font-weight: 600;
+    margin-right: 2px;
+    letter-spacing: 0.5px;
+  }
+  .quarter-nav a {
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+  .quarter-nav a:hover { background: rgba(255,255,255,0.25); }
+  .quarter-nav a.overview-link {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.35);
+    padding: 4px 14px;
+    font-size: 0.82rem;
+    margin-left: auto;
+  }
+
+  /* Table of Contents */
+  .toc {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 32px;
+    margin-bottom: 40px;
+    columns: 2;
+    column-gap: 40px;
+  }
+  .toc h2 {
+    font-size: 1.1rem;
+    color: var(--company-accent);
+    margin-bottom: 12px;
+    column-span: all;
+  }
+  .toc a {
+    display: block;
+    color: var(--blue);
+    text-decoration: none;
+    padding: 3px 0;
+    font-size: 0.9rem;
+    break-inside: avoid;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  /* Section */
+  .section {
+    margin-bottom: 48px;
+    scroll-margin-top: 20px;
+  }
+  .section h2 {
+    font-size: 1.4rem;
+    color: var(--company-dark);
+    border-bottom: 3px solid var(--company-primary);
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+  }
+  .section h2 .num {
+    display: inline-block;
+    background: var(--company-primary);
+    color: #fff;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 0.85rem;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 0.88rem;
+  }
+  thead th {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tbody tr:nth-child(even) { background: var(--light-bg); }
+  tbody tr:hover { background: #eef2f7; }
+
+  /* Color helpers */
+  .pos { color: var(--green); font-weight: 600; }
+  .neg { color: var(--red); font-weight: 600; }
+  .neutral { color: var(--amber); font-weight: 600; }
+  .raised { background: #eafaf1 !important; }
+  .lowered { background: #fef0ef !important; }
+  .bold { font-weight: 700; }
+  .muted { color: var(--text-muted); font-style: italic; }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    vertical-align: middle;
+  }
+  .tag-raised { background: #d5f5e3; color: #1e8449; }
+  .tag-lowered { background: #fadbd8; color: #c0392b; }
+  .tag-maintained { background: #fdebd0; color: #b9770e; }
+  .tag-new { background: #d6eaf8; color: #2471a3; }
+
+  /* Insight boxes */
+  .insight {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 4px solid var(--amber);
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.9rem;
+  }
+  .insight strong { color: var(--company-dark); }
+
+  /* Takeaways */
+  .takeaways { counter-reset: takeaway; }
+  .takeaway {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 18px;
+    padding: 14px 18px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .takeaway-num {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    background: var(--company-primary);
+    color: #fff;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+  .takeaway-text { font-size: 0.92rem; }
+  .takeaway-text strong { color: var(--company-dark); }
+
+  /* Year divider rows */
+  .year-divider td {
+    background: var(--company-accent) !important;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.82rem;
+    padding: 6px 12px;
+    letter-spacing: 0.5px;
+  }
+
+  @media (max-width: 768px) {
+    .toc { columns: 1; }
+    .header h1 { font-size: 1.6rem; }
+    table { font-size: 0.8rem; }
+    thead th, tbody td { padding: 6px 8px; }
+    .quarter-nav { gap: 4px; }
+  }
+
+  @media print {
+    .header { background: #333; }
+    .section { page-break-inside: avoid; }
+    table { font-size: 0.75rem; }
+    .quarter-nav { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Broadcom Metrics Evolution</h1>
+  <div class="subtitle">16-Quarter Comparison &mdash; FQ1 2022 through FQ4 2025 (Fiscal Years ending October)</div>
+</div>
+
+<!-- Quarter Navigation -->
+<div class="quarter-nav" id="qnav">
+  <span class="label">Quarter detail:</span>
+  <div class="year-group">
+    <span class="year-label">FY2025</span>
+    <a href="quarters/FQ4_2025.html">FQ4&rsquo;25</a>
+    <a href="quarters/FQ3_2025.html">FQ3&rsquo;25</a>
+    <a href="quarters/FQ2_2025.html">FQ2&rsquo;25</a>
+    <a href="quarters/FQ1_2025.html">FQ1&rsquo;25</a>
+  </div>
+  <div class="year-group">
+    <span class="year-label">FY2024</span>
+    <a href="quarters/FQ4_2024.html">FQ4&rsquo;24</a>
+    <a href="quarters/FQ3_2024.html">FQ3&rsquo;24</a>
+    <a href="quarters/FQ2_2024.html">FQ2&rsquo;24</a>
+    <a href="quarters/FQ1_2024.html">FQ1&rsquo;24</a>
+  </div>
+  <div class="year-group">
+    <span class="year-label">FY2023</span>
+    <a href="quarters/FQ4_2023.html">FQ4&rsquo;23</a>
+    <a href="quarters/FQ3_2023.html">FQ3&rsquo;23</a>
+    <a href="quarters/FQ2_2023.html">FQ2&rsquo;23</a>
+    <a href="quarters/FQ1_2023.html">FQ1&rsquo;23</a>
+  </div>
+  <div class="year-group">
+    <span class="year-label">FY2022</span>
+    <a href="quarters/FQ4_2022.html">FQ4&rsquo;22</a>
+    <a href="quarters/FQ3_2022.html">FQ3&rsquo;22</a>
+    <a href="quarters/FQ2_2022.html">FQ2&rsquo;22</a>
+    <a href="quarters/FQ1_2022.html">FQ1&rsquo;22</a>
+  </div>
+  <a href="results.html" class="overview-link">Results Scorecard &rarr;</a>
+</div>
+
+<!-- Table of Contents -->
+<div class="toc">
+  <h2>Contents</h2>
+  <a href="#s1">1. Quarterly Revenue Guidance</a>
+  <a href="#s2">2. Adjusted EBITDA Margin Guidance</a>
+  <a href="#s3">3. Full Year Revenue Guidance Evolution</a>
+  <a href="#s4">4. AI Revenue: From Zero to $20 Billion</a>
+  <a href="#s5">5. AI Revenue Guidance Raises</a>
+  <a href="#s6">6. XPU Customer Pipeline</a>
+  <a href="#s7">7. AI SAM &amp; Backlog</a>
+  <a href="#s8">8. Semiconductor Revenue by Segment</a>
+  <a href="#s9">9. Non-AI Semiconductor Cycle</a>
+  <a href="#s10">10. VMware Acquisition &amp; Integration</a>
+  <a href="#s11">11. VCF Adoption &amp; Software Transformation</a>
+  <a href="#s12">12. Networking Technology Roadmap</a>
+  <a href="#s13">13. Ethernet vs Proprietary for AI</a>
+  <a href="#s14">14. Gross Margin Dynamics</a>
+  <a href="#s15">15. Capital Allocation &amp; Debt Management</a>
+  <a href="#s16">16. Dividend Evolution</a>
+  <a href="#s17">17. Full Year Actuals Summary</a>
+  <a href="#s18">18. Key Takeaways</a>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- SECTION 1: Quarterly Revenue Guidance -->
+<!-- ============================================================ -->
+<div class="section" id="s1">
+  <h2><span class="num">1</span> Quarterly Revenue Guidance</h2>
+  <p style="margin-bottom:12px;">Each quarter, Broadcom guided the <em>next</em> quarter&rsquo;s revenue. During the VMware integration (FQ4 2023&ndash;FQ2 2024), management switched to annual-only guidance before resuming quarterly guidance in FQ3 2024.</p>
+  <table>
+    <thead>
+      <tr><th>Call Quarter</th><th>Guided For</th><th>Revenue Guidance</th><th>YoY Growth</th><th>Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">FY2025 &mdash; AI SUPERCYCLE &amp; VMWARE INTEGRATION COMPLETE</td></tr>
+      <tr class="raised"><td><a href="quarters/FQ4_2025.html">FQ4 2025</a></td><td>FQ1&rsquo;26</td><td class="bold">~$19.1B</td><td class="pos">+28% YoY</td><td>Record guidance; AI backlog $73B; 5th XPU customer</td></tr>
+      <tr class="raised"><td><a href="quarters/FQ3_2025.html">FQ3 2025</a></td><td>FQ4&rsquo;25</td><td class="bold">~$17.4B</td><td class="pos">+24% YoY</td><td>4th XPU customer converted; TH6 launched</td></tr>
+      <tr><td><a href="quarters/FQ2_2025.html">FQ2 2025</a></td><td>FQ3&rsquo;25</td><td class="bold">~$15.8B</td><td class="pos">+21% YoY</td><td>AI ~60% growth FY25; sustained/accelerating FY26</td></tr>
+      <tr><td><a href="quarters/FQ1_2025.html">FQ1 2025</a></td><td>FQ2&rsquo;25</td><td class="bold">~$14.9B</td><td class="pos">+19% YoY</td><td>3 customers + 4 engagement partners; FY27 SAM reaffirmed</td></tr>
+      <tr class="year-divider"><td colspan="5">FY2024 &mdash; VMWARE INTEGRATION YEAR</td></tr>
+      <tr><td><a href="quarters/FQ4_2024.html">FQ4 2024</a></td><td>FQ1&rsquo;25</td><td class="bold">~$14.6B</td><td class="pos">+22% YoY</td><td>VMware 70% operating margin; AI FY27 SAM $60&ndash;90B</td></tr>
+      <tr class="raised"><td><a href="quarters/FQ3_2024.html">FQ3 2024</a></td><td>FQ4&rsquo;24</td><td class="bold">~$14.0B</td><td class="pos">+51% YoY</td><td>Quarterly guidance resumed; FY24 implied $51.5B <span class="tag tag-raised">Raised</span></td></tr>
+      <tr class="raised"><td><a href="quarters/FQ2_2024.html">FQ2 2024</a></td><td>FY2024 annual</td><td class="bold">$51B</td><td>&mdash;</td><td>Raised from $50B <span class="tag tag-raised">Raised</span></td></tr>
+      <tr><td><a href="quarters/FQ1_2024.html">FQ1 2024</a></td><td>FY2024 annual</td><td class="bold">$50B</td><td>&mdash;</td><td>Reiterated; VMware $2.1B in 10.5 weeks</td></tr>
+      <tr class="year-divider"><td colspan="5">FY2023 &mdash; GENERATIVE AI EMERGENCE</td></tr>
+      <tr><td><a href="quarters/FQ4_2023.html">FQ4 2023</a></td><td>FY2024 annual</td><td class="bold">$50B</td><td>&mdash;</td><td>VMware closed Nov 22; annual-only guidance; VMware $12B contribution (11 months)</td></tr>
+      <tr><td><a href="quarters/FQ3_2023.html">FQ3 2023</a></td><td>FQ4&rsquo;23</td><td class="bold">$9.27B</td><td class="pos">+4% YoY</td><td>AI exceeding $1B/quarter; non-AI stabilized ~$6B/Q</td></tr>
+      <tr><td><a href="quarters/FQ2_2023.html">FQ2 2023</a></td><td>FQ3&rsquo;23</td><td class="bold">$8.85B</td><td class="pos">+5% YoY</td><td>$3.8B FY23 AI; 15% of semi; could exceed 25% in FY24</td></tr>
+      <tr><td><a href="quarters/FQ1_2023.html">FQ1 2023</a></td><td>FQ2&rsquo;23</td><td class="bold">$8.7B</td><td class="pos">+8% YoY</td><td>First AI quantification: Ethernet &gt;$800M, compute offload &gt;$3B FY23</td></tr>
+      <tr class="year-divider"><td colspan="5">FY2022 &mdash; SEMICONDUCTOR PEAK &amp; VMWARE DEAL</td></tr>
+      <tr><td><a href="quarters/FQ4_2022.html">FQ4 2022</a></td><td>FQ1&rsquo;23</td><td class="bold">$8.9B</td><td class="pos">+16% YoY</td><td>Surpassed $2B FY22 compute offload ASIC (+33% YoY)</td></tr>
+      <tr><td><a href="quarters/FQ3_2022.html">FQ3 2022</a></td><td>FQ4&rsquo;22</td><td class="bold">$8.9B</td><td class="pos">+20% YoY</td><td>On track for $2B FY22 compute offload ASIC</td></tr>
+      <tr><td><a href="quarters/FQ2_2022.html">FQ2 2022</a></td><td>FQ3&rsquo;22</td><td class="bold">~$8.4B</td><td class="pos">+24% YoY</td><td>VMware deal announced May 26, 2022</td></tr>
+      <tr><td><a href="quarters/FQ1_2022.html">FQ1 2022</a></td><td>FQ2&rsquo;22</td><td class="bold">$7.9B</td><td class="pos">+20% YoY</td><td>Peak semiconductor cycle; broad-based strength</td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>Insight:</strong> Revenue guidance accelerated from single-digit YoY growth in FY2023 to 20&ndash;50%+ in FY2024&ndash;2025, driven by the dual tailwinds of VMware consolidation and AI semiconductor demand. The switch to annual-only guidance during FQ4 2023&ndash;FQ2 2024 reflected the complexity of integrating VMware into quarterly forecasting.
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- SECTION 2: Adjusted EBITDA Margin Guidance -->
+<!-- ============================================================ -->
+<div class="section" id="s2">
+  <h2><span class="num">2</span> Adjusted EBITDA Margin Guidance</h2>
+  <p style="margin-bottom:12px;">Broadcom guides Adjusted EBITDA as a percentage of revenue. This metric captures the company&rsquo;s operating leverage as software mix increases and VMware integration matures.</p>
+  <table>
+    <thead>
+      <tr><th>Call Quarter</th><th>EBITDA % Guidance</th><th>vs Prior Quarter</th><th>Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2025 &mdash; AI SUPERCYCLE &amp; VMWARE INTEGRATION COMPLETE</td></tr>
+      <tr><td><a href="quarters/FQ4_2025.html">FQ4 2025</a></td><td class="bold">~67%</td><td class="pos">Maintained</td><td>Record-tier sustained; software + AI leverage</td></tr>
+      <tr class="raised"><td><a href="quarters/FQ3_2025.html">FQ3 2025</a></td><td class="bold">67%</td><td class="pos">+1pp</td><td>New high <span class="tag tag-raised">Raised</span></td></tr>
+      <tr><td><a href="quarters/FQ2_2025.html">FQ2 2025</a></td><td class="bold">&ge;66%</td><td class="pos">Maintained</td><td>Floor raised with &ldquo;at least&rdquo; language</td></tr>
+      <tr><td><a href="quarters/FQ1_2025.html">FQ1 2025</a></td><td class="bold">~66%</td><td class="pos">Maintained</td><td>Record level sustained</td></tr>
+      <tr class="year-divider"><td colspan="4">FY2024 &mdash; VMWARE INTEGRATION YEAR</td></tr>
+      <tr class="raised"><td><a href="quarters/FQ4_2024.html">FQ4 2024</a></td><td class="bold">~66%</td><td class="pos">+2pp</td><td>Record high; VMware 70% operating margin <span class="tag tag-raised">Raised</span></td></tr>
+      <tr class="raised"><td><a href="quarters/FQ3_2024.html">FQ3 2024</a></td><td class="bold">~64%</td><td class="pos">+3pp</td><td>Rapid VMware margin expansion <span class="tag tag-raised">Raised</span></td></tr>
+      <tr class="raised"><td><a href="quarters/FQ2_2024.html">FQ2 2024</a></td><td class="bold">61%</td><td class="pos">+1pp</td><td>Raised from 60% <span class="tag tag-raised">Raised</span></td></tr>
+      <tr><td><a href="quarters/FQ1_2024.html">FQ1 2024</a></td><td class="bold">~60%</td><td>&mdash;</td><td>Reiterated post-VMware close; integration costs ongoing</td></tr>
+      <tr class="year-divider"><td colspan="4">FY2023 &mdash; GENERATIVE AI EMERGENCE</td></tr>
+      <tr class="lowered"><td><a href="quarters/FQ4_2023.html">FQ4 2023</a></td><td class="bold">~60%</td><td class="neg">&ndash;5pp</td><td>VMware dilution year; expected to recover <span class="tag tag-lowered">Lowered</span></td></tr>
+      <tr><td><a href="quarters/FQ3_2023.html">FQ3 2023</a></td><td class="bold">~65%</td><td>Maintained</td><td>Consistent pre-VMware levels</td></tr>
+      <tr><td><a href="quarters/FQ2_2023.html">FQ2 2023</a></td><td class="bold">~65%</td><td class="pos">+0.5pp</td><td>Slight improvement as AI mix grew</td></tr>
+      <tr><td><a href="quarters/FQ1_2023.html">FQ1 2023</a></td><td class="bold">~64.5%</td><td class="pos">+1.5pp</td><td>Improving from FY22 levels</td></tr>
+      <tr class="year-divider"><td colspan="4">FY2022 &mdash; SEMICONDUCTOR PEAK &amp; VMWARE DEAL</td></tr>
+      <tr><td><a href="quarters/FQ4_2022.html">FQ4 2022</a></td><td class="bold">~63%</td><td>Flat</td><td>Stable through semiconductor peak</td></tr>
+      <tr><td><a href="quarters/FQ3_2022.html">FQ3 2022</a></td><td class="bold">~63%</td><td class="neg">&ndash;0.5pp</td><td>Slight moderation from peak</td></tr>
+      <tr><td><a href="quarters/FQ2_2022.html">FQ2 2022</a></td><td class="bold">~63.5%</td><td class="pos">+1pp</td><td>Peak cycle margin expansion</td></tr>
+      <tr><td><a href="quarters/FQ1_2022.html">FQ1 2022</a></td><td class="bold">~62.5%</td><td>&mdash;</td><td>Baseline pre-cycle peak</td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>Insight:</strong> EBITDA margins traced a remarkable V-shape: from 65% pre-VMware &rarr; 60% at the VMware close &rarr; back to 67% within 8 quarters. The recovery was faster than any analyst expected, driven by VMware&rsquo;s rapid transition to a subscription model and aggressive cost optimization that lifted VMware operating margins from &lt;30% to 70%.
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- SECTION 3: Full Year Revenue Guidance Evolution -->
+<!-- ============================================================ -->
+<div class="section" id="s3">
+  <h2><span class="num">3</span> Full Year Revenue Guidance Evolution</h2>
+  <p style="margin-bottom:12px;">Broadcom&rsquo;s annual guidance tells the story of two transformative events: the VMware acquisition and the AI semiconductor explosion.</p>
+  <table>
+    <thead>
+      <tr><th>Fiscal Year</th><th>Quarter Guided</th><th>Revenue Guidance</th><th>Change</th><th>Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">FY2024 &mdash; RAISED 3 TIMES</td></tr>
+      <tr><td>FY2024</td><td>FQ4 2023</td><td>$50B</td><td><span class="tag tag-new">Initial</span></td><td>First guidance post-VMware close; VMware $12B (11 months)</td></tr>
+      <tr><td>FY2024</td><td>FQ1 2024</td><td>$50B</td><td><span class="tag tag-maintained">Reiterated</span></td><td>VMware $2.1B in initial 10.5 weeks</td></tr>
+      <tr class="raised"><td>FY2024</td><td>FQ2 2024</td><td>$51B</td><td><span class="tag tag-raised">+$1B</span></td><td>VMware and AI both exceeding expectations</td></tr>
+      <tr class="raised"><td>FY2024</td><td>FQ3 2024</td><td>~$51.5B implied</td><td><span class="tag tag-raised">+$0.5B</span></td><td>Resumed quarterly guidance; FQ4 ~$14.0B implies $51.5B FY</td></tr>
+      <tr class="year-divider"><td colspan="5">FY2025 &mdash; GUIDED QUARTERLY</td></tr>
+      <tr><td>FY2025</td><td>FQ4 2024&ndash;FQ3 2025</td><td>Quarterly cadence</td><td>&mdash;</td><td>No explicit FY2025 annual target; guided quarter by quarter</td></tr>
+      <tr><td>FY2025</td><td>FQ4 2025 (actual)</td><td class="bold">$63.9B actual</td><td class="pos">+24% YoY</td><td>Semi $36.9B, Software ~$27.0B</td></tr>
+      <tr class="year-divider"><td colspan="5">FY2026 &mdash; EMERGING</td></tr>
+      <tr><td>FY2026</td><td>FQ4 2025</td><td>FQ1&rsquo;26 ~$19.1B</td><td>&mdash;</td><td>Implies ~$75B+ annualized; low double-digit software growth; AI doubling</td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>Insight:</strong> FY2024 annual guidance was raised 3 times &mdash; from $50B to an implied $51.5B &mdash; a rare pattern for Broadcom, which historically guides conservatively. The raises were driven by both VMware revenue exceeding transition expectations and AI semiconductor demand outpacing every quarterly forecast.
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- SECTION 4: AI Revenue: From Zero to $20 Billion -->
+<!-- ============================================================ -->
+<div class="section" id="s4">
+  <h2><span class="num">4</span> AI Revenue: From Zero to $20 Billion</h2>
+  <p style="margin-bottom:12px;">The defining narrative of Broadcom&rsquo;s 2022&ndash;2025 transformation. AI revenue grew from an unquantified portion of compute offload ASICs to a $20B annual business in just three years.</p>
+  <table>
+    <thead>
+      <tr><th>Call Quarter</th><th>AI Revenue (Quarterly)</th><th>YoY Growth</th><th>% of Semi</th><th>Key Disclosure</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">FY2025 &mdash; AI SUPERCYCLE &amp; VMWARE INTEGRATION COMPLETE</td></tr>
+      <tr class="raised"><td><a href="quarters/FQ4_2025.html">FQ4 2025</a></td><td class="bold">$6.5B</td><td class="pos">+74% YoY</td><td>~59%</td><td>FY25 actual $20B (+65%); FQ1&rsquo;26 AI guided $8.2B (doubling YoY); AI backlog $73B</td></tr>
+      <tr class="raised"><td><a href="quarters/FQ3_2025.html">FQ3 2025</a></td><td class="bold">$5.2B</td><td class="pos">+63% YoY</td><td>~57%</td><td>4th customer converted ($10B+ orders); FY26 accelerating above 60% growth</td></tr>
+      <tr><td><a href="quarters/FQ2_2025.html">FQ2 2025</a></td><td class="bold">&gt;$4.4B</td><td class="pos">+46% YoY</td><td>~52%</td><td>FY25 ~60% growth; FY26 sustained/accelerating</td></tr>
+      <tr><td><a href="quarters/FQ1_2025.html">FQ1 2025</a></td><td class="bold">$4.1B</td><td class="pos">+77% YoY</td><td>~50%</td><td>3 customers + 4 engagement partners; FY27 SAM reaffirmed $60&ndash;90B</td></tr>
+      <tr class="year-divider"><td colspan="5">FY2024 &mdash; VMWARE INTEGRATION YEAR</td></tr>
+      <tr class="raised"><td><a href="quarters/FQ4_2024.html">FQ4 2024</a></td><td class="bold">$3.7B</td><td class="pos">+150% YoY</td><td>~45%</td><td>FY24 actual $12.2B; FY27 SAM $60&ndash;90B introduced; 3 customers + 2 new prospects</td></tr>
+      <tr><td><a href="quarters/FQ3_2024.html">FQ3 2024</a></td><td class="bold">~$3.1B</td><td>&mdash;</td><td>~42%</td><td>Raised FY24 AI to $12B; 3 customers in production</td></tr>
+      <tr class="raised"><td><a href="quarters/FQ2_2024.html">FQ2 2024</a></td><td class="bold">$3.1B</td><td class="pos">+280% YoY</td><td>~43%</td><td>Raised FY24 AI to &gt;$11B; 7 of 8 largest AI clusters on Broadcom Ethernet <span class="tag tag-raised">Raised</span></td></tr>
+      <tr class="raised"><td><a href="quarters/FQ1_2024.html">FQ1 2024</a></td><td class="bold">$2.3B</td><td class="pos">Quadrupled YoY</td><td>~31%</td><td>Raised FY24 to &gt;$10B/35% of semi (from &gt;25%); 2 customers <span class="tag tag-raised">Raised</span></td></tr>
+      <tr class="year-divider"><td colspan="5">FY2023 &mdash; GENERATIVE AI EMERGENCE</td></tr>
+      <tr><td><a href="quarters/FQ4_2023.html">FQ4 2023</a></td><td class="bold">~$1.5B</td><td>&mdash;</td><td>~20%</td><td>Broadening beyond one customer; FY24 &gt;25% of semi</td></tr>
+      <tr><td><a href="quarters/FQ3_2023.html">FQ3 2023</a></td><td>Exceeding $1B/Q</td><td>&mdash;</td><td>~15%</td><td>Non-AI stabilized at ~$6B/quarter</td></tr>
+      <tr><td><a href="quarters/FQ2_2023.html">FQ2 2023</a></td><td>$3.8B FY23 run-rate</td><td>&mdash;</td><td>~15%</td><td>One compute offload customer; could exceed 25% of semi in FY24</td></tr>
+      <tr><td><a href="quarters/FQ1_2023.html">FQ1 2023</a></td><td colspan="3" class="bold">First quantification: Ethernet &gt;$800M FY23, compute offload &gt;$3B FY23</td><td>Generative AI urgency cited &mdash; last 90 days <span class="tag tag-new">New</span></td></tr>
+      <tr class="year-divider"><td colspan="5">FY2022 &mdash; SEMICONDUCTOR PEAK &amp; VMWARE DEAL</td></tr>
+      <tr><td><a href="quarters/FQ4_2022.html">FQ4 2022</a></td><td>$2B+ FY22 (annual)</td><td class="pos">+33% YoY</td><td>&mdash;</td><td>Surpassed $2B FY22 compute offload ASIC target</td></tr>
+      <tr><td><a href="quarters/FQ3_2022.html">FQ3 2022</a></td><td colspan="3">On track for $2B FY22 compute offload ASIC</td><td>Co-packaged silicon photonics with TH5</td></tr>
+      <tr><td><a href="quarters/FQ2_2022.html">FQ2 2022</a></td><td colspan="3" class="muted">Not discussed (press release only)</td><td>VMware deal dominated narrative</td></tr>
+      <tr><td><a href="quarters/FQ1_2022.html">FQ1 2022</a></td><td colspan="3" class="muted">Not discussed as separate category</td><td>AI not yet a standalone reporting line</td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>Insight:</strong> AI revenue underwent a 10x expansion in just 8 quarters: from ~$1.5B/Q in FQ4 2023 to a guided $8.2B in FQ1 2026. The inflection point was FQ1 2023, when Hock Tan first quantified AI revenue and cited generative AI urgency &mdash; a phrase that marked the beginning of the AI narrative that now defines Broadcom.
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- SECTION 5: AI Revenue Guidance Raises -->
+<!-- ============================================================ -->
+<div class="section" id="s5">
+  <h2><span class="num">5</span> AI Revenue Guidance Raises</h2>
+  <p style="margin-bottom:12px;">Broadcom raised its FY2024 AI revenue outlook every single quarter, from &gt;25% of semi initially to an actual $12.2B.</p>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>FY AI Outlook</th><th>Change</th><th>Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2024 AI GUIDANCE EVOLUTION</td></tr>
+      <tr><td>FQ4 2023</td><td>&gt;25% of semi (~$7.5B)</td><td><span class="tag tag-new">Initial</span></td><td>First FY24 AI guidance; post-VMware close</td></tr>
+      <tr class="raised"><td>FQ1 2024</td><td>&gt;$10B / 35% of semi</td><td><span class="tag tag-raised">+$2.5B</span></td><td>Massive raise; Q1 alone was $2.3B (quadrupled YoY)</td></tr>
+      <tr class="raised"><td>FQ2 2024</td><td>&gt;$11B</td><td><span class="tag tag-raised">+$1B</span></td><td>Q2 $3.1B (+280% YoY); Ethernet dominance confirmed</td></tr>
+      <tr class="raised"><td>FQ3 2024</td><td>$12B</td><td><span class="tag tag-raised">+$1B</span></td><td>3 customers in production; guidance nearly matched actual</td></tr>
+      <tr class="raised"><td>FQ4 2024 (actual)</td><td class="bold">$12.2B actual</td><td class="pos">Beat by $0.2B</td><td>Beat final guidance; introduced FY27 SAM $60&ndash;90B</td></tr>
+      <tr class="year-divider"><td colspan="4">FY2025 AI TRAJECTORY</td></tr>
+      <tr><td>FQ1&ndash;FQ3 2025</td><td>~60% YoY growth</td><td>&mdash;</td><td>Consistent messaging across all quarters</td></tr>
+      <tr class="raised"><td>FQ4 2025 (actual)</td><td class="bold">$20.0B actual (+65%)</td><td class="pos">Beat 60% target</td><td>Exceeded ~60% growth guidance; FQ1&rsquo;26 AI $8.2B (doubling YoY)</td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>Insight:</strong> FY2024 AI revenue was raised 4 consecutive quarters, from an implied ~$7.5B to an actual $12.2B &mdash; a 63% increase from initial guidance. FY2025 saw similar outperformance: the ~60% growth target was exceeded with 65% actual growth to $20B.
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- SECTION 6: XPU Customer Pipeline -->
+<!-- ============================================================ -->
+<div class="section" id="s6">
+  <h2><span class="num">6</span> XPU Customer Pipeline</h2>
+  <p style="margin-bottom:12px;">Broadcom&rsquo;s custom AI accelerator (XPU) business expanded from a single customer (Google TPU, engaged 8 years) to a diversified pipeline of hyperscaler relationships.</p>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Customers in Production</th><th>Engagement Partners</th><th>Key Developments</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2025 &mdash; AI SUPERCYCLE &amp; VMWARE INTEGRATION COMPLETE</td></tr>
+      <tr class="raised"><td><a href="quarters/FQ4_2025.html">FQ4 2025</a></td><td class="bold">5</td><td>2 prospects</td><td>5th customer ($1B order); OpenAI 10GW agreement <span class="tag tag-new">New</span></td></tr>
+      <tr class="raised"><td><a href="quarters/FQ3_2025.html">FQ3 2025</a></td><td class="bold">4</td><td>&mdash;</td><td>4th customer converted with $10B+ in orders <span class="tag tag-raised">Converted</span></td></tr>
+      <tr><td><a href="quarters/FQ2_2025.html">FQ2 2025</a></td><td>3</td><td>4</td><td>Sustained engagement pipeline</td></tr>
+      <tr><td><a href="quarters/FQ1_2025.html">FQ1 2025</a></td><td>3</td><td>4</td><td>2 newly announced engagement partners <span class="tag tag-new">+2 New</span></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2024 &mdash; VMWARE INTEGRATION YEAR</td></tr>
+      <tr><td><a href="quarters/FQ4_2024.html">FQ4 2024</a></td><td>3</td><td>2 new prospects</td><td>First mention of additional prospects beyond production customers</td></tr>
+      <tr><td><a href="quarters/FQ3_2024.html">FQ3 2024</a></td><td>3</td><td>&mdash;</td><td>Third customer in production</td></tr>
+      <tr><td><a href="quarters/FQ2_2024.html">FQ2 2024</a></td><td>2+</td><td>&mdash;</td><td>7 of 8 largest AI clusters on Broadcom Ethernet</td></tr>
+      <tr class="raised"><td><a href="quarters/FQ1_2024.html">FQ1 2024</a></td><td class="bold">2</td><td>&mdash;</td><td>Second customer disclosed <span class="tag tag-raised">+1 New</span></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2023 &mdash; GENERATIVE AI EMERGENCE</td></tr>
+      <tr><td><a href="quarters/FQ4_2023.html">FQ4 2023</a></td><td>1+</td><td>&mdash;</td><td>&ldquo;Broadened beyond one customer&rdquo;</td></tr>
+      <tr><td><a href="quarters/FQ3_2023.html">FQ3 2023</a></td><td>1</td><td>&mdash;</td><td>Single customer; AI &gt;$1B/quarter</td></tr>
+      <tr><td><a href="quarters/FQ2_2023.html">FQ2 2023</a></td><td>1</td><td>&mdash;</td><td>One compute offload customer confirmed</td></tr>
+      <tr><td><a href="quarters/FQ1_2023.html">FQ1 2023</a></td><td>1</td><td>&mdash;</td><td>Google TPU (engaged ~8 years)</td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>Insight:</strong> The XPU customer pipeline expanded from 1 &rarr; 5 production customers in just 8 quarters, with 2 additional prospects. Each new customer disclosure drove significant stock re-ratings. The progression from single-customer dependency to a diversified pipeline is one of the most important de-risking narratives in the semiconductor industry.
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- SECTION 7: AI SAM & Backlog -->
+<!-- ============================================================ -->
+<div class="section" id="s7">
+  <h2><span class="num">7</span> AI SAM &amp; Backlog</h2>
+  <p style="margin-bottom:12px;">Broadcom introduced its FY2027 AI Serviceable Addressable Market (SAM) framework in FQ4 2024, providing a long-term anchor for the AI growth narrative.</p>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>AI SAM (FY2027)</th><th>AI Backlog</th><th>Consolidated Backlog</th><th>Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">FY2025 &mdash; AI SUPERCYCLE &amp; VMWARE INTEGRATION COMPLETE</td></tr>
+      <tr class="raised"><td><a href="quarters/FQ4_2025.html">FQ4 2025</a></td><td>$60&ndash;90B</td><td class="bold">$73B</td><td class="bold">$162B</td><td>AI backlog disclosed; 5th customer; consolidated backlog includes $73B software</td></tr>
+      <tr><td><a href="quarters/FQ3_2025.html">FQ3 2025</a></td><td>$60&ndash;90B</td><td>&mdash;</td><td>&mdash;</td><td>4th customer $10B+ orders; FY26 accelerating above 60%</td></tr>
+      <tr><td><a href="quarters/FQ2_2025.html">FQ2 2025</a></td><td>$60&ndash;90B</td><td>&mdash;</td><td>&mdash;</td><td>Reaffirmed; FY26 sustained/accelerating</td></tr>
+      <tr><td><a href="quarters/FQ1_2025.html">FQ1 2025</a></td><td>$60&ndash;90B</td><td>&mdash;</td><td>&mdash;</td><td>Reaffirmed; 4 engagement partners</td></tr>
+      <tr class="year-divider"><td colspan="5">FY2024 &mdash; VMWARE INTEGRATION YEAR</td></tr>
+      <tr><td><a href="quarters/FQ4_2024.html">FQ4 2024</a></td><td class="bold">$60&ndash;90B</td><td>&mdash;</td><td>&mdash;</td><td>First disclosure of AI SAM; 1M XPU cluster architecture; 3 customers + 2 prospects <span class="tag tag-new">New</span></td></tr>
+      <tr><td>Pre-FQ4 2024</td><td class="muted">Not disclosed</td><td>&mdash;</td><td>&mdash;</td><td>No long-term AI SAM framework existed</td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>Insight:</strong> The $60&ndash;90B FY2027 AI SAM was reaffirmed for 5 consecutive quarters without revision, lending credibility to the framework. By FQ4 2025, the disclosed $73B AI backlog alone represented the midpoint of the SAM range, suggesting the high end is increasingly plausible with 5 production customers and 2 additional prospects.
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- SECTION 8: Semiconductor Revenue by Segment -->
+<!-- ============================================================ -->
+<div class="section" id="s8">
+  <h2><span class="num">8</span> Semiconductor Revenue by Segment</h2>
+  <p style="margin-bottom:12px;">Broadcom reports two segments: Semiconductor Solutions and Infrastructure Software. The AI boom reshaped the semiconductor mix dramatically.</p>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Semiconductor Rev</th><th>YoY Growth</th><th>AI % of Semi</th><th>Software Rev</th><th>Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="6">FY2025 &mdash; AI SUPERCYCLE &amp; VMWARE INTEGRATION COMPLETE</td></tr>
+      <tr class="raised"><td><a href="quarters/FQ4_2025.html">FQ4 2025</a></td><td class="bold">$11.1B</td><td class="pos">+35%</td><td>~59%</td><td>~$6.7B</td><td>Record semi quarter; FY25 Semi $36.9B</td></tr>
+      <tr><td><a href="quarters/FQ3_2025.html">FQ3 2025</a></td><td class="bold">$9.2B</td><td class="pos">+26%</td><td>~57%</td><td>~$6.0B</td><td>AI + non-AI both accelerating</td></tr>
+      <tr><td><a href="quarters/FQ2_2025.html">FQ2 2025</a></td><td class="bold">$8.4B</td><td class="pos">+17%</td><td>~52%</td><td>~$6.0B</td><td>AI crosses 50% of semi for first time</td></tr>
+      <tr><td><a href="quarters/FQ1_2025.html">FQ1 2025</a></td><td class="bold">$8.2B</td><td class="pos">+11%</td><td>~50%</td><td>~$6.0B</td><td>AI approaches parity with non-AI semi</td></tr>
+      <tr class="year-divider"><td colspan="6">FY2024 &mdash; VMWARE INTEGRATION YEAR</td></tr>
+      <tr><td><a href="quarters/FQ4_2024.html">FQ4 2024</a></td><td class="bold">$8.2B</td><td class="pos">+12%</td><td>~45%</td><td>~$5.8B</td><td>FY24 Semi $30.1B; Software ~$21.5B (VMware full year)</td></tr>
+      <tr><td><a href="quarters/FQ3_2024.html">FQ3 2024</a></td><td class="bold">$7.3B</td><td class="pos">+5%</td><td>~42%</td><td>~$5.8B</td><td>VMware $3.8B; approaching Broadcom-level margins</td></tr>
+      <tr><td><a href="quarters/FQ2_2024.html">FQ2 2024</a></td><td class="bold">$7.2B</td><td class="pos">+6%</td><td>~43%</td><td>~$5.3B</td><td>VMware $2.7B; software becoming major segment</td></tr>
+      <tr><td><a href="quarters/FQ1_2024.html">FQ1 2024</a></td><td class="bold">$7.4B</td><td class="pos">+4%</td><td>~31%</td><td>~$4.6B</td><td>14-week quarter; VMware $2.1B (10.5 weeks)</td></tr>
+      <tr class="year-divider"><td colspan="6">FY2023 &mdash; GENERATIVE AI EMERGENCE</td></tr>
+      <tr><td><a href="quarters/FQ4_2023.html">FQ4 2023</a></td><td class="bold">$7.3B</td><td class="pos">+3%</td><td>~20%</td><td>~$1.8B</td><td>Last pre-VMware quarter for software</td></tr>
+      <tr><td><a href="quarters/FQ3_2023.html">FQ3 2023</a></td><td class="bold">$6.9B</td><td class="pos">+5%</td><td>~15%</td><td>~$1.8B</td><td>AI exceeding $1B/Q; non-AI stabilizing</td></tr>
+      <tr><td><a href="quarters/FQ2_2023.html">FQ2 2023</a></td><td class="bold">$6.8B</td><td class="pos">+9%</td><td>~15%</td><td>~$1.8B</td><td>Non-AI slowdown partially offset by AI growth</td></tr>
+      <tr><td><a href="quarters/FQ1_2023.html">FQ1 2023</a></td><td class="bold">$7.1B</td><td class="pos">+21%</td><td>&mdash;</td><td>~$1.8B</td><td>Peak semi run-rate before cyclical slowdown</td></tr>
+      <tr class="year-divider"><td colspan="6">FY2022 &mdash; SEMICONDUCTOR PEAK &amp; VMWARE DEAL</td></tr>
+      <tr><td><a href="quarters/FQ4_2022.html">FQ4 2022</a></td><td class="bold">$7.1B</td><td class="pos">+26%</td><td>&mdash;</td><td>~$1.8B</td><td>Peak quarter; FY22 Semi $25.8B</td></tr>
+      <tr><td><a href="quarters/FQ3_2022.html">FQ3 2022</a></td><td class="bold">$6.6B</td><td class="pos">+32%</td><td>&mdash;</td><td>~$1.8B</td><td>Cycle peak growth rate</td></tr>
+      <tr><td><a href="quarters/FQ2_2022.html">FQ2 2022</a></td><td class="bold">$6.2B</td><td class="pos">+29%</td><td>&mdash;</td><td>~$1.8B</td><td>VMware deal announced</td></tr>
+      <tr><td><a href="quarters/FQ1_2022.html">FQ1 2022</a></td><td class="bold">$5.9B</td><td class="pos">+20%</td><td>&mdash;</td><td>~$1.8B</td><td>Broad-based strength across all end markets</td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>Insight:</strong> AI as a percentage of semiconductor revenue rose from essentially 0% in FQ1 2022 to ~59% by FQ4 2025. Meanwhile, software revenue tripled from ~$1.8B/Q to ~$6.7B/Q with the VMware acquisition. Broadcom is no longer a semiconductor company with software &mdash; it&rsquo;s a balanced platform where software contributes &gt;40% of total revenue.
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- SECTION 9: Non-AI Semiconductor Cycle -->
+<!-- ============================================================ -->
+<div class="section" id="s9">
+  <h2><span class="num">9</span> Non-AI Semiconductor Cycle</h2>
+  <p style="margin-bottom:12px;">The non-AI semiconductor business traced a classic peak-trough-recovery cycle from 2022 to 2025, partially obscured by the AI surge.</p>
+  <table>
+    <thead>
+      <tr><th>Period</th><th>Non-AI Semi (est.)</th><th>Networking</th><th>Broadband</th><th>Server Storage</th><th>Phase</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="6">CYCLE TIMELINE</td></tr>
+      <tr><td>FY2022 (H2)</td><td>~$5&ndash;6B/Q</td><td>Peak ($2.5B)</td><td>Peak ($1.2B)</td><td>Peak ($1.3B)</td><td class="neutral">Peak</td></tr>
+      <tr><td>FY2023 (H1)</td><td>~$5.5&ndash;6B/Q</td><td>Moderating</td><td>Moderating</td><td>Peaking</td><td class="neutral">Slowdown begins</td></tr>
+      <tr class="lowered"><td>FQ4 2023&ndash;FQ2 2024</td><td>~$6B/Q (plateau)</td><td>Declining</td><td>Declining</td><td>Declining</td><td class="neg">Trough</td></tr>
+      <tr><td>FQ3 2024</td><td>~$4.2B</td><td>Recovering</td><td>Recovering</td><td>Flat</td><td class="neutral">Bookings +20%</td></tr>
+      <tr><td>FQ4 2024</td><td>~$4.5B</td><td>Slow uptick</td><td>Bright spot</td><td>Stable</td><td class="neutral">FY24 non-AI $17.8B (trough year)</td></tr>
+      <tr><td>FY2025</td><td>~$4.0&ndash;4.6B/Q</td><td>Slow recovery</td><td>Only bright spot</td><td>Gradual</td><td class="pos">U-shaped recovery</td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>Insight:</strong> Non-AI semiconductor revenue bottomed at approximately $17.8B in FY2024 and began a slow U-shaped recovery through FY2025. Unlike the sharp V-shaped recovery seen in prior cycles, the recovery was muted because enterprise customers remained cautious while hyperscaler AI spending captured the growth. Broadband was the only sub-segment showing genuine strength.
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- SECTION 10: VMware Acquisition & Integration -->
+<!-- ============================================================ -->
+<div class="section" id="s10">
+  <h2><span class="num">10</span> VMware Acquisition &amp; Integration</h2>
+  <p style="margin-bottom:12px;">The $61 billion VMware acquisition was announced in May 2022 and closed in November 2023, transforming Broadcom into a diversified semiconductor + infrastructure software platform.</p>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Phase</th><th>VMware Revenue</th><th>Key Milestone</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2025 &mdash; OPTIMIZATION &amp; GROWTH</td></tr>
+      <tr><td><a href="quarters/FQ4_2025.html">FQ4 2025</a></td><td>Growth</td><td>~$6.7B (Q)</td><td>&gt;$10.4B TCV booked; $73B software backlog; FY26 low double-digit software growth</td></tr>
+      <tr><td><a href="quarters/FQ3_2025.html">FQ3 2025</a></td><td>Optimization</td><td>&mdash;</td><td>&gt;90% VCF adoption; VCF 9.0 released; $8.4B TCV booked; Phase 2 begun</td></tr>
+      <tr><td><a href="quarters/FQ2_2025.html">FQ2 2025</a></td><td>Optimization</td><td>&mdash;</td><td>&gt;87% VCF adoption; double-digit ARR growth</td></tr>
+      <tr><td><a href="quarters/FQ1_2025.html">FQ1 2025</a></td><td>Optimization</td><td>&mdash;</td><td>70% VCF adoption of top 10K customers; 39 Private AI Foundation customers</td></tr>
+      <tr class="year-divider"><td colspan="4">FY2024 &mdash; INTEGRATION</td></tr>
+      <tr class="raised"><td><a href="quarters/FQ4_2024.html">FQ4 2024</a></td><td>Integration complete</td><td>~$5.8B (Q)</td><td>VMware 70% operating margin (vs &lt;30% pre-acq); 4,500/10,000 VCF customers</td></tr>
+      <tr><td><a href="quarters/FQ3_2024.html">FQ3 2024</a></td><td>Rapid integration</td><td>$3.8B (Q)</td><td>ABV $2.5B; spending $1.3B/Q; margin converging to Broadcom levels</td></tr>
+      <tr><td><a href="quarters/FQ2_2024.html">FQ2 2024</a></td><td>Early integration</td><td>$2.7B (Q)</td><td>3,000/10,000 VCF customers; ABV $1.9B; spending $1.6B/Q</td></tr>
+      <tr><td><a href="quarters/FQ1_2024.html">FQ1 2024</a></td><td>Post-close</td><td>$2.1B (10.5 wks)</td><td>Transition costs $226M; debt $75.9B peak</td></tr>
+      <tr class="year-divider"><td colspan="4">FY2023 &mdash; REGULATORY &amp; CLOSE</td></tr>
+      <tr class="raised"><td><a href="quarters/FQ4_2023.html">FQ4 2023</a></td><td class="bold">CLOSED Nov 22</td><td>$12B projected (FY24, 11 mo)</td><td>FY24 $50B revenue guidance; VMware contributes ~$12B</td></tr>
+      <tr><td><a href="quarters/FQ3_2023.html">FQ3 2023</a></td><td>Final clearances</td><td>&mdash;</td><td>EU, UK, US cleared; expect close Oct 30, 2023</td></tr>
+      <tr><td><a href="quarters/FQ2_2023.html">FQ2 2023</a></td><td>Clearances</td><td>&mdash;</td><td>Australia, Taiwan cleared; expect close FY2023</td></tr>
+      <tr><td><a href="quarters/FQ1_2023.html">FQ1 2023</a></td><td>Clearances</td><td>&mdash;</td><td>Germany, France, and others cleared</td></tr>
+      <tr class="year-divider"><td colspan="4">FY2022 &mdash; ANNOUNCEMENT &amp; EARLY CLEARANCES</td></tr>
+      <tr><td><a href="quarters/FQ4_2022.html">FQ4 2022</a></td><td>Clearances</td><td>&mdash;</td><td>Multiple additional clearances; expect close FY2023</td></tr>
+      <tr><td><a href="quarters/FQ3_2022.html">FQ3 2022</a></td><td>Clearances</td><td>&mdash;</td><td>Brazil, Canada, South Africa cleared</td></tr>
+      <tr><td><a href="quarters/FQ2_2022.html">FQ2 2022</a></td><td class="bold">ANNOUNCED</td><td>&mdash;</td><td>$61B deal announced May 26, 2022</td></tr>
+      <tr><td><a href="quarters/FQ1_2022.html">FQ1 2022</a></td><td class="muted">Pre-announcement</td><td>&mdash;</td><td>&mdash;</td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>Insight:</strong> The VMware integration was executed with extraordinary speed and precision. Operating margins went from &lt;30% to 70% in under a year &mdash; far exceeding both internal targets and Wall Street expectations. The key lever was the forced transition from perpetual licenses to VCF subscription bundles, which initially caused customer disruption but ultimately drove higher ARPU and predictable recurring revenue.
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- SECTION 11: VCF Adoption & Software Transformation -->
+<!-- ============================================================ -->
+<div class="section" id="s11">
+  <h2><span class="num">11</span> VCF Adoption &amp; Software Transformation</h2>
+  <p style="margin-bottom:12px;">VMware Cloud Foundation (VCF) adoption among the top 10,000 enterprise customers was the key metric tracking the subscription transition.</p>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>VCF Customers (of 10K)</th><th>ABV / TCV</th><th>VMware Revenue</th><th>Operating Margin</th><th>Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="6">FY2025 &mdash; AI SUPERCYCLE &amp; VMWARE INTEGRATION COMPLETE</td></tr>
+      <tr class="raised"><td><a href="quarters/FQ4_2025.html">FQ4 2025</a></td><td class="bold">&gt;90%+</td><td>&gt;$10.4B TCV</td><td>~$6.7B</td><td>~70%</td><td>Phase 2 (upsell/expand); $73B software backlog; FY26 low double-digit growth</td></tr>
+      <tr><td><a href="quarters/FQ3_2025.html">FQ3 2025</a></td><td>&gt;90%</td><td>$8.4B TCV</td><td>&mdash;</td><td>~70%</td><td>VCF 9.0 released; Phase 2 begun</td></tr>
+      <tr><td><a href="quarters/FQ2_2025.html">FQ2 2025</a></td><td>&gt;87%</td><td>&mdash;</td><td>&mdash;</td><td>~70%</td><td>Double-digit ARR growth</td></tr>
+      <tr><td><a href="quarters/FQ1_2025.html">FQ1 2025</a></td><td>70%</td><td>&mdash;</td><td>&mdash;</td><td>~70%</td><td>39 Private AI Foundation customers</td></tr>
+      <tr class="year-divider"><td colspan="6">FY2024 &mdash; VMWARE INTEGRATION YEAR</td></tr>
+      <tr class="raised"><td><a href="quarters/FQ4_2024.html">FQ4 2024</a></td><td>4,500 (45%)</td><td>&mdash;</td><td>~$5.8B</td><td class="bold">70%</td><td>Integration largely complete; target achieved <span class="tag tag-raised">Record</span></td></tr>
+      <tr><td><a href="quarters/FQ3_2024.html">FQ3 2024</a></td><td>&mdash;</td><td>ABV $2.5B</td><td>$3.8B</td><td>Converging</td><td>Spending $1.3B/Q; margin rapidly approaching target</td></tr>
+      <tr><td><a href="quarters/FQ2_2024.html">FQ2 2024</a></td><td>3,000 (30%)</td><td>ABV $1.9B</td><td>$2.7B</td><td>&mdash;</td><td>Early stage but rapid conversion; spending $1.6B/Q</td></tr>
+      <tr><td><a href="quarters/FQ1_2024.html">FQ1 2024</a></td><td>&mdash;</td><td>&mdash;</td><td>$2.1B</td><td>&mdash;</td><td>10.5 weeks only; transition costs $226M</td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>Insight:</strong> VCF adoption went from 0% to &gt;90% in 8 quarters &mdash; an extraordinarily aggressive enterprise software transition. The strategy was controversial initially (customers complained about forced bundling), but proved highly effective: recurring revenue visibility improved dramatically, operating margins reached Broadcom&rsquo;s legacy software levels, and the business entered a growth phase (low double-digit FY26 guidance) from what was originally viewed as a declining asset.
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- SECTION 12: Networking Technology Roadmap -->
+<!-- ============================================================ -->
+<div class="section" id="s12">
+  <h2><span class="num">12</span> Networking Technology Roadmap</h2>
+  <p style="margin-bottom:12px;">Broadcom&rsquo;s Tomahawk and Jericho switch silicon families, combined with DSPs, NICs, and silicon photonics, form the backbone of AI data center networking.</p>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Tomahawk</th><th>Jericho / Other</th><th>Key Technology</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2025 &mdash; AI SUPERCYCLE &amp; VMWARE INTEGRATION COMPLETE</td></tr>
+      <tr class="raised"><td><a href="quarters/FQ4_2025.html">FQ4 2025</a></td><td>TH6 &mdash; only product of its kind; record bookings</td><td>&mdash;</td><td>Silicon photonics developing; 1.6T DSPs deployed</td></tr>
+      <tr class="raised"><td><a href="quarters/FQ3_2025.html">FQ3 2025</a></td><td class="bold">TH6 launched (June 2025)</td><td class="bold">Jericho4 NEW (51.2 Tbps)</td><td>SUE (Scale-Up Ethernet) &lt;250ns latency <span class="tag tag-new">New</span></td></tr>
+      <tr><td><a href="quarters/FQ2_2025.html">FQ2 2025</a></td><td>TH6 102.4 Tbps</td><td>&mdash;</td><td>Scale-up Ethernet; copper-to-optical transition 1&ndash;2 years</td></tr>
+      <tr><td><a href="quarters/FQ1_2025.html">FQ1 2025</a></td><td>TH5 enhanced (doubled radix); TH6 taped out</td><td>&mdash;</td><td>2nm XPU tape-out; TH7 &amp; TH8 planning</td></tr>
+      <tr class="year-divider"><td colspan="4">FY2024 &mdash; VMWARE INTEGRATION YEAR</td></tr>
+      <tr><td><a href="quarters/FQ4_2024.html">FQ4 2024</a></td><td>TH5 deployed</td><td>&mdash;</td><td>1M XPU cluster architecture described</td></tr>
+      <tr><td><a href="quarters/FQ3_2024.html">FQ3 2024</a></td><td>TH6 on track for late 2025</td><td>&mdash;</td><td>&mdash;</td></tr>
+      <tr><td><a href="quarters/FQ2_2024.html">FQ2 2024</a></td><td>TH5/Jericho3 deployed with Arista, Dell, Juniper, Supermicro</td><td>Jericho3</td><td>7/8 largest AI clusters on Broadcom Ethernet</td></tr>
+      <tr><td><a href="quarters/FQ1_2024.html">FQ1 2024</a></td><td>TH5 going &ldquo;great guns&rdquo;</td><td>&mdash;</td><td>800G DSPs, Thor 2 NICs shipping</td></tr>
+      <tr class="year-divider"><td colspan="4">FY2023 &mdash; GENERATIVE AI EMERGENCE</td></tr>
+      <tr><td><a href="quarters/FQ3_2023.html">FQ3 2023</a></td><td>TH6 development started (&gt;100 Tbps, 1.6T connectivity)</td><td>&mdash;</td><td>&mdash;</td></tr>
+      <tr><td><a href="quarters/FQ2_2023.html">FQ2 2023</a></td><td>TH5/Jericho3 supports 32K GPU clusters at 800G</td><td>Jericho3</td><td>&mdash;</td></tr>
+      <tr><td><a href="quarters/FQ1_2023.html">FQ1 2023</a></td><td>Bailly (TH5 + integrated silicon photonics) announced</td><td>&mdash;</td><td>Silicon photonics integration milestone</td></tr>
+      <tr class="year-divider"><td colspan="4">FY2022 &mdash; SEMICONDUCTOR PEAK &amp; VMWARE DEAL</td></tr>
+      <tr><td><a href="quarters/FQ3_2022.html">FQ3 2022</a></td><td>TH5 with co-packaged silicon photonics</td><td>&mdash;</td><td>&mdash;</td></tr>
+      <tr><td>2022 (general)</td><td>TH4 deployed; TH5 announced (51.2 Tbps)</td><td>&mdash;</td><td>&mdash;</td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>Insight:</strong> Broadcom&rsquo;s networking roadmap advanced through three Tomahawk generations (TH4 &rarr; TH5 &rarr; TH6) and introduced the Jericho4 scale-across architecture in just 16 quarters. Each generation roughly doubled bandwidth: TH5 at 51.2 Tbps, TH6 at 102.4 Tbps. The FQ3 2025 launch of Scale-Up Ethernet (SUE) with &lt;250ns latency positioned Broadcom directly against NVIDIA&rsquo;s NVLink in the scale-up interconnect market.
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- SECTION 13: Ethernet vs Proprietary for AI -->
+<!-- ============================================================ -->
+<div class="section" id="s13">
+  <h2><span class="num">13</span> Ethernet vs Proprietary for AI</h2>
+  <p style="margin-bottom:12px;">A consistent theme across all 16 quarters: Broadcom&rsquo;s case for open Ethernet networking as the standard for AI data centers versus proprietary alternatives (primarily NVIDIA InfiniBand/NVLink).</p>
+  <table>
+    <thead>
+      <tr><th>Period</th><th>Messaging</th><th>Evidence Cited</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="3">EVOLUTION OF THE ETHERNET-FOR-AI NARRATIVE</td></tr>
+      <tr><td>FY2022</td><td>Ethernet standard for cloud networking; compute offload ASICs growing</td><td>Tomahawk 4/5 deployments across hyperscalers</td></tr>
+      <tr><td>FY2023 (H1)</td><td>Ethernet can scale AI clusters to 32K GPUs at 800G</td><td>TH5/Jericho3 architecture validated; &gt;$800M AI Ethernet FY23</td></tr>
+      <tr><td>FY2023 (H2)</td><td>Hyperscalers increasingly choosing Ethernet over proprietary</td><td>AI Ethernet revenue exceeding $1B/Q run-rate</td></tr>
+      <tr class="raised"><td>FY2024 (H1)</td><td class="bold">7 of 8 largest AI clusters use Broadcom Ethernet</td><td>$3.1B AI revenue in Q2; 280% YoY growth</td></tr>
+      <tr><td>FY2024 (H2)</td><td>Ethernet winning in scale-out; proprietary retains scale-up niche</td><td>3 XPU customers + 2 prospects; TH6 development on track</td></tr>
+      <tr class="raised"><td>FY2025 (H1)</td><td>Scale-up Ethernet emerging as complement to scale-out</td><td>4 engagement partners; copper-to-optical transition beginning</td></tr>
+      <tr class="raised"><td>FY2025 (H2)</td><td class="bold">SUE (Scale-Up Ethernet) directly competes with NVLink at &lt;250ns</td><td>TH6 launched; Jericho4 announced; $73B AI backlog includes Ethernet</td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>Insight:</strong> Broadcom&rsquo;s Ethernet narrative evolved from defensive (&ldquo;Ethernet is the standard&rdquo;) to offensive (SUE directly challenging NVLink at &lt;250ns latency). The key inflection was FQ2 2024 when management disclosed that 7 of 8 largest AI clusters use Broadcom Ethernet &mdash; a data point that fundamentally reframed the competitive landscape and demonstrated that hyperscalers overwhelmingly prefer open standards for AI networking.
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- SECTION 14: Gross Margin Dynamics -->
+<!-- ============================================================ -->
+<div class="section" id="s14">
+  <h2><span class="num">14</span> Gross Margin Dynamics</h2>
+  <p style="margin-bottom:12px;">Consolidated non-GAAP gross margin reflects the interplay between semiconductor mix (AI XPU dilutive due to HBM memory content) and software mix (VMware accretive).</p>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Non-GAAP Gross Margin</th><th>QoQ Change</th><th>Key Driver</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2025 &mdash; AI SUPERCYCLE &amp; VMWARE INTEGRATION COMPLETE</td></tr>
+      <tr><td><a href="quarters/FQ4_2025.html">FQ4 2025</a></td><td class="bold">77.9%</td><td class="neg">&ndash;0.5pp</td><td>AI XPU growth diluting semi GM; software mix partially offsetting</td></tr>
+      <tr><td><a href="quarters/FQ3_2025.html">FQ3 2025</a></td><td class="bold">78.4%</td><td class="neg">&ndash;1.0pp</td><td>Higher AI semi mix with HBM content</td></tr>
+      <tr class="raised"><td><a href="quarters/FQ2_2025.html">FQ2 2025</a></td><td class="bold">79.4%</td><td class="pos">+0.3pp</td><td>Record high; favorable software/semi mix <span class="tag tag-raised">Record</span></td></tr>
+      <tr class="raised"><td><a href="quarters/FQ1_2025.html">FQ1 2025</a></td><td class="bold">79.1%</td><td class="pos">+2.2pp</td><td>Software mix lift + VMware margin expansion <span class="tag tag-raised">Record</span></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2024 &mdash; VMWARE INTEGRATION YEAR</td></tr>
+      <tr><td><a href="quarters/FQ4_2024.html">FQ4 2024</a></td><td class="bold">76.9%</td><td class="neg">&ndash;0.5pp</td><td>Higher AI XPU shipments diluting semi margin</td></tr>
+      <tr class="raised"><td><a href="quarters/FQ3_2024.html">FQ3 2024</a></td><td class="bold">77.4%</td><td class="pos">+1.2pp</td><td>VMware margin improvement; software mix increasing</td></tr>
+      <tr><td><a href="quarters/FQ2_2024.html">FQ2 2024</a></td><td class="bold">76.2%</td><td class="pos">+0.8pp</td><td>VMware integration synergies</td></tr>
+      <tr><td><a href="quarters/FQ1_2024.html">FQ1 2024</a></td><td class="bold">75.4%</td><td class="pos">+1.1pp</td><td>VMware accretive despite initial integration costs</td></tr>
+      <tr class="year-divider"><td colspan="4">FY2023 &mdash; GENERATIVE AI EMERGENCE</td></tr>
+      <tr><td><a href="quarters/FQ4_2023.html">FQ4 2023</a></td><td class="bold">74.3%</td><td class="neg">&ndash;0.8pp</td><td>Pre-VMware close; mixed semi demand</td></tr>
+      <tr><td><a href="quarters/FQ3_2023.html">FQ3 2023</a></td><td class="bold">75.1%</td><td class="neg">&ndash;0.5pp</td><td>Slight moderation from FQ2 peak</td></tr>
+      <tr><td><a href="quarters/FQ2_2023.html">FQ2 2023</a></td><td class="bold">75.6%</td><td class="pos">+1.6pp</td><td>AI mix growing within semi; favorable product mix</td></tr>
+      <tr><td><a href="quarters/FQ1_2023.html">FQ1 2023</a></td><td class="bold">74.0%</td><td class="neg">&ndash;2.0pp</td><td>Cyclical semi slowdown; inventory adjustments</td></tr>
+      <tr class="year-divider"><td colspan="4">FY2022 &mdash; SEMICONDUCTOR PEAK &amp; VMWARE DEAL</td></tr>
+      <tr><td><a href="quarters/FQ4_2022.html">FQ4 2022</a></td><td class="bold">75.0%</td><td class="neg">&ndash;1.0pp</td><td>Late-cycle margin compression beginning</td></tr>
+      <tr><td><a href="quarters/FQ3_2022.html">FQ3 2022</a></td><td class="bold">76.0%</td><td class="neg">&ndash;0.3pp</td><td>Near peak</td></tr>
+      <tr><td><a href="quarters/FQ2_2022.html">FQ2 2022</a></td><td class="bold">76.3%</td><td class="pos">+0.3pp</td><td>Cycle peak margin</td></tr>
+      <tr><td><a href="quarters/FQ1_2022.html">FQ1 2022</a></td><td class="bold">76.0%</td><td>&mdash;</td><td>Baseline at cycle peak</td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>Insight:</strong> Gross margins tell a nuanced story with two competing forces: AI XPU growth dilutes semiconductor margins (because XPUs include HBM memory with lower margins), while the growing software mix from VMware lifts consolidated margins (software at ~90%+ GM). The net effect was positive: consolidated GM rose from 74&ndash;76% pre-VMware to 77&ndash;79% post-integration, despite AI XPU becoming the majority of semiconductor revenue.
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- SECTION 15: Capital Allocation & Debt Management -->
+<!-- ============================================================ -->
+<div class="section" id="s15">
+  <h2><span class="num">15</span> Capital Allocation &amp; Debt Management</h2>
+  <p style="margin-bottom:12px;">The VMware acquisition fundamentally shifted Broadcom&rsquo;s capital allocation from aggressive buybacks to debt paydown, before gradually returning to a balanced approach.</p>
+  <table>
+    <thead>
+      <tr><th>Fiscal Year</th><th>Total Shareholder Return</th><th>Dividends</th><th>Buybacks</th><th>Total Debt</th><th>Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="6">CAPITAL ALLOCATION EVOLUTION</td></tr>
+      <tr><td>FY2022</td><td class="bold">$15.5B</td><td>$7.0B</td><td>$8.5B</td><td>Pre-VMware levels</td><td>Aggressive buyback program; peak cycle cash flows</td></tr>
+      <tr><td>FY2023</td><td class="bold">$15.3B</td><td>$7.6B</td><td>$7.7B</td><td>Pre-VMware levels</td><td>Continued pre-acquisition capital return</td></tr>
+      <tr class="raised"><td>FY2024</td><td class="bold">$22.2B</td><td>&mdash;</td><td>&mdash;</td><td>~$75.9B (peak FQ1)</td><td>Record shareholder return despite peak debt; 10-for-1 stock split July 2024</td></tr>
+      <tr><td>FY2025</td><td class="bold">$17.5B</td><td>&mdash;</td><td>&mdash;</td><td>$67.1B</td><td>Debt reduced $8.8B; all floating rate eliminated; fixed-rate only</td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>Insight:</strong> Broadcom took on ~$75.9B in total debt to finance the VMware acquisition, then aggressively paid down $8.8B in under 2 years while simultaneously returning $39.7B to shareholders across FY2024&ndash;FY2025. The elimination of all floating-rate debt by FQ4 2025 was a notable risk-reduction milestone, insulating the company from interest rate volatility.
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- SECTION 16: Dividend Evolution -->
+<!-- ============================================================ -->
+<div class="section" id="s16">
+  <h2><span class="num">16</span> Dividend Evolution</h2>
+  <p style="margin-bottom:12px;">Broadcom has increased its dividend for 12&ndash;15 consecutive years since FY2011, maintaining the streak through both the semiconductor cycle downturn and the VMware integration.</p>
+  <table>
+    <thead>
+      <tr><th>Fiscal Year</th><th>Quarterly Dividend</th><th>YoY Increase</th><th>Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">DIVIDEND TRACK RECORD</td></tr>
+      <tr class="raised"><td>FQ4 2025 &rarr; FY2026</td><td class="bold">$0.65/quarter (split-adj)</td><td class="pos">+10%</td><td>15th consecutive annual increase; effective FQ1 FY2026</td></tr>
+      <tr class="raised"><td>FQ4 2024</td><td class="bold">$0.59/quarter (split-adj)</td><td class="pos">+11%</td><td>14th consecutive increase; post 10-for-1 split</td></tr>
+      <tr class="raised"><td>FQ4 2023</td><td class="bold">$5.25/quarter (pre-split)</td><td class="pos">+14%</td><td>13th consecutive increase; maintained through VMware integration</td></tr>
+      <tr class="raised"><td>FQ4 2022</td><td class="bold">$4.60/quarter (pre-split)</td><td class="pos">+12%</td><td>12th consecutive increase; peak semiconductor cycle</td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>Insight:</strong> The dividend increase streak (now 15 consecutive years) is remarkable given that Broadcom took on $75.9B in debt for VMware and navigated a semiconductor downturn during the same period. Management&rsquo;s commitment to the dividend signals confidence in the durability of cash flows from both the AI semiconductor business and the recurring software revenue stream.
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- SECTION 17: Full Year Actuals Summary -->
+<!-- ============================================================ -->
+<div class="section" id="s17">
+  <h2><span class="num">17</span> Full Year Actuals Summary</h2>
+  <table>
+    <thead>
+      <tr><th>Fiscal Year</th><th>Total Revenue</th><th>YoY Growth</th><th>Semi Revenue</th><th>Software Revenue</th><th>AI Revenue</th><th>Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="raised"><td class="bold">FY2025</td><td class="bold">$63.9B</td><td class="pos">+24%</td><td>$36.9B</td><td>~$27.0B</td><td class="bold">$20.0B</td><td>AI 65% YoY; VMware fully integrated; 5 XPU customers</td></tr>
+      <tr><td class="bold">FY2024</td><td class="bold">$51.6B</td><td class="pos">+44%</td><td>$30.1B</td><td>~$21.5B</td><td class="bold">$12.2B</td><td>First full VMware year; AI tripled; 10-for-1 split</td></tr>
+      <tr><td class="bold">FY2023</td><td class="bold">$35.8B</td><td class="pos">+8%</td><td>$28.2B</td><td>~$7.6B</td><td>~$3.8B</td><td>Generative AI emerged; VMware closed Nov; non-AI slowing</td></tr>
+      <tr><td class="bold">FY2022</td><td class="bold">$33.2B</td><td class="pos">+21%</td><td>$25.8B</td><td>~$7.4B</td><td>~$2.0B</td><td>Peak semiconductor cycle; VMware deal announced</td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>Insight:</strong> Broadcom nearly doubled total revenue in 3 years ($33.2B &rarr; $63.9B) through two transformative vectors: the VMware acquisition adding ~$20B in software revenue, and AI semiconductor revenue growing 10x from ~$2B to $20B. The company&rsquo;s revenue run-rate entering FY2026 (~$76B+ annualized) positions it among the top 5 largest technology companies globally by revenue.
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- SECTION 18: Key Takeaways -->
+<!-- ============================================================ -->
+<div class="section" id="s18">
+  <h2><span class="num">18</span> Key Takeaways</h2>
+  <div class="takeaways">
+    <div class="takeaway">
+      <div class="takeaway-num">1</div>
+      <div class="takeaway-text"><strong>AI revenue went from unquantified to $20 billion in 3 years.</strong> The single most important transformation in Broadcom&rsquo;s history: from $2B in compute offload ASICs (FY2022) to $20B in AI semiconductor revenue (FY2025), a 10x expansion that redefined the company&rsquo;s identity and valuation.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">2</div>
+      <div class="takeaway-text"><strong>XPU customer diversification de-risked the AI thesis.</strong> The expansion from 1 customer (Google TPU) to 5 production customers plus 2 prospects eliminated the single-customer concentration risk that plagued the stock through FY2023. Each customer conversion (especially the 4th with $10B+ orders) represented a step-function increase in addressable demand.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">3</div>
+      <div class="takeaway-text"><strong>VMware integration executed at unprecedented speed.</strong> Operating margins went from &lt;30% to 70% in under 12 months &mdash; the fastest margin expansion in enterprise software M&amp;A history. The forced VCF subscription transition, while initially controversial, created a high-visibility recurring revenue stream.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">4</div>
+      <div class="takeaway-text"><strong>FY2024 AI guidance was raised 4 consecutive quarters.</strong> From an implied ~$7.5B (&gt;25% of semi) at initial guidance to $12.2B actual &mdash; a 63% increase from initial outlook. This pattern of systematic under-promise and over-deliver became a hallmark of Broadcom&rsquo;s AI disclosure strategy.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">5</div>
+      <div class="takeaway-text"><strong>EBITDA margins traced a V-shape from 65% &rarr; 60% &rarr; 67%.</strong> The VMware-induced margin dip was fully recovered within 8 quarters, with margins reaching all-time highs by FQ3 2025. The combination of high-margin software mix and operating leverage from AI scale drove the recovery far faster than expected.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">6</div>
+      <div class="takeaway-text"><strong>The $60&ndash;90B FY2027 AI SAM was never revised.</strong> Introduced in FQ4 2024 and reaffirmed for 5 consecutive quarters, this long-term framework provided a credible anchor for AI growth expectations. The $73B AI backlog disclosed in FQ4 2025 made the midpoint look increasingly conservative.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">7</div>
+      <div class="takeaway-text"><strong>Ethernet won the AI networking war by default.</strong> Broadcom&rsquo;s claim that 7 of 8 largest AI clusters use its Ethernet technology (FQ2 2024) settled the Ethernet vs. InfiniBand debate for scale-out. The launch of SUE (&lt;250ns latency) in FQ3 2025 opened a second front in scale-up, directly challenging NVLink.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">8</div>
+      <div class="takeaway-text"><strong>Non-AI semiconductors experienced a muted U-shaped recovery.</strong> Unlike prior cycles with sharp V-recoveries, the non-AI business bottomed at $17.8B (FY2024) and recovered slowly through FY2025. The muted recovery reflected enterprise caution and capital reallocation toward AI, with broadband as the only genuine bright spot.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">9</div>
+      <div class="takeaway-text"><strong>Gross margins rose despite AI XPU dilution.</strong> AI XPUs include HBM memory that dilutes semiconductor gross margins, yet consolidated GM rose from 74&ndash;76% to 77&ndash;79% because the growing VMware software contribution (~90%+ GM) more than offset the semiconductor mix headwind.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">10</div>
+      <div class="takeaway-text"><strong>$8.8B in debt paydown while returning $39.7B to shareholders.</strong> Broadcom managed to aggressively deleverage from $75.9B peak debt to $67.1B while simultaneously returning $22.2B (FY2024) and $17.5B (FY2025) to shareholders. The elimination of all floating-rate debt was a key risk-reduction milestone.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">11</div>
+      <div class="takeaway-text"><strong>Networking technology roadmap advanced through 3 generations.</strong> Tomahawk 4 &rarr; TH5 (51.2 Tbps) &rarr; TH6 (102.4 Tbps), plus the new Jericho4 and silicon photonics, positioned Broadcom at the center of AI data center infrastructure. Each generation roughly doubled bandwidth, maintaining the cadence needed to support AI cluster scaling.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">12</div>
+      <div class="takeaway-text"><strong>Revenue nearly doubled in 3 years: $33.2B &rarr; $63.9B.</strong> This 93% growth was split roughly equally between the two transformative vectors: VMware adding ~$20B in software and AI semiconductors growing by ~$18B. Entering FY2026 at a ~$76B+ annualized run-rate, Broadcom is positioned among the largest technology companies globally.</div>
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center; padding:40px 0 20px; color:var(--text-muted); font-size:0.8rem; border-top:1px solid var(--border); margin-top:40px;">
+  Broadcom Metrics Tracker &mdash; 16-Quarter Analysis &mdash; FQ1 2022 through FQ4 2025<br>
+  Data extracted from BamSEC transcripts and EDGAR
+</div>
+
+</body>
+</html>
