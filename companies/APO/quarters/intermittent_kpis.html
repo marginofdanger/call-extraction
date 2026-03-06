@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APO Intermittent KPIs &mdash; 16-Quarter Disclosure Tracker</title>
+<style>
+  :root {
+    --company-primary: #003A70;
+    --company-dark: #1a1a2e;
+    --company-accent: #0066B3;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); background: #fff; line-height: 1.6; max-width: 1200px; margin: 0 auto; padding: 0 24px 80px; }
+  .header { background: linear-gradient(135deg, var(--company-dark), var(--company-accent)); color: #fff; padding: 48px 40px; margin: 0 -24px 40px; border-bottom: 4px solid var(--company-primary); }
+  .header h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; }
+  .header .subtitle { font-size: 1.1rem; opacity: 0.85; font-weight: 300; }
+  .quarter-nav { background: var(--company-accent); border-radius: 8px; padding: 16px 20px; margin-bottom: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .quarter-nav .label { color: #fff; font-weight: 600; font-size: 0.85rem; margin-right: 8px; white-space: nowrap; }
+  .quarter-nav .year-group { display: flex; gap: 4px; align-items: center; }
+  .quarter-nav .year-label { color: rgba(255,255,255,0.5); font-size: 0.72rem; font-weight: 600; margin-right: 2px; letter-spacing: 0.5px; }
+  .quarter-nav a { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 4px 10px; font-size: 0.78rem; font-weight: 600; text-decoration: none; transition: all 0.15s; }
+  .quarter-nav a:hover { background: rgba(255,255,255,0.25); }
+  .quarter-nav a.overview-link { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.35); padding: 4px 14px; font-size: 0.82rem; margin-left: auto; }
+  .toc { background: var(--light-bg); border: 1px solid var(--border); border-radius: 8px; padding: 24px 32px; margin-bottom: 40px; columns: 2; column-gap: 40px; }
+  .toc h2 { font-size: 1.1rem; color: var(--company-accent); margin-bottom: 12px; column-span: all; }
+  .toc a { display: block; color: var(--blue); text-decoration: none; padding: 3px 0; font-size: 0.9rem; break-inside: avoid; }
+  .toc a:hover { text-decoration: underline; }
+  .section { margin-bottom: 48px; scroll-margin-top: 20px; }
+  .section h2 { font-size: 1.4rem; color: var(--company-dark); border-bottom: 3px solid var(--company-primary); padding-bottom: 8px; margin-bottom: 16px; }
+  .section h2 .num { display: inline-block; background: var(--company-primary); color: #fff; width: 28px; height: 28px; line-height: 28px; text-align: center; border-radius: 50%; font-size: 0.85rem; margin-right: 8px; vertical-align: middle; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 0.88rem; }
+  thead th { background: var(--company-accent); color: #fff; padding: 10px 12px; text-align: left; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
+  thead th.right { text-align: right; }
+  tbody td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tbody td.right { text-align: right; }
+  tbody tr:nth-child(even) { background: var(--light-bg); }
+  tbody tr:hover { background: #eef2f7; }
+  .pos { color: var(--green); font-weight: 600; }
+  .neg { color: var(--red); font-weight: 600; }
+  .neutral { color: var(--amber); font-weight: 600; }
+  .raised { background: #eafaf1 !important; }
+  .lowered { background: #fef0ef !important; }
+  .bold { font-weight: 700; }
+  .muted { color: var(--text-muted); font-style: italic; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; vertical-align: middle; }
+  .tag-new { background: #d6eaf8; color: #2471a3; }
+  .tag-disc { background: #fadbd8; color: #c0392b; }
+  .tag-emerged { background: #d5f5e3; color: #1e8449; }
+  .tag-peak { background: #fdebd0; color: #d35400; }
+  .insight { background: linear-gradient(135deg, #fef9e7, #fdebd0); border-left: 4px solid var(--amber); padding: 14px 18px; margin: 16px 0; border-radius: 0 6px 6px 0; font-size: 0.9rem; }
+  .insight strong { color: var(--company-dark); }
+  .year-divider td { background: var(--company-accent) !important; color: #fff; font-weight: 700; font-size: 0.82rem; padding: 6px 12px; letter-spacing: 0.5px; }
+  .analysis { margin-top: 48px; padding: 32px; background: var(--light-bg); border: 1px solid var(--border); border-radius: 8px; }
+  .analysis h2 { font-size: 1.3rem; color: var(--company-dark); margin-bottom: 16px; border-bottom: 3px solid var(--company-primary); padding-bottom: 8px; }
+  .analysis h3 { font-size: 1.05rem; color: var(--company-dark); margin: 20px 0 8px; }
+  .analysis p { font-size: 0.92rem; margin-bottom: 12px; }
+  .footer { margin-top: 60px; padding-top: 20px; border-top: 2px solid var(--border); font-size: 0.82rem; color: var(--text-muted); text-align: center; }
+  .footer a { color: var(--blue); text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 768px) { .toc { columns: 1; } .header h1 { font-size: 1.6rem; } table { font-size: 0.8rem; } thead th, tbody td { padding: 6px 8px; } }
+  @media print { .header { background: #333; } .section { page-break-inside: avoid; } table { font-size: 0.75rem; } .quarter-nav { display: none; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Apollo Global Management Intermittent KPIs</h1>
+  <div class="subtitle">Metrics disclosed more than once but not on a regular basis &mdash; Q1 2022 through Q4 2025</div>
+</div>
+
+<div class="quarter-nav" id="qnav">
+  <a href="../../index.html" style="background:rgba(255,255,255,0.15); color:#fff; font-weight:600; margin-right:12px; text-decoration:none; padding:4px 12px; border-radius:4px;">&#x2190; Portfolio</a>
+  <span class="label">Quarters:</span>
+  <div class="year-group"><span class="year-label">2025</span>
+    <a href="Q4_2025.html">Q4</a><a href="Q3_2025.html">Q3</a><a href="Q2_2025.html">Q2</a><a href="Q1_2025.html">Q1</a>
+  </div>
+  <div class="year-group"><span class="year-label">2024</span>
+    <a href="Q4_2024.html">Q4</a><a href="Q3_2024.html">Q3</a><a href="Q2_2024.html">Q2</a><a href="Q1_2024.html">Q1</a>
+  </div>
+  <div class="year-group"><span class="year-label">2023</span>
+    <a href="Q4_2023.html">Q4</a><a href="Q3_2023.html">Q3</a><a href="Q2_2023.html">Q2</a><a href="Q1_2023.html">Q1</a>
+  </div>
+  <div class="year-group"><span class="year-label">2022</span>
+    <a href="Q4_2022.html">Q4</a><a href="Q3_2022.html">Q3</a><a href="Q2_2022.html">Q2</a><a href="Q1_2022.html">Q1</a>
+  </div>
+  <a href="../comparison.html" class="overview-link">Guidance Overview &rarr;</a>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+  <h2>Table of Contents</h2>
+  <a href="#s1">1. PE Fund Performance (Fund IX &amp; Fund X)</a>
+  <a href="#s2">2. Fund X Fundraising &amp; DPI</a>
+  <a href="#s3">3. AAA (Apollo Aligned Alternatives) Scaling</a>
+  <a href="#s4">4. ADS (Apollo Debt Solutions BDC)</a>
+  <a href="#s5">5. Athene Alternative Investment Returns</a>
+  <a href="#s6">6. Athene Floating Rate Exposure &amp; Rate Sensitivity</a>
+  <a href="#s7">7. Origination Platform Build-Out</a>
+  <a href="#s8">8. Atlas SP Origination</a>
+  <a href="#s9">9. Five-Year Plan Target Evolution</a>
+  <a href="#s10">10. Third-Party Insurance Platform</a>
+  <a href="#s11">11. Hybrid Business &amp; Secondaries</a>
+  <a href="#s12">12. Capital Solutions Transaction Scale</a>
+  <a href="#s13">13. Credit Quality &amp; Portfolio Composition</a>
+  <a href="#s14">14. Bridge Investment Group Acquisition</a>
+  <a href="#analysis">Written Analysis</a>
+</div>
+
+<!-- SECTION 1: PE Fund Performance -->
+<div class="section" id="s1">
+  <h2><span class="num">1</span> PE Fund Performance (Fund IX &amp; Fund X)</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>Fund</th><th>Gross IRR</th><th>Net IRR</th><th>DPI</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="6">2025 &mdash; FUND X TAKES THE STAGE</td></tr>
+      <tr><td>Q4 2025</td><td>Fund X</td><td class="muted">&mdash;</td><td class="pos">22%</td><td class="pos bold">0.3+</td><td>vs ~0 industry avg DPI; "generating real returns"</td></tr>
+      <tr><td>Q3 2025</td><td>Fund X</td><td class="muted">&mdash;</td><td class="muted">&mdash;</td><td>0.2</td><td>50% higher DPI than industry avg</td></tr>
+      <tr><td>Q2 2025</td><td>Fund X</td><td class="muted">&mdash;</td><td>23%</td><td>0.2</td><td>vs 0 industry avg; Fund IX DPI: 0.6&ndash;0.7</td></tr>
+      <tr><td>Q1 2025</td><td>Fund IX / X</td><td class="muted">&mdash;</td><td>19% (both)</td><td>strong</td><td>Both funds at similar net IRR</td></tr>
+      <tr class="year-divider"><td colspan="6">2024</td></tr>
+      <tr><td>Q2 2024</td><td>Fund X</td><td class="pos bold">47%</td><td>20%</td><td class="muted">&mdash;</td><td><span class="tag tag-new">FUND X FIRST REPORTED</span></td></tr>
+      <tr><td>Q2 2024</td><td>Fund IX</td><td class="muted">&mdash;</td><td>20%</td><td class="muted">&mdash;</td><td>Maturing; converging with Fund X</td></tr>
+      <tr class="year-divider"><td colspan="6">2023</td></tr>
+      <tr><td>Q4 2023</td><td>Fund IX</td><td>32%</td><td>22%</td><td class="muted">&mdash;</td><td>&mdash;</td></tr>
+      <tr><td>Q2 2023</td><td>Fund IX</td><td>36%</td><td>24%</td><td class="muted">&mdash;</td><td>&mdash;</td></tr>
+      <tr class="year-divider"><td colspan="6">2022 &mdash; FUND IX HARVEST</td></tr>
+      <tr><td>Q4 2022</td><td>Fund IX</td><td class="muted">&mdash;</td><td class="muted">&mdash;</td><td class="muted">&mdash;</td><td>+22% in 2022</td></tr>
+      <tr><td>Q3 2022</td><td>Fund IX</td><td>40%</td><td>26%</td><td class="muted">&mdash;</td><td>90% committed/invested; ~$2-3B dry powder</td></tr>
+      <tr class="raised"><td>Q1 2022</td><td>Fund IX</td><td class="pos bold">52%</td><td class="pos bold">34%</td><td class="muted">&mdash;</td><td><span class="tag tag-peak">PEAK IRR</span> Entry at ~6.5x EBITDA; ~4x leverage</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Fund IX's gross IRR declined from a peak of 52% (Q1 2022) to 19% net (Q1 2025) as the portfolio matured and realizations diluted early-vintage returns &mdash; a normal lifecycle pattern. Fund X emerged as the successor, starting with a 47% gross IRR in its early life (Q2 2024) and settling to ~22% net. The most striking new metric is DPI (distributions to paid-in): Apollo began emphasizing this in 2025 because it was one of the few PE managers actually returning cash (0.3+ DPI vs ~0 industry average), making it a powerful fundraising differentiator for Fund XI.</div>
+</div>
+
+<!-- SECTION 2: Fund X Fundraising & DPI -->
+<div class="section" id="s2">
+  <h2><span class="num">2</span> Fund X Fundraising Lifecycle</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>Cumulative Commitments</th><th>Status</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2024</td></tr>
+      <tr><td>Q2 2024</td><td class="muted">&mdash;</td><td>Largely deployed; Fund XI kicks off</td><td>Transition to next vintage</td></tr>
+      <tr class="year-divider"><td colspan="4">2023 &mdash; FINAL CLOSE</td></tr>
+      <tr class="raised"><td>Q2 2023</td><td class="pos bold">~$20B</td><td>Final close mid-July</td><td>Below $25B target but still largest vintage</td></tr>
+      <tr><td>Q1 2023</td><td>~$16B</td><td>Marketing; expect low $20B range</td><td>&mdash;</td></tr>
+      <tr class="year-divider"><td colspan="4">2022 &mdash; FUNDRAISING</td></tr>
+      <tr><td>Q4 2022</td><td>~$15B</td><td>Through January 2023</td><td>&mdash;</td></tr>
+      <tr><td>Q3 2022</td><td>$14.5B</td><td>Fee commencement Oct 1, 2022</td><td>&mdash;</td></tr>
+      <tr><td>Q2 2022</td><td>$13B</td><td>&gt;half of $25B target</td><td><span class="tag tag-new">FIRST DISCLOSED</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Fund X's fundraising lifecycle played out over 5 quarters (Q2 2022 through Q2 2023), a textbook intermittent metric that appeared, peaked, and disappeared. The final close of ~$20B fell short of the original $25B target &mdash; reflective of the broader PE fundraising slowdown in 2022-2023. Once closed, the metric vanished entirely, replaced by performance tracking (Section 1).</div>
+</div>
+
+<!-- SECTION 3: AAA -->
+<div class="section" id="s3">
+  <h2><span class="num">3</span> AAA (Apollo Aligned Alternatives) Scaling</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>NAV / AUM</th><th>Return (LTM/FY)</th><th>Inflow Detail</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">2025 &mdash; FLAGSHIP STATUS</td></tr>
+      <tr class="raised"><td>Q3 2025</td><td class="pos bold">approaching $25B</td><td>~11%</td><td class="muted">&mdash;</td><td>42 of 43 positive quarters; institutional &gt; retail</td></tr>
+      <tr><td>Q2 2025</td><td>&gt;$23B</td><td>11.1%</td><td class="muted">&mdash;</td><td>Institutional now exceeds retail</td></tr>
+      <tr class="year-divider"><td colspan="5">2024</td></tr>
+      <tr><td>Q3 2024</td><td>~$18.5B</td><td>10.5%</td><td>Expect ~$20B year-end</td><td>&mdash;</td></tr>
+      <tr><td>Q2 2024</td><td>$17B</td><td class="muted">&mdash;</td><td class="muted">&mdash;</td><td>16 consecutive positive quarters</td></tr>
+      <tr><td>Q1 2024</td><td class="muted">&mdash;</td><td class="muted">&mdash;</td><td>$700M Q1</td><td>&mdash;</td></tr>
+      <tr class="year-divider"><td colspan="5">2023 &mdash; SCALING</td></tr>
+      <tr><td>Q4 2023</td><td class="muted">&mdash;</td><td>~10% FY</td><td>$1.5B from global wealth FY</td><td>&mdash;</td></tr>
+      <tr><td>Q3 2023</td><td class="muted">&mdash;</td><td class="muted">&mdash;</td><td class="pos">&gt;$700M best quarter</td><td>&mdash;</td></tr>
+      <tr><td>Q1 2023</td><td class="muted">&mdash;</td><td class="muted">&mdash;</td><td>run rate $0.5&ndash;$1B/quarter</td><td>LT could be $20&ndash;30B+</td></tr>
+      <tr class="year-divider"><td colspan="5">2022 &mdash; LAUNCH</td></tr>
+      <tr><td>Q4 2022</td><td class="muted">&mdash;</td><td class="muted">&mdash;</td><td>$800M in Q4</td><td>&mdash;</td></tr>
+      <tr><td>Q3 2022</td><td class="muted">&mdash;</td><td class="muted">&mdash;</td><td>$200&ndash;300M new; 3 bank platforms</td><td>&mdash;</td></tr>
+      <tr><td>Q2 2022</td><td>$15B committed</td><td class="muted">&mdash;</td><td class="muted">&mdash;</td><td><span class="tag tag-new">LAUNCHED</span> $10B Athene, $1.5B Sumi Trust</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> AAA's journey from $15B at launch (Q2 2022) to approaching $25B (Q3 2025) with ~11% consistent returns makes it Apollo's most successful new product. The metric evolution tells the scaling story: early quarters tracked inflows ($200-300M, $700M, $800M), then shifted to AUM milestones ($17B, $18.5B, $23B, $25B) as the product matured. The shift from retail-dominated to institutional-exceeding-retail (Q2 2025) signals the product has crossed from "distribution success" to "institutional allocation."</div>
+</div>
+
+<!-- SECTION 4: ADS BDC -->
+<div class="section" id="s4">
+  <h2><span class="num">4</span> ADS (Apollo Debt Solutions BDC)</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>AUM / Scale</th><th>Net Return</th><th>Other Detail</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">2025</td></tr>
+      <tr class="raised"><td>Q2 2025</td><td class="pos bold">&gt;$20B</td><td>9%+ inception</td><td>2.3% Q2 return</td><td>Leverage reduced to 0.5x; 100% first lien</td></tr>
+      <tr><td>Q1 2025</td><td>&gt;$20B</td><td class="muted">&mdash;</td><td>Leverage 0.5x</td><td>$20B in 3 years</td></tr>
+      <tr class="year-divider"><td colspan="5">2024</td></tr>
+      <tr><td>Q3 2024</td><td>expect ~$15B year-end</td><td class="muted">&mdash;</td><td class="muted">&mdash;</td><td>&mdash;</td></tr>
+      <tr><td>Q2 2024</td><td class="muted">&mdash;</td><td>13%+</td><td>&gt;$500M monthly avg; 17% BDC mkt share</td><td>&mdash;</td></tr>
+      <tr><td>Q1 2024</td><td class="muted">&mdash;</td><td>14.5%</td><td>$500M+ April; $1.7B YTD</td><td>5 wirehouses; 60+ selling agreements</td></tr>
+      <tr class="year-divider"><td colspan="5">2023</td></tr>
+      <tr><td>Q4 2023</td><td class="muted">&mdash;</td><td class="pos bold">~16% FY</td><td>$875M Q4 inflows</td><td>&mdash;</td></tr>
+      <tr class="year-divider"><td colspan="5">2022 &mdash; LAUNCH</td></tr>
+      <tr><td>Q3 2022</td><td class="muted">&mdash;</td><td class="muted">&mdash;</td><td>$5.5M mgmt + $5.5M perf fees incremental</td><td>Fee impact quantified</td></tr>
+      <tr><td>Q2 2022</td><td class="muted">&mdash;</td><td class="muted">&mdash;</td><td>~$1B Q2 inflows; &lt;$2M redemptions</td><td><span class="tag tag-new">FIRST DISCLOSED</span> &gt;50% directly originated</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> ADS scaled from launch to &gt;$20B in 3 years, with returns declining from a peak ~16% (FY2023) to a sustainable ~9% as leverage was prudently reduced to 0.5x. The metric evolution mirrors AAA: early focus on inflows and returns, later focus on AUM milestones and risk management (leverage, 100% first lien). The 17% BDC market share (Q1 2024) positioned it as the industry leader, making ADS the proof-of-concept for Apollo's retail distribution strategy.</div>
+</div>
+
+<!-- SECTION 5: Athene Alt Returns -->
+<div class="section" id="s5">
+  <h2><span class="num">5</span> Athene Alternative Investment Returns</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>Annualized Return</th><th>Normalization Rate</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2024 &mdash; PORTFOLIO SIMPLIFIED</td></tr>
+      <tr><td>Q4 2024</td><td>9.25%</td><td>11%</td><td>AAA ~80% of alts portfolio after Catalina/FWD cleanup</td></tr>
+      <tr><td>Q3 2024</td><td>8.19%</td><td>11%</td><td>Portfolio restructured: ~80% AAA, ~10% retirement platforms, ~10% other</td></tr>
+      <tr><td>Q2 2024</td><td>5.73%</td><td>11%</td><td>AAA 9%, 10% LTM; Catalina weak</td></tr>
+      <tr><td>Q1 2024</td><td>9.10%</td><td>11%</td><td>&mdash;</td></tr>
+      <tr class="year-divider"><td colspan="4">2023 &mdash; BELOW NORMAL</td></tr>
+      <tr><td>Q3 2023</td><td>below 11%</td><td>11%</td><td>Expect 8%&ndash;18% range over time</td></tr>
+      <tr><td>Q1 2023</td><td>6.1%</td><td>11%</td><td>Below normal; SVB uncertainty</td></tr>
+      <tr class="year-divider"><td colspan="4">2022 &mdash; VOLATILE</td></tr>
+      <tr><td>Q4 2022 (FY)</td><td>10.4%</td><td>11%</td><td>Full year; near normal</td></tr>
+      <tr><td>Q3 2022</td><td>8%</td><td>11%</td><td>Below normal</td></tr>
+      <tr><td>Q2 2022</td><td class="neg">6%</td><td>11%</td><td>Market dislocation drag</td></tr>
+      <tr class="raised"><td>Q1 2022</td><td class="pos bold">17%</td><td>11%</td><td><span class="tag tag-peak">PEAK</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> The alts portfolio return ranged from 5.73% to 17% over the observation period, consistently normalized to 11% for SRE reporting. The Q3 2024 restructuring &mdash; concentrating ~80% in AAA and exiting underperforming vehicles (Catalina, FWD) &mdash; was a pivotal moment that should reduce future volatility. Returns below 11% create SRE headwinds; above 11% create tailwinds. The metric's analytical value comes from understanding the gap between actual and normalized returns as a leading indicator of SRE revisions.</div>
+</div>
+
+<!-- SECTION 6: Floating Rate Exposure -->
+<div class="section" id="s6">
+  <h2><span class="num">6</span> Athene Floating Rate Exposure &amp; Rate Sensitivity</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>Net Floating Rate Assets</th><th>% of NIA</th><th>Sensitivity per 25 bps</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">2025 &mdash; DE-RISKED</td></tr>
+      <tr class="raised"><td>Q3 2025</td><td class="pos bold">$6B</td><td class="pos">2%</td><td>$10&ndash;15M</td><td>Lowest in a decade; rate risk minimal</td></tr>
+      <tr class="year-divider"><td colspan="5">2024</td></tr>
+      <tr><td>Q3 2024</td><td>~$15B</td><td>~7%</td><td class="muted">&mdash;</td><td>No change to hedge posture</td></tr>
+      <tr><td>Q2 2024</td><td>$15B</td><td>7%</td><td class="muted">&mdash;</td><td>&mdash;</td></tr>
+      <tr><td>Q1 2024</td><td>$16B</td><td>7%</td><td>$30&ndash;40M</td><td>Reduced $9B QoQ</td></tr>
+      <tr class="year-divider"><td colspan="5">2023</td></tr>
+      <tr><td>Q4 2023</td><td>$25B</td><td class="muted">&mdash;</td><td class="muted">&mdash;</td><td>Actively reducing from higher levels</td></tr>
+      <tr><td>Q3 2023</td><td>~$30B</td><td class="muted">&mdash;</td><td class="muted">&mdash;</td><td>$10&ndash;15B excess above prudent level</td></tr>
+      <tr class="year-divider"><td colspan="5">2022 &mdash; PEAK EXPOSURE</td></tr>
+      <tr><td>Q3 2022</td><td class="neg bold">$30B</td><td class="muted">&mdash;</td><td class="muted">&mdash;</td><td><span class="tag tag-peak">PEAK</span></td></tr>
+      <tr><td>Q1 2022</td><td>$37B assets, $11B liabilities</td><td class="muted">&mdash;</td><td>$30&ndash;40M</td><td>Net ~$26B; significant rate benefit in rising rate environment</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Athene's net floating rate exposure declined from ~$30B (Q3 2022) to $6B (Q3 2025), an 80% reduction. In 2022, this exposure was a benefit (rising rates generated ~$30-40M additional SRE per 25 bps hike); by 2025, the dramatically reduced position means rate cuts have minimal negative impact (~$10-15M per 25 bps). This was a deliberate de-risking &mdash; locking in high fixed-rate spreads while eliminating downside rate sensitivity. The metric's progressive disappearance from disclosure confirms that rate risk is no longer a material concern.</div>
+</div>
+
+<!-- SECTION 7: Origination Platforms -->
+<div class="section" id="s7">
+  <h2><span class="num">7</span> Origination Platform Build-Out</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>Platform Count</th><th>Key Platforms</th><th>Employees</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">2024 &mdash; OPTIMIZATION</td></tr>
+      <tr><td>Q3 2024</td><td>16</td><td>Atlas, MidCap, Redding Ridge, Wheels</td><td>~4,000</td><td>~$8B invested over 15 years; "don't need a 17th"</td></tr>
+      <tr><td>Q1 2024</td><td>16</td><td>Top 5&ndash;7 driving activity</td><td class="muted">&mdash;</td><td>Shifted from growth to optimization narrative</td></tr>
+      <tr class="year-divider"><td colspan="5">2023 &mdash; MATURATION</td></tr>
+      <tr><td>Q4 2023</td><td>16</td><td class="muted">&mdash;</td><td>4,000</td><td>$6&ndash;8B invested building ecosystem</td></tr>
+      <tr><td>Q2 2023</td><td>16</td><td class="muted">&mdash;</td><td class="muted">&mdash;</td><td>Stable</td></tr>
+      <tr><td>Q1 2023</td><td>16</td><td>MidCap, Wheels, Atlas largest</td><td class="muted">&mdash;</td><td>&mdash;</td></tr>
+      <tr class="year-divider"><td colspan="5">2022 &mdash; RAPID EXPANSION</td></tr>
+      <tr><td>Q4 2022</td><td class="pos bold">16</td><td class="muted">&mdash;</td><td class="muted">&mdash;</td><td>7 new in 2022 (including Credit Suisse SPG)</td></tr>
+      <tr><td>Q3 2022</td><td>13</td><td class="muted">&mdash;</td><td class="muted">&mdash;</td><td>Credit Suisse SPG would be 14th</td></tr>
+      <tr><td>Q2 2022</td><td>~9</td><td class="muted">&mdash;</td><td class="muted">&mdash;</td><td>~9 perpetual products</td></tr>
+      <tr><td>Q1 2022</td><td class="muted">&mdash;</td><td>PACE, Foundation, Newfi acquired</td><td class="muted">&mdash;</td><td>Rapid acquisition phase</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> The platform count followed a clear lifecycle: rapid growth from ~9 to 16 (2022), stabilization (2023), and optimization (2024-2025). Management's declaration that they "don't need a 17th" (Q1 2024) marked the pivot from expansion to efficiency. The ~$8B cumulative investment and ~4,000 employees represent a massive competitive moat &mdash; these platforms generate ~$275B+ annual origination that feeds the entire Apollo ecosystem.</div>
+</div>
+
+<!-- SECTION 8: Atlas SP -->
+<div class="section" id="s8">
+  <h2><span class="num">8</span> Atlas SP Origination</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>Quarterly / Annual Origination</th><th>Other Detail</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025</td></tr>
+      <tr><td>Q3 2025</td><td>+30% YTD (combined with MidCap)</td><td class="muted">&mdash;</td><td>Sponsor solutions ecosystem $70B LTM</td></tr>
+      <tr class="year-divider"><td colspan="4">2024</td></tr>
+      <tr><td>Q3 2024</td><td>$50B cumulative</td><td>$5B equity raised; 350 employees</td><td>New $5B BNP facility</td></tr>
+      <tr class="raised"><td>Q2 2024</td><td class="pos bold">~$52B Q2 (incl. $11B Intel)</td><td class="muted">&mdash;</td><td>H1 approaching full-year 2023</td></tr>
+      <tr class="year-divider"><td colspan="4">2023</td></tr>
+      <tr><td>Q2 2023</td><td>&gt;30 securitizations since March</td><td class="muted">&mdash;</td><td>Integration fully complete</td></tr>
+      <tr><td>Q1 2023</td><td>~$40B book purchased</td><td>Expect $30&ndash;40B annual originations</td><td>&mdash;</td></tr>
+      <tr class="year-divider"><td colspan="4">2022 &mdash; ACQUISITION</td></tr>
+      <tr><td>Q4 2022</td><td>&gt;$50B annual historical</td><td>&gt;$350B over 7&ndash;8 years; ~425 bps excess spread</td><td><span class="tag tag-new">FIRST DISCLOSED</span> De minimis losses</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Atlas SP emerged as Apollo's largest origination platform with $50B+ annual capacity. The Q2 2024 spike (including the $11B Intel deal) showed the platform's ability to handle marquee transactions. The ~425 bps excess spread and de minimis historical losses make this one of the highest-quality origination businesses in the market. It demonstrates Apollo's strategy of buying infrastructure that generates permanent origination capacity rather than point-in-time deals.</div>
+</div>
+
+<!-- SECTION 9: Five-Year Plan Targets -->
+<div class="section" id="s9">
+  <h2><span class="num">9</span> Five-Year Plan Target Evolution</h2>
+  <table>
+    <thead><tr><th>Metric</th><th>2022 Investor Day Target</th><th>2024 Investor Day Target</th><th>Actual Status (Q4 2025)</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="raised"><td class="bold">Annual Origination</td><td>$150B</td><td>$275B</td><td class="pos bold">$305B achieved FY2025</td><td>Exceeded 2024 target in Year 1</td></tr>
+      <tr class="raised"><td class="bold">Capital Solutions Revenue</td><td>$500M by 2026</td><td>$1B by 2029</td><td class="pos bold">$538M achieved FY2023 (2 years early)</td><td>Original target exceeded in Year 2</td></tr>
+      <tr><td>FRE Margin</td><td>60%+ by 2026</td><td>60%+ by 2029</td><td>~57% FY2025</td><td>On track; Bridge diluting temporarily</td></tr>
+      <tr><td>Excess Capital Generation</td><td>$15B over 2022&ndash;2026</td><td>$21B over 2024&ndash;2029</td><td class="muted">On track</td><td>$5B base dividend / $5B invest / $5B opportunistic</td></tr>
+      <tr><td>PII Long-Term Guidepost</td><td>~$1/share multi-year avg</td><td>$900M annual</td><td class="muted">Below target (historically)</td><td>PE exit market finally improving in 2025</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Apollo has consistently set 5-year targets and hit them ahead of schedule: the $500M capital solutions target was achieved in 2 years; the $150B origination target was surpassed and replaced with $275B (itself exceeded in Year 1 at $305B). This pattern of "set conservative target, exceed it, raise it" is a deliberate communication strategy that builds credibility with long-term investors. The one exception is PII (performance/realization income), which has consistently underperformed due to the industry-wide PE exit drought &mdash; making the recent DPI disclosures (Section 1) all the more strategically important.</div>
+</div>
+
+<!-- SECTION 10: Third-Party Insurance -->
+<div class="section" id="s10">
+  <h2><span class="num">10</span> Third-Party Insurance Platform</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>Platform AUM</th><th>Inflows / Mandates</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025 &mdash; RECORD SCALE</td></tr>
+      <tr class="raised"><td>Q4 2025</td><td class="pos bold">&gt;$135B</td><td>$15B new mandates FY; 30+ strategic mandates</td><td>One of Apollo's fastest-growing businesses</td></tr>
+      <tr><td>Q2 2025</td><td class="muted">&mdash;</td><td>$7B Q2; &gt;$9B YTD</td><td>On track for record year</td></tr>
+      <tr class="year-divider"><td colspan="4">2024</td></tr>
+      <tr><td>Q3 2024</td><td>~$100B</td><td class="muted">&mdash;</td><td>Expect to double over 5 years</td></tr>
+      <tr><td>Q1 2024</td><td class="muted">&mdash;</td><td>$6.5B from third-party insurers</td><td>Significant inroads</td></tr>
+      <tr class="year-divider"><td colspan="4">2022</td></tr>
+      <tr><td>Q1 2022</td><td class="muted">&mdash;</td><td>&gt;$7B raised for high-grade alpha accounts</td><td><span class="tag tag-new">FIRST DISCLOSED</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> The third-party insurance platform grew from ~$7B in managed accounts (Q1 2022) to &gt;$135B across 30+ mandates (Q4 2025) &mdash; a nearly 20x expansion in 4 years. This is arguably Apollo's most important growth vector because it extends the Athene model to external insurers without requiring Apollo to hold insurance liabilities. Each $10B mandate generates ~$25-30M in annual management fees with near-100% margins. The target to double to ~$200B over 5 years implies this could become Apollo's second-largest fee pool behind Athene.</div>
+</div>
+
+<!-- SECTION 11: Hybrid & Secondaries -->
+<div class="section" id="s11">
+  <h2><span class="num">11</span> Hybrid Business &amp; Secondaries</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>Hybrid AUM</th><th>Return (LTM)</th><th>S3 / Secondaries</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">2025 &mdash; NEXT GROWTH CHAPTER</td></tr>
+      <tr class="raised"><td>Q4 2025</td><td class="muted">&mdash;</td><td>16% FY</td><td class="muted">&mdash;</td><td>&mdash;</td></tr>
+      <tr class="raised"><td>Q3 2025</td><td class="pos bold">$90B</td><td class="pos">19%</td><td class="muted">&mdash;</td><td>~$12B raised YTD; fastest-growing on % basis</td></tr>
+      <tr><td>Q2 2025</td><td>$75B</td><td>17%</td><td class="muted">&mdash;</td><td>$7B raised YTD</td></tr>
+      <tr><td>Q1 2025</td><td class="muted">&mdash;</td><td class="muted">&mdash;</td><td>~$10B in &lt;3 years; Fund I closed $5.4B</td><td>Expected fastest-growing segment</td></tr>
+      <tr class="year-divider"><td colspan="5">2024</td></tr>
+      <tr><td>Q3 2024</td><td class="muted">&mdash;</td><td class="muted">&mdash;</td><td>ASPM (evergreen secondary) launched globally</td><td>&mdash;</td></tr>
+      <tr><td>Q2 2024</td><td>$50B+</td><td class="muted">&mdash;</td><td class="muted">&mdash;</td><td><span class="tag tag-new">FIRST HYBRID AUM DISCLOSED</span></td></tr>
+      <tr class="year-divider"><td colspan="5">2022&ndash;2023</td></tr>
+      <tr><td>Q2 2022</td><td class="muted">&mdash;</td><td class="muted">&mdash;</td><td>S3 launched with $4B (ADIA cornerstone)</td><td><span class="tag tag-new">S3 LAUNCHED</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Hybrid/equity grew from $50B to $90B in 5 quarters (+80%), making it Apollo's fastest-growing AUM category by percentage. The 17-19% LTM returns significantly exceed the credit-oriented yield business (~10-11%), positioning hybrid as the next major revenue driver. The secondaries (S3) product, launched with a $4B ADIA cornerstone, scaled to $10B in under 3 years, demonstrating the repeatable product launch playbook that Apollo has perfected across AAA, ADS, and now ABC.</div>
+</div>
+
+<!-- SECTION 12: Capital Solutions Scale -->
+<div class="section" id="s12">
+  <h2><span class="num">12</span> Capital Solutions Transaction Scale</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>Transactions</th><th>Revenue</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025</td></tr>
+      <tr class="raised"><td>Q4 2025</td><td class="pos bold">~125 transactions; ~430 FY</td><td class="muted">&mdash;</td><td>No single-deal concentration risk</td></tr>
+      <tr><td>Q2 2025</td><td>~100 discrete transactions</td><td class="muted">&mdash;</td><td>Breadth demonstrates platform maturity</td></tr>
+      <tr class="year-divider"><td colspan="4">2024</td></tr>
+      <tr><td>Q3 2024</td><td>~80 underlying transactions</td><td class="muted">&mdash;</td><td><span class="tag tag-new">FIRST DISCLOSED</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> The transaction count metric was introduced at Q3 2024 specifically to counter the perception that capital solutions revenue was lumpy and deal-dependent. Growing from ~80 to ~125 transactions per quarter (and ~430 FY) demonstrates that the business has achieved assembly-line scale rather than reliance on a few large mandates. This is a strategic disclosure designed to support the durability argument for capital solutions revenue.</div>
+</div>
+
+<!-- SECTION 13: Credit Quality -->
+<div class="section" id="s13">
+  <h2><span class="num">13</span> Credit Quality &amp; Portfolio Composition</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>Historical Credit Losses</th><th>IG Portfolio %</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025</td></tr>
+      <tr><td>Q4 2025</td><td class="muted">&mdash;</td><td class="muted">&mdash;</td><td>Software exposure: PE 0%; Athene 0.5%; Credit &lt;4%; vs 40% industry</td></tr>
+      <tr><td>Q3 2025</td><td class="muted">&mdash;</td><td>90%+ IG</td><td>"Risk reduction mode; less PIC, lower leverage, less concentration"</td></tr>
+      <tr class="year-divider"><td colspan="4">2024</td></tr>
+      <tr><td>Q1 2024</td><td class="muted">&mdash;</td><td class="pos bold">97% IG</td><td>Tightest quality in dataset</td></tr>
+      <tr class="year-divider"><td colspan="4">2023</td></tr>
+      <tr><td>Q3 2023</td><td>13 bps LTM (vs 9 bps LT avg)</td><td class="muted">&mdash;</td><td>Losses in public IG corporates, not originated private IG</td></tr>
+      <tr><td>Q2 2023</td><td class="pos">2 bps annualized</td><td class="muted">&mdash;</td><td>vs 11 bps since 2020</td></tr>
+      <tr class="year-divider"><td colspan="4">2022</td></tr>
+      <tr><td>Q4 2022</td><td>~2&ndash;3 bps Q4</td><td>95% IG</td><td>Historical 7 bps annualized on track</td></tr>
+      <tr><td>Q1 2022</td><td>7 bps over last 5 years</td><td>95% IG</td><td><span class="tag tag-new">FIRST DISCLOSED</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Credit quality metrics are a classic "defensive disclosure" &mdash; they appear when macro concerns are elevated (2022 rate hiking, 2023 SVB, 2025 software cycle) and recede when markets are calm. The consistent 2-13 bps loss rate and 90-97% IG portfolio composition are used to differentiate Apollo from peers with higher-risk credit books. The Q4 2025 software exposure detail (0% PE, 0.5% Athene, &lt;4% credit vs 40% industry) is a textbook example of selective disclosure designed to separate Apollo from sector-wide contagion.</div>
+</div>
+
+<!-- SECTION 14: Bridge Acquisition -->
+<div class="section" id="s14">
+  <h2><span class="num">14</span> Bridge Investment Group Acquisition</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>Status</th><th>AUM</th><th>Financial Impact</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">2025 &mdash; FULL LIFECYCLE</td></tr>
+      <tr><td>Q4 2025</td><td>Consolidated (4 months)</td><td>$34B</td><td>~$105M fee rev; ~$60M expenses</td><td>FRE margin dilutive near-term (~100 bps)</td></tr>
+      <tr><td>Q3 2025</td><td>Closed September 2</td><td>$34B</td><td>~$300M annual fee rev; ~$100M pretax FRE</td><td>Residential/industrial RE focus</td></tr>
+      <tr><td>Q2 2025</td><td>Close early September</td><td class="muted">&mdash;</td><td>~$100M FRE in 2026</td><td>&mdash;</td></tr>
+      <tr><td>Q1 2025</td><td>Announced; ~$1.5B equity</td><td class="muted">&mdash;</td><td class="muted">&mdash;</td><td><span class="tag tag-new">FIRST DISCLOSED</span> Close expected Q3 2025</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Bridge is a textbook acquisition lifecycle disclosure: 4 quarters from announcement through full financial integration. The $34B AUM adds diversification into residential/industrial real estate, an area where Apollo had minimal presence. At ~$100M pretax FRE on $34B AUM (~30 bps fee yield), Bridge is a lower-margin business than Apollo's core, which explains the ~100 bps FRE margin dilution. The strategic rationale is asset class breadth rather than margin accretion.</div>
+</div>
+
+<!-- ANALYSIS -->
+<div class="analysis" id="analysis">
+  <h2>Written Analysis: Apollo's Intermittent Disclosure Patterns</h2>
+
+  <h3>1. The Three Growth Engines and Their Metric Lifecycles</h3>
+  <p>Apollo's intermittent KPIs reveal three distinct growth engines, each with its own disclosure rhythm:</p>
+  <p><strong>Engine 1: Traditional PE (Funds IX/X).</strong> Fund-specific IRRs follow a lifecycle: intense disclosure during fundraising, periodic updates during deployment, and DPI emphasis during harvest. The shift from gross IRR (2022) to net IRR (2023-2024) to DPI (2025) reflects the maturation of the reporting framework. Each metric iteration serves a different audience: gross IRR for LPs during fundraising; net IRR for performance benchmarking; DPI for demonstrating actual cash-on-cash returns during the PE exit drought.</p>
+  <p><strong>Engine 2: Credit/Origination Platform.</strong> Origination platform count, Atlas SP volumes, and MidCap metrics followed an acquisition-then-optimization arc: heavy disclosure during the 2022 build-out phase (from ~9 to 16 platforms), then stabilization and shift to aggregate origination volume ($275B→$305B) as the relevant metric. The individual platform disclosures appeared when they had newsworthy updates and disappeared once they were absorbed into the platform aggregate.</p>
+  <p><strong>Engine 3: Retirement Services / Athene.</strong> Alternative investment returns, floating rate exposure, cost of funds, and withdrawal rates were the key intermittent Athene metrics. These all followed the rate cycle: intense disclosure during rate hiking (2022-2023) with detailed breakdowns of rate sensitivity, portfolio composition, and liability structure; gradual fading as rate risk was systematically reduced and Athene's spread stability became accepted.</p>
+
+  <h3>2. The Product Launch Playbook</h3>
+  <p>Apollo has a repeatable product launch disclosure pattern visible across AAA, ADS, ABC, and S3:</p>
+  <p><strong>Phase 1 (Quarters 1-2):</strong> Launch announcement, cornerstone investors, initial inflows. Metrics: gross subscriptions, wirehouses added, redemption rates.</p>
+  <p><strong>Phase 2 (Quarters 3-6):</strong> Scaling; best-quarter milestones, market share claims, return benchmarks. Metrics: quarterly inflows, competitive positioning, LTM returns.</p>
+  <p><strong>Phase 3 (Quarters 7+):</strong> Institutional maturity; AUM milestones replace inflow tracking. Metrics: total AUM, return since inception, leverage/risk metrics.</p>
+  <p>ADS is the furthest along this curve (now at &gt;$20B with 9%+ inception returns). ABC is at Phase 2 (~$1.2B, building momentum). The predictability of this pattern helps investors anticipate when the next product will reach the "inflection point" where its contribution to FRE becomes material.</p>
+
+  <h3>3. Five-Year Plan as Strategic Anchor</h3>
+  <p>The five-year plan targets (Section 9) serve a unique role among intermittent metrics: they are set at Investor Days and then referenced repeatedly over subsequent quarters as progress benchmarks. The pattern of consistently exceeding targets (capital solutions $500M hit in 2 years; origination $150B surpassed; $275B exceeded in Year 1 with $305B) creates a credibility premium that allows Apollo to set increasingly ambitious forward targets that investors believe.</p>
+  <p>The one persistent miss &mdash; PII at ~$1/share &mdash; is instructive. This is the metric Apollo cannot control (it depends on PE exit markets), and its consistent underperformance explains why management shifted the disclosure framework from per-share PII to DPI (distributions that demonstrate returns without requiring IPO/M&A exit activity). The metric substitution reveals a sophisticated investor relations strategy.</p>
+
+  <h3>4. Defensive Disclosures as Market Signals</h3>
+  <p>Several intermittent KPIs are purely defensive, appearing only during stress episodes: credit loss rates (2022 rate hiking, 2023 SVB), withdrawal rates (2022-2023), software exposure detail (Q4 2025), and IG portfolio composition. These metrics carry a binary signal: when they appear, management perceives that investors need reassurance about a specific risk. When they disappear, the risk has passed or been accepted. Tracking the appearance/disappearance of defensive metrics is itself a leading indicator of what management is worried about.</p>
+
+  <h3>5. The Athene De-Risking Arc</h3>
+  <p>The most analytically valuable intermittent metric series is Athene's floating rate exposure (Section 6). The systematic reduction from $37B gross / ~$30B net to $6B (2% of NIA) over 3 years, combined with the declining rate sensitivity ($40M per 25 bps → $10-15M per 25 bps), tells a story of deliberate transformation from a rate-sensitive insurance platform to a rate-agnostic spread business. This de-risking was executed during a period of peak benefit (rising rates), demonstrating discipline over opportunism. It is the single strongest evidence point for the "Athene 2.0" thesis that Apollo has been building since the merger.</p>
+
+  <h3>6. What to Watch Next</h3>
+  <p>Based on disclosure patterns, the metrics most likely to become intermittent KPIs in the next 4-8 quarters are: (1) ABC AUM milestones (currently ~$1.2B, targeting $5-10B); (2) Fund XI fundraising progress (expected to launch 2025-2026); (3) PIC/Athora integration metrics (following the PIC acquisition close); and (4) sponsor solutions ecosystem volume (currently $80B FY, growing rapidly). These represent the next wave of Apollo's growth narrative, and their appearance in earnings calls will signal when they've reached a scale that management considers noteworthy.</p>
+</div>
+
+<div class="footer">
+  <p>Apollo Global Management Intermittent KPIs &mdash; Q1 2022 through Q4 2025 &mdash; Data from earnings call transcripts</p>
+  <p><a href="../comparison.html">Guidance Overview</a> &middot; <a href="../../index.html">Metrics Tracker</a></p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carvana Intermittent KPIs &mdash; Q1 2022 through Q4 2025</title>
+<style>
+  :root {
+    --company-primary: #00AFF0;
+    --company-dark: #1a1a2e;
+    --company-accent: #006D9E;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); background: #fff; line-height: 1.6; max-width: 1200px; margin: 0 auto; padding: 0 24px 80px; }
+  .header { background: linear-gradient(135deg, var(--company-dark), var(--company-accent)); color: #fff; padding: 48px 40px; margin: 0 -24px 40px; border-bottom: 4px solid var(--company-primary); }
+  .header h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; }
+  .header .subtitle { font-size: 1.1rem; opacity: 0.85; font-weight: 300; }
+  .quarter-nav { background: var(--company-accent); border-radius: 8px; padding: 16px 20px; margin-bottom: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .quarter-nav .label { color: #fff; font-weight: 600; font-size: 0.85rem; margin-right: 8px; white-space: nowrap; }
+  .quarter-nav .year-group { display: flex; gap: 4px; align-items: center; }
+  .quarter-nav .year-label { color: rgba(255,255,255,0.5); font-size: 0.72rem; font-weight: 600; margin-right: 2px; letter-spacing: 0.5px; }
+  .quarter-nav a { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 4px 10px; font-size: 0.78rem; font-weight: 600; text-decoration: none; transition: all 0.15s; }
+  .quarter-nav a:hover { background: rgba(255,255,255,0.25); }
+  .quarter-nav a.overview-link { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.35); padding: 4px 14px; font-size: 0.82rem; margin-left: auto; }
+  .toc { background: var(--light-bg); border: 1px solid var(--border); border-radius: 8px; padding: 24px 32px; margin-bottom: 40px; columns: 2; column-gap: 40px; }
+  .toc h2 { font-size: 1.1rem; color: var(--company-accent); margin-bottom: 12px; column-span: all; }
+  .toc a { display: block; color: var(--blue); text-decoration: none; padding: 3px 0; font-size: 0.9rem; break-inside: avoid; }
+  .toc a:hover { text-decoration: underline; }
+  .section { margin-bottom: 48px; scroll-margin-top: 20px; }
+  .section h2 { font-size: 1.4rem; color: var(--company-dark); border-bottom: 3px solid var(--company-primary); padding-bottom: 8px; margin-bottom: 16px; }
+  .section h2 .num { display: inline-block; background: var(--company-primary); color: #fff; width: 28px; height: 28px; line-height: 28px; text-align: center; border-radius: 50%; font-size: 0.85rem; margin-right: 8px; vertical-align: middle; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 0.88rem; }
+  thead th { background: var(--company-accent); color: #fff; padding: 10px 12px; text-align: left; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
+  thead th.right { text-align: right; }
+  tbody td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tbody td.right { text-align: right; }
+  tbody tr:nth-child(even) { background: var(--light-bg); }
+  tbody tr:hover { background: #eef2f7; }
+  .pos { color: var(--green); font-weight: 600; }
+  .neg { color: var(--red); font-weight: 600; }
+  .neutral { color: var(--amber); font-weight: 600; }
+  .raised { background: #eafaf1 !important; }
+  .lowered { background: #fef0ef !important; }
+  .bold { font-weight: 700; }
+  .muted { color: var(--text-muted); font-style: italic; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; vertical-align: middle; }
+  .tag-new { background: #d6eaf8; color: #2471a3; }
+  .tag-disc { background: #fadbd8; color: #c0392b; }
+  .tag-emerged { background: #d5f5e3; color: #1e8449; }
+  .tag-peak { background: #fdebd0; color: #d68910; }
+  .insight { background: linear-gradient(135deg, #fef9e7, #fdebd0); border-left: 4px solid var(--amber); padding: 14px 18px; margin: 16px 0; border-radius: 0 6px 6px 0; font-size: 0.9rem; }
+  .insight strong { color: var(--company-dark); }
+  .year-divider td { background: var(--company-accent) !important; color: #fff; font-weight: 700; font-size: 0.82rem; padding: 6px 12px; letter-spacing: 0.5px; }
+  .analysis { margin-top: 48px; padding: 32px; background: var(--light-bg); border: 1px solid var(--border); border-radius: 8px; }
+  .analysis h2 { font-size: 1.3rem; color: var(--company-dark); margin-bottom: 16px; border-bottom: 3px solid var(--company-primary); padding-bottom: 8px; }
+  .analysis h3 { font-size: 1.05rem; color: var(--company-dark); margin: 20px 0 8px; }
+  .analysis p { font-size: 0.92rem; margin-bottom: 12px; }
+  .footer { margin-top: 60px; padding-top: 20px; border-top: 2px solid var(--border); font-size: 0.82rem; color: var(--text-muted); text-align: center; }
+  .footer a { color: var(--blue); text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 768px) { .toc { columns: 1; } .header h1 { font-size: 1.6rem; } table { font-size: 0.8rem; } thead th, tbody td { padding: 6px 8px; } }
+  @media print { .header { background: #333; } .section { page-break-inside: avoid; } table { font-size: 0.75rem; } .quarter-nav { display: none; } }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <h1>Carvana Intermittent KPIs</h1>
+  <div class="subtitle">Metrics disclosed more than once but not on a regular basis &mdash; Q1 2022 through Q4 2025</div>
+</div>
+
+<!-- QUARTER NAV -->
+<nav class="quarter-nav">
+  <span class="label">Quarters:</span>
+  <div class="year-group">
+    <span class="year-label">2025</span>
+    <a href="Q4_2025.html">Q4</a>
+    <a href="Q3_2025.html">Q3</a>
+    <a href="Q2_2025.html">Q2</a>
+    <a href="Q1_2025.html">Q1</a>
+  </div>
+  <div class="year-group">
+    <span class="year-label">2024</span>
+    <a href="Q4_2024.html">Q4</a>
+    <a href="Q3_2024.html">Q3</a>
+    <a href="Q2_2024.html">Q2</a>
+    <a href="Q1_2024.html">Q1</a>
+  </div>
+  <div class="year-group">
+    <span class="year-label">2023</span>
+    <a href="Q4_2023.html">Q4</a>
+    <a href="Q3_2023.html">Q3</a>
+    <a href="Q2_2023.html">Q2</a>
+    <a href="Q1_2023.html">Q1</a>
+  </div>
+  <div class="year-group">
+    <span class="year-label">2022</span>
+    <a href="Q4_2022.html">Q4</a>
+    <a href="Q3_2022.html">Q3</a>
+    <a href="Q2_2022.html">Q2</a>
+    <a href="Q1_2022.html">Q1</a>
+  </div>
+  <a href="../../index.html" class="overview-link">Portfolio</a>
+  <a href="../comparison.html" class="overview-link">Guidance Overview</a>
+  <a href="../results.html" class="overview-link">Results Scorecard</a>
+</nav>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+  <h2>Table of Contents</h2>
+  <a href="#s1">1. Total Liquidity</a>
+  <a href="#s2">2. Cash &amp; Equivalents</a>
+  <a href="#s3">3. Total Stockholders' Equity</a>
+  <a href="#s4">4. Going Concern Questions</a>
+  <a href="#s5">5. Annualized SG&amp;A Cost Reduction</a>
+  <a href="#s6">6. Activity Pairing Rate</a>
+  <a href="#s7">7. IRC (Inspection &amp; Reconditioning Center) Capacity</a>
+  <a href="#s8">8. ADESA Sites Integrated</a>
+  <a href="#s9">9. Inventory Target / Reduction</a>
+  <a href="#s10">10. Finance Receivables</a>
+  <a href="#s11">11. Same-Day Delivery</a>
+  <a href="#s12">12. Three-Step Plan</a>
+  <a href="#s13">13. 5-10yr Target: 3M Units at 13.5% EBITDA Margin</a>
+  <a href="#s14">14. Reconditioning Cost per Unit</a>
+  <a href="#s15">15. Self-Service Rate</a>
+  <a href="#analysis">What the Disclosure Patterns Reveal</a>
+</div>
+
+<!-- SECTION 1: Total Liquidity -->
+<div class="section" id="s1">
+  <h2><span class="num">1</span> Total Liquidity</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Total Liquidity Resources</th><th>Cash &amp; Revolving</th><th>Unpledged Assets</th><th>Signal</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">2025 &mdash; FORTRESS BALANCE SHEET</td></tr>
+      <tr class="raised"><td>Q4 2025</td><td class="bold pos">$2.3B cash; net debt/EBITDA 1.3x</td><td>$2,300M cash</td><td>&mdash;</td><td><span class="tag tag-peak">PEAK</span></td></tr>
+      <tr><td>Q3 2025</td><td class="bold">$2.1B+ cash; net debt/EBITDA 1.5x</td><td>&gt;$2,100M cash</td><td>&mdash;</td><td class="pos">Record</td></tr>
+      <tr class="year-divider"><td colspan="5">2024 &mdash; RAPID DELEVERAGING</td></tr>
+      <tr><td>Q4 2024</td><td class="bold">&gt;$3.6B committed liquidity (+$2.0B YoY)</td><td>$1,716M cash</td><td>&mdash;</td><td class="pos">+$2.0B YoY</td></tr>
+      <tr class="year-divider"><td colspan="5">2023 &mdash; THE TURNAROUND</td></tr>
+      <tr><td>Q3 2023</td><td>~$3.2B</td><td>~$1.6B</td><td>~$1.6B secured + beneficial interests</td><td class="neutral">Stabilized</td></tr>
+      <tr><td>Q2 2023</td><td>~$3.5B</td><td>~$1.5B ($500M cash + $1B revolver)</td><td>~$2.0B</td><td class="neutral">Flat</td></tr>
+      <tr><td>Q1 2023</td><td>~$3.5B</td><td>$1.5B</td><td>$2.0B (incl. &gt;$1B ADESA RE)</td><td class="neg">-$400M QoQ</td></tr>
+      <tr class="year-divider"><td colspan="5">2022 &mdash; SURVIVAL MODE</td></tr>
+      <tr><td>Q4 2022</td><td>~$3.9B</td><td>$1.9B</td><td>$2.0B (incl. &gt;$1.1B ADESA RE)</td><td class="neg">-$500M QoQ</td></tr>
+      <tr><td>Q3 2022</td><td>~$4.4B</td><td>$2.3B</td><td>$2.1B (incl. ~$1B ADESA RE)</td><td class="neg">-$300M QoQ</td></tr>
+      <tr><td>Q2 2022</td><td class="bold">~$4.7B</td><td>$2.7B</td><td>$2.1B</td><td><span class="tag tag-peak">POST-ADESA PEAK</span></td></tr>
+      <tr><td>Q1 2022</td><td>~$1.7B (pre-ADESA)</td><td>&mdash;</td><td>&mdash;</td><td class="muted">Pre-acquisition</td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>Arc:</strong> Liquidity surged to ~$4.7B immediately after the ADESA acquisition ($4.3B capital raise), then bled steadily through the crisis as EBITDA was deeply negative. The trough near ~$3.2B in Q3 2023 coincided with the debt exchange that eliminated &gt;$1.2B of face value and &gt;$430M/yr in cash interest. By late 2025, Carvana had $2.3B in cash alone, with net leverage at 1.3x &mdash; approaching investment-grade territory.
+  </div>
+</div>
+
+<!-- SECTION 2: Cash & Equivalents -->
+<div class="section" id="s2">
+  <h2><span class="num">2</span> Cash &amp; Equivalents</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Cash &amp; Equivalents</th><th>QoQ Change</th><th>Signal</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025 &mdash; CASH MACHINE</td></tr>
+      <tr class="raised"><td>Q4 2025</td><td class="bold pos">$2,300M</td><td>+$192M</td><td><span class="tag tag-peak">ALL-TIME HIGH</span></td></tr>
+      <tr><td>Q3 2025</td><td>~$2,108M</td><td>+$250M</td><td class="pos">Record</td></tr>
+      <tr><td>Q1 2025</td><td>$1,858M</td><td>+$142M</td><td class="pos">Growing</td></tr>
+      <tr class="year-divider"><td colspan="4">2024 &mdash; V-SHAPE RECOVERY</td></tr>
+      <tr><td>Q4 2024</td><td>$1,716M</td><td>+$845M</td><td class="pos">+$845M QoQ (ATM + ops)</td></tr>
+      <tr><td>Q3 2024</td><td>$871M</td><td>+$329M</td><td class="pos">+$329M QoQ</td></tr>
+      <tr><td>Q2 2024</td><td>$542M</td><td>+$290M</td><td class="pos">+$290M QoQ</td></tr>
+      <tr><td>Q1 2024</td><td class="neg">$252M</td><td>-$278M</td><td class="neg">Trough (revolving paydowns)</td></tr>
+      <tr class="year-divider"><td colspan="4">2023 &mdash; TROUGH AND STABILIZATION</td></tr>
+      <tr><td>Q4 2023</td><td>$530M</td><td>&mdash;</td><td class="neutral">Year-end</td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>V-shape in action:</strong> Cash hit a low of $252M in Q1 2024 as revolving facilities were paid down, then rocketed to $2,300M by year-end 2025 &mdash; a 9x increase in less than two years, powered by ~$1B+ in annual operating cash flow and ~$1.3B in ATM equity proceeds.
+  </div>
+</div>
+
+<!-- SECTION 3: Total Stockholders' Equity -->
+<div class="section" id="s3">
+  <h2><span class="num">3</span> Total Stockholders' Equity</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Total Stockholders' Equity</th><th>Signal</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="3">2025 &mdash; POSITIVE AND GROWING</td></tr>
+      <tr class="raised"><td>Q1 2025</td><td class="bold pos">+$1,773M</td><td><span class="tag tag-peak">RECORD</span> +$398M QoQ</td></tr>
+      <tr class="year-divider"><td colspan="3">2024 &mdash; THE INFLECTION</td></tr>
+      <tr class="raised"><td>Q4 2024</td><td class="pos">+$1,375M</td><td>+$764M QoQ</td></tr>
+      <tr class="raised"><td>Q3 2024</td><td class="pos">+$611M</td><td>+$496M QoQ</td></tr>
+      <tr class="raised"><td>Q2 2024</td><td class="pos">+$115M</td><td><span class="tag tag-emerged">TURNED POSITIVE</span></td></tr>
+      <tr class="lowered"><td>Q1 2024</td><td class="neg">-$311M</td><td>Improved from -$384M</td></tr>
+      <tr class="year-divider"><td colspan="3">2023 &mdash; DEEP DEFICIT</td></tr>
+      <tr class="lowered"><td>Q4 2023</td><td class="neg">-$384M</td><td>Improved from -$1,053M at end of FY 2022</td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>From insolvent to capitalized:</strong> Stockholders' equity swung from -$1,053M (FY 2022 end) to +$1,773M (Q1 2025) &mdash; a $2.8B improvement driven by cumulative net income ($404M in FY 2024, $373M in Q1 2025 alone), the debt exchange that removed $1.3B of face value, and $1.3B in equity issuance. This is the balance sheet signature of one of the most dramatic turnarounds in public market history.
+  </div>
+</div>
+
+<!-- SECTION 4: Going Concern Questions -->
+<div class="section" id="s4">
+  <h2><span class="num">4</span> Going Concern Questions</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Nature of Disclosure</th><th>Key Quote / Context</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="3">2022&ndash;2023 &mdash; EXISTENTIAL CRISIS</td></tr>
+      <tr class="lowered">
+        <td>Q1 2023</td>
+        <td class="neg">Exchange offer "ongoing"; going concern debate <span class="tag tag-disc">LAST MENTION</span></td>
+        <td>Total liquidity fell -$400M QoQ to ~$3.5B; analyst pressed on whether business needs more equity capital; excess loan receivables ~$1.2B tying up capital</td>
+      </tr>
+      <tr class="lowered">
+        <td>Q4 2022</td>
+        <td class="neg">Analyst asks directly about giving up control to survive</td>
+        <td>"Does the business need more equity capital? And would your family consider giving up control if that was required to maintain the company as a going concern?" &mdash; Ernie declined to engage with hypotheticals, pointed to ~$4B total liquidity</td>
+      </tr>
+      <tr class="lowered">
+        <td>Q3 2022</td>
+        <td class="neg">Going concern risk first surfaces on the call <span class="tag tag-new">FIRST MENTION</span></td>
+        <td>Interest expense ~$150M/quarter ($600M annualized); at long-term 13.5% EBITDA margin and 400K units, EBITDA would cover interest with "a little bit of cushion" &mdash; $847M goodwill impairment; planning for "next year to be a difficult one"</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>Three quarters of existential doubt.</strong> From Q3 2022 through Q1 2023, analysts directly questioned whether Carvana could survive, whether the Garcia family would give up control, and whether equity dilution or debt restructuring was inevitable. By Q2 2023, the question disappeared entirely: EBITDA turned positive, and the debt exchange was announced &mdash; reducing face value by &gt;$1.2B and cash interest by &gt;$430M/yr. The speed of resolution was extraordinary.
+  </div>
+</div>
+
+<!-- SECTION 5: Annualized SG&A Cost Reduction -->
+<div class="section" id="s5">
+  <h2><span class="num">5</span> Annualized SG&amp;A Cost Reduction</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Cumulative Annualized Reduction</th><th>Quarterly SG&amp;A Cut</th><th>Signal</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2023 &mdash; $1.2B COMPLETED</td></tr>
+      <tr class="raised">
+        <td>Q3 2023</td>
+        <td class="bold pos">$1.2B annualized</td>
+        <td>-$30M QoQ</td>
+        <td><span class="tag tag-peak">PEAK DISCLOSED</span> + $250M recon/transport COGS savings</td>
+      </tr>
+      <tr class="raised">
+        <td>Q2 2023</td>
+        <td class="pos">$1.1B annualized</td>
+        <td>-$21M QoQ</td>
+        <td>Advertising down ~50% in 12 months</td>
+      </tr>
+      <tr class="raised">
+        <td>Q1 2023</td>
+        <td class="pos">$1.0B annualized</td>
+        <td>-$119M QoQ (beat $100M target)</td>
+        <td><span class="tag tag-emerged">$1B MILESTONE</span> completed</td>
+      </tr>
+      <tr class="year-divider"><td colspan="4">2022 &mdash; THE BEGINNING</td></tr>
+      <tr>
+        <td>Q3 2022</td>
+        <td>~$360M annualized</td>
+        <td>-$90M QoQ ($70M ex-RIF)</td>
+        <td>Broad-based: payroll -$20M, advertising -$14M, logistics -$14M, other -$19M</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>$1.2 billion in 18 months.</strong> The cost reduction campaign &mdash; spanning "Project Catapult" and "Operation 100" &mdash; slashed annualized SG&A by $1.2B between Q2 2022 and Q3 2023. This was the operational foundation that made everything else possible: positive EBITDA in Q2 2023, the debt exchange in Q3 2023, and the return to growth in Q1 2024.
+  </div>
+</div>
+
+<!-- SECTION 6: Activity Pairing Rate -->
+<div class="section" id="s6">
+  <h2><span class="num">6</span> Activity Pairing Rate</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Pairing Rate</th><th>Context</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="3">2024 &mdash; OPERATIONAL EXCELLENCE</td></tr>
+      <tr class="raised"><td>Q1 2024</td><td class="bold pos">~50%</td><td>Up ~67%+ YoY; total logistics miles driven down ~30% YoY</td></tr>
+      <tr class="year-divider"><td colspan="3">2023 &mdash; RAPID IMPROVEMENT</td></tr>
+      <tr><td>Q4 2023</td><td class="pos">Nearly 50%</td><td>Up 75% YoY; inbound transport down ~20%, outbound down ~30%</td></tr>
+      <tr><td>Q1 2023</td><td>~30% (implied from Q1 2024 commentary: "less than 30% a year ago")</td><td>Logistics miles down ~40% over time, ~12% QoQ</td></tr>
+      <tr class="year-divider"><td colspan="3">2022 &mdash; JUST BEGINNING</td></tr>
+      <tr class="lowered"><td>Q4 2022</td><td class="neutral">1 in 3 (~33%)</td><td>Up from 1 in 14 one year prior <span class="tag tag-new">FIRST DISCLOSED</span></td></tr>
+      <tr class="lowered"><td>Q4 2021 (implied)</td><td class="neg">1 in 14 (~7%)</td><td>Baseline referenced in Q4 2022 call</td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>From 7% to 50%:</strong> When a delivery truck drops off a sold car and picks up a trade-in on the same trip, it slashes empty-mile logistics costs. Pairing improved from 1-in-14 to 1-in-2 over roughly 18 months &mdash; a 7x improvement. This was enabled by proprietary logistics software, ADESA hub integration, and the customer sourcing strategy. It is one of the clearest single-metric expressions of operational transformation.
+  </div>
+</div>
+
+<!-- SECTION 7: IRC Capacity -->
+<div class="section" id="s7">
+  <h2><span class="num">7</span> IRC (Inspection &amp; Reconditioning Center) Capacity</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Reconditioning Capacity</th><th>Total Real Estate Capacity</th><th>Utilization Context</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025 &mdash; SCALING INTO INFRASTRUCTURE</td></tr>
+      <tr><td>Q4 2025</td><td>34 producing locations; capacity for &gt;1.5M units/yr</td><td>RE for 3M units/yr</td><td>~600K annualized sales; 34 locations up &gt;40% from prior year</td></tr>
+      <tr><td>Q3 2025</td><td>74 total sites (27 dual-capable, 15 ADESA integrated)</td><td>3M units/yr</td><td>Carvana IRCs at slightly &lt;50% utilization; integrated ADESA sites at &lt;half of IRC levels</td></tr>
+      <tr class="year-divider"><td colspan="4">2024 &mdash; ADESA PLAYBOOK PROVEN</td></tr>
+      <tr><td>Q3 2024</td><td class="pos">&gt;1M units/yr built capacity</td><td>3M units/yr (physical RE)</td><td>5 of 56 ADESA sites integrated; ~90 days per integration</td></tr>
+      <tr><td>Q2 2024</td><td>&gt;1M units/yr</td><td>~8x current run rate</td><td>Buffalo, Portland done; Kansas City megasite next</td></tr>
+      <tr><td>Q1 2024</td><td>1.3M units/yr (IRC); ~3M total</td><td>~3M units/yr</td><td>30 of 56 ADESA sites with last-mile logistics; 9 with multicar haulers</td></tr>
+      <tr class="year-divider"><td colspan="4">2023 &mdash; MASSIVE OVERCAPACITY</td></tr>
+      <tr><td>Q2 2023</td><td>~1.3M (implied, unchanged)</td><td>&mdash;</td><td class="neg">~25% utilization (300K run rate vs 1.2M capacity)</td></tr>
+      <tr class="year-divider"><td colspan="4">2022 &mdash; BUILDING FOR SCALE</td></tr>
+      <tr><td>Q4 2022</td><td>~1.3M units/yr</td><td>&mdash;</td><td class="neg">~400K run rate vs. 1.3M capacity</td></tr>
+      <tr><td>Q3 2022</td><td>~1.2M units/yr</td><td>&mdash;</td><td class="neg">~400K run rate vs. 1.2M capacity</td></tr>
+      <tr><td>Q2 2022</td><td>~1.2M units/yr</td><td>&mdash;</td><td>&mdash;</td></tr>
+      <tr><td>Q1 2022</td><td>~1.4M (pro forma with ADESA at full utilization)</td><td>&mdash;</td><td>ADESA 56 sites, ~6.5M sq ft; LT target: 2M units</td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>Capacity existed before demand returned.</strong> Carvana built &gt;1M units/year of reconditioning capacity and acquired real estate supporting 3M units/year &mdash; then spent 2022-2023 operating at ~25% utilization. This overcapacity, while painful during the crisis, became an enormous operating leverage asset when growth resumed. By Q4 2025, 34 producing locations were delivering ~600K annualized units with vast headroom to scale further.
+  </div>
+</div>
+
+<!-- SECTION 8: ADESA Sites Integrated -->
+<div class="section" id="s8">
+  <h2><span class="num">8</span> ADESA Sites Integrated</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Sites Integrated (Reconditioning)</th><th>Detail</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="3">2025 &mdash; ACCELERATING ROLLOUT</td></tr>
+      <tr class="raised"><td>Q4 2025</td><td class="bold pos">34 total reconditioning locations</td><td>10 additional ADESA sites opened in FY 2025; location growth +40% YoY</td></tr>
+      <tr><td>Q3 2025</td><td>15 ADESA sites integrated (last 18 months); 12 IRCs added ADESA Clear</td><td>27 dual-capable sites total; 74 total sites in network</td></tr>
+      <tr><td>Q2 2025</td><td>12 ADESA sites integrated</td><td>Pace: ~3 per quarter</td></tr>
+      <tr class="year-divider"><td colspan="3">2024 &mdash; PLAYBOOK VALIDATED</td></tr>
+      <tr><td>Q4 2024</td><td>6 ADESA sites integrated in FY 2024</td><td>Plan: ~10 more mega sites in 2025</td></tr>
+      <tr><td>Q3 2024</td><td>5 of 56 ADESA sites</td><td>~90 days per integration; minimal CapEx</td></tr>
+      <tr><td>Q2 2024</td><td>2 completed + Kansas City megasite</td><td>Buffalo and Portland running Carli software</td></tr>
+      <tr><td>Q1 2024</td><td>1 (Buffalo, NY)</td><td><span class="tag tag-new">FIRST ADESA RECONDITIONING CONVERSION</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>From 1 to 34 in two years.</strong> The ADESA integration started with a single site (Buffalo, NY) in early 2024 and scaled to 34 producing locations by year-end 2025. Each conversion takes ~90 days and requires minimal CapEx &mdash; versus 1-3 years and tens of millions for a greenfield IRC. This asset-light expansion model is the foundation of Carvana's path to 3 million units per year.
+  </div>
+</div>
+
+<!-- SECTION 9: Inventory Target / Reduction -->
+<div class="section" id="s9">
+  <h2><span class="num">9</span> Inventory Target / Reduction</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Inventory Balance</th><th>Key Metric</th><th>Signal</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025 &mdash; REBUILDING SELECTION</td></tr>
+      <tr><td>Q3 2025</td><td>&mdash;</td><td>Selection +50% YoY; turn time approx. flat YoY</td><td class="pos">Healthy growth</td></tr>
+      <tr class="year-divider"><td colspan="4">2024 &mdash; CONSTRAINED BY DEMAND</td></tr>
+      <tr><td>Q4 2024</td><td>$1,608M</td><td>+$458M YoY; within ~2K units of peak Q2 2022 volume</td><td class="pos">Rebuilding</td></tr>
+      <tr><td>Q1 2024</td><td>$1,162M</td><td>Avg days on website: 13 days (near all-time low); "negatively impacting sales"</td><td class="neg">Inventory-constrained</td></tr>
+      <tr class="year-divider"><td colspan="4">2023 &mdash; MASSIVE DESTOCKING</td></tr>
+      <tr><td>Q2 2023</td><td>&mdash;</td><td class="pos">Down &gt;55% YoY; turn time ~62 days (normal range)</td><td class="pos">Normalized</td></tr>
+      <tr><td>Q1 2023</td><td>&mdash;</td><td class="neg">Down ~55% YoY, ~20% in Q1 alone; sold inventory avg 120 days old</td><td><span class="tag tag-emerged">DESTOCKING NEAR COMPLETE</span></td></tr>
+      <tr class="year-divider"><td colspan="4">2022 &mdash; BLOATED AND BURNING CASH</td></tr>
+      <tr><td>Q4 2022</td><td>$1,876M</td><td>"Significant moves" in normalizing; still above target</td><td class="neg">Above target</td></tr>
+      <tr><td>Q3 2022</td><td>&mdash;</td><td>"Nice step-down"; second consecutive QoQ decline; target: inside $2.0-$2.5B in Q4</td><td class="neutral">Declining</td></tr>
+      <tr><td>Q2 2022</td><td>&mdash;</td><td>Above $2.0-$2.5B target range; ~20% fewer cars visible to customers <span class="tag tag-new">TARGET FIRST SET</span></td><td class="neg">Above target</td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>The destocking was brutal and necessary.</strong> Inventory was cut by more than half &mdash; from well above the $2.0-$2.5B target range to an aggressively lean posture by Q1 2023, when vehicles on the lot averaged 120 days old. The pain of selling aged inventory at deep discounts was the price of survival. By Q1 2024, the pendulum swung the other way: inventory was so lean (13 days on website) that it was constraining sales, and the teams pivoted to rebuilding selection.
+  </div>
+</div>
+
+<!-- SECTION 10: Finance Receivables -->
+<div class="section" id="s10">
+  <h2><span class="num">10</span> Finance Receivables</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Finance Receivables Balance</th><th>Context</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="3">2025 &mdash; NORMALIZED AND MONETIZING</td></tr>
+      <tr><td>Q1 2025</td><td>$737M</td><td>Gain on loan sales: $273M (+90% YoY); added another large pool of loan buyers</td></tr>
+      <tr class="year-divider"><td colspan="3">2024 &mdash; NORMALIZED</td></tr>
+      <tr><td>Q4 2024</td><td>$612M</td><td>Stepped up to ~$700M in fixed loan sales in Q4; diversified funding strategy</td></tr>
+      <tr><td>Q2 2024</td><td>$758M</td><td>Normalized; oversold slightly in Q2 (~$12M favorable impact)</td></tr>
+      <tr><td>Q1 2024</td><td>$866M</td><td>Undersold loans slightly; $1,846M originated vs. $1,825M sold</td></tr>
+      <tr class="year-divider"><td colspan="3">2023 &mdash; SELLING DOWN THE BACKLOG</td></tr>
+      <tr><td>Q4 2023</td><td>$807M</td><td>Normalized from $1,334M at end of FY 2022</td></tr>
+      <tr><td>Q2 2023</td><td>~$1,100M</td><td>Down $500M QoQ from $1.6B; still above normal; excess sales = ~$650/unit GPU tailwind</td></tr>
+      <tr><td>Q1 2023</td><td>~$1,600M (on B/S)</td><td class="neg">~$1.2B above normalized levels; ~$180M cash locked up; regional banking crisis disrupted ABS</td></tr>
+      <tr class="year-divider"><td colspan="3">2022 &mdash; BALLOONING</td></tr>
+      <tr><td>Q4 2022</td><td>~$1,334M</td><td class="neg">~$1B extra from Ally renewal timing shift; loan sale from Dec pushed to Jan</td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>The loan receivables backlog was a hidden risk and hidden opportunity.</strong> By Q1 2023, ~$1.2B of excess receivables sat on the balance sheet, tying up capital during a liquidity crisis. But as Carvana sold them down through 2023, the excess loan sales generated ~$650/unit of nonrecurring GPU tailwind in Q2 2023 &mdash; helping deliver the first positive EBITDA quarter. By 2024-2025, the finance platform had become a competitive advantage: gain on loan sales reached $273M in Q1 2025, with $18B in committed buyer capacity.
+  </div>
+</div>
+
+<!-- SECTION 11: Same-Day Delivery -->
+<div class="section" id="s11">
+  <h2><span class="num">11</span> Same-Day Delivery</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Coverage / Penetration</th><th>Detail</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="3">2025 &mdash; PHOENIX AS PROOF OF CONCEPT</td></tr>
+      <tr class="raised"><td>Q3 2025</td><td class="bold pos">Phoenix: 40% of customers same/next-day; ~10% nationwide</td><td>~2,500 cars available same-day in Phoenix; 30% of buyers fully self-service <span class="tag tag-peak">PEAK DISCLOSURE</span></td></tr>
+      <tr class="year-divider"><td colspan="3">2024 &mdash; BROADENING REACH</td></tr>
+      <tr><td>Q3 2024</td><td class="pos">35% of U.S. population has access</td><td>Phase 1: geographic rollout; Phase 2: unlocking more car-customer combinations</td></tr>
+      <tr><td>Q4 2024</td><td>&mdash;</td><td>Delivery times down &gt;20% YoY; shifting volume into faster deliveries</td></tr>
+      <tr class="year-divider"><td colspan="3">2023 &mdash; EARLY TESTING</td></tr>
+      <tr><td>Q4 2023</td><td>Live in 11 markets</td><td>"Absolutely, speed drives conversion"; filling cancelled/changed delivery slots <span class="tag tag-new">FIRST QUANTIFIED</span></td></tr>
+      <tr><td>Q3 2023</td><td>Small subset of markets</td><td>"Don't want to get everyone too excited on this one just yet"; also testing same-day purchasing (~1 hour)</td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>The Amazon Prime moment for used cars.</strong> Same-day delivery went from a cautious small-market test in Q3 2023 to covering 35% of the U.S. population by Q3 2024 and achieving 40% penetration in Phoenix. The key insight: it is both a growth lever (speed drives conversion) and an efficiency lever (fills underutilized delivery slots). Ernie Garcia described it as "incredibly hard to replicate" and a product of vertical integration.
+  </div>
+</div>
+
+<!-- SECTION 12: Three-Step Plan -->
+<div class="section" id="s12">
+  <h2><span class="num">12</span> Three-Step Plan</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Step 1: EBITDA Breakeven</th><th>Step 2: Significant Unit Economics</th><th>Step 3: Return to Growth</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2024 &mdash; ALL THREE STEPS COMPLETED</td></tr>
+      <tr class="raised">
+        <td>Q2 2024</td>
+        <td class="pos">Completed</td>
+        <td class="pos">Completed / Exceeded</td>
+        <td class="pos bold">Accelerating &mdash; fastest-growing AND most profitable public auto retailer (2nd consecutive quarter)</td>
+      </tr>
+      <tr class="raised">
+        <td>Q1 2024</td>
+        <td class="pos">Completed</td>
+        <td class="pos">Completed / Exceeded (7.7% EBITDA margin)</td>
+        <td class="pos">Underway &mdash; +16% units YoY with record profitability <span class="tag tag-emerged">STEP 3 BEGINS</span></td>
+      </tr>
+      <tr class="year-divider"><td colspan="4">2023 &mdash; STEPS 1 AND 2</td></tr>
+      <tr>
+        <td>Q3 2023</td>
+        <td class="pos">Completed</td>
+        <td class="neutral">In Progress &mdash; "Operation 100" through Q2 2024; choosing to stay in Step 2 despite math favoring growth</td>
+        <td class="muted">Future &mdash; not before mid-2024</td>
+      </tr>
+      <tr class="raised">
+        <td>Q2 2023</td>
+        <td class="pos bold">COMPLETED &mdash; $155M Adj. EBITDA <span class="tag tag-emerged">MILESTONE</span></td>
+        <td class="neutral">Now in progress</td>
+        <td class="muted">Future</td>
+      </tr>
+      <tr>
+        <td>Q1 2023</td>
+        <td class="neutral">On track &mdash; expected Q2</td>
+        <td class="muted">Next focus</td>
+        <td class="muted">Future</td>
+      </tr>
+      <tr class="year-divider"><td colspan="4">2022 &mdash; THE PLAN ANNOUNCED</td></tr>
+      <tr class="lowered">
+        <td>Q4 2022</td>
+        <td class="neg">Current focus &mdash; "as fast as possible"</td>
+        <td class="muted">Step 2: positive FCF</td>
+        <td class="muted">Step 3: growth with "infrastructure advantage materially different" <span class="tag tag-new">PLAN INTRODUCED</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>A playbook executed in 18 months.</strong> The Three-Step Plan was introduced at the Q4 2022 call (Feb 2023) during the company's darkest hour. Step 1 (EBITDA breakeven) was achieved 4 months later in Q2 2023. Step 2 (significant unit economics) was validated by Q1 2024 with 7.7% EBITDA margins. Step 3 (return to growth) was underway by Q1 2024 with +16% unit growth alongside record profitability. By Q2 2024, Carvana was simultaneously the fastest-growing and most profitable public automotive retailer in the United States.
+  </div>
+</div>
+
+<!-- SECTION 13: 5-10yr Target -->
+<div class="section" id="s13">
+  <h2><span class="num">13</span> 5-10yr Target: 3M Units at 13.5% EBITDA Margin</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Target</th><th>Path / Detail</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="3">2025 &mdash; TARGET REITERATED AND EXPANDED</td></tr>
+      <tr><td>Q4 2025</td><td>3M units/yr at 13.5% margin (2030-2035)</td><td>CAGR required: ~38% (5yr) or ~18% (10yr) from 597K units; RE already supports 3M; built capacity for 1.5M</td></tr>
+      <tr><td>Q3 2025</td><td>3M units/yr at 13.5% margin (5-10yr)</td><td>Net debt/EBITDA 1.5x; targeting investment-grade credit ratios</td></tr>
+      <tr><td>Q2 2025</td><td>3M units/yr at 13.5% margin (5-10yr)</td><td>5yr path: ~40% CAGR; 10yr path: ~20% CAGR; ADESA full build CapEx now "a little bit higher" than ~$1B due to inflation</td></tr>
+      <tr class="raised"><td>Q1 2025</td><td class="bold pos">3M units/yr at 13.5% margin (5-10yr)</td><td><span class="tag tag-new">FIRST INTRODUCED</span> Production ramp: ~80 units/wk avg over last 12 months; 10yr needs ~90/wk; 5yr needs ~180/wk; ~23 locations today, expect ~60 over time</td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>The audacity is the point.</strong> At Q1 2025's ~536K annualized run rate, reaching 3M units requires roughly a 6x increase. But the real estate already supports it (3M capacity from ADESA + IRCs), the EBITDA margin is already 11.5% versus the 13.5% target, and the production ramp math shows the 10-year path requires only ~90 additional units per week &mdash; a 12% acceleration from the current ~80/week pace. This is less a stretch target and more a statement about how much infrastructure Carvana has already built.
+  </div>
+</div>
+
+<!-- SECTION 14: Reconditioning Cost per Unit -->
+<div class="section" id="s14">
+  <h2><span class="num">14</span> Reconditioning Cost per Unit</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Recon Cost Trend</th><th>Key Detail</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="3">2025 &mdash; GROWTH-RELATED PRESSURE</td></tr>
+      <tr class="lowered">
+        <td>Q4 2025</td>
+        <td class="neg">Elevated &mdash; higher non-vehicle costs</td>
+        <td>34 locations, many new; single-line ramp at new sites; $220/car gap between average and top-quartile performance; management guides 3-6 months to improve</td>
+      </tr>
+      <tr class="year-divider"><td colspan="3">2024 &mdash; DECLINING DESPITE GROWTH</td></tr>
+      <tr class="raised">
+        <td>Q1 2024</td>
+        <td class="pos">Down "hundreds of dollars" vs. FY 2021</td>
+        <td>Carli software deployed across IRCs + first ADESA conversion; recon volume +50% YoY without per-unit cost increase</td>
+      </tr>
+      <tr class="year-divider"><td colspan="3">2023 &mdash; DRAMATIC IMPROVEMENT</td></tr>
+      <tr class="raised">
+        <td>Q3 2023</td>
+        <td class="pos bold">~$900/unit reduction over 12 months</td>
+        <td>Warranty claim frequency DOWN while costs fell; in-sourcing biggest driver; annualized recon + transport COGS savings: ~$250M <span class="tag tag-peak">PEAK SAVINGS DISCLOSED</span></td>
+      </tr>
+      <tr><td>Q2 2023</td><td class="pos">Below FY 2021 levels</td><td>At ~25% IRC utilization; process- and technology-driven, not quality-driven</td></tr>
+      <tr class="year-divider"><td colspan="3">2022 &mdash; INFLATED</td></tr>
+      <tr class="lowered"><td>Q1 2022</td><td class="neg">&gt;$600/unit increase YoY</td><td>IRC/logistics inefficiencies from Omicron, severe weather, lower volume deleveraging <span class="tag tag-new">FIRST DISCLOSED</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>A $1,500+ swing per unit.</strong> Reconditioning costs surged &gt;$600/unit above normal in Q1 2022 due to operational chaos, then fell ~$900/unit over the next 18 months through in-sourcing, process standardization, and the Carli software platform. Critically, warranty claims went DOWN during the cost reduction &mdash; this was not corner-cutting. By Q4 2025, new-site ramp costs briefly pushed costs higher, but the structural gains remain embedded.
+  </div>
+</div>
+
+<!-- SECTION 15: Self-Service Rate -->
+<div class="section" id="s15">
+  <h2><span class="num">15</span> Self-Service Rate</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Buyer Self-Service</th><th>Seller Self-Service</th><th>Context</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025 &mdash; AI-POWERED AUTOMATION</td></tr>
+      <tr class="raised">
+        <td>Q4 2025</td>
+        <td class="bold pos">30% of buyers complete without speaking to anyone</td>
+        <td class="bold pos">60% of sellers complete without speaking to anyone</td>
+        <td>Fully digital customers have higher NPS; "Sebastian" AI brain central to experience; AI investment "another large step-up in last 3-6 months"</td>
+      </tr>
+      <tr>
+        <td>Q3 2025</td>
+        <td class="pos">&gt;30% of retail customers</td>
+        <td class="pos">&gt;60% of sellers</td>
+        <td><span class="tag tag-new">FIRST DISCLOSED</span> Complete entire process without speaking to a person until vehicle handoff/drop-off</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>The ultimate unit economics lever.</strong> When 30% of buyers and 60% of sellers complete transactions with zero human contact (before delivery/pickup), the implications for scalability are profound. Each percentage point of self-service penetration directly reduces customer care costs &mdash; which Carvana had already cut by 2x per advocate since 2022. This metric, first disclosed in Q3 2025, reveals how far ahead the technology platform has moved relative to the traditional dealership model.
+  </div>
+</div>
+
+<!-- ANALYSIS SECTION -->
+<div class="analysis" id="analysis">
+  <h2>What the Disclosure Patterns Reveal</h2>
+
+  <h3>1. The Survival Phase (Q1 2022 &ndash; Q1 2023): Crisis Metrics Dominate</h3>
+  <p>The intermittent KPIs from this period tell a story of existential risk management. Liquidity disclosures appeared every quarter as cash burned at alarming rates. Going concern questions surfaced from Q3 2022 through Q1 2023. Inventory reduction targets were set and tracked obsessively. Finance receivables ballooned to $1.6B on the balance sheet. The language on these calls was defensive: "ride out this storm," "not need to raise additional capital," and the direct question of whether the Garcia family would "give up control." Reconditioning costs had surged &gt;$600/unit, and IRC capacity sat at 3x the actual run rate &mdash; a painful reminder of how badly the growth overshoot of 2021-2022 had misfired.</p>
+
+  <h3>2. The Turnaround Phase (Q2 2023 &ndash; Q4 2023): Operational Metrics Take Center Stage</h3>
+  <p>The narrative shifted dramatically once EBITDA turned positive in Q2 2023. Going concern questions vanished overnight. In their place, Carvana began disclosing operational efficiency metrics with increasing confidence: the $1.2B annualized SG&A reduction, the activity pairing rate climbing from 7% to nearly 50%, reconditioning costs falling $900/unit, and the debt exchange that removed &gt;$1.2B in face value. The Three-Step Plan &mdash; introduced during the darkest quarter &mdash; was already at Step 2. Liquidity disclosures became less prominent because the trajectory had reversed. The company was still selling 75K-80K units per quarter, far below its 2022 peak, but the unit economics were transforming.</p>
+
+  <h3>3. The Growth Phase (Q1 2024 &ndash; Q4 2025): Infrastructure and Ambition Metrics Emerge</h3>
+  <p>As growth resumed (+16% in Q1 2024, accelerating to +50% by Q4 2024), the intermittent KPIs shifted again. ADESA integration sites went from 1 to 34. Same-day delivery expanded from 11 markets to 35% of the U.S. population. IRC capacity and real estate capacity disclosures emphasized the 3M-unit runway. Stockholders' equity swung from -$384M to +$1,773M. And in Q1 2025, a bold new long-term target appeared: 3 million units per year at 13.5% EBITDA margins within 5-10 years. By Q3 2025, self-service rates were disclosed for the first time: 30% of buyers and 60% of sellers completing transactions without human contact.</p>
+
+  <h3>4. The Arc as a Whole</h3>
+  <p>Carvana's intermittent KPIs trace one of the most dramatic turnarounds in public market history. The company went from analysts questioning its survival to generating $2.2B+ in annual EBITDA in less than three years. Each category of intermittent metric corresponds to a specific phase of the arc: liquidity and going concern were the metrics of survival; cost reduction and activity pairing were the metrics of transformation; ADESA integration and same-day delivery are the metrics of ambition. The fact that many of these disclosures appeared intermittently &mdash; rather than quarterly &mdash; reflects the rapid evolution of what mattered most at each stage. The company disclosed what was existentially relevant in each moment, and those moments changed fast.</p>
+
+  <h3>5. What Stopped Being Disclosed</h3>
+  <p>The most telling signal is which metrics disappeared. Going concern questions lasted exactly three quarters. The $2.0-$2.5B inventory target range was set in Q2 2022 and stopped being referenced once inventory normalized. The explicit $1.2B cost reduction figure stopped being updated once the campaign was complete. These discontinuations are not gaps &mdash; they are markers of problems solved. Carvana's disclosure pattern is itself a narrative of resolution: each crisis-era metric that stops appearing is evidence that the underlying issue has been addressed.</p>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  Data sourced from Carvana quarterly earnings call transcripts, Q1 2022 through Q4 2025. |
+  <a href="../../index.html">Metrics Tracker</a>
+</div>
+
+</body>
+</html>

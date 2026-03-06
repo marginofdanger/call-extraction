@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APP Q2 2025 Earnings Call Detail</title>
+<style>
+:root {
+    --company-primary: #FF6B35;
+    --company-dark: #1a1a2e;
+    --company-accent: #1E3A5F;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 40px 40px 32px;
+    margin: 0 -24px 0;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .header .meta {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    font-weight: 300;
+  }
+  .header .meta span { margin-right: 24px; }
+
+  .nav-bar {
+    background: var(--company-accent);
+    margin: 0 -24px 32px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    transition: all 0.15s;
+  }
+  .nav-bar a:hover { background: rgba(255,255,255,0.2); }
+  .nav-bar a.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .nav-center {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-center a.qbtn {
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+  }
+  .nav-center a.qbtn.current {
+    background: var(--company-primary);
+    border-color: var(--company-primary);
+  }
+  .nav-center a.qbtn:hover { background: rgba(255,255,255,0.2); }
+  .nav-back {
+    background: rgba(255,255,255,0.15) !important;
+    border-color: rgba(255,255,255,0.35) !important;
+  }
+
+  .metrics-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .metric {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+  .metric-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .metric-value {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+  .metric-delta {
+    font-size: 0.72rem;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+  .delta-up { color: var(--green); }
+  .delta-down { color: var(--red); }
+  .delta-flat { color: var(--text-muted); }
+
+  .changes-box {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 5px solid var(--amber);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .changes-box h3 {
+    font-size: 1rem;
+    color: var(--company-dark);
+    margin-bottom: 10px;
+  }
+  .changes-box ul { list-style: none; padding: 0; }
+  .changes-box li {
+    padding: 5px 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .change-tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .ct-raised { background: #d5f5e3; color: #1e8449; }
+  .ct-lowered { background: #fadbd8; color: #c0392b; }
+  .ct-changed { background: #d6eaf8; color: #2471a3; }
+  .ct-new { background: #e8daef; color: #6c3483; }
+  .ct-maintained { background: #fdebd0; color: #b9770e; }
+
+  .content-section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .content-section h3 {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .content-section ul {
+    padding: 14px 18px 14px 36px;
+    margin: 0;
+  }
+  .content-section li {
+    padding: 3px 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .content-section li strong { color: var(--company-dark); }
+
+  .prior-ref {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 40px;
+    overflow: hidden;
+  }
+  .prior-ref-header {
+    background: var(--light-bg);
+    padding: 12px 18px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--company-dark);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .prior-ref-header:hover { background: #eef2f7; }
+  .prior-ref-body { padding: 18px; display: none; }
+  .prior-ref-body.open { display: block; }
+  .prior-ref-body .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .prior-mini {
+    background: var(--light-bg);
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .prior-mini .pm-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .prior-mini .pm-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border);
+  }
+  .footer-nav a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .footer-nav a:hover { text-decoration: underline; }
+
+  /* Comparison page styles */
+  .toc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .toc a {
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 4px 0;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  .comp-section {
+    margin-bottom: 40px;
+  }
+  .comp-section h2 {
+    font-size: 1.2rem;
+    color: var(--company-dark);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--company-primary);
+  }
+
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+  }
+  .comp-table th {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .comp-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .comp-table tr:nth-child(even) { background: var(--light-bg); }
+  .comp-table tr:hover { background: #e8f4fd; }
+
+  @media (max-width: 768px) {
+    .header h1 { font-size: 1.5rem; }
+    .metrics-card { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .nav-center { display: none; }
+    body { padding: 0 16px 60px; }
+    .header { margin: 0 -16px 0; padding: 28px 24px 20px; }
+    .nav-bar { margin: 0 -16px 24px; }
+    .toc { grid-template-columns: 1fr; }
+    .comp-table { font-size: 0.78rem; }
+    .comp-table th, .comp-table td { padding: 6px 8px; }
+  }
+
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+  .content-section .md-table th {
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .content-section .md-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-section .md-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+  .content-section .md-table tr:hover { background: #e8f4fd; }
+
+  @media print {
+    .nav-bar { display: none; }
+    .header { background: #333; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>APP Q2 2025 Earnings Call</h1>
+  <div class="meta">
+    <span>Call Date: August 6, 2025</span>
+    <span>Reporting: Q2 2025</span>
+  </div>
+</div>
+<div class="nav-bar">
+  <a href="Q1_2025.html">&larr; Q1 2025</a>
+  <div class="nav-center">
+    <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>
+    <a href="Q4_2025.html" class="qbtn">4Q25</a>
+    <a href="Q3_2025.html" class="qbtn">3Q25</a>
+    <a href="Q2_2025.html" class="qbtn current">2Q25</a>
+    <a href="Q1_2025.html" class="qbtn">1Q25</a>
+    <a href="Q4_2024.html" class="qbtn">4Q24</a>
+    <a href="Q3_2024.html" class="qbtn">3Q24</a>
+    <a href="Q2_2024.html" class="qbtn">2Q24</a>
+    <a href="Q1_2024.html" class="qbtn">1Q24</a>
+    <a href="Q4_2023.html" class="qbtn">4Q23</a>
+    <a href="Q3_2023.html" class="qbtn">3Q23</a>
+    <a href="Q2_2023.html" class="qbtn">2Q23</a>
+    <a href="Q1_2023.html" class="qbtn">1Q23</a>
+    <a href="Q4_2022.html" class="qbtn">4Q22</a>
+    <a href="Q3_2022.html" class="qbtn">3Q22</a>
+    <a href="Q2_2022.html" class="qbtn">2Q22</a>
+    <a href="Q1_2022.html" class="qbtn">1Q22</a>
+  </div>
+  <a href="Q3_2025.html">Q3 2025 &rarr;</a>
+</div>
+
+<div class="changes-box">
+  <h3>What Changed vs Q1 2025</h3>
+  <ul>
+    <li><span class="change-tag ct-new">New</span> NEW: Self-serve advertising platform discussed</li>
+  </ul>
+</div>
+
+<div class="metrics-card">
+  <div class="metric" style="grid-column: 1 / -1; background: linear-gradient(135deg, var(--company-dark), var(--company-accent)); color: #fff; border: none; padding: 8px 14px;">
+    <div class="metric-label" style="color: rgba(255,255,255,0.7);">Guidance For</div>
+    <div class="metric-value" style="color: #fff; font-size: 1rem;">Q3 2025</div>
+  </div>
+</div>
+
+<!-- Full Guidance Content -->
+<div class="content-section">
+  <h3>Beat vs. Prior Guidance (Q2 2025 Guidance Issued on Q1 2025 Call)</h3>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Q2 2025 Guidance (from Q1 call)</th><th>Q2 2025 Actual</th><th>Beat/(Miss)</th></tr></thead><tbody><tr><td>Advertising Revenue</td><td>$1.195B - $1.215B</td><td>~$1.260B</td><td><strong>+$45M above high end</strong></td></tr><tr><td>Advertising Adj. EBITDA</td><td>$970M - $990M</td><td>$1.020B</td><td><strong>+$30M above high end</strong></td></tr><tr><td>Advertising EBITDA Margin</td><td>~81%</td><td>81%</td><td>In-line</td></tr></tbody></table> *Note: Q2 2025 marks the 7th consecutive quarter of beating the high end of guidance, though the beat magnitude narrowed from Q1 2025's record +$110M revenue beat to +$45M this quarter.*</div>
+</div>
+<div class="content-section">
+  <h3>Quarterly Guidance (Q3 2025)</h3>
+</div>
+<div class="content-section">
+  <h3>Implied Q3 2025 Guidance vs. Q2 2025 Actuals</h3>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Q2 2025 Actual</th><th>Q3 2025 Guidance</th><th>Implied QoQ Change</th></tr></thead><tbody><tr><td>Advertising Revenue</td><td>~$1.260B</td><td>$1.320B - $1.340B</td><td>+4.8% to +6.3%</td></tr><tr><td>Advertising Adj. EBITDA</td><td>$1.020B</td><td>$1.070B - $1.090B</td><td>+4.9% to +6.9%</td></tr><tr><td>Advertising EBITDA Margin</td><td>81%</td><td>~81%</td><td>Flat</td></tr></tbody></table></div>
+</div>
+<div class="content-section">
+  <h3>Implied YoY Growth (Q3 2025 Guidance vs. Q3 2024 Actuals)</h3>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Q3 2024 Actual</th><th>Q3 2025 Guidance (midpoint)</th><th>Implied YoY Change</th></tr></thead><tbody><tr><td>Advertising Revenue</td><td>$835M</td><td>$1,330M</td><td>+59.3%</td></tr><tr><td>Advertising Adj. EBITDA</td><td>$653M</td><td>$1,080M</td><td>+65.4%</td></tr></tbody></table></div>
+</div>
+<div class="content-section">
+  <h3>Commentary on Q3 2025 Guidance</h3>
+  <ul>
+    <li><strong>Sequential Growth Slightly Above Prior Cadence:</strong> CFO: Guide implies 5%+ QoQ sequential growth vs. typical 3-5% reinforcement learning baseline; analyst noted "5% sequential growth. Conservatism last quarter was 4%"</li>
+    <li><strong>Apps Divestiture Uplift Included:</strong> CFO: "the one change we did make, Chris, this quarter, which is slightly different than kind of our typical cadence...was to include the benefit as well that we're going to see from the divestiture of the Apps business, where we have a slight pickup in revenue. So we also incorporated that within the Q3 guide"</li>
+    <li><strong>Decomposition (CFO):</strong> 3-5% QoQ from ongoing reinforcement learning baseline + incremental uplift from former App studios becoming external advertisers; CFO: "So the difference between that and then the guide this quarter is the incremental uplift from the additional revenue that we're going to get from the Apps divestiture"</li>
+    <li><strong>Reinforcement Learning Component Unchanged:</strong> CFO: "that ongoing reinforcement learning has kind of generally trended towards the 3% to 5% per quarter"</li>
+    <li><strong>Guidance Does NOT Include:</strong> (1) Step-function model enhancements; (2) E-commerce self-serve ramp (referral opening October 1, after Q3 ends); (3) International expansion (also October 1); (4) Holiday season effects (Q4 phenomenon)</li>
+    <li><strong>Conservative Posture Continues:</strong> Given persistent beat pattern (7 consecutive quarters), actual Q3 results likely to exceed guidance</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Long-Term Targets and Strategic Vision</h3>
+</div>
+<div class="content-section">
+  <h3>Advertising Business Long-Term Growth Algorithm</h3>
+  <ul>
+    <li><strong>Long-Term YoY Growth Rate:</strong> 20% to 30% (reaffirmed); CEO: "we are confident we can sustain 20% to 30% year-over-year growth driven by just gaming"</li>
+    <li><strong>Component 1 -- Reinforcement Learning (Predictable):</strong> ~3% to 5% QoQ sequential growth (reaffirmed); CFO: "that ongoing reinforcement learning has kind of generally trended towards the 3% to 5% per quarter"</li>
+    <li><strong>Component 2 -- Directed Model Enhancements (Step-Functions):</strong> Historically ~10% annual contribution; Q2 had no step-function enhancement; CEO: "nothing that's like double-digit step function"</li>
+    <li><strong>Gaming Alone Supports 20-30% Growth:</strong> CEO: "Based on all the opportunity in front of us in our core market, we are confident we can sustain 20% to 30% year-over-year growth driven by just gaming"</li>
+    <li><strong>Gaming Currently Growing 30-40% YoY:</strong> CEO: "gaming is still a 30% to 40% grower for us, so well above our 20% to 30% long-term goals"</li>
+    <li><strong>Upside from Non-Gaming:</strong> CEO: "what gets us more excited now than ever in our history before is the opportunity to really expand outside our core market"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Long-Term E-Commerce Vision</h3>
+  <ul>
+    <li><strong>Potential Future Mix:</strong> CEO: "will 1 day our business become 90% web-based advertising, 10% mobile gaming? I don't know"</li>
+    <li><strong>TAM Much Larger Than Gaming:</strong> CEO: "The opportunity in that category, both in terms of advertiser count and in terms of scale of TAM is much greater than gaming"</li>
+    <li><strong>Data Flywheel:</strong> E-commerce data improves gaming model and vice versa; CEO: "the data in our platform is not unique to one or the other part of the business"; example: someone buying a $4,000 handbag is likely a whale for a match-three game</li>
+    <li><strong>International Revenue Opportunity:</strong> U.S. vs. rest of world roughly half-half in total business; CEO: "it's roughly half-half on domestic U.S. versus rest of world"</li>
+    <li><strong>International E-Commerce Upside:</strong> CEO: "if we open up all these other countries for the most part, is 1 going to become 2 overnight. Probably not...but there's a lot of markets that look and feel similar to the U.S."</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Historical Guidance vs. Actuals Pattern (Last 7 Quarters)</h3>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Quarter</th><th>Adv Rev Guidance (High End)</th><th>Adv Rev Actual</th><th>Revenue Beat</th><th>EBITDA Guidance (High End)</th><th>EBITDA Actual</th><th>EBITDA Beat</th></tr></thead><tbody><tr><td>Q4 2023</td><td>$930M (total)</td><td>$953M (total)</td><td>+$23M</td><td>$460M (total)</td><td>$476M (total)</td><td>+$16M</td></tr><tr><td>Q1 2024</td><td>$975M (total)</td><td>$1,060M (total)</td><td>+$85M</td><td>$495M (total)</td><td>$549M (total)</td><td>+$54M</td></tr><tr><td>Q2 2024</td><td>$1,080M (total)</td><td>$1,080M (total)</td><td>~$0</td><td>$570M (total)</td><td>$601M (total)</td><td>+$31M</td></tr><tr><td>Q3 2024</td><td>$1,135M (total)</td><td>$1,200M (total)</td><td>+$65M</td><td>$650M (total)</td><td>$722M (total)</td><td>+$72M</td></tr><tr><td>Q4 2024</td><td>$1,260M (total)</td><td>$1,373M (total)</td><td>+$113M</td><td>$760M (total)</td><td>$848M (total)</td><td>+$88M</td></tr><tr><td>Q1 2025</td><td>$1,050M (adv only)</td><td>$1,160M (adv only)</td><td>+$110M</td><td>$825M (adv only)</td><td>$943M (adv only)</td><td>+$118M</td></tr><tr><td><strong>Q2 2025</strong></td><td><strong>$1,215M (adv only)</strong></td><td><strong>~$1,260M (adv only)</strong></td><td><strong>+$45M</strong></td><td><strong>$990M (adv only)</strong></td><td><strong>$1,020M (adv only)</strong></td><td><strong>+$30M</strong></td></tr></tbody></table></div>
+  <ul>
+    <li><strong>Pattern:</strong> 7 consecutive quarters of beating the high end of guidance. Beat magnitude narrowed in Q2 2025 compared to recent quarters (Q1 2025 saw largest beats). This may reflect (1) less upside from constrained e-commerce onboarding, (2) absence of step-function model enhancement in Q2, and/or (3) more accurately calibrated guidance.</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Guidance Evolution Tracker</h3>
+</div>
+<div class="content-section">
+  <h3>Q3 2025 Guidance (Issued August 6, 2025) -- Advertising Segment Only</h3>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Q3 2025 Guidance</th><th>Q2 2025 Actual</th><th>Implied QoQ Change</th></tr></thead><tbody><tr><td>Advertising Revenue</td><td>$1.320B - $1.340B</td><td>~$1.260B</td><td>+4.8% to +6.3%</td></tr><tr><td>Advertising Adj. EBITDA</td><td>$1.070B - $1.090B</td><td>$1.020B</td><td>+4.9% to +6.9%</td></tr><tr><td>Advertising EBITDA Margin</td><td>~81%</td><td>81%</td><td>Flat</td></tr></tbody></table></div>
+</div>
+<div class="content-section">
+  <h3>Implied YoY Growth (Q3 2025 Guidance vs. Q3 2024 Actuals)</h3>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Q3 2024 Actual</th><th>Q3 2025 Guidance (midpoint)</th><th>Implied YoY Change</th></tr></thead><tbody><tr><td>Advertising Revenue</td><td>$835M</td><td>$1,330M</td><td>+59.3%</td></tr><tr><td>Advertising Adj. EBITDA</td><td>$653M</td><td>$1,080M</td><td>+65.4%</td></tr></tbody></table></div>
+</div>
+<div class="content-section">
+  <h3>Key Guidance Notes</h3>
+  <ul>
+    <li><strong>Pure-play advertising business</strong> -- Apps divestiture closed; no consolidated guidance</li>
+    <li><strong>Q3 guide includes incremental revenue from divested studios</strong> becoming external third-party advertisers (new vs. prior quarters)</li>
+    <li><strong>Q3 guide still does NOT include:</strong> (1) Step-function model enhancements; (2) E-commerce self-serve referral ramp (launches October 1, essentially Q4); (3) International market expansion (also October 1); (4) Holiday season benefits (Q4)</li>
+    <li><strong>Given persistent beat pattern (7 consecutive quarters) and upcoming Q4 catalysts (referral opening, international expansion, holiday season), the setup for H2 2025 acceleration is strong</strong></li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Advertising Segment Results (Continuing Operations Only)</h3>
+  <ul>
+    <li><em>Note: Apps business sale to Tripledot Studios closed at the end of Q2 2025. Apps segment results are reported within discontinued operations. All commentary is limited to the advertising business only.</em></li>
+    <li><strong>Advertising Revenue:</strong> ~$1.260B (+77% YoY; CFO: "revenue increased by a very healthy 77% from last year to approximately $1.260 billion"; vs. $1.16B in Q1 2025 = +8.6% QoQ; vs. $711M in Q2 2024 = +77.2% YoY)</li>
+    <li><strong>Advertising Adjusted EBITDA:</strong> $1.020B (CFO: "adjusted EBITDA nearly doubled to an impressive $1.020 billion"; vs. $943M in Q1 2025 = +8.2% QoQ; ~+96% YoY vs. $520M in Q2 2024)</li>
+    <li><strong>Advertising Adjusted EBITDA Margin:</strong> 81% (CFO: "achieving an 81% adjusted EBITDA margin"; flat QoQ vs. 81% in Q1 2025; vs. 73% in Q2 2024 = +800bps YoY)</li>
+    <li><strong>QoQ Revenue-to-EBITDA Flow-Through:</strong> 81% (CFO: "Quarter-over-quarter flow-through from revenue to adjusted EBITDA was a very strong 81%"; i.e., 81% of incremental QoQ revenue converted to incremental EBITDA)</li>
+    <li><strong>Revenue Growth Drivers:</strong> (1) Majority of growth from core gaming business (CFO: "The majority of our revenue growth in the quarter was driven by our core gaming business"); (2) E-commerce performing well but onboarding constrained</li>
+    <li><strong>Free Cash Flow:</strong> $768M (+72% YoY; CFO: "we generated $768 million in free cash flow, up a staggering 72% year-over-year"; vs. $826M in Q1 2025 = -7.0% QoQ)</li>
+    <li><strong>FCF Lower QoQ Reason:</strong> Timing of semiannual bond interest payments and certain taxes associated with the prior year (CFO: "Our free cash flow was slightly lower than last quarter due to the timing of payments for interest on our bonds, which are semiannual and certain taxes associated with the prior year")</li>
+    <li><strong>Cash and Cash Equivalents (End of Q2):</strong> $1.2B (CFO: "we had $1.2 billion in cash and cash equivalents"; includes $425M net cash from Apps sale; vs. $551M end of Q1 2025)</li>
+    <li><strong>Net Cash from Apps Sale:</strong> $425M (CFO: "which includes $425 million in net cash received from the sale of the Apps business")</li>
+    <li><strong>Share Repurchases & Withholding (Q2 2025):</strong> ~900K shares for a total cost of $341M (CFO: "we repurchased and withheld approximately 900,000 shares for a total cost of $341 million funded through free cash flow")</li>
+    <li><strong>Weighted Average Diluted Shares Outstanding:</strong> 342M (CFO: "reduce our weighted average diluted common shares outstanding this year from 346 million in the fourth quarter to 342 million this quarter"; vs. 346M in Q4 2024, 338M end of Q1 2025)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Gaming Business Performance</h3>
+  <ul>
+    <li><strong>Gaming as Growth Driver:</strong> CEO: "Q2 2025 was another great quarter, driven by continued strength in gaming advertising"</li>
+    <li><strong>Gaming Growth Rate:</strong> Implied 30% to 40% YoY; CEO: "if you assume a large, large amount of the growth in the quarter came from gaming and you're roughly 9% quarter-over-quarter, gaming is still a 30% to 40% grower for us, so well above our 20% to 30% long-term goals that we've stated"</li>
+    <li><strong>Growth Drivers:</strong> CEO: "Our growth comes from improved technology, increased demand as well as from supply side expansion"</li>
+    <li><strong>Model Enhancement Status:</strong> No major step-function enhancement in Q2; CEO: "nothing that's like double-digit step function"; iterative lifts continue</li>
+    <li><strong>MAX Marketplace Growth:</strong> Double-digit growth, far outpacing in-app purchasing gaming market growth of 3-5%; CEO: "it has consistently been double digits, far outpacing growth in the in-app purchasing gaming market"</li>
+    <li><strong>Market Penetration:</strong> CEO: "our market penetration inside gaming is really large at this point. It's materially higher than 70%"</li>
+    <li><strong>AXON 2 Track Record:</strong> ~8-9 quarters of phenomenal growth since release; CEO: "AXON 2 has shown phenomenal growth for, I don't know, 8, 9 quarters now since release"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>E-Commerce / Web Advertising Performance</h3>
+  <ul>
+    <li><strong>E-Commerce Contribution:</strong> Around 10% of advertising revenue for the year; CEO: "where we were at was that sort of 10% range that we were targeting for the year"</li>
+    <li><strong>E-Commerce Growth:</strong> Growth limited by deliberate onboarding constraints; CEO: "we limited onboarding of new customers to focus on the preparation for the self-serve launch in Q4"</li>
+    <li><strong>Advertiser Count:</strong> Hundreds of advertisers (previously disclosed ~600+); CEO referenced "hundreds of e-commerce businesses live on the platform"</li>
+    <li><strong>Run Rate:</strong> $1B previously disclosed; CEO: "I believe it was in the 600s, and $1 billion run rate" (referencing prior disclosure)</li>
+    <li><strong>Market Penetration:</strong> Sub-1% of potential advertisers; CEO: "we're certainly sub-1% of Meta reports over 10 million advertisers"</li>
+    <li><strong>Geographic Constraint:</strong> U.S. only through Q2; international opening planned for October 1</li>
+    <li><strong>GMV Threshold Raised:</strong> CEO: "we raised it up this quarter to $100 million plus to really constrain what's coming on the platform" (previously $25M-$30M floor)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Apps Divestiture Completion</h3>
+  <ul>
+    <li><strong>Closed:</strong> End of Q2 2025; CFO: "At the end of the quarter, we closed the sale of our Apps business to Tripledot Studios"</li>
+    <li><strong>Buyer:</strong> Tripledot Studios</li>
+    <li><strong>Net Cash Received:</strong> $425M</li>
+    <li><strong>Financial Reporting Treatment:</strong> Apps results included within discontinued operations</li>
+    <li><strong>Revenue Benefit Post-Close:</strong> Slight pickup in advertising revenue from former studios becoming third-party advertisers; included in Q3 guide; CFO: "we have a slight pickup in revenue. So we also incorporated that within the Q3 guide"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Advertising Segment Only</h3>
+  <ul>
+    <li><em>Note: Company is now a pure-play advertising business following Apps divestiture.</em></li>
+    <li><strong>Advertising Revenue:</strong> $1.320B to $1.340B (midpoint $1.330B; vs. Q2 2025 actual of ~$1.260B; +4.8% to +6.3% QoQ)</li>
+    <li><strong>Advertising Adjusted EBITDA:</strong> $1.070B to $1.090B (midpoint $1.080B; vs. Q2 2025 actual of $1.020B; +4.9% to +6.9% QoQ)</li>
+    <li><strong>Advertising Adjusted EBITDA Margin:</strong> 81% (CFO: "targeting an adjusted EBITDA margin of 81%"; flat QoQ)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Margin Profile</h3>
+  <ul>
+    <li><strong>Steady-State EBITDA Margin:</strong> 81% maintained for third consecutive quarter (Q1 2025, Q2 2025, and Q3 2025 guidance all at 81%)</li>
+    <li><strong>Incremental Margin:</strong> 80-100% flow-through; Q2 was 81% incremental margin</li>
+    <li><strong>Operating Lean:</strong> CFO: "illustrating our continued dedication to operating lean"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Capital Allocation</h3>
+  <ul>
+    <li><strong>Priority 1:</strong> Organic investment -- hiring high-quality engineering and business development talent; CFO: "continuing to allocate capital towards organic initiatives, continuing to hire on very high-quality engineering and business development talent"</li>
+    <li><strong>Priority 2:</strong> Return capital to shareholders via share buybacks; CFO: "then to continue to return capital to shareholders via share buybacks"</li>
+    <li><strong>FCF Margin:</strong> Implied ~60%+ of revenue (analyst-referenced); $768M FCF on ~$1.260B revenue = ~61%</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>AXON Self-Service Platform Launch</h3>
+</div>
+<div class="content-section">
+  <h3>AXON Ads Manager</h3>
+  <ul>
+    <li><strong>Quietly Launched:</strong> CEO: "Recently, we took the first step towards opening up our platform broadly, quietly launching our new AXON ads manager, our self-service portal, which will serve as the foundation for our next decade of growth"</li>
+    <li><strong>Features/Benefits:</strong> - Day-to-day controls directly in advertisers' hands, reducing friction - Credit card billing, eliminating monthly invoicing hassle - Architecture for agents to eventually automate every workflow - Framework for automatically generated ads - Simplified onboarding through Shopify app integration - Deeper integrations with attribution providers for more accurate reporting</li>
+    <li><strong>Shopify App:</strong> Live in the Shopify App Store; creates one-click integration (CEO: "We got the Shopify app integration live...you can find the app in the Shopify App Store")</li>
+    <li><strong>Dynamic Product Ads:</strong> Launched; CEO: "We got dynamic product ads live that made a material uplift"; pairs video with dynamic product ad for higher intent</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Launch Timeline</h3>
+  <ul>
+    <li><strong>October 1, 2025 -- Referral-Based Opening:</strong> CEO: "On October 1, 2025, we plan to open the AXON ads manager on a referral basis, perfectly timed for the holiday season" - Existing advertisers can invite/refer their colleagues to the platform - CEO: "accounts on the platform...will get the chance to refer their colleagues into our platform and have them go live in a self-service way" - Not a full public open; still curated onboarding via invitation - CEO: "They're still going to have to get invited to get into the platform"</li>
+    <li><strong>October 1, 2025 -- International Expansion:</strong> CEO: "On October 1, we plan to open our platform to most major international markets" - Web advertising campaigns have been limited to the United States through Q2 - Opening to most major international markets simultaneously</li>
+    <li><strong>H1 2026 -- Global Public Launch:</strong> CEO: "Feedback from these partners will guide our global public launch in the first half of 2026"</li>
+    <li><strong>Post-Public Launch -- Paid Marketing:</strong> CEO: "Once AXON is fully open next year, we plan to begin paid marketing to recruit new advertisers, which will drive predictable compounding growth"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>AXON Brand Standalone</h3>
+  <ul>
+    <li>CEO: "The opportunity is so big that we will be launching the platform under its own brand, AXON"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Agentic / AI Capabilities (Phased)</h3>
+  <ul>
+    <li><strong>Phase 1 (Near-Term):</strong> Onboarding chatbot/widget to answer questions and guide advertisers; CEO: "That's sort of an onboarding widget...is something that's probably going to be in present early in the release of this product"</li>
+    <li><strong>Phase 2 (In Development):</strong> Analysis agent for campaign performance, ad creative analysis; CEO: "an agent that does everything for you...analyze the performance, talk to me about the ads I'm running, that's a complex agent task"</li>
+    <li><strong>Phase 3 (Tools):</strong> Generative AI-based ad creative tools for automatic video/end card creation; CEO: "we're going to give our customers the ability to automatically create advertisements, whether video or end card" - Enables small businesses without ad production resources to compete with larger brands - Increases ad diversity on the platform for better model personalization</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>E-Commerce / Web Advertising Expansion</h3>
+</div>
+<div class="content-section">
+  <h3>Status and Scale</h3>
+  <ul>
+    <li><strong>E-Commerce Share of Revenue:</strong> ~10% of advertising revenue for the year (as targeted); CEO: "where we were at was that sort of 10% range that we were targeting for the year"</li>
+    <li><strong>E-Commerce Share May Decline Near-Term Due to Gaming Strength:</strong> CEO: "There's a reason I expect it to have grown above that because gaming is growing so quickly"</li>
+    <li><strong>Advertiser Count:</strong> Hundreds; ~600 previously disclosed; CEO: "hundreds of e-commerce businesses live on the platform"</li>
+    <li><strong>Market Penetration:</strong> Sub-1% of total addressable market; CEO: "we're certainly sub-1%"</li>
+    <li><strong>GMV Threshold for New Onboarding:</strong> Raised to $100M+ in Q2 to constrain platform (CEO: "We raised it up this quarter to $100 million plus to really constrain what's coming on the platform")</li>
+    <li><strong>Constrained Onboarding:</strong> Deliberate pause on new advertiser onboarding for 2 quarters while building out platform capabilities; CEO: "we ended up constraining the advertiser onboarding process for a couple of quarters while we made sure that the product was at the level that we wanted to get it to"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q4 2025 E-Commerce Inflection Expected</h3>
+  <ul>
+    <li>CEO: "Q4 is going to end up being a fun quarter" - (1) Existing advertiser cohort will be primed for full holiday season (unlike Q4 2024 when cohort was still ramping) - (2) Referral-based onboarding opens October 1, bringing new advertisers - (3) International markets open simultaneously - CEO: "not only are you going to see the cohort that we have live spend a lot more. You're also going to have new onboarding happening for the first time in our history at a rate that's much higher than we will have ever seen before"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Web Advertising Product Progress (Completed in Q2)</h3>
+  <ul>
+    <li>Shopify app integration -- live and approved in Shopify App Store</li>
+    <li>Dynamic product ads -- live, material uplift to advertiser performance</li>
+    <li>In-depth integrations with attribution companies</li>
+    <li>Self-service ads manager (AXON) -- quietly launched</li>
+    <li>CEO: "last call, I laid out a list that I thought would take quarters, and our team knocked out most of that list in a single quarter"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Comparison to Meta</h3>
+  <ul>
+    <li>Meta is dominant incumbent in D2C web advertising; CEO: "it surprised us how much of the market Meta advertising was in the D2C space"</li>
+    <li>Key differences from Meta: (1) No persistent email identifier for exclusion targeting; (2) Full-screen ad format drives higher intent; (3) Faster conversion window (vast majority within 1-2 hours vs. Meta's longer attribution); (4) Fully automated targeting -- no manual audience overrides</li>
+    <li>CEO philosophy: "We don't allow gaming companies to use any sort of manual targeting in our platform...We bring the same view to this category"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Supply Dynamics</h3>
+</div>
+<div class="content-section">
+  <h3>MAX Marketplace</h3>
+  <ul>
+    <li><strong>Growth Rate:</strong> Double-digit, consistently; CEO: "the base platform, just the audience inside MAX, is growing swiftly, double-digit growth, so multiples greater than what you would expect when people try to size up the gaming market growth rates of 3% to 5%"</li>
+    <li><strong>Penetration:</strong> Very high; not growing primarily from taking mediation share; CEO: "we're not going to be able to grow it particularly quickly by taking more mediation from other platforms at this point"</li>
+    <li><strong>Revenue Model:</strong> (1) MAX fee on every transaction in the marketplace (including non-AppLovin bidders); (2) AppDiscovery DSP revenue when it wins inventory</li>
+    <li><strong>Ecosystem Dynamic:</strong> As marketing platforms improve, the whole marketplace grows; CEO: "The eyeballs playing games play more games every single day. Inventory goes up"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Future Supply Expansion</h3>
+  <ul>
+    <li>Not years away if demand broadens sufficiently; CEO: "I don't think it's going to be years down the road"</li>
+    <li>Could include: social networks, music apps, news apps, sports apps, websites</li>
+    <li>CEO: "There's absolutely no reason why we wouldn't want to plug into other properties"</li>
+    <li>Games represent only 10-15% of user time on mobile; CEO: "games are probably somewhere in the neighborhood of 10% to 15% of their time spent on mobile"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Paid Advertiser Acquisition Strategy (New)</h3>
+</div>
+<div class="content-section">
+  <h3>Timing and Approach</h3>
+  <ul>
+    <li><strong>When:</strong> After AXON platform is fully open in H1 2026; CEO: "Once AXON is fully open next year, we plan to begin paid marketing to recruit new advertisers"</li>
+    <li><strong>Channels:</strong> Own inventory (ads in games to small business owners), Facebook, LinkedIn, TikTok; CEO: "It's plausible that we will be using our own models to recruit advertisers off of our own inventory...You can imagine us running ads on Facebook, on LinkedIn, on TikTok"</li>
+    <li><strong>Philosophy:</strong> CEO: "we've got such a lucrative financial model...we believe that if we can automate the onboarding of advertiser flow from when an advertiser can find out about us from an ad all the way through to going live and then scaling on our platform, the model will be very lucrative on an LTV to CAC basis, and we won't have to staff up a large sales force"</li>
+    <li><strong>Unit Economics:</strong> Expect high LTV-to-CAC ratio given >80% EBITDA margins; CEO: "we won't have to staff up a large sales force"</li>
+    <li><strong>P&L Impact:</strong> Will appear in sales and marketing line; not expected to meaningfully compress margins given business scale; CEO: "I wouldn't expect you'll even see it in the margin number. It's just the business is way too big"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Referral Program (October 1, 2025)</h3>
+  <ul>
+    <li>No formal referral bonuses planned; CEO: "we don't think a ticket into our system is really worth paying for"</li>
+    <li>Existing clients expected to invite peers organically; CEO: "we think as we give them the capacity to invite their peers, they're going to do it on their own because the platform has been restrictive and exclusive for so long"</li>
+    <li>Expected to increase advertiser count "quite quickly"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Apple vs. Epic Lawsuit Impact</h3>
+  <ul>
+    <li><strong>No Impact Yet:</strong> CEO: "Not yet"; expects longer timeline than market anticipates</li>
+    <li><strong>Timeline:</strong> 2-4 quarters for some impact; 4-8 quarters for material pricing impact on AppLovin's platform; CEO: "I would guess it will probably take 2 to 4 quarters from some impact. And by 4 to 8 quarters, you're going to get pretty material impact in pricing on our platform"</li>
+    <li><strong>Mechanism:</strong> Largest gaming companies move slowly and operate cautiously around big platforms; CEO: "the biggest gaming companies tend to move really slowly and tend to operate in fear of the big platforms"</li>
+    <li><strong>Dynamic:</strong> Once leaders adopt, smaller/mid-sized developers will follow quickly, compounding benefit to ad platforms</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Revenue and EBITDA Historical Trend (14-Quarter History)</h3>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Quarter</th><th>Total Revenue</th><th>Advertising Rev</th><th>Apps Rev</th><th>Adj. EBITDA</th><th>EBITDA Margin</th><th>Adv EBITDA</th><th>Adv EBITDA Margin</th></tr></thead><tbody><tr><td>Q1 2022</td><td>$625M</td><td>$302M</td><td>~$323M</td><td>$222M</td><td>36%</td><td>~$178M</td><td>~59%</td></tr><tr><td>Q2 2022</td><td>$776M</td><td>$318M</td><td>$459M</td><td>$270M</td><td>35%</td><td>$197M</td><td>62%</td></tr><tr><td>Q3 2022</td><td>$713M</td><td>$307M</td><td>$407M</td><td>$258M</td><td>36%</td><td>$190M</td><td>62%</td></tr><tr><td>Q4 2022</td><td>$702M</td><td>$306M</td><td>$396M</td><td>$260M</td><td>37%</td><td>$186M</td><td>61%</td></tr><tr><td>Q1 2023</td><td>$715M</td><td>$355M</td><td>$361M</td><td>$274M</td><td>38%</td><td>$219M</td><td>62%</td></tr><tr><td>Q2 2023</td><td>$750M</td><td>$406M</td><td>$344M</td><td>$334M</td><td>44%</td><td>$273M</td><td>67%</td></tr><tr><td>Q3 2023</td><td>$864M</td><td>$504M</td><td>$360M</td><td>$420M</td><td>49%</td><td>$364M</td><td>72%</td></tr><tr><td>Q4 2023</td><td>$953M</td><td>$576M</td><td>$377M</td><td>$476M</td><td>50%</td><td>$420M</td><td>73%</td></tr><tr><td>Q1 2024</td><td>$1,060M</td><td>$678M</td><td>~$382M</td><td>$549M</td><td>52%</td><td>$492M</td><td>73%</td></tr><tr><td>Q2 2024</td><td>$1,080M</td><td>$711M</td><td>$369M</td><td>$601M</td><td>56%</td><td>$520M</td><td>73%</td></tr><tr><td>Q3 2024</td><td>$1,200M</td><td>$835M</td><td>$363M</td><td>$722M</td><td>60%</td><td>$653M</td><td>78%</td></tr><tr><td>Q4 2024</td><td>$1,373M</td><td>$999M</td><td>$373M</td><td>$848M</td><td>62%</td><td>$777M</td><td>78%</td></tr><tr><td>Q1 2025</td><td>$1,500M</td><td>$1,160M</td><td>~$340M</td><td>$1,000M</td><td>68%</td><td>$943M</td><td>81%</td></tr><tr><td><strong>Q2 2025</strong></td><td><strong>Disc. Ops</strong></td><td><strong>~$1,260M</strong></td><td><strong>Disc. Ops</strong></td><td><strong>Disc. Ops</strong></td><td><strong>N/A</strong></td><td><strong>$1,020M</strong></td><td><strong>81%</strong></td></tr></tbody></table> *Note: Starting Q2 2025, Apps business is reported as discontinued operations. Total/consolidated figures are no longer directly comparable.*</div>
+</div>
+<div class="content-section">
+  <h3>Key Sequential Comparisons (Q1 2025 to Q2 2025)</h3>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Q1 2025</th><th>Q2 2025</th><th>Change</th></tr></thead><tbody><tr><td>Advertising Revenue</td><td>$1,160M</td><td>~$1,260M</td><td>+8.6% QoQ</td></tr><tr><td>Advertising EBITDA</td><td>$943M</td><td>$1,020M</td><td>+8.2% QoQ</td></tr><tr><td>Advertising EBITDA Margin</td><td>81%</td><td>81%</td><td>Flat</td></tr><tr><td>Free Cash Flow</td><td>$826M</td><td>$768M</td><td>-7.0% QoQ</td></tr><tr><td>Cash & Equivalents</td><td>$551M</td><td>$1,200M</td><td>+$649M (includes $425M Apps sale)</td></tr><tr><td>WA Diluted Shares</td><td>338M (end of Q1)</td><td>342M (WA diluted)</td><td>See note</td></tr></tbody></table> *Note: Q1 2025 end-of-quarter share count was 338M. The Q2 2025 figure of 342M is weighted average diluted, reduced from 346M in Q4 2024.*</div>
+</div>
+<div class="content-section">
+  <h3>Key Year-over-Year Comparisons (Q2 2024 to Q2 2025)</h3>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Q2 2024</th><th>Q2 2025</th><th>YoY Change</th></tr></thead><tbody><tr><td>Advertising Revenue</td><td>$711M</td><td>~$1,260M</td><td>+77%</td></tr><tr><td>Advertising EBITDA</td><td>$520M</td><td>$1,020M</td><td>+96%</td></tr><tr><td>Advertising EBITDA Margin</td><td>73%</td><td>81%</td><td>+800bps</td></tr><tr><td>Free Cash Flow</td><td>~$447M*</td><td>$768M</td><td>+72%</td></tr></tbody></table> *Q2 2024 FCF estimated from YoY growth rate disclosed.*</div>
+</div>
+<div class="content-section">
+  <h3>Key Q&A Insights</h3>
+</div>
+<div class="content-section">
+  <h3>Paid Marketing Decision (Matthew Cost, Morgan Stanley)</h3>
+  <ul>
+    <li>CEO explained rationale for paid advertiser acquisition starting in 2026: small penetration, lucrative financial model, and strong performance marketing capabilities</li>
+    <li>CEO: "It's plausible that we will be using our own models to recruit advertisers off of our own inventory. There's plenty of moms with small businesses and dads with small businesses sitting in games, playing games all day that could use our platform to market themselves"</li>
+    <li>Key philosophy: automate the entire funnel from ad exposure to advertiser going live, making LTV-to-CAC highly attractive without large sales force</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Supply Growth Sources (Matthew Cost, Morgan Stanley)</h3>
+  <ul>
+    <li>Not primarily from mediation share gains (already very high penetration)</li>
+    <li>Growth from expanding audience/inventory within existing MAX marketplace</li>
+    <li>Double-digit growth in MAX audience base vs. 3-5% in-app purchasing gaming market growth</li>
+    <li>AppLovin benefits from being marketplace operator (MAX fee) plus DSP bidder</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Self-Serve Platform Impact (Ralph Schackart, William Blair)</h3>
+  <ul>
+    <li>CEO framed historical context: Q4 2024 saw huge ramp from e-commerce pilot recruitment; Q1 2025 saw full benefit of that run rate</li>
+    <li>Subsequent quarters constrained by deliberate onboarding pause while building tools (ads manager, dynamic product ads, attribution integrations, Shopify app)</li>
+    <li>Q4 2025 expected to see new inflection: existing cohort primed for holidays + new referral onboarding + international opening</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>E-Commerce Percentage of Revenue (Ralph Schackart, William Blair)</h3>
+  <ul>
+    <li>Roughly at 10% target for the year</li>
+    <li>May actually be declining as a percentage because gaming growth is so strong (30-40% YoY)</li>
+    <li>CEO expects substantial ramp in Q4 from holiday season, referral-based onboarding, and international expansion</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Game Engine Data / Unity (Omar Dessouky, BofA)</h3>
+  <ul>
+    <li>CEO dismissive of "game engine data" concept; AppLovin has behavioral data from being deeply integrated as publisher and advertiser within apps</li>
+    <li>Market penetration "materially higher than 70%" gives strong visibility into gaming category</li>
+    <li>Future expansion across categories will provide much richer cross-category consumer behavior data</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Referral Program Mechanics (Chris Kuntarich, UBS)</h3>
+  <ul>
+    <li>No referral bonuses planned; platform exclusivity itself is the perk</li>
+    <li>Not all waitlisted advertisers will be auto-admitted; still need an invite</li>
+    <li>Iterative approach to referral program mechanics</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q3 Guide Including Apps Divestiture Benefit (Chris Kuntarich, UBS)</h3>
+  <ul>
+    <li>CFO confirmed Q3 guide is "slightly different than kind of our typical cadence" by including benefit from divested studios becoming external advertisers</li>
+    <li>Incremental pickup in revenue beyond the 3-5% reinforcement learning baseline</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Model Parity Between Gaming and E-Commerce (Jason Bazinet, Citi)</h3>
+  <ul>
+    <li>Two architecturally distinct models (app-to-app store vs. app-to-website)</li>
+    <li>Gaming model benefits from years of data and very high market penetration</li>
+    <li>E-commerce model still early but showed immediate efficacy even with no prior category knowledge</li>
+    <li>Cross-category data flywheel is key: CEO: "every single quarter, you're going to have that flywheel effect"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Web Advertiser Feature Requests (Rob Sanderson, Loop Capital)</h3>
+  <ul>
+    <li>Advertisers want Meta-like targeting features (exclude existing customers, etc.)</li>
+    <li>AppLovin lacks persistent email identifier for exact exclusion matching</li>
+    <li>CEO pushes fully automated approach: no manual targeting overrides; same philosophy as gaming</li>
+    <li>CEO: "All these technologies in advertising are going to move to AI, automating most of this funnel in the future"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Self-Serve Readiness (Rob Sanderson, Loop Capital)</h3>
+  <ul>
+    <li>CEO: "last call, I laid out a list that I thought would take quarters, and our team knocked out most of that list in a single quarter"</li>
+    <li>Confidence to open platform driven by substantial growth from existing cohort and strong feedback</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Incremental Margins (Bernie McTernan, Needham)</h3>
+  <ul>
+    <li>New supply sources will be reported as net revenue; no margin compression</li>
+    <li>Paid advertiser acquisition will be a new cost line in sales & marketing, but tested and only deployed if unit economics prove out</li>
+    <li>CEO: "we're only going to spend the dollars on performance marketing if we're printing cash on the other side"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Customer Profile Changes (Clark Lampen, BTIG)</h3>
+  <ul>
+    <li>GMV threshold was raised to $100M+ this quarter to constrain onboarding</li>
+    <li>Goal is to serve any small business of any type; CEO: "any small business of any size be able to acquire customers profitably"</li>
+    <li>If referral phase proves model works for all business sizes, platform will open broadly</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Supply Expansion Beyond Gaming (Clark Lampen, BTIG)</h3>
+  <ul>
+    <li>CEO: "I don't think it's going to be years down the road"; could happen "pretty quickly" if demand broadens sufficiently</li>
+    <li>Potential supply: social networks, music apps, news apps, sports apps, websites</li>
+    <li>CEO: "There's absolutely no reason why we wouldn't want to plug into other properties"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Apple vs. Epic Impact (James Heaney, Jefferies)</h3>
+  <ul>
+    <li>No impact yet; 2-4 quarters for some impact, 4-8 quarters for material pricing impact</li>
+    <li>Largest gaming companies moving slowly; smaller ones will follow once leaders adopt</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Capital Allocation (James Heaney, Jefferies)</h3>
+  <ul>
+    <li>CFO: Very consistent with past approach -- organic investment first, then share buybacks</li>
+    <li>Free cash flow margin 60%+</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>International E-Commerce Sizing (Martin Yang, Oppenheimer)</h3>
+  <ul>
+    <li>U.S. vs. international roughly half-half for total advertising business</li>
+    <li>International e-commerce opening will be meaningful but won't immediately double the $1B run rate</li>
+    <li>Local market advertisers (Japan, Korea, etc.) will come over time, especially as platform opens and paid marketing begins</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>E-Commerce Attribution / Integration Challenges (Jim Callahan, Piper Sandler)</h3>
+  <ul>
+    <li>Web advertising space much more fragmented than mobile apps (which have 2 major MMPs)</li>
+    <li>Required building Shopify integration, attribution company integrations, and self-serve dashboard</li>
+    <li>CEO: "This was one of the bigger lifts that we had to go accomplish over the last quarter or 2"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Latent Advertiser Demand (Alec Brondolo, Wells Fargo)</h3>
+  <ul>
+    <li>Queue of advertisers built over the past year; not all will be auto-admitted</li>
+    <li>Referral approach expected to drive "multiples bigger" onboarding than prior manual curation</li>
+    <li>CEO: "our advertisers are going to cause an onboarding moment that will be multiples bigger than what we were manually curating"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Agentic Capabilities Timeline (Alec Brondolo, Wells Fargo)</h3>
+  <ul>
+    <li>Phase 1 (onboarding chatbot): expected at or near October 1 launch</li>
+    <li>Phase 2 (analysis agent): in development, more complex</li>
+    <li>Phase 3 (generative ad creative tools): enables small businesses to produce ads at large-brand quality; key for maximizing platform performance</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Seasonality Context for Upcoming Quarters</h3>
+  <ul>
+    <li><strong>Q3 2025 (Guided):</strong> Summer engagement boost for gaming; no e-commerce catalysts until October 1</li>
+    <li><strong>Q4 2025 (Key Inflection):</strong> Holiday season (strongest for both gaming and e-commerce); referral-based self-serve opening (October 1); international market expansion (October 1); CEO: "Q4 is going to end up being a fun quarter"</li>
+    <li><strong>H1 2026:</strong> Global public launch of AXON ads manager; paid marketing begins to recruit advertisers; CEO: "which will drive predictable compounding growth"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 2025 Actuals (Reported)</h3>
+</div>
+
+<div class="prior-ref" id="priorRef">
+  <div class="prior-ref-header" onclick="var b=document.getElementById('priorBody');b.classList.toggle('open');this.querySelector('.arrow').innerHTML=b.classList.contains('open')?'&#9650;':'&#9660;';">
+    Prior Quarter Reference: Q1 2025
+    <span class="arrow">&#9660;</span>
+  </div>
+  <div class="prior-ref-body" id="priorBody">
+    <div class="metric-grid">
+      <div class="prior-mini"><div class="pm-label">Apps Revenue</div><div class="pm-value">~$340M (implied from $1.5B total minus $1.16B advertising)</div></div>
+    </div>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q1_2025.html" style="color:var(--blue);">View full Q1 2025 detail &rarr;</a></p>
+  </div>
+</div>
+
+<div class="footer-nav">
+  <a href="Q1_2025.html">&larr; Q1 2025</a>
+  <a href="../comparison.html">Back to Overview</a>
+  <a href="Q3_2025.html">Q3 2025 &rarr;</a>
+</div>
+
+</body>
+</html>

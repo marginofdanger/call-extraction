@@ -319,6 +319,31 @@
     .comp-table th, .comp-table td { padding: 6px 8px; }
   }
 
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+  .content-section .md-table th {
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .content-section .md-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-section .md-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+  .content-section .md-table tr:hover { background: #e8f4fd; }
+
   @media print {
     .nav-bar { display: none; }
     .header { background: #333; }
@@ -338,6 +363,8 @@
   <a href="Q3_2022.html">&larr; Q3 2022</a>
   <div class="nav-center">
     <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>
     <a href="Q4_2025.html" class="qbtn">4Q25</a>
     <a href="Q3_2025.html" class="qbtn">3Q25</a>
     <a href="Q2_2025.html" class="qbtn">2Q25</a>

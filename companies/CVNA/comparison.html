@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carvana Metrics Evolution &mdash; 16-Quarter Comparison</title>
+<style>
+  :root {
+    --company-primary: #00AFF0;
+    --company-dark: #1a1a2e;
+    --company-accent: #006D9E;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); background: #fff; line-height: 1.6; max-width: 1200px; margin: 0 auto; padding: 0 24px 80px; }
+  .header { background: linear-gradient(135deg, var(--company-dark), var(--company-accent)); color: #fff; padding: 48px 40px; margin: 0 -24px 40px; border-bottom: 4px solid var(--company-primary); }
+  .header h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; }
+  .header .subtitle { font-size: 1.1rem; opacity: 0.85; font-weight: 300; }
+  .quarter-nav { background: var(--company-accent); border-radius: 8px; padding: 16px 20px; margin-bottom: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .quarter-nav .label { color: #fff; font-weight: 600; font-size: 0.85rem; margin-right: 8px; white-space: nowrap; }
+  .quarter-nav .year-group { display: flex; gap: 4px; align-items: center; }
+  .quarter-nav .year-label { color: rgba(255,255,255,0.5); font-size: 0.72rem; font-weight: 600; margin-right: 2px; letter-spacing: 0.5px; }
+  .quarter-nav a { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 4px 10px; font-size: 0.78rem; font-weight: 600; text-decoration: none; transition: all 0.15s; }
+  .quarter-nav a:hover { background: rgba(255,255,255,0.25); }
+  .quarter-nav a.overview-link { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.35); padding: 4px 14px; font-size: 0.82rem; margin-left: auto; }
+  .toc { background: var(--light-bg); border: 1px solid var(--border); border-radius: 8px; padding: 24px 32px; margin-bottom: 40px; columns: 2; column-gap: 40px; }
+  .toc h2 { font-size: 1.1rem; color: var(--company-accent); margin-bottom: 12px; column-span: all; }
+  .toc a { display: block; color: var(--blue); text-decoration: none; padding: 3px 0; font-size: 0.9rem; break-inside: avoid; }
+  .toc a:hover { text-decoration: underline; }
+  .section { margin-bottom: 48px; scroll-margin-top: 20px; }
+  .section h2 { font-size: 1.4rem; color: var(--company-dark); border-bottom: 3px solid var(--company-primary); padding-bottom: 8px; margin-bottom: 16px; }
+  .section h2 .num { display: inline-block; background: var(--company-primary); color: #fff; width: 28px; height: 28px; line-height: 28px; text-align: center; border-radius: 50%; font-size: 0.85rem; margin-right: 8px; vertical-align: middle; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 0.88rem; }
+  thead th { background: var(--company-accent); color: #fff; padding: 10px 12px; text-align: left; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
+  tbody td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tbody tr:nth-child(even) { background: var(--light-bg); }
+  tbody tr:hover { background: #eef2f7; }
+  .pos { color: var(--green); font-weight: 600; }
+  .neg { color: var(--red); font-weight: 600; }
+  .neutral { color: var(--amber); font-weight: 600; }
+  .raised { background: #eafaf1 !important; }
+  .lowered { background: #fef0ef !important; }
+  .bold { font-weight: 700; }
+  .muted { color: var(--text-muted); font-style: italic; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; vertical-align: middle; }
+  .tag-raised { background: #d5f5e3; color: #1e8449; }
+  .tag-lowered { background: #fadbd8; color: #c0392b; }
+  .tag-maintained { background: #fdebd0; color: #b9770e; }
+  .tag-new { background: #d6eaf8; color: #2471a3; }
+  .insight { background: linear-gradient(135deg, #fef9e7, #fdebd0); border-left: 4px solid var(--amber); padding: 14px 18px; margin: 16px 0; border-radius: 0 6px 6px 0; font-size: 0.9rem; }
+  .insight strong { color: var(--company-dark); }
+  .takeaways { counter-reset: takeaway; }
+  .takeaway { display: flex; gap: 16px; margin-bottom: 18px; padding: 14px 18px; background: var(--light-bg); border-radius: 8px; border: 1px solid var(--border); }
+  .takeaway-num { flex-shrink: 0; width: 32px; height: 32px; line-height: 32px; text-align: center; background: var(--company-primary); color: #fff; border-radius: 50%; font-weight: 700; font-size: 0.85rem; }
+  .takeaway-text { font-size: 0.92rem; }
+  .takeaway-text strong { color: var(--company-dark); }
+  .year-divider td { background: var(--company-accent) !important; color: #fff; font-weight: 700; font-size: 0.82rem; padding: 6px 12px; letter-spacing: 0.5px; }
+  @media (max-width: 768px) { .toc { columns: 1; } .header h1 { font-size: 1.6rem; } table { font-size: 0.8rem; } thead th, tbody td { padding: 6px 8px; } }
+  @media print { .header { background: #333; } .section { page-break-inside: avoid; } table { font-size: 0.75rem; } .quarter-nav { display: none; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Carvana Metrics Evolution</h1>
+  <div class="subtitle">16-Quarter Comparison &mdash; Q1 2022 through Q4 2025 (Call Dates: April 2022 &ndash; February 2026)</div>
+</div>
+
+<div class="quarter-nav" id="qnav">
+  <a href="../../index.html" style="background:rgba(255,255,255,0.15); color:#fff; font-weight:600; margin-right:12px; text-decoration:none; padding:4px 12px; border-radius:4px;">&#x2190; Portfolio</a>
+  <span class="label">Quarter detail:</span>
+  <div class="year-group"><span class="year-label">2025</span>
+    <a href="quarters/Q4_2025.html">Q4&rsquo;25</a><a href="quarters/Q3_2025.html">Q3&rsquo;25</a><a href="quarters/Q2_2025.html">Q2&rsquo;25</a><a href="quarters/Q1_2025.html">Q1&rsquo;25</a></div>
+  <div class="year-group"><span class="year-label">2024</span>
+    <a href="quarters/Q4_2024.html">Q4&rsquo;24</a><a href="quarters/Q3_2024.html">Q3&rsquo;24</a><a href="quarters/Q2_2024.html">Q2&rsquo;24</a><a href="quarters/Q1_2024.html">Q1&rsquo;24</a></div>
+  <div class="year-group"><span class="year-label">2023</span>
+    <a href="quarters/Q4_2023.html">Q4&rsquo;23</a><a href="quarters/Q3_2023.html">Q3&rsquo;23</a><a href="quarters/Q2_2023.html">Q2&rsquo;23</a><a href="quarters/Q1_2023.html">Q1&rsquo;23</a></div>
+  <div class="year-group"><span class="year-label">2022</span>
+    <a href="quarters/Q4_2022.html">Q4&rsquo;22</a><a href="quarters/Q3_2022.html">Q3&rsquo;22</a><a href="quarters/Q2_2022.html">Q2&rsquo;22</a><a href="quarters/Q1_2022.html">Q1&rsquo;22</a></div>
+  <a href="quarters/intermittent_kpis.html" class="overview-link">Intermittent KPIs &rarr;</a>
+  <a href="results.html" class="overview-link">Results Scorecard &rarr;</a>
+</div>
+
+<nav class="toc">
+  <h2>Table of Contents</h2>
+  <a href="#s1">1. Retail Unit Volume</a>
+  <a href="#s2">2. Revenue</a>
+  <a href="#s3">3. Non-GAAP Total GPU per Unit</a>
+  <a href="#s4">4. GPU Breakdown: Retail</a>
+  <a href="#s5">5. GPU Breakdown: Wholesale &amp; Other</a>
+  <a href="#s6">6. SGA per Unit</a>
+  <a href="#s7">7. Adjusted EBITDA</a>
+  <a href="#s8">8. Adjusted EBITDA Margin</a>
+  <a href="#s9">9. ADESA Integration &amp; IRC Capacity</a>
+  <a href="#s10">10. Logistics &amp; Delivery Speed</a>
+  <a href="#s11">11. Debt Restructuring &amp; Balance Sheet</a>
+  <a href="#s12">12. Customer Acquisition &amp; Self-Service</a>
+  <a href="#s13">13. Long-Term Targets</a>
+  <a href="#s14">14. Key Takeaways</a>
+</nav>
+
+<!-- ====== SECTION 1 ====== -->
+<div class="section" id="s1">
+  <h2><span class="num">1</span> Retail Unit Volume</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>Retail Units</th><th>YoY Growth</th><th>QoQ Change</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">2025 &mdash; SCALING &amp; RECORDS</td></tr>
+      <tr class="raised"><td>Q4 2025</td><td class="bold">163,522</td><td class="pos">+43%</td><td class="pos">+4.9%</td><td>All-time record; FY 2025: 596,641 (+43% YoY)</td></tr>
+      <tr class="raised"><td>Q3 2025</td><td>155,941</td><td class="pos">+44%</td><td class="pos">+8.8%</td><td>All-time record; guided &gt;150K, exceeded</td></tr>
+      <tr class="raised"><td>Q2 2025</td><td>143,280</td><td class="pos">+41%</td><td class="pos">+7.0%</td><td>All-time record; ~1.5% used market share</td></tr>
+      <tr class="raised"><td>Q1 2025</td><td>133,898</td><td class="pos bold">+45.7%</td><td class="pos">+17.1%</td><td>All-time record; massive Q1 step-up</td></tr>
+      <tr class="year-divider"><td colspan="5">2024 &mdash; PROFITABLE GROWTH</td></tr>
+      <tr class="raised"><td>Q4 2024</td><td>114,379</td><td class="pos bold">+50.3%</td><td class="pos">+5.3%</td><td>Massive beat; FY 2024: 416,348 (+33%)</td></tr>
+      <tr class="raised"><td>Q3 2024</td><td>108,651</td><td class="pos">+34%</td><td class="pos">+7.1%</td><td>New record; cumulative 2M+ cars sold</td></tr>
+      <tr class="raised"><td>Q2 2024</td><td>101,440</td><td class="pos">+32.5%</td><td class="pos">+10.4%</td><td>New record; first quarter above 100K again</td></tr>
+      <tr class="raised"><td>Q1 2024</td><td>91,878</td><td class="pos">+15.9%</td><td class="pos">+20.8%</td><td>Massive beat vs. &ldquo;slightly up YoY&rdquo; guidance</td></tr>
+      <tr class="year-divider"><td colspan="5">2023 &mdash; THE TURNAROUND</td></tr>
+      <tr><td>Q4 2023</td><td>76,090</td><td class="neg">&minus;12.5%</td><td class="neg">&minus;6.1%</td><td>FY 2023: 312,847 (&minus;24% YoY); seasonal Q4 dip</td></tr>
+      <tr><td>Q3 2023</td><td>80,987</td><td class="neg">&minus;21%</td><td class="pos">+5.8%</td><td>First sequential growth in 5 quarters</td></tr>
+      <tr class="lowered"><td>Q2 2023</td><td>76,530</td><td class="neg bold">&minus;35%</td><td class="neg">&minus;3.4%</td><td>Volume trough; but EBITDA turned positive</td></tr>
+      <tr><td>Q1 2023</td><td>79,240</td><td class="neg">&minus;25%</td><td class="neg">&minus;8.9%</td><td>Prioritizing unit economics over volume</td></tr>
+      <tr class="year-divider"><td colspan="5">2022 &mdash; NEAR-DEATH EXPERIENCE</td></tr>
+      <tr class="lowered"><td>Q4 2022</td><td>86,977</td><td class="neg">&minus;23%</td><td class="neg">&minus;15.2%</td><td>Going-concern fears; $291M EBITDA loss</td></tr>
+      <tr><td>Q3 2022</td><td>102,570</td><td class="neg">&minus;8%</td><td class="neg">&minus;12.7%</td><td>Industry shrinking; pivot to efficiency</td></tr>
+      <tr><td>Q2 2022</td><td>117,564</td><td>+9%</td><td class="pos">+11.8%</td><td>Last growth quarter before decline</td></tr>
+      <tr><td>Q1 2022</td><td>105,185</td><td>+14%</td><td>&mdash;</td><td>Pre-crisis; ADESA acquisition announced</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Retail units traced a V-shape from 105K (Q1 &rsquo;22) down to a 76K trough (Q2 &rsquo;23, &minus;35% YoY) then rebounded to 163K (Q4 &rsquo;25, +43% YoY). FY 2025 volume of 597K exceeded FY 2022&rsquo;s 412K by 45%, while EBITDA swung from &minus;$1B to +$2.2B. The reacceleration came with dramatically better unit economics, proving the turnaround was structural, not just cyclical.</div>
+</div>
+
+<!-- ====== SECTION 2 ====== -->
+<div class="section" id="s2">
+  <h2><span class="num">2</span> Revenue</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>Revenue</th><th>YoY Growth</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025</td></tr>
+      <tr class="raised"><td>Q4 2025</td><td class="bold">$5.603B</td><td class="pos">+58%</td><td>Run rate &gt;$20B; FY 2025 ~$20.3B</td></tr>
+      <tr class="raised"><td>Q3 2025</td><td>$5.647B</td><td class="pos bold">+55%</td><td>All-time record (Q4 slightly lower due to ASP mix)</td></tr>
+      <tr class="raised"><td>Q2 2025</td><td>$4.84B</td><td class="pos">+42%</td><td>All-time record at time</td></tr>
+      <tr class="raised"><td>Q1 2025</td><td>$4.232B</td><td class="pos">+38%</td><td>All-time record at time</td></tr>
+      <tr class="year-divider"><td colspan="4">2024</td></tr>
+      <tr><td>Q4 2024</td><td>$3.547B</td><td class="pos">+46%</td><td>FY 2024: $13.7B (+27%)</td></tr>
+      <tr><td>Q3 2024</td><td>$3.655B</td><td class="pos">+32%</td><td>Record at time</td></tr>
+      <tr><td>Q2 2024</td><td>$3.410B</td><td class="pos">+15%</td><td>Volume +32% offset by lower ASPs</td></tr>
+      <tr><td>Q1 2024</td><td>$3.061B</td><td class="pos">+18%</td><td>Return to YoY growth</td></tr>
+      <tr class="year-divider"><td colspan="4">2023</td></tr>
+      <tr><td>Q4 2023</td><td>$2.424B</td><td class="neg">&minus;15%</td><td>FY 2023: $10.8B (&minus;21%)</td></tr>
+      <tr><td>Q3 2023</td><td>$2.773B</td><td class="neg">&minus;18%</td><td>Improving trajectory</td></tr>
+      <tr class="lowered"><td>Q2 2023</td><td>$2.968B</td><td class="neg">&minus;24%</td><td>Revenue trough vs. YoY</td></tr>
+      <tr><td>Q1 2023</td><td>$2.6B</td><td class="neg">&minus;25%</td><td>Sacrificing volume for unit economics</td></tr>
+      <tr class="year-divider"><td colspan="4">2022</td></tr>
+      <tr><td>Q4 2022</td><td>$2.8B</td><td class="neg">&minus;24%</td><td>$847M goodwill impairment; FY: $13.6B</td></tr>
+      <tr><td>Q3 2022</td><td>$3.386B</td><td class="neg">&minus;3%</td><td>First YoY decline</td></tr>
+      <tr><td>Q2 2022</td><td>$3.884B</td><td>+16%</td><td>Peak pre-crisis quarterly revenue</td></tr>
+      <tr><td>Q1 2022</td><td>$3.497B</td><td>+56%</td><td>Strong pandemic tailwind still in effect</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Revenue traced an even sharper V than units: $3.9B (Q2 &rsquo;22) &rarr; $2.4B trough (Q4 &rsquo;23) &rarr; $5.6B record (Q3 &rsquo;25). FY 2025 revenue of ~$20.3B exceeded the FY 2022 peak of $13.6B by 49%. Revenue growth consistently outpaced unit growth in 2025 as ASPs and financing revenue scaled.</div>
+</div>
+
+<!-- ====== SECTION 3 ====== -->
+<div class="section" id="s3">
+  <h2><span class="num">3</span> Non-GAAP Total GPU per Unit</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>Total GPU</th><th>vs Prior Q</th><th>Guided</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">2025</td></tr>
+      <tr><td>Q4 2025</td><td class="muted">~$6,560*</td><td>&mdash;</td><td>Seasonal decline</td><td>*Implied from YoY deltas; elevated recon costs from new site ramp</td></tr>
+      <tr><td>Q3 2025</td><td class="muted">~$7,500*</td><td>&mdash;</td><td>&mdash;</td><td>*Implied; Other GPU at record; YoY deltas given vs. Q3 &rsquo;24</td></tr>
+      <tr><td>Q2 2025</td><td class="muted">~$7,580*</td><td>&mdash;</td><td>&mdash;</td><td>*Implied from YoY changes; ~$100/unit tariff pull-forward benefit</td></tr>
+      <tr><td>Q1 2025</td><td>$7,140</td><td class="pos">+$224</td><td>&mdash;</td><td>+$338 YoY; strong start to year</td></tr>
+      <tr class="year-divider"><td colspan="5">2024 &mdash; RECORD UNIT ECONOMICS</td></tr>
+      <tr><td>Q4 2024</td><td>$6,916</td><td class="neg">&minus;$769</td><td>Seasonal decline</td><td>+$1,186 YoY; seasonal as guided</td></tr>
+      <tr class="raised"><td>Q3 2024</td><td class="bold">~$7,685</td><td class="pos">+$341</td><td>&mdash;</td><td>~$250/unit nonrecurring tailwind in Other GPU</td></tr>
+      <tr class="raised"><td>Q2 2024</td><td class="pos bold">$7,344</td><td class="pos">+$542</td><td>&mdash;</td><td>All-time record; 6th consecutive new high</td></tr>
+      <tr class="raised"><td>Q1 2024</td><td>$6,802</td><td class="pos">+$1,072</td><td>&mdash;</td><td>+42% YoY; Q1 record</td></tr>
+      <tr class="year-divider"><td colspan="5">2023 &mdash; UNIT ECONOMICS REVOLUTION</td></tr>
+      <tr><td>Q4 2023</td><td>$5,730</td><td class="neg">&minus;$666</td><td>&gt;$5,000</td><td>Beat; seasonal decline expected</td></tr>
+      <tr><td>Q3 2023</td><td>$6,396</td><td class="neg">&minus;$634</td><td>&gt;$5,000</td><td>Beat; Q3 record; ~$500/unit nonrecurring</td></tr>
+      <tr class="raised"><td>Q2 2023</td><td class="pos bold">$7,030</td><td class="pos">+$2,234</td><td>&gt;$5,000</td><td>All-time record; ~$900/unit nonrecurring; underlying ~$6,130</td></tr>
+      <tr class="raised"><td>Q1 2023</td><td>$4,796</td><td class="pos">+$2,129</td><td>&mdash;</td><td>Q1 company best; +79% QoQ</td></tr>
+      <tr class="year-divider"><td colspan="5">2022 &mdash; DETERIORATION</td></tr>
+      <tr class="lowered"><td>Q4 2022</td><td class="neg">$2,667</td><td class="neg">&minus;$833</td><td>&mdash;</td><td>Includes inventory allowance + Ally timing; trough</td></tr>
+      <tr><td>Q3 2022</td><td>$3,500</td><td class="pos">+$132</td><td>&mdash;</td><td>Modest improvement; costs still elevated</td></tr>
+      <tr><td>Q2 2022</td><td>$3,368</td><td class="pos">+$535</td><td>&gt;$4,000 (FY)</td><td>Improving but below target</td></tr>
+      <tr><td>Q1 2022</td><td>$2,833</td><td>&mdash;</td><td>&gt;$4,000 (FY)</td><td>&minus;$823 YoY; pandemic costs + rate shock</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Total GPU nearly tripled from a $2,667 trough (Q4 &rsquo;22) to a $7,344 record (Q2 &rsquo;24). The improvement was structural: ~$2,000/unit came from fundamental gains in variable costs and gross profit. Management signaled the majority of future GPU gains will be &ldquo;passed to customers&rdquo; via lower prices, prioritizing volume growth over further GPU expansion &mdash; a strategic pivot that powered the 40%+ unit growth in 2025.</div>
+</div>
+
+<!-- ====== SECTION 4 ====== -->
+<div class="section" id="s4">
+  <h2><span class="num">4</span> GPU Breakdown: Retail</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>Retail GPU</th><th>vs Prior Q</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025</td></tr>
+      <tr><td>Q4 2025</td><td class="muted">~$3,076*</td><td>&mdash;</td><td>&minus;$255 YoY; elevated recon costs from rapid site openings; $220/car improvement potential</td></tr>
+      <tr><td>Q3 2025</td><td class="muted">~$3,540*</td><td>&mdash;</td><td>&minus;$77 YoY; stable at high levels</td></tr>
+      <tr><td>Q2 2025</td><td class="muted">~$3,734*</td><td>&mdash;</td><td>+$195 YoY; tariff demand pull-forward helped</td></tr>
+      <tr><td>Q1 2025</td><td>$3,308</td><td class="neg">&minus;$23</td><td>+$97 YoY; stable</td></tr>
+      <tr class="year-divider"><td colspan="4">2024</td></tr>
+      <tr><td>Q4 2024</td><td>$3,331</td><td class="neg">&minus;$286</td><td>Seasonal decline as guided</td></tr>
+      <tr class="raised"><td>Q3 2024</td><td class="pos bold">$3,617</td><td class="pos">+$78</td><td>All-time record; 6th consecutive new high</td></tr>
+      <tr class="raised"><td>Q2 2024</td><td>$3,539</td><td class="pos">+$328</td><td>All-time record</td></tr>
+      <tr class="raised"><td>Q1 2024</td><td>$3,211</td><td class="pos">+$241</td><td>All-time record; guided &ldquo;similar to Q4 with upside&rdquo;</td></tr>
+      <tr class="year-divider"><td colspan="4">2023</td></tr>
+      <tr class="raised"><td>Q4 2023</td><td class="pos bold">$2,970</td><td class="pos">+$93</td><td>New company record</td></tr>
+      <tr><td>Q3 2023</td><td>$2,877</td><td class="pos">+$15</td><td>Stable at high level</td></tr>
+      <tr class="raised"><td>Q2 2023</td><td>$2,862</td><td class="pos">+$1,271</td><td>Breakthrough quarter; inventory optimization</td></tr>
+      <tr><td>Q1 2023</td><td>$1,591</td><td class="pos">+$959</td><td>Sharp improvement; faster turn times</td></tr>
+      <tr class="year-divider"><td colspan="4">2022</td></tr>
+      <tr class="lowered"><td>Q4 2022</td><td class="neg">$632</td><td class="neg">&minus;$499</td><td>Inventory allowance charge; near-zero underlying</td></tr>
+      <tr><td>Q3 2022</td><td>$1,131</td><td>Flat</td><td>Stabilized but weak</td></tr>
+      <tr><td>Q2 2022</td><td>$1,131</td><td class="pos">+$323</td><td>Early improvement</td></tr>
+      <tr><td>Q1 2022</td><td>$808</td><td>&mdash;</td><td>&minus;$403 YoY; depreciation on high-cost inventory</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Retail GPU improved from $632 (Q4 &rsquo;22) to $3,617 (Q3 &rsquo;24) &mdash; a 5.7x increase driven by faster inventory turns, lower recon costs, and better sourcing. The Q4 2025 dip (&minus;$255 YoY) reflects elevated costs from rapidly opening 34 reconditioning locations (+40% in 2025). Management estimates a $220/car improvement opportunity as new sites mature.</div>
+</div>
+
+<!-- ====== SECTION 5 ====== -->
+<div class="section" id="s5">
+  <h2><span class="num">5</span> GPU Breakdown: Wholesale &amp; Other</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>Wholesale GPU</th><th>Other GPU</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025</td></tr>
+      <tr><td>Q4 2025</td><td class="muted">&minus;$148 YoY</td><td class="muted">+$49 YoY</td><td>Wholesale softer; Other (finance) at elevated levels</td></tr>
+      <tr><td>Q3 2025</td><td class="muted">&minus;$168 YoY</td><td class="muted">+$63 YoY (record)</td><td>Gain-on-sale strengthening; wholesale spread tightening</td></tr>
+      <tr><td>Q2 2025</td><td class="muted">&minus;$85 YoY</td><td class="muted">+$126 YoY</td><td>New loan sale partnerships expanding; $14B committed capacity</td></tr>
+      <tr><td>Q1 2025</td><td>$964</td><td>$2,868</td><td>Gain on loan sales $273M (+90% YoY)</td></tr>
+      <tr class="year-divider"><td colspan="4">2024</td></tr>
+      <tr><td>Q4 2024</td><td>$857</td><td>$2,728</td><td>Wholesale seasonal softness</td></tr>
+      <tr><td>Q3 2024</td><td>$1,123</td><td>$2,945</td><td>~$250/unit nonrecurring in Other</td></tr>
+      <tr><td>Q2 2024</td><td>$1,104</td><td>$2,701</td><td>Strong finance GPU; industry spread widening</td></tr>
+      <tr><td>Q1 2024</td><td>$1,153</td><td>$2,438</td><td>Both exceeding guided levels</td></tr>
+      <tr class="year-divider"><td colspan="4">2023</td></tr>
+      <tr><td>Q4 2023</td><td>$881</td><td>$1,879</td><td>Wholesale marketplace: 208K units (+16%)</td></tr>
+      <tr><td>Q3 2023</td><td>$951</td><td>$2,568</td><td>Other GPU volatile; excess loan sales</td></tr>
+      <tr class="raised"><td>Q2 2023</td><td>$1,228</td><td class="pos bold">$2,940</td><td>Record Other GPU; ~$650/unit nonrecurring loan sales</td></tr>
+      <tr class="raised"><td>Q1 2023</td><td class="pos bold">$1,236</td><td>$1,969</td><td>Wholesale record; guided &gt;$1,000</td></tr>
+      <tr class="year-divider"><td colspan="4">2022</td></tr>
+      <tr><td>Q4 2022</td><td>$552</td><td>$1,483</td><td>Ally timing shift &minus;$483/unit</td></tr>
+      <tr><td>Q3 2022</td><td>$448</td><td>$1,921</td><td>Wholesale improving with ADESA</td></tr>
+      <tr><td>Q2 2022</td><td>$383</td><td>$1,854</td><td>ADESA just closed; early integration</td></tr>
+      <tr><td>Q1 2022</td><td>$219</td><td>$1,806</td><td>Pre-ADESA wholesale capability</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Wholesale GPU benefited dramatically from ADESA ($219 pre-acquisition &rarr; $1,236 peak) but has since settled around $900&ndash;$1,100 as used car spreads normalized. Other GPU (primarily finance) became the largest GPU component, driven by expanding loan sale partnerships ($18B committed capacity by Q4 &rsquo;25) and rising gain-on-sale margins. The finance GPU trajectory is increasingly important as it scales with unit volume.</div>
+</div>
+
+<!-- ====== SECTION 6 ====== -->
+<div class="section" id="s6">
+  <h2><span class="num">6</span> SGA per Unit</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>SGA ($M)</th><th>SGA/Unit</th><th>YoY &Delta;</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">2025</td></tr>
+      <tr><td>Q4 2025</td><td class="muted">~$560*</td><td class="muted">~$3,437*</td><td class="pos">&minus;$340</td><td>Continued leverage at scale</td></tr>
+      <tr><td>Q3 2025</td><td class="muted">~$530*</td><td class="muted">~$3,417*</td><td class="pos">&minus;$319</td><td>Operating leverage accelerating</td></tr>
+      <tr><td>Q2 2025</td><td class="muted">~$490*</td><td class="muted">~$3,385*</td><td class="pos">&minus;$460</td><td>Largest YoY improvement in dataset</td></tr>
+      <tr><td>Q1 2025</td><td>$468M</td><td>$3,495</td><td class="pos bold">&minus;$750</td><td>&minus;18% YoY; enormous operating leverage</td></tr>
+      <tr class="year-divider"><td colspan="5">2024</td></tr>
+      <tr><td>Q4 2024</td><td>$432M</td><td>$3,777</td><td class="pos">&minus;$1,165</td><td>FY 2024 operating leverage enormous</td></tr>
+      <tr><td>Q3 2024</td><td>$406M</td><td>$3,736</td><td class="pos">&minus;$832</td><td>Continued improvement</td></tr>
+      <tr><td>Q2 2024</td><td>$390M</td><td>$3,845</td><td class="pos bold">&minus;$1,160</td><td>Flat dollar SGA with +33% volume = massive leverage</td></tr>
+      <tr><td>Q1 2024</td><td class="muted">~$390M</td><td>$4,245</td><td class="pos">&minus;$850</td><td>&minus;17% YoY</td></tr>
+      <tr class="year-divider"><td colspan="5">2023</td></tr>
+      <tr><td>Q4 2023</td><td>$376M</td><td>$4,942</td><td class="pos">&minus;$900+</td><td>Operational SGA down ~$900/unit since Q4 &rsquo;22</td></tr>
+      <tr><td>Q3 2023</td><td class="muted">~$355M</td><td class="muted">~$4,570</td><td>&mdash;</td><td>&minus;$30M QoQ</td></tr>
+      <tr><td>Q2 2023</td><td class="muted">~$385M</td><td class="muted">~$5,005</td><td>&mdash;</td><td>&minus;$21M QoQ; ad spend &minus;64% YoY</td></tr>
+      <tr><td>Q1 2023</td><td>$405M</td><td class="muted">~$5,095</td><td>&mdash;</td><td>&minus;$119M QoQ; &gt;$900/unit improvement</td></tr>
+      <tr class="year-divider"><td colspan="5">2022</td></tr>
+      <tr class="lowered"><td>Q4 2022</td><td class="muted">~$520M</td><td class="muted">~$5,840</td><td>&mdash;</td><td>$4,000 stretch goal not met</td></tr>
+      <tr><td>Q3 2022</td><td class="muted">~$580M</td><td class="muted">~$5,500</td><td>&mdash;</td><td>&minus;$89M QoQ</td></tr>
+      <tr class="lowered"><td>Q2 2022</td><td class="muted">~$635M</td><td>$5,400</td><td>&mdash;</td><td>&minus;$850 QoQ; first efficiency gains</td></tr>
+      <tr class="lowered"><td>Q1 2022</td><td class="muted">~$660M</td><td class="neg bold">~$6,250</td><td>&mdash;</td><td>Peak SGA/unit; pandemic-era overspending</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> SGA/unit declined from ~$6,250 (Q1 &rsquo;22) to ~$3,400 (Q2&ndash;Q4 &rsquo;25) &mdash; a ~45% reduction &mdash; while absolute dollar SGA increased only ~$200M/year even as units nearly doubled. This demonstrates enormous operating leverage: Carvana&rsquo;s infrastructure (technology platform, logistics network, reconditioning capacity) can absorb 40%+ volume growth with minimal incremental fixed cost. Management has maintained this is &ldquo;still very early&rdquo; in the leverage opportunity.</div>
+</div>
+
+<!-- ====== SECTION 7 ====== -->
+<div class="section" id="s7">
+  <h2><span class="num">7</span> Adjusted EBITDA</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>Adj. EBITDA</th><th>QoQ &Delta;</th><th>Guided</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">2025 &mdash; EBITDA RECORDS EVERY QUARTER</td></tr>
+      <tr><td>Q4 2025</td><td class="bold">$511M</td><td class="neg">&minus;$126M</td><td>At/above $2.2B FY</td><td>Q4 record; seasonal dip; FY 2025 ~$2.2B+</td></tr>
+      <tr class="raised"><td>Q3 2025</td><td class="pos bold">$637M</td><td class="pos">+$36M</td><td>FY $2.0&ndash;$2.2B</td><td>All-time record; guided FY raised to &ldquo;at/above high end&rdquo;</td></tr>
+      <tr class="raised"><td>Q2 2025</td><td>$601M</td><td class="pos">+$113M</td><td>&mdash;</td><td>All-time record; first explicit FY guidance: $2.0&ndash;$2.2B</td></tr>
+      <tr class="raised"><td>Q1 2025</td><td>$488M</td><td class="pos">+$129M</td><td>Seq. increase</td><td>All-time record; annualized ~$2B run rate</td></tr>
+      <tr class="year-divider"><td colspan="5">2024</td></tr>
+      <tr><td>Q4 2024</td><td>$359M</td><td class="neg">&minus;$70M</td><td>&ldquo;Significantly above $1.2B&rdquo; FY</td><td>Q4 record; FY 2024: $1,378M (3x FY 2023)</td></tr>
+      <tr class="raised"><td>Q3 2024</td><td class="pos bold">$429M</td><td class="pos">+$74M</td><td>&mdash;</td><td>All-time record; FY guidance raised to &ldquo;significantly above $1.2B&rdquo;</td></tr>
+      <tr class="raised"><td>Q2 2024</td><td>$355M</td><td class="pos">+$120M</td><td>&mdash;</td><td>All-time record; first explicit FY guidance: $1.0&ndash;$1.2B</td></tr>
+      <tr class="raised"><td>Q1 2024</td><td>$235M</td><td class="pos">+$175M</td><td>&ldquo;Significantly above $100M&rdquo;</td><td>All-time record; massive beat; ~$1B annualized</td></tr>
+      <tr class="year-divider"><td colspan="5">2023 &mdash; FROM NEGATIVE TO POSITIVE</td></tr>
+      <tr><td>Q4 2023</td><td>$60M</td><td class="neg">&minus;$88M</td><td>Positive, below Q2/Q3</td><td>Q4 record; seasonal; FY 2023: $339M</td></tr>
+      <tr><td>Q3 2023</td><td>$148M</td><td class="neg">&minus;$7M</td><td>Positive</td><td>Q3 record; ~$40M nonrecurring; underlying ~$108M</td></tr>
+      <tr class="raised"><td>Q2 2023</td><td class="pos bold">$155M</td><td class="pos">+$179M</td><td>Positive expected</td><td><span class="tag tag-new">FIRST POSITIVE</span> Step 1 complete; ~$70M nonrecurring</td></tr>
+      <tr><td>Q1 2023</td><td class="neg">&minus;$24M</td><td class="pos">+$267M</td><td>&ldquo;Significantly improved&rdquo;</td><td>&minus;0.9% margin; approaching breakeven</td></tr>
+      <tr class="year-divider"><td colspan="5">2022 &mdash; CRISIS</td></tr>
+      <tr class="lowered"><td>Q4 2022</td><td class="neg bold">&minus;$291M</td><td>&mdash;</td><td>&mdash;</td><td>Worst quarter; going-concern fears</td></tr>
+      <tr class="lowered"><td>Q3 2022</td><td class="muted">~&minus;$200M</td><td>&mdash;</td><td>&mdash;</td><td>&minus;5.9% margin</td></tr>
+      <tr class="lowered"><td>Q2 2022</td><td class="muted">~&minus;$241M</td><td>&mdash;</td><td>&mdash;</td><td>&minus;6.2% margin; first efficiency pivot</td></tr>
+      <tr class="lowered"><td>Q1 2022</td><td class="muted">~&minus;$406M</td><td>&mdash;</td><td>&mdash;</td><td>&minus;11.6% margin; ADESA pending</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Adjusted EBITDA swung from approximately &minus;$1B (FY 2022) to +$339M (FY 2023) to +$1,378M (FY 2024) to ~+$2,237M (FY 2025). That&rsquo;s a ~$3.2B swing in 3 years &mdash; one of the most dramatic profitability turnarounds in public market history. The inflection point was Q2 2023, when Carvana posted its first positive EBITDA quarter, completing Step 1 of the three-step plan.</div>
+</div>
+
+<!-- ====== SECTION 8 ====== -->
+<div class="section" id="s8">
+  <h2><span class="num">8</span> Adjusted EBITDA Margin</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>EBITDA Margin</th><th>QoQ &Delta;</th><th>Long-Term Target</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025</td></tr>
+      <tr><td>Q4 2025</td><td>9.1%</td><td class="neg">&minus;220 bps</td><td rowspan="4" style="vertical-align:middle;">13.5% (5&ndash;10 year target)</td></tr>
+      <tr><td>Q3 2025</td><td>11.3%</td><td class="neg">&minus;110 bps</td></tr>
+      <tr class="raised"><td>Q2 2025</td><td class="pos bold">12.4%</td><td class="pos">+90 bps</td></tr>
+      <tr><td>Q1 2025</td><td>11.5%</td><td class="pos">+140 bps</td></tr>
+      <tr class="year-divider"><td colspan="4">2024</td></tr>
+      <tr><td>Q4 2024</td><td>10.1%</td><td class="neg">&minus;160 bps</td><td rowspan="4" style="vertical-align:middle;">High end of 8%&ndash;13.5%</td></tr>
+      <tr class="raised"><td>Q3 2024</td><td class="pos bold">11.7%</td><td class="pos">+130 bps</td></tr>
+      <tr class="raised"><td>Q2 2024</td><td>10.4%</td><td class="pos">+270 bps</td></tr>
+      <tr><td>Q1 2024</td><td>7.7%</td><td class="pos">+520 bps</td></tr>
+      <tr class="year-divider"><td colspan="4">2023</td></tr>
+      <tr><td>Q4 2023</td><td>2.5%</td><td class="neg">&minus;280 bps</td><td rowspan="4" style="vertical-align:middle;">8%&ndash;13.5% (introduced)</td></tr>
+      <tr><td>Q3 2023</td><td>5.3%</td><td class="pos">+10 bps</td></tr>
+      <tr class="raised"><td>Q2 2023</td><td class="pos">5.2%</td><td class="pos">+610 bps</td></tr>
+      <tr><td>Q1 2023</td><td class="neg">&minus;0.9%</td><td class="pos">+920 bps</td></tr>
+      <tr class="year-divider"><td colspan="4">2022</td></tr>
+      <tr class="lowered"><td>Q4 2022</td><td class="neg bold">&minus;10.1%</td><td>&mdash;</td><td>EBITDA breakeven</td></tr>
+      <tr class="lowered"><td>Q3 2022</td><td class="neg">&minus;5.9%</td><td>&mdash;</td><td>&mdash;</td></tr>
+      <tr class="lowered"><td>Q2 2022</td><td class="neg">&minus;6.2%</td><td>&mdash;</td><td>&mdash;</td></tr>
+      <tr class="lowered"><td>Q1 2022</td><td class="neg bold">&minus;11.6%</td><td>&mdash;</td><td>&mdash;</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> EBITDA margin improved from &minus;11.6% to 12.4% &mdash; a 2,400 bps swing &mdash; while the long-term target evolved from &ldquo;EBITDA breakeven&rdquo; (2022) to 13.5% (2025). Q2 2025&rsquo;s 12.4% margin approached the 13.5% long-term target at only ~1.5% market share, suggesting significant room to expand both volume and margins simultaneously. Incremental EBITDA margin was &gt;17% in H1 2025, indicating each incremental sale is materially more profitable.</div>
+</div>
+
+<!-- ====== SECTION 9 ====== -->
+<div class="section" id="s9">
+  <h2><span class="num">9</span> ADESA Integration &amp; IRC Capacity</h2>
+  <table>
+    <thead><tr><th>Period</th><th>Sites Integrated</th><th>Total Locations</th><th>IRC Capacity</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">2025</td></tr>
+      <tr><td>Q4 2025</td><td>10 in FY 2025</td><td>34 recon locations (+40%)</td><td>&gt;1M units/year</td><td>Full ADESA buildout CapEx &ldquo;a little higher&rdquo; than ~$1B; 74 total sites, 27 dual-capable</td></tr>
+      <tr><td>Q3 2025</td><td>15 over 18 months</td><td>74 total sites</td><td>&gt;1M</td><td>40% of Phoenix customers get same/next day</td></tr>
+      <tr><td>Q2 2025</td><td>12 cumulative</td><td>&mdash;</td><td>Carvana &lt;50%; ADESA &lt;50%</td><td>Enormous headroom; both Carvana and ADESA sites under half utilized</td></tr>
+      <tr><td>Q1 2025</td><td>~10</td><td>~23 producing</td><td>&mdash;</td><td>~80 units/week increase over 12 months; expect ~60 producing locations over time</td></tr>
+      <tr class="year-divider"><td colspan="5">2024</td></tr>
+      <tr><td>Q4 2024</td><td>6 cumulative</td><td>&mdash;</td><td>&gt;1M built</td><td>Plan ~10 more in 2025; ~90 days per site conversion</td></tr>
+      <tr><td>Q3 2024</td><td>5 of 56</td><td>&mdash;</td><td>Physical real estate for &gt;3M units/year</td><td>Buffalo + Portland + KC mega completed; minimal CapEx per site</td></tr>
+      <tr><td>Q2 2024</td><td>2 (Buffalo, Portland)</td><td>&mdash;</td><td>&gt;1M built</td><td>KC &ldquo;megasite&rdquo; next</td></tr>
+      <tr><td>Q1 2024</td><td>1 (Buffalo)</td><td>&mdash;</td><td>&gt;1M built</td><td>30 of 56 sites with last-mile logistics; first ADESA IRC conversion complete</td></tr>
+      <tr class="year-divider"><td colspan="5">2023</td></tr>
+      <tr><td>Q3 2023</td><td>0 conversions yet</td><td>56 ADESA sites</td><td>~3x current volume</td><td>~$1,000/unit recon + inbound cost reduction over 12 months</td></tr>
+      <tr><td>Q2 2023</td><td>0</td><td>56 sites</td><td>IRC utilization ~25%</td><td>Debt restructuring taking priority over ADESA buildout</td></tr>
+      <tr><td>Q1 2023</td><td>0</td><td>56 sites</td><td>&mdash;</td><td>Inventory down 55% YoY; focus on efficiency not expansion</td></tr>
+      <tr class="year-divider"><td colspan="5">2022</td></tr>
+      <tr><td>Q3&ndash;Q4 2022</td><td>Integration paused</td><td>56 sites</td><td>~1.2M at full utilization</td><td>75% of wholesale cars landing at ADESA; 18 market ops hubs</td></tr>
+      <tr><td>Q2 2022</td><td><span class="tag tag-new">Closed May 9</span></td><td>56 sites acquired</td><td>Long-term ~2M units</td><td>~$1B investment to unlock full capacity; recon &gt;500 cars/week at ADESA sites</td></tr>
+      <tr><td>Q1 2022</td><td>Pending close</td><td>&mdash;</td><td>~1.4M by year-end 2022</td><td>$3.275B total acquisition financing</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> ADESA went from a near-fatal over-leveraged acquisition (2022) to Carvana&rsquo;s most strategic asset. With 74 total sites (27 dual-capable for reconditioning), physical real estate for &gt;3M units/year, and current IRC utilization still below 50%, ADESA provides the infrastructure backbone for Carvana&rsquo;s 3M-unit long-term target &mdash; at minimal incremental CapEx (~90 days, low cost per site conversion). Only 15 of 56 sites have been integrated through Q3 2025, meaning the majority of the value is still ahead.</div>
+</div>
+
+<!-- ====== SECTION 10 ====== -->
+<div class="section" id="s10">
+  <h2><span class="num">10</span> Logistics &amp; Delivery Speed</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>Logistics Efficiency</th><th>Delivery Speed</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="3">2025</td></tr>
+      <tr><td>Q4 2025</td><td>Title/reg: ~99% on-time completion; shipping fees reduced ~$60/customer</td><td>Sebastian AI chatbot central to customer experience</td></tr>
+      <tr><td>Q3 2025</td><td>Inbound transport miles &minus;20% YoY</td><td>Same/next day: 40% of Phoenix customers; ~10% nationwide</td></tr>
+      <tr><td>Q2 2025</td><td>Inventory selection +50% YoY</td><td>Self-service: 30% buyers, 60% sellers</td></tr>
+      <tr><td>Q1 2025</td><td>Franchise dealership acquired for delivery network</td><td>Continued speed improvements</td></tr>
+      <tr class="year-divider"><td colspan="3">2024</td></tr>
+      <tr><td>Q4 2024</td><td>6 ADESA sites with last-mile logistics</td><td>Same-day: 35% of U.S. population has access</td></tr>
+      <tr><td>Q3 2024</td><td>Average delivery time &minus;25% YoY</td><td>3P retail marketplace expanding</td></tr>
+      <tr><td>Q1 2024</td><td>30 of 56 sites with last-mile logistics</td><td>Average 13 days on website before purchase (near all-time low)</td></tr>
+      <tr class="year-divider"><td colspan="3">2023</td></tr>
+      <tr><td>Q4 2023</td><td>Outbound miles &minus;30% YoY; inbound &minus;20% fewer miles</td><td>Same-day delivery in 11 markets</td></tr>
+      <tr><td>Q3 2023</td><td>Non-vehicle COGS + ops &minus;$1,000/unit in 2 quarters</td><td>Calls per sale &minus;33% YoY; sales per advocate 2x YoY</td></tr>
+      <tr><td>Q2 2023</td><td>Activity pairing 1 in 3 (vs. 1 in 14 a year ago)</td><td>Recon capacity &gt;500/week at ADESA sites</td></tr>
+      <tr class="year-divider"><td colspan="3">2022</td></tr>
+      <tr><td>Q4 2022</td><td>Delivery distance &minus;25% since early 2022; customer care time &minus;40%</td><td>Vending machine pickup 40% of customers</td></tr>
+      <tr><td>Q3 2022</td><td>Logistics utilization +8% QoQ; shipping miles &minus;10% QoQ</td><td>Approaching pre-pandemic delivery speed</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Logistics efficiency compounded relentlessly: delivery distance &minus;25% (2022), inbound miles &minus;20% (2023), delivery time &minus;25% (2024), and same-day coverage expanding to 40% of Phoenix customers (2025). The activity pairing improvement (1 in 14 &rarr; 1 in 3) means drivers handle more pickups and deliveries per route. Self-service adoption (30% of buyers, 60% of sellers completing without human contact) is reducing customer acquisition costs toward the industry-leading low $300s for oldest cohorts.</div>
+</div>
+
+<!-- ====== SECTION 11 ====== -->
+<div class="section" id="s11">
+  <h2><span class="num">11</span> Debt Restructuring &amp; Balance Sheet</h2>
+  <table>
+    <thead><tr><th>Period</th><th>Key Action</th><th>Impact</th><th>Balance Sheet</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025 &mdash; DELEVERAGING</td></tr>
+      <tr class="raised"><td>Q4 2025</td><td>$709M corporate notes retired in FY 2025; $559M remaining 2028 notes retired in Q3</td><td>Net Debt/EBITDA: <span class="pos bold">1.3x</span></td><td>Cash $2.3B; equity $1.375B+; operating ROA &gt;20%</td></tr>
+      <tr><td>Q3 2025</td><td>$559M 2028 notes retired (funded by $539M ATM equity)</td><td>Net Debt/EBITDA: 1.5x; total $1.2B retired in 2024&ndash;2025</td><td>Cash &gt;$2.1B</td></tr>
+      <tr><td>Q1 2025</td><td>PIK interest: $72M (&minus;$70M YoY); cash interest: $139M (&minus;$34M YoY)</td><td>Meaningful interest expense step-down beginning</td><td>Cash $1.858B</td></tr>
+      <tr class="year-divider"><td colspan="4">2024 &mdash; EQUITY REBUILDING</td></tr>
+      <tr><td>Q4 2024</td><td>$120M 2028 note retirement; $924M ATM equity raise</td><td>Total stockholders&rsquo; equity: $1,375M (vs. &minus;$384M a year ago)</td><td>Cash $1.716B; EBITDA/Interest &gt;2.0x</td></tr>
+      <tr><td>Q3 2024</td><td>$100M additional 2028 note repurchase</td><td>Cumulative $350M retired since Q2</td><td>Cash $871M</td></tr>
+      <tr class="raised"><td>Q2 2024</td><td>$250M 2028 note repurchase; $350M equity raise</td><td>Total equity turned positive at $115M</td><td>First time positive equity since 2022</td></tr>
+      <tr><td>Q1 2024</td><td>EBITDA exceeded CapEx + interest ($235M vs. $191M)</td><td><span class="tag tag-new">Cash generation milestone</span></td><td>Free cash flow positive</td></tr>
+      <tr class="year-divider"><td colspan="4">2023 &mdash; RESTRUCTURING</td></tr>
+      <tr class="raised"><td>Q2&ndash;Q3 2023</td><td>Debt restructuring: 96.4% participation; &gt;$5.2B unsecured exchanged for new secured notes</td><td>&gt;$1.325B face value reduction; &gt;$455M/year cash interest savings for 2 years</td><td>$350M equity raise ($125M Garcia family)</td></tr>
+      <tr><td>Q1 2023</td><td>$1B annualized cost reduction completed</td><td>Approaching EBITDA breakeven</td><td>Liquidity ~$3.5B; $1.2B excess loan receivables</td></tr>
+      <tr class="year-divider"><td colspan="4">2022 &mdash; EXISTENTIAL CRISIS</td></tr>
+      <tr class="lowered"><td>Q4 2022</td><td>$847M goodwill impairment; going-concern questions</td><td>~$600M annual interest + ~$100M CapEx = ~$700M annual cash burn</td><td>Liquidity ~$4.4B but declining</td></tr>
+      <tr class="lowered"><td>Q2 2022</td><td>ADESA acquisition financed: $2.275B unsecured notes + $1B preferred + $1B equity</td><td>Interest expense ~$150M/quarter</td><td>Heavily leveraged</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Carvana&rsquo;s balance sheet went from existential crisis (going-concern questions, $847M goodwill impairment, ~$600M annual interest) to investment-grade-adjacent metrics (Net Debt/EBITDA 1.3x, EBITDA/Interest &gt;2.0x, operating ROA &gt;20%) in just 3 years. The 2023 debt restructuring (&gt;$1.3B face value reduction, &gt;$455M/year interest savings) was the critical catalyst, buying time for the operational turnaround to deliver. Total corporate debt retired in 2024&ndash;2025: $1.2B.</div>
+</div>
+
+<!-- ====== SECTION 12 ====== -->
+<div class="section" id="s12">
+  <h2><span class="num">12</span> Customer Acquisition &amp; Self-Service</h2>
+  <table>
+    <thead><tr><th>Period</th><th>CAC / Marketing</th><th>Self-Service / AI</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="3">2025</td></tr>
+      <tr><td>Q3&ndash;Q4 2025</td><td>Ad spend increasing with volume (+$12M+ QoQ steps); market share ~1.6%</td><td>Sebastian AI chatbot; 30% of buyers, 60% of sellers self-service; customer interest rate reduced ~1pp vs. benchmark</td></tr>
+      <tr><td>Q1 2025</td><td>$468M SGA supporting 134K units</td><td>TAM reference expanded to 56M (40M used + 16M new)</td></tr>
+      <tr class="year-divider"><td colspan="3">2024</td></tr>
+      <tr><td>Q3 2024</td><td>Ad spend +$5&ndash;$10M vs. Q3; investing in growth</td><td>Average 13 days on website before purchase (near all-time low)</td></tr>
+      <tr class="year-divider"><td colspan="3">2023</td></tr>
+      <tr><td>Q1 2023</td><td class="pos bold">~$700 CAC (lowest ever); oldest cohort low $300s; ad spend &minus;64% YoY</td><td>AI/deterministic pricing highlighted; vertically integrated data</td></tr>
+      <tr class="year-divider"><td colspan="3">2022</td></tr>
+      <tr><td>Q2 2022</td><td>Marketing budget cut ~15% QoQ; efficiency pivoting</td><td>Vending machine pickup 40% of customers</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Carvana achieved its lowest-ever CAC (~$700, oldest cohort $300s) during the trough (Q1 &rsquo;23) when ad spend was cut 64% YoY. This proved that organic demand / brand awareness could sustain volume even with minimal marketing. As spending has increased to support 40%+ unit growth, the company is investing in self-service (30% buyers, 60% sellers) and AI (Sebastian chatbot) to keep per-unit customer-facing costs declining even as volume scales.</div>
+</div>
+
+<!-- ====== SECTION 13 ====== -->
+<div class="section" id="s13">
+  <h2><span class="num">13</span> Long-Term Targets</h2>
+  <table>
+    <thead><tr><th>Period</th><th>Target</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="3">2025 &mdash; CURRENT FRAMEWORK</td></tr>
+      <tr class="raised"><td>Q1 2025 onward</td><td class="bold">3 million annual retail units at 13.5% EBITDA margin (5&ndash;10 year horizon)</td><td>~600K in FY 2025 (~1.6% share); 56M TAM (40M used + 16M new); requires ~80&ndash;180 units/week ramp depending on timeline</td></tr>
+      <tr><td>Q2 2025</td><td>FY 2025 EBITDA: $2.0&ndash;$2.2B</td><td class="pos">Delivered at/above high end (~$2.2B+)</td></tr>
+      <tr class="year-divider"><td colspan="3">2024</td></tr>
+      <tr><td>Q3 2024</td><td>FY 2024 EBITDA: &ldquo;significantly above $1.2B&rdquo; (raised from $1.0&ndash;$1.2B)</td><td class="pos">Delivered $1,378M</td></tr>
+      <tr><td>Q2 2024</td><td>FY 2024 EBITDA: $1.0&ndash;$1.2B (first explicit $-guidance)</td><td class="pos">Beat top end by 15%</td></tr>
+      <tr><td>Q4 2023&ndash;Q1 2024</td><td>High end of 8%&ndash;13.5% EBITDA margin range</td><td class="pos">Reached 12.4% in Q2 &rsquo;25</td></tr>
+      <tr class="year-divider"><td colspan="3">2023</td></tr>
+      <tr><td>Q2 2023</td><td>8%&ndash;13.5% long-term EBITDA margin range introduced</td><td class="pos">Operating within range by Q1 &rsquo;24</td></tr>
+      <tr><td>Q1 2023</td><td>&gt;$5,000 Total GPU; positive EBITDA by Q2</td><td class="pos">Delivered: $7,030 GPU, $155M EBITDA in Q2</td></tr>
+      <tr class="year-divider"><td colspan="3">2022</td></tr>
+      <tr><td>Q4 2022</td><td>Three-step plan: (1) EBITDA breakeven, (2) positive unit economics/FCF, (3) return to growth</td><td class="pos">All three steps completed by Q1 2024</td></tr>
+      <tr><td>Q1&ndash;Q2 2022</td><td>&gt;$4,000 GPU; ~EBITDA breakeven (pushed back); become largest/most profitable auto retailer</td><td>GPU achieved by Q1 &rsquo;23; EBITDA by Q2 &rsquo;23</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Carvana has met or exceeded every long-term target it has set: $4,000 GPU (exceeded 2x), EBITDA breakeven (exceeded 10x), $1.0&ndash;$1.2B FY EBITDA (beat by 15%), and $2.0&ndash;$2.2B FY EBITDA (delivered at high end). The 3M-unit / 13.5%-margin target introduced in Q1 2025 implies ~$120B+ revenue and ~$16B+ EBITDA at maturity. With 56M TAM (including new vehicles) and ~1.6% current share, the addressable market provides ample runway.</div>
+</div>
+
+<!-- ====== SECTION 14 ====== -->
+<div class="section" id="s14">
+  <h2><span class="num">14</span> Key Takeaways</h2>
+  <div class="takeaways">
+
+    <div class="takeaway">
+      <div class="takeaway-num">1</div>
+      <div class="takeaway-text"><strong>The most dramatic corporate turnaround in recent memory.</strong> Carvana went from going-concern questions and &minus;$1B EBITDA (2022) to +$2.2B EBITDA and investment-grade-adjacent leverage ratios (2025) in just 3 years. The three-step plan (breakeven &rarr; positive unit economics &rarr; profitable growth) was executed with remarkable precision.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">2</div>
+      <div class="takeaway-text"><strong>Unit economics improved structurally, not cyclically.</strong> Total GPU went from $2,667 (Q4 &rsquo;22 trough) to $7,344 (Q2 &rsquo;24 record) &mdash; a $4,677/unit improvement driven by faster inventory turns, lower recon costs, ADESA wholesale integration, and expanding finance GPU. Even as GPU has moderated to ~$6,500&ndash;$7,500, it remains 2&ndash;3x pre-crisis levels.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">3</div>
+      <div class="takeaway-text"><strong>SGA leverage is the compounding engine.</strong> SGA/unit declined ~45% from ~$6,250 to ~$3,400 while absolute SGA barely grew. This is operating leverage in its purest form: the technology platform, logistics network, and ADESA infrastructure absorb 40%+ volume growth with minimal incremental fixed cost.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">4</div>
+      <div class="takeaway-text"><strong>ADESA transformed from liability to strategic moat.</strong> The 2022 acquisition nearly bankrupted Carvana. By 2025, ADESA provides 74 sites, physical real estate for &gt;3M units/year, and the reconditioning backbone for the 3M-unit long-term target. Only 15 of 56 sites have been integrated, meaning the majority of the value is still ahead. Utilization at integrated sites is still below 50%.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">5</div>
+      <div class="takeaway-text"><strong>Volume reaccelerated to 40%+ growth with better economics.</strong> Retail units went from a 76K trough (Q2 &rsquo;23) to 164K (Q4 &rsquo;25) &mdash; more than doubling &mdash; while maintaining &gt;$6,500 Total GPU and &gt;10% EBITDA margins. FY 2025 volume of 597K exceeded the FY 2022 pre-crisis peak of 412K by 45%.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">6</div>
+      <div class="takeaway-text"><strong>The debt restructuring bought critical time.</strong> The 2023 restructuring (&gt;$1.3B face value reduction, &gt;$455M/year interest savings) prevented bankruptcy and gave the operational improvements time to compound. Net Debt/EBITDA improved from near-infinite (negative EBITDA) to 1.3x. Total corporate debt retired in 2024&ndash;2025: $1.2B.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">7</div>
+      <div class="takeaway-text"><strong>Every financial target has been met or exceeded.</strong> $4,000 GPU: achieved (actually $7,344). EBITDA breakeven: achieved ($155M first positive quarter). $1.0&ndash;$1.2B FY EBITDA: delivered $1.4B. $2.0&ndash;$2.2B FY EBITDA: delivered at high end. This track record lends credibility to the 3M-unit / 13.5%-margin long-term target.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">8</div>
+      <div class="takeaway-text"><strong>Finance GPU is the underappreciated growth driver.</strong> Other GPU (primarily gain on loan sales) grew from ~$1,500/unit to ~$2,900/unit, becoming the largest GPU component. With $18B in committed loan purchase capacity and expanding partnerships, finance GPU scales automatically with unit volume and is structurally higher-margin than retail GPU.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">9</div>
+      <div class="takeaway-text"><strong>~1.6% market share against a 56M-unit TAM.</strong> Carvana now includes new vehicles in its addressable market (40M used + 16M new = 56M), implying the 3M-unit target represents only ~5.4% share. At current growth rates of 40%+, Carvana could reach 3M units well within the 5&ndash;10 year timeframe, assuming continued ADESA site conversions and production ramp.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">10</div>
+      <div class="takeaway-text"><strong>Incremental EBITDA margin exceeds 17%.</strong> This metric, disclosed in Q2 2025, reveals that each additional dollar of revenue generates &gt;17 cents of incremental EBITDA. Combined with the massive SGA leverage and expanding infrastructure, it suggests EBITDA margins should continue rising toward the 13.5% long-term target as volume scales.</div>
+    </div>
+
+  </div>
+</div>
+
+<footer style="text-align:center; padding:32px 0; border-top:2px solid var(--border); margin-top:60px; color:var(--text-muted); font-size:0.82rem;">
+  <strong>Metrics Tracker</strong> &mdash; Data from Carvana earnings call transcripts, Q1 2022 &ndash; Q4 2025<br>
+  GPU and SGA figures are Non-GAAP; EBITDA is Adjusted EBITDA
+</footer>
+
+</body>
+</html>

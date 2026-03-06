@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AMZN Q2 2023 Earnings Call Detail</title>
+<style>
+:root {
+    --company-primary: #FF9900;
+    --company-dark: #232F3E;
+    --company-accent: #146EB4;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 40px 40px 32px;
+    margin: 0 -24px 0;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .header .meta {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    font-weight: 300;
+  }
+  .header .meta span { margin-right: 24px; }
+
+  .nav-bar {
+    background: var(--company-accent);
+    margin: 0 -24px 32px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    transition: all 0.15s;
+  }
+  .nav-bar a:hover { background: rgba(255,255,255,0.2); }
+  .nav-bar a.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .nav-center {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-center a.qbtn {
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+  }
+  .nav-center a.qbtn.current {
+    background: var(--company-primary);
+    border-color: var(--company-primary);
+  }
+  .nav-center a.qbtn:hover { background: rgba(255,255,255,0.2); }
+  .nav-back {
+    background: rgba(255,255,255,0.15) !important;
+    border-color: rgba(255,255,255,0.35) !important;
+  }
+
+  .metrics-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .metric {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+  .metric-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .metric-value {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+  .metric-delta {
+    font-size: 0.72rem;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+  .delta-up { color: var(--green); }
+  .delta-down { color: var(--red); }
+  .delta-flat { color: var(--text-muted); }
+
+  .changes-box {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 5px solid var(--amber);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .changes-box h3 {
+    font-size: 1rem;
+    color: var(--company-dark);
+    margin-bottom: 10px;
+  }
+  .changes-box ul { list-style: none; padding: 0; }
+  .changes-box li {
+    padding: 5px 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .change-tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .ct-raised { background: #d5f5e3; color: #1e8449; }
+  .ct-lowered { background: #fadbd8; color: #c0392b; }
+  .ct-changed { background: #d6eaf8; color: #2471a3; }
+  .ct-new { background: #e8daef; color: #6c3483; }
+  .ct-maintained { background: #fdebd0; color: #b9770e; }
+
+  .content-section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .content-section h3 {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .content-section ul {
+    padding: 14px 18px 14px 36px;
+    margin: 0;
+  }
+  .content-section li {
+    padding: 3px 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .content-section li strong { color: var(--company-dark); }
+
+  .prior-ref {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 40px;
+    overflow: hidden;
+  }
+  .prior-ref-header {
+    background: var(--light-bg);
+    padding: 12px 18px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--company-dark);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .prior-ref-header:hover { background: #eef2f7; }
+  .prior-ref-body { padding: 18px; display: none; }
+  .prior-ref-body.open { display: block; }
+  .prior-ref-body .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .prior-mini {
+    background: var(--light-bg);
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .prior-mini .pm-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .prior-mini .pm-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border);
+  }
+  .footer-nav a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .footer-nav a:hover { text-decoration: underline; }
+
+  /* Comparison page styles */
+  .toc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .toc a {
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 4px 0;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  .comp-section {
+    margin-bottom: 40px;
+  }
+  .comp-section h2 {
+    font-size: 1.2rem;
+    color: var(--company-dark);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--company-primary);
+  }
+
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+  }
+  .comp-table th {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .comp-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .comp-table tr:nth-child(even) { background: var(--light-bg); }
+  .comp-table tr:hover { background: #e8f4fd; }
+
+  @media (max-width: 768px) {
+    .header h1 { font-size: 1.5rem; }
+    .metrics-card { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .nav-center { display: none; }
+    body { padding: 0 16px 60px; }
+    .header { margin: 0 -16px 0; padding: 28px 24px 20px; }
+    .nav-bar { margin: 0 -16px 24px; }
+    .toc { grid-template-columns: 1fr; }
+    .comp-table { font-size: 0.78rem; }
+    .comp-table th, .comp-table td { padding: 6px 8px; }
+  }
+
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+  .content-section .md-table th {
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .content-section .md-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-section .md-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+  .content-section .md-table tr:hover { background: #e8f4fd; }
+
+  @media print {
+    .nav-bar { display: none; }
+    .header { background: #333; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>AMZN Q2 2023 Earnings Call</h1>
+  <div class="meta">
+    <span>Call Date: August 3, 2023</span>
+    <span>Reporting: Q2 2023</span>
+  </div>
+</div>
+<div class="nav-bar">
+  <a href="Q1_2023.html">&larr; Q1 2023</a>
+  <div class="nav-center">
+    <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>
+    <a href="Q4_2025.html" class="qbtn">4Q25</a>
+    <a href="Q3_2025.html" class="qbtn">3Q25</a>
+    <a href="Q2_2025.html" class="qbtn">2Q25</a>
+    <a href="Q1_2025.html" class="qbtn">1Q25</a>
+    <a href="Q4_2024.html" class="qbtn">4Q24</a>
+    <a href="Q3_2024.html" class="qbtn">3Q24</a>
+    <a href="Q2_2024.html" class="qbtn">2Q24</a>
+    <a href="Q1_2024.html" class="qbtn">1Q24</a>
+    <a href="Q4_2023.html" class="qbtn">4Q23</a>
+    <a href="Q3_2023.html" class="qbtn">3Q23</a>
+    <a href="Q2_2023.html" class="qbtn current">2Q23</a>
+    <a href="Q1_2023.html" class="qbtn">1Q23</a>
+    <a href="Q4_2022.html" class="qbtn">4Q22</a>
+    <a href="Q3_2022.html" class="qbtn">3Q22</a>
+    <a href="Q2_2022.html" class="qbtn">2Q22</a>
+    <a href="Q1_2022.html" class="qbtn">1Q22</a>
+  </div>
+  <a href="Q3_2023.html">Q3 2023 &rarr;</a>
+</div>
+
+<div class="changes-box">
+  <h3>What Changed vs Q1 2023</h3>
+  <ul>
+    <li><span class="change-tag ct-raised">Raised</span> Operating Margin midpoint up 0.8 ppts (4.2% vs 3.5%)</li>
+  </ul>
+</div>
+
+<div class="metrics-card">
+  <div class="metric" style="grid-column: 1 / -1; background: linear-gradient(135deg, var(--company-dark), var(--company-accent)); color: #fff; border: none; padding: 8px 14px;">
+    <div class="metric-label" style="color: rgba(255,255,255,0.7);">Guidance For</div>
+    <div class="metric-value" style="color: #fff; font-size: 1rem;">Q3 2023</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Advertising Revenue</div>
+    <div class="metric-value">$10.7B</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Operating Margin</div>
+    <div class="metric-value">5.7%</div>
+    <div class="metric-delta delta-flat">Prior: 3.7%</div>
+  </div>
+</div>
+
+<!-- Full Guidance Content -->
+<div class="content-section">
+  <h3>Quarterly Guidance (Q3 2023)</h3>
+</div>
+<div class="content-section">
+  <h3>Key Guidance Assumptions & Commentary</h3>
+  <ul>
+    <li>Revenue trends incorporate order trends seen to date and appropriate assumptions</li>
+    <li>Guidance incorporates FX, macro uncertainty, customer demand, and geopolitical conditions</li>
+    <li>Assumes no additional business acquisitions, restructurings, or legal settlements</li>
+    <li>Q3 2022 included Prime Day (July 12-13, 2022); Q3 2023 also includes Prime Day (July 11-12, 2023), so events are comparable in timing</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Capital Investment Outlook (Full Year 2023)</h3>
+</div>
+<div class="content-section">
+  <h3>North America Margin Recovery Outlook</h3>
+  <ul>
+    <li><strong>Q2 2023 North America Operating Margin:</strong> 3.9%</li>
+    <li><strong>Margin Trajectory (since Q1 2022 trough):</strong> - Q1 2022: -2.3% -> Q2 2022: -0.8% -> Q3 2022: -0.5% -> Q4 2022: -0.3% -> Q1 2023: 1.2% -> <strong>Q2 2023: 3.9%</strong> - Total improvement: +620 bps over 5 quarters</li>
+    <li><strong>CEO Forward View:</strong> "I continue to believe... I do believe that we'll get back to margins like what we had pre-COVID. And I don't think that's the end of what's possible for us there"</li>
+    <li>Pre-COVID reference margin: ~4%-6% range (per CFO in prior quarter)</li>
+    <li>Same-day facility expansion expected to be margin-accretive (lower cost fulfillment mechanism)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Prior Quarter Guidance vs. Actuals Comparison</h3>
+</div>
+<div class="content-section">
+  <h3>Q2 2023 Guidance (Given in Q1 2023 Call) vs. Actuals</h3>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Guidance Range</th><th>Actual</th><th>Result</th></tr></thead><tbody><tr><td>Net Sales</td><td>$127.0B - $133.0B</td><td>$134.4B</td><td><strong>Beat -- above top end of range</strong></td></tr><tr><td>Implied YoY Growth</td><td>+5% to +10%</td><td>+11%</td><td><strong>Beat</strong></td></tr><tr><td>FX Impact on Revenue</td><td>~30 bps unfavorable</td><td>~Negligible</td><td><strong>In line / slight positive</strong></td></tr><tr><td>Operating Income</td><td>$2.0B - $5.5B</td><td>$7.7B</td><td><strong>Beat -- well above top end</strong></td></tr><tr><td>AWS Growth (April ~500 bps below Q1 guided)</td><td>~11% run rate</td><td>12% for full Q2</td><td><strong>Beat / Stabilized</strong></td></tr><tr><td>CapEx (FY 2023 guided lower than $59B)</td><td>Lower than $59B</td><td>Q2 at $11.5B (H1 at $25.7B, annualizes to ~$51B)</td><td><strong>On track</strong></td></tr></tbody></table></div>
+</div>
+<div class="content-section">
+  <h3>Consolidated</h3>
+  <ul>
+    <li><strong>Total Net Sales:</strong> $134.4B (+11% YoY reported; +11% YoY ex-FX)</li>
+    <li><strong>Net Sales vs. Guidance:</strong> <strong>Beat -- above top end</strong> of $127.0B-$133.0B guidance range</li>
+    <li><strong>FX Impact on Revenue:</strong> Approximately flat (~30 bps guided; negligible actual impact)</li>
+    <li><strong>Operating Income:</strong> $7.7B (+132% YoY reported; +128% YoY ex-FX)</li>
+    <li><strong>Operating Income vs. Guidance:</strong> <strong>Beat -- above top end</strong> of $2.0B-$5.5B guidance range (massive beat)</li>
+    <li><strong>FX Impact on Operating Income:</strong> $104M favorable (vs. $165M in Q2 2022)</li>
+    <li><strong>Operating Margin:</strong> 5.7% (vs. 2.7% in Q2 2022; vs. 3.7% in Q1 2023; <strong>significant improvement</strong>)</li>
+    <li><strong>Operating Margin (TTM):</strong> 3.3% (vs. 3.1% TTM in Q2 2022)</li>
+    <li><strong>Net Income:</strong> $6.75B (vs. -$2.03B net loss in Q2 2022; <strong>swing to profitability</strong>)</li>
+    <li><strong>EPS (Basic):</strong> $0.66 (vs. -$0.20 in Q2 2022)</li>
+    <li><strong>EPS (Diluted):</strong> $0.65 (vs. -$0.20 in Q2 2022)</li>
+    <li><strong>Income Tax Expense:</strong> $804M (vs. $637M benefit in Q2 2022)</li>
+    <li><strong>Net Product Sales:</strong> $59.0B (+4% YoY; vs. $56.6B in Q2 2022)</li>
+    <li><strong>Net Service Sales:</strong> $75.4B (+17% YoY; vs. $64.7B in Q2 2022)</li>
+    <li><strong>Total Operating Expenses:</strong> $126.7B (+7% YoY; vs. $117.9B in Q2 2022)</li>
+    <li><strong>Cost of Sales:</strong> $69.4B (+4% YoY; vs. $66.4B in Q2 2022)</li>
+    <li><strong>Fulfillment:</strong> $21.3B (+5% YoY; vs. $20.3B in Q2 2022)</li>
+    <li><strong>Technology and Infrastructure:</strong> $21.9B (+21% YoY; vs. $18.1B in Q2 2022)</li>
+    <li><strong>Sales and Marketing:</strong> $10.7B (+7% YoY; vs. $10.1B in Q2 2022)</li>
+    <li><strong>General and Administrative:</strong> $3.2B (+10% YoY; vs. $2.9B in Q2 2022)</li>
+    <li><strong>Other Operating Expense (Income), Net:</strong> $146M (vs. $90M in Q2 2022)</li>
+    <li><strong>Stock-Based Compensation:</strong> $7.1B (+37% YoY; vs. $5.2B in Q2 2022)</li>
+    <li><strong>Interest Income:</strong> $661M (vs. $159M in Q2 2022)</li>
+    <li><strong>Interest Expense:</strong> $840M (vs. $584M in Q2 2022)</li>
+    <li><strong>Other Income (Expense), Net:</strong> $61M (vs. -$5.5B in Q2 2022; Rivian losses in prior year)</li>
+    <li><strong>Total Non-Operating Expense:</strong> -$118M (vs. -$5.97B in Q2 2022)</li>
+    <li><strong>Depreciation & Amortization:</strong> $11.6B (+19% YoY; vs. $9.7B in Q2 2022)</li>
+    <li><strong>Comprehensive Income:</strong> $7.0B (vs. -$4.4B in Q2 2022)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Revenue by Category</h3>
+  <ul>
+    <li><strong>Online Stores:</strong> $53.0B (+4% YoY reported; +5% ex-FX)</li>
+    <li><strong>Physical Stores:</strong> $5.0B (+6% YoY reported; +7% ex-FX)</li>
+    <li><strong>Third-Party Seller Services:</strong> $32.3B (+18% YoY reported; +18% ex-FX)</li>
+    <li><strong>Subscription Services:</strong> $9.9B (+14% YoY reported; +14% ex-FX)</li>
+    <li><strong>Advertising Services:</strong> $10.7B (+22% YoY reported; +22% ex-FX)</li>
+    <li><strong>AWS:</strong> $22.1B (+12% YoY reported; +12% ex-FX)</li>
+    <li><strong>Other:</strong> $1.3B (+26% YoY reported; +26% ex-FX)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Segment Results</h3>
+  <ul>
+    <li><strong>Net Sales:</strong> $82.5B (+11% YoY reported; +11% ex-FX)</li>
+    <li><strong>Operating Income:</strong> $3.2B (vs. -$627M loss in Q2 2022; <strong>swing to profitability, 5th consecutive quarter of improvement</strong>)</li>
+    <li><strong>Operating Margin:</strong> 3.9% (vs. -0.8% in Q2 2022; vs. 1.2% in Q1 2023; <strong>+620 bps improvement over 5 quarters since Q1 2022 trough</strong>)</li>
+    <li><strong>Net Sales Mix:</strong> 61% of consolidated</li>
+    <li><strong>Context:</strong> CFO noted 5 consecutive quarters of operating margin improvement since Q1 2022 trough of -2.3%; margin of 3.9% approaching pre-COVID levels</li>
+    <li><strong>Net Sales:</strong> $29.7B (+10% YoY reported; +10% ex-FX)</li>
+    <li><strong>Operating Loss:</strong> -$895M (vs. -$1.77B loss in Q2 2022; loss narrowed 49% YoY)</li>
+    <li><strong>FX Impact on Operating Income:</strong> $32M favorable (vs. -$231M unfavorable in Q2 2022)</li>
+    <li><strong>Operating Margin:</strong> -3.0% (vs. -6.5% in Q2 2022; vs. -4.3% in Q1 2023; <strong>3 consecutive quarters of improvement, +590 bps since Q3 2022 trough</strong>)</li>
+    <li><strong>Net Sales Mix:</strong> 22% of consolidated</li>
+    <li><strong>Commentary:</strong> Launched more than 10 countries in the past 6 years; took 9 years to reach profitability in the U.S.</li>
+    <li><strong>Net Sales:</strong> $22.1B (+12% YoY reported; +12% ex-FX)</li>
+    <li><strong>Annualized Sales Run Rate:</strong> ~$88B</li>
+    <li><strong>Operating Income:</strong> $5.4B (-6% YoY reported; -6% ex-FX)</li>
+    <li><strong>FX Impact on Operating Income:</strong> $79M favorable (vs. $335M in Q2 2022)</li>
+    <li><strong>Operating Margin:</strong> 24.2% (vs. 29.0% in Q2 2022; vs. 24.0% in Q1 2023; roughly flat sequentially)</li>
+    <li><strong>Net Sales Mix:</strong> 17% of consolidated</li>
+    <li><strong>AWS Growth Trajectory:</strong> 40% (Q4'21) -> 37% (Q1'22) -> 33% (Q2'22) -> 28% (Q3'22) -> 20% (Q4'22) -> 16% (Q1'23) -> <strong>12% (Q2'23; stabilized)</strong></li>
+    <li><strong>Key Commentary:</strong> CFO said growth rates "stabilized during Q2"; April was running ~500 bps lower than Q1 (as disclosed on prior call), implying deceleration stopped mid-quarter and stabilized/recovered</li>
+    <li><strong>AWS TTM Revenue:</strong> $85.4B (+19% YoY)</li>
+    <li><strong>AWS TTM Operating Income:</strong> $21.1B (-6% YoY)</li>
+    <li><strong>AWS TTM Operating Margin:</strong> 24.7% (vs. 31.1% TTM in Q2 2022)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Third-Party Sellers</h3>
+  <ul>
+    <li><strong>3P Seller Unit Mix:</strong> 60% of total WW paid units (<strong>highest level ever</strong>; vs. 57% in Q2 2022; vs. 59% in Q1 2023)</li>
+    <li><strong>Commentary:</strong> Continuing to see good growth in number of sellers and units sold per seller</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Worldwide Shipping & Units</h3>
+  <ul>
+    <li><strong>WW Shipping Costs (Q2 2023):</strong> $20.4B (+6% YoY; vs. $19.3B in Q2 2022)</li>
+    <li><strong>WW Paid Units Growth:</strong> +9% YoY (vs. +1% in Q2 2022; <strong>significant acceleration</strong>)</li>
+    <li><strong>WW Seller Unit Mix:</strong> 60% (vs. 57% in Q2 2022)</li>
+    <li><strong>Commentary:</strong> Shipping costs and fulfillment costs growing at a slower pace than unit growth; key cost improvement driver</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Delivery Speed</h3>
+  <ul>
+    <li><strong>Same/Next-Day Delivery:</strong> More than half of Prime members' orders across top 60 largest U.S. metro areas arrived same day or next day</li>
+    <li><strong>Same/Next-Day Volume (2023 YTD):</strong> More than 1.8 billion units to U.S. Prime members same or next day (nearly 4x the rate at this point in 2019)</li>
+    <li><strong>Regionalization Impact:</strong> 20% reduction in number of touches per delivered package; 19% reduction in miles traveled; 1,000+ bps increase in deliveries fulfilled within region (now at 76%)</li>
+    <li><strong>Same-Day Facilities:</strong> Planning to double the number of same-day facilities; currently in largest U.S. metro areas with top-moving 100,000 SKUs plus millions from nearby FC injection; items from order to delivery-ready in as little as 11 minutes</li>
+    <li><strong>Selection:</strong> More than 300 million items with U.S. Prime free shipping, including tens of millions with free same-day and 1-day delivery</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Cash Flow & Balance Sheet</h3>
+  <ul>
+    <li><strong>Operating Cash Flow (TTM ended June 30):</strong> $61.8B (+74% YoY; vs. $35.6B TTM ended June 30, 2022)</li>
+    <li><strong>Free Cash Flow (TTM):</strong> $7.9B (vs. -$23.5B TTM ended June 30, 2022; <strong>swing to positive FCF</strong>)</li>
+    <li><strong>FCF Less Principal Repayments of Finance Leases & Financing Obligations (TTM):</strong> $1.9B (vs. -$33.5B; <strong>positive for first time in 2+ years</strong>)</li>
+    <li><strong>FCF Less Equipment Finance Leases & Other (TTM):</strong> $6.7B (vs. -$26.1B)</li>
+    <li><strong>Purchases of P&E, Net (TTM):</strong> $54.0B (-9% YoY; vs. $59.1B TTM ended June 30, 2022)</li>
+    <li><strong>Purchases of P&E (Q2 2023):</strong> $11.5B (-27% YoY; vs. $15.7B in Q2 2022)</li>
+    <li><strong>Principal Repayments of Finance Leases (TTM):</strong> $5.7B (-42% YoY)</li>
+    <li><strong>Equipment Acquired Under Finance Leases (TTM):</strong> $269M (-83% YoY; massive pullback continues)</li>
+    <li><strong>Cash & Cash Equivalents:</strong> $49.5B (vs. $53.9B at Dec 31, 2022; vs. $36.6B at June 30, 2022)</li>
+    <li><strong>Marketable Securities:</strong> $14.4B (vs. $16.1B at Dec 31, 2022)</li>
+    <li><strong>Inventories:</strong> $36.6B (vs. $34.4B at Dec 31, 2022; +6% QoQ)</li>
+    <li><strong>Total Current Assets:</strong> $140.5B (vs. $146.8B at Dec 31, 2022)</li>
+    <li><strong>Property and Equipment, Net:</strong> $193.8B (vs. $186.7B at Dec 31, 2022)</li>
+    <li><strong>Total Assets:</strong> $477.6B (vs. $462.7B at Dec 31, 2022)</li>
+    <li><strong>Long-Term Debt:</strong> $63.1B (vs. $67.2B at Dec 31, 2022; -6% from debt repayments)</li>
+    <li><strong>Total Stockholders' Equity:</strong> $168.6B (vs. $146.0B at Dec 31, 2022; +15%)</li>
+    <li><strong>Shares Outstanding:</strong> 10,313M (vs. 10,242M at Dec 31, 2022)</li>
+    <li><strong>Stock-Based Awards Outstanding:</strong> 481M shares (4.7% of common; vs. 384M / 3.8% at Dec 31, 2022)</li>
+    <li><strong>Common Stock Repurchased (Q2 2023):</strong> $0 (none; vs. $3.3B in Q2 2022)</li>
+    <li><strong>Debt Repaid (Q2 2023):</strong> $2.0B long-term debt repayment</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Employees</h3>
+  <ul>
+    <li><strong>Headcount (End of Q2 2023):</strong> 1,461,000 (full-time and part-time; excludes contractors & temporary)</li>
+    <li><strong>YoY Change:</strong> -4% (vs. 1,523,000 at end of Q2 2022)</li>
+    <li><strong>Sequential Change:</strong> -4,000 from Q1 2023 (1,465,000); essentially flat</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Inflation & Cost Tailwinds</h3>
+  <ul>
+    <li><strong>Inflation pressures easing:</strong> Most notably in fuel prices, line-haul rates, ocean and rail rates</li>
+    <li><strong>Shipping costs growing slower than units:</strong> Shipping cost +6% YoY vs. paid units +9% YoY (positive cost leverage)</li>
+    <li><strong>Fulfillment cost growing slower than units:</strong> Fulfillment +5% YoY vs. paid units +9% YoY</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Net Sales</h3>
+  <ul>
+    <li><strong>Q3 2023 Net Sales Guidance:</strong> $138.0B to $143.0B</li>
+    <li><strong>Implied YoY Growth:</strong> +9% to +13% (vs. Q3 2022 net sales of $127.1B)</li>
+    <li><strong>FX Impact:</strong> Not explicitly quantified; expected to be modest given recent currency stability</li>
+    <li><strong>Midpoint:</strong> $140.5B (~+11% YoY)</li>
+    <li><strong>Assessment:</strong> Robust guidance; Q2 came in at $134.4B at +11% growth; midpoint implies similar momentum</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Operating Income</h3>
+  <ul>
+    <li><strong>Q3 2023 Operating Income Guidance:</strong> $5.5B to $8.5B</li>
+    <li><strong>Prior Year Comp:</strong> $2.5B in Q3 2022</li>
+    <li><strong>Implied YoY Growth at Midpoint:</strong> +180% (~$7.0B midpoint vs. $2.5B)</li>
+    <li><strong>Implied Operating Margin (at midpoint):</strong> ~5.0% (at $7.0B on ~$140.5B sales)</li>
+    <li><strong>Assessment:</strong> <strong>Massive raise vs. prior quarter's $2.0B-$5.5B guidance range.</strong> Midpoint of $7.0B nearly doubles Q3 2022 actual of $2.5B. Signals continued strong profitability trajectory. Q2 actual of $7.7B exceeded even the top end of this new Q3 range, setting up potential for further outperformance.</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Total Capital Investments (CapEx + Finance Leases)</h3>
+  <ul>
+    <li><strong>Trailing 12 Months (ended June 30, 2023):</strong> ~$54B (CapEx of $54.0B net of proceeds, plus finance leases)</li>
+    <li><strong>FY 2023 Full-Year Expectation:</strong> "Slightly more than $50 billion" (vs. $59B in FY 2022; <strong>~15% reduction YoY</strong>)</li>
+    <li><strong>CapEx Mix:</strong> - <strong>Fulfillment & Transportation:</strong> Expected to be down YoY - <strong>Infrastructure (AWS):</strong> Expected to increase YoY, including additional investments related to generative AI and large language model efforts - <strong>Net combined:</strong> Still lower than 2022</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 2023 Quarterly CapEx</h3>
+  <ul>
+    <li><strong>Purchases of P&E (gross):</strong> $11.5B (-27% YoY; vs. $15.7B in Q2 2022)</li>
+    <li><strong>Proceeds from P&E Sales & Incentives:</strong> $1.0B</li>
+    <li><strong>Net CapEx:</strong> $10.4B</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>AWS Growth Stabilization -- CRITICAL FORWARD COMMENTARY</h3>
+</div>
+<div class="content-section">
+  <h3>Cost Optimization vs. New Workloads</h3>
+  <ul>
+    <li><strong>Optimization status:</strong> "Those cost optimizations, while still going on, are moderating and many may be behind us in some of our large customers" -- CFO Olsavsky</li>
+    <li><strong>New workloads:</strong> "Now we're seeing more progression into new workloads, new business. So those balanced out in Q2" -- CFO Olsavsky</li>
+    <li><strong>July trends:</strong> "We saw Q2 trends continue into July" -- CFO Olsavsky (stabilization continuing into Q3)</li>
+    <li><strong>Forward view:</strong> No segment-level guidance given for Q3 AWS, but management optimistic about back half of year and beyond</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>CEO Forward Commentary</h3>
+  <ul>
+    <li>"To grow double digits on an $88 billion revenue run rate business, when you're seeing that amount of cost optimization... means that we're acquiring a lot of new customers and a lot of new workloads"</li>
+    <li>"I'm very bullish on the growth of AWS over the next several years"</li>
+    <li>Expects continued shift from cost optimization toward new workloads and migrations</li>
+    <li>"There's a lot of growth in front of us on AWS"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Generative AI / Large Language Models</h3>
+</div>
+<div class="content-section">
+  <h3>Three-Layer Strategic Framework (CEO Jassy)</h3>
+  <ul>
+    <li><strong>Graviton:</strong> General purpose CPU chip; used by 50,000+ customers including 98 of top 100 EC2 customers; ~40% better price performance than other leading x86 processors</li>
+    <li><strong>Trainium:</strong> Custom AI training chip; on second version; described as "very appealing price performance option"</li>
+    <li><strong>Inferentia:</strong> Custom AI inference chip; on second version</li>
+    <li><strong>EC2 P5 Instances:</strong> Powered by NVIDIA H100 GPUs for training large models; customers excited but supply has been scarce</li>
+    <li><strong>Custom chip thesis:</strong> Market currently has only one viable option (NVIDIA) and supply is scarce; AWS aims to provide differentiated alternative</li>
+    <li><strong>Bedrock:</strong> Managed service providing access to multiple LLM providers</li>
+    <li><strong>Model Partners:</strong> Anthropic (Claude 2), Stability AI (Stable Diffusion XL 1.0), AI21 Labs, Cohere, plus Amazon's own Titan models</li>
+    <li><strong>Capabilities:</strong> Model customization with proprietary data, enterprise-grade security, privacy features, managed service wrapper</li>
+    <li><strong>New Feature:</strong> Agents for Amazon Bedrock (allows customers to create conversational agents with personalized, up-to-date answers)</li>
+    <li><strong>Named Customers:</strong> Bridgewater Associates, Coda, Lonely Planet, Omnicom, 3M, Ryanair, Showpad, Travelers</li>
+    <li><strong>CodeWhisperer:</strong> AI coding companion; "off to a very strong start"</li>
+    <li>Every Amazon team building generative AI applications to enhance customer experiences</li>
+    <li>Most gen AI applications expected to be built by other companies, with the largest number expected on AWS</li>
+    <li>"The core of AI is data. People want to bring generative AI models to the data, not the other way around" -- CEO Jassy</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Gen AI Revenue Timing</h3>
+  <ul>
+    <li>Machine learning/AI already contributing to AWS revenue for several years (compute for training and inference, 20+ ML services)</li>
+    <li>Generative AI specifically: "Very early stages... a few steps into a marathon" -- CEO Jassy</li>
+    <li>"I expect that will be very large, but it will be in the future"</li>
+    <li>Every Amazon business has multiple generative AI initiatives underway (stores, AWS, advertising, devices/Alexa, entertainment)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Gen AI Impact on CapEx</h3>
+  <ul>
+    <li>FY 2023 capital investment guidance of "slightly more than $50 billion" includes "a pretty significant amount of capital expense in the AWS business for large language models and for generative AI"</li>
+    <li>"Quite a bit of demand right now"</li>
+    <li>CEO: "I would like to have the challenge of having to spend a lot more in capital in generative AI because it will mean that customers are having success"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Fulfillment Regionalization & Cost to Serve</h3>
+</div>
+<div class="content-section">
+  <h3>Regionalization Results</h3>
+  <ul>
+    <li>Transitioned from 1 national U.S. network to 8 separate regions</li>
+    <li><strong>20% reduction</strong> in number of touches for a delivered package</li>
+    <li><strong>19% reduction</strong> in miles traveled to deliver packages</li>
+    <li><strong>1,000+ bps increase</strong> in deliveries fulfilled within region (now at <strong>76%</strong>)</li>
+    <li>Lower miles + fewer touches = lower cost and faster delivery simultaneously</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Same-Day Facilities</h3>
+  <ul>
+    <li>Located in largest U.S. metro areas</li>
+    <li>Handle top-moving 100,000 SKUs; cover millions of other SKUs via injection from nearby FCs</li>
+    <li>Order to delivery-ready in as little as 11 minutes</li>
+    <li><strong>Planning to double the number of same-day facilities</strong></li>
+    <li>Described as "one of our most cost-effective fulfillment mechanisms" and "one of our least expensive"</li>
+    <li>Smaller facilities with less conveyance, streamlined pick-to-pack-to-dock</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Future Cost Opportunity</h3>
+  <ul>
+    <li>"While we are pleased with the progress we have made, we see more opportunity to drive improved cost efficiencies going forward" -- CFO Olsavsky</li>
+    <li>"We still see several ways in which we can be more efficient in this structure" -- CEO Jassy</li>
+    <li>Reevaluated virtually every part of fulfillment network; identified additional structural changes for future upside</li>
+    <li>"We believe that we are far from the law of diminishing returns" -- CEO Jassy</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Advertising</h3>
+</div>
+<div class="content-section">
+  <h3>Q2 Performance</h3>
+  <ul>
+    <li><strong>Advertising Services Revenue:</strong> $10.7B (+22% YoY reported; +22% ex-FX)</li>
+    <li>Performance-based advertising offerings continue to be the largest contributor to growth</li>
+    <li>Leveraging machine learning to increase ad relevancy</li>
+    <li>Improving ability to measure return on advertising spend for brands</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Growth Trajectory (Quarterly)</h3>
+  <ul>
+    <li>Q1 2022: $7.9B (+25% ex-FX) -> Q2 2022: $8.8B (+21% ex-FX) -> Q3 2022: $9.5B (+30% ex-FX) -> Q4 2022: $11.6B (+23% ex-FX) -> Q1 2023: $9.5B (+23% ex-FX) -> <strong>Q2 2023: $10.7B (+22% ex-FX)</strong></li>
+    <li>Consistent 20%+ growth rate maintained through macro uncertainty</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Grocery Strategy Update</h3>
+</div>
+<div class="content-section">
+  <h3>Current Business Structure</h3>
+  <ul>
+    <li><strong>Nonperishables:</strong> Large existing business in consumables, pet food, beauty, health, canned goods; continuing to grow; benefits from lower cost to serve via regionalization</li>
+    <li><strong>Whole Foods:</strong> "Continues to lead the organic grocery space"; growing at a healthy clip; meaningfully improved profitability in the last year; expanding</li>
+    <li><strong>Amazon Fresh:</strong> Working on new formats; significantly improved key business inputs; rolled out new concepts in Chicago stores, then Southern California; includes added selection, private brands, third-party brands (e.g., Krispy Kreme), refined decor, dash cards, refined self-service checkouts</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>CEO Fresh Store Stance</h3>
+  <ul>
+    <li>"We won't expand unless we see that type of resonance. We're not just going to be undisciplined"</li>
+    <li>Not planning significant expansion of Fresh stores until format resonance is confirmed</li>
+    <li>Won't dramatically impact North America margins until expansion decision made</li>
+    <li>Converged shopping cart across grocery offerings being developed</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Everyday Essentials</h3>
+  <ul>
+    <li>Growing selection in everyday essentials; increasing basket sizes and shopping frequency</li>
+    <li>144% more deals and coupons offered to customers in Q2 2023 vs. Q2 2022</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Prime Day Results (July 11-12, 2023)</h3>
+  <ul>
+    <li>Biggest Prime Day ever</li>
+    <li>More deals offered than any past Prime Day event</li>
+    <li>Prime members purchased more than 375 million items worldwide</li>
+    <li>Prime members saved more than $2.5 billion across the Amazon store</li>
+    <li>Wide selection across millions of products</li>
+    <li><strong>Note:</strong> Prime Day fell in Q3 2023, consistent with Q3 timing in 2022 (comparable)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Amazon Business (B2B)</h3>
+  <ul>
+    <li><strong>Annual Gross Sales Run Rate:</strong> $35 billion</li>
+    <li>Described as "one of our fastest-growing offerings"</li>
+    <li>Very strong YoY growth</li>
+    <li>Team working to build to "$100 billion-plus business over time" -- CEO Jassy</li>
+    <li>Still only "a fraction of the features" needed to address more enterprise procurement</li>
+    <li>Adding functionality: larger procurement features, service capabilities for big buys</li>
+    <li>Significant area of focus for stores team and senior leadership</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Health Care</h3>
+</div>
+<div class="content-section">
+  <h3>Amazon Pharmacy</h3>
+  <ul>
+    <li>Doubled its active customers in the past year</li>
+    <li><strong>RxPass:</strong> Prime members receive all eligible generic medications for $5/month with free delivery</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>One Medical</h3>
+  <ul>
+    <li>Part of Amazon for "just a few months"</li>
+    <li>Encouraged by early results</li>
+    <li>Integration focus ongoing</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Buy with Prime</h3>
+  <ul>
+    <li>Merchants in early trials saw shopper conversion increase by <strong>25% on average</strong></li>
+    <li>Prime Day: merchants in aggregate experienced <strong>10x increase</strong> in daily Buy with Prime orders during sales event period vs. month before Prime Day announced</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>International Margin Recovery</h3>
+  <ul>
+    <li><strong>Q2 2023 International Operating Margin:</strong> -3.0%</li>
+    <li><strong>Margin Trajectory (since Q3 2022 trough):</strong> - Q3 2022: -8.9% -> Q4 2022: -6.5% -> Q1 2023: -4.3% -> <strong>Q2 2023: -3.0%</strong> - Total improvement: +590 bps over 3 quarters</li>
+    <li>Launched 10+ countries in past 6 years</li>
+    <li>Reminder: took 9 years to reach profitability in the United States</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Free Cash Flow Recovery</h3>
+  <ul>
+    <li><strong>FCF (TTM ended June 30, 2023):</strong> +$7.9B (<strong>4th consecutive quarter of sequential improvement</strong>)</li>
+    <li><strong>FCF (TTM ended June 30, 2022):</strong> -$23.5B</li>
+    <li><strong>Swing:</strong> +$31.4B improvement YoY</li>
+    <li><strong>Drivers:</strong> Increased operating income (primary), improved working capital (inventory efficiency improving as supply chain disruptions ease), lower CapEx</li>
+    <li><strong>FCF Less Finance Leases & Financing Obligations (TTM):</strong> $1.9B (positive for first time since pre-pandemic)</li>
+    <li>CFO: "Our financial focus remains on driving long-term sustainable free cash flows"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Key Analyst Q&A Data Points</h3>
+  <ul>
+    <li><strong>Fulfillment efficiency progress (Colin Sebastian, Baird):</strong> CFO said "encouraged" but "still in that journey to reclaim the cost structure that we had previously"; considers current results "a point along the road"; still a lot to be regained; teams working hard</li>
+    <li><strong>Grocery leverage from fulfillment (Colin Sebastian, Baird):</strong> CEO noted same-day facilities can inject grocery items for same-day delivery; converging offerings across formats over time; but also building infrastructure optimized specifically for grocery</li>
+    <li><strong>Amazon Business growth strategy (Mark Mahaney, Evercore):</strong> CEO targeting "$100 billion-plus business over time"; only a fraction of needed enterprise features currently available; adding procurement, service capabilities rapidly</li>
+    <li><strong>AWS growth trajectory into Q3 (Mark Mahaney, Evercore):</strong> CFO: "Q2 trends continue into July"; cost optimizations moderating, many behind large customers; new workloads and business increasing; no segment guidance for Q3 but stabilization visible</li>
+    <li><strong>AWS dollar context (Mark Mahaney, Evercore):</strong> CFO: Q2 2022 had ~$20B base, grew $2.4B; "while that is 12%, there's a lot of cost optimization dollars that came out and a lot of new workloads and new customers that went in"</li>
+    <li><strong>AWS run rate and fundamentals (CEO, responding to Evercore):</strong> "$88 billion revenue run rate business, to grow double digits on a business that size with the amount of cost optimizing... you have to be adding a lot of new customers and a lot of new workloads"; customer pipeline strong; new workloads and migrations happening; bullish medium to long term</li>
+    <li><strong>AI monetization timing (Brent Thill, Jefferies):</strong> CEO: ML/AI already a significant AWS revenue driver for years (compute + 20+ ML services); generative AI specifically is "very early stages... a few steps into a marathon"; "will be very large, but it will be in the future"</li>
+    <li><strong>North America margin trajectory (Brian Nowak, Morgan Stanley):</strong> CEO: won't expand Fresh stores significantly without customer resonance; same-day facility expansion is margin-positive (cost-effective, drives demand); still believes can get back to pre-COVID margins and "I don't think that's the end of what's possible for us there"</li>
+    <li><strong>AI investment across Amazon (Brian Nowak, Morgan Stanley):</strong> CEO: "every single one of our businesses inside of Amazon, every single one has multiple generative AI initiatives going right now"; ranges from operational efficiency to customer experience reinvention; "significant investment and focus"</li>
+    <li><strong>AWS normalized growth rate (Doug Anmuth, JPMorgan):</strong> CEO expects cost optimization to attenuate and new workloads to grow; balance shifted in Q2; bullish on AWS growth over next several years; "hard for me to predict" any one quarter</li>
+    <li><strong>Gen AI impact on CapEx (Doug Anmuth, JPMorgan):</strong> FY 2023 CapEx guide of ~$50B+ includes "pretty significant amount" for gen AI; "quite a bit of demand right now"; CEO would "like to have the challenge of having to spend a lot more in capital in generative AI because it will mean that customers are having success"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>YoY Comp Context</h3>
+  <ul>
+    <li><strong>Q2 2022 Comp:</strong> Total net sales of $121.2B; operating income of $3.3B; AWS revenue of $19.7B (+33% growth); net loss of -$2.0B (Rivian losses)</li>
+    <li><strong>AWS Quarterly Revenue Progression:</strong> $18.4B -> $19.7B -> $20.5B -> $21.4B -> $21.4B -> $22.1B (Q1'22 through Q2'23; stabilized sequentially and growing)</li>
+    <li><strong>Profitability Inflection:</strong> North America margin went from -2.3% (Q1'22) to 3.9% (Q2'23) in 5 quarters; International margin from -8.9% (Q3'22) to -3.0% (Q2'23) in 3 quarters</li>
+    <li><strong>FCF Inflection:</strong> TTM FCF swung from -$23.5B (June 2022) to +$7.9B (June 2023)</li>
+    <li><strong>Headcount Stabilization:</strong> 1,461,000 in Q2'23 vs. 1,523,000 in Q2'22 (-4% YoY); essentially flat sequentially from Q1'23, suggesting layoffs largely complete</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 2023 Actuals (Reported)</h3>
+</div>
+<div class="content-section">
+  <h3>Q2 Reported Performance & Trajectory</h3>
+  <ul>
+    <li><strong>Q2 2023 growth:</strong> 12% YoY (stabilized from 16% in Q1)</li>
+    <li><strong>Annualized run rate:</strong> ~$88B</li>
+    <li><strong>Context on April guidance:</strong> On Q1 call, CFO disclosed April was running ~500 bps below Q1 (implying ~11%); Q2 full quarter came in at 12%, meaning growth stabilized and modestly improved from April trough</li>
+    <li><strong>Dollar add:</strong> $2.4B incremental revenue added to a base of ~$20B, despite heavy cost optimization; significant new customer/workload adds required to produce that growth</li>
+  </ul>
+</div>
+
+<div class="prior-ref" id="priorRef">
+  <div class="prior-ref-header" onclick="var b=document.getElementById('priorBody');b.classList.toggle('open');this.querySelector('.arrow').innerHTML=b.classList.contains('open')?'&#9650;':'&#9660;';">
+    Prior Quarter Reference: Q1 2023
+    <span class="arrow">&#9660;</span>
+  </div>
+  <div class="prior-ref-body" id="priorBody">
+    <div class="metric-grid">
+      <div class="prior-mini"><div class="pm-label">Operating Margin</div><div class="pm-value">3.7% (vs. 3.2% in Q1 2022; vs. 1.8% in Q4 2022; sequential and YoY improvement)</div></div>
+    </div>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q1_2023.html" style="color:var(--blue);">View full Q1 2023 detail &rarr;</a></p>
+  </div>
+</div>
+
+<div class="footer-nav">
+  <a href="Q1_2023.html">&larr; Q1 2023</a>
+  <a href="../comparison.html">Back to Overview</a>
+  <a href="Q3_2023.html">Q3 2023 &rarr;</a>
+</div>
+
+</body>
+</html>

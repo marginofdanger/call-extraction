@@ -92,6 +92,11 @@ quarters:
   reporting_quarter: Fiscal Q4 2025 (Full Year FY2025)
   bamsec_id: 58d0d8fd-10b0-47e5-b02c-61f174cd4285
   edgar_8k_accession: 0001730168-25-000116
+- id: FQ1_2026
+  call_date: March 4, 2026
+  reporting_quarter: Fiscal Q1 2026 (Nov '25 - Jan '26)
+  bamsec_id: c86b8787-349a-45fe-b362-73f0c7a131a3
+  edgar_8k_accession: 0001730168-26-000011
 tracked_metrics:
   guidance_for:
     label: Guidance For

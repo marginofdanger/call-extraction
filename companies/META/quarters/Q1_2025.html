@@ -319,6 +319,31 @@
     .comp-table th, .comp-table td { padding: 6px 8px; }
   }
 
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+  .content-section .md-table th {
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .content-section .md-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-section .md-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+  .content-section .md-table tr:hover { background: #e8f4fd; }
+
   @media print {
     .nav-bar { display: none; }
     .header { background: #333; }
@@ -338,6 +363,8 @@
   <a href="Q4_2024.html">&larr; Q4 2024</a>
   <div class="nav-center">
     <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>
     <a href="Q4_2025.html" class="qbtn">4Q25</a>
     <a href="Q3_2025.html" class="qbtn">3Q25</a>
     <a href="Q2_2025.html" class="qbtn">2Q25</a>
@@ -358,25 +385,38 @@
   <a href="Q2_2025.html">Q2 2025 &rarr;</a>
 </div>
 
+<div class="changes-box">
+  <h3>What Changed vs Q4 2024</h3>
+  <ul>
+    <li><span class="change-tag ct-raised">Raised</span> Revenue Guidance (Next Q) midpoint up 8.2% vs prior quarter ($44.0B vs $40.6B)</li>
+    <li><span class="change-tag ct-lowered">Lowered</span> FY Total Expenses midpoint down 0.9% vs prior quarter ($115.5B vs $116.5B)</li>
+    <li><span class="change-tag ct-raised">Raised</span> FY CapEx midpoint up 8.8% vs prior quarter ($68.0B vs $62.5B)</li>
+    <li><span class="change-tag ct-changed">Changed</span> Family DAP: More than 3.4 billion people using at least one app daily (as of March) (prior: 3.35B+ (December 2024))</li>
+    <li><span class="change-tag ct-changed">Changed</span> Operating Margin: 41% (prior: 48%)</li>
+    <li><span class="change-tag ct-changed">Changed</span> Reality Labs Op Loss: $4.2B (prior: $5.0B)</li>
+    <li><span class="change-tag ct-new">New</span> NEW: Trade/geopolitical impact discussed</li>
+  </ul>
+</div>
+
 <div class="metrics-card">
   <div class="metric">
     <div class="metric-label">Revenue Guidance (Next Q)</div>
-    <div class="metric-value">$42.5B - $45.5B</div>
-    <div class="metric-delta delta-flat">Prior: $39.5B - $41.8B</div>
+    <div class="metric-value">$42.5B-$45.5B</div>
+    <div class="metric-delta delta-flat">Prior: $39.5B to $41.8B</div>
   </div>
   <div class="metric">
     <div class="metric-label">FY Total Expenses</div>
-    <div class="metric-value">$113B - $118B</div>
-    <div class="metric-delta delta-flat">Prior: $114B - $119B</div>
+    <div class="metric-value">$113B-$118B</div>
+    <div class="metric-delta delta-flat">Prior: $114B to $119B</div>
   </div>
   <div class="metric">
     <div class="metric-label">FY CapEx</div>
-    <div class="metric-value">$64B - $72B</div>
-    <div class="metric-delta delta-flat">Prior: $60B - $65B</div>
+    <div class="metric-value">$64B-$72B</div>
+    <div class="metric-delta delta-flat">Prior: $60B to $65B</div>
   </div>
   <div class="metric">
     <div class="metric-label">Family DAP</div>
-    <div class="metric-value">3.4B+</div>
+    <div class="metric-value">More than 3.4 billion people using at least one app daily</div>
     <div class="metric-delta delta-flat">Prior: 3.35B+</div>
   </div>
   <div class="metric">
@@ -397,19 +437,6 @@
     <div class="metric-value">$4.2B</div>
     <div class="metric-delta delta-flat">Prior: $5.0B</div>
   </div>
-</div>
-
-<div class="changes-box">
-  <h3>What Changed vs Q4 2024</h3>
-  <ul>
-    <li><span class="change-tag ct-raised">Raised</span> Revenue Guidance (Next Q) midpoint up 8.2% vs prior quarter ($44.0B vs $40.6B)</li>
-    <li><span class="change-tag ct-lowered">Lowered</span> FY Total Expenses midpoint down 0.9% vs prior quarter ($115.5B vs $116.5B)</li>
-    <li><span class="change-tag ct-raised">Raised</span> FY CapEx midpoint up 8.8% vs prior quarter ($68.0B vs $62.5B)</li>
-    <li><span class="change-tag ct-changed">Changed</span> Family DAP: 3.4B+ (prior: 3.35B+)</li>
-    <li><span class="change-tag ct-changed">Changed</span> Operating Margin: 41% (prior: 48%)</li>
-    <li><span class="change-tag ct-changed">Changed</span> Reality Labs Op Loss: $4.2B (prior: $5.0B)</li>
-    <li><span class="change-tag ct-new">New</span> NEW: Trade/geopolitical impact discussed</li>
-  </ul>
 </div>
 
 <!-- Full Guidance Content -->

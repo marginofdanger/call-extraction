@@ -319,6 +319,31 @@
     .comp-table th, .comp-table td { padding: 6px 8px; }
   }
 
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+  .content-section .md-table th {
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .content-section .md-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-section .md-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+  .content-section .md-table tr:hover { background: #e8f4fd; }
+
   @media print {
     .nav-bar { display: none; }
     .header { background: #333; }
@@ -339,6 +364,8 @@
   <div class="nav-center">
     <a href="../comparison.html" class="nav-back">Overview</a>
     <a href="../results.html" class="nav-back">Results</a>
+    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>
+    <a href="Q4_FY2026.html" class="qbtn">4Q2026</a>
     <a href="Q3_FY2026.html" class="qbtn">3Q2026</a>
     <a href="Q2_FY2026.html" class="qbtn">2Q2026</a>
     <a href="Q1_FY2026.html" class="qbtn">1Q2026</a>
@@ -407,9 +434,7 @@
 </div>
 <div class="content-section">
   <h3>Full Year FY2025 Guidance (Feb 2024 - Jan 2025)</h3>
-  <ul>
-    <li>| Metric | New FY2025 Guidance (Q4 FY2024 Call) | Prior FY2025 Guidance (Q3 FY2024 Call) | Change | |--------|--------------------------------------|----------------------------------------|--------| | <strong>Total Revenue</strong> | $2,725M - $2,740M | At least $2,750M | Lowered from $2,750M+ | | <strong>Non-GAAP Operating Income</strong> | ~$1,070M | At least $1,000M | Raised from $1,000M+ | | <strong>Non-GAAP Diluted EPS</strong> | ~$6.16 | Not previously provided | New |</li>
-  </ul>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>New FY2025 Guidance (Q4 FY2024 Call)</th><th>Prior FY2025 Guidance (Q3 FY2024 Call)</th><th>Change</th></tr></thead><tbody><tr><td><strong>Total Revenue</strong></td><td>$2,725M - $2,740M</td><td>At least $2,750M</td><td>Lowered from $2,750M+</td></tr><tr><td><strong>Non-GAAP Operating Income</strong></td><td>~$1,070M</td><td>At least $1,000M</td><td>Raised from $1,000M+</td></tr><tr><td><strong>Non-GAAP Diluted EPS</strong></td><td>~$6.16</td><td>Not previously provided</td><td>New</td></tr></tbody></table></div>
 </div>
 <div class="content-section">
   <h3>Key FY2025 Guidance Commentary</h3>
@@ -435,9 +460,8 @@
 </div>
 <div class="content-section">
   <h3>Beat vs. Prior Guidance Summary</h3>
-  <ul>
-    <li>| Metric | Q4 FY2024 Actual | Q4 Guidance (from Q3 call) | Beat | |--------|-----------------|---------------------------|------| | Total Revenue | $630.6M | $620M - $622M | +$9.6M above high end | | Non-GAAP Operating Income | $239.1M | ~$227M | +$12.1M | | Non-GAAP Diluted EPS | $1.38 | ~$1.30 | +$0.08 | | Metric | FY2024 Actual | FY2024 Guidance (from Q3 call) | Beat | |--------|--------------|-------------------------------|------| | Total Revenue | $2,363.7M | $2,353M - $2,355M | +$8.7M above high end | | Non-GAAP Operating Income | $842.5M | ~$830M | +$12.5M | | Non-GAAP Diluted EPS | $4.84 | ~$4.76 | +$0.08 | <em>Data sourced from Veeva Systems Q4 FY2024 earnings press release (February 29, 2024), GAAP/non-GAAP financial tables, and earnings call transcript.</em></li>
-  </ul>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Q4 FY2024 Actual</th><th>Q4 Guidance (from Q3 call)</th><th>Beat</th></tr></thead><tbody><tr><td>Total Revenue</td><td>$630.6M</td><td>$620M - $622M</td><td>+$9.6M above high end</td></tr><tr><td>Non-GAAP Operating Income</td><td>$239.1M</td><td>~$227M</td><td>+$12.1M</td></tr><tr><td>Non-GAAP Diluted EPS</td><td>$1.38</td><td>~$1.30</td><td>+$0.08</td></tr></tbody></table></div>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>FY2024 Actual</th><th>FY2024 Guidance (from Q3 call)</th><th>Beat</th></tr></thead><tbody><tr><td>Total Revenue</td><td>$2,363.7M</td><td>$2,353M - $2,355M</td><td>+$8.7M above high end</td></tr><tr><td>Non-GAAP Operating Income</td><td>$842.5M</td><td>~$830M</td><td>+$12.5M</td></tr><tr><td>Non-GAAP Diluted EPS</td><td>$4.84</td><td>~$4.76</td><td>+$0.08</td></tr></tbody></table> *Data sourced from Veeva Systems Q4 FY2024 earnings press release (February 29, 2024), GAAP/non-GAAP financial tables, and earnings call transcript.*</div>
 </div>
 <div class="content-section">
   <h3>Revenue</h3>

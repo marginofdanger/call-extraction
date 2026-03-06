@@ -319,6 +319,31 @@
     .comp-table th, .comp-table td { padding: 6px 8px; }
   }
 
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+  .content-section .md-table th {
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .content-section .md-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-section .md-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+  .content-section .md-table tr:hover { background: #e8f4fd; }
+
   @media print {
     .nav-bar { display: none; }
     .header { background: #333; }
@@ -338,6 +363,8 @@
   <a href="Q4_2024.html">&larr; Q4 2024</a>
   <div class="nav-center">
     <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>
     <a href="Q4_2025.html" class="qbtn">4Q25</a>
     <a href="Q3_2025.html" class="qbtn">3Q25</a>
     <a href="Q2_2025.html" class="qbtn">2Q25</a>
@@ -358,54 +385,53 @@
   <a href="Q2_2025.html">Q2 2025 &rarr;</a>
 </div>
 
-<div class="metrics-card">
-  <div class="metric">
-    <div class="metric-label">FY Revenue Guidance</div>
-    <div class="metric-value">$72.8B - $75.8B</div>
-    <div class="metric-delta delta-flat">Reaffirmed</div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">FY Adj. EBITDA Guidance</div>
-    <div class="metric-value">$14.3B - $15.1B</div>
-    <div class="metric-delta delta-flat">Reaffirmed</div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">FY Diluted EPS Guidance</div>
-    <div class="metric-value">$24.05 - $25.85</div>
-    <div class="metric-delta delta-flat">Reaffirmed</div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">FY CapEx Guidance</div>
-    <div class="metric-value">~$5.0B - $5.2B</div>
-    <div class="metric-delta delta-flat">Reaffirmed</div>
-  </div>
-</div>
-
 <div class="changes-box">
   <h3>What Changed vs Q4 2024</h3>
   <ul>
-    <li><span class="change-tag ct-maintained">Maintained</span> Revenue: $72.8B - $75.8B (unchanged)</li>
-    <li><span class="change-tag ct-maintained">Maintained</span> Adj. EBITDA: $14.3B - $15.1B (unchanged)</li>
-    <li><span class="change-tag ct-maintained">Maintained</span> Diluted EPS: $24.05 - $25.85 (unchanged)</li>
-    <li><span class="change-tag ct-maintained">Maintained</span> CapEx: ~$5.0B - $5.2B (unchanged)</li>
-    <li><span class="change-tag ct-changed">Changed</span> DPP Assumption: +$50M to -$200M YoY (prior: flat to -$250M YoY); improved by ~$50M</li>
-    <li><span class="change-tag ct-new">New</span> Tariff risk / supply chain discussion added</li>
-    <li><span class="change-tag ct-new">New</span> Federal policy / EPTC / Medicaid reform discussion added</li>
-    <li><span class="change-tag ct-new">New</span> Digital Transformation and Innovation Group established</li>
+    <li><span class="change-tag ct-changed">Changed</span> CapEx Guidance: $991 million (5.4% of revenue; described as lighter than typical; expect step-up remainder of year) (prior: $1.29 billion in the quarter)</li>
+    <li><span class="change-tag ct-changed">Changed</span> Same-Facility Admissions: +2.8% year-over-year (as reported); ~3.8% adjusted for leap year effect (prior: +3% year-over-year)</li>
+    <li><span class="change-tag ct-changed">Changed</span> Revenue Per Admission: approximately 3% year-over-year (~2.9% per analyst reference) (prior: +2.9% over prior year, in line with expectations)</li>
+    <li><span class="change-tag ct-changed">Changed</span> Adj. EBITDA Margin: +110 basis points year-over-year (prior: declined 60 basis points vs. prior year quarter - <strong>Hurricane impact on EBITDA margin:</strong> 100-basis point unfavorable impact (Largo Hospital in Tampa + North Carolina division))</li>
   </ul>
+</div>
+
+<div class="metrics-card">
+  <div class="metric">
+    <div class="metric-label">CapEx Guidance</div>
+    <div class="metric-value">$991 million</div>
+    <div class="metric-delta delta-flat">Prior: $1.29 billion in the quarter</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Same-Facility Admissions</div>
+    <div class="metric-value">+2.8% year-over-year; ~3.8% adjusted for leap year effect</div>
+    <div class="metric-delta delta-flat">Prior: +3% year-over-year</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Revenue Per Admission</div>
+    <div class="metric-value">approximately 3% year-over-year</div>
+    <div class="metric-delta delta-flat">Prior: +2.9% over prior year, in line with expectations</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Adj. EBITDA Margin</div>
+    <div class="metric-value">+110 basis points year-over-year</div>
+    <div class="metric-delta delta-flat">Prior: declined 60 basis points vs. prior year quarter - <strong>Hurricane impact on EBITDA margin:</strong> 100-basis point unfavorable impact</div>
+  </div>
 </div>
 
 <!-- Full Guidance Content -->
 <div class="content-section">
   <h3>Full Year 2025 Guidance (REAFFIRMED)</h3>
   <ul>
-    <li><strong>Revenue:</strong> $72.8 billion to $75.8 billion (unchanged)</li>
-    <li><strong>Adjusted EBITDA:</strong> $14.3 billion to $15.1 billion (unchanged)</li>
-    <li><strong>Diluted EPS:</strong> $24.05 to $25.85 (unchanged)</li>
-    <li><strong>Capital expenditures:</strong> ~$5.0 billion to $5.2 billion (unchanged; expect step-up from Q1 pace)</li>
-    <li><strong>Equivalent admissions growth:</strong> 3% to 4% (unchanged)</li>
+    <li><strong>Status: REAFFIRMED as of Q1 2025 earnings call -- no changes to ranges</strong> <em>Note: Specific numerical guidance ranges for revenue, adjusted EBITDA, diluted EPS, and capital expenditures were not restated on this call. The CFO stated: "we did reaffirm guidance for 2025, it's first quarter. And really, at this point in the year, we believe our guidance ranges continue to be appropriate for where we are."</em></li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Key Guidance Items Discussed</h3>
+  <ul>
+    <li><strong>Equivalent admissions growth target (full year):</strong> 3% to 4% (referenced by analyst / confirmed by management as the assumption)</li>
+    <li><strong>Capital expenditures:</strong> expected $5 billion, possibly as high as $5.2 billion for the full year (expect step-up from Q1 pace)</li>
     <li><strong>Share repurchases:</strong> anticipate completing a significant portion of the $10 billion authorization in 2025, subject to market conditions</li>
-    <li><strong>Wage inflation:</strong> expected to hold near previously indicated levels</li>
+    <li><strong>Wage inflation:</strong> guidance around wages for 2025 expected to hold and be somewhere close to what already indicated</li>
   </ul>
 </div>
 <div class="content-section">
@@ -549,6 +575,9 @@
   </ul>
 </div>
 <div class="content-section">
+  <h3>Special Topics</h3>
+</div>
+<div class="content-section">
   <h3>Tariff Risk / Supply Chain</h3>
   <ul>
     <li><strong>Environment:</strong> described as "extremely fluid" and "dynamic"; company not comfortable providing estimates at this time</li>
@@ -575,10 +604,7 @@
   <h3>Technology / AI / Digital Transformation</h3>
   <ul>
     <li><strong>New function:</strong> Digital Transformation and Innovation Group established</li>
-    <li><strong>Three focus areas:</strong></li>
-    <li><strong>1. Administrative:</strong> Parallon services, supply chain, HR — early tools being developed and implemented</li>
-    <li><strong>2. Operational:</strong> staffing/scheduling, case management, length of stay management, prior authorizations — tools being deployed</li>
-    <li><strong>3. Clinical:</strong> slowly moving into this space; working on obstetrics (labor and delivery process improvement with a partner); early signs of success but very early stage</li>
+    <li><strong>Three focus areas:</strong> 1. <strong>Administrative:</strong> Parallon services, supply chain, HR -- early tools being developed and implemented 2. <strong>Operational:</strong> staffing/scheduling, case management, length of stay management, prior authorizations -- tools being deployed 3. <strong>Clinical:</strong> slowly moving into this space; working on obstetrics (labor and delivery process improvement with a partner); early signs of success but very early stage</li>
     <li><strong>Investment level:</strong> described as "investing heavily in our tech agenda"</li>
   </ul>
 </div>
@@ -597,6 +623,10 @@
     <li><strong>On guidance reaffirmation (Mike Marks, CFO):</strong> > "As noted in our release, we did reaffirm guidance for 2025, it's first quarter. And really, at this point in the year, we believe our guidance ranges continue to be appropriate for where we are." <strong>On policy risk (Sam Hazen, CEO):</strong> > "I know you would like us to size the potential impacts of health policy risk and now tariff risk, but we are not comfortable with providing estimates at this time. We just do not have enough insight into what might happen." <strong>On tariff risk (Mike Marks, CFO):</strong> > "I do believe that our tariff risk for 2025 is manageable." <strong>On demand durability (Sam Hazen, CEO):</strong> > "I don't think we are seeing anything currently that suggests that the demand assumptions that we have are wrong." <strong>On operating leverage (Sam Hazen, CEO):</strong> > "Fundamentally, our business is a fixed cost business... the more volume we can push through the organization, the more operating leverage we create." <strong>On DPP guidance update (Mike Marks, CFO):</strong> > "Based on this first quarter net benefit, we are comfortable now kind of sizing or estimating that the supplemental payments would be something like $50 million better for the full year to a $200 million decline."</li>
   </ul>
 </div>
+<div class="content-section">
+  <h3>Q1 2025 Actuals (Reported)</h3>
+</div>
+
 <div class="prior-ref" id="priorRef">
   <div class="prior-ref-header" onclick="var b=document.getElementById('priorBody');b.classList.toggle('open');this.querySelector('.arrow').innerHTML=b.classList.contains('open')?'&#9650;':'&#9660;';">
     Prior Quarter Reference: Q4 2024
@@ -604,10 +634,13 @@
   </div>
   <div class="prior-ref-body" id="priorBody">
     <div class="metric-grid">
-      <div class="prior-mini"><div class="pm-label">FY Revenue Guidance</div><div class="pm-value">$72.8B - $75.8B</div></div>
-      <div class="prior-mini"><div class="pm-label">FY Adj. EBITDA Guidance</div><div class="pm-value">$14.3B - $15.1B</div></div>
-      <div class="prior-mini"><div class="pm-label">FY Diluted EPS Guidance</div><div class="pm-value">$24.05 - $25.85</div></div>
-      <div class="prior-mini"><div class="pm-label">FY CapEx Guidance</div><div class="pm-value">~$5.0B - $5.2B</div></div>
+      <div class="prior-mini"><div class="pm-label">FY Revenue Guidance</div><div class="pm-value">$72.8 billion to $75.8 billion</div></div>
+      <div class="prior-mini"><div class="pm-label">FY Adj. EBITDA Guidance</div><div class="pm-value">$14.3 billion to $15.1 billion</div></div>
+      <div class="prior-mini"><div class="pm-label">FY Diluted EPS Guidance</div><div class="pm-value">$24.05 to $25.85</div></div>
+      <div class="prior-mini"><div class="pm-label">CapEx Guidance</div><div class="pm-value">$1.29 billion in the quarter</div></div>
+      <div class="prior-mini"><div class="pm-label">Same-Facility Admissions</div><div class="pm-value">+3% year-over-year</div></div>
+      <div class="prior-mini"><div class="pm-label">Revenue Per Admission</div><div class="pm-value">+2.9% over prior year, in line with expectations</div></div>
+      <div class="prior-mini"><div class="pm-label">Adj. EBITDA Margin</div><div class="pm-value">declined 60 basis points vs. prior year quarter - <strong>Hurricane impact on EBITDA margin:</strong> 100-basis point unfavorable impact (Largo Hospital in Tampa + North Carolina division)</div></div>
     </div>
     <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q4_2024.html" style="color:var(--blue);">View full Q4 2024 detail &rarr;</a></p>
   </div>

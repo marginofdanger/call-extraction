@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TSMC Intermittent KPIs &mdash; 16-Quarter Disclosure Tracker</title>
+<style>
+  :root {
+    --company-primary: #c0392b;
+    --company-dark: #1a1a2e;
+    --company-accent: #16213e;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); background: #fff; line-height: 1.6; max-width: 1200px; margin: 0 auto; padding: 0 24px 80px; }
+  .header { background: linear-gradient(135deg, var(--company-dark), var(--company-accent)); color: #fff; padding: 48px 40px; margin: 0 -24px 40px; border-bottom: 4px solid var(--company-primary); }
+  .header h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; }
+  .header .subtitle { font-size: 1.1rem; opacity: 0.85; font-weight: 300; }
+  .quarter-nav { background: var(--company-accent); border-radius: 8px; padding: 16px 20px; margin-bottom: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .quarter-nav .label { color: #fff; font-weight: 600; font-size: 0.85rem; margin-right: 8px; white-space: nowrap; }
+  .quarter-nav .year-group { display: flex; gap: 4px; align-items: center; }
+  .quarter-nav .year-label { color: rgba(255,255,255,0.5); font-size: 0.72rem; font-weight: 600; margin-right: 2px; letter-spacing: 0.5px; }
+  .quarter-nav a { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 4px 10px; font-size: 0.78rem; font-weight: 600; text-decoration: none; transition: all 0.15s; }
+  .quarter-nav a:hover { background: rgba(255,255,255,0.25); }
+  .quarter-nav a.overview-link { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.35); padding: 4px 14px; font-size: 0.82rem; margin-left: auto; }
+  .toc { background: var(--light-bg); border: 1px solid var(--border); border-radius: 8px; padding: 24px 32px; margin-bottom: 40px; columns: 2; column-gap: 40px; }
+  .toc h2 { font-size: 1.1rem; color: var(--company-accent); margin-bottom: 12px; column-span: all; }
+  .toc a { display: block; color: var(--blue); text-decoration: none; padding: 3px 0; font-size: 0.9rem; break-inside: avoid; }
+  .toc a:hover { text-decoration: underline; }
+  .section { margin-bottom: 48px; scroll-margin-top: 20px; }
+  .section h2 { font-size: 1.4rem; color: var(--company-dark); border-bottom: 3px solid var(--company-primary); padding-bottom: 8px; margin-bottom: 16px; }
+  .section h2 .num { display: inline-block; background: var(--company-primary); color: #fff; width: 28px; height: 28px; line-height: 28px; text-align: center; border-radius: 50%; font-size: 0.85rem; margin-right: 8px; vertical-align: middle; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 0.88rem; }
+  thead th { background: var(--company-accent); color: #fff; padding: 10px 12px; text-align: left; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
+  thead th.right { text-align: right; }
+  tbody td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tbody td.right { text-align: right; }
+  tbody tr:nth-child(even) { background: var(--light-bg); }
+  tbody tr:hover { background: #eef2f7; }
+  .pos { color: var(--green); font-weight: 600; }
+  .neg { color: var(--red); font-weight: 600; }
+  .neutral { color: var(--amber); font-weight: 600; }
+  .raised { background: #eafaf1 !important; }
+  .lowered { background: #fef0ef !important; }
+  .bold { font-weight: 700; }
+  .muted { color: var(--text-muted); font-style: italic; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; vertical-align: middle; }
+  .tag-new { background: #d6eaf8; color: #2471a3; }
+  .tag-disc { background: #fadbd8; color: #c0392b; }
+  .tag-emerged { background: #d5f5e3; color: #1e8449; }
+  .tag-peak { background: #fdebd0; color: #d68910; }
+  .insight { background: linear-gradient(135deg, #fef9e7, #fdebd0); border-left: 4px solid var(--amber); padding: 14px 18px; margin: 16px 0; border-radius: 0 6px 6px 0; font-size: 0.9rem; }
+  .insight strong { color: var(--company-dark); }
+  .year-divider td { background: var(--company-accent) !important; color: #fff; font-weight: 700; font-size: 0.82rem; padding: 6px 12px; letter-spacing: 0.5px; }
+  .analysis { margin-top: 48px; padding: 32px; background: var(--light-bg); border: 1px solid var(--border); border-radius: 8px; }
+  .analysis h2 { font-size: 1.3rem; color: var(--company-dark); margin-bottom: 16px; border-bottom: 3px solid var(--company-primary); padding-bottom: 8px; }
+  .analysis h3 { font-size: 1.05rem; color: var(--company-dark); margin: 20px 0 8px; }
+  .analysis p { font-size: 0.92rem; margin-bottom: 12px; }
+  .footer { margin-top: 60px; padding-top: 20px; border-top: 2px solid var(--border); font-size: 0.82rem; color: var(--text-muted); text-align: center; }
+  .footer a { color: var(--blue); text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 768px) { .toc { columns: 1; } .header h1 { font-size: 1.6rem; } table { font-size: 0.8rem; } thead th, tbody td { padding: 6px 8px; } }
+  @media print { .header { background: #333; } .section { page-break-inside: avoid; } table { font-size: 0.75rem; } .quarter-nav { display: none; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>TSMC Intermittent KPIs</h1>
+  <div class="subtitle">Metrics disclosed more than once but not on a regular basis &mdash; Q1 2022 through Q4 2025</div>
+</div>
+
+<div class="quarter-nav" id="qnav">
+  <a href="../../index.html" style="background:rgba(255,255,255,0.15); color:#fff; font-weight:600; margin-right:12px; text-decoration:none; padding:4px 12px; border-radius:4px;">&#x2190; Portfolio</a>
+  <span class="label">Quarter detail:</span>
+  <div class="year-group"><span class="year-label">2025</span>
+    <a href="Q4_2025.html">4Q25</a><a href="Q3_2025.html">3Q25</a><a href="Q2_2025.html">2Q25</a><a href="Q1_2025.html">1Q25</a></div>
+  <div class="year-group"><span class="year-label">2024</span>
+    <a href="Q4_2024.html">4Q24</a><a href="Q3_2024.html">3Q24</a><a href="Q2_2024.html">2Q24</a><a href="Q1_2024.html">1Q24</a></div>
+  <div class="year-group"><span class="year-label">2023</span>
+    <a href="Q4_2023.html">4Q23</a><a href="Q3_2023.html">3Q23</a><a href="Q2_2023.html">2Q23</a><a href="Q1_2023.html">1Q23</a></div>
+  <div class="year-group"><span class="year-label">2022</span>
+    <a href="Q4_2022.html">4Q22</a><a href="Q3_2022.html">3Q22</a><a href="Q2_2022.html">2Q22</a><a href="Q1_2022.html">1Q22</a></div>
+  <a href="../comparison.html" class="overview-link">Guidance Overview &rarr;</a>
+  <a href="../results.html" class="overview-link">Results Scorecard &rarr;</a>
+</div>
+
+<nav class="toc">
+  <h2>Table of Contents</h2>
+  <a href="#s1">1. AI Revenue as % of Total Revenue</a>
+  <a href="#s2">2. AI Revenue CAGR (5-Year Forward)</a>
+  <a href="#s3">3. CoWoS Capacity Trajectory</a>
+  <a href="#s4">4. Advanced Packaging Revenue Share</a>
+  <a href="#s5">5. N3 Gross Margin Dilution Lifecycle</a>
+  <a href="#s6">6. Overseas Fab GM Dilution</a>
+  <a href="#s7">7. Taiwan Electricity Cost Impact</a>
+  <a href="#s8">8. N7/N6 Utilization (Downcycle)</a>
+  <a href="#s9">9. Fabless Inventory Cycle</a>
+  <a href="#s10">10. Long-Term Revenue CAGR Target</a>
+  <a href="#s11">11. Depreciation Growth Rate</a>
+  <a href="#s12">12. Capital Intensity (CapEx/Revenue)</a>
+  <a href="#s13">13. Dividend Policy &amp; Per-Share Growth</a>
+  <a href="#s14">14. Effective Tax Rate Trajectory</a>
+  <a href="#s15">15. Foundry 2.0 Market Framework</a>
+  <a href="#analysis">Analysis: What the Disclosure Patterns Reveal</a>
+</nav>
+
+<!-- ====== SECTION 1: AI REVENUE % ====== -->
+<div class="section" id="s1">
+  <h2><span class="num">1</span> AI Revenue as % of Total Revenue</h2>
+  <p style="margin-bottom:12px; font-size:0.88rem; color:var(--text-muted);">The defining metric of TSMC's AI era. First quantified in Q2 2023 when ChatGPT catalyzed demand, then tracked through rapid escalation. <span class="tag tag-emerged">Emerged Q2 2023</span></p>
+  <table>
+    <thead><tr><th>Quarter</th><th class="right">AI % of Revenue</th><th>YoY Growth Language</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025 &mdash; AI DOMINANCE</td></tr>
+      <tr class="raised"><td>Q4 2025</td><td class="right bold">High teens %</td><td class="pos">Expected to double YoY</td><td>Revenue CAGR raised to mid-to-high 50s%; target &gt;20% by ~2028</td></tr>
+      <tr><td>Q3 2025</td><td class="right muted">Not restated</td><td>Expected to double YoY in 2025</td><td>Maintained doubling guidance</td></tr>
+      <tr><td>Q2 2025</td><td class="right muted">Not restated</td><td>Expected to double YoY in 2025</td><td>AI CAGR raised to mid-40s%</td></tr>
+      <tr><td>Q1 2025</td><td class="right muted">Not restated</td><td>Expected to double YoY</td><td>AI CAGR mid-40s% maintained</td></tr>
+      <tr class="year-divider"><td colspan="4">2024 &mdash; AI ACCELERATION</td></tr>
+      <tr class="raised"><td>Q4 2024</td><td class="right bold">Close to mid-teens %</td><td class="pos">More than tripled YoY</td><td>2024 actual; 2025 expected to double again <span class="tag tag-peak">TRIPLED</span></td></tr>
+      <tr><td>Q3 2024</td><td class="right">Mid-teens % (forecast)</td><td class="pos">More than tripling YoY</td><td>Upgraded from &ldquo;doubling&rdquo; to &ldquo;tripling&rdquo; mid-year</td></tr>
+      <tr><td>Q2 2024</td><td class="right muted">Not restated</td><td>&mdash;</td><td>Focus shifted to CoWoS capacity</td></tr>
+      <tr><td>Q1 2024</td><td class="right">Low-teens % (forecast)</td><td>More than double YoY</td><td>First 2024 forecast <span class="tag tag-new">FIRST QUANTIFIED</span></td></tr>
+      <tr class="year-divider"><td colspan="4">2023 &mdash; AI EMERGENCE</td></tr>
+      <tr><td>Q4 2023</td><td class="right">~6% (2023 actual)</td><td>&mdash;</td><td>High teens % target by ~2027; &ldquo;structural, not hype&rdquo;</td></tr>
+      <tr><td>Q3 2023</td><td class="right">~6%</td><td>&mdash;</td><td>Maintained 2023 estimate</td></tr>
+      <tr><td>Q2 2023</td><td class="right">~6%</td><td>&mdash;</td><td>First quantification of AI revenue share <span class="tag tag-new">FIRST DISCLOSED</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> AI revenue went from ~6% of TSMC's total (2023) to mid-teens (2024) to high teens (2025) — tripling its share in just 2 years. The mid-year upgrade from "doubling" to "tripling" in Q3 2024 was one of TSMC's most powerful demand signals. The long-term target escalated from "high teens by 2027" to "over 20%," reflecting AI demand consistently outrunning management's own forecasts.</div>
+</div>
+
+<!-- ====== SECTION 2: AI REVENUE CAGR ====== -->
+<div class="section" id="s2">
+  <h2><span class="num">2</span> AI Revenue CAGR (5-Year Forward)</h2>
+  <p style="margin-bottom:12px; font-size:0.88rem; color:var(--text-muted);">TSMC's forward-looking AI growth target, anchored to a rolling 5-year horizon. <span class="tag tag-emerged">Emerged Q2 2023</span></p>
+  <table>
+    <thead><tr><th>Quarter</th><th class="right">CAGR Target</th><th>Change</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025 &mdash; BREAKOUT RAISE</td></tr>
+      <tr class="raised"><td>Q4 2025</td><td class="right bold">Mid-to-high 50s %</td><td class="pos">Raised significantly</td><td>2024&ndash;2029 base; AI exceeded all expectations <span class="tag tag-peak">RECORD</span></td></tr>
+      <tr><td>Q3 2025</td><td class="right">Mid-40s %</td><td>Maintained</td><td>&mdash;</td></tr>
+      <tr><td>Q2 2025</td><td class="right">Mid-40s %</td><td class="pos">Raised from &ldquo;close to 40%&rdquo;</td><td>Re-based off higher 2024</td></tr>
+      <tr><td>Q1 2025</td><td class="right">Mid-40s %</td><td>Maintained</td><td>&mdash;</td></tr>
+      <tr class="year-divider"><td colspan="4">2024 &mdash; REBASING</td></tr>
+      <tr><td>Q4 2024</td><td class="right">Approaching mid-40s %</td><td class="neg">Rebased lower</td><td>Higher 2024 starting point diluted percentage CAGR</td></tr>
+      <tr><td>Q3 2024</td><td class="right">~50%</td><td>Maintained</td><td>&mdash;</td></tr>
+      <tr class="year-divider"><td colspan="4">2023 &mdash; INITIAL FRAMEWORK</td></tr>
+      <tr><td>Q4 2023</td><td class="right">~50%</td><td>Maintained</td><td>2023 base year</td></tr>
+      <tr><td>Q3 2023</td><td class="right">~50%</td><td>Maintained</td><td>&mdash;</td></tr>
+      <tr><td>Q2 2023</td><td class="right">~50%</td><td>&mdash;</td><td>First disclosed <span class="tag tag-new">FIRST DISCLOSED</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> The AI CAGR was RAISED to mid-to-high 50s% in Q4 2025 despite being measured off a much higher base year. This is the clearest signal that AI demand is not just continuing but accelerating — the percentage growth rate increased even as absolute revenues tripled. The initial ~50% target off a low base has been replaced by a materially higher target off a 3x higher base.</div>
+</div>
+
+<!-- ====== SECTION 3: CoWoS CAPACITY ====== -->
+<div class="section" id="s3">
+  <h2><span class="num">3</span> CoWoS Advanced Packaging Capacity</h2>
+  <p style="margin-bottom:12px; font-size:0.88rem; color:var(--text-muted);">The physical bottleneck of the AI era. CoWoS capacity has been perpetually supply-constrained since Q1 2023. <span class="tag tag-emerged">Emerged Q1 2023</span></p>
+  <table>
+    <thead><tr><th>Quarter</th><th>Capacity Status</th><th>Supply/Demand</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025 &mdash; THIRD YEAR OF DOUBLING</td></tr>
+      <tr><td>Q3 2025</td><td>Approaching ~10% of revenue</td><td class="neg">Still tight</td><td>CoWoS becoming a significant revenue contributor</td></tr>
+      <tr><td>Q2 2025</td><td>Expanding</td><td class="neg">Still tight</td><td>&mdash;</td></tr>
+      <tr><td>Q1 2025</td><td>Doubling in 2025</td><td class="neg">Still tight</td><td>Third consecutive year of doubling</td></tr>
+      <tr class="year-divider"><td colspan="4">2024 &mdash; SECOND DOUBLING</td></tr>
+      <tr><td>Q4 2024</td><td>Very tight; continuing to increase</td><td class="neg">No order cuts</td><td>&mdash;</td></tr>
+      <tr><td>Q3 2024</td><td>2024 &gt;2x vs 2023; 2025 doubling again</td><td class="neg">Constrained into 2025</td><td>60% CAGR referenced</td></tr>
+      <tr><td>Q2 2024</td><td>&gt;2x vs 2023; plan 2x again in 2025</td><td class="neg">Tight through 2025</td><td>Leveraging OSAT partners</td></tr>
+      <tr><td>Q1 2024</td><td>&gt;2x YoY</td><td class="neg">Still not enough</td><td>OSAT partners supplementing</td></tr>
+      <tr class="year-divider"><td colspan="4">2023 &mdash; FIRST SURGE</td></tr>
+      <tr><td>Q4 2023</td><td>Doubling from 2023</td><td class="neg">Demand exceeding into 2025</td><td>&mdash;</td></tr>
+      <tr><td>Q3 2023</td><td>&gt;2x by end of 2024</td><td class="neg">Tight through 2024</td><td>Limited by supplier capability</td></tr>
+      <tr><td>Q2 2023</td><td>2024 roughly 2x</td><td class="neg">Tight through 2024</td><td>First capacity expansion guidance <span class="tag tag-new">FIRST DISCLOSED</span></td></tr>
+      <tr><td>Q1 2023</td><td>Customer calls requesting &ldquo;big increase&rdquo;</td><td class="neg">Supply-constrained</td><td>First signal of AI-driven CoWoS demand <span class="tag tag-new">FIRST SIGNAL</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> CoWoS capacity has doubled every year for three consecutive years (2023&rarr;2024&rarr;2025&rarr;2026 plan) yet the language has never once shifted from &ldquo;tight&rdquo; to &ldquo;balanced.&rdquo; The progression from &ldquo;customer phone calls requesting increase&rdquo; (Q1 2023) to approaching 10% of total revenue (Q3 2025) is a textbook supply-chase narrative where demand growth persistently outpaces capacity expansion.</div>
+</div>
+
+<!-- ====== SECTION 4: ADVANCED PACKAGING REVENUE ====== -->
+<div class="section" id="s4">
+  <h2><span class="num">4</span> Advanced Packaging Revenue Share</h2>
+  <p style="margin-bottom:12px; font-size:0.88rem; color:var(--text-muted);">Tracking how packaging shifted from a supporting business to a strategic growth driver.</p>
+  <table>
+    <thead><tr><th>Quarter</th><th class="right">% of Revenue</th><th>Margin vs Corporate</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025</td></tr>
+      <tr><td>Q4 2025</td><td class="right">~8% (FY); 10%+ in 2026</td><td class="muted">Not discussed</td><td>Climbing toward double-digit share</td></tr>
+      <tr><td>Q3 2025</td><td class="right">Approaching ~10%</td><td class="muted">Not discussed</td><td>&mdash;</td></tr>
+      <tr><td>Q1 2025</td><td class="right">&gt;10% expected (2025)</td><td class="muted">Not discussed</td><td>&mdash;</td></tr>
+      <tr class="year-divider"><td colspan="4">2024</td></tr>
+      <tr><td>Q4 2024</td><td class="right">&gt;8%</td><td>Improved but below avg</td><td>&mdash;</td></tr>
+      <tr><td>Q3 2024</td><td class="right">&gt;10% (broader def.)</td><td>Approaching corporate avg</td><td>Including testing, mask in broader definition</td></tr>
+      <tr><td>Q2 2024</td><td class="right muted">Not restated</td><td>Approaching corporate avg</td><td>Margin convergence first noted <span class="tag tag-new">MARGIN SIGNAL</span></td></tr>
+      <tr class="year-divider"><td colspan="4">2022&ndash;2023</td></tr>
+      <tr><td>Q1 2023</td><td class="right">6&ndash;7%</td><td class="muted">Not discussed</td><td>Declined YoY due to cycle</td></tr>
+      <tr><td>Q4 2022</td><td class="right">~7%</td><td class="muted">Not discussed</td><td>Baseline <span class="tag tag-new">FIRST DISCLOSED</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Advanced packaging grew from ~7% to 10%+ of revenue while simultaneously improving from &ldquo;much lower than corporate average&rdquo; margins toward convergence. This dual trajectory means the growing packaging share will not dilute overall margins &mdash; a structural positive that resolves a long-standing investor concern.</div>
+</div>
+
+<!-- ====== SECTION 5: N3 GM DILUTION ====== -->
+<div class="section" id="s5">
+  <h2><span class="num">5</span> N3 Gross Margin Dilution Lifecycle</h2>
+  <p style="margin-bottom:12px; font-size:0.88rem; color:var(--text-muted);">Tracking the maturation of 3nm from initial margin headwind to corporate-average convergence &mdash; a longer cycle than any prior node.</p>
+  <table>
+    <thead><tr><th>Quarter</th><th class="right">Dilution (pp)</th><th>Timeline</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025 &mdash; RESOLUTION</td></tr>
+      <tr class="raised"><td>Q4 2025</td><td class="right pos">No longer material</td><td>Crossover in 2026</td><td>&ldquo;No longer a material dilution headwind&rdquo; <span class="tag tag-emerged">RESOLVED</span></td></tr>
+      <tr><td>Q3 2025</td><td class="right">Reducing</td><td>Corporate avg sometime 2026</td><td>&mdash;</td></tr>
+      <tr><td>Q1 2025</td><td class="right">Continuing to reduce</td><td>&mdash;</td><td>&mdash;</td></tr>
+      <tr class="year-divider"><td colspan="4">2024 &mdash; GRADUAL IMPROVEMENT</td></tr>
+      <tr><td>Q4 2024</td><td class="right">Gradually reducing</td><td>&mdash;</td><td>&mdash;</td></tr>
+      <tr><td>Q3 2024</td><td class="right">Gradually reducing</td><td>2025 reduction</td><td>&mdash;</td></tr>
+      <tr><td>Q2 2024</td><td class="right">Reducing as yield improves</td><td>10&ndash;12 quarters to corp avg</td><td>Longer than historical 7&ndash;8 quarters</td></tr>
+      <tr><td>Q1 2024</td><td class="right neg">2&ndash;3 pp (1H); 3&ndash;4 pp (2H)</td><td>10&ndash;12 quarters</td><td>Extended timeline first disclosed <span class="tag tag-peak">PEAK DILUTION</span></td></tr>
+      <tr class="year-divider"><td colspan="4">2023 &mdash; STEEP RAMP HEADWIND</td></tr>
+      <tr><td>Q4 2023</td><td class="right neg">3&ndash;4 pp (FY 2024)</td><td>&mdash;</td><td>Plus 1&ndash;2 pp from N5&rarr;N3 conversion in 2H</td></tr>
+      <tr><td>Q3 2023</td><td class="right neg">Steep ramp dilution</td><td>&mdash;</td><td>Biggest GM headwind that quarter</td></tr>
+      <tr><td>Q2 2023</td><td class="right neg">2&ndash;3 pp (Q3); 3&ndash;4 pp (Q4)</td><td>&mdash;</td><td>&mdash;</td></tr>
+      <tr class="year-divider"><td colspan="4">2022 &mdash; PRE-RAMP</td></tr>
+      <tr><td>Q3 2022</td><td class="right">2&ndash;3 pp expected in 2023</td><td>&mdash;</td><td>&mdash;</td></tr>
+      <tr><td>Q2 2022</td><td class="right">2&ndash;3 pp expected in 2023</td><td>&mdash;</td><td>First guidance <span class="tag tag-new">FIRST DISCLOSED</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> The N3 margin dilution cycle lasted ~10&ndash;12 quarters &mdash; significantly longer than the historical 7&ndash;8 quarters for N5 and N7. This extension reflects both growing process complexity (gate-all-around transition) and a higher corporate GM baseline that takes longer to reach. The &ldquo;no longer material&rdquo; declaration in Q4 2025 closes a headwind that persisted for 3 years.</div>
+</div>
+
+<!-- ====== SECTION 6: OVERSEAS FAB DILUTION ====== -->
+<div class="section" id="s6">
+  <h2><span class="num">6</span> Overseas Fab Gross Margin Dilution</h2>
+  <p style="margin-bottom:12px; font-size:0.88rem; color:var(--text-muted);">A structural multi-year headwind with a counterintuitive trajectory &mdash; it widens before it narrows as sequential fabs come online.</p>
+  <table>
+    <thead><tr><th>Quarter</th><th class="right">Dilution Estimate</th><th>Duration</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025 &mdash; WIDENING FRAMEWORK DISCLOSED</td></tr>
+      <tr><td>Q4 2025</td><td class="right neg">2&ndash;3% early; 3&ndash;4% later</td><td>Multi-year</td><td>Maintained widening framework</td></tr>
+      <tr><td>Q3 2025</td><td class="right">~2% in H2 2025</td><td>Widens to 3&ndash;4% beyond 2025</td><td>&mdash;</td></tr>
+      <tr><td>Q2 2025</td><td class="right">Slightly &gt;100 bps in Q2</td><td>2&ndash;3% early; 3&ndash;4% later</td><td>First quarterly quantification</td></tr>
+      <tr class="lowered"><td>Q1 2025</td><td class="right neg">2&ndash;3% &rarr; 3&ndash;4%</td><td>Widens over time</td><td>Widening first disclosed <span class="tag tag-new">WIDENING REVEALED</span></td></tr>
+      <tr class="year-divider"><td colspan="4">2024 &mdash; MULTI-YEAR FRAMEWORK</td></tr>
+      <tr><td>Q4 2024</td><td class="right">2&ndash;3 pp per year</td><td>Next 5 years</td><td>&mdash;</td></tr>
+      <tr><td>Q3 2024</td><td class="right">2&ndash;3 pp initially</td><td>3&ndash;5 years as fabs sequence</td><td>&mdash;</td></tr>
+      <tr><td>Q2 2024</td><td class="right">2&ndash;3 pp in 2025+</td><td>Next several years</td><td>&mdash;</td></tr>
+      <tr class="year-divider"><td colspan="4">2023 &mdash; INITIAL FRAMEWORK</td></tr>
+      <tr><td>Q3 2023</td><td class="right">Higher cost absorbed</td><td>&mdash;</td><td>Committed to 53%+ LT GM</td></tr>
+      <tr><td>Q2 2023</td><td class="right">2&ndash;3 pp initially</td><td>&mdash;</td><td>First overseas dilution guidance <span class="tag tag-new">FIRST DISCLOSED</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> The revelation in Q1 2025 that overseas dilution WIDENS from 2&ndash;3% to 3&ndash;4% in &ldquo;latter stages&rdquo; was counterintuitive &mdash; investors expected it to narrow with scale. The widening occurs because each new fab phase (Arizona Fab 2, Japan Fab 2, Germany) restarts the dilution cycle before the prior one matures. This will be TSMC&rsquo;s most significant structural margin headwind through 2028+.</div>
+</div>
+
+<!-- ====== SECTION 7: ELECTRICITY COST ====== -->
+<div class="section" id="s7">
+  <h2><span class="num">7</span> Taiwan Electricity Cost Impact</h2>
+  <p style="margin-bottom:12px; font-size:0.88rem; color:var(--text-muted);">An escalating cost headwind that went from a minor footnote to a 100+ bps structural drag.</p>
+  <table>
+    <thead><tr><th>Quarter</th><th class="right">Price Increase</th><th class="right">GM Impact</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2024 &mdash; ESCALATION</td></tr>
+      <tr class="lowered"><td>Q4 2024</td><td class="right muted">Prior increases absorbed</td><td class="right neg">At least 1% in 2025</td><td>Electricity now highest-cost region <span class="tag tag-peak">PEAK IMPACT</span></td></tr>
+      <tr class="lowered"><td>Q3 2024</td><td class="right neg">+14% (Oct 2024)</td><td class="right neg">At least 1%</td><td>Price doubled in last few years; Taiwan MORE expensive than overseas</td></tr>
+      <tr class="lowered"><td>Q1 2024</td><td class="right neg">+25% (Apr 2024)</td><td class="right neg">70&ndash;80 bps (Q2); 60&ndash;70 bps (2H)</td><td>Indirect costs on materials/chemicals also rising</td></tr>
+      <tr class="year-divider"><td colspan="4">2023 &mdash; FIRST SIGNAL</td></tr>
+      <tr><td>Q1 2023</td><td class="right neg">+17% (Apr 2023)</td><td class="right">~60 bps (Q2); ~50 bps FY</td><td>First quantification <span class="tag tag-new">FIRST DISCLOSED</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Taiwan electricity prices doubled in ~3 years, escalating TSMC&rsquo;s GM headwind from ~50 bps (2023) to &gt;100 bps (2025). The most striking revelation was Q3 2024&rsquo;s disclosure that Taiwan electricity is now MORE expensive than overseas regions &mdash; inverting the traditional cost advantage narrative and actually improving the relative economics of Arizona and Japan fabs.</div>
+</div>
+
+<!-- ====== SECTION 8: N7/N6 UTILIZATION ====== -->
+<div class="section" id="s8">
+  <h2><span class="num">8</span> N7/N6 Utilization (Downcycle Tracker)</h2>
+  <p style="margin-bottom:12px; font-size:0.88rem; color:var(--text-muted);">A crisis metric during the 2022&ndash;2023 inventory correction that disappeared once the problem resolved. <span class="tag tag-disc">Disappeared Q4 2023</span></p>
+  <table>
+    <thead><tr><th>Quarter</th><th>Utilization Status</th><th>Outlook</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2023 &mdash; GRADUAL RECOVERY</td></tr>
+      <tr><td>Q3 2023</td><td class="neg">Below original plan</td><td>Healthy util &ldquo;over next several years&rdquo;</td><td>One major customer delaying product <span class="tag tag-disc">LAST DISCLOSURE</span></td></tr>
+      <tr><td>Q2 2023</td><td class="neg">16nm/28nm down 15&ndash;20% QoQ</td><td>&mdash;</td><td>Companion chip weakness</td></tr>
+      <tr><td>Q1 2023</td><td class="neg">Below historical highs</td><td>Slow recovery expected</td><td>&mdash;</td></tr>
+      <tr class="year-divider"><td colspan="4">2022 &mdash; DOWNCYCLE</td></tr>
+      <tr><td>Q4 2022</td><td class="neg">Further deteriorated</td><td>1H 2023 lower; mild 2H pickup</td><td>Worsened vs 3 months prior</td></tr>
+      <tr><td>Q3 2022</td><td class="neg">Not as high as past 3 years</td><td>Lower through 1H 2023; 2H pickup</td><td>First acknowledgment <span class="tag tag-new">FIRST DISCLOSED</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> The N7/N6 utilization metric appeared only during the downcycle (Q3 2022 &ndash; Q3 2023) and vanished once utilization recovered. Its disappearance is itself the signal that the problem resolved. The mention of &ldquo;one major customer delaying product introduction&rdquo; in Q3 2023 was widely interpreted as a reference to a specific major client &mdash; one of TSMC&rsquo;s more notable indirect disclosures.</div>
+</div>
+
+<!-- ====== SECTION 9: INVENTORY CYCLE ====== -->
+<div class="section" id="s9">
+  <h2><span class="num">9</span> Fabless Semiconductor Inventory Cycle</h2>
+  <p style="margin-bottom:12px; font-size:0.88rem; color:var(--text-muted);">Real-time tracking of how management adjusted inventory rebalancing forecasts &mdash; consistently pushed back by one quarter.</p>
+  <table>
+    <thead><tr><th>Quarter</th><th>Inventory Status</th><th>Rebalance Timeline</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2024</td></tr>
+      <tr class="raised"><td>Q4 2024</td><td class="pos">Healthier level</td><td>Exiting 2024</td><td>Brief re-check after H20/AI stockpiling concerns</td></tr>
+      <tr class="year-divider"><td colspan="4">2023 &mdash; EXTENDED CORRECTION</td></tr>
+      <tr class="raised"><td>Q4 2023</td><td class="pos">Returned to healthy level</td><td>Exiting 2023</td><td>Normalization confirmed <span class="tag tag-emerged">RESOLVED</span></td></tr>
+      <tr><td>Q3 2023</td><td>Continuously reduced in Q3</td><td>Exit Q4 at healthier level</td><td>&mdash;</td></tr>
+      <tr><td>Q2 2023</td><td>Rebalancing</td><td>Exit Q3; healthier by Q4</td><td>Pushed back from &ldquo;1H 2023&rdquo;</td></tr>
+      <tr><td>Q1 2023</td><td class="neg">Adjustment taking longer</td><td>May extend into Q3</td><td>Worsened from prior guidance <span class="tag tag-peak">EXTENDED</span></td></tr>
+      <tr class="year-divider"><td colspan="4">2022 &mdash; BUILDUP &amp; PEAK</td></tr>
+      <tr><td>Q4 2022</td><td class="neg">Reducing sharply</td><td>Healthy by 2H 2023</td><td>&mdash;</td></tr>
+      <tr><td>Q3 2022</td><td class="neg">Peaked Q3 2022</td><td>Rebalance by 1H 2023</td><td>Inventory peak identified <span class="tag tag-peak">CYCLE PEAK</span></td></tr>
+      <tr><td>Q2 2022</td><td class="neg">Excess; DOI expected to come down</td><td>2H 2022; biggest impact 1H 2023</td><td>&mdash;</td></tr>
+      <tr><td>Q1 2022</td><td>Higher-than-historical</td><td>Maintained for longer</td><td>COVID/geopolitical buffers <span class="tag tag-new">FIRST DISCUSSED</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> The inventory correction lasted ~5 quarters (Q3 2022 peak through Q4 2023 normalization), about 2 quarters longer than TSMC&rsquo;s initial guidance. Each quarterly call pushed the rebalancing timeline out by approximately one quarter &mdash; a valuable case study in how management adjusts downcycle forecasts in real time. The metric essentially disappears once normalized, reappearing only briefly in Q4 2024.</div>
+</div>
+
+<!-- ====== SECTION 10: LT REVENUE CAGR ====== -->
+<div class="section" id="s10">
+  <h2><span class="num">10</span> Long-Term Revenue CAGR Target</h2>
+  <p style="margin-bottom:12px; font-size:0.88rem; color:var(--text-muted);">TSMC&rsquo;s multi-year revenue growth framework, maintained at 15&ndash;20% for nearly 3 years before a landmark raise.</p>
+  <table>
+    <thead><tr><th>Quarter</th><th class="right">CAGR Target</th><th>Change</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025 &mdash; LANDMARK RAISE</td></tr>
+      <tr class="raised"><td>Q4 2025</td><td class="right bold">Approach 25%</td><td class="pos">Raised from &ldquo;close to 20%&rdquo;</td><td>2024&ndash;2029 window; AI-driven structural uplift <span class="tag tag-peak">RECORD TARGET</span></td></tr>
+      <tr><td>Q3 2025</td><td class="right">Close to 20%</td><td>Maintained</td><td>&mdash;</td></tr>
+      <tr><td>Q2 2025</td><td class="right">Close to 20%</td><td>Maintained</td><td>&mdash;</td></tr>
+      <tr><td>Q1 2025</td><td class="right">Close to 20%</td><td>Maintained</td><td>&mdash;</td></tr>
+      <tr class="year-divider"><td colspan="4">2024 &mdash; NARROWING UPWARD</td></tr>
+      <tr><td>Q4 2024</td><td class="right">Approaching 20%</td><td>Narrowed from range</td><td>2024&ndash;2029 base</td></tr>
+      <tr><td>Q3 2024</td><td class="right">15&ndash;20%</td><td>Maintained</td><td>&mdash;</td></tr>
+      <tr class="year-divider"><td colspan="4">2023</td></tr>
+      <tr><td>Q4 2023</td><td class="right">15&ndash;20%</td><td>Maintained</td><td>&mdash;</td></tr>
+      <tr><td>Q3 2023</td><td class="right">15&ndash;20%</td><td>Maintained</td><td>&mdash;</td></tr>
+      <tr><td>Q2 2023</td><td class="right">15&ndash;20%</td><td>Maintained</td><td>&mdash;</td></tr>
+      <tr><td>Q1 2023</td><td class="right">15&ndash;20%</td><td>Maintained</td><td>&mdash;</td></tr>
+      <tr class="year-divider"><td colspan="4">2022</td></tr>
+      <tr><td>Q4 2022</td><td class="right">15&ndash;20%</td><td>Maintained</td><td>&mdash;</td></tr>
+      <tr><td>Q3 2022</td><td class="right">15&ndash;20%</td><td>Maintained</td><td>&mdash;</td></tr>
+      <tr><td>Q2 2022</td><td class="right">15&ndash;20%</td><td>&mdash;</td><td>First disclosed in this period <span class="tag tag-new">FIRST DISCLOSED</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> The raise from 15&ndash;20% to &ldquo;approach 25%&rdquo; in Q4 2025 was one of the most significant strategic signals in TSMC&rsquo;s history. The target had been unchanged for nearly 4 years through a major downcycle, AI emergence, and tripling of AI revenue. The raise reflects management&rsquo;s confidence that AI creates a structurally higher growth trajectory, not just a cyclical uplift.</div>
+</div>
+
+<!-- ====== SECTION 11: DEPRECIATION GROWTH ====== -->
+<div class="section" id="s11">
+  <h2><span class="num">11</span> Depreciation Growth Rate</h2>
+  <p style="margin-bottom:12px; font-size:0.88rem; color:var(--text-muted);">A volatile margin headwind that spiked with N3 CapEx, moderated, then re-accelerates with N2.</p>
+  <table>
+    <thead><tr><th>Quarter</th><th class="right">YoY Growth Guidance</th><th>For Year</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025</td></tr>
+      <tr><td>Q4 2025</td><td class="right neg">High teens %</td><td>2026</td><td>N2 ramp re-acceleration</td></tr>
+      <tr><td>Q4 2024</td><td class="right">High single-digit %</td><td>2025</td><td>Moderation from prior years</td></tr>
+      <tr class="year-divider"><td colspan="4">2023 &mdash; SPIKE &amp; REVISION</td></tr>
+      <tr><td>Q4 2023</td><td class="right neg">Close to 30%</td><td>2024</td><td>&mdash;</td></tr>
+      <tr><td>Q3 2023</td><td class="right">Low 20s %</td><td>2023</td><td>Revised down from ~30% <span class="tag tag-emerged">REVISED DOWN</span></td></tr>
+      <tr><td>Q2 2023</td><td class="right">Mid-20s %</td><td>2023</td><td>Revised down from ~30%</td></tr>
+      <tr class="year-divider"><td colspan="4">2022 &mdash; INITIAL SPIKE</td></tr>
+      <tr><td>Q4 2022</td><td class="right neg">~30%</td><td>2023</td><td><span class="tag tag-peak">PEAK GROWTH</span></td></tr>
+      <tr><td>Q3 2022</td><td class="right">Mid-single-digit</td><td>2022; 2023 meaningfully higher</td><td>&mdash;</td></tr>
+      <tr><td>Q2 2022</td><td class="right">Mid-single-digit</td><td>2022</td><td><span class="tag tag-new">FIRST DISCLOSED</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Depreciation growth spiked to ~30% for 2023 (driven by N3/N5 capacity buildout), was revised down to low 20s% during the year (tool delivery delays), moderated to high single-digit (2025), then re-accelerates to high teens (2026) as N2 ramps. The pattern reveals how each new node cycle creates a depreciation &ldquo;wave&rdquo; that rolls through the P&amp;L.</div>
+</div>
+
+<!-- ====== SECTION 12: CAPITAL INTENSITY ====== -->
+<div class="section" id="s12">
+  <h2><span class="num">12</span> Capital Intensity (CapEx / Revenue)</h2>
+  <p style="margin-bottom:12px; font-size:0.88rem; color:var(--text-muted);">Peaked above 50% in 2021 during the capacity buildout, then declined as revenue scaled faster than investment. <span class="tag tag-disc">Largely stabilized Q4 2023</span></p>
+  <table>
+    <thead><tr><th>Quarter</th><th class="right">CapEx/Revenue</th><th>Trajectory</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2024</td></tr>
+      <tr><td>Q3 2024</td><td class="right">Mid-30s %</td><td>Stable</td><td>&mdash;</td></tr>
+      <tr><td>Q2 2024</td><td class="right">Mid-30s %</td><td>Stable</td><td>&mdash;</td></tr>
+      <tr><td>Q1 2024</td><td class="right">Mid-30s %</td><td>Stable for several years</td><td>&mdash;</td></tr>
+      <tr class="year-divider"><td colspan="4">2023 &mdash; INFLECTION</td></tr>
+      <tr class="raised"><td>Q4 2023</td><td class="right">43% &rarr; mid-30s (2024)</td><td class="pos">Declining</td><td>Peaked &gt;50% in 2021; inflection confirmed <span class="tag tag-emerged">INFLECTION</span></td></tr>
+      <tr><td>Q2 2023</td><td class="right">Dollar leveling off</td><td class="pos">Declining over next several years</td><td>&mdash;</td></tr>
+      <tr><td>Q1 2023</td><td class="right muted">Not restated</td><td>Mid-30s % over 5-year outlook</td><td>&mdash;</td></tr>
+      <tr class="year-divider"><td colspan="4">2022 &mdash; PEAK INTENSITY</td></tr>
+      <tr><td>Q4 2022</td><td class="right neg">&gt;40% (2023)</td><td>Decline to mid-to-high 30s in ~5 years</td><td>&mdash;</td></tr>
+      <tr><td>Q3 2022</td><td class="right">Mid-to-high 30s % LT</td><td>&mdash;</td><td><span class="tag tag-new">FIRST DISCLOSED</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Capital intensity declined from &gt;50% (2021) to mid-30s% (2024+) as TSMC entered its &ldquo;harvesting&rdquo; phase. Revenue scaled faster than CapEx investment. This declining ratio was a key underpinning of the accelerating dividend growth and improved free cash flow trajectory.</div>
+</div>
+
+<!-- ====== SECTION 13: DIVIDEND POLICY ====== -->
+<div class="section" id="s13">
+  <h2><span class="num">13</span> Dividend Policy &amp; Per-Share Growth</h2>
+  <p style="margin-bottom:12px; font-size:0.88rem; color:var(--text-muted);">Tracking the policy pivot from &ldquo;sustainable&rdquo; to &ldquo;steadily increasing&rdquo; and the accelerating per-share growth.</p>
+  <table>
+    <thead><tr><th>Quarter</th><th class="right">Dividend / Share</th><th>Policy Language</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025 &mdash; ACCELERATION</td></tr>
+      <tr class="raised"><td>Q4 2025</td><td class="right bold">TWD 18 (2025); &ge;23 (2026)</td><td>Steadily increasing</td><td>+28.6% YoY; 2026 implies another 28%+ <span class="tag tag-peak">RECORD</span></td></tr>
+      <tr class="year-divider"><td colspan="4">2024</td></tr>
+      <tr><td>Q4 2024</td><td class="right">TWD 363B paid (2024)</td><td>Steadily increasing</td><td>+24.5% YoY</td></tr>
+      <tr><td>Q1 2024</td><td class="right muted">Not restated</td><td>Transitioning; 70% FCF payout</td><td>Payout guideline first disclosed</td></tr>
+      <tr class="year-divider"><td colspan="4">2023 &mdash; POLICY PIVOT</td></tr>
+      <tr class="raised"><td>Q4 2023</td><td class="right">TWD 3.5/quarter; &ge;13.5 (2024)</td><td class="pos">Steadily increasing</td><td>Quarterly minimum raised <span class="tag tag-emerged">POLICY PIVOT</span></td></tr>
+      <tr class="raised"><td>Q2 2023</td><td class="right">TWD 3/quarter min; &ge;12 (2024)</td><td class="pos">&ldquo;Steadily increasing&rdquo;</td><td>Policy shift from &ldquo;sustainable&rdquo; <span class="tag tag-new">NEW POLICY</span></td></tr>
+      <tr class="year-divider"><td colspan="4">2022 &mdash; PRE-PIVOT</td></tr>
+      <tr><td>Q4 2022</td><td class="right">TWD 11.25 (2022)</td><td>Sustainable</td><td>Up from TWD 10.25 in 2021</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> The dividend policy pivot from &ldquo;sustainable&rdquo; to &ldquo;steadily increasing&rdquo; in Q2 2023 signaled that TSMC believed the heavy investment phase was peaking. Per-share dividends accelerated from TWD 10.25 (2021) to TWD 18 (2025) to a guided &ge;23 (2026) &mdash; a 125%+ increase in 5 years. The 70% FCF payout guideline (Q1 2024) formalized the capital return framework.</div>
+</div>
+
+<!-- ====== SECTION 14: TAX RATE ====== -->
+<div class="section" id="s14">
+  <h2><span class="num">14</span> Effective Tax Rate Trajectory</h2>
+  <p style="margin-bottom:12px; font-size:0.88rem; color:var(--text-muted);">A rising structural headwind driven by expiring tax exemptions, partially offset by Industrial Innovation incentives.</p>
+  <table>
+    <thead><tr><th>Quarter</th><th class="right">Tax Rate Guidance</th><th>For Year</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025&ndash;2026</td></tr>
+      <tr><td>Q4 2025</td><td class="right neg">17&ndash;18%</td><td>2026</td><td>Continued structural creep</td></tr>
+      <tr><td>Q4 2024</td><td class="right">16&ndash;17%</td><td>2025</td><td>&mdash;</td></tr>
+      <tr><td>Q1 2025</td><td class="right">16&ndash;17%</td><td>2025</td><td>Maintained</td></tr>
+      <tr class="year-divider"><td colspan="4">2024</td></tr>
+      <tr><td>Q1 2024</td><td class="right">15&ndash;16% FY; Q2 slightly &gt;19%</td><td>2024</td><td>Q2 spike from timing</td></tr>
+      <tr class="year-divider"><td colspan="4">2022&ndash;2023 &mdash; STEP CHANGE</td></tr>
+      <tr class="lowered"><td>Q4 2022</td><td class="right neg">~15%</td><td>2023</td><td>Industrial Innovation Statute partially offsets <span class="tag tag-new">STEP CHANGE</span></td></tr>
+      <tr><td>Q2 2022</td><td class="right">10&ndash;11%</td><td>2022</td><td>Tax exemptions expiring <span class="tag tag-disc">EXPIRING</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> TSMC&rsquo;s effective tax rate nearly doubled from ~10% (2022) to 17&ndash;18% (2026), a structural headwind worth ~700 bps of net margin erosion. The Taiwan Industrial Innovation Statute partially offset the loss of exemptions, but the upward trajectory is clear. This is a persistent profitability headwind that is rarely discussed by investors.</div>
+</div>
+
+<!-- ====== SECTION 15: FOUNDRY 2.0 ====== -->
+<div class="section" id="s15">
+  <h2><span class="num">15</span> Foundry 2.0 Market Framework</h2>
+  <p style="margin-bottom:12px; font-size:0.88rem; color:var(--text-muted);">A new addressable market framework introduced in Q2 2024 to better capture TSMC&rsquo;s total opportunity. <span class="tag tag-new">Introduced Q2 2024</span></p>
+  <table>
+    <thead><tr><th>Quarter</th><th class="right">Market Size</th><th class="right">TSMC Share</th><th class="right">YoY Growth</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">2025</td></tr>
+      <tr class="raised"><td>Q4 2025</td><td class="right muted">Not restated</td><td class="right muted">Not restated</td><td class="right bold pos">+16%</td><td>AI-driven acceleration <span class="tag tag-peak">PEAK GROWTH</span></td></tr>
+      <tr class="year-divider"><td colspan="5">2024 &mdash; FRAMEWORK LAUNCH</td></tr>
+      <tr><td>Q4 2024</td><td class="right muted">Not restated</td><td class="right muted">Not restated</td><td class="right">+6%; 2025 expected +10%</td><td>&mdash;</td></tr>
+      <tr><td>Q3 2024</td><td class="right">~$250B (2023)</td><td class="right">~28&ndash;30%</td><td class="right muted">&mdash;</td><td>&mdash;</td></tr>
+      <tr><td>Q2 2024</td><td class="right">Close to $250B (2023)</td><td class="right">28%</td><td class="right">~10% (2024)</td><td>New framework introduced <span class="tag tag-new">FIRST DISCLOSED</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Foundry 2.0 was introduced to replace the narrower &ldquo;wafer foundry&rdquo; TAM definition with a broader framework that includes packaging, testing, mask-making, and other back-end services. Industry growth accelerated from +6% (2024) to +16% (2025), reflecting AI-driven demand. TSMC&rsquo;s ~28&ndash;30% share of a $250B+ market anchors a structural TAM growth story.</div>
+</div>
+
+<!-- ====== ANALYSIS SECTION ====== -->
+<div class="analysis" id="analysis">
+  <h2>Analysis: What the Disclosure Patterns Reveal</h2>
+
+  <h3>1. Three Narrative Eras in 16 Quarters</h3>
+  <p>TSMC&rsquo;s 16 quarters divide into three distinct eras, each defined by which intermittent metrics dominated the earnings call:</p>
+  <p><strong>Era 1: Downcycle &amp; Adjustment (Q1 2022 &ndash; Q3 2023)</strong> &mdash; Dominated by N7/N6 utilization weakness, inventory correction tracking, and tool delivery delays. Management language was cautious and defensive, with each call extending the recovery timeline.</p>
+  <p><strong>Era 2: AI Emergence &amp; Capacity Chase (Q4 2023 &ndash; Q4 2024)</strong> &mdash; The inventory metrics vanished, replaced by AI revenue quantification, CoWoS capacity doubling, and N3 margin dilution. The narrative pivoted from &ldquo;when does the cycle recover?&rdquo; to &ldquo;can TSMC build fast enough?&rdquo;</p>
+  <p><strong>Era 3: Structural Re-Rating (Q1 2025 &ndash; Q4 2025)</strong> &mdash; Long-term targets were raised (GM from 53% to 56%, CAGR from 15&ndash;20% to 25%), the dividend policy accelerated, and overseas expansion crystallized ($165B U.S. commitment). TSMC moved from describing AI as a growth driver to embedding it as a structural foundation.</p>
+
+  <h3>2. The Disappearing Metric as Signal</h3>
+  <p>Several intermittent metrics are analytically powerful not for what they said but for <em>when they stopped being discussed</em>:</p>
+  <p>&bull; <strong>N7/N6 utilization</strong> disappeared after Q3 2023 &mdash; its absence confirmed the downcycle was over.</p>
+  <p>&bull; <strong>Fabless inventory</strong> disappeared after Q4 2023 &mdash; normalization was complete.</p>
+  <p>&bull; <strong>Tool delivery delays</strong> disappeared after Q3 2022 &mdash; the supply chain issue resolved.</p>
+  <p>&bull; <strong>Arizona construction cost (4&ndash;5x)</strong> disappeared after Q2 2023 &mdash; the narrative shifted from cost shock to cost management.</p>
+  <p>Monitoring which metrics management stops reporting is often more informative than monitoring what they continue to report.</p>
+
+  <h3>3. Counterintuitive Headwind Trajectories</h3>
+  <p>Two structural headwinds have counterintuitive trajectories that are easy to miss:</p>
+  <p>&bull; <strong>Overseas fab dilution</strong> widens from 2&ndash;3% to 3&ndash;4% as more fabs come online sequentially. Investors expect dilution to narrow with scale, but each new fab phase restarts the cycle. This headwind peaks in 2027&ndash;2028, not 2025.</p>
+  <p>&bull; <strong>Taiwan electricity cost</strong> inverted the traditional cost advantage. Taiwan is now TSMC&rsquo;s most expensive region for electricity &mdash; making overseas fabs relatively more competitive on this axis, partially offsetting their labor and construction cost premium.</p>
+
+  <h3>4. The Long-Term Target as Strategic Signal</h3>
+  <p>TSMC&rsquo;s most important strategic communications come through changes to long-term targets, which move glacially:</p>
+  <p>&bull; <strong>Gross margin target</strong> held at 53%+ for 15 consecutive quarters, then raised to 56%+ in Q4 2025.</p>
+  <p>&bull; <strong>Revenue CAGR</strong> held at 15&ndash;20% for ~13 quarters, narrowed to &ldquo;close to 20%&rdquo; for 4 quarters, then raised to 25% in Q4 2025.</p>
+  <p>&bull; <strong>Dividend policy</strong> shifted from &ldquo;sustainable&rdquo; to &ldquo;steadily increasing&rdquo; in Q2 2023 &mdash; a 2-word change that signaled a multi-year shift in capital allocation philosophy.</p>
+  <p>These rare changes are TSMC&rsquo;s strongest conviction signals. When a target that has been unchanged for 3+ years is raised, it reflects deep management confidence in structural (not cyclical) improvement.</p>
+
+  <h3>5. Forward-Looking Metric Hierarchy</h3>
+  <p>For forecasting TSMC&rsquo;s next 12 months, the intermittent metrics that matter most (in order):</p>
+  <p><strong>1. CoWoS supply/demand language</strong> &mdash; If it ever shifts from &ldquo;tight&rdquo; to &ldquo;balanced,&rdquo; it would be the first signal of an AI demand deceleration.</p>
+  <p><strong>2. AI revenue % of total</strong> &mdash; Crossing 20% would trigger further CAGR target revisions upward.</p>
+  <p><strong>3. N2 GM dilution trajectory</strong> &mdash; The next node cycle headwind; if it follows N3&rsquo;s 10&ndash;12 quarter pattern, it will pressure margins through 2027.</p>
+  <p><strong>4. Overseas fab dilution quantification</strong> &mdash; The widening from 2&ndash;3% to 3&ndash;4% will become the primary margin debate topic by 2026&ndash;2027.</p>
+  <p><strong>5. Electricity cost</strong> &mdash; If Taiwan electricity continues its doubling trajectory, the 100+ bps headwind could become 150&ndash;200 bps by 2027.</p>
+</div>
+
+<div class="footer">
+  <p>Data source: TSMC quarterly earnings call transcripts Q1 2022 &ndash; Q4 2025 | <a href="../comparison.html">Guidance Overview</a> &middot; <a href="../results.html">Results Scorecard</a> &middot; <a href="../../index.html">Metrics Tracker</a></p>
+</div>
+
+</body>
+</html>

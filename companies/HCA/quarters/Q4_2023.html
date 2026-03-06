@@ -319,6 +319,31 @@
     .comp-table th, .comp-table td { padding: 6px 8px; }
   }
 
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+  .content-section .md-table th {
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .content-section .md-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-section .md-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+  .content-section .md-table tr:hover { background: #e8f4fd; }
+
   @media print {
     .nav-bar { display: none; }
     .header { background: #333; }
@@ -338,6 +363,8 @@
   <a href="Q3_2023.html">&larr; Q3 2023</a>
   <div class="nav-center">
     <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>
     <a href="Q4_2025.html" class="qbtn">4Q25</a>
     <a href="Q3_2025.html" class="qbtn">3Q25</a>
     <a href="Q2_2025.html" class="qbtn">2Q25</a>
@@ -358,50 +385,47 @@
   <a href="Q1_2024.html">Q1 2024 &rarr;</a>
 </div>
 
-<div class="metrics-card">
-  <div class="metric">
-    <div class="metric-label">FY Revenue Guidance</div>
-    <div class="metric-value">$67.75B - $70.25B</div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">FY Adj. EBITDA Guidance</div>
-    <div class="metric-value">$12.85B - $13.55B</div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">FY Diluted EPS Guidance</div>
-    <div class="metric-value">$19.70 - $21.20</div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">FY CapEx Guidance</div>
-    <div class="metric-value">$5.1B - $5.3B</div>
-  </div>
-</div>
-
 <div class="changes-box">
   <h3>What Changed vs Q3 2023</h3>
   <ul>
-    <li><span class="change-tag ct-new">New</span> FY 2024 Revenue guidance introduced: $67.75B - $70.25B</li>
-    <li><span class="change-tag ct-new">New</span> FY 2024 Adj. EBITDA guidance introduced: $12.85B - $13.55B</li>
-    <li><span class="change-tag ct-new">New</span> FY 2024 Diluted EPS guidance introduced: $19.70 - $21.20</li>
-    <li><span class="change-tag ct-new">New</span> FY 2024 CapEx guidance introduced: $5.1B - $5.3B</li>
-    <li><span class="change-tag ct-new">New</span> FY 2024 Cash flow from operations: $9.5B - $10.0B</li>
-    <li><span class="change-tag ct-new">New</span> FY 2024 Equiv. admissions growth: +3% to +4%</li>
+    <li><span class="change-tag ct-changed">Changed</span> Same-Facility Admissions: +3% year-over-year (prior: +3.4% YoY)</li>
+    <li><span class="change-tag ct-changed">Changed</span> Revenue Per Admission: +2.7% (prior: +3.6% YoY)</li>
+    <li><span class="change-tag ct-new">New</span> NEW: Medicaid redetermination impact discussed</li>
   </ul>
+</div>
+
+<div class="metrics-card">
+  <div class="metric">
+    <div class="metric-label">FY Revenue Guidance</div>
+    <div class="metric-value">$67.75 billion to $70.25 billion</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">FY Adj. EBITDA Guidance</div>
+    <div class="metric-value">$12.85 billion to $13.55 billion</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">FY Diluted EPS Guidance</div>
+    <div class="metric-value">$19.70 to $21.20</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">CapEx Guidance</div>
+    <div class="metric-value">just above <strong>$4.7 billion</strong></div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Same-Facility Admissions</div>
+    <div class="metric-value">+3% year-over-year</div>
+    <div class="metric-delta delta-flat">Prior: +3.4% YoY</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Revenue Per Admission</div>
+    <div class="metric-value">+2.7%</div>
+    <div class="metric-delta delta-flat">Prior: +3.6% YoY</div>
+  </div>
 </div>
 
 <!-- Full Guidance Content -->
 <div class="content-section">
   <h3>Full Year 2024 Guidance</h3>
-  <ul>
-    <li><strong>Revenue:</strong> $67.75B - $70.25B</li>
-    <li><strong>Net income attributable to HCA Healthcare:</strong> $5.2B - $5.6B</li>
-    <li><strong>Adjusted EBITDA:</strong> $12.85B - $13.55B</li>
-    <li><strong>Diluted EPS:</strong> $19.70 - $21.20</li>
-    <li><strong>Capital expenditures:</strong> $5.1B - $5.3B</li>
-    <li><strong>Cash flow from operations:</strong> $9.5B - $10.0B</li>
-    <li><strong>Equivalent admissions growth:</strong> +3% to +4%</li>
-    <li><strong>Revenue per equivalent admission growth:</strong> +2% to +3%</li>
-  </ul>
 </div>
 <div class="content-section">
   <h3>Surgical Growth Outlook (Q&A)</h3>
@@ -713,6 +737,9 @@
   </ul>
 </div>
 <div class="content-section">
+  <h3>Special Topics</h3>
+</div>
+<div class="content-section">
   <h3>CFO Transition</h3>
   <ul>
     <li><strong>William B. Rutherford</strong> retiring after 34 years with HCA (10 years as CFO)</li>
@@ -722,9 +749,7 @@
 <div class="content-section">
   <h3>Strategic Investment Priorities (2024)</h3>
   <ul>
-    <li><strong>1. Network expansion:</strong> facilities, services, workforce to meet demand growth and increase market share; over $2 billion new capital projects scheduled; newly acquired hospitals and outpatient facilities to be integrated</li>
-    <li><strong>2. Digital capabilities / technology:</strong> advancing digital tools, care transformation and innovation program, financial resiliency program, revenue cycle integration, case management improvements, automation and benchmarking</li>
-    <li><strong>3. Balance sheet flexibility:</strong> capital spending over $5 billion; share repurchases around $5 billion; strong cash flow supports dual investment in business and shareholder returns</li>
+    <li>1. <strong>Network expansion:</strong> facilities, services, workforce to meet demand growth and increase market share; over $2 billion new capital projects scheduled; newly acquired hospitals and outpatient facilities to be integrated 2. <strong>Digital capabilities / technology:</strong> advancing digital tools, care transformation and innovation program, financial resiliency program, revenue cycle integration, case management improvements, automation and benchmarking 3. <strong>Balance sheet flexibility:</strong> capital spending over $5 billion; share repurchases around $5 billion; strong cash flow supports dual investment in business and shareholder returns</li>
   </ul>
 </div>
 <div class="content-section">
@@ -757,8 +782,14 @@
     <li>Programs are complex with multiple activities affecting timing and amounts</li>
     <li><strong>Key Q4 2023 items:</strong> new North Carolina program recognized; Texas settlement; Florida accrual began</li>
     <li><strong>2024 headwind ($100M-$200M):</strong> driven by non-recurring 2023 settlements and Florida accrual timing change</li>
-    <li><strong>New 2024 program:</strong> Nevada</li>
+    <li><strong>New 2024 program:</strong> Nevada <em>Extraction completed from full transcript including prepared remarks and Q&A session. All figures are as stated by management on the call.</em></li>
   </ul>
+</div>
+<div class="content-section">
+  <h3>Q4 2023 Actuals (Reported)</h3>
+</div>
+<div class="content-section">
+  <h3>Full Year 2023 Actuals</h3>
 </div>
 
 <div class="prior-ref" id="priorRef">
@@ -768,10 +799,8 @@
   </div>
   <div class="prior-ref-body" id="priorBody">
     <div class="metric-grid">
-      <div class="prior-mini"><div class="pm-label">FY Revenue Guidance</div><div class="pm-value">$63.5B - $64.5B</div></div>
-      <div class="prior-mini"><div class="pm-label">FY Adj. EBITDA Guidance</div><div class="pm-value">$12.3B - $12.6B</div></div>
-      <div class="prior-mini"><div class="pm-label">FY Diluted EPS Guidance</div><div class="pm-value">$17.80 - $18.50</div></div>
-      <div class="prior-mini"><div class="pm-label">FY CapEx Guidance</div><div class="pm-value">~$4.7B</div></div>
+      <div class="prior-mini"><div class="pm-label">Same-Facility Admissions</div><div class="pm-value">+3.4% YoY</div></div>
+      <div class="prior-mini"><div class="pm-label">Revenue Per Admission</div><div class="pm-value">+3.6% YoY</div></div>
     </div>
     <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q3_2023.html" style="color:var(--blue);">View full Q3 2023 detail &rarr;</a></p>
   </div>

@@ -319,6 +319,31 @@
     .comp-table th, .comp-table td { padding: 6px 8px; }
   }
 
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+  .content-section .md-table th {
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .content-section .md-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-section .md-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+  .content-section .md-table tr:hover { background: #e8f4fd; }
+
   @media print {
     .nav-bar { display: none; }
     .header { background: #333; }
@@ -338,6 +363,8 @@
   <a href="Q1_2022.html">&larr; Q1 2022</a>
   <div class="nav-center">
     <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>
     <a href="Q4_2025.html" class="qbtn">4Q25</a>
     <a href="Q3_2025.html" class="qbtn">3Q25</a>
     <a href="Q2_2025.html" class="qbtn">2Q25</a>
@@ -358,53 +385,39 @@
   <a href="Q3_2022.html">Q3 2022 &rarr;</a>
 </div>
 
-<div class="metrics-card">
-  <div class="metric">
-    <div class="metric-label">FY 2022 Revenue Guide</div>
-    <div class="metric-value">$59.5B - $61.5B</div>
-    <div class="metric-delta delta-flat">Unchanged</div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">FY 2022 Adj. EBITDA Guide</div>
-    <div class="metric-value">$11.8B - $12.4B</div>
-    <div class="metric-delta delta-flat">Unchanged</div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">FY 2022 Diluted EPS Guide</div>
-    <div class="metric-value">$16.40 - $17.60</div>
-    <div class="metric-delta delta-flat">Unchanged</div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">FY 2022 CapEx Guide</div>
-    <div class="metric-value">~$4.2B</div>
-    <div class="metric-delta delta-flat">Unchanged</div>
-  </div>
+<div class="changes-box">
+  <h3>What Changed vs Q1 2022</h3>
+  <ul>
+    <li><span class="change-tag ct-maintained">Maintained</span> Key metrics largely maintained from prior quarter</li>
+  </ul>
 </div>
 
-<div class="changes-box">
-  <h3>What Changed in Guidance vs Q1 2022</h3>
-  <ul>
-    <li><span class="change-tag ct-maintained">Maintained</span> <strong>Revenue:</strong> $59.5B - $61.5B (unchanged)</li>
-    <li><span class="change-tag ct-maintained">Maintained</span> <strong>Adj. EBITDA:</strong> $11.8B - $12.4B (unchanged)</li>
-    <li><span class="change-tag ct-maintained">Maintained</span> <strong>Diluted EPS:</strong> $16.40 - $17.60 (unchanged)</li>
-    <li><span class="change-tag ct-maintained">Maintained</span> <strong>CapEx:</strong> ~$4.2B (unchanged)</li>
-    <li><span class="change-tag ct-lowered">Lowered</span> <strong>Cash Flow from Ops (% of Adj. EBITDA):</strong> ~8.0%-8.5% (was 9.0%-9.5%)</li>
-    <li><span class="change-tag ct-maintained">Maintained</span> <strong>EBITDA Margin Planning Range:</strong> 19%-20% (reiterated)</li>
-    <li><span class="change-tag ct-changed">Changed</span> <strong>Volume Outlook (H2):</strong> Inpatient admissions growth now expected at "more modest level" than original guidance</li>
-  </ul>
+<div class="metrics-card">
+  <div class="metric">
+    <div class="metric-label">CapEx Guidance</div>
+    <div class="metric-value">~$4.2 billion</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Adj. EBITDA Margin</div>
+    <div class="metric-value">20.5%</div>
+  </div>
 </div>
 
 <!-- Full Guidance Content -->
 <div class="content-section">
-  <h3>Full Year 2022 Guidance &amp; Margin Outlook</h3>
+  <h3>Full Year 2022 Guidance (Unchanged from Q1 2022 Update)</h3>
   <ul>
-    <li><strong>Guidance Status:</strong> UNCHANGED from prior quarter (per Bill Rutherford: "our full year 2022 guidance remains unchanged from what we highlighted last quarter")</li>
-    <li><strong>Revenue:</strong> $59.5B - $61.5B (unchanged)</li>
-    <li><strong>Adjusted EBITDA:</strong> $11.8B - $12.4B (unchanged)</li>
-    <li><strong>Diluted EPS:</strong> $16.40 - $17.60 (unchanged)</li>
-    <li><strong>Capital Expenditures:</strong> ~$4.2B (unchanged)</li>
-    <li><strong>Cash Flow from Operations (as % of Adj. EBITDA):</strong> Revised to ~8.0%-8.5% (original guide was 9.0%-9.5%; refinement disclosed in Q&A)</li>
-    <li><strong>Near-Term EBITDA Margin Planning Range:</strong> 19%-20% (reiterated)</li>
+    <li><strong>Guidance Status:</strong> UNCHANGED from prior quarter</li>
+    <li><strong>Capital Expenditures:</strong> ~$4.2 billion (per analyst reference; management did not dispute)</li>
+    <li><strong>Cash Flow from Operations (as % of Adjusted EBITDA):</strong> Revised expectation ~8.0%-8.5% (original guide was 9.0%-9.5%; CFO Bill Rutherford noted: "it's probably going to be in around the 8%, maybe 8.5% level") > Note: Bill Rutherford stated "our full year 2022 guidance remains unchanged from what we highlighted last quarter" in prepared remarks. The cash flow from ops percentage refinement came in Q&A.</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Adjusted EBITDA Margin Outlook</h3>
+  <ul>
+    <li><strong>Near-Term Margin Planning Range:</strong> 19%-20% (reiterated by CFO Rutherford; "there'll be periods we're north of that, some periods we're within that")</li>
+    <li><strong>Q1 2022 Margin:</strong> ~19.7% (referenced as "[97]" likely 19.7%)</li>
+    <li><strong>Q2 2022 Margin:</strong> 20.5%</li>
   </ul>
 </div>
 <div class="content-section">
@@ -546,26 +559,7 @@
 </div>
 <div class="content-section">
   <h3>Key Q&A Quantitative Details Summary</h3>
-  <table class="comp-table">
-    <thead><tr><th>Metric</th><th>Value</th><th>Context</th></tr></thead>
-    <tbody>
-      <tr><td>Contract labor as % of SWB (June)</td><td>Just above 8%</td><td>Down from 9.0%-9.2% in Q1</td></tr>
-      <tr><td>Contract labor expense (June vs. April)</td><td>-22%</td><td>Intra-quarter improvement</td></tr>
-      <tr><td>Cost per FTE YoY (Q2)</td><td>~4.5%</td><td>Down from ~7%+ in Q1</td></tr>
-      <tr><td>Turnover (Q2 vs. Q1)</td><td>Down &gt;20%</td><td>Sequential improvement</td></tr>
-      <tr><td>Recruitment (Q2 vs. Q1)</td><td>Up 18%</td><td>Sequential improvement</td></tr>
-      <tr><td>Occupancy</td><td>~72%</td><td>Q2 2022</td></tr>
-      <tr><td>COVID support (YTD)</td><td>~$200M</td><td>Programs largely concluded</td></tr>
-      <tr><td>Cash from ops (FY revised view)</td><td>~8.0%-8.5% of Adj. EBITDA</td><td>Down from guided 9.0%-9.5%</td></tr>
-      <tr><td>Commercial pricing target</td><td>Mid-single digits</td><td>Up from historical 2.5%-4%</td></tr>
-      <tr><td>Non-COVID managed care admissions</td><td>+0.7% YoY</td><td>Favorable payer mix</td></tr>
-      <tr><td>Total Medicare admissions</td><td>+0.6% YoY</td><td>Positive trend</td></tr>
-      <tr><td>HIX enrollment growth (2021 reference)</td><td>+20%-25%</td><td>Due to enhanced subsidies</td></tr>
-      <tr><td>Galen nursing colleges (total)</td><td>13</td><td>Pipeline of 6-8 more in 12-18 months</td></tr>
-      <tr><td>Market share (HCA markets)</td><td>28%</td><td>Up from 3% in 2011</td></tr>
-      <tr><td>Outpatient facilities</td><td>~2,500</td><td>~12:1 ratio to hospitals</td></tr>
-    </tbody>
-  </table>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Value</th><th>Context</th></tr></thead><tbody><tr><td>Contract labor as % of SWB (June)</td><td>Just above 8%</td><td>Down from 9.0%-9.2% in Q1</td></tr><tr><td>Contract labor expense (June vs. April)</td><td>-22%</td><td>Intra-quarter improvement</td></tr><tr><td>Cost per FTE YoY (Q2)</td><td>~4.5%</td><td>Down from ~7%+ in Q1</td></tr><tr><td>Turnover (Q2 vs. Q1)</td><td>Down >20%</td><td>Sequential improvement</td></tr><tr><td>Recruitment (Q2 vs. Q1)</td><td>Up 18%</td><td>Sequential improvement</td></tr><tr><td>Occupancy</td><td>~72%</td><td>Q2 2022</td></tr><tr><td>COVID support (YTD)</td><td>~$200M</td><td>Programs largely concluded</td></tr><tr><td>Cash from ops (FY revised view)</td><td>~8.0%-8.5% of Adj. EBITDA</td><td>Down from guided 9.0%-9.5%</td></tr><tr><td>Commercial pricing target</td><td>Mid-single digits</td><td>Up from historical 2.5%-4%</td></tr><tr><td>Non-COVID managed care admissions</td><td>+0.7% YoY</td><td>Favorable payer mix</td></tr><tr><td>Total Medicare admissions</td><td>+0.6% YoY</td><td>Positive trend</td></tr><tr><td>HIX enrollment growth (2021 reference)</td><td>+20%-25%</td><td>Due to enhanced subsidies</td></tr><tr><td>Galen nursing colleges (total)</td><td>13</td><td>Pipeline of 6-8 more in 12-18 months</td></tr><tr><td>Market share (HCA markets)</td><td>28%</td><td>Up from 3% in 2011</td></tr><tr><td>Outpatient facilities</td><td>~2,500</td><td>~12:1 ratio to hospitals</td></tr></tbody></table></div>
 </div>
 <div class="content-section">
   <h3>Management Tone & Qualitative Signals</h3>
@@ -581,17 +575,7 @@
 </div>
 <div class="content-section">
   <h3>Consensus Estimates vs. Actuals (S&P Global)</h3>
-  <table class="comp-table">
-    <thead><tr><th>Metric</th><th>FQ2 2022 Consensus</th><th>FQ2 2022 Actual</th><th>Surprise</th></tr></thead>
-    <tbody>
-      <tr><td><strong>EPS Normalized</strong></td><td>$3.71</td><td>$4.21</td><td>+13.48%</td></tr>
-      <tr><td><strong>Revenue (mm)</strong></td><td>$14,726.46</td><td>$14,820.00</td><td>+0.64%</td></tr>
-    </tbody>
-  </table>
-  <ul>
-    <li><strong>FY 2022 Consensus:</strong> EPS $16.90 | Revenue $60,291.68mm</li>
-    <li><strong>FY 2023 Consensus:</strong> EPS $18.61 | Revenue $63,273.94mm</li>
-  </ul>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>FQ2 2022 Consensus</th><th>FQ2 2022 Actual</th><th>Surprise</th></tr></thead><tbody><tr><td><strong>EPS Normalized</strong></td><td>$3.71</td><td>$4.21</td><td>+13.48%</td></tr><tr><td><strong>Revenue (mm)</strong></td><td>$14,726.46</td><td>$14,820.00</td><td>+0.64%</td></tr></tbody></table> **FY 2022 Consensus:** EPS $16.90 | Revenue $60,291.68mm **FY 2023 Consensus:** EPS $18.61 | Revenue $63,273.94mm</div>
 </div>
 <div class="content-section">
   <h3>Q2 2022 Actuals (Reported)</h3>
@@ -604,10 +588,7 @@
   </div>
   <div class="prior-ref-body" id="priorBody">
     <div class="metric-grid">
-      <div class="prior-mini"><div class="pm-label">FY 2022 Revenue Guide</div><div class="pm-value">$59.5B - $61.5B</div></div>
-      <div class="prior-mini"><div class="pm-label">FY 2022 Adj. EBITDA Guide</div><div class="pm-value">$11.8B - $12.4B</div></div>
-      <div class="prior-mini"><div class="pm-label">FY 2022 EPS Guide</div><div class="pm-value">$16.40 - $17.60</div></div>
-      <div class="prior-mini"><div class="pm-label">FY 2022 CapEx Guide</div><div class="pm-value">~$4.2B</div></div>
+      <div class="prior-mini"><div class="pm-label">Same-Facility Admissions</div><div class="pm-value"><strong>+2% YoY</strong> vs. Q1 2021</div></div>
     </div>
     <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q1_2022.html" style="color:var(--blue);">View full Q1 2022 detail &rarr;</a></p>
   </div>

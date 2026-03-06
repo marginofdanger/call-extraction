@@ -319,6 +319,31 @@
     .comp-table th, .comp-table td { padding: 6px 8px; }
   }
 
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+  .content-section .md-table th {
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .content-section .md-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-section .md-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+  .content-section .md-table tr:hover { background: #e8f4fd; }
+
   @media print {
     .nav-bar { display: none; }
     .header { background: #333; }
@@ -339,6 +364,8 @@
   <div class="nav-center">
     <a href="../comparison.html" class="nav-back">Overview</a>
     <a href="../results.html" class="nav-back">Results</a>
+    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>
+    <a href="Q4_FY2026.html" class="qbtn">4Q2026</a>
     <a href="Q3_FY2026.html" class="qbtn">3Q2026</a>
     <a href="Q2_FY2026.html" class="qbtn">2Q2026</a>
     <a href="Q1_FY2026.html" class="qbtn">1Q2026</a>
@@ -403,9 +430,7 @@
 </div>
 <div class="content-section">
   <h3>Guidance Change Tracking</h3>
-  <ul>
-    <li>| Metric | Q2 FY2023 Guidance | Q3 FY2023 Guidance | Change | |--------|-------------------|-------------------|--------| | Total Revenue | $2,140M - $2,145M | $2,143M - $2,145M | Low end raised by $3M | | Non-GAAP Operating Income | ~$820M | ~$820M | Unchanged | | Non-GAAP Diluted EPS | ~$4.17 | ~$4.19 | Raised by $0.02 |</li>
-  </ul>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Q2 FY2023 Guidance</th><th>Q3 FY2023 Guidance</th><th>Change</th></tr></thead><tbody><tr><td>Total Revenue</td><td>$2,140M - $2,145M</td><td>$2,143M - $2,145M</td><td>Low end raised by $3M</td></tr><tr><td>Non-GAAP Operating Income</td><td>~$820M</td><td>~$820M</td><td>Unchanged</td></tr><tr><td>Non-GAAP Diluted EPS</td><td>~$4.17</td><td>~$4.19</td><td>Raised by $0.02</td></tr></tbody></table></div>
 </div>
 <div class="content-section">
   <h3>Long-Term Targets</h3>

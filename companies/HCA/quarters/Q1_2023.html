@@ -319,6 +319,31 @@
     .comp-table th, .comp-table td { padding: 6px 8px; }
   }
 
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+  .content-section .md-table th {
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .content-section .md-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-section .md-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+  .content-section .md-table tr:hover { background: #e8f4fd; }
+
   @media print {
     .nav-bar { display: none; }
     .header { background: #333; }
@@ -338,6 +363,8 @@
   <a href="Q4_2022.html">&larr; Q4 2022</a>
   <div class="nav-center">
     <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>
     <a href="Q4_2025.html" class="qbtn">4Q25</a>
     <a href="Q3_2025.html" class="qbtn">3Q25</a>
     <a href="Q2_2025.html" class="qbtn">2Q25</a>
@@ -358,56 +385,29 @@
   <a href="Q2_2023.html">Q2 2023 &rarr;</a>
 </div>
 
-<div class="metrics-card">
-  <div class="metric">
-    <div class="metric-label">FY Revenue Guidance</div>
-    <div class="metric-value">$62.5B - $64.5B</div>
-    <div class="metric-delta delta-up">Prior: $61.5B - $63.5B</div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">FY Adj. EBITDA Guidance</div>
-    <div class="metric-value">$12.1B - $12.7B</div>
-    <div class="metric-delta delta-up">Prior: $11.8B - $12.4B</div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">FY Diluted EPS Guidance</div>
-    <div class="metric-value">$17.25 - $18.55</div>
-    <div class="metric-delta delta-up">Prior: $16.40 - $17.60</div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">FY CapEx Guidance</div>
-    <div class="metric-value">~$4.6B</div>
-    <div class="metric-delta delta-up">Prior: ~$4.3B</div>
-  </div>
+<div class="changes-box">
+  <h3>What Changed vs Q4 2022</h3>
+  <ul>
+    <li><span class="change-tag ct-changed">Changed</span> Same-Facility Admissions: +4.4% year-over-year (prior: +2.9% YoY)</li>
+    <li><span class="change-tag ct-new">New</span> NEW: Medicaid redetermination impact discussed</li>
+  </ul>
 </div>
 
-<div class="changes-box">
-  <h3>What Changed vs Q4 2022 Guidance</h3>
-  <ul>
-    <li><span class="change-tag ct-raised">Raised</span> FY Revenue: $62.5B - $64.5B (was $61.5B - $63.5B)</li>
-    <li><span class="change-tag ct-raised">Raised</span> FY Adj. EBITDA: $12.1B - $12.7B (was $11.8B - $12.4B)</li>
-    <li><span class="change-tag ct-raised">Raised</span> FY Diluted EPS: $17.25 - $18.55 (was $16.40 - $17.60)</li>
-    <li><span class="change-tag ct-raised">Raised</span> FY CapEx: ~$4.6B (was ~$4.3B); driven by growth investments and land acquisitions</li>
-    <li><span class="change-tag ct-new">New</span> Medicaid redetermination impact discussed; no material impact observed yet</li>
-  </ul>
+<div class="metrics-card">
+  <div class="metric">
+    <div class="metric-label">Same-Facility Admissions</div>
+    <div class="metric-value">+4.4% year-over-year</div>
+    <div class="metric-delta delta-flat">Prior: +2.9% YoY</div>
+  </div>
 </div>
 
 <!-- Full Guidance Content -->
 <div class="content-section">
   <h3>Full Year 2023 Guidance (Updated / Raised)</h3>
   <ul>
-    <li><strong>Note:</strong> Guidance was raised from the initial FY2023 guidance provided on the Q4 2022 call. The raise was described as principally reflecting the strong Q1 2023 performance. Below are the UPDATED ranges as provided on this Q1 2023 call.</li>
+    <li>> <strong>Note:</strong> Guidance was raised from the initial FY2023 guidance provided on the Q4 2022 call. The raise was described as principally reflecting the strong Q1 2023 performance. Below are the UPDATED ranges as provided on this Q1 2023 call.</li>
   </ul>
-  <table class="comp-table">
-    <thead><tr><th>Metric</th><th>Updated FY 2023 Guidance (Q1 Call)</th></tr></thead>
-    <tbody>
-      <tr><td><strong>Revenue</strong></td><td>$62.5 billion - $64.5 billion</td></tr>
-      <tr><td><strong>Net Income Attributable to HCA Healthcare</strong></td><td>$4.75 billion - $5.16 billion</td></tr>
-      <tr><td><strong>Adjusted EBITDA</strong></td><td>$12.1 billion - $12.7 billion</td></tr>
-      <tr><td><strong>Diluted EPS</strong></td><td>$17.25 - $18.55</td></tr>
-      <tr><td><strong>Capital Spending</strong></td><td>~$4.6 billion</td></tr>
-    </tbody>
-  </table>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Updated FY 2023 Guidance (Q1 Call)</th></tr></thead><tbody><tr><td><strong>Revenue</strong></td><td>$62.5 billion - $64.5 billion</td></tr><tr><td><strong>Net Income Attributable to HCA Healthcare</strong></td><td>$4.75 billion - $5.16 billion</td></tr><tr><td><strong>Adjusted EBITDA</strong></td><td>$12.1 billion - $12.7 billion</td></tr><tr><td><strong>Diluted EPS</strong></td><td>$17.25 - $18.55</td></tr><tr><td><strong>Capital Spending</strong></td><td>~$4.6 billion</td></tr></tbody></table></div>
 </div>
 <div class="content-section">
   <h3>Guidance Commentary</h3>
@@ -544,6 +544,9 @@
 </div>
 <div class="content-section">
   <h3>Capacity & Network Development</h3>
+</div>
+<div class="content-section">
+  <h3>Land Acquisitions for Future Hospital Development</h3>
   <ul>
     <li><strong>San Antonio, TX:</strong> 2 hospitals under construction (market runs ~90% occupancy)</li>
     <li><strong>Austin, TX:</strong> land owned for new hospitals</li>
@@ -551,35 +554,64 @@
     <li><strong>Las Vegas, NV:</strong> land purchased in Q1 2023</li>
     <li><strong>Salt Lake City, UT:</strong> land purchased in Q1 2023</li>
     <li><strong>Multiple Florida markets:</strong> land owned for new hospitals</li>
-    <li><strong>Capacity constraints:</strong> declination rate improving (1.5% in Q1 vs. 2.0% in Q4 2022) but still above pre-pandemic levels; March better than January within Q1</li>
-    <li><strong>Key variable:</strong> staffing -- getting sufficient staff into facilities to open beds, surgical capacity, and ER capacity</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Capacity Constraints Commentary</h3>
+  <ul>
+    <li>Declination rate improving (1.5% in Q1 vs. 2.0% in Q4 2022) but still above pre-pandemic levels</li>
+    <li>March was better than January within Q1, suggesting improving intra-quarter trend</li>
+    <li>Key variable for further improvement: staffing -- getting sufficient staff into facilities to open beds, surgical capacity, and ER capacity</li>
   </ul>
 </div>
 <div class="content-section">
   <h3>Q&A Key Quantitative Details</h3>
+</div>
+<div class="content-section">
+  <h3>Volume Consistency Through Q1 (Steven Valiquette, Barclays)</h3>
   <ul>
-    <li><strong>Volume Consistency (Valiquette, Barclays):</strong> volume was "pretty consistent" throughout Q1; guidance raise "principally" reflects Q1 performance; good demand continues</li>
-    <li><strong>Surgical Growth (Fidel, Stephens):</strong> typical surgical growth 1-2% historically; continued growth expected as staffing capacity improves</li>
-    <li><strong>Payer Mix / Exchange Volume (Cassorla, Citigroup):</strong> non-COVID commercial volume growth +11% (managed care); exchange volume growth ~19% YoY</li>
-    <li><strong>Contract Labor (Cantor Fitzgerald):</strong> savings from reduced contract labor reinvested into employed workforce; year-end target 6.5-7% of SWB (pre-COVID baseline ~6%)</li>
-    <li><strong>Commercial Rate Cycle (Baxter, Wells Fargo):</strong> current renewal rate increases mid-single digits (vs. ~3.5% pre-pandemic); 2024 contracting ~2/3 complete</li>
+    <li><strong>Management Response:</strong> volume was "pretty consistent" throughout Q1; guidance raise "principally" reflects Q1 performance; good demand continues</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Surgical Growth Sustainability (Scott Fidel, Stephens)</h3>
+  <ul>
+    <li><strong>Typical Surgical Growth:</strong> 1-2% historically</li>
+    <li><strong>Expectation:</strong> continued growth in both inpatient and outpatient surgical volume as staffing capacity improves</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Payer Mix / Exchange Volume (Jason Cassorla, Citigroup)</h3>
+  <ul>
+    <li><strong>Non-COVID Commercial Volume Growth:</strong> +11% (managed care)</li>
+    <li><strong>Exchange Volume Growth:</strong> ~19% year-over-year</li>
+    <li><strong>Employment Backdrop:</strong> "basically full employment in most of our markets"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Contract Labor Reinvestment (Sarah / Cantor Fitzgerald)</h3>
+  <ul>
+    <li><strong>Strategy:</strong> savings from reduced contract labor being reinvested into employed workforce (wages and hiring)</li>
+    <li><strong>Pre-COVID Contract Labor Baseline:</strong> ~6% of SWB</li>
+    <li><strong>Year-End Target:</strong> 6.5-7% of SWB</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Commercial Rate Cycle (Stephen Baxter, Wells Fargo)</h3>
+  <ul>
+    <li><strong>Current Renewal Rate Increases:</strong> mid-single digits</li>
+    <li><strong>Pre-Pandemic Renewal Rate:</strong> ~3.5%</li>
+    <li><strong>2024 Contracting Progress:</strong> ~2/3 complete (consistent with historical norms)</li>
   </ul>
 </div>
 <div class="content-section">
   <h3>Prior Year Comparison Items (Q1 2022 Baseline)</h3>
-  <table class="comp-table">
-    <thead><tr><th>Item</th><th>Q1 2022</th><th>Q1 2023</th></tr></thead>
-    <tbody>
-      <tr><td><strong>COVID Admissions as % of Total</strong></td><td>9.7%</td><td>~3%</td></tr>
-      <tr><td><strong>COVID-Related Support Payments</strong></td><td>~$190 million</td><td>~$30 million</td></tr>
-      <tr><td><strong>Texas-Directed Payment Program Revenue</strong></td><td>$244 million</td><td>--</td></tr>
-      <tr><td><strong>Texas-Directed Payment Program Expenses</strong></td><td>$90 million</td><td>--</td></tr>
-      <tr><td><strong>Contract Labor as % of SWB</strong></td><td>9.5%</td><td>7.1%</td></tr>
-      <tr><td><strong>Contract Labor as % of Hours</strong></td><td>~11.5-11.6%</td><td>10.3%</td></tr>
-      <tr><td><strong>Adjusted EBITDA</strong></td><td>$2.94 billion</td><td>$3.17 billion</td></tr>
-    </tbody>
-  </table>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Item</th><th>Q1 2022</th><th>Q1 2023</th></tr></thead><tbody><tr><td><strong>COVID Admissions as % of Total</strong></td><td>9.7%</td><td>~3%</td></tr><tr><td><strong>COVID-Related Support Payments</strong></td><td>~$190 million</td><td>~$30 million</td></tr><tr><td><strong>Texas-Directed Payment Program Revenue</strong></td><td>$244 million</td><td>--</td></tr><tr><td><strong>Texas-Directed Payment Program Expenses</strong></td><td>$90 million</td><td>--</td></tr><tr><td><strong>Contract Labor as % of SWB</strong></td><td>9.5%</td><td>7.1%</td></tr><tr><td><strong>Contract Labor as % of Hours</strong></td><td>~11.5-11.6%</td><td>10.3%</td></tr><tr><td><strong>Adjusted EBITDA</strong></td><td>$2.94 billion</td><td>$3.17 billion</td></tr></tbody></table> *Extraction completed from S&P Global Market Intelligence transcript of HCA Healthcare FQ1 2023 Earnings Call, April 21, 2023.*</div>
 </div>
+<div class="content-section">
+  <h3>Q1 2023 Actuals (Reported)</h3>
+</div>
+
 <div class="prior-ref" id="priorRef">
   <div class="prior-ref-header" onclick="var b=document.getElementById('priorBody');b.classList.toggle('open');this.querySelector('.arrow').innerHTML=b.classList.contains('open')?'&#9650;':'&#9660;';">
     Prior Quarter Reference: Q4 2022
@@ -587,10 +619,9 @@
   </div>
   <div class="prior-ref-body" id="priorBody">
     <div class="metric-grid">
-      <div class="prior-mini"><div class="pm-label">FY Revenue Guidance</div><div class="pm-value">$61.5B - $63.5B</div></div>
-      <div class="prior-mini"><div class="pm-label">FY Adj. EBITDA Guidance</div><div class="pm-value">$11.8B - $12.4B</div></div>
-      <div class="prior-mini"><div class="pm-label">FY Diluted EPS Guidance</div><div class="pm-value">$16.40 - $17.60</div></div>
-      <div class="prior-mini"><div class="pm-label">FY CapEx Guidance</div><div class="pm-value">~$4.3B</div></div>
+      <div class="prior-mini"><div class="pm-label">FY Revenue Guidance</div><div class="pm-value">approximately 2% (as reported)</div></div>
+      <div class="prior-mini"><div class="pm-label">Same-Facility Admissions</div><div class="pm-value">+2.9% YoY</div></div>
+      <div class="prior-mini"><div class="pm-label">Revenue Per Admission</div><div class="pm-value">-2.6% YoY (influenced by drop in COVID activity)</div></div>
     </div>
     <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q4_2022.html" style="color:var(--blue);">View full Q4 2022 detail &rarr;</a></p>
   </div>

@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AMZN Q4 2024 Earnings Call Detail</title>
+<style>
+:root {
+    --company-primary: #FF9900;
+    --company-dark: #232F3E;
+    --company-accent: #146EB4;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 40px 40px 32px;
+    margin: 0 -24px 0;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .header .meta {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    font-weight: 300;
+  }
+  .header .meta span { margin-right: 24px; }
+
+  .nav-bar {
+    background: var(--company-accent);
+    margin: 0 -24px 32px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    transition: all 0.15s;
+  }
+  .nav-bar a:hover { background: rgba(255,255,255,0.2); }
+  .nav-bar a.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .nav-center {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-center a.qbtn {
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+  }
+  .nav-center a.qbtn.current {
+    background: var(--company-primary);
+    border-color: var(--company-primary);
+  }
+  .nav-center a.qbtn:hover { background: rgba(255,255,255,0.2); }
+  .nav-back {
+    background: rgba(255,255,255,0.15) !important;
+    border-color: rgba(255,255,255,0.35) !important;
+  }
+
+  .metrics-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .metric {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+  .metric-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .metric-value {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+  .metric-delta {
+    font-size: 0.72rem;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+  .delta-up { color: var(--green); }
+  .delta-down { color: var(--red); }
+  .delta-flat { color: var(--text-muted); }
+
+  .changes-box {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 5px solid var(--amber);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .changes-box h3 {
+    font-size: 1rem;
+    color: var(--company-dark);
+    margin-bottom: 10px;
+  }
+  .changes-box ul { list-style: none; padding: 0; }
+  .changes-box li {
+    padding: 5px 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .change-tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .ct-raised { background: #d5f5e3; color: #1e8449; }
+  .ct-lowered { background: #fadbd8; color: #c0392b; }
+  .ct-changed { background: #d6eaf8; color: #2471a3; }
+  .ct-new { background: #e8daef; color: #6c3483; }
+  .ct-maintained { background: #fdebd0; color: #b9770e; }
+
+  .content-section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .content-section h3 {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .content-section ul {
+    padding: 14px 18px 14px 36px;
+    margin: 0;
+  }
+  .content-section li {
+    padding: 3px 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .content-section li strong { color: var(--company-dark); }
+
+  .prior-ref {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 40px;
+    overflow: hidden;
+  }
+  .prior-ref-header {
+    background: var(--light-bg);
+    padding: 12px 18px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--company-dark);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .prior-ref-header:hover { background: #eef2f7; }
+  .prior-ref-body { padding: 18px; display: none; }
+  .prior-ref-body.open { display: block; }
+  .prior-ref-body .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .prior-mini {
+    background: var(--light-bg);
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .prior-mini .pm-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .prior-mini .pm-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border);
+  }
+  .footer-nav a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .footer-nav a:hover { text-decoration: underline; }
+
+  /* Comparison page styles */
+  .toc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .toc a {
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 4px 0;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  .comp-section {
+    margin-bottom: 40px;
+  }
+  .comp-section h2 {
+    font-size: 1.2rem;
+    color: var(--company-dark);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--company-primary);
+  }
+
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+  }
+  .comp-table th {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .comp-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .comp-table tr:nth-child(even) { background: var(--light-bg); }
+  .comp-table tr:hover { background: #e8f4fd; }
+
+  @media (max-width: 768px) {
+    .header h1 { font-size: 1.5rem; }
+    .metrics-card { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .nav-center { display: none; }
+    body { padding: 0 16px 60px; }
+    .header { margin: 0 -16px 0; padding: 28px 24px 20px; }
+    .nav-bar { margin: 0 -16px 24px; }
+    .toc { grid-template-columns: 1fr; }
+    .comp-table { font-size: 0.78rem; }
+    .comp-table th, .comp-table td { padding: 6px 8px; }
+  }
+
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+  .content-section .md-table th {
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .content-section .md-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-section .md-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+  .content-section .md-table tr:hover { background: #e8f4fd; }
+
+  @media print {
+    .nav-bar { display: none; }
+    .header { background: #333; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>AMZN Q4 2024 Earnings Call</h1>
+  <div class="meta">
+    <span>Call Date: February 6, 2025</span>
+    <span>Reporting: Q4 2024 (Full Year 2024)</span>
+  </div>
+</div>
+<div class="nav-bar">
+  <a href="Q3_2024.html">&larr; Q3 2024</a>
+  <div class="nav-center">
+    <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>
+    <a href="Q4_2025.html" class="qbtn">4Q25</a>
+    <a href="Q3_2025.html" class="qbtn">3Q25</a>
+    <a href="Q2_2025.html" class="qbtn">2Q25</a>
+    <a href="Q1_2025.html" class="qbtn">1Q25</a>
+    <a href="Q4_2024.html" class="qbtn current">4Q24</a>
+    <a href="Q3_2024.html" class="qbtn">3Q24</a>
+    <a href="Q2_2024.html" class="qbtn">2Q24</a>
+    <a href="Q1_2024.html" class="qbtn">1Q24</a>
+    <a href="Q4_2023.html" class="qbtn">4Q23</a>
+    <a href="Q3_2023.html" class="qbtn">3Q23</a>
+    <a href="Q2_2023.html" class="qbtn">2Q23</a>
+    <a href="Q1_2023.html" class="qbtn">1Q23</a>
+    <a href="Q4_2022.html" class="qbtn">4Q22</a>
+    <a href="Q3_2022.html" class="qbtn">3Q22</a>
+    <a href="Q2_2022.html" class="qbtn">2Q22</a>
+    <a href="Q1_2022.html" class="qbtn">1Q22</a>
+  </div>
+  <a href="Q1_2025.html">Q1 2025 &rarr;</a>
+</div>
+
+<div class="changes-box">
+  <h3>What Changed vs Q3 2024</h3>
+  <ul>
+    <li><span class="change-tag ct-changed">Changed</span> Advertising Revenue: $17.3B (+18% YoY; per CEO) (prior: $14.3B (+19% YoY reported; +18.8% YoY growth per CEO))</li>
+    <li><span class="change-tag ct-new">New</span> NEW: Project Kuiper satellite discussion</li>
+  </ul>
+</div>
+
+<div class="metrics-card">
+  <div class="metric" style="grid-column: 1 / -1; background: linear-gradient(135deg, var(--company-dark), var(--company-accent)); color: #fff; border: none; padding: 8px 14px;">
+    <div class="metric-label" style="color: rgba(255,255,255,0.7);">Guidance For</div>
+    <div class="metric-value" style="color: #fff; font-size: 1rem;">Q1 2025</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Advertising Revenue</div>
+    <div class="metric-value">$17.3B</div>
+    <div class="metric-delta delta-flat">Prior: $14.3B</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Operating Margin</div>
+    <div class="metric-value">8.0%</div>
+    <div class="metric-delta delta-flat">Prior: 11.0%</div>
+  </div>
+</div>
+
+<!-- Full Guidance Content -->
+<div class="content-section">
+  <h3>Quarterly Guidance (Q1 2025)</h3>
+</div>
+<div class="content-section">
+  <h3>Key Guidance Assumptions & Commentary</h3>
+  <ul>
+    <li><strong>Servers/Network Equipment Life Decrease (6 years to 5 years):</strong> Beginning January 2025; decreases full year 2025 operating income by ~$700M; primarily impacts AWS segment</li>
+    <li><strong>Early-Retired Servers/Network Equipment Continued Charges:</strong> Decreases full year 2025 operating income by ~$600M; primarily impacts AWS segment</li>
+    <li><strong>Fulfillment Center Heavy Equipment Life Increase (10 years to 13 years):</strong> Beginning January 2025; increases full year 2025 operating income by ~$900M</li>
+    <li><strong>Net Aggregate Impact of Useful Life Changes on Full Year 2025 Operating Income:</strong> ~-$400M (for assets on balance sheet as of December 31, 2024; per CFO: "on an aggregate basis, we estimate this will decrease full year 2025 operating income by approximately $400 million")</li>
+    <li><strong>Q4 2024 Actual FX Impact:</strong> ~$900M headwind (~$700M worse than guided)</li>
+    <li><strong>Q1 2025 Guided FX Impact:</strong> ~$2.1B headwind (~150 bps unfavorable)</li>
+    <li><strong>CFO:</strong> "A reminder that we are comping the impact of last year's leap year. The extra day contributed approximately $1.5 billion of additional net sales across our businesses in Q1 2024 or about 120 basis points to the year-over-year growth rate, which impacted all segments"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Capital Investment Outlook (2025)</h3>
+</div>
+<div class="content-section">
+  <h3>2025 CapEx Guidance</h3>
+  <ul>
+    <li><strong>Q4 2024 Run Rate as Proxy:</strong> $26.3B quarterly; CEO: "I think that is reasonably representative of what you would expect in annualized CapEx rate in 2025" (implies ~$105B full year)</li>
+    <li><strong>Analyst Interpretation:</strong> Mark Mahaney (Evercore ISI) explicitly asked: "So Brian, that's $100 billion CapEx we should think about in '25" -- CEO did not dispute the characterization</li>
+    <li><strong>Allocation:</strong> CEO: "The vast majority of that CapEx spend is on AI for AWS"</li>
+    <li><strong>Stores CapEx:</strong> Expanding same-day facilities, adding delivery stations in rural areas, "a pretty significant investment" in robotics and automation</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>2025 Cost to Serve Outlook</h3>
+  <ul>
+    <li><strong>CEO:</strong> "We see opportunity to reduce costs again as we further refine inventory placement, grow our same-day delivery network, and accelerate robotics and automation throughout the network"</li>
+    <li><strong>CFO:</strong> "We have a good plan to continue to drive improvements in our cost structure"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Prior Quarter Guidance vs. Actuals Comparison</h3>
+</div>
+<div class="content-section">
+  <h3>Q4 2024 Guidance (Given in Q3 2024 Call) vs. Actuals</h3>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Guidance Range</th><th>Actual</th><th>Result</th></tr></thead><tbody><tr><td>Net Sales</td><td>$181.5B - $188.5B</td><td>$187.8B</td><td><strong>Within range; would have exceeded top end ex-FX</strong></td></tr><tr><td>YoY Growth</td><td>+7% to +11%</td><td>+10% reported / +11% ex-FX</td><td><strong>Near top end on ex-FX basis</strong></td></tr><tr><td>FX Impact on Revenue</td><td>~10 bps unfavorable guided</td><td>~$900M actual (~480 bps unfavorable)</td><td><strong>Significant FX deterioration (~$700M worse than planned)</strong></td></tr><tr><td>Operating Income</td><td>$16.0B - $20.0B</td><td>$21.2B</td><td><strong>Beat -- $1.2B above top end; record high</strong></td></tr><tr><td>Operating Margin (implied at midpoint)</td><td>~9.7%</td><td>~11.3%</td><td><strong>Beat</strong></td></tr><tr><td>AWS Growth (19.1% in Q3)</td><td>Not guided</td><td>19% (sustained)</td><td><strong>Sustained at ~19%</strong></td></tr></tbody></table></div>
+</div>
+<div class="content-section">
+  <h3>Consolidated</h3>
+  <ul>
+    <li><strong>Total Net Sales:</strong> $187.8B (+10% YoY reported; +11% YoY ex-FX)</li>
+    <li><strong>Net Sales vs. Guidance:</strong> <strong>Beat on ex-FX basis -- exceeded top end ex-FX</strong> of $181.5B-$188.5B guidance range; actual $187.8B was within range but CEO noted: "Without that [FX] headwind, revenue would have been 11% year-over-year and exceeded the top end of our guidance"</li>
+    <li><strong>FX Impact on Revenue:</strong> ~$900M headwind in Q4 (~$700M more unfavorable than anticipated in Q4 guidance; per CFO: "approximately $900 million headwind from FX in the quarter, which is about $700 million higher than what we had anticipated in our Q4 guidance range")</li>
+    <li><strong>Operating Income:</strong> $21.2B (+61% YoY; per CEO)</li>
+    <li><strong>Operating Income vs. Guidance:</strong> <strong>Beat -- $1.2B above the high end</strong> of $16.0B-$20.0B guidance range (per CFO: "$1.2 billion above the high end of our guidance range")</li>
+    <li><strong>Largest Operating Income Quarter Ever:</strong> $21.2B (surpassed Q3 2024 record of $17.4B)</li>
+    <li><strong>Trailing 12-Month FCF Adjusted for Equipment Finance Leases:</strong> $36.2B (+$700M YoY; per CEO)</li>
+    <li><strong>Net Product Sales:</strong> (not explicitly broken out in call)</li>
+    <li><strong>Net Service Sales:</strong> (not explicitly broken out in call)</li>
+    <li><strong>WW Paid Units Growth:</strong> +11% YoY (per CFO)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Revenue by Category</h3>
+  <ul>
+    <li><strong>Advertising Services:</strong> $17.3B (+18% YoY; per CEO: "$17.3 billion of revenue in the quarter and growing 18% year-over-year"; "$69 billion annual revenue run rate, more than double what it was just 4 years ago at $29 billion")</li>
+    <li><strong>AWS:</strong> $28.8B (+19% YoY; per CFO)</li>
+    <li><strong>Online Stores / Physical Stores / 3P Seller Services / Subscriptions / Other:</strong> Not individually broken out on call; commentary only at segment level</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Segment Results</h3>
+  <ul>
+    <li><strong>Net Sales:</strong> $115.6B (+10% YoY; per CFO)</li>
+    <li><strong>Operating Income:</strong> $9.3B (+$2.8B YoY improvement; per CFO)</li>
+    <li><strong>Operating Margin:</strong> 8.0% (+190 bps YoY; per CFO)</li>
+    <li><strong>8th Consecutive Quarter of YoY Operating Margin Improvement</strong> (per CFO: "This marks the eighth consecutive quarter where we've seen year-over-year margin improvement in both the North America and International segments")</li>
+    <li><strong>Net Sales:</strong> $43.4B (+9% YoY ex-FX; per CFO)</li>
+    <li><strong>Operating Income:</strong> $1.3B (+$1.7B YoY improvement; per CFO)</li>
+    <li><strong>Operating Margin:</strong> 3.0% (+400 bps YoY; per CFO)</li>
+    <li><strong>8th Consecutive Quarter of YoY Operating Margin Improvement</strong></li>
+    <li><strong>Net Sales:</strong> $28.8B (+19% YoY; per CFO)</li>
+    <li><strong>Annualized Revenue Run Rate:</strong> $115B (per CEO and CFO; milestone)</li>
+    <li><strong>Operating Income:</strong> $10.6B (+$3.5B YoY improvement; per CFO)</li>
+    <li><strong>Operating Margin:</strong> ~36.8% (calculated: $10.6B / $28.8B)</li>
+    <li><strong>Server Useful Life Benefit:</strong> ~200 bps favorable YoY impact on AWS operating margin (per CFO: "we increased the estimated useful life of our servers starting in 2024, which contributed approximately 200 basis points to the AWS margin increase year-over-year in Q4")</li>
+    <li><strong>AWS Growth Trajectory:</strong> 12% (Q2'23) -> 12% (Q3'23) -> 13% (Q4'23) -> 17% (Q1'24) -> 19% (Q2'24) -> 19.1% (Q3'24) -> <strong>19% (Q4'24; sustained)</strong></li>
+    <li><strong>AI Business:</strong> Multibillion-dollar annualized revenue run rate; growing triple-digit percentage YoY (per CEO)</li>
+    <li><strong>Capacity Constraints:</strong> CEO confirmed AWS could be growing faster if not for constraints on chips (third-party and own Trainium2 ramp), power, and components like motherboards</li>
+    <li><strong>Constraint Relief Timeline:</strong> CEO: "I predict those constraints really start to relax in the second half of '25"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Cost to Serve</h3>
+  <ul>
+    <li><strong>Global Cost to Serve:</strong> Reduced on a per unit basis for the second year in a row (per CEO and CFO: "2024 also marks the second year in a row where we've lowered our global cost to serve on a per unit basis")</li>
+    <li><strong>Q4 Drivers:</strong> Improved inventory placement, higher units per package, reduced travel distances (transportation network); improved fulfillment center productivity</li>
+    <li><strong>Inbound Network:</strong> Redesigned U.S. inbound network recently rolled out; improved percentage of order units available in the ideal building by over 40% YoY ahead of Black Friday</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Delivery Speed</h3>
+  <ul>
+    <li><strong>2024 Full Year:</strong> Delivered over 9 billion units same or next day around the world (per CEO)</li>
+    <li><strong>Same-Day Delivery Sites:</strong> Expanded by more than 60% in 2024; now serve more than 140 metro areas (per CEO)</li>
+    <li><strong>Record Year:</strong> Another record-setting year for Prime delivery speeds</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Holiday Season / Consumer</h3>
+  <ul>
+    <li><strong>Q4 Customer Savings:</strong> More than $15 billion with low everyday prices and record-setting events during Prime Big Deal Days (October) and Black Friday / Cyber Monday (per CEO)</li>
+    <li><strong>Pricing Position:</strong> Profitero annual pricing study found Amazon had the lowest online prices for the eighth year in a row, averaging 14% lower prices than other leading U.S. retailers entering the holiday season</li>
+    <li><strong>3P Seller Unit Mix:</strong> 61% of items sold in 2024 -- highest annual mix of third-party seller units ever (per CEO)</li>
+    <li><strong>Amazon Haul:</strong> Launched in U.S. in Q4; ultra low-priced products; "off to a very strong start" (per CEO)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Capital Investments (Q4 2024)</h3>
+  <ul>
+    <li><strong>Q4 2024 Capital Investments (Cash CapEx + Equipment Finance Leases):</strong> $26.3B (per CFO)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Accelerated Depreciation / Asset Write-Down (Q4 2024)</h3>
+  <ul>
+    <li><strong>Q4 2024 Charge:</strong> ~$920M from accelerated depreciation and related charges for early-retired subset of servers and network equipment (per CFO)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Consolidated</h3>
+  <ul>
+    <li><strong>Total Net Sales:</strong> (not explicitly stated on call; Q4 $187.8B implies ~$638B full year based on prior quarters: Q1 $143.3B + Q2 $148.0B + Q3 $158.9B + Q4 $187.8B = ~$638.0B)</li>
+    <li><strong>Revenue Growth:</strong> +10% YoY reported for Q4; each quarter ranged 10-11% YoY</li>
+    <li><strong>Operating Income:</strong> Not explicitly totaled; sum of quarterly: Q1 $15.3B + Q2 $14.7B + Q3 $17.4B + Q4 $21.2B = ~$68.6B</li>
+    <li><strong>Trailing 12-Month FCF Adjusted for Equipment Finance Leases:</strong> $36.2B (+$700M YoY; per CEO)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Net Sales</h3>
+  <ul>
+    <li><strong>Q1 2025 Net Sales Guidance:</strong> $151.0B to $155.5B</li>
+    <li><strong>Implied YoY Growth:</strong> ~+5.4% to +8.5% reported (vs. Q1 2024 net sales of $143.3B)</li>
+    <li><strong>FX Impact (unfavorable):</strong> ~$2.1B headwind (~150 bps unfavorable YoY impact; per CFO)</li>
+    <li><strong>Leap Year Comp:</strong> Q1 2024 benefited from extra day (leap year) contributing ~$1.5B of additional net sales (~120 bps to YoY growth rate; impacts all segments)</li>
+    <li><strong>Implied YoY Growth Adjusting for FX + Leap Year:</strong> ~+8% to +11% (approximately, adjusting for ~270 bps of combined headwinds)</li>
+    <li><strong>Midpoint:</strong> $153.25B (implies ~6.9% YoY reported growth)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Operating Income</h3>
+  <ul>
+    <li><strong>Q1 2025 Operating Income Guidance:</strong> $14.0B to $18.0B</li>
+    <li><strong>Prior Year Comp:</strong> Q1 2024 operating income was $15.3B</li>
+    <li><strong>Midpoint:</strong> $16.0B (implies ~4.6% YoY growth at midpoint; ~10.4% operating margin at midpoint revenue)</li>
+    <li><strong>Implied Operating Margin Range:</strong> ~9.0% to ~11.6% (at midpoint revenue of $153.25B)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Capital Allocation Philosophy (CEO Jassy)</h3>
+  <ul>
+    <li><strong>AI as Generational Opportunity:</strong> "AI represents, for sure, the biggest opportunity since cloud and probably the biggest technology shift and opportunity in business since the Internet"</li>
+    <li><strong>Demand-Driven Spending:</strong> "We don't procure it unless we see significant signals of demand"</li>
+    <li><strong>Cash Cycle:</strong> "The faster we grow, the more CapEx we end up spending because we have to procure data center and hardware and chips and networking gear ahead of when we're able to monetize it"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>AWS Strategic Commentary -- CRITICAL FORWARD TOPICS</h3>
+</div>
+<div class="content-section">
+  <h3>Capacity Constraints & Growth Trajectory (CEO Jassy, Q&A)</h3>
+  <ul>
+    <li><strong>Current State:</strong> "It is true that we could be growing faster, if not for some of the constraints on capacity"</li>
+    <li><strong>Constraint Sources:</strong> 1. <strong>Third-Party Chips:</strong> "Chips from our third-party partners, come a little bit slower than before with a lot of midstream changes that take a little bit of time to get the hardware actually yielding the percentage-healthy and high-quality servers we expect" 2. <strong>Trainium2 Ramp:</strong> Just went to general availability at re:Invent; "the majority of the volume is coming in really over the next couple of quarters, the next few months" 3. <strong>Power Constraints:</strong> "The world is still constrained on power from where I think we all believe we could serve customers if we were unconstrained" 4. <strong>Component Shortages:</strong> Motherboards and other components "a little bit short in supply for various types of servers"</li>
+    <li><strong>Relief Timeline:</strong> "I predict those constraints really start to relax in the second half of '25"</li>
+    <li><strong>Growth Outlook:</strong> "I think we can be growing faster even though we're growing at a pretty good clip today"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>AWS Margin Commentary (CFO Olsavsky, Q&A with Doug Anmuth)</h3>
+  <ul>
+    <li><strong>Fluctuation Expected:</strong> "We have seen a lot of fluctuation in operating margin in AWS. And we've said historically that they will be lumpy"</li>
+    <li><strong>AI Margin Headwind:</strong> "AI is still early stage. It does come originally with lower margins and a heavy investment load...in the short term, over time, that should be a headwind on margins"</li>
+    <li><strong>Long-Term View:</strong> "Over the long term, we feel the margins will be comparable in non-AI business as well"</li>
+    <li><strong>Q4 2024 Margin:</strong> ~36.8% (down from 38.1% in Q3 2024; includes ~200 bps useful life benefit and ~$920M accelerated depreciation charge)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>DeepSeek / Inference Cost Commentary (CEO Jassy, Q&A with Eric Sheridan)</h3>
+  <ul>
+    <li><strong>Assessment of DeepSeek:</strong> "We were impressed with what DeepSeek has done" -- particularly the sequencing of reinforcement learning before supervised fine-tuning, and inference optimizations</li>
+    <li><strong>Industry Dynamics:</strong> "There is a lot of innovation to come...you have seen and will continue to see a lot of leapfrogging between us"</li>
+    <li><strong>Quick Response:</strong> Made DeepSeek R1 models available in Bedrock and SageMaker "faster than you saw from others"</li>
+    <li><strong>Cost Curve Historical Analogy (Jevons Paradox):</strong> CEO drew parallel to AWS launch in 2006 -- S3 at $0.15/GB, compute at $0.10/hour -- "people thought that people would spend a lot less money on infrastructure technology. And what happens is companies will spend a lot less per unit of infrastructure...but then they get excited about what else they could build that they always thought was cost prohibitive before, and they usually end up spending a lot more in total on technology"</li>
+    <li><strong>AI Inference Cost Outlook:</strong> "I believe the cost of inference will meaningfully come down. I think it will make it much easier for companies to be able to infuse all their applications with inference and with generative AI. And I think if you run a business like we do...the cost of inference coming down is going to be very positive for customers and for our business"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Custom Silicon Strategy (CEO Jassy)</h3>
+</div>
+<div class="content-section">
+  <h3>Trainium2</h3>
+  <ul>
+    <li><strong>Launch:</strong> General availability at re:Invent in December 2024</li>
+    <li><strong>Price Performance:</strong> EC2 instances with Trainium2 chips are "typically 30% to 40% more price performant than other current GPU-powered instances available"</li>
+    <li><strong>Early Adopters:</strong> Adobe, Databricks, poolside, Qualcomm have seen "impressive results in early testing"</li>
+    <li><strong>Anthropic Partnership:</strong> Project Rainier -- cluster of Trainium2 UltraServers containing hundreds of thousands of Trainium2 chips; "5x the number of exaflops as the cluster that Anthropic used to train their current leading set of cloud models"</li>
+    <li><strong>Volume Ramp:</strong> Majority of Trainium2 volume coming "over the next couple of quarters, the next few months"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Trainium3 & Trainium4</h3>
+  <ul>
+    <li><strong>Trainium3:</strong> Expected to preview "late in '25" (per CEO)</li>
+    <li><strong>Trainium4:</strong> "Defining Trainium4 thereafter" (per CEO)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>NVIDIA Partnership</h3>
+  <ul>
+    <li><strong>Status:</strong> "We obviously have a deep partnership with NVIDIA and will for as long as we can see into the future"</li>
+    <li><strong>Dual Strategy:</strong> Customers want both NVIDIA GPUs and better price performance through custom silicon</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Generative AI Strategy -- Three-Layer Framework (CEO Jassy)</h3>
+</div>
+<div class="content-section">
+  <h3>Layer 1: Compute / Custom Chips (Bottom Layer -- Model Builders)</h3>
+  <ul>
+    <li><strong>Trainium2:</strong> 30-40% more price performant than current GPU-powered instances; just launched</li>
+    <li><strong>SageMaker HyperPod:</strong> Splits training workloads across many AI accelerators; saves training time by up to 40%; auto-repairs faulty instances from last saved checkpoint</li>
+    <li><strong>New SageMaker Capabilities:</strong> Ability to manage costs at a cluster level; prioritize which workloads should receive capacity when budgets are reached</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Layer 2: Foundational Models / Bedrock (Middle Layer)</h3>
+  <ul>
+    <li><strong>Broadest Choice:</strong> Recently added Luma AI, poolside, and over 100 other popular emerging models at re:Invent</li>
+    <li><strong>DeepSeek R1:</strong> Added to Bedrock and SageMaker</li>
+    <li><strong>New Features at re:Invent:</strong> Prompt caching, intelligent prompt routing, model distillation -- "all of which help customers achieve lower cost and latency in their inference"</li>
+    <li><strong>Amazon Nova Models:</strong> Amazon's own family of frontier models; "compare favorably in intelligence against the leading models in the world"; ~75% lower price than other models in Bedrock; integrated with fine-tuning, model distillation, knowledge bases/RAG, agentic capabilities</li>
+    <li><strong>Nova Customers:</strong> Palantir, Deloitte, SAP, Dentsu, Fortinet, Trellix, Robinhood</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Layer 3: Applications / Amazon Q (Top Layer)</h3>
+  <ul>
+    <li><strong>Positioning:</strong> "Most capable generative AI-powered assistant for software development and to leverage your own data"</li>
+    <li><strong>Q Transform Savings at Amazon:</strong> Saved $260M and 4,500 developer years migrating 30,000+ applications to new Java JDK versions (referenced again from prior call)</li>
+    <li><strong>New Q Transformations:</strong> Windows .NET to Linux, VMware to EC2, mainframe migration acceleration</li>
+    <li><strong>Mainframe Migration:</strong> "Q can turn what was going to be a multiyear effort to do a mainframe migration into a multi-quarter effort, cutting by more than 50% the time to migrate mainframes"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Advertising</h3>
+</div>
+<div class="content-section">
+  <h3>Q4 2024 Performance</h3>
+  <ul>
+    <li><strong>Advertising Services Revenue:</strong> $17.3B (+18% YoY; per CEO)</li>
+    <li><strong>Annual Revenue Run Rate:</strong> $69B (per CEO; "more than double what it was just 4 years ago at $29 billion")</li>
+    <li><strong>Growth Context:</strong> Strong growth on a very large base</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Forward Opportunities</h3>
+  <ul>
+    <li><strong>Sponsored Products:</strong> Largest portion of ad revenue; "doing well and we see runway for even more growth" (per CEO)</li>
+    <li><strong>Prime Video Ads:</strong> Wrapped up first year of Prime Video ads; "quite pleased with the early progress and headed into this year with momentum" (per CEO)</li>
+    <li><strong>Full Funnel Advertising:</strong> Top of funnel (broad reach brand awareness) -> mid-funnel (keyword/audience targeting) -> bottom of funnel (Sponsored Products at point of purchase)</li>
+    <li><strong>Differentiated Features:</strong> Amazon Marketing Cloud (secure Clean Rooms), new multi-touch attribution model showing relative contribution of each ad type to sales</li>
+    <li><strong>CFO:</strong> Advertising remains an important contributor to profitability in North America and International segments</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Fulfillment & Cost to Serve</h3>
+</div>
+<div class="content-section">
+  <h3>Inbound Network Rearchitecture</h3>
+  <ul>
+    <li><strong>Status:</strong> "Recently rolled out our redesigned U.S. inbound network" (per CEO); "still in its early stages"</li>
+    <li><strong>Improvement:</strong> Percentage of order units available in the ideal building improved by over 40% YoY ahead of Black Friday</li>
+    <li><strong>CEO (Q&A):</strong> "We've made a pretty significant architectural change in our inbound network...you tend to get some low-hanging fruit efficiencies early, but then there's all sorts of tuning and refinement you have to do once you actually see it working live across the really vast network"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Same-Day Delivery</h3>
+  <ul>
+    <li><strong>Network Expansion:</strong> Same-day delivery sites expanded by over 60% in 2024; now serve 140+ metro areas</li>
+    <li><strong>Impact on Everyday Essentials:</strong> Big impact on everyday essentials and pharmacy business; customers using Amazon "much more frequently"</li>
+    <li><strong>CEO:</strong> "Not yet seen diminishing returns in being able to continue to improve the speed of delivery"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Robotics & Automation</h3>
+  <ul>
+    <li><strong>Shreveport Facility:</strong> Next-generation robotics initiatives put together for the first time; "very, very encouraged by what we're seeing there, by both the speed improvements...the productivity improvements, the cost to serve improvements"</li>
+    <li><strong>Expansion Plans:</strong> Plans to expand robotics to other facilities -- both new builds and retrofits of existing facilities</li>
+    <li><strong>AI in Robotics:</strong> Generative AI powers the brains of robotic systems (telling robotic claws what's in a bin, how to pick/place items)</li>
+    <li><strong>Scale of AI Usage:</strong> ~1,000 different generative AI applications either built or in process of building across Amazon</li>
+    <li><strong>CEO:</strong> "This will be a many-year effort as we continue to tune different parts of our fulfillment network where we can use robotics"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>International Segment</h3>
+</div>
+<div class="content-section">
+  <h3>Profitability Trajectory</h3>
+  <ul>
+    <li><strong>Q4 2024 Operating Income:</strong> $1.3B (+$1.7B YoY; per CFO)</li>
+    <li><strong>Operating Margin:</strong> 3.0% (+400 bps YoY; per CFO)</li>
+    <li><strong>8th Consecutive Quarter of YoY Operating Margin Improvement</strong></li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Project Kuiper</h3>
+  <ul>
+    <li><strong>Status:</strong> Planned launches of production satellites "in the coming months" (per CFO)</li>
+    <li><strong>Accounting Treatment:</strong> Currently expensing majority of development costs for satellite network; will capitalize certain costs once commercial viability is achieved (including sales to customers) (per CFO)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Prime Membership & Consumer</h3>
+</div>
+<div class="content-section">
+  <h3>Prime Value Proposition (CEO Jassy)</h3>
+  <ul>
+    <li><strong>Price:</strong> $14.99/month</li>
+    <li><strong>Benefits Listed:</strong> - Unlimited free shipping on 300M items (same-day or 1-day delivery) - Exclusive shopping events (Prime Day) - Vast collection of premium programming and live sports on Prime Video - Ad-free listening of 100M songs and podcasts with Amazon Music - Unlimited generic prescription for $5/month - Unlimited grocery delivery on orders over $35 from Whole Foods and Amazon Fresh for $9.99/month - Free Grubhub+ membership (free unlimited delivery) - <strong>New:</strong> $0.10/gallon fuel discount at BP, Amoco, and ampm stations</li>
+    <li><strong>CEO Assessment:</strong> "Prime is a screaming deal, and we have more coming for our Prime members in 2025"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Key Analyst Q&A Data Points</h3>
+  <ul>
+    <li><strong>2025 CapEx ~$100B+ (Mark Mahaney, Evercore ISI):</strong> Mahaney asked if $26.3B quarterly implies ~$100B in 2025 CapEx. CEO confirmed: "I think that is reasonably representative of what you would expect in annualized CapEx rate in 2025. The vast majority of that CapEx spend is on AI for AWS." Also noted Stores CapEx for same-day facilities, rural delivery stations, robotics.</li>
+    <li><strong>AWS Growth Constrained by Supply (Mark Mahaney, Evercore ISI):</strong> CEO confirmed: "It is true that we could be growing faster, if not for some of the constraints on capacity." Sources: third-party chips, Trainium2 ramp, power, motherboard shortages. "I predict those constraints really start to relax in the second half of '25."</li>
+    <li><strong>DeepSeek & Inference Cost Dynamics (Eric Sheridan, Goldman Sachs):</strong> CEO impressed with DeepSeek's techniques; drew Jevons Paradox analogy to AWS launch; believes lower inference costs will drive more total AI spending. "The cost of inference coming down is going to be very positive for customers and for our business."</li>
+    <li><strong>AWS Margin Outlook (Doug Anmuth, JPMorgan):</strong> CFO: margins will be "lumpy over time"; AI currently lower margin with heavy investment; long-term expects AI margins comparable to non-AI business. CEO on UPS: UPS has "walked away from some of the volume"; Amazon able to handle with own logistics capability.</li>
+    <li><strong>Robotics & AI in Retail (Brian Nowak, Morgan Stanley):</strong> CEO: Shreveport facility very encouraging for speed, productivity, and cost to serve. Plans to expand to other facilities. ~1,000 gen AI apps built or being built. Examples: AI-infused customer service chatbot (+500 bps customer satisfaction), seller product listing tool, inventory management (+10% better forecasting, +20% better regional predictions), robotic claw AI brains.</li>
+    <li><strong>Speed of Delivery & Everyday Essentials (John Blackledge, TD Cowen):</strong> CEO: "We have not yet seen diminishing returns" from faster delivery. Delivery speed drives everyday essentials and pharmacy business. Inbound network rearchitecture still early; expects additional efficiencies throughout 2025 to further lower cost to serve.</li>
+    <li><strong>AI Agents & E-Commerce Discovery (Michael Morton, MoffettNathanson):</strong> CEO: retailers will have their own terms for interacting with agents; Rufus continues to improve month-to-month; use cases include quick facts about products, summarizing customer reviews, personalized order tracking. Expects Rufus to become increasingly helpful throughout 2025.</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Useful Life Changes Summary (CFO Olsavsky)</h3>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Change</th><th>Old Life</th><th>New Life</th><th>Effective Date</th><th>FY 2025 OI Impact</th><th>Segment</th></tr></thead><tbody><tr><td>Servers & Network Equipment subset</td><td>6 years</td><td>5 years</td><td>January 2025</td><td>-$700M</td><td>Primarily AWS</td></tr><tr><td>Early-Retired Servers & Network Equipment (accelerated depreciation)</td><td>N/A</td><td>N/A</td><td>Q4 2024 charge: ~$920M</td><td>-$600M additional in 2025</td><td>Primarily AWS</td></tr><tr><td>Fulfillment Center Heavy Equipment</td><td>10 years</td><td>13 years</td><td>January 2025</td><td>+$900M</td><td>North America / International</td></tr><tr><td><strong>Net Aggregate Impact</strong></td><td></td><td></td><td></td><td><strong>-$400M</strong></td><td></td></tr></tbody></table></div>
+</div>
+<div class="content-section">
+  <h3>YoY Comp Context</h3>
+  <ul>
+    <li><strong>Q4 2023 Comp:</strong> Total net sales $170.0B; operating income $13.2B; AWS revenue $24.2B (13% growth); N.A. OI $6.5B (6.1% margin); International loss -$419M (-1.0% margin); AWS OI $7.2B (29.6% margin)</li>
+    <li><strong>AWS Quarterly Revenue Progression:</strong> $24.2B (Q4'23) -> $25.0B (Q1'24) -> $26.3B (Q2'24) -> $27.5B (Q3'24) -> <strong>$28.8B (Q4'24)</strong></li>
+    <li><strong>Profitability Progression:</strong> Q4 2024 OI of $21.2B represents 61% YoY increase; highest quarterly operating income ever; all 3 segments profitable for 4th consecutive quarter</li>
+    <li><strong>Server Useful Life Change:</strong> ~200 bps favorable impact on AWS margin YoY (full year 2024); offset in Q4 by ~$920M accelerated depreciation charge for early-retired servers</li>
+    <li><strong>Q1 2025 Comps:</strong> Q1 2024 net sales $143.3B; operating income $15.3B; AWS revenue $25.0B (17% growth); Q1 2024 included leap year extra day (~$1.5B revenue benefit)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q4 2024 Actuals (Reported)</h3>
+</div>
+<div class="content-section">
+  <h3>Full Year 2024 Actuals</h3>
+</div>
+<div class="content-section">
+  <h3>Advertising (Full Year 2024)</h3>
+  <ul>
+    <li><strong>Annual Revenue Run Rate:</strong> $69B (per CEO; based on Q4 $17.3B x 4; "more than double what it was just 4 years ago at $29 billion")</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>AWS (Full Year 2024)</h3>
+  <ul>
+    <li><strong>Annualized Revenue Run Rate (Q4 Exit):</strong> $115B</li>
+    <li><strong>AWS Revenue Progression:</strong> Q1 $25.0B -> Q2 $26.3B -> Q3 $27.5B -> Q4 $28.8B = ~$107.6B full year</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Cost to Serve (Full Year 2024)</h3>
+  <ul>
+    <li><strong>Second Consecutive Year of Global Per-Unit Cost to Serve Reduction</strong></li>
+    <li><strong>Drivers:</strong> Regionalization, redesigned inbound network, inventory placement optimization, same-day network expansion, higher units per package, reduced transportation distances, robotics and automation</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>3P Seller Mix (Full Year 2024)</h3>
+  <ul>
+    <li><strong>61% of Items Sold Were from Third-Party Sellers</strong> -- highest annual mix ever (per CEO)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Capital Expenditures (Full Year 2024)</h3>
+  <ul>
+    <li><strong>Total CapEx:</strong> ~$78.5B implied (Q4 run rate of $26.3B; CFO stated Q4 run rate is "reasonably representative" of 2025 spend; prior guidance was ~$75B for 2024)</li>
+  </ul>
+</div>
+
+<div class="prior-ref" id="priorRef">
+  <div class="prior-ref-header" onclick="var b=document.getElementById('priorBody');b.classList.toggle('open');this.querySelector('.arrow').innerHTML=b.classList.contains('open')?'&#9650;':'&#9660;';">
+    Prior Quarter Reference: Q3 2024
+    <span class="arrow">&#9660;</span>
+  </div>
+  <div class="prior-ref-body" id="priorBody">
+    <div class="metric-grid">
+      <div class="prior-mini"><div class="pm-label">Advertising Revenue</div><div class="pm-value">$14.3B (+19% YoY reported; +18.8% YoY growth per CEO)</div></div>
+      <div class="prior-mini"><div class="pm-label">Operating Margin</div><div class="pm-value">11.0% (vs. 7.8% in Q3 2023; +320 bps YoY)</div></div>
+    </div>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q3_2024.html" style="color:var(--blue);">View full Q3 2024 detail &rarr;</a></p>
+  </div>
+</div>
+
+<div class="footer-nav">
+  <a href="Q3_2024.html">&larr; Q3 2024</a>
+  <a href="../comparison.html">Back to Overview</a>
+  <a href="Q1_2025.html">Q1 2025 &rarr;</a>
+</div>
+
+</body>
+</html>

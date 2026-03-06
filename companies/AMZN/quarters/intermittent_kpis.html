@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amazon Intermittent KPIs | Q1 2022 - Q4 2025</title>
+<style>
+:root {
+  --company-primary: #FF9900;
+  --company-dark: #232F3E;
+  --company-accent: #146EB4;
+  --green: #27ae60;
+  --red: #e74c3c;
+  --amber: #f39c12;
+  --blue: #2980b9;
+  --light-bg: #f8f9fa;
+  --border: #dee2e6;
+  --text: #2c3e50;
+  --text-muted: #6c757d;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); background: #fff; line-height: 1.6; max-width: 1200px; margin: 0 auto; padding: 0 24px 80px; }
+.header { background: linear-gradient(135deg, var(--company-dark), var(--company-accent)); color: #fff; padding: 48px 40px; margin: 0 -24px 40px; border-bottom: 4px solid var(--company-primary); }
+.header h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; }
+.header .subtitle { font-size: 1.1rem; opacity: 0.85; font-weight: 300; }
+.quarter-nav { background: var(--company-accent); border-radius: 8px; padding: 16px 20px; margin-bottom: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.quarter-nav .label { color: #fff; font-weight: 600; font-size: 0.85rem; margin-right: 8px; white-space: nowrap; }
+.quarter-nav .year-group { display: flex; gap: 4px; align-items: center; }
+.quarter-nav .year-label { color: rgba(255,255,255,0.5); font-size: 0.72rem; font-weight: 600; margin-right: 2px; letter-spacing: 0.5px; }
+.quarter-nav a { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 4px 10px; font-size: 0.78rem; font-weight: 600; text-decoration: none; transition: all 0.15s; }
+.quarter-nav a:hover { background: rgba(255,255,255,0.25); }
+.quarter-nav a.overview-link { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.35); padding: 4px 14px; font-size: 0.82rem; margin-left: auto; }
+.toc { background: var(--light-bg); border: 1px solid var(--border); border-radius: 8px; padding: 24px 32px; margin-bottom: 40px; columns: 2; column-gap: 40px; }
+.toc h2 { font-size: 1.1rem; color: var(--company-accent); margin-bottom: 12px; column-span: all; }
+.toc a { display: block; color: var(--blue); text-decoration: none; padding: 3px 0; font-size: 0.9rem; break-inside: avoid; }
+.toc a:hover { text-decoration: underline; }
+.section { margin-bottom: 48px; scroll-margin-top: 20px; }
+.section h2 { font-size: 1.4rem; color: var(--company-dark); border-bottom: 3px solid var(--company-primary); padding-bottom: 8px; margin-bottom: 16px; }
+.section h2 .num { display: inline-block; background: var(--company-primary); color: #fff; width: 28px; height: 28px; line-height: 28px; text-align: center; border-radius: 50%; font-size: 0.85rem; margin-right: 8px; vertical-align: middle; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 0.88rem; }
+thead th { background: var(--company-accent); color: #fff; padding: 10px 12px; text-align: left; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
+thead th.right { text-align: right; }
+tbody td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+tbody td.right { text-align: right; }
+tbody tr:nth-child(even) { background: var(--light-bg); }
+tbody tr:hover { background: #eef2f7; }
+.pos { color: var(--green); font-weight: 600; }
+.neg { color: var(--red); font-weight: 600; }
+.neutral { color: var(--amber); font-weight: 600; }
+.raised { background: #eafaf1 !important; }
+.lowered { background: #fef0ef !important; }
+.bold { font-weight: 700; }
+.muted { color: var(--text-muted); font-style: italic; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; vertical-align: middle; }
+.tag-new { background: #d6eaf8; color: #2471a3; }
+.tag-disc { background: #fadbd8; color: #c0392b; }
+.tag-emerged { background: #d5f5e3; color: #1e8449; }
+.tag-peak { background: #fdebd0; color: #d68910; }
+.insight { background: linear-gradient(135deg, #fef9e7, #fdebd0); border-left: 4px solid var(--amber); padding: 14px 18px; margin: 16px 0; border-radius: 0 6px 6px 0; font-size: 0.9rem; }
+.insight strong { color: var(--company-dark); }
+.year-divider td { background: var(--company-accent) !important; color: #fff; font-weight: 700; font-size: 0.82rem; padding: 6px 12px; letter-spacing: 0.5px; }
+.analysis { margin-top: 48px; padding: 32px; background: var(--light-bg); border: 1px solid var(--border); border-radius: 8px; }
+.analysis h2 { font-size: 1.3rem; color: var(--company-dark); margin-bottom: 16px; border-bottom: 3px solid var(--company-primary); padding-bottom: 8px; }
+.analysis h3 { font-size: 1.05rem; color: var(--company-dark); margin: 20px 0 8px; }
+.analysis p { font-size: 0.92rem; margin-bottom: 12px; }
+.footer { margin-top: 60px; padding-top: 20px; border-top: 2px solid var(--border); font-size: 0.82rem; color: var(--text-muted); text-align: center; }
+.footer a { color: var(--blue); text-decoration: none; }
+.footer a:hover { text-decoration: underline; }
+@media (max-width: 768px) { .toc { columns: 1; } .header h1 { font-size: 1.6rem; } table { font-size: 0.8rem; } thead th, tbody td { padding: 6px 8px; } }
+@media print { .header { background: #333; } .section { page-break-inside: avoid; } table { font-size: 0.75rem; } .quarter-nav { display: none; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Amazon Intermittent KPIs</h1>
+  <div class="subtitle">Metrics disclosed more than once but not on a regular basis &mdash; Q1 2022 through Q4 2025</div>
+</div>
+
+<nav class="quarter-nav">
+  <span class="label">Quarters:</span>
+  <div class="year-group">
+    <span class="year-label">2025</span>
+    <a href="Q4_2025.html">Q4</a>
+    <a href="Q3_2025.html">Q3</a>
+    <a href="Q2_2025.html">Q2</a>
+    <a href="Q1_2025.html">Q1</a>
+  </div>
+  <div class="year-group">
+    <span class="year-label">2024</span>
+    <a href="Q4_2024.html">Q4</a>
+    <a href="Q3_2024.html">Q3</a>
+    <a href="Q2_2024.html">Q2</a>
+    <a href="Q1_2024.html">Q1</a>
+  </div>
+  <div class="year-group">
+    <span class="year-label">2023</span>
+    <a href="Q4_2023.html">Q4</a>
+    <a href="Q3_2023.html">Q3</a>
+    <a href="Q2_2023.html">Q2</a>
+    <a href="Q1_2023.html">Q1</a>
+  </div>
+  <div class="year-group">
+    <span class="year-label">2022</span>
+    <a href="Q4_2022.html">Q4</a>
+    <a href="Q3_2022.html">Q3</a>
+    <a href="Q2_2022.html">Q2</a>
+    <a href="Q1_2022.html">Q1</a>
+  </div>
+  <a href="../../index.html" class="overview-link">Portfolio</a>
+  <a href="../comparison.html" class="overview-link">Guidance Overview</a>
+  <a href="../results.html" class="overview-link">Results Scorecard</a>
+</nav>
+
+<div class="toc">
+  <h2>Table of Contents</h2>
+  <a href="#s1">1. AWS Backlog</a>
+  <a href="#s2">2. AWS Growth Exit Rate</a>
+  <a href="#s3">3. Incremental Cost Headwinds</a>
+  <a href="#s4">4. AI Revenue Run Rate</a>
+  <a href="#s5">5. Trainium Chip Roadmap</a>
+  <a href="#s6">6. CapEx Trajectory</a>
+  <a href="#s7">7. Same-Day Delivery Expansion</a>
+  <a href="#s8">8. Prime Video Ads</a>
+  <a href="#s9">9. Project Kuiper</a>
+  <a href="#s10">10. Rufus AI Shopping</a>
+  <a href="#s11">11. Severance / Layoffs</a>
+  <a href="#s12">12. Regionalization Statistics</a>
+  <a href="#s13">13. Robotics Deployment</a>
+  <a href="#s14">14. Power Capacity (GW)</a>
+  <a href="#s15">15. Grocery Gross Sales</a>
+  <a href="#analysis">What the Disclosure Patterns Reveal</a>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 1: AWS BACKLOG -->
+<!-- ============================================================ -->
+<div class="section" id="s1">
+  <h2><span class="num">1</span> AWS Backlog</h2>
+  <p>Amazon discloses the total dollar value of AWS remaining performance obligations (backlog) intermittently, sometimes via the CFO, sometimes via Dave Fildes (VP Investor Relations). The backlog grew from $88.9B to $244B over the study period, but was not consistently disclosed during the 2023 optimization trough. <span class="tag tag-new">FIRST DISCLOSED Q1 2022</span></p>
+  <table>
+    <thead><tr><th>Quarter</th><th class="right">Backlog</th><th class="right">YoY Growth</th><th>Wtd. Avg. Life</th><th>Context</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">2025 &mdash; AI-FUELED BACKLOG EXPLOSION</td></tr>
+      <tr class="raised"><td>Q4 2025</td><td class="right bold">$244.0B</td><td class="right pos">+40% YoY</td><td>&mdash;</td><td>+$44B QoQ; "doesn't include several unannounced October deals exceeding all Q3 deal volume"</td></tr>
+      <tr><td>Q3 2025</td><td class="right bold">$200.0B</td><td class="right">&mdash;</td><td>&mdash;</td><td>October pipeline excluded; milestone $200B</td></tr>
+      <tr><td>Q2 2025</td><td class="right">$195.0B</td><td class="right pos">+25% YoY</td><td>&mdash;</td><td>Accelerating from +20% in Q1</td></tr>
+      <tr><td>Q1 2025</td><td class="right">$189.0B</td><td class="right pos">+20% YoY</td><td>4.1 years</td><td>&mdash;</td></tr>
+      <tr class="year-divider"><td colspan="5">2024 &mdash; REACCELERATION BEGINS</td></tr>
+      <tr><td>Q4 2023</td><td class="right">$155.7B</td><td class="right pos">+$45B YoY; +$20B QoQ</td><td>&mdash;</td><td>Named deal wins: Salesforce, BMW, NVIDIA, LG, Hyundai, Merck</td></tr>
+      <tr><td>Q2 2024</td><td class="right">$156.6B</td><td class="right pos">+19% YoY</td><td>&mdash;</td><td>&mdash;</td></tr>
+      <tr class="year-divider"><td colspan="5">2022 &mdash; PRE-OPTIMIZATION PEAK THEN SILENCE</td></tr>
+      <tr><td>Q3 2022</td><td class="right">$104.3B</td><td class="right pos">+57% YoY</td><td>&mdash;</td><td>Last disclosure before optimization trough; mid-20% exit rate noted</td></tr>
+      <tr><td>Q2 2022</td><td class="right">&mdash;</td><td class="right pos">+65% YoY; +13% QoQ</td><td>~3.9 years</td><td>Dollar figure not given; directional only</td></tr>
+      <tr><td>Q1 2022</td><td class="right">$88.9B</td><td class="right pos">+68% YoY</td><td>3.8 years</td><td>First explicit backlog disclosure in study period</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Insight:</strong> AWS backlog disappeared from disclosure during the 2023 optimization trough (Q1-Q3 2023) when growth decelerated to 12%. It reappeared in Q4 2023 at $155.7B as the narrative pivoted to reacceleration. The $244B Q4 2025 figure represents a 2.7x increase from the $88.9B starting point, and the QoQ acceleration (+$44B in Q4 alone) signals the AI investment cycle is pulling forward massive multi-year commitments.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 2: AWS GROWTH EXIT RATE -->
+<!-- ============================================================ -->
+<div class="section" id="s2">
+  <h2><span class="num">2</span> AWS Growth Exit Rate</h2>
+  <p>During the 2022-2023 deceleration, Amazon disclosed intra-quarter AWS growth exit rates -- a rare crisis-era metric designed to manage expectations. <span class="tag tag-new">FIRST DISCLOSED Q3 2022</span> <span class="tag tag-disc">DISCONTINUED Q2 2023</span></p>
+  <table>
+    <thead><tr><th>Quarter</th><th>Full-Quarter Growth</th><th>Exit Rate / Intra-Quarter Detail</th><th>Context</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2023 &mdash; TROUGH AND STABILIZATION</td></tr>
+      <tr class="lowered"><td>Q1 2023</td><td>16% YoY</td><td><span class="neg">April run rate ~500 bps below Q1 (~11%)</span></td><td>CFO Olsavsky disclosed April deceleration explicitly on the call</td></tr>
+      <tr class="year-divider"><td colspan="4">2022 &mdash; DECELERATION ALARM</td></tr>
+      <tr class="lowered"><td>Q4 2022</td><td>20% YoY</td><td><span class="neg">January 2023 run rate "mid-teens"</span></td><td>"We expect these optimizations will continue to be a headwind to AWS growth in at least the next couple of quarters"</td></tr>
+      <tr class="lowered"><td>Q3 2022</td><td>28% ex-FX</td><td><span class="neg">Back end of Q3 exited at "mid-20% growth rate"</span></td><td>First intra-quarter exit rate disclosure; mid-20% carried as Q4 assumption</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Insight:</strong> The exit rate disclosure was a crisis communication tool. Management used it exactly three times over three consecutive quarters (Q3 2022 through Q1 2023) to telegraph decelerating growth and pre-set expectations. Once AWS stabilized at 12% in Q2 2023, the metric was permanently retired. Its brief appearance marks the only period in the study window where Amazon proactively signaled bad news on its most important growth engine.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 3: INCREMENTAL COST HEADWINDS -->
+<!-- ============================================================ -->
+<div class="section" id="s3">
+  <h2><span class="num">3</span> Incremental Cost Headwinds</h2>
+  <p>In early 2022, Amazon quantified a ~$6B incremental cost decomposition -- an extraordinary level of granularity revealing how pandemic-era overcapacity, Omicron disruptions, and inflation simultaneously pressured margins. <span class="tag tag-new">FIRST DISCLOSED Q1 2022</span> <span class="tag tag-disc">DISCONTINUED Q3 2022</span></p>
+  <table>
+    <thead><tr><th>Quarter</th><th class="right">Total Incremental Costs</th><th>Decomposition</th><th>Context</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2022 &mdash; PANDEMIC COST HANGOVER</td></tr>
+      <tr><td>Q2 2022</td><td class="right neg">~$4B</td><td>Inflationary pressures remained elevated; productivity improved but fixed cost deleverage persisted</td><td>Improved from Q1; "in line with expectations"</td></tr>
+      <tr class="lowered"><td>Q1 2022</td><td class="right neg">~$6B</td><td>~$2B inflation (fuel, shipping, wages) + ~$2B productivity losses (Omicron overstaffing) + ~$2B fixed cost deleverage (overcapacity). ~2/3 ($4B) controllable; ~1/3 ($2B) external.</td><td>Network doubled over 2 years; headcount peaked at 1.7M mid-quarter</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Insight:</strong> The $6B cost decomposition is one of the most transparent cost disclosures Amazon has ever made. It appeared only when the company was running at negative operating margins in North America (-2.3% in Q1 2022) and needed to demonstrate the headwinds were identifiable and largely within management's control. Once the cost improvement trajectory was established, this level of detail was never repeated.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 4: AI REVENUE RUN RATE -->
+<!-- ============================================================ -->
+<div class="section" id="s4">
+  <h2><span class="num">4</span> AI Revenue Run Rate</h2>
+  <p>Amazon began disclosing the scale of its AI business within AWS starting in Q1 2024, using progressively specific language. The metric evolved from qualitative ("pretty big number") to semi-quantitative ("multibillion-dollar run rate, triple-digit YoY growth"). <span class="tag tag-emerged">Emerged Q1 2024</span></p>
+  <table>
+    <thead><tr><th>Quarter</th><th>AI Revenue Characterization</th><th>Growth</th><th>Context</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025 &mdash; CUSTOM SILICON CROSSES $10B</td></tr>
+      <tr class="raised"><td>Q4 2025</td><td>Chips business (Graviton + Trainium): <span class="pos bold">&gt;$10B ARR</span>; Bedrock: multibillion-dollar ARR; Trainium2 alone: multibillion-dollar ARR</td><td class="pos">Triple-digit YoY (combined chips); Graviton >50% YoY; Bedrock +60% QoQ</td><td>Graviton: 90% of top 1,000 AWS customers; 1.4M Trainium2 chips landed</td></tr>
+      <tr><td>Q3 2025</td><td>Trainium2 revenue: multibillion-dollar business; +150% QoQ</td><td class="pos">Trainium2: +150% QoQ</td><td>Fully subscribed; Project Rainier at ~500K chips going to 1M</td></tr>
+      <tr><td>Q2 2025</td><td>Multibillion-dollar ARR, triple-digit YoY growth</td><td class="pos">Triple-digit YoY</td><td>"More demand than we have supply for"</td></tr>
+      <tr><td>Q1 2025</td><td>Multibillion-dollar ARR, triple-digit YoY growth</td><td class="pos">Triple-digit YoY</td><td>"As fast as we put capacity in, it's being consumed"</td></tr>
+      <tr class="year-divider"><td colspan="4">2024 &mdash; FIRST QUANTIFICATION</td></tr>
+      <tr><td>Q4 2024</td><td>Multibillion-dollar ARR, triple-digit YoY growth</td><td class="pos">Triple-digit YoY</td><td>Capacity constrained by chips, power, motherboards</td></tr>
+      <tr><td>Q3 2024</td><td>Multibillion-dollar run rate; growing 3x faster at its stage than early AWS</td><td class="pos">Triple-digit YoY</td><td>First comparison to early AWS growth trajectory</td></tr>
+      <tr><td>Q2 2024</td><td>"Multibillion-dollar revenue run rate despite being such early days"</td><td class="pos">Growing "dramatically"</td><td>3 macro drivers: optimization ending, migrations resuming, gen AI momentum</td></tr>
+      <tr><td>Q1 2024</td><td>"Multibillion-dollar revenue run rate already"</td><td>&mdash;</td><td>First explicit quantification of AI revenue; "relatively early days"</td></tr>
+      <tr class="year-divider"><td colspan="4">2023 &mdash; QUALITATIVE ONLY</td></tr>
+      <tr><td>Q4 2023</td><td>"In absolute numbers, it's a pretty big number" but "still relatively small" vs. $100B run rate</td><td>"Accelerating rapidly across all three layers"</td><td>CEO: "tens of billions of dollars of revenue over the next several years"</td></tr>
+      <tr><td>Q3 2023</td><td>"Growing very, very quickly"; "pretty significant business already"</td><td>&mdash;</td><td>CEO: "I believe will be tens of billions of dollars of revenue for AWS over the next several years"</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Insight:</strong> The progression from Q3 2023's qualitative "pretty significant" to Q4 2025's "$10B+ ARR" for just Graviton + Trainium reveals how rapidly AI economics materialized. Critically, the $10B figure covers only custom silicon revenue -- it excludes third-party GPU instances, Bedrock inference, SageMaker, and other AI services. The total AI-attributed revenue within AWS is almost certainly several multiples of $10B by year-end 2025, though Amazon deliberately avoids disclosing a comprehensive AI revenue figure.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 5: TRAINIUM CHIP ROADMAP -->
+<!-- ============================================================ -->
+<div class="section" id="s5">
+  <h2><span class="num">5</span> Trainium Chip Roadmap</h2>
+  <p>Amazon's custom AI training chip advanced through multiple generations during the study period, evolving from a niche alternative to GPUs into a multibillion-dollar franchise. <span class="tag tag-emerged">Emerged Q1 2023</span></p>
+  <table>
+    <thead><tr><th>Quarter</th><th>Chip Generation</th><th>Key Details</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="3">2025 &mdash; TRAINIUM3 SHIPS, TRAINIUM4-5 IN PIPELINE</td></tr>
+      <tr class="raised"><td>Q4 2025</td><td><span class="pos bold">Trainium3 shipping</span>; Trainium4 in dev; Trainium5 conversations begun</td><td>T3: up to 40% better than T2; nearly all T3 supply expected committed by mid-2026; 1.4M T2 chips landed; 100,000+ companies using Trainium</td></tr>
+      <tr><td>Q3 2025</td><td>T3 preview expected end of 2025; fuller volumes early 2026</td><td>T3: ~40% better than T2; broadening customer base beyond small number of very large customers</td></tr>
+      <tr><td>Q2 2025</td><td>T2 landing in larger quantities; T3 in development</td><td>Anthropic's newest Claude models trained on T2; 30-40% better price performance vs. GPUs</td></tr>
+      <tr><td>Q1 2025</td><td>T2 capacity ramping</td><td>30-40% better price performance; "significant appeal and demand"; supply chain bottlenecks easing</td></tr>
+      <tr class="year-divider"><td colspan="3">2024 &mdash; TRAINIUM2 RAMPS</td></tr>
+      <tr><td>Q4 2024</td><td><span class="pos">T2 GA at re:Invent (Dec 2024)</span></td><td>EC2 instances with T2: 30-40% more price-performant; Project Rainier with Anthropic (hundreds of thousands of T2 chips); T3 preview "late in '25"; T4 being defined</td></tr>
+      <tr><td>Q3 2024</td><td>T2 starting to ramp "in the next few weeks"</td><td>"Gone back to manufacturing partners multiple times to produce much more than originally planned"; significant customer interest</td></tr>
+      <tr><td>Q2 2024</td><td>T2 coming "later this year"</td><td>"Very compelling on price performance"; significant demand; GPU supply remains scarce</td></tr>
+      <tr><td>Q1 2024</td><td>T2 coming "second half of 2024 and early 2025"</td><td>Anthropic training future models on Trainium; "favorable price performance benefits relative to available alternatives"</td></tr>
+      <tr class="year-divider"><td colspan="3">2023 &mdash; FOUNDATION LAID</td></tr>
+      <tr><td>Q4 2023</td><td><span class="pos">T2 announced at re:Invent</span></td><td>4x faster training, 3x more memory vs. T1; "enabling advantageous price performance versus alternatives"</td></tr>
+      <tr><td>Q3 2023</td><td>Trainium (gen 1); Anthropic chose to train future LLMs on Trainium</td><td>GPU shortage making custom chips attractive; AWS ordered "meaningfully in advance"</td></tr>
+      <tr><td>Q2 2023</td><td>Trainium "second version released"</td><td>"Very appealing price performance option"; EC2 P5 instances (NVIDIA H100) also highlighted</td></tr>
+      <tr><td>Q1 2023</td><td>Trainium and Inferentia "second versions released"</td><td>First discussion of 3-layer AI framework; "price/performance combination described as pretty differentiated"</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Insight:</strong> The Trainium roadmap reveals Amazon's cadence: approximately 12-18 months between major chip generations (T1 to T2 announcement at re:Invent 2023, T2 GA in December 2024, T3 shipping by late 2025). By Q4 2025, Amazon had disclosed the existence of five Trainium generations (T1 through T5 in "conversations"), an unprecedented roadmap depth for a cloud provider's custom silicon. The Anthropic partnership served as the credibility anchor -- each successive Trainium generation was validated by Anthropic training the next Claude model on it.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 6: CAPEX TRAJECTORY -->
+<!-- ============================================================ -->
+<div class="section" id="s6">
+  <h2><span class="num">6</span> CapEx Trajectory</h2>
+  <p>Amazon provided explicit CapEx guidance or forward commentary in approximately half the quarters studied, with intensity increasing dramatically in 2024-2025 as AI infrastructure spending escalated. <span class="tag tag-peak">Peak: $200B guided for 2026</span></p>
+  <table>
+    <thead><tr><th>Period</th><th class="right">CapEx (Annual)</th><th>Management Characterization</th><th>Key Quote</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2026 &mdash; $200B GUIDED</td></tr>
+      <tr class="raised"><td>FY 2026 (guided Q4 2025)</td><td class="right pos bold">~$200B</td><td>"Predominantly in AWS"</td><td>CEO: "maybe once-in-a-lifetime type of opportunity"</td></tr>
+      <tr class="year-divider"><td colspan="4">2025 &mdash; ESCALATING GUIDANCE</td></tr>
+      <tr><td>FY 2025 (final, Q3 call)</td><td class="right bold">~$125B</td><td>Raised from ~$105B; majority AWS/AI</td><td>CEO: "I suspect we'll spend more than [$75B]"</td></tr>
+      <tr><td>FY 2025 (implied, Q2 call)</td><td class="right">~$118B</td><td>Q2 rate "reasonably representative" of H2</td><td>&mdash;</td></tr>
+      <tr><td>FY 2025 (implied, Q4 2024 call)</td><td class="right">~$105B</td><td>Q4 quarterly rate "reasonably representative" of 2025</td><td>Mark Mahaney: "So Brian, that's $100 billion CapEx?"</td></tr>
+      <tr class="year-divider"><td colspan="4">2024 &mdash; INFLECTION YEAR</td></tr>
+      <tr><td>FY 2024 (actual ~$78B; guided ~$75B)</td><td class="right">~$75B (guided Q3 call)</td><td>"Meaningfully increase YoY"; Q1 $14B was "low quarter for the year"</td><td>CEO: "once-in-a-lifetime type of opportunity"</td></tr>
+      <tr class="year-divider"><td colspan="4">2023 &mdash; TROUGH</td></tr>
+      <tr><td>FY 2023 (actual $48.4B)</td><td class="right">~$50B</td><td>"Slightly more than $50B"; ~15% lower than 2022</td><td>CEO: "I would like to have the challenge of having to spend a lot more"</td></tr>
+      <tr class="year-divider"><td colspan="4">2022 &mdash; PIVOT FROM RETAIL TO AWS</td></tr>
+      <tr><td>FY 2022 (actual ~$60B)</td><td class="right">~$60B</td><td>Infrastructure up ~$10B; fulfillment/transport down ~$10B</td><td>Infra shifted from ~40% to &gt;50% of mix</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Insight:</strong> Amazon's CapEx trajectory describes a 4x escalation in just 4 years: $48B (2023) to $200B (2026 guided). The in-year guidance revisions for 2025 alone ($105B to $118B to $125B over three quarters) reveal how quickly AI demand exceeded forecasts. Most striking is the $200B 2026 figure -- representing a 60% increase over an already-record 2025. CEO Jassy's repeated invocation of "once-in-a-lifetime opportunity" signals this is not accidental overinvestment but a deliberate strategic bet that capacity will be monetized faster than depreciation erodes margins.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 7: SAME-DAY DELIVERY EXPANSION -->
+<!-- ============================================================ -->
+<div class="section" id="s7">
+  <h2><span class="num">7</span> Same-Day Delivery Expansion</h2>
+  <p>Amazon's same-day delivery capability evolved from a cost-optimization talking point into a strategic weapon for everyday essentials and grocery, with specific metrics disclosed irregularly. <span class="tag tag-emerged">Emerged Q2 2023</span></p>
+  <table>
+    <thead><tr><th>Quarter</th><th>Key Metric</th><th>Detail</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="3">2025 &mdash; NEAR-UNIVERSAL COVERAGE</td></tr>
+      <tr class="raised"><td>Q4 2025</td><td>Nearly 100M U.S. customers used same-day in 2025; +70% more same-day items YoY; +30% same/next-day items (>8B items)</td><td>Same-day is "fastest-growing delivery offering"; perishable same-day in 2,300+ cities</td></tr>
+      <tr><td>Q3 2025</td><td>3-hour delivery rolling out in select U.S. cities</td><td>Packages traveled 12% less distance; 15% fewer handling touches per unit</td></tr>
+      <tr><td>Q2 2025</td><td>+30% more same/next-day items vs. Q2 2024; rural expansion to 4,000+ communities</td><td>Direct lanes up 40% YoY</td></tr>
+      <tr class="year-divider"><td colspan="3">2024 &mdash; SCALE PROOF POINTS</td></tr>
+      <tr><td>Q4 2024</td><td>Same-day sites expanded by >60% in 2024; 140+ metro areas; >9B same/next-day items for the year</td><td>Another record-setting year; "not yet seen diminishing returns"</td></tr>
+      <tr><td>Q3 2024</td><td>40M+ customers used same-day in Q3; +25% YoY</td><td>"Not only the fastest way but one of our lowest-cost ways to deliver"</td></tr>
+      <tr><td>Q1 2024</td><td>~60% of Prime orders in top 60 U.S. metros arrived same/next day (March)</td><td>"Our least expensive facilities in the network"; still a fraction of eventual footprint</td></tr>
+      <tr class="year-divider"><td colspan="3">2023 &mdash; CONCEPT VALIDATED</td></tr>
+      <tr><td>Q2 2023</td><td>1.8B same/next-day units YTD to U.S. Prime members (~4x the rate vs. same point in 2019)</td><td>Planning to double number of same-day facilities; items from order to delivery-ready in 11 minutes</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Insight:</strong> The same-day network evolved from "planning to double" facilities in Q2 2023 to serving nearly 100 million U.S. customers by end of 2025. The critical economic insight is that same-day facilities are Amazon's lowest-cost fulfillment mechanism -- smaller buildings, less conveyance, streamlined pick-to-pack. This inverts the traditional retail assumption that faster delivery costs more. The grocery connection is equally important: perishable same-day delivery to 2,300+ cities by Q4 2025 was the enabler for Amazon's $150B grocery business.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 8: PRIME VIDEO ADS -->
+<!-- ============================================================ -->
+<div class="section" id="s8">
+  <h2><span class="num">8</span> Prime Video Ads</h2>
+  <p>Prime Video's advertising business went from zero to a 315-million-viewer platform in under two years, disclosed with increasing specificity. <span class="tag tag-emerged">Emerged Q3 2023</span></p>
+  <table>
+    <thead><tr><th>Quarter</th><th>Key Disclosure</th><th>Context</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="3">2025 &mdash; GLOBAL SCALE</td></tr>
+      <tr class="raised"><td>Q4 2025</td><td>Available in 16 countries; <span class="pos bold">315M average ad-supported viewers globally</span></td><td>"Contributing meaningfully to revenue growth"; TNF averaging 15M+ viewers (+16% YoY)</td></tr>
+      <tr><td>Q3 2025</td><td>U.S. ad-supported audience &gt;300M</td><td>Netflix, Spotify, SiriusXM DSP integrations announced; upfronts "exceeded our own expectations"</td></tr>
+      <tr><td>Q2 2025</td><td>U.S. ad-supported audience &gt;300M; Roku partnership (80M connected TV households)</td><td>Disney real-time ad exchange integration</td></tr>
+      <tr><td>Q1 2025</td><td>U.S. ad-supported audience &gt;275M</td><td>Full-funnel advertising: Prime Video, Twitch, NFL, NBA, NASCAR</td></tr>
+      <tr class="year-divider"><td colspan="3">2024 &mdash; LAUNCH AND RAMP</td></tr>
+      <tr><td>Q4 2024</td><td>Wrapped first year; "quite pleased with early progress"</td><td>$69B advertising ARR total (more than double from $29B four years prior)</td></tr>
+      <tr><td>Q2 2024</td><td>First appearance at upfronts (May 2024); "very beginning of what's possible"</td><td>Ad load: "meaningfully fewer ads than linear TV"; $2.99/month ad-free option</td></tr>
+      <tr><td>Q1 2024</td><td>"Very early days, just launched a few months ago"; "off to a really good start"</td><td>Linking streaming TV ad impact to product sales and subscription sign-ups</td></tr>
+      <tr class="year-divider"><td colspan="3">2023 &mdash; ANNOUNCEMENT</td></tr>
+      <tr><td>Q3 2023</td><td><span class="tag tag-new">ANNOUNCED:</span> Prime Video shows and movies to include limited ads starting early 2024</td><td>"Increasing conviction that Prime Video can be a large and profitable business in its own right"</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Insight:</strong> The Prime Video Ads trajectory is a masterclass in building an advertising platform on top of existing audience infrastructure. From announcement in Q3 2023 to 315 million ad-supported viewers globally in Q4 2025, Amazon built what amounts to a top-tier television advertising network in under two years. The strategic partnerships (Roku, Netflix, Disney, Spotify) announced in 2025 transformed Amazon DSP from a retail-centric tool into a full-funnel media buying platform reaching virtually every major streaming and audio property.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 9: PROJECT KUIPER -->
+<!-- ============================================================ -->
+<div class="section" id="s9">
+  <h2><span class="num">9</span> Project Kuiper</h2>
+  <p>Amazon's low Earth orbit satellite constellation progressed from a brief mention to a $1B/year cost headwind with 180 satellites in orbit by Q4 2025. <span class="tag tag-new">FIRST MENTIONED Q1 2022</span></p>
+  <table>
+    <thead><tr><th>Quarter</th><th>Milestone</th><th>Financial Impact</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="3">2025-2026 &mdash; APPROACHING COMMERCIALIZATION</td></tr>
+      <tr><td>Q4 2025</td><td>180 satellites in space; Leo Ultra terminal (1 Gbps down, 400 Mbps up); commercial agreements with AT&T, DIRECTV LatAm, JetBlue, NBN Australia</td><td><span class="neg">~$1B YoY cost increase in N.A. segment for Q1 2026</span>; 20+ launches in 2026, 30+ in 2027; accounting shift to capitalization expected mid-2026</td></tr>
+      <tr><td>Q3 2025</td><td>150+ satellites; 1+ Gbps speed test achieved; JetBlue, Kazakhtelecom agreements</td><td>Commercialization "later this year or early next year"</td></tr>
+      <tr><td>Q2 2025</td><td>Third successful launch; pre-commercial enterprise/government agreements signed</td><td>Will be 1 of only 2 players with modern LEO satellite tech</td></tr>
+      <tr><td>Q1 2025</td><td>First production satellite launch "just a couple of days ago"</td><td>Launch costs expensed until commercialization; additional Q2 launch costs</td></tr>
+      <tr class="year-divider"><td colspan="3">2024 &mdash; MANUFACTURING RAMP</td></tr>
+      <tr><td>Q4 2024</td><td>Planned launches "in the coming months"</td><td>Currently expensing majority of development costs</td></tr>
+      <tr><td>Q2 2024</td><td>Accelerating satellite manufacturing in Kirkland, WA; Vrio deal for 7 South American countries</td><td>CapEx impact confirmed in N.A. segment margin; CFO declined to quantify</td></tr>
+      <tr><td>Q1 2024</td><td>"Getting closer to production satellites in space and entering commercial beta"</td><td>&mdash;</td></tr>
+      <tr class="year-divider"><td colspan="3">2023 &mdash; PROTOTYPES TO SPACE</td></tr>
+      <tr><td>Q4 2023</td><td>Launched 2 prototype satellites; validated all key systems; streamed Prime Video in 4K via satellite</td><td>Targeting 400M-500M households without broadband</td></tr>
+      <tr><td>Q3 2023</td><td>2 prototype satellites launched; multi-month testing mission; Vodafone partnership for Africa/Europe</td><td>&mdash;</td></tr>
+      <tr><td>Q1 2023</td><td>Designs released; "pretty exciting" customer reception; "chance to be a very large business"</td><td>&mdash;</td></tr>
+      <tr class="year-divider"><td colspan="3">2022 &mdash; BRIEF MENTION</td></tr>
+      <tr><td>Q4 2022</td><td>"Remains a priority investment"</td><td>&mdash;</td></tr>
+      <tr><td>Q1 2022</td><td>Referenced as item in T&C line item (no quantitative detail)</td><td>&mdash;</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Insight:</strong> Kuiper's financial signature is unusual: it is a pure cost center that management refuses to quantify precisely but that is now large enough (~$1B/year) to visibly pressure North America segment margins. The accounting transition from expensing to capitalizing (expected mid-2026) will create a material one-time improvement in reported operating income. The 400M-500M household addressable market and enterprise-grade AWS integration position Kuiper as potentially the most significant non-retail, non-cloud business Amazon has ever built.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 10: RUFUS AI SHOPPING -->
+<!-- ============================================================ -->
+<div class="section" id="s10">
+  <h2><span class="num">10</span> Rufus AI Shopping</h2>
+  <p>Amazon's AI shopping assistant launched at the Q4 2023 call and scaled to 300 million users within 2 years, with a claimed $10B+ incremental sales impact. <span class="tag tag-emerged">Emerged Q4 2023</span></p>
+  <table>
+    <thead><tr><th>Quarter</th><th>Scale</th><th>Impact</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="3">2025 &mdash; AT-SCALE MONETIZATION</td></tr>
+      <tr class="raised"><td>Q4 2025</td><td><span class="pos bold">300M+ customers used Rufus in 2025</span>; Lens +45% YoY</td><td>Customers 60% more likely to complete a purchase when using Rufus</td></tr>
+      <tr class="raised"><td>Q3 2025</td><td>250M active customers in 2025; monthly users +140% YoY; interactions +210% YoY</td><td><span class="pos bold">On track for &gt;$10B incremental annualized sales</span>; 60% conversion lift</td></tr>
+      <tr class="year-divider"><td colspan="3">2023 &mdash; LAUNCH</td></tr>
+      <tr><td>Q4 2023</td><td>Launched day of earnings call</td><td>"Significant customer experience improvement for discovery"; trained on product catalog, community Q&A, customer reviews, and broader Web</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Insight:</strong> Rufus represents the most economically quantifiable consumer-facing AI deployment at Amazon. The claim of $10B+ in incremental annualized sales and a 60% conversion lift among users is extraordinary -- if accurate, it means a single AI feature is generating revenue equivalent to a mid-cap retailer. The metric was disclosed only in Q3-Q4 2025, suggesting Amazon waited until the impact was undeniable before attaching a dollar figure.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 11: SEVERANCE / LAYOFFS -->
+<!-- ============================================================ -->
+<div class="section" id="s11">
+  <h2><span class="num">11</span> Severance / Layoffs</h2>
+  <p>Amazon conducted two distinct waves of layoffs: the 2022-2023 post-pandemic restructuring and the 2025 organizational flattening. <span class="tag tag-new">FIRST DISCLOSED Q4 2022</span></p>
+  <table>
+    <thead><tr><th>Quarter</th><th>Roles Eliminated</th><th class="right">Severance Cost</th><th>Rationale</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025 &mdash; WAVE 2: ORGANIZATIONAL FLATTENING</td></tr>
+      <tr class="lowered"><td>Q4 2025</td><td>Continued role eliminations</td><td class="right neg">$730M</td><td>Impacts all 3 segments; "culture-driven, not financial or AI-driven"</td></tr>
+      <tr class="lowered"><td>Q3 2025</td><td>Role eliminations across all 3 segments</td><td class="right neg">$1.8B</td><td>CEO: "Removing layers, increasing ownership, operating like the world's largest start-up"</td></tr>
+      <tr class="year-divider"><td colspan="4">2023 &mdash; WAVE 1: POST-PANDEMIC RESTRUCTURING</td></tr>
+      <tr class="lowered"><td>Q1 2023</td><td>+9,000 roles (AWS, Twitch, devices, advertising, HR); cumulative ~27,000</td><td class="right neg">$470M ($270M AWS-related)</td><td>9,000 additional on top of 18,000 from Q4 2022</td></tr>
+      <tr class="lowered"><td>Q4 2022</td><td>18,000+ roles (stores, devices, HR)</td><td class="right neg">$640M</td><td>"Hardest decision the leadership team has been part of"; most terminations executed in January 2023</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Insight:</strong> The two severance waves differ fundamentally in character. Wave 1 (2022-2023) was a pandemic overhiring correction targeting specific business units with ~27,000 roles at a cost of ~$1.1B. Wave 2 (2025) is a deliberate organizational restructuring costing $2.5B -- more than double the first wave in dollar terms -- driven by CEO Jassy's conviction that Amazon needs to operate flatter and faster in the AI era. The Q3 2025 $1.8B charge was one of the largest single-quarter severance costs in Amazon's history.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 12: REGIONALIZATION STATISTICS -->
+<!-- ============================================================ -->
+<div class="section" id="s12">
+  <h2><span class="num">12</span> Regionalization Statistics</h2>
+  <p>Amazon's transition from 1 national U.S. fulfillment network to 8 (later 10) regional networks generated specific operational metrics that were disclosed during the rollout phase. <span class="tag tag-emerged">Emerged Q1 2023</span></p>
+  <table>
+    <thead><tr><th>Quarter</th><th>Metric</th><th>Detail</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="3">2025 &mdash; EXPANDED TO 10 REGIONS</td></tr>
+      <tr class="raised"><td>Q4 2025</td><td>U.S. regions expanded from 8 to 10</td><td>Inbound lead time reduced by nearly 4 days YoY (Q3); inventory in ideal building improved 40%+ YoY (Q4 2024 data)</td></tr>
+      <tr class="year-divider"><td colspan="3">2023 &mdash; INITIAL ROLLOUT METRICS</td></tr>
+      <tr><td>Q3 2023</td><td>Results "exceeding optimistic expectations"</td><td>Higher local in-stock than anticipated; more direct FC-to-delivery station connections; shorter transportation distances</td></tr>
+      <tr><td>Q2 2023</td><td><span class="pos">20% reduction in touches per package; 19% reduction in miles traveled; +1,000 bps in-region fulfillment (to 76%)</span></td><td>Same-day facilities handle top 100,000 SKUs; order to delivery-ready in 11 minutes</td></tr>
+      <tr><td>Q1 2023</td><td>8 interconnected regions created; rollout "just recently completed"</td><td>CEO: "Quite bullish on the early results"; shorter travel distances, lower cost to serve, faster delivery</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Insight:</strong> Regionalization statistics were disclosed most granularly during the initial rollout (Q1-Q3 2023), then faded from detailed quantification as the initiative matured. The 20% reduction in touches and 19% reduction in miles from Q2 2023 remain the most specific operational metrics Amazon has shared about the restructuring. The expansion from 8 to 10 regions by Q4 2025 shows the concept is still being refined, not just maintained.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 13: ROBOTICS DEPLOYMENT -->
+<!-- ============================================================ -->
+<div class="section" id="s13">
+  <h2><span class="num">13</span> Robotics Deployment</h2>
+  <p>Amazon disclosed robotics milestones intermittently, culminating in the 1 million robot milestone. <span class="tag tag-emerged">Emerged Q3 2023</span></p>
+  <table>
+    <thead><tr><th>Quarter</th><th>Key Disclosure</th><th>Detail</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="3">2025 &mdash; 1 MILLION ROBOTS</td></tr>
+      <tr class="raised"><td>Q4 2025</td><td><span class="pos bold">1M+ robots in fulfillment network</span>; expanding to more facilities</td><td>Robots and humans complement each other; "significant area of investment"</td></tr>
+      <tr><td>Q3 2025</td><td>1M+ robots deployed</td><td>"Expect fulfillment network where robots and humans complement each other"</td></tr>
+      <tr><td>Q2 2025</td><td>Deployed 1 millionth robot; DeepFleet AI improves robot travel efficiency 10%</td><td>&mdash;</td></tr>
+      <tr class="year-divider"><td colspan="3">2024 &mdash; NEXT-GEN FACILITY</td></tr>
+      <tr><td>Q4 2024</td><td>Shreveport, LA: "very, very encouraged by speed, productivity, and cost to serve improvements"</td><td>Plans to expand robotics to other facilities; ~1,000 gen AI apps across Amazon</td></tr>
+      <tr><td>Q3 2024</td><td>Shreveport, LA (12th-gen FC): 25% faster processing, 25% cost to serve improvement during peak</td><td>AI-powered robotic claws; hired team from strong robotics AI organization</td></tr>
+      <tr class="year-divider"><td colspan="3">2023 &mdash; ROADMAP SIGNALS</td></tr>
+      <tr><td>Q3 2023</td><td>"Very significant investment" for several years; "many coming to fruition in 2024 and 2025"</td><td>Expected to further impact cost, productivity, and safety</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Insight:</strong> The robotics disclosure pattern is characteristically Amazonian -- major milestones are revealed without comprehensive fleet statistics. The 1 million robot figure, first disclosed in Q2 2025, is notable because it makes Amazon's fulfillment network one of the largest robotics deployments in history. The Shreveport facility (Q3-Q4 2024) served as the proof-of-concept for next-generation robotics integration, with its 25% cost-to-serve improvement during peak season providing the economic case for network-wide rollout.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 14: POWER CAPACITY (GW) -->
+<!-- ============================================================ -->
+<div class="section" id="s14">
+  <h2><span class="num">14</span> Power Capacity (GW)</h2>
+  <p>Amazon began disclosing AWS power capacity in gigawatts only in Q3 2025, reflecting power's emergence as the binding constraint on AI infrastructure growth. <span class="tag tag-emerged">Emerged Q3 2025</span></p>
+  <table>
+    <thead><tr><th>Quarter</th><th class="right">Power Added (TTM)</th><th>Total Capacity Context</th><th>Forward Guidance</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025 &mdash; NEW METRIC</td></tr>
+      <tr class="raised"><td>Q4 2025</td><td class="right pos bold">3.9 GW (TTM); +1.2 GW in Q4 alone</td><td>Now double what AWS had in total in 2022 (when it was an $80B ARR business)</td><td>Expect to double again (~7.8 GW) by end of 2027</td></tr>
+      <tr><td>Q3 2025</td><td class="right pos">3.8 GW (TTM)</td><td>More than any other cloud provider in past 12 months</td><td>Expect to add at least 1 GW in Q4 2025; double by 2027</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Insight:</strong> Power capacity in gigawatts is the newest metric in Amazon's disclosure arsenal, appearing only in Q3 2025. Its emergence reflects a fundamental shift in what constrains cloud growth: the bottleneck has moved from chips (2023-2024) to power (2025). The doubling target by 2027 implies AWS will need approximately 7.8 GW of total power capacity -- equivalent to about 6-7 nuclear power plants. This metric will likely become a recurring KPI as the AI infrastructure buildout continues.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 15: GROCERY GROSS SALES -->
+<!-- ============================================================ -->
+<div class="section" id="s15">
+  <h2><span class="num">15</span> Grocery Gross Sales</h2>
+  <p>Amazon disclosed grocery gross sales figures only in late 2025, revealing a business far larger than most analysts had estimated. <span class="tag tag-emerged">Emerged Q1 2025</span></p>
+  <table>
+    <thead><tr><th>Quarter</th><th class="right">Grocery Gross Sales</th><th>Scope</th><th>Context</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025 &mdash; REVEALED AS TOP-3 U.S. GROCER</td></tr>
+      <tr class="raised"><td>Q4 2025</td><td class="right pos bold">&gt;$150B</td><td>All grocery (ex-Whole Foods, ex-Fresh physical stores)</td><td>"Amazon is clearly a large grocer"; go-to grocery destination for 150M+ Americans; 100+ new Whole Foods planned</td></tr>
+      <tr><td>Q3 2025</td><td class="right">&gt;$100B (L12M)</td><td>All grocery (ex-Whole Foods, ex-Fresh)</td><td>Top 3 grocery in U.S.; perishable same-day in 1,000+ cities expanding to 2,300</td></tr>
+      <tr><td>Q1 2025</td><td class="right">&gt;$100B (prior year)</td><td>All grocery (ex-Whole Foods, ex-Fresh)</td><td>"One of the largest grocers in the U.S."; everyday essentials = 1 out of 3 units sold</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Insight:</strong> The grocery gross sales disclosure was a deliberate narrative bomb. By waiting until the business exceeded $100B -- and then quickly revising to $150B within three quarters -- Amazon established itself as a top-3 U.S. grocer virtually overnight in investors' minds. The exclusion of Whole Foods and Amazon Fresh physical stores from these figures means the total grocery footprint is even larger. The jump from $100B to $150B in less than a year (Q1 to Q4 2025) implies grocery is growing at ~50% annually, driven by perishable same-day delivery expansion.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- ANALYSIS SECTION -->
+<!-- ============================================================ -->
+<div class="analysis" id="analysis">
+  <h2>What the Disclosure Patterns Reveal</h2>
+
+  <h3>The Crisis-Era Transparency Toolkit</h3>
+  <p>Amazon's intermittent disclosures follow a clear pattern: maximum transparency during periods of stress, selective opacity during periods of strength. The Q1 2022 cost decomposition ($6B broken into three equal buckets), the AWS exit rate disclosures (Q3 2022 through Q1 2023), and the 2022-2023 severance quantification all emerged when Amazon needed to demonstrate control over deteriorating metrics. Once the narrative shifted to recovery, these crisis-era metrics were permanently retired. This asymmetry is important for analysts: the absence of a previously disclosed metric often signals improvement more reliably than the presence of a new positive metric signals genuine strength.</p>
+
+  <h3>The AI Investment Cascade</h3>
+  <p>The interconnection between AI Revenue Run Rate, Trainium Chip Roadmap, CapEx Trajectory, and Power Capacity tells a single story of exponential scaling. The AI revenue disclosure progressed from qualitative ("pretty big number" in Q4 2023) to "$10B+ ARR" for just custom silicon in Q4 2025. Simultaneously, CapEx guidance escalated from $48B (2023) to a guided $200B (2026), and power capacity emerged as a new metric because it became the binding constraint. The Trainium chip roadmap -- now extending to Trainium5 "conversations" -- reveals that Amazon is planning custom silicon generations faster than the traditional semiconductor cadence, driven by the conviction that inference cost reduction is the key to unlocking the "middle of the barbell" in enterprise AI adoption.</p>
+
+  <h3>The Retail Transformation Hidden in Logistics Metrics</h3>
+  <p>Regionalization statistics, same-day delivery expansion, robotics deployment, and grocery gross sales are often analyzed independently, but they constitute a unified strategy to transform Amazon from an online retailer into the default logistics infrastructure for everyday commerce. The regionalization metrics (20% fewer touches, 19% fewer miles) enabled the same-day network (100M users, lowest-cost fulfillment). The same-day network enabled perishable grocery delivery to 2,300 cities. The grocery delivery drove the $150B grocery business. And the 1 million robots deployed across the fulfillment network are the automation backbone that makes the economics work at this scale. Each disclosure was shared once or twice, creating the impression of isolated initiatives when they were in fact sequential phases of a single architectural transformation.</p>
+
+  <h3>What Is Not Yet Disclosed</h3>
+  <p>Several metrics that would complete the analytical picture remain undisclosed or underspecified. Amazon has never provided a comprehensive AI revenue figure for AWS (only custom silicon and qualitative characterizations of total AI). Kuiper's total investment to date has never been quantified, despite the $1B/year run-rate cost headwind. Advertising's per-segment contribution is described directionally ("important contributor to profitability") but never broken out. And the Rufus $10B incremental sales claim, while striking, has never been reconciled against overall revenue growth to determine how much is truly incremental versus cannibalization of organic traffic. These disclosure gaps are themselves informative: they mark the boundaries of what Amazon considers competitively sensitive, and they suggest where the next wave of intermittent disclosures may emerge as these businesses mature.</p>
+</div>
+
+<div class="footer">
+  Data sourced from Amazon quarterly earnings call transcripts, Q1 2022 through Q4 2025. | <a href="../../index.html">Metrics Tracker</a>
+</div>
+
+</body>
+</html>

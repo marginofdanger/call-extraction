@@ -319,6 +319,31 @@
     .comp-table th, .comp-table td { padding: 6px 8px; }
   }
 
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+  .content-section .md-table th {
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .content-section .md-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-section .md-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+  .content-section .md-table tr:hover { background: #e8f4fd; }
+
   @media print {
     .nav-bar { display: none; }
     .header { background: #333; }
@@ -338,6 +363,8 @@
   <a href="Q3_2025.html">&larr; Q3 2025</a>
   <div class="nav-center">
     <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>
     <a href="Q4_2025.html" class="qbtn current">4Q25</a>
     <a href="Q3_2025.html" class="qbtn">3Q25</a>
     <a href="Q2_2025.html" class="qbtn">2Q25</a>
@@ -358,6 +385,16 @@
   <a class="disabled">Next &rarr;</a>
 </div>
 
+<div class="changes-box">
+  <h3>What Changed vs Q3 2025</h3>
+  <ul>
+    <li><span class="change-tag ct-changed">Changed</span> CapEx Guidance: $1.5 billion (prior: $1.3 billion in the quarter)</li>
+    <li><span class="change-tag ct-changed">Changed</span> Same-Facility Admissions: +2.4% (prior: +2.4% YoY)</li>
+    <li><span class="change-tag ct-changed">Changed</span> Revenue Per Admission: +2.9% vs. prior year quarter (prior: - Approximately half of the growth was related to state supplemental payment increases in revenue - Next largest driver was payer mix improvement - Case mix index up approximately 30 basis points YoY (down slightly sequentially from Q2 2025) - Dispute resolution activities provided some support)</li>
+    <li><span class="change-tag ct-changed">Changed</span> Adj. EBITDA Margin: +80 bps vs. prior year quarter (prior: improved YoY, driven primarily by good performance in labor and supplies)</li>
+  </ul>
+</div>
+
 <div class="metrics-card">
   <div class="metric">
     <div class="metric-label">FY Revenue Guidance</div>
@@ -372,52 +409,30 @@
     <div class="metric-value">$29.10 to $31.50</div>
   </div>
   <div class="metric">
-    <div class="metric-label">CapEx Guidance (FY 2026)</div>
-    <div class="metric-value">$5.0B &ndash; $5.5B</div>
+    <div class="metric-label">CapEx Guidance</div>
+    <div class="metric-value">$1.5 billion</div>
+    <div class="metric-delta delta-flat">Prior: $1.3 billion in the quarter</div>
   </div>
   <div class="metric">
     <div class="metric-label">Same-Facility Admissions</div>
     <div class="metric-value">+2.4%</div>
-    <div class="metric-delta delta-flat">Prior Q: +2.4%</div>
+    <div class="metric-delta delta-flat">Prior: +2.4% YoY</div>
   </div>
   <div class="metric">
-    <div class="metric-label">Revenue Per Equiv Admission</div>
-    <div class="metric-value">+2.9%</div>
-    <div class="metric-delta delta-flat">Prior Q: +3.3%</div>
+    <div class="metric-label">Revenue Per Admission</div>
+    <div class="metric-value">+2.9% vs. prior year quarter</div>
+    <div class="metric-delta delta-flat">Prior: - Approximately half of the growth was related to state supplemental payment increases in revenue - Next largest driver was payer mix improvement - Case mix index up approximately 30 basis points YoY - Dispute resolution activities provided some support</div>
   </div>
   <div class="metric">
     <div class="metric-label">Adj. EBITDA Margin</div>
-    <div class="metric-value">+80 bps YoY</div>
-    <div class="metric-delta delta-up">Prior Q: improved YoY</div>
+    <div class="metric-value">+80 bps vs. prior year quarter</div>
+    <div class="metric-delta delta-flat">Prior: improved YoY, driven primarily by good performance in labor and supplies</div>
   </div>
-</div>
-
-<div class="changes-box">
-  <h3>What Changed vs Q3 2025</h3>
-  <ul>
-    <li><span class="change-tag ct-new">New</span> FY 2026 guidance introduced: Revenue $76.5B&ndash;$80.0B, EBITDA $15.55B&ndash;$16.45B, EPS $29.10&ndash;$31.50</li>
-    <li><span class="change-tag ct-new">New</span> EPTC/exchange headwind quantified: $600M&ndash;$900M EBITDA impact in 2026</li>
-    <li><span class="change-tag ct-new">New</span> Resiliency savings target: ~$400M incremental in 2026</li>
-    <li><span class="change-tag ct-changed">Changed</span> FY 2025 supplemental payments: +$420M vs 2024 (prior expectation: ~$300M)</li>
-    <li><span class="change-tag ct-changed">Changed</span> FY 2026 CapEx raised to $5.0B&ndash;$5.5B (above prior expectations)</li>
-    <li><span class="change-tag ct-raised">Raised</span> Share repurchase authorization: new $10B (Board approved Jan &rsquo;26)</li>
-    <li><span class="change-tag ct-raised">Raised</span> Quarterly dividend: $0.72 &rarr; $0.78 per share</li>
-  </ul>
 </div>
 
 <!-- Full Guidance Content -->
 <div class="content-section">
   <h3>Full Year 2026 Guidance</h3>
-  <ul>
-    <li><strong>Revenue:</strong> $76.5 billion to $80.0 billion</li>
-    <li><strong>Adjusted EBITDA:</strong> $15.55 billion to $16.45 billion</li>
-    <li><strong>Net income attributable to HCA Healthcare:</strong> $6.5 billion to $7.0 billion</li>
-    <li><strong>Diluted EPS:</strong> $29.10 to $31.50</li>
-    <li><strong>Cash flow from operations:</strong> $12 billion to $13 billion</li>
-    <li><strong>Capital expenditures:</strong> $5.0 billion to $5.5 billion <strong>(RAISED</strong> from prior expectations; ~$7B approved pipeline coming online &rsquo;26/&rsquo;27/early &rsquo;28)</li>
-    <li><strong>Equivalent admissions growth:</strong> 2% to 3% (consistent with long-term range)</li>
-    <li><strong>Adjusted EBITDA margins:</strong> expected slightly above 20%, consistent with 2025; &ldquo;pretty stable margins in &rsquo;26 versus &rsquo;25&rdquo;</li>
-  </ul>
 </div>
 <div class="content-section">
   <h3>Bad Debt / Uncompensated Care (2026 Outlook)</h3>
@@ -441,16 +456,7 @@
 </div>
 <div class="content-section">
   <h3>Key Variances vs. Prior Guidance (Q3 2025 Update)</h3>
-  <table class="comp-table">
-    <thead><tr><th>Item</th><th>Q3 2025 Expectation</th><th>Q4 2025 Actual / Updated</th></tr></thead>
-    <tbody>
-      <tr><td><strong>FY2025 Supplemental payments net benefit</strong></td><td>~$300 million increase</td><td>$420 million increase (Virginia retro payment in Q4)</td></tr>
-      <tr><td><strong>Q4 supplemental payments (YoY)</strong></td><td>Expected year-over-year decline</td><td>Approximately flat (Virginia retro offset known headwinds)</td></tr>
-      <tr><td><strong>Volumes</strong></td><td>In line</td><td>Came in largely as anticipated</td></tr>
-      <tr><td><strong>Rates</strong></td><td>Stable</td><td>Stable operating environment</td></tr>
-      <tr><td><strong>Expense management</strong></td><td>&mdash;</td><td>&ldquo;Really good in the quarter&rdquo;</td></tr>
-    </tbody>
-  </table>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Item</th><th>Q3 2025 Expectation</th><th>Q4 2025 Actual / Updated</th></tr></thead><tbody><tr><td><strong>FY2025 Supplemental payments net benefit</strong></td><td>~$300 million increase</td><td>$420 million increase (Virginia retro payment in Q4)</td></tr><tr><td><strong>Q4 supplemental payments (year-over-year)</strong></td><td>Expected year-over-year decline</td><td>Approximately flat (Virginia retro offset known headwinds)</td></tr><tr><td><strong>Volumes</strong></td><td>In line</td><td>Came in largely as anticipated</td></tr><tr><td><strong>Rates</strong></td><td>Stable</td><td>Stable operating environment</td></tr><tr><td><strong>Expense management</strong></td><td>--</td><td>"Really good in the quarter"</td></tr></tbody></table> *Extraction completed from HCA Healthcare FQ4 2025 Earnings Call transcript dated January 27, 2026.*</div>
 </div>
 <div class="content-section">
   <h3>Revenue & Earnings</h3>
@@ -561,6 +567,56 @@
   </ul>
 </div>
 <div class="content-section">
+  <h3>Revenue</h3>
+  <ul>
+    <li><strong>Revenue range:</strong> $76.5 billion to $80.0 billion</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Adjusted EBITDA</h3>
+  <ul>
+    <li><strong>Adjusted EBITDA range:</strong> $15.55 billion to $16.45 billion</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Net Income</h3>
+  <ul>
+    <li><strong>Net income attributable to HCA Healthcare range:</strong> $6.5 billion to $7.0 billion</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Diluted EPS</h3>
+  <ul>
+    <li><strong>Diluted EPS range:</strong> $29.10 to $31.50</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Margins</h3>
+  <ul>
+    <li><strong>Full year adjusted EBITDA margins:</strong> expected slightly above 20%, consistent with 2025</li>
+    <li><strong>Midpoint of revenue and EBITDA guidance:</strong> suggests "pretty stable margins in '26 versus '25"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Cash Flow</h3>
+  <ul>
+    <li><strong>Cash flow from operations range:</strong> $12 billion to $13 billion</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Capital Expenditures</h3>
+  <ul>
+    <li><strong>CapEx range:</strong> $5.0 billion to $5.5 billion <strong>(RAISED from prior expectations; management cited increased organic growth opportunities)</strong></li>
+    <li><strong>Approved capital projects in pipeline (coming online '26/'27/early '28):</strong> ~$7 billion</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Volume Assumptions</h3>
+  <ul>
+    <li><strong>Equivalent admissions growth:</strong> 2% to 3% (consistent with long-term growth range)</li>
+  </ul>
+</div>
+<div class="content-section">
   <h3>Health Insurance Exchange (HICS) Headwind</h3>
   <ul>
     <li><strong>Adverse impact on adjusted EBITDA from exchanges:</strong> $600 million to $900 million - Includes impact from: (1) administrative reforms enacted in 2025, (2) the One Big Beautiful Bill Act, (3) expiration of enhanced premium tax credits (EPTCs)</li>
@@ -584,10 +640,7 @@
   <h3>Supplemental Payment Programs</h3>
   <ul>
     <li><strong>Anticipated decline in supplemental payments net benefit:</strong> $250 million to $450 million</li>
-    <li><strong>Three drivers, each ~1/3 of the decline:</strong></li>
-    <li><strong>1. Tennessee program:</strong> reverting to 4 quarters of net benefit vs. 6 quarters in 2025</li>
-    <li><strong>2. Texas ATLIS program pause:</strong> one specific program paused (termination notice issued by outgoing commissioner; new commissioner reviewing; potential reinstatement)</li>
-    <li><strong>3. Virginia retro payment:</strong> one-time retro payment received in Q4 2025 that will not recur</li>
+    <li><strong>Three drivers, each ~1/3 of the decline:</strong> 1. <strong>Tennessee program:</strong> reverting to 4 quarters of net benefit vs. 6 quarters in 2025 2. <strong>Texas ATLIS program pause:</strong> one specific program paused (termination notice issued by outgoing commissioner; new commissioner reviewing; potential reinstatement) 3. <strong>Virginia retro payment:</strong> one-time retro payment received in Q4 2025 that will not recur</li>
     <li><strong>Guidance does NOT include:</strong> any potential impact from additional approvals of grandfathered CMS applications (potential upside)</li>
   </ul>
 </div>
@@ -642,10 +695,7 @@
   <h3>Technology & AI Agenda</h3>
   <ul>
     <li><strong>EHR transition:</strong> accelerating transition from one system to another to standardize datasets across all hospitals</li>
-    <li><strong>Three AI/digital domains:</strong></li>
-    <li><strong>1. Administrative:</strong> revenue cycle, HR, IT, supply chain — implementing AI for efficiency; value expected as part of 2026 resiliency</li>
-    <li><strong>2. Operational:</strong> throughput, asset productivity, scheduling, staffing, OR management</li>
-    <li><strong>3. Clinical ("Holy Grail"):</strong> physician decision support using HCA's proprietary database; nursing support tools for shift change, safety, efficiency</li>
+    <li><strong>Three AI/digital domains:</strong> 1. <strong>Administrative:</strong> revenue cycle, HR, IT, supply chain -- implementing AI for efficiency; value expected as part of 2026 resiliency 2. <strong>Operational:</strong> throughput, asset productivity, scheduling, staffing, OR management 3. <strong>Clinical ("Holy Grail"):</strong> physician decision support using HCA's proprietary database; nursing support tools for shift change, safety, efficiency</li>
     <li><strong>Investment level:</strong> continued significant investment planned in technology and digital innovation</li>
   </ul>
 </div>
@@ -703,12 +753,10 @@
   </div>
   <div class="prior-ref-body" id="priorBody">
     <div class="metric-grid">
-      <div class="prior-mini"><div class="pm-label">FY Revenue Guidance</div><div class="pm-value">$75.0B &ndash; $76.5B</div></div>
-      <div class="prior-mini"><div class="pm-label">FY EBITDA Guidance</div><div class="pm-value">$15.25B &ndash; $15.65B</div></div>
-      <div class="prior-mini"><div class="pm-label">FY EPS Guidance</div><div class="pm-value">$27.00 &ndash; $28.00</div></div>
+      <div class="prior-mini"><div class="pm-label">CapEx Guidance</div><div class="pm-value">$1.3 billion in the quarter</div></div>
       <div class="prior-mini"><div class="pm-label">Same-Facility Admissions</div><div class="pm-value">+2.4% YoY</div></div>
-      <div class="prior-mini"><div class="pm-label">Rev Per Equiv Admission</div><div class="pm-value">+3.3% YoY</div></div>
-      <div class="prior-mini"><div class="pm-label">Adj. EBITDA Margin</div><div class="pm-value">Improved YoY</div></div>
+      <div class="prior-mini"><div class="pm-label">Revenue Per Admission</div><div class="pm-value">- Approximately half of the growth was related to state supplemental payment increases in revenue - Next largest driver was payer mix improvement - Case mix index up approximately 30 basis points YoY (down slightly sequentially from Q2 2025) - Dispute resolution activities provided some support</div></div>
+      <div class="prior-mini"><div class="pm-label">Adj. EBITDA Margin</div><div class="pm-value">improved YoY, driven primarily by good performance in labor and supplies</div></div>
     </div>
     <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q3_2025.html" style="color:var(--blue);">View full Q3 2025 detail &rarr;</a></p>
   </div>

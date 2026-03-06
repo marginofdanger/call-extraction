@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VEEV Intermittent KPIs — Veeva Systems</title>
+<style>
+:root {
+  --company-primary: #F58220;
+  --company-dark: #1a1a2e;
+  --company-accent: #2C5234;
+  --green: #27ae60;
+  --red: #e74c3c;
+  --amber: #f39c12;
+  --blue: #2980b9;
+  --light-bg: #f8f9fa;
+  --border: #dee2e6;
+  --text: #2c3e50;
+  --text-muted: #6c757d;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); background: #fff; line-height: 1.6; max-width: 1200px; margin: 0 auto; padding: 0 24px 80px; }
+.header { background: linear-gradient(135deg, var(--company-dark), var(--company-accent)); color: #fff; padding: 48px 40px; margin: 0 -24px 40px; border-bottom: 4px solid var(--company-primary); }
+.header h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; }
+.header .subtitle { font-size: 1.1rem; opacity: 0.85; font-weight: 300; }
+.quarter-nav { background: var(--company-accent); border-radius: 8px; padding: 16px 20px; margin-bottom: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.quarter-nav .label { color: #fff; font-weight: 600; font-size: 0.85rem; margin-right: 8px; white-space: nowrap; }
+.quarter-nav .year-group { display: flex; gap: 4px; align-items: center; }
+.quarter-nav .year-label { color: rgba(255,255,255,0.5); font-size: 0.72rem; font-weight: 600; margin-right: 2px; letter-spacing: 0.5px; }
+.quarter-nav a { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 4px 10px; font-size: 0.78rem; font-weight: 600; text-decoration: none; transition: all 0.15s; }
+.quarter-nav a:hover { background: rgba(255,255,255,0.25); }
+.quarter-nav a.overview-link { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.35); padding: 4px 14px; font-size: 0.82rem; margin-left: auto; }
+.toc { background: var(--light-bg); border: 1px solid var(--border); border-radius: 8px; padding: 24px 32px; margin-bottom: 40px; columns: 2; column-gap: 40px; }
+.toc h2 { font-size: 1.1rem; color: var(--company-accent); margin-bottom: 12px; column-span: all; }
+.toc a { display: block; color: var(--blue); text-decoration: none; padding: 3px 0; font-size: 0.9rem; break-inside: avoid; }
+.toc a:hover { text-decoration: underline; }
+.section { margin-bottom: 48px; scroll-margin-top: 20px; }
+.section h2 { font-size: 1.4rem; color: var(--company-dark); border-bottom: 3px solid var(--company-primary); padding-bottom: 8px; margin-bottom: 16px; }
+.section h2 .num { display: inline-block; background: var(--company-primary); color: #fff; width: 28px; height: 28px; line-height: 28px; text-align: center; border-radius: 50%; font-size: 0.85rem; margin-right: 8px; vertical-align: middle; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 0.88rem; }
+thead th { background: var(--company-accent); color: #fff; padding: 10px 12px; text-align: left; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
+thead th.right { text-align: right; }
+tbody td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+tbody td.right { text-align: right; }
+tbody tr:nth-child(even) { background: var(--light-bg); }
+tbody tr:hover { background: #eef2f7; }
+.pos { color: var(--green); font-weight: 600; }
+.neg { color: var(--red); font-weight: 600; }
+.neutral { color: var(--amber); font-weight: 600; }
+.raised { background: #eafaf1 !important; }
+.lowered { background: #fef0ef !important; }
+.bold { font-weight: 700; }
+.muted { color: var(--text-muted); font-style: italic; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; vertical-align: middle; }
+.tag-new { background: #d6eaf8; color: #2471a3; }
+.tag-disc { background: #fadbd8; color: #c0392b; }
+.tag-emerged { background: #d5f5e3; color: #1e8449; }
+.tag-peak { background: #fdebd0; color: #d68910; }
+.insight { background: linear-gradient(135deg, #fef9e7, #fdebd0); border-left: 4px solid var(--amber); padding: 14px 18px; margin: 16px 0; border-radius: 0 6px 6px 0; font-size: 0.9rem; }
+.insight strong { color: var(--company-dark); }
+.year-divider td { background: var(--company-accent) !important; color: #fff; font-weight: 700; font-size: 0.82rem; padding: 6px 12px; letter-spacing: 0.5px; }
+.analysis { margin-top: 48px; padding: 32px; background: var(--light-bg); border: 1px solid var(--border); border-radius: 8px; }
+.analysis h2 { font-size: 1.3rem; color: var(--company-dark); margin-bottom: 16px; border-bottom: 3px solid var(--company-primary); padding-bottom: 8px; }
+.analysis h3 { font-size: 1.05rem; color: var(--company-dark); margin: 20px 0 8px; }
+.analysis p { font-size: 0.92rem; margin-bottom: 12px; }
+.footer { margin-top: 60px; padding-top: 20px; border-top: 2px solid var(--border); font-size: 0.82rem; color: var(--text-muted); text-align: center; }
+.footer a { color: var(--blue); text-decoration: none; }
+.footer a:hover { text-decoration: underline; }
+@media (max-width: 768px) { .toc { columns: 1; } .header h1 { font-size: 1.6rem; } table { font-size: 0.8rem; } thead th, tbody td { padding: 6px 8px; } }
+@media print { .header { background: #333; } .section { page-break-inside: avoid; } table { font-size: 0.75rem; } .quarter-nav { display: none; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Veeva Systems Intermittent KPIs</h1>
+  <div class="subtitle">Metrics disclosed more than once but not on a regular basis &mdash; Q1 FY2023 through Q4 FY2026</div>
+</div>
+
+<nav class="quarter-nav">
+  <span class="label">Quarters:</span>
+  <div class="year-group">
+    <span class="year-label">FY26</span>
+    <a href="Q4_FY2026.html">Q4 FY26</a>
+    <a href="Q3_FY2026.html">Q3 FY26</a>
+    <a href="Q2_FY2026.html">Q2 FY26</a>
+    <a href="Q1_FY2026.html">Q1 FY26</a>
+  </div>
+  <div class="year-group">
+    <span class="year-label">FY25</span>
+    <a href="Q4_FY2025.html">Q4 FY25</a>
+    <a href="Q3_FY2025.html">Q3 FY25</a>
+    <a href="Q2_FY2025.html">Q2 FY25</a>
+    <a href="Q1_FY2025.html">Q1 FY25</a>
+  </div>
+  <div class="year-group">
+    <span class="year-label">FY24</span>
+    <a href="Q4_FY2024.html">Q4 FY24</a>
+    <a href="Q3_FY2024.html">Q3 FY24</a>
+    <a href="Q2_FY2024.html">Q2 FY24</a>
+    <a href="Q1_FY2024.html">Q1 FY24</a>
+  </div>
+  <div class="year-group">
+    <span class="year-label">FY23</span>
+    <a href="Q4_FY2023.html">Q4 FY23</a>
+    <a href="Q3_FY2023.html">Q3 FY23</a>
+    <a href="Q2_FY2023.html">Q2 FY23</a>
+    <a href="Q1_FY2023.html">Q1 FY23</a>
+  </div>
+  <a href="../../index.html" class="overview-link">Portfolio</a>
+  <a href="../comparison.html" class="overview-link">Guidance Overview</a>
+  <a href="../results.html" class="overview-link">Results Scorecard</a>
+</nav>
+
+<div class="toc">
+  <h2>Table of Contents</h2>
+  <a href="#s1">1. Vault CRM Customer Wins</a>
+  <a href="#s2">2. Vault CRM Customers Live</a>
+  <a href="#s3">3. Top 20 Pharma Vault CRM Commitments</a>
+  <a href="#s4">4. Crossix Growth</a>
+  <a href="#s5">5. TFC Revenue Impact</a>
+  <a href="#s6">6. EDC Top 20 Wins</a>
+  <a href="#s7">7. Safety Suite Go-Lives</a>
+  <a href="#s8">8. eTMF Top 20 Penetration</a>
+  <a href="#s9">9. AI Strategy Evolution</a>
+  <a href="#s10">10. Compass Wins / Brands</a>
+  <a href="#s11">11. 2030 Revenue Goal ($6B)</a>
+  <a href="#s12">12. Vault Basics</a>
+  <a href="#s13">13. Normalized Billings</a>
+  <a href="#s14">14. CRM as % of Revenue</a>
+  <a href="#analysis">What the Disclosure Patterns Reveal</a>
+</div>
+
+<!-- Section 1: Vault CRM Customer Wins -->
+<div class="section" id="s1">
+  <h2><span class="num">1</span> Vault CRM Customer Wins</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>New CRM Wins</th><th>Details</th><th>Signal</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2026 &mdash; VAULT CRM AT SCALE</td></tr>
+      <tr><td>Q4 FY2026</td><td class="bold">23</td><td>Mix of net new + migrations; CRM end of support pulled to Dec 2029</td><td><span class="tag tag-peak">Acceleration</span></td></tr>
+      <tr><td>Q3 FY2026</td><td class="bold">23</td><td>Virtually all pre-commercial; very high win rate</td><td></td></tr>
+      <tr><td>Q2 FY2026</td><td class="bold">13</td><td>Mix of net new (mostly first-time CRM) and migrations; "relatively lumpy"</td><td></td></tr>
+      <tr><td>Q1 FY2026</td><td class="bold">28</td><td>~half migrations, ~half net new; largest quarter yet</td><td><span class="tag tag-peak">Record</span></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2025 &mdash; VAULT CRM GENERAL AVAILABILITY</td></tr>
+      <tr><td>Q4 FY2025</td><td class="bold">20</td><td>Vast majority U.S., small/midsized, selecting first CRM</td><td></td></tr>
+      <tr><td>Q3 FY2025</td><td class="bold">13</td><td>Virtually all pre-commercial; 7 migrations on track for year end</td><td></td></tr>
+      <tr><td>Q2 FY2025</td><td class="bold">14</td><td>GA in April 2024; winning "virtually every CRM deal"</td><td><span class="tag tag-emerged">Post-GA</span></td></tr>
+      <tr><td>Q1 FY2025</td><td class="bold">8</td><td>Last quarter before Vault CRM GA; all were Veeva CRM (legacy)</td><td></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2024 &mdash; PRE-GA EARLY ADOPTERS</td></tr>
+      <tr><td>Q4 FY2024</td><td class="bold">9</td><td>5 Vault CRM + 4 Veeva CRM wins</td><td></td></tr>
+      <tr><td>Q3 FY2024</td><td class="bold">9</td><td>3 Vault CRM + 6 Veeva CRM; first customer live on Vault CRM</td><td><span class="tag tag-new">First Live</span></td></tr>
+      <tr><td>Q2 FY2024</td><td class="bold">8</td><td>First Vault CRM customer win announced; SMB focus</td><td><span class="tag tag-new">First Win</span></td></tr>
+      <tr><td>Q1 FY2024</td><td class="bold">11</td><td>Majority North America; competitive displacements of IQVIA</td><td></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2023 &mdash; CRM ON SALESFORCE</td></tr>
+      <tr><td>Q1 FY2023</td><td class="bold">12</td><td>Another strong quarter; market share increased again</td><td></td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>The Vault CRM ramp is accelerating.</strong> From 8 wins in Q2 FY2024 (first Vault CRM win) to 28 in Q1 FY2026 (half migrations, half net new). The shift from Salesforce-based Veeva CRM to Vault CRM represents the largest platform transition in life sciences software. CRM end of support was pulled forward to December 2029, signaling confidence in migration momentum.
+  </div>
+</div>
+
+<!-- Section 2: Vault CRM Customers Live -->
+<div class="section" id="s2">
+  <h2><span class="num">2</span> Vault CRM Customers Live</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th class="right">Customers Live</th><th>Commentary</th><th>Signal</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2026 &mdash; SCALING PRODUCTION DEPLOYMENTS</td></tr>
+      <tr><td>Q4 FY2026</td><td class="right bold">~140</td><td>10 committed top 20 projects all underway; "closer to 140"</td><td><span class="tag tag-peak">At Scale</span></td></tr>
+      <tr><td>Q3 FY2026</td><td class="right bold">115</td><td>23 new in Q3; top 20 live in Japan; 2 top 20 live across major regions</td><td></td></tr>
+      <tr><td>Q2 FY2026</td><td class="right bold">100+</td><td>2 top 20 pharmas live in major markets this quarter</td><td></td></tr>
+      <tr><td>Q1 FY2026</td><td class="right bold">80+</td><td>One top 20 going live with ~20,000 users; target ~200 by May 2026</td><td></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2025 &mdash; FIRST PRODUCTION GO-LIVES</td></tr>
+      <tr><td>Q3 FY2025</td><td class="right bold">30+</td><td>Full functionality parity with Veeva CRM reached</td><td></td></tr>
+      <tr><td>Q2 FY2025</td><td class="right bold">15</td><td>Multiple customers live; smaller companies, mostly pre-commercial</td><td><span class="tag tag-new">Early</span></td></tr>
+      <tr><td>Q1 FY2025</td><td class="right bold">Multiple</td><td>"Multiple new Vault CRM customers already live"</td><td></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2024 &mdash; FIRST CUSTOMER LIVE</td></tr>
+      <tr><td>Q3 FY2024</td><td class="right bold">1</td><td>First customer live on Vault CRM</td><td><span class="tag tag-new">Milestone</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>From 1 to ~140 in 9 quarters.</strong> The Vault CRM go-live count is the single most important operational metric for Veeva's platform transition. It validates that the product works, migrations are tractable, and the 2029 end-of-support deadline is achievable. The ramp from 30+ (Q3 FY2025) to 140 (Q4 FY2026) shows exponential adoption.
+  </div>
+</div>
+
+<!-- Section 3: Top 20 Pharma Vault CRM Commitments -->
+<div class="section" id="s3">
+  <h2><span class="num">3</span> Top 20 Pharma Vault CRM Commitments</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th class="right">Committed</th><th>Named Customers / Detail</th><th>Signal</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2026 &mdash; MAJORITY COMMITTED</td></tr>
+      <tr><td>Q4 FY2026</td><td class="right bold">~10 of 20</td><td>14 of 20 expected on Vault CRM; ~5 decisions remaining in CY2026; all 10 projects underway</td><td></td></tr>
+      <tr><td>Q3 FY2026</td><td class="right bold">~9 of 20</td><td>14 of 20 expected to migrate; 6 may opt for Salesforce-based custom builds; "4 of 6 winnable back"</td><td></td></tr>
+      <tr><td>Q2 FY2026</td><td class="right bold">9 of 20</td><td>7 formally committed + 2 verbal; vs. Salesforce 3 wins (incl. verbal)</td><td></td></tr>
+      <tr><td>Q1 FY2026</td><td class="right bold">4 of 20</td><td>4 publicly announced; 3 top 20 going live CY2026; one ~20,000 users live by end CY2025</td><td></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2025 &mdash; FIRST TOP 20 DECISIONS</td></tr>
+      <tr><td>Q3 FY2025</td><td class="right bold">4 of 20</td><td>Boehringer Ingelheim announced (fourth); additional commitments expected</td><td><span class="tag tag-new">BI Added</span></td></tr>
+      <tr><td>Q4 FY2024</td><td class="right bold">3 of 20</td><td>Third top 20 announced in Q4; increased services investment for migration</td><td></td></tr>
+      <tr><td>Q3 FY2024</td><td class="right bold">2 of 20</td><td>Bayer and GSK committed globally; first customer live</td><td><span class="tag tag-new">Bayer + GSK</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>From 2 to ~10 in 2 years, with 14 expected.</strong> The top 20 pharma CRM migration decisions are existential for Veeva's competitive position. With 14 of 20 expected to choose Vault CRM and 10 projects already underway, the competitive battle against Salesforce is largely won. The "red zone" (2027+) creates urgency for remaining decisions.
+  </div>
+</div>
+
+<!-- Section 4: Crossix Growth -->
+<div class="section" id="s4">
+  <h2><span class="num">4</span> Crossix Growth</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Growth / Performance</th><th>Context</th><th>Signal</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2026 &mdash; CROSSIX BREAKOUT</td></tr>
+      <tr><td>Q4 FY2026</td><td class="pos">Outstanding year; exceeded expectations</td><td>"Major driver of beat over the course of the year"; tougher comps ahead</td><td><span class="tag tag-peak">Peak</span></td></tr>
+      <tr><td>Q3 FY2026</td><td class="pos">In line with expectations; strong</td><td>Measurement "very stable"; Audiences "delivered nicely"</td><td></td></tr>
+      <tr><td>Q2 FY2026</td><td class="pos">Continued strong</td><td>Audiences primary growth driver; higher growth, usage-based</td><td></td></tr>
+      <tr><td>Q1 FY2026</td><td class="pos">30%+ YoY growth</td><td>Usage-based outperformance; deal sizes ~2x vs. 3 years ago; HCP measurement expanding</td><td><span class="tag tag-peak">30%+</span></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2025 &mdash; CROSSIX RECOVERY</td></tr>
+      <tr><td>Q3 FY2025</td><td class="pos">Strong; competition stumbled</td><td>Audiences + micro-audiences getting more fine-tuned</td><td></td></tr>
+      <tr><td>Q2 FY2025</td><td class="pos">Second consecutive solid quarter</td><td>Strength attributed to market leadership, not cyclical factors</td><td></td></tr>
+      <tr><td>Q1 FY2025</td><td class="pos">Great quarter</td><td>First customer on enterprise license model; Crossix Audiences investment paying off</td><td><span class="tag tag-emerged">Inflection</span></td></tr>
+      <tr><td>Q4 FY2024</td><td class="pos">Taking market share</td><td>Competitors "oversold what they could actually deliver"</td><td></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2024 &mdash; HEADWINDS PERSISTING</td></tr>
+      <tr><td>Q3 FY2024</td><td class="neutral">Solid bookings incl. brand expansions</td><td>Recovery emerging; competitors had stumbles</td><td></td></tr>
+      <tr><td>Q2 FY2024</td><td class="neutral">Ups and downs; increased scrutiny</td><td>Moving toward enterprise license agreements</td><td></td></tr>
+      <tr><td>Q1 FY2024</td><td class="neg">Unchanged macro headwinds</td><td>Marketing budget headwinds from H2 FY2023</td><td></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2023 &mdash; ADVERTISING HEADWIND HITS</td></tr>
+      <tr><td>Q4 FY2023</td><td class="neg">Advertising spend reductions</td><td>Signed top 20 pharma enterprise deal; moving to multiyear ELAs</td><td></td></tr>
+      <tr><td>Q3 FY2023</td><td class="neutral">~10% growth</td><td>Advertising market under pressure; moving to more multiyear agreements</td><td></td></tr>
+      <tr><td>Q2 FY2023</td><td class="neg">More pronounced macro impact</td><td>Tied to advertising spend tightening; "real bullish going forward"</td><td><span class="tag tag-disc">Headwind</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>V-shaped recovery from advertising headwind to 30%+ growth.</strong> Crossix went from being the most macro-sensitive product (~10% growth in Q3 FY2023 with headwinds) to the single biggest driver of revenue beats in FY2026 at 30%+ growth. The pivot to enterprise license agreements and the Audiences product line created a structurally stronger business. Management projects Crossix could equal the entire CRM suite (~$600M) by 2030.
+  </div>
+</div>
+
+<!-- Section 5: TFC Revenue Impact -->
+<div class="section" id="s5">
+  <h2><span class="num">5</span> TFC (Term Fee Conversion) Revenue Impact</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>TFC Impact</th><th>Details</th><th>Signal</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2025 &mdash; DISTORTION FADING</td></tr>
+      <tr><td>Q3 FY2025</td><td class="neutral">~2% headwind to sub growth</td><td>Per CFO; TFC still creating YoY comp noise</td><td></td></tr>
+      <tr><td>Q1 FY2025</td><td class="neutral">+24% reported / +13% normalized</td><td>FY2024 TFC impact inflated YoY; normalized growth ~13%</td><td></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2024 &mdash; FULL LIFECYCLE DISTORTION</td></tr>
+      <tr><td>Q4 FY2024</td><td class="neg">Revenue and OI reduced</td><td>TFC reduced Q4 revenues and operating income; timing impacts "less in FY25"</td><td></td></tr>
+      <tr><td>Q3 FY2024</td><td class="neg">Revenue reduced</td><td>R&D sub growth 22-23% ex-TFC; TFC compressed reported growth</td><td></td></tr>
+      <tr><td>Q2 FY2024</td><td class="neg">R&D sub growth ~28% ex-TFC for FY2024</td><td>TFC masking strong underlying R&D growth</td><td></td></tr>
+      <tr><td>Q1 FY2024</td><td class="neg">~$52M impact in Q1</td><td>Of $95M total FY2024 impact; largely unbilled AR portion</td><td><span class="tag tag-disc">Peak Impact</span></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2023 &mdash; TFC ANNOUNCED</td></tr>
+      <tr><td>Q4 FY2023</td><td class="neutral">$95M FY2024 impact guided</td><td>$60M existing + $15M from 3 large Q4 CMS deals + $20M anticipated new deals</td><td><span class="tag tag-new">Disclosed</span></td></tr>
+      <tr><td>Q3 FY2023</td><td class="neutral">$60M effective Feb 1</td><td>~60% to hit Q1 FY2024; no impact on billings or cash flow</td><td><span class="tag tag-new">First Mention</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>TFC distorted 8 quarters of reported growth.</strong> The termination-for-convenience rights standardization (effective Feb 1, 2023) created a ~$95M revenue timing shift that depressed FY2024 reported growth to ~10% vs. ~15% normalized, then inflated FY2025 comps. By Q3 FY2025, the impact had shrunk to ~2% headwind on subscription growth. The metric is important because it explains why FY2024 appeared to be a deceleration year when the underlying business was growing ~15%.
+  </div>
+</div>
+
+<!-- Section 6: EDC Top 20 Wins -->
+<div class="section" id="s6">
+  <h2><span class="num">6</span> EDC Top 20 Wins</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th class="right">Cumulative Top 20</th><th>New Wins / Commentary</th><th>Signal</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2026 &mdash; EDC MATURATION</td></tr>
+      <tr><td>Q4 FY2026</td><td class="right bold">9</td><td>"Hit a bit of an air pocket"; one top 20 went back to prior provider; "us and Medidata" as leaders</td><td><span class="tag tag-disc">Air Pocket</span></td></tr>
+      <tr><td>Q1 FY2026</td><td class="right bold">9</td><td>Revenue ramps steadily contributing; path to additional top 20s but nothing imminent</td><td></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2025 &mdash; EDC RAMPS BUILDING</td></tr>
+      <tr><td>Q4 FY2025</td><td class="right bold">9</td><td>Ninth won in Q4; ramps contributing to both billings and revenue</td><td><span class="tag tag-emerged">9th Win</span></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2024 &mdash; EDC EXPANSION YEAR</td></tr>
+      <tr><td>Q4 FY2024</td><td class="right bold">8</td><td>2 new top 20 wins; 5 of 8 in last 12 months; first full clinical ops suite customer</td><td></td></tr>
+      <tr><td>Q2 FY2024</td><td class="right bold">6</td><td>6 top 20 EDC wins; multiyear predefined ramping deals (3-5 years to full revenue)</td><td></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2023 &mdash; EDC GAINING TRACTION</td></tr>
+      <tr><td>Q4 FY2023</td><td class="right bold">6</td><td>3 added in Q4 alone; clinical data management ~5% penetrated</td><td></td></tr>
+      <tr><td>Q3 FY2023</td><td class="right bold">~3</td><td>2 top 20 selected Vault EDC; both displacements of top 2 market leaders</td><td><span class="tag tag-new">Breaking In</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>From zero to 9 of the top 20, but with an "air pocket."</strong> EDC is one of Veeva's largest single product opportunities. Revenue ramps take 3-5 years per customer, meaning the 9 top 20 wins are still years away from full revenue contribution. The Q4 FY2026 "air pocket" -- where one customer went back to their prior provider -- shows these are genuinely competitive decisions. Veeva is now arguably co-leader with Medidata.
+  </div>
+</div>
+
+<!-- Section 7: Safety Suite Go-Lives -->
+<div class="section" id="s7">
+  <h2><span class="num">7</span> Safety Suite Go-Lives</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Milestone</th><th>Details</th><th>Signal</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2026 &mdash; SAFETY SURGE</td></tr>
+      <tr><td>Q4 FY2026</td><td class="pos">Top 20 Safety win + first Signal go-live</td><td>Won top 20 standardization deal; first top 20 go-live with Safety Signal; internal "Safety Surge"</td><td><span class="tag tag-peak">Surge</span></td></tr>
+      <tr><td>Q3 FY2026</td><td class="pos">Third top 20 went live</td><td>Top 20 enterprise standard selections for Safety; ~8 years building product</td><td></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2025 &mdash; APPROACHING TIPPING POINT</td></tr>
+      <tr><td>Q4 FY2025</td><td class="pos">Second top 20 went live (Feb 2025)</td><td>Rolling out full Safety Suite; "first true cloud integrated safety applications"</td><td></td></tr>
+      <tr><td>Q3 FY2025</td><td class="neutral">"Approaching a tipping point"</td><td>Legacy systems aging; advanced clinical-safety automation</td><td><span class="tag tag-emerged">Tipping Point</span></td></tr>
+      <tr><td>Q2 FY2025</td><td class="neutral">Some live and "happy"</td><td>Potential catalysts: legacy issues, EDC-Safety integration, AI capabilities</td><td></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2023 &mdash; FIRST SAFETY GO-LIVE</td></tr>
+      <tr><td>Q3 FY2023</td><td class="pos">First top 20 went live</td><td>Implementation in "about half the time expected"; first cloud-native drug safety app</td><td><span class="tag tag-new">Milestone</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>3 years for 3 top 20 go-lives -- now accelerating.</strong> Drug safety is mission-critical (reporting to health authorities worldwide) with 10-year decision cycles. It took from Q3 FY2023 to Q4 FY2025 for the second go-live, but then the third followed in Q3 FY2026, and a new standardization win in Q4 FY2026 with the internal "Safety Surge" designation. AI-powered safety agents (launching April 2026) could be the catalyst for mainstream adoption.
+  </div>
+</div>
+
+<!-- Section 8: eTMF Top 20 Penetration -->
+<div class="section" id="s8">
+  <h2><span class="num">8</span> eTMF Top 20 Penetration</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th class="right">Top 20 Count</th><th>Commentary</th><th>Signal</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2026 &mdash; eTMF DOMINANCE</td></tr>
+      <tr><td>Q3 FY2026</td><td class="right bold">20 / 20</td><td>All top 20 have selected Veeva as enterprise standard for eTMF</td><td><span class="tag tag-peak">20/20</span></td></tr>
+      <tr><td>Q2 FY2026</td><td class="right muted">20 / 20</td><td>Per Q&A: TMF goal is to reduce outsourced labor by 50% across industry</td><td></td></tr>
+      <tr><td>Q1 FY2026</td><td class="right bold">19 / 20</td><td>"Pretty good path to 20 of the top 20"</td><td></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2023 &mdash; eTMF ESTABLISHED</td></tr>
+      <tr><td>Q3 FY2023</td><td class="right bold">450+ customers</td><td>eTMF described as dominant with network effect; foundational system of record</td><td></td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>20 of 20 -- complete market dominance.</strong> eTMF (Electronic Trial Master File) is the template for every Veeva R&D product: start with a few, prove the platform, reach 100% of top 20. Achieving 20/20 shows the playbook works. CTMS is at 17/20 following the same path. EDC (9/20) and Safety ("just a few") are earlier on the same curve.
+  </div>
+</div>
+
+<!-- Section 9: AI Strategy Evolution -->
+<div class="section" id="s9">
+  <h2><span class="num">9</span> AI Strategy Evolution</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>AI Stance</th><th>Key Products / Actions</th><th>Signal</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2026 &mdash; VEEVA AI LAUNCHES</td></tr>
+      <tr><td>Q4 FY2026</td><td class="pos">AI agents in all applications by end CY2026</td><td>CRM/Content agents launched Dec 2025; Safety/Quality agents ~Apr 2026; token-based pricing; "not material in FY27"</td><td></td></tr>
+      <tr><td>Q3 FY2026</td><td class="pos">Published accelerated agent road map</td><td>CRM Bot, MLR Bot, Safety AI, Clinical Ops/CDM agents planned through CY2026</td><td><span class="tag tag-peak">Road Map</span></td></tr>
+      <tr><td>Q2 FY2026</td><td class="pos">Agentic AI platform embedded in Vault</td><td>MCP protocol; platform for custom + industry agents; no FY27/FY28 material revenue expected</td><td></td></tr>
+      <tr><td>Q1 FY2026</td><td class="pos">Veeva AI first release planned Dec 2025</td><td>5 agents planned: CRM Bot, Voice Control, Compliant Free Text, MLR Bot, Safety AI</td><td><span class="tag tag-new">Launch Plan</span></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2025 &mdash; AI AS STRATEGIC PILLAR</td></tr>
+      <tr><td>Q3 FY2025</td><td class="pos">AI products in pipeline</td><td>TMF bot, CRM voice control, CRM bot, MLR bot; centralized AI solutions group</td><td></td></tr>
+      <tr><td>Q2 FY2025</td><td class="neutral">AI partner program; early traction</td><td>Direct Data API sold as product; enabling partner ecosystem</td><td></td></tr>
+      <tr><td>Q1 FY2025</td><td class="neutral">AI as "competing priority" for customers</td><td>Direct Data API released April 2024 (~100x faster); AI causing deal timing delays</td><td><span class="tag tag-disc">Distraction</span></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2024 &mdash; AI POSITIONING</td></tr>
+      <tr><td>Q4 FY2024</td><td class="neutral">Data assets are the durable AI play</td><td>Direct Data API major investment over 2 years; ~100x faster data extraction</td><td></td></tr>
+      <tr><td>Q3 FY2024</td><td class="neutral">"Honestly, haven't seen big impact"</td><td>Most AI impact in content creation, safety narratives, protocol evaluation</td><td></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2023 &mdash; AI SKEPTICISM</td></tr>
+      <tr><td>Q1 FY2024</td><td class="neutral">Three-pronged approach defined</td><td>CRM Bot (first AI app); AI apps, data assets, open ecosystem</td><td></td></tr>
+      <tr><td>Q4 FY2023</td><td class="neg">"I don't think it's a revolution"</td><td>Dismissed internal cost savings from AI; cautious on customer value</td><td><span class="tag tag-disc">Skeptical</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>From "not a revolution" to strategic pillar in 3 years.</strong> Peter Gassner's AI stance evolved from dismissal (Q4 FY2023: "not a revolution") through acknowledgment of distraction risk (Q1 FY2025), to launching a comprehensive agent platform (Q1 FY2026). The key insight: Veeva's AI strategy is embedded in the Vault platform and monetized via token-based pricing, not standalone products. No material revenue expected until FY2028+, but AI is now positioned as a "significant increase in market size."
+  </div>
+</div>
+
+<!-- Section 10: Compass Wins / Brands -->
+<div class="section" id="s10">
+  <h2><span class="num">10</span> Compass Wins / Brands</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Metric</th><th>Details</th><th>Signal</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2026 &mdash; 100+ BRANDS</td></tr>
+      <tr><td>Q3 FY2026</td><td class="muted">Not separately disclosed</td><td>IQVIA partnership resolution: "overwhelmingly positive" customer reaction</td><td></td></tr>
+      <tr><td>Q2 FY2026</td><td class="neutral">Prescriber "a little slower than expected"</td><td>"Underestimated resistance to change"; Prescriber projects 4,000+ brands</td><td></td></tr>
+      <tr><td>Q1 FY2026</td><td class="pos">~10 brands added in Q1</td><td>Mostly patient area; "marathon"; Prescriber/National still early adopter</td><td></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2025 &mdash; COMPASS BROADENING</td></tr>
+      <tr><td>Q4 FY2025</td><td class="pos bold">100+ brands</td><td>Crossed 100 brands; no IC-grade prescriber data customers yet; "next year we will"</td><td><span class="tag tag-peak">100 Brands</span></td></tr>
+      <tr><td>Q3 FY2025</td><td class="pos">Good quarter; Patient + Prescriber</td><td>"Pretty disruptive"; flywheel spinning (small but growing)</td><td></td></tr>
+      <tr><td>Q2 FY2025</td><td class="neutral">Good progress; Patient revenue growing</td><td>Prescriber: no compensation use yet; expected CY2025</td><td></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2024 &mdash; COMPASS EARLY DAYS</td></tr>
+      <tr><td>Q3 FY2024</td><td class="pos bold">Record 13 new brands</td><td>Both new customers starting and existing expanding brand-by-brand</td><td><span class="tag tag-new">Record</span></td></tr>
+      <tr><td>Q2 FY2024</td><td class="neutral">Continued patient wins</td><td>"Not going to be $50-60M business anytime in next few years"</td><td></td></tr>
+      <tr><td>Q1 FY2024</td><td class="pos">5 wins</td><td>Full Compass suite to be available by Jan 2024 (Prescriber + Sales launching)</td><td></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2023 &mdash; COMPASS PATIENT LAUNCHES</td></tr>
+      <tr><td>Q2 FY2023</td><td class="neutral">4 customer wins</td><td>Start with brand, expand use cases; "too early to call the race"</td><td><span class="tag tag-new">Early</span></td></tr>
+      <tr><td>Q1 FY2023</td><td class="muted">"Definitely early adopter" stage</td><td>Announced Veeva Data Cloud; Compass for patient, prescriber, sales data</td><td></td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>Crossed 100 brands -- the IQVIA displacement marathon continues.</strong> Compass is Veeva's most ambitious data play: replacing IQVIA as the primary data supplier to life sciences. Progress has been methodical -- from 4 customer wins (Q2 FY2023) to 100+ brands (Q4 FY2025). The prescriber data product is "a little slower than expected" but the IQVIA dispute resolution in Q2 FY2026 removes a major structural barrier. This is a 15-year journey.
+  </div>
+</div>
+
+<!-- Section 11: 2030 Revenue Goal ($6B) -->
+<div class="section" id="s11">
+  <h2><span class="num">11</span> 2030 Revenue Goal ($6B)</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Target / Status</th><th>Context</th><th>Signal</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2026 &mdash; ON TRACK</td></tr>
+      <tr><td>Q4 FY2026</td><td class="pos">$6B on track; $3B run-rate surpassed</td><td>FY2026 actual revenue $3,195M; "on track"; multiple paths to $6B</td><td></td></tr>
+      <tr><td>Q3 FY2026</td><td class="pos">$6B on track</td><td>"Executing well"; "multiple paths to get there"; diverse business</td><td></td></tr>
+      <tr><td>Q2 FY2026</td><td class="pos">$6B -- "a lot of confidence"</td><td>Investor Day set for Oct 16, 2025; AI "significant increase in market size"</td><td></td></tr>
+      <tr><td>Q1 FY2026</td><td class="pos">$3B run-rate achieved; $6B target = double</td><td>Q1 annualized ~$3.04B; "double revenue and positive impact for industry"</td><td><span class="tag tag-peak">$3B Achieved</span></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2025 &mdash; $6B GOAL SET</td></tr>
+      <tr><td>Q4 FY2025</td><td class="pos bold">$6B 2030 run-rate goal announced</td><td>Set during FY2025; reflects large opportunity ahead</td><td><span class="tag tag-new">Announced</span></td></tr>
+      <tr><td>Q3 FY2025</td><td class="pos">"Excited" looking ahead to 2030</td><td>"Trains are big and they're moving"</td><td></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2023 &mdash; EARLIER REVENUE MILESTONES</td></tr>
+      <tr><td>Q3 FY2023</td><td class="neutral">2030+ growth framework</td><td>"Significant growth toward 2030 and beyond"; tracking a year ahead of 2025 targets</td><td></td></tr>
+      <tr><td>Q2 FY2023</td><td class="neutral">$3B by CY2025 target</td><td>"Continue to track ahead of our goal"</td><td></td></tr>
+      <tr><td>Q1 FY2023</td><td class="pos">Crossed $2B revenue run-rate</td><td>First time at $2B run-rate</td><td><span class="tag tag-new">$2B Milestone</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>$2B (FY2023) to $3B (FY2026) to $6B (CY2030).</strong> Veeva's long-term revenue goal has been consistently raised: from $3B by CY2025 (achieved in Q1 FY2026 as planned) to $6B by CY2030. At the FY2026 run-rate of ~$3.2B, reaching $6B requires ~13% CAGR over 4 years -- achievable with the current growth trajectory of 14-16%.
+  </div>
+</div>
+
+<!-- Section 12: Vault Basics -->
+<div class="section" id="s12">
+  <h2><span class="num">12</span> Vault Basics</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Customers</th><th>Details</th><th>Signal</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2026 &mdash; BASICS BUILDING SCALE</td></tr>
+      <tr><td>Q4 FY2026</td><td class="bold">~100 selected</td><td>Customer growth accelerated to 5%; "1,000 customers on Basics over time" possible</td><td></td></tr>
+      <tr><td>Q3 FY2026</td><td class="bold">~100 selected</td><td>"Not going to be the significant part of revenue" but important to ecosystem</td><td></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2025 &mdash; BASICS EARLY ADOPTION</td></tr>
+      <tr><td>Q2 FY2025</td><td class="bold">12 live</td><td>More signed; ~80% of Basics opportunity is net new (not previously addressable)</td><td></td></tr>
+      <tr><td>Q1 FY2025</td><td class="pos">Customers live (May 2024)</td><td>For companies &lt;200 employees; no implementation; $100M+ addressable market; board-level priority</td><td><span class="tag tag-new">Live</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>0 to ~100 in under 2 years.</strong> Vault Basics targets companies under 200 employees with zero-implementation onboarding. The ~$100M addressable market may seem modest against Veeva's $3.2B revenue, but the strategic value is large: 80% of Vault Basics customers were previously unreachable, and they can "graduate" to full enterprise Vault. The long-term potential of 1,000 customers would significantly expand Veeva's footprint in emerging biotech.
+  </div>
+</div>
+
+<!-- Section 13: Normalized Billings -->
+<div class="section" id="s13">
+  <h2><span class="num">13</span> Normalized Billings</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th class="right">Amount / Growth</th><th>Context</th><th>Signal</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2026 &mdash; BILLINGS ACCELERATION</td></tr>
+      <tr><td>Q4 FY2026</td><td class="right muted">~$3,265M FY guide (implied)</td><td>~11% FY2027 billings growth guided; annual only going forward</td><td></td></tr>
+      <tr><td>Q2 FY2026</td><td class="right muted">FY guide raised ~$35M</td><td>"Annual is the better indicator"; quarterly billings "lumpy"</td><td></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2025 &mdash; BILLINGS NORMALIZATION</td></tr>
+      <tr><td>Q4 FY2025</td><td class="right bold">~$1,235M Q4 (+17% YoY)</td><td>FY2025 calculated billings ~$2,971M; normalized ~$2,999M</td><td><span class="tag tag-peak">Strong Q4</span></td></tr>
+      <tr><td>Q3 FY2025</td><td class="right bold">$468M (+12% YoY)</td><td>Broad-based; Q3 stepping back up</td><td></td></tr>
+      <tr><td>Q1 FY2025</td><td class="right bold">$631M (+11% YoY)</td><td>Lower-than-expected annual billing terms on new business</td><td></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2024 &mdash; BILLINGS UNDER TFC PRESSURE</td></tr>
+      <tr><td>Q3 FY2024</td><td class="right neg">Trimmed ~$40M</td><td>~$20M services; ~$5M quarterly vs. annual biller mix; remainder timing + FX</td><td><span class="tag tag-disc">Cut</span></td></tr>
+      <tr><td>Q2 FY2024</td><td class="right neutral">~15% FY growth reiterated</td><td>Some Q2 favorability from deal timing; Q2 normalized vs. calculated ~$3M</td><td></td></tr>
+      <tr><td>Q1 FY2024</td><td class="right bold">$554M</td><td>Full year normalized billings raised $5M; ~15% growth</td><td></td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>Normalized billings adjusts for TFC and billing frequency changes.</strong> This metric was introduced to bridge the gap between calculated billings (distorted by TFC) and underlying demand. On a full-year basis, normalized and calculated billings converge. The shift to annual-only billings guidance starting FY2027 reflects management's admission that quarterly billings are too "lumpy" to be a useful signal.
+  </div>
+</div>
+
+<!-- Section 14: CRM as % of Revenue -->
+<div class="section" id="s14">
+  <h2><span class="num">14</span> CRM as % of Revenue</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th class="right">CRM % of Revenue</th><th>Context</th><th>Signal</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2026 &mdash; CRM DECLINING AS SHARE</td></tr>
+      <tr><td>Q4 FY2026</td><td class="right bold">~10% target by 2030</td><td>CRM ~$600M run-rate by 2030; ~10% of $6B goal; "nice stable business"</td><td></td></tr>
+      <tr><td>Q3 FY2026</td><td class="right bold">~20%</td><td>Down from ~25% two years ago; will be "significantly less than 20%" by 2030</td><td></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2025 &mdash; CRM CONCENTRATION DECLINING</td></tr>
+      <tr><td>Q2 FY2025</td><td class="right bold">~50% of commercial</td><td>CRM suite ~50% of commercial business; non-CRM commercial growing faster</td><td></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2024 &mdash; CRM SHARE FIRST DISCLOSED</td></tr>
+      <tr><td>Q4 FY2024</td><td class="right bold">~25%</td><td>CRM suite at ~25% of total revenue; "high market share, migration needed before new add-on sales"</td><td><span class="tag tag-new">First Disclosed</span></td></tr>
+      <tr><td>Q2 FY2024</td><td class="right bold">~25%</td><td>Veeva CRM + add-ons ~25% of total revenue</td><td></td></tr>
+    </tbody>
+  </table>
+  <div class="insight">
+    <strong>25% to 20% to a 10% target -- CRM is becoming a smaller piece of a bigger pie.</strong> This metric matters because it shows Veeva's transformation from a CRM company to a platform company. CRM is "not a growing business" but a "stable" one. By 2030, CRM will represent only ~10% of revenue (~$600M of $6B), with the growth coming from R&D/clinical, quality, data cloud, and Crossix. The declining CRM concentration is de-risking Veeva's revenue mix.
+  </div>
+</div>
+
+<!-- Analysis Section -->
+<div class="analysis" id="analysis">
+  <h2>What the Disclosure Patterns Reveal</h2>
+
+  <h3>The Three Phases of Veeva's Transformation</h3>
+  <p>These 14 intermittent KPIs map directly to the three overlapping phases of Veeva's business transformation across Q1 FY2023 through Q4 FY2026:</p>
+
+  <p><strong>Phase 1: The Salesforce Divorce (FY2023-FY2024).</strong> The Vault CRM platform transition was announced in Q3 FY2023, with the first customer win in Q2 FY2024 and first go-live in Q3 FY2024. The TFC standardization (Q3 FY2023 through FY2025) distorted reported financials for 8 quarters, masking ~15% underlying growth behind ~10% reported growth. Management introduced normalized billings to provide transparency.</p>
+
+  <p><strong>Phase 2: The Migration Machine (FY2025-FY2026).</strong> Vault CRM went from 1 customer live (Q3 FY2024) to ~140 (Q4 FY2026). Top 20 pharma commitments accelerated from 2 to ~10, with 14 of 20 expected to choose Vault CRM. The CRM end-of-support date was pulled forward to December 2029, signaling confidence. Simultaneously, Crossix emerged from advertising headwinds to 30%+ growth, becoming the single biggest driver of revenue beats in FY2026.</p>
+
+  <p><strong>Phase 3: The Platform Expansion (FY2025-FY2026+).</strong> With the Salesforce dependency resolved, Veeva is expanding into safety (3 top 20 go-lives), quality (LIMS, Batch Release), data cloud (100+ Compass brands, IQVIA partnership), and AI (agents across all products by end CY2026). EDC reached 9 of top 20, eTMF achieved 20/20 dominance, and Vault Basics reached ~100 customers. The $6B 2030 goal requires ~13% CAGR from the current $3.2B base -- exactly where these expansion vectors are pointing.</p>
+
+  <h3>Disclosure Patterns as Leading Indicators</h3>
+  <p><strong>Metrics that appeared then disappeared:</strong> TFC impact disclosures peaked in FY2024 then faded -- the accounting distortion resolved itself. This pattern of "disclose to explain, stop when normalized" is healthy communication.</p>
+
+  <p><strong>Metrics that emerged and accelerated:</strong> Vault CRM customers live (1 to 140), top 20 CRM commitments (2 to 10+), and Crossix growth (headwinds to 30%+) all followed exponential disclosure curves, reflecting genuine operational acceleration.</p>
+
+  <p><strong>Metrics with persistent patience:</strong> Compass (100+ brands but prescriber "slower than expected"), Safety (3 go-lives in 3 years), and EDC (9/20 with an "air pocket") reflect the reality that displacing mission-critical systems in life sciences requires a decade of patient execution. The disclosure frequency correlates with management's emphasis, not the revenue magnitude.</p>
+
+  <h3>The De-risking Story</h3>
+  <p>The single most important trend across all 14 metrics is the declining concentration risk in CRM (25% to 20% to 10% target). Every other metric -- Crossix growth, EDC expansion, Safety go-lives, Compass adoption, Vault Basics, AI agents -- contributes to a more diversified, more durable, and larger Veeva. The intermittent nature of these disclosures reflects a company in active transformation, where the metrics that matter shift as each initiative matures.</p>
+</div>
+
+<div class="footer">
+  Data sourced from Veeva Systems quarterly earnings call transcripts, Q1 FY2023 through Q4 FY2026. | <a href="../../index.html">Metrics Tracker</a>
+</div>
+
+</body>
+</html>

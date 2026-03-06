@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>META Intermittent KPIs &mdash; 16-Quarter Disclosure Tracker</title>
+<style>
+  :root {
+    --company-primary: #0668E1;
+    --company-dark: #1C2B33;
+    --company-accent: #00C2FF;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); background: #fff; line-height: 1.6; max-width: 1200px; margin: 0 auto; padding: 0 24px 80px; }
+  .header { background: linear-gradient(135deg, var(--company-dark), var(--company-accent)); color: #fff; padding: 48px 40px; margin: 0 -24px 40px; border-bottom: 4px solid var(--company-primary); }
+  .header h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; }
+  .header .subtitle { font-size: 1.1rem; opacity: 0.85; font-weight: 300; }
+  .quarter-nav { background: var(--company-accent); border-radius: 8px; padding: 16px 20px; margin-bottom: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .quarter-nav .label { color: #fff; font-weight: 600; font-size: 0.85rem; margin-right: 8px; white-space: nowrap; }
+  .quarter-nav .year-group { display: flex; gap: 4px; align-items: center; }
+  .quarter-nav .year-label { color: rgba(255,255,255,0.5); font-size: 0.72rem; font-weight: 600; margin-right: 2px; letter-spacing: 0.5px; }
+  .quarter-nav a { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 4px 10px; font-size: 0.78rem; font-weight: 600; text-decoration: none; transition: all 0.15s; }
+  .quarter-nav a:hover { background: rgba(255,255,255,0.25); }
+  .quarter-nav a.overview-link { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.35); padding: 4px 14px; font-size: 0.82rem; margin-left: auto; }
+  .toc { background: var(--light-bg); border: 1px solid var(--border); border-radius: 8px; padding: 24px 32px; margin-bottom: 40px; columns: 2; column-gap: 40px; }
+  .toc h2 { font-size: 1.1rem; color: var(--company-accent); margin-bottom: 12px; column-span: all; }
+  .toc a { display: block; color: var(--blue); text-decoration: none; padding: 3px 0; font-size: 0.9rem; break-inside: avoid; }
+  .toc a:hover { text-decoration: underline; }
+  .section { margin-bottom: 48px; scroll-margin-top: 20px; }
+  .section h2 { font-size: 1.4rem; color: var(--company-dark); border-bottom: 3px solid var(--company-primary); padding-bottom: 8px; margin-bottom: 16px; }
+  .section h2 .num { display: inline-block; background: var(--company-primary); color: #fff; width: 28px; height: 28px; line-height: 28px; text-align: center; border-radius: 50%; font-size: 0.85rem; margin-right: 8px; vertical-align: middle; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 0.88rem; }
+  thead th { background: var(--company-accent); color: #fff; padding: 10px 12px; text-align: left; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
+  thead th.right { text-align: right; }
+  tbody td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tbody td.right { text-align: right; }
+  tbody tr:nth-child(even) { background: var(--light-bg); }
+  tbody tr:hover { background: #eef2f7; }
+  .pos { color: var(--green); font-weight: 600; }
+  .neg { color: var(--red); font-weight: 600; }
+  .neutral { color: var(--amber); font-weight: 600; }
+  .raised { background: #eafaf1 !important; }
+  .lowered { background: #fef0ef !important; }
+  .bold { font-weight: 700; }
+  .muted { color: var(--text-muted); font-style: italic; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; vertical-align: middle; }
+  .tag-new { background: #d6eaf8; color: #2471a3; }
+  .tag-disc { background: #fadbd8; color: #c0392b; }
+  .tag-emerged { background: #d5f5e3; color: #1e8449; }
+  .insight { background: linear-gradient(135deg, #fef9e7, #fdebd0); border-left: 4px solid var(--amber); padding: 14px 18px; margin: 16px 0; border-radius: 0 6px 6px 0; font-size: 0.9rem; }
+  .insight strong { color: var(--company-dark); }
+  .year-divider td { background: var(--company-accent) !important; color: #fff; font-weight: 700; font-size: 0.82rem; padding: 6px 12px; letter-spacing: 0.5px; }
+  .analysis { margin-top: 48px; padding: 32px; background: var(--light-bg); border: 1px solid var(--border); border-radius: 8px; }
+  .analysis h2 { font-size: 1.3rem; color: var(--company-dark); margin-bottom: 16px; border-bottom: 3px solid var(--company-primary); padding-bottom: 8px; }
+  .analysis h3 { font-size: 1.05rem; color: var(--company-dark); margin: 20px 0 8px; }
+  .analysis p { font-size: 0.92rem; margin-bottom: 12px; }
+  .footer { margin-top: 60px; padding-top: 20px; border-top: 2px solid var(--border); font-size: 0.82rem; color: var(--text-muted); text-align: center; }
+  .footer a { color: var(--blue); text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 768px) { .toc { columns: 1; } .header h1 { font-size: 1.6rem; } table { font-size: 0.8rem; } thead th, tbody td { padding: 6px 8px; } }
+  @media print { .header { background: #333; } .section { page-break-inside: avoid; } table { font-size: 0.75rem; } .quarter-nav { display: none; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>META Intermittent KPIs</h1>
+  <div class="subtitle">Metrics disclosed more than once but not on a regular basis &mdash; Q1 2022 through Q4 2025</div>
+</div>
+
+<div class="quarter-nav" id="qnav">
+  <a href="../../index.html" style="background:rgba(255,255,255,0.15); color:#fff; font-weight:600; margin-right:12px; text-decoration:none; padding:4px 12px; border-radius:4px;">&#x2190; Portfolio</a>
+  <span class="label">Quarter detail:</span>
+  <div class="year-group"><span class="year-label">2025</span>
+    <a href="Q4_2025.html">4Q25</a><a href="Q3_2025.html">3Q25</a><a href="Q2_2025.html">2Q25</a><a href="Q1_2025.html">1Q25</a></div>
+  <div class="year-group"><span class="year-label">2024</span>
+    <a href="Q4_2024.html">4Q24</a><a href="Q3_2024.html">3Q24</a><a href="Q2_2024.html">2Q24</a><a href="Q1_2024.html">1Q24</a></div>
+  <div class="year-group"><span class="year-label">2023</span>
+    <a href="Q4_2023.html">4Q23</a><a href="Q3_2023.html">3Q23</a><a href="Q2_2023.html">2Q23</a><a href="Q1_2023.html">1Q23</a></div>
+  <div class="year-group"><span class="year-label">2022</span>
+    <a href="Q4_2022.html">4Q22</a><a href="Q3_2022.html">3Q22</a><a href="Q2_2022.html">2Q22</a><a href="Q1_2022.html">1Q22</a></div>
+  <a href="../comparison.html" class="overview-link">Guidance Overview &rarr;</a>
+</div>
+
+<nav class="toc">
+  <h2>Table of Contents</h2>
+  <a href="#s1">1. Discontinued User Metrics (FB DAU, MAU, Family MAP)</a>
+  <a href="#s2">2. Reels Revenue Run Rate &amp; Monetization</a>
+  <a href="#s3">3. Click-to-Message &amp; WhatsApp Revenue</a>
+  <a href="#s4">4. Threads Growth Trajectory</a>
+  <a href="#s5">5. Meta AI Monthly Actives</a>
+  <a href="#s6">6. AI-Recommended Content in Feeds</a>
+  <a href="#s7">7. Time Spent Lifts (Facebook, Instagram, Threads)</a>
+  <a href="#s8">8. GenAI Ad Tools &amp; Advantage+ Scale</a>
+  <a href="#s9">9. Reels Engagement (Plays, Re-Shares, Advertiser Adoption)</a>
+  <a href="#s10">10. Platform User Milestones (Instagram, WhatsApp)</a>
+  <a href="#s11">11. FX Revenue Impact</a>
+  <a href="#s12">12. Ray-Ban Meta Glasses</a>
+  <a href="#s13">13. Debt &amp; Dividends</a>
+  <a href="#analysis">Analysis: What the Disclosure Patterns Reveal</a>
+</nav>
+
+<!-- ====== SECTION 1: DISCONTINUED USER METRICS ====== -->
+<div class="section" id="s1">
+  <h2><span class="num">1</span> Discontinued User Metrics</h2>
+  <p style="margin-bottom:12px; font-size:0.88rem; color:var(--text-muted);">Meta reported Facebook-specific and Family-level user metrics from Q1 2022 through Q3/Q4 2023, then formally discontinued them in favor of the Family Daily Active People (DAP) metric only. <span class="tag tag-disc">Discontinued Q4 2023</span></p>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th class="right">Facebook DAU</th><th class="right">Facebook MAU</th><th class="right">DAU/MAU</th><th class="right">Family MAP</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">2023</td></tr>
+      <tr>
+        <td><a href="Q3_2023.html" style="color:var(--blue);text-decoration:none;">Q3 2023</a></td>
+        <td class="right bold">2.09B <span class="pos" style="font-size:0.78rem;">(+5% YoY)</span></td>
+        <td class="right bold">3.05B <span class="pos" style="font-size:0.78rem;">(+3% YoY)</span></td>
+        <td class="right">~68%</td>
+        <td class="right bold">~3.96B</td>
+      </tr>
+      <tr>
+        <td><a href="Q2_2023.html" style="color:var(--blue);text-decoration:none;">Q2 2023</a></td>
+        <td class="right">2.06B <span class="pos" style="font-size:0.78rem;">(+5% YoY)</span></td>
+        <td class="right">3.03B <span class="pos" style="font-size:0.78rem;">(+3%)</span></td>
+        <td class="right">~68%</td>
+        <td class="right">~3.88B</td>
+      </tr>
+      <tr>
+        <td><a href="Q1_2023.html" style="color:var(--blue);text-decoration:none;">Q1 2023</a></td>
+        <td class="right">2.04B <span class="pos" style="font-size:0.78rem;">(+4% YoY)</span></td>
+        <td class="right">2.99B <span class="pos" style="font-size:0.78rem;">(+2%)</span></td>
+        <td class="right">~68%</td>
+        <td class="right">~3.8B</td>
+      </tr>
+      <tr class="year-divider"><td colspan="5">2022</td></tr>
+      <tr>
+        <td><a href="Q4_2022.html" style="color:var(--blue);text-decoration:none;">Q4 2022</a></td>
+        <td class="right">2.0B <span class="pos" style="font-size:0.78rem;">(+4% YoY)</span></td>
+        <td class="right">2.96B <span class="pos" style="font-size:0.78rem;">(+2%)</span></td>
+        <td class="right">~67%</td>
+        <td class="right">~3.74B</td>
+      </tr>
+      <tr>
+        <td><a href="Q3_2022.html" style="color:var(--blue);text-decoration:none;">Q3 2022</a></td>
+        <td class="right">1.98B <span class="pos" style="font-size:0.78rem;">(+3% YoY)</span></td>
+        <td class="right">2.96B <span class="pos" style="font-size:0.78rem;">(+2%)</span></td>
+        <td class="right">~67%</td>
+        <td class="right">~3.7B</td>
+      </tr>
+      <tr>
+        <td><a href="Q2_2022.html" style="color:var(--blue);text-decoration:none;">Q2 2022</a></td>
+        <td class="right">1.97B <span class="pos" style="font-size:0.78rem;">(+3% YoY)</span></td>
+        <td class="right">2.93B <span class="pos" style="font-size:0.78rem;">(+1%)</span></td>
+        <td class="right">~67%</td>
+        <td class="right">~3.6B</td>
+      </tr>
+      <tr>
+        <td><a href="Q1_2022.html" style="color:var(--blue);text-decoration:none;">Q1 2022</a></td>
+        <td class="right">1.96B <span class="pos" style="font-size:0.78rem;">(+4% YoY)</span></td>
+        <td class="right">2.94B <span class="pos" style="font-size:0.78rem;">(+3%)</span></td>
+        <td class="right">~67%</td>
+        <td class="right">~3.6B</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Despite existential fears in early 2022 about Facebook user decline (DAU dipped QoQ in Q4 2021), the platform added ~130M DAU from Q1 2022 to Q3 2023 before the metric was retired. The DAU/MAU ratio held steady at 67&ndash;68%, suggesting consistent engagement quality even as the user base expanded. Meta retired these metrics to shift investor attention to the cross-app Family DAP figure, which better captures the full ecosystem.</div>
+</div>
+
+<!-- ====== SECTION 2: REELS REVENUE ====== -->
+<div class="section" id="s2">
+  <h2><span class="num">2</span> Reels Revenue Run Rate &amp; Monetization</h2>
+  <p style="margin-bottom:12px; font-size:0.88rem; color:var(--text-muted);">One of Meta&rsquo;s most selectively disclosed metrics. Reels revenue was quantified in specific quarters, often to mark milestones, then went quiet for extended periods.</p>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Reels Revenue Run Rate</th><th>Net Revenue Impact</th><th>Context</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025</td></tr>
+      <tr class="raised">
+        <td><a href="Q3_2025.html" style="color:var(--blue);text-decoration:none;">Q3 2025</a></td>
+        <td><strong class="pos">$50B+ annual run rate</strong></td>
+        <td class="muted">N/A (long since positive)</td>
+        <td>Reintroduced after 2-year gap; massive milestone</td>
+      </tr>
+      <tr class="year-divider"><td colspan="4">2023 &mdash; REELS REACHES REVENUE NEUTRALITY</td></tr>
+      <tr class="raised">
+        <td><a href="Q3_2023.html" style="color:var(--blue);text-decoration:none;">Q3 2023</a></td>
+        <td class="muted">Not quantified</td>
+        <td><strong class="pos">Net neutral</strong></td>
+        <td>Milestone: Reels no longer a revenue drag; stopped disclosing headwind</td>
+      </tr>
+      <tr>
+        <td><a href="Q2_2023.html" style="color:var(--blue);text-decoration:none;">Q2 2023</a></td>
+        <td><strong class="pos">Exceeding $10B annual run rate</strong></td>
+        <td>Near neutral</td>
+        <td>Up from $3B run rate the prior fall &mdash; 3x in ~9 months</td>
+      </tr>
+      <tr class="year-divider"><td colspan="4">2022 &mdash; REELS MONETIZATION RAMP</td></tr>
+      <tr>
+        <td><a href="Q3_2022.html" style="color:var(--blue);text-decoration:none;">Q3 2022</a></td>
+        <td><strong>$3B annual run rate</strong> (FB + IG combined)</td>
+        <td class="neg">&gt;$500M/quarter headwind</td>
+        <td>Reels displacing higher-CPM Feed/Stories; 40%+ advertisers using Reels ads</td>
+      </tr>
+      <tr>
+        <td><a href="Q2_2022.html" style="color:var(--blue);text-decoration:none;">Q2 2022</a></td>
+        <td><strong>$1B annual run rate</strong> (IG Reels only)</td>
+        <td class="neg">Net headwind (unquantified)</td>
+        <td>First Reels revenue milestone; crossed $1B</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> The Reels revenue trajectory is extraordinary: $1B &rarr; $3B &rarr; $10B+ &rarr; $50B+ over ~3 years. Meta deliberately stopped quantifying Reels revenue between Q3 2023 and Q3 2025 once it was no longer a headwind, only resuming disclosure when the number became staggeringly large ($50B+). This selective disclosure pattern is a masterclass in narrative management &mdash; quantify the problem early to set expectations, then re-quantify only when the result exceeds imagination.</div>
+</div>
+
+<!-- ====== SECTION 3: CLICK-TO-MESSAGE ====== -->
+<div class="section" id="s3">
+  <h2><span class="num">3</span> Click-to-Message &amp; WhatsApp Revenue</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Click-to-Message (Total)</th><th>Click-to-WhatsApp (Subset)</th><th>Other Messaging Revenue</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025</td></tr>
+      <tr class="raised">
+        <td><a href="Q4_2025.html" style="color:var(--blue);text-decoration:none;">Q4 2025</a></td>
+        <td class="muted">Not quantified</td>
+        <td>+60% YoY (Q3 figure reconfirmed)<br><span style="font-size:0.78rem;color:var(--text-muted);">U.S. click-to-message +50%+ YoY</span></td>
+        <td><strong class="pos">WhatsApp paid messaging $2B run rate</strong> <span class="tag tag-new">New</span></td>
+      </tr>
+      <tr>
+        <td><a href="Q3_2025.html" style="color:var(--blue);text-decoration:none;">Q3 2025</a></td>
+        <td class="muted">Not quantified</td>
+        <td><strong>+60% YoY</strong> revenue growth</td>
+        <td class="muted">Not discussed</td>
+      </tr>
+      <tr>
+        <td><a href="Q2_2025.html" style="color:var(--blue);text-decoration:none;">Q2 2025</a></td>
+        <td class="muted">Not quantified</td>
+        <td>U.S. click-to-message +40%+ YoY</td>
+        <td class="muted">Not discussed</td>
+      </tr>
+      <tr class="year-divider"><td colspan="4">2023</td></tr>
+      <tr>
+        <td><a href="Q3_2023.html" style="color:var(--blue);text-decoration:none;">Q3 2023</a></td>
+        <td class="muted">Not restated</td>
+        <td><strong>Multibillion-dollar annual run rate</strong></td>
+        <td class="muted">Not discussed</td>
+      </tr>
+      <tr>
+        <td><a href="Q2_2023.html" style="color:var(--blue);text-decoration:none;">Q2 2023</a></td>
+        <td class="muted">Not restated</td>
+        <td>Daily revenue growing +80% YoY</td>
+        <td class="muted">Not discussed</td>
+      </tr>
+      <tr>
+        <td><a href="Q1_2023.html" style="color:var(--blue);text-decoration:none;">Q1 2023</a></td>
+        <td>$10B run rate (reference from prior Q)</td>
+        <td class="muted">Not broken out</td>
+        <td class="muted">Not discussed</td>
+      </tr>
+      <tr class="year-divider"><td colspan="4">2022 &mdash; INITIAL DISCLOSURE</td></tr>
+      <tr>
+        <td><a href="Q4_2022.html" style="color:var(--blue);text-decoration:none;">Q4 2022</a></td>
+        <td><strong class="pos">$10B annual run rate</strong></td>
+        <td class="muted">Not broken out</td>
+        <td class="muted">Not discussed</td>
+      </tr>
+      <tr>
+        <td><a href="Q3_2022.html" style="color:var(--blue);text-decoration:none;">Q3 2022</a></td>
+        <td><strong>$9B annual run rate</strong></td>
+        <td><strong>$1.5B+ run rate</strong>, growing +80% YoY</td>
+        <td class="muted">Not discussed</td>
+      </tr>
+      <tr>
+        <td><a href="Q1_2022.html" style="color:var(--blue);text-decoration:none;">Q1 2022</a></td>
+        <td>&ldquo;Multibillion-dollar business&rdquo;</td>
+        <td class="muted">Not broken out</td>
+        <td class="muted">Not discussed</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Click-to-message was heavily promoted in 2022&ndash;2023 as a $9&ndash;10B business but absolute run rates haven&rsquo;t been updated since. In 2025, Meta shifted disclosure to YoY growth rates (+40&ndash;60%) and introduced WhatsApp paid messaging as a standalone $2B run rate metric. This suggests the total click-to-message business may now be $15&ndash;20B+, but Meta prefers growth rates over absolute figures at this scale &mdash; likely because click-to-message is now embedded within larger Advantage+ campaign structures.</div>
+</div>
+
+<!-- ====== SECTION 4: THREADS ====== -->
+<div class="section" id="s4">
+  <h2><span class="num">4</span> Threads Growth Trajectory</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th class="right">Monthly Actives</th><th>Growth Note</th><th>Context</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025</td></tr>
+      <tr>
+        <td><a href="Q3_2025.html" style="color:var(--blue);text-decoration:none;">Q3 2025</a></td>
+        <td class="right"><strong>150M+ daily actives</strong> <span class="tag tag-new">DAU</span></td>
+        <td>Switched from MAU to DAU disclosure</td>
+        <td>+10% time spent in Q3 from ranking optimizations</td>
+      </tr>
+      <tr>
+        <td><a href="Q1_2025.html" style="color:var(--blue);text-decoration:none;">Q1 2025</a></td>
+        <td class="right bold">350M+</td>
+        <td class="muted">Pace not restated</td>
+        <td>+35% time spent from AI recommendations (6-month basis)</td>
+      </tr>
+      <tr class="year-divider"><td colspan="4">2024 &mdash; RAPID SCALING</td></tr>
+      <tr class="raised">
+        <td><a href="Q4_2024.html" style="color:var(--blue);text-decoration:none;">Q4 2024</a></td>
+        <td class="right bold">320M+</td>
+        <td class="pos">+1M sign-ups/day</td>
+        <td>Overtook X/Twitter by multiple measures</td>
+      </tr>
+      <tr>
+        <td><a href="Q3_2024.html" style="color:var(--blue);text-decoration:none;">Q3 2024</a></td>
+        <td class="right bold">~275M</td>
+        <td class="pos">+1M sign-ups/day</td>
+        <td>Fastest social app to reach this scale after launch</td>
+      </tr>
+      <tr>
+        <td><a href="Q2_2024.html" style="color:var(--blue);text-decoration:none;">Q2 2024</a></td>
+        <td class="right">Approaching 200M</td>
+        <td class="muted">Pace not restated</td>
+        <td class="muted">Light disclosure quarter</td>
+      </tr>
+      <tr>
+        <td><a href="Q1_2024.html" style="color:var(--blue);text-decoration:none;">Q1 2024</a></td>
+        <td class="right">150M+</td>
+        <td class="muted">Pace not restated</td>
+        <td class="muted">Light disclosure quarter</td>
+      </tr>
+      <tr class="year-divider"><td colspan="4">2023 &mdash; LAUNCH</td></tr>
+      <tr>
+        <td><a href="Q4_2023.html" style="color:var(--blue);text-decoration:none;">Q4 2023</a></td>
+        <td class="right">130M+</td>
+        <td>Growing steadily</td>
+        <td>6 months post-launch; Q4 2023 call</td>
+      </tr>
+      <tr>
+        <td><a href="Q3_2023.html" style="color:var(--blue);text-decoration:none;">Q3 2023</a></td>
+        <td class="right">Just under 100M</td>
+        <td>3 months post-launch</td>
+        <td>Launched July 5, 2023</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Threads went from 0 to 350M+ MAU in under 2 years, with Meta strategically switching to DAU disclosure (150M+ in Q3 2025) once that became the more impressive figure. The implicit DAU/MAU ratio of ~43% suggests engagement is still maturing. The +1M daily sign-ups pace in H2 2024 represents one of the fastest sustained growth rates in social media history, validating Meta&rsquo;s thesis that distribution + cross-app integration can bootstrap a new social surface.</div>
+</div>
+
+<!-- ====== SECTION 5: META AI ====== -->
+<div class="section" id="s5">
+  <h2><span class="num">5</span> Meta AI Monthly Actives</h2>
+  <p style="margin-bottom:12px; font-size:0.88rem; color:var(--text-muted);">Metric first disclosed Q3 2024. <span class="tag tag-emerged">Emerged Q3 2024</span></p>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th class="right">Monthly Actives</th><th>QoQ Change</th><th>Context</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025</td></tr>
+      <tr>
+        <td><a href="Q3_2025.html" style="color:var(--blue);text-decoration:none;">Q3 2025</a></td>
+        <td class="right bold">1B+</td>
+        <td class="muted">Maintained</td>
+        <td>Plateau or measurement refinement</td>
+      </tr>
+      <tr class="raised">
+        <td><a href="Q2_2025.html" style="color:var(--blue);text-decoration:none;">Q2 2025</a></td>
+        <td class="right bold">1B+</td>
+        <td class="pos">+~100M QoQ</td>
+        <td>Crossed 1B milestone</td>
+      </tr>
+      <tr>
+        <td><a href="Q1_2025.html" style="color:var(--blue);text-decoration:none;">Q1 2025</a></td>
+        <td class="right">Almost 1B</td>
+        <td class="pos">~+300M QoQ</td>
+        <td>Rapid ramp from integration across apps</td>
+      </tr>
+      <tr class="year-divider"><td colspan="4">2024</td></tr>
+      <tr>
+        <td><a href="Q4_2024.html" style="color:var(--blue);text-decoration:none;">Q4 2024</a></td>
+        <td class="right">700M+</td>
+        <td class="pos">+200M QoQ</td>
+        <td>&ldquo;On track to be most-used assistant&rdquo;</td>
+      </tr>
+      <tr>
+        <td><a href="Q3_2024.html" style="color:var(--blue);text-decoration:none;">Q3 2024</a></td>
+        <td class="right">500M+</td>
+        <td class="muted">First disclosure</td>
+        <td>Available across WhatsApp, Messenger, Instagram, Facebook</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Meta AI went from 0 to 1B+ monthly actives in roughly 12 months &mdash; the fastest consumer AI product ramp in history, enabled by integration into apps with 3.3B+ existing DAP. The 500M &rarr; 700M &rarr; ~1B &rarr; 1B+ trajectory shows strong adoption pull, not just passive exposure. However, the metric plateaued at &ldquo;1B+&rdquo; for two consecutive quarters (Q2&ndash;Q3 2025), suggesting either a ceiling from current integration surfaces or that Meta chose to stop updating the figure.</div>
+</div>
+
+<!-- ====== SECTION 6: AI-RECOMMENDED CONTENT ====== -->
+<div class="section" id="s6">
+  <h2><span class="num">6</span> AI-Recommended Content in Feeds</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Facebook Feed %</th><th>Instagram %</th><th>Context</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025</td></tr>
+      <tr>
+        <td><a href="Q3_2025.html" style="color:var(--blue);text-decoration:none;">Q3 2025</a></td>
+        <td class="muted">Not restated</td>
+        <td>&gt;2/3 of recommendations from original posts (U.S.)</td>
+        <td>Different angle: quality of AI recs shifting to original content</td>
+      </tr>
+      <tr class="year-divider"><td colspan="4">2024</td></tr>
+      <tr class="raised">
+        <td><a href="Q1_2024.html" style="color:var(--blue);text-decoration:none;">Q1 2024</a></td>
+        <td><strong class="pos">~30%</strong> from non-followed accounts</td>
+        <td><strong class="pos">50%+</strong> AI-recommended</td>
+        <td>Massive jump from prior disclosures; AI becoming majority of Instagram experience</td>
+      </tr>
+      <tr class="year-divider"><td colspan="4">2023</td></tr>
+      <tr>
+        <td><a href="Q1_2023.html" style="color:var(--blue);text-decoration:none;">Q1 2023</a></td>
+        <td>20%+ from non-followed accounts</td>
+        <td>~40% across all content</td>
+        <td>CEO set target to &ldquo;more than double by end of 2023&rdquo;</td>
+      </tr>
+      <tr class="year-divider"><td colspan="4">2022</td></tr>
+      <tr>
+        <td><a href="Q2_2022.html" style="color:var(--blue);text-decoration:none;">Q2 2022</a></td>
+        <td>~15% from non-followed accounts</td>
+        <td>&gt;15% from non-followed accounts</td>
+        <td>First disclosure; target: &ldquo;more than double by end of 2023&rdquo;</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> AI-recommended content in feeds went from ~15% to 50%+ on Instagram in under 2 years. Meta disclosed this metric to demonstrate the AI transformation thesis, then stopped quantifying it once the point was made. The shift from &ldquo;% from non-followed accounts&rdquo; to &ldquo;% AI-recommended&rdquo; to &ldquo;% original posts in recs&rdquo; shows evolving narrative goals: first prove AI works, then prove it surfaces quality content.</div>
+</div>
+
+<!-- ====== SECTION 7: TIME SPENT LIFTS ====== -->
+<div class="section" id="s7">
+  <h2><span class="num">7</span> Time Spent Lifts (Facebook, Instagram, Threads)</h2>
+  <p style="margin-bottom:12px; font-size:0.88rem; color:var(--text-muted);">Periodic disclosures of engagement increases attributed to AI recommendation improvements. These are typically disclosed as cumulative or period-specific lifts.</p>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Facebook Time Lift</th><th>Instagram Time Lift</th><th>Threads Time Lift</th><th>Video / Reels Specific</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">2025</td></tr>
+      <tr>
+        <td><a href="Q4_2025.html" style="color:var(--blue);text-decoration:none;">Q4 2025</a></td>
+        <td class="muted">Not stated</td>
+        <td class="muted">Not stated</td>
+        <td class="pos">+20% from Q4 rec improvements</td>
+        <td>Reels watch time +30% YoY (U.S.)</td>
+      </tr>
+      <tr>
+        <td><a href="Q3_2025.html" style="color:var(--blue);text-decoration:none;">Q3 2025</a></td>
+        <td class="muted">Not stated</td>
+        <td>Video time +30%+ YoY</td>
+        <td class="pos">+10% in Q3 from ranking</td>
+        <td>IG video time +30%+ YoY</td>
+      </tr>
+      <tr>
+        <td><a href="Q2_2025.html" style="color:var(--blue);text-decoration:none;">Q2 2025</a></td>
+        <td class="pos">+5% from AI in Q2</td>
+        <td class="pos">+6% from AI in Q2</td>
+        <td class="muted">Not stated</td>
+        <td>IG video +20%+ YoY globally</td>
+      </tr>
+      <tr>
+        <td><a href="Q1_2025.html" style="color:var(--blue);text-decoration:none;">Q1 2025</a></td>
+        <td class="pos">+7% (6-month basis)</td>
+        <td class="pos">+6% (6-month basis)</td>
+        <td class="pos">+35% (6-month basis)</td>
+        <td class="muted">Not stated</td>
+      </tr>
+      <tr class="year-divider"><td colspan="5">2024</td></tr>
+      <tr>
+        <td><a href="Q3_2024.html" style="color:var(--blue);text-decoration:none;">Q3 2024</a></td>
+        <td class="pos">+8% in 2024</td>
+        <td class="pos">+6% in 2024</td>
+        <td class="muted">Not stated</td>
+        <td class="muted">Not stated</td>
+      </tr>
+      <tr>
+        <td><a href="Q1_2024.html" style="color:var(--blue);text-decoration:none;">Q1 2024</a></td>
+        <td class="muted">Not stated</td>
+        <td>Reels = 50% of time on Instagram</td>
+        <td class="muted">Not stated</td>
+        <td>60%+ of FB &amp; IG time is video</td>
+      </tr>
+      <tr class="year-divider"><td colspan="5">2023</td></tr>
+      <tr>
+        <td><a href="Q3_2023.html" style="color:var(--blue);text-decoration:none;">Q3 2023</a></td>
+        <td class="pos">+7% YTD from recs</td>
+        <td class="pos">+6% YTD from recs; <strong>+40%+ since Reels launch</strong></td>
+        <td class="muted">Not yet tracked</td>
+        <td>&gt;50% of FB &amp; IG time is video</td>
+      </tr>
+      <tr>
+        <td><a href="Q2_2023.html" style="color:var(--blue);text-decoration:none;">Q2 2023</a></td>
+        <td class="pos">+7% from AI recs (YTD)</td>
+        <td class="muted">Not separately stated</td>
+        <td class="muted">Not yet tracked</td>
+        <td class="muted">Not stated</td>
+      </tr>
+      <tr>
+        <td><a href="Q1_2023.html" style="color:var(--blue);text-decoration:none;">Q1 2023</a></td>
+        <td class="muted">Not stated</td>
+        <td class="pos">+24% since Reels launch</td>
+        <td class="muted">Not yet tracked</td>
+        <td>50% of FB time is video</td>
+      </tr>
+      <tr class="year-divider"><td colspan="5">2022</td></tr>
+      <tr>
+        <td><a href="Q1_2022.html" style="color:var(--blue);text-decoration:none;">Q1 2022</a></td>
+        <td class="muted">Not stated</td>
+        <td>Reels &gt;20% of IG time</td>
+        <td class="muted">N/A</td>
+        <td>50% of FB time is video</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Meta has consistently shown 5&ndash;8% time-spent lifts from AI recommendations each measurement period across Facebook and Instagram, compounding over multiple years. Instagram time spent has grown +40%+ since Reels launched, and video now represents 60%+ of total time. Threads shows the highest percentage lifts (+10&ndash;35%) because it&rsquo;s starting from a lower engagement base. The consistent disclosure of AI-driven lifts serves to justify Meta&rsquo;s massive AI infrastructure investments.</div>
+</div>
+
+<!-- ====== SECTION 8: GENAI ADS & ADVANTAGE+ ====== -->
+<div class="section" id="s8">
+  <h2><span class="num">8</span> GenAI Ad Tools &amp; Advantage+ Scale</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Advantage+ Revenue</th><th>GenAI Adoption</th><th>Performance Benchmarks</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025</td></tr>
+      <tr class="raised">
+        <td><a href="Q4_2025.html" style="color:var(--blue);text-decoration:none;">Q4 2025</a></td>
+        <td class="muted">Not restated</td>
+        <td>Video gen features +20% QoQ<br><span style="font-size:0.78rem;color:var(--text-muted);">$10B run rate for video gen tools</span></td>
+        <td>GEM: 3.5% lift in FB ad clicks; 1%+ conversion gain on IG</td>
+      </tr>
+      <tr>
+        <td><a href="Q3_2025.html" style="color:var(--blue);text-decoration:none;">Q3 2025</a></td>
+        <td><strong class="pos">$60B annual run rate</strong> (end-to-end AI ads)</td>
+        <td>GenAI video adoption +20% QoQ</td>
+        <td>Conversions growing faster than impressions</td>
+      </tr>
+      <tr>
+        <td><a href="Q2_2025.html" style="color:var(--blue);text-decoration:none;">Q2 2025</a></td>
+        <td class="muted">Not quantified</td>
+        <td class="muted">Not quantified</td>
+        <td>GEM: ~5% conversion increase on IG; ~3% on FB Feed/Reels</td>
+      </tr>
+      <tr>
+        <td><a href="Q1_2025.html" style="color:var(--blue);text-decoration:none;">Q1 2025</a></td>
+        <td class="muted">Not quantified</td>
+        <td class="muted">Not quantified</td>
+        <td>GEM: 2x efficient; up to 5% conversion increase on FB Reels</td>
+      </tr>
+      <tr class="year-divider"><td colspan="4">2024</td></tr>
+      <tr class="raised">
+        <td><a href="Q4_2024.html" style="color:var(--blue);text-decoration:none;">Q4 2024</a></td>
+        <td><strong class="pos">Surpassing $20B run rate</strong>, +70% YoY (A+ Shopping)</td>
+        <td><strong>4M+ advertisers</strong> using gen AI tools</td>
+        <td class="muted">Not restated</td>
+      </tr>
+      <tr>
+        <td><a href="Q3_2024.html" style="color:var(--blue);text-decoration:none;">Q3 2024</a></td>
+        <td class="muted">Not restated</td>
+        <td>1M+ advertisers; 15M+ ads created</td>
+        <td class="muted">Not restated</td>
+      </tr>
+      <tr>
+        <td><a href="Q2_2024.html" style="color:var(--blue);text-decoration:none;">Q2 2024</a></td>
+        <td class="muted">Not quantified</td>
+        <td>1M+ advertisers used gen AI in past month</td>
+        <td>22% higher ROAS for U.S. advertisers (A+)</td>
+      </tr>
+      <tr>
+        <td><a href="Q1_2024.html" style="color:var(--blue);text-decoration:none;">Q1 2024</a></td>
+        <td>A+ Shopping + App revenue &gt;2x YoY</td>
+        <td class="muted">Not quantified</td>
+        <td>28% decrease in cost per objective (A+ Audience)</td>
+      </tr>
+      <tr class="year-divider"><td colspan="4">2023</td></tr>
+      <tr>
+        <td><a href="Q3_2023.html" style="color:var(--blue);text-decoration:none;">Q3 2023</a></td>
+        <td><strong>$10B annual run rate</strong> (A+ Shopping)</td>
+        <td class="muted">Not quantified</td>
+        <td class="muted">Not quantified</td>
+      </tr>
+      <tr class="year-divider"><td colspan="4">2022</td></tr>
+      <tr>
+        <td><a href="Q3_2022.html" style="color:var(--blue);text-decoration:none;">Q3 2022</a></td>
+        <td class="muted">Pre-scale</td>
+        <td class="muted">Pre-launch</td>
+        <td>32% ROAS increase from early A+ Shopping tests</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Advantage+ went from early tests in 2022 to $10B (Q3 2023), $20B+ (Q4 2024), and the broader end-to-end AI ads platform to $60B (Q3 2025) in annual run rate. GenAI advertiser adoption scaled from 1M to 4M+ advertisers in ~6 months (Q2&ndash;Q4 2024). The GEM model improvements consistently deliver 1&ndash;5% conversion lifts, compounding quarter over quarter. At $60B, AI-powered ads represent ~35% of Meta&rsquo;s ~$170B annual revenue run rate.</div>
+</div>
+
+<!-- ====== SECTION 9: REELS ENGAGEMENT ====== -->
+<div class="section" id="s9">
+  <h2><span class="num">9</span> Reels Engagement (Plays, Re-Shares, Advertiser Adoption)</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th class="right">Daily Plays</th><th class="right">Daily Re-Shares</th><th>Advertiser Adoption</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2024&ndash;2025</td></tr>
+      <tr>
+        <td><a href="Q4_2024.html" style="color:var(--blue);text-decoration:none;">Q4 2024</a></td>
+        <td class="right muted">Not stated</td>
+        <td class="right bold">4.5B+/day</td>
+        <td class="muted">Not restated</td>
+      </tr>
+      <tr>
+        <td><a href="Q4_2023.html" style="color:var(--blue);text-decoration:none;">Q4 2023</a></td>
+        <td class="right muted">Not stated</td>
+        <td class="right">3.5B/day</td>
+        <td class="muted">Not restated</td>
+      </tr>
+      <tr class="year-divider"><td colspan="4">2023</td></tr>
+      <tr>
+        <td><a href="Q2_2023.html" style="color:var(--blue);text-decoration:none;">Q2 2023</a></td>
+        <td class="right bold pos">Exceed 200B/day (FB + IG)</td>
+        <td class="right muted">Not stated</td>
+        <td>3/4+ of advertisers using Reels ads</td>
+      </tr>
+      <tr>
+        <td><a href="Q1_2023.html" style="color:var(--blue);text-decoration:none;">Q1 2023</a></td>
+        <td class="right muted">Not stated</td>
+        <td class="right pos">2B+/day (doubled in 6 months)</td>
+        <td class="muted">Not restated</td>
+      </tr>
+      <tr class="year-divider"><td colspan="4">2022</td></tr>
+      <tr>
+        <td><a href="Q4_2022.html" style="color:var(--blue);text-decoration:none;">Q4 2022</a></td>
+        <td class="right">&ldquo;More than doubled over past year&rdquo;</td>
+        <td class="right muted">Not stated</td>
+        <td>40%+ of advertisers using Reels</td>
+      </tr>
+      <tr>
+        <td><a href="Q3_2022.html" style="color:var(--blue);text-decoration:none;">Q3 2022</a></td>
+        <td class="right bold">140B+/day (+50% in 6 months)</td>
+        <td class="right muted">Not stated</td>
+        <td class="muted">Not stated</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Reels plays grew from 140B/day (Q3 2022) to 200B+/day (Q2 2023) &mdash; then Meta stopped quantifying plays entirely, switching focus to re-shares (2B &rarr; 3.5B &rarr; 4.5B/day) as the engagement quality metric. Advertiser adoption climbed from 40% to 75%+ of all advertisers. The progression from &ldquo;quantify adoption&rdquo; to &ldquo;quantify engagement quality&rdquo; to &ldquo;stop quantifying entirely&rdquo; mirrors the Reels revenue disclosure pattern &mdash; once the story is told, the numbers become table stakes.</div>
+</div>
+
+<!-- ====== SECTION 10: PLATFORM USER MILESTONES ====== -->
+<div class="section" id="s10">
+  <h2><span class="num">10</span> Platform User Milestones (Instagram, WhatsApp)</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Instagram</th><th>WhatsApp</th><th>WhatsApp U.S.</th><th>Business Messaging Scale</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">2025</td></tr>
+      <tr class="raised">
+        <td><a href="Q3_2025.html" style="color:var(--blue);text-decoration:none;">Q3 2025</a></td>
+        <td><strong class="pos">3B MAU</strong> <span class="tag tag-new">Milestone</span></td>
+        <td class="muted">Not restated</td>
+        <td class="muted">Not restated</td>
+        <td class="muted">Not discussed</td>
+      </tr>
+      <tr>
+        <td><a href="Q1_2025.html" style="color:var(--blue);text-decoration:none;">Q1 2025</a></td>
+        <td class="muted">Not stated</td>
+        <td>3B+ MAU</td>
+        <td>100M+ and &ldquo;growing quickly&rdquo;</td>
+        <td class="muted">Not discussed</td>
+      </tr>
+      <tr class="year-divider"><td colspan="5">2024</td></tr>
+      <tr>
+        <td><a href="Q4_2024.html" style="color:var(--blue);text-decoration:none;">Q4 2024</a></td>
+        <td class="muted">Not stated</td>
+        <td class="muted">Not stated</td>
+        <td>100M+</td>
+        <td class="muted">Not discussed</td>
+      </tr>
+      <tr>
+        <td><a href="Q2_2024.html" style="color:var(--blue);text-decoration:none;">Q2 2024</a></td>
+        <td class="muted">Not stated</td>
+        <td class="muted">Not stated</td>
+        <td>100M+</td>
+        <td class="muted">Not discussed</td>
+      </tr>
+      <tr>
+        <td><a href="Q1_2024.html" style="color:var(--blue);text-decoration:none;">Q1 2024</a></td>
+        <td class="muted">Not stated</td>
+        <td class="muted">Not stated</td>
+        <td class="muted">Not stated</td>
+        <td>100M+ businesses on platform</td>
+      </tr>
+      <tr class="year-divider"><td colspan="5">2023</td></tr>
+      <tr>
+        <td><a href="Q3_2023.html" style="color:var(--blue);text-decoration:none;">Q3 2023</a></td>
+        <td class="muted">Not stated</td>
+        <td class="muted">Not stated</td>
+        <td class="muted">Not stated</td>
+        <td>600M+ conversations/day between people &amp; businesses</td>
+      </tr>
+      <tr>
+        <td><a href="Q2_2023.html" style="color:var(--blue);text-decoration:none;">Q2 2023</a></td>
+        <td class="muted">Not stated</td>
+        <td class="muted">Not stated</td>
+        <td class="muted">Not stated</td>
+        <td>200M+ WhatsApp Business App monthly users</td>
+      </tr>
+      <tr class="year-divider"><td colspan="5">2022</td></tr>
+      <tr>
+        <td><a href="Q3_2022.html" style="color:var(--blue);text-decoration:none;">Q3 2022</a></td>
+        <td><strong>2B+ MAU</strong></td>
+        <td>2B+ daily actives</td>
+        <td class="muted">Not discussed</td>
+        <td class="muted">Not discussed</td>
+      </tr>
+      <tr>
+        <td><a href="Q2_2022.html" style="color:var(--blue);text-decoration:none;">Q2 2022</a></td>
+        <td class="muted">Not stated</td>
+        <td class="muted">Not stated</td>
+        <td class="muted">Not discussed</td>
+        <td>1B users messaging businesses weekly (across platforms)</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Instagram grew from 2B to 3B MAU in ~3 years (Q3 2022 to Q3 2025) while Meta barely mentioned it, disclosing only at milestone moments. WhatsApp U.S. at 100M+ is strategically important but has been flat at the same disclosure for 3 consecutive quarters. Business messaging scale (600M+ daily conversations, 100M+ businesses, 200M+ WhatsApp Business users) is disclosed selectively to support the click-to-message revenue narrative.</div>
+</div>
+
+<!-- ====== SECTION 11: FX IMPACT ====== -->
+<div class="section" id="s11">
+  <h2><span class="num">11</span> FX Revenue Impact</h2>
+  <p style="margin-bottom:12px; font-size:0.88rem; color:var(--text-muted);">Dollar-denominated FX impact on revenue was quantified in 5 consecutive quarters (Q1 2022&ndash;Q1 2023), then permanently discontinued. <span class="tag tag-disc">Discontinued Q2 2023</span></p>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th class="right">FX Headwind ($)</th><th>Context</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="3">2023</td></tr>
+      <tr>
+        <td><a href="Q1_2023.html" style="color:var(--blue);text-decoration:none;">Q1 2023</a></td>
+        <td class="right neg">~$816M</td>
+        <td>Headwind shrinking as dollar stabilized</td>
+      </tr>
+      <tr class="year-divider"><td colspan="3">2022 &mdash; PEAK DOLLAR STRENGTH</td></tr>
+      <tr class="lowered">
+        <td><a href="Q4_2022.html" style="color:var(--blue);text-decoration:none;">Q4 2022</a></td>
+        <td class="right neg bold">~$2.0B</td>
+        <td>Peak FX headwind; 7pp growth impact</td>
+      </tr>
+      <tr class="lowered">
+        <td><a href="Q3_2022.html" style="color:var(--blue);text-decoration:none;">Q3 2022</a></td>
+        <td class="right neg">~$1.8B</td>
+        <td>Dollar strengthening rapidly; 6pp+ growth impact</td>
+      </tr>
+      <tr>
+        <td><a href="Q2_2022.html" style="color:var(--blue);text-decoration:none;">Q2 2022</a></td>
+        <td class="right neg">~$1.3B</td>
+        <td>Escalating headwind; 4pp growth impact</td>
+      </tr>
+      <tr>
+        <td><a href="Q1_2022.html" style="color:var(--blue);text-decoration:none;">Q1 2022</a></td>
+        <td class="right neg">~$893M</td>
+        <td>First significant FX headwind quarter; 3pp growth impact</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Meta quantified FX headwinds only during the 2022 strong-dollar period ($893M &rarr; $1.3B &rarr; $1.8B &rarr; $2.0B &rarr; $816M), then stopped once the dollar stabilized. The cumulative ~$6.8B FX drag across these 5 quarters obscured Meta&rsquo;s underlying demand trends during an already-challenged period (ATT impact, Reels transition). By Q2 2023, with FX becoming a tailwind, Meta dropped the dollar disclosure entirely &mdash; there was no longer a story to tell.</div>
+</div>
+
+<!-- ====== SECTION 12: RAY-BAN META GLASSES ====== -->
+<div class="section" id="s12">
+  <h2><span class="num">12</span> Ray-Ban Meta Glasses</h2>
+  <p style="margin-bottom:12px; font-size:0.88rem; color:var(--text-muted);">Hardware metrics emerged in 2025 as sales scaled. <span class="tag tag-emerged">Emerged Q1 2025</span></p>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Sales Growth</th><th>Usage / Engagement</th><th>Context</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025</td></tr>
+      <tr class="raised">
+        <td><a href="Q4_2025.html" style="color:var(--blue);text-decoration:none;">Q4 2025</a></td>
+        <td><strong class="pos">Sales 3x+ in 2025</strong></td>
+        <td class="muted">Not quantified</td>
+        <td>&ldquo;Fastest-growing consumer electronics in history&rdquo;; Zuckerberg claim</td>
+      </tr>
+      <tr>
+        <td><a href="Q3_2025.html" style="color:var(--blue);text-decoration:none;">Q3 2025</a></td>
+        <td>Selling well; improved specs</td>
+        <td class="muted">Not quantified</td>
+        <td>Qualitative; Orion prototype shown at Meta Connect</td>
+      </tr>
+      <tr>
+        <td><a href="Q2_2025.html" style="color:var(--blue);text-decoration:none;">Q2 2025</a></td>
+        <td>Growth accelerated; demand &gt; supply</td>
+        <td class="muted">Not quantified</td>
+        <td>Supply constraints limiting sales</td>
+      </tr>
+      <tr class="raised">
+        <td><a href="Q1_2025.html" style="color:var(--blue);text-decoration:none;">Q1 2025</a></td>
+        <td><strong class="pos">Sales tripled YoY</strong></td>
+        <td><strong class="pos">Monthly actives 4x+ YoY</strong></td>
+        <td>First detailed hardware growth disclosure</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Ray-Ban Meta glasses are the first Reality Labs hardware product with genuinely strong commercial traction. Sales tripled YoY in Q1 2025 and &ldquo;more than tripled&rdquo; for the full year, with monthly actives growing 4x+. The supply constraint disclosure in Q2 2025 is particularly notable &mdash; Meta has never been supply-constrained on consumer hardware before. This product may represent the inflection point for Reality Labs&rsquo; path to commercial viability, though Meta has carefully avoided absolute unit numbers.</div>
+</div>
+
+<!-- ====== SECTION 13: DEBT & DIVIDENDS ====== -->
+<div class="section" id="s13">
+  <h2><span class="num">13</span> Debt &amp; Dividends</h2>
+  <p style="margin-bottom:12px; font-size:0.88rem; color:var(--text-muted);">Debt first appeared in Q3 2022 ($10B inaugural offering). Dividends started Q1 2024. Both represent Meta&rsquo;s transformation from a no-debt, no-dividend company to a mature capital allocator.</p>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th class="right">Total Debt</th><th class="right">Dividends Paid</th><th>Context</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025</td></tr>
+      <tr class="raised">
+        <td><a href="Q4_2025.html" style="color:var(--blue);text-decoration:none;">Q4 2025</a></td>
+        <td class="right bold">$58.7B</td>
+        <td class="right">$1.3B</td>
+        <td>Massive debt increase to fund AI infrastructure + buybacks</td>
+      </tr>
+      <tr>
+        <td><a href="Q1_2025.html" style="color:var(--blue);text-decoration:none;">Q1 2025</a></td>
+        <td class="right">$28.8B</td>
+        <td class="right">$1.3B</td>
+        <td>Steady state since Q3 2024 offering</td>
+      </tr>
+      <tr class="year-divider"><td colspan="4">2024</td></tr>
+      <tr>
+        <td><a href="Q4_2024.html" style="color:var(--blue);text-decoration:none;">Q4 2024</a></td>
+        <td class="right">$28.8B</td>
+        <td class="right">$1.3B</td>
+        <td>FY 2024 dividends: ~$5.2B total</td>
+      </tr>
+      <tr>
+        <td><a href="Q3_2024.html" style="color:var(--blue);text-decoration:none;">Q3 2024</a></td>
+        <td class="right bold">$28.8B</td>
+        <td class="right">$1.3B</td>
+        <td>$10.5B debt offering completed in Q3</td>
+      </tr>
+      <tr>
+        <td><a href="Q1_2024.html" style="color:var(--blue);text-decoration:none;">Q1 2024</a></td>
+        <td class="right">$18.4B</td>
+        <td class="right bold">$1.3B <span class="tag tag-new">First</span></td>
+        <td>First-ever quarterly dividend announced Feb 2024</td>
+      </tr>
+      <tr class="year-divider"><td colspan="4">2023</td></tr>
+      <tr>
+        <td><a href="Q3_2023.html" style="color:var(--blue);text-decoration:none;">Q3 2023</a></td>
+        <td class="right">$18.4B</td>
+        <td class="right muted">N/A</td>
+        <td>No dividend yet; debt stable at initial level</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Meta went from $0 debt (pre-Q3 2022) to $58.7B (Q4 2025) in just 3 years, a radical shift in capital structure. The $18.4B &rarr; $28.8B &rarr; $58.7B trajectory shows accelerating leverage to fund AI infrastructure spending ($60&ndash;65B CapEx guided for 2025, $60&ndash;65B for 2026). The $1.3B/quarter dividend is modest relative to $15&ndash;17B quarterly free cash flow, serving as a signal of capital allocation maturity rather than a meaningful cash drain.</div>
+</div>
+
+<!-- ====== ANALYSIS ====== -->
+<div class="analysis" id="analysis">
+  <h2>Analysis: What the Disclosure Patterns Reveal</h2>
+
+  <h3>1. The &ldquo;Milestone Disclosure&rdquo; Strategy</h3>
+  <p>Meta&rsquo;s intermittent KPIs follow a clear pattern: metrics are introduced when they tell a compelling growth story, maintained while the narrative serves strategic purposes, then quietly retired once the point is made or the metric becomes table stakes. Reels revenue ($1B &rarr; $3B &rarr; $10B &rarr; silence &rarr; $50B+) is the purest example: Meta disclosed during the painful monetization transition to set expectations, went silent once the headwind reversed, then reintroduced the figure only when $50B+ made it a statement-piece number. The company never disclosed at an awkward intermediate stage.</p>
+
+  <h3>2. Metric Lifecycle: Birth, Peak Utility, Retirement</h3>
+  <p>Nearly every intermittent metric follows a lifecycle: <strong>birth</strong> (introduced to frame a new strategic initiative), <strong>peak utility</strong> (disclosed regularly to demonstrate progress), and <strong>retirement</strong> (dropped once the narrative shifts or the metric becomes embedded in something larger). Facebook DAU/MAU lasted 8 quarters before being subsumed into Family DAP. FX impact lasted 5 quarters through peak dollar strength. Click-to-message run rates ($9&ndash;10B) were quantified for 4 quarters, then replaced by YoY growth rates once the absolute number became less interesting than the growth trajectory. Understanding where each metric sits in this lifecycle is essential for forecasting what Meta will disclose next.</p>
+
+  <h3>3. The Metrics Meta Chose NOT to Quantify</h3>
+  <p>What&rsquo;s absent is as telling as what&rsquo;s present. Meta has never disclosed: total number of advertisers (unlike Snap and Google), revenue per user by app (only aggregate ARPU by geography), Reels-specific CPM or take rate, AI infrastructure cost per user, Reality Labs unit sales, or WhatsApp revenue as a standalone line item (until the $2B paid messaging run rate in Q4 2025). These omissions protect competitive intelligence while allowing Meta to selectively reveal metrics that support the current earnings narrative.</p>
+
+  <h3>4. AI as the Unifying Thread</h3>
+  <p>Across 2023&ndash;2025, AI-related disclosures have steadily displaced legacy metrics. The shift from &ldquo;Facebook DAU/MAU&rdquo; to &ldquo;AI-recommended content %&rdquo; to &ldquo;GEM model conversion lifts&rdquo; traces Meta&rsquo;s strategic arc: the company wants to be evaluated on AI effectiveness (conversion rates, time-spent lifts, recommendation quality) rather than raw user counts. By Q4 2025, virtually every new intermittent disclosure is AI-flavored: Meta AI monthly actives, GEM performance benchmarks, gen-AI ad tool adoption, AI coding productivity gains. The message is clear: Meta&rsquo;s competitive moat is its AI engine, and these are the metrics that prove it.</p>
+
+  <h3>5. The Revenue Run Rate Game</h3>
+  <p>Meta uses &ldquo;annual run rate&rdquo; disclosures to maximum effect: Reels ($1B &rarr; $50B+), click-to-message ($9B &rarr; $10B), Advantage+ ($10B &rarr; $20B+ &rarr; $60B), WhatsApp paid messaging ($2B). These figures are disclosed at inflection points, creating milestone markers that anchor investor expectations. The run-rate framing also flatters growth by annualizing the most recent quarter&rsquo;s performance. Critically, once a run rate is disclosed, Meta rarely revises it downward &mdash; it either goes silent until the next impressive milestone or switches to a growth-rate disclosure.</p>
+
+  <h3>6. Threads vs. Meta AI: Two Growth Curves</h3>
+  <p>Both Threads and Meta AI show explosive growth, but the disclosure patterns differ. Threads progressed through monthly active milestones (100M &rarr; 130M &rarr; 150M &rarr; 200M &rarr; 275M &rarr; 320M &rarr; 350M), then switched to DAU (150M+) once that became more impressive. Meta AI leaped in larger increments (500M &rarr; 700M &rarr; ~1B &rarr; 1B+), reflecting its distribution advantage through existing apps. The Threads trajectory suggests organic product-market fit building over time, while Meta AI&rsquo;s suggests integration-driven adoption. The open question for both: when does monetization enter the disclosure narrative?</p>
+
+  <h3>7. Capital Structure Transformation</h3>
+  <p>The debt and dividend trajectory ($0 &rarr; $18.4B &rarr; $28.8B &rarr; $58.7B in debt; $0 &rarr; $1.3B/quarter in dividends) represents one of the most dramatic capital structure shifts among mega-cap tech companies. Meta is using leverage to fund AI infrastructure spending that exceeded $30B in 2024 and is guided at $60&ndash;65B for 2025. The $58.7B debt balance at Q4 2025 against ~$15B quarterly free cash flow means Meta is leveraging roughly one year&rsquo;s FCF. This is conservative by traditional standards but unprecedented for a company that had zero debt just 3 years ago.</p>
+
+  <h3>8. The Metrics to Watch in 2026</h3>
+  <p>Based on the disclosure lifecycle pattern, expect new intermittent metrics to emerge around: <strong>(a)</strong> Meta AI monetization (daily queries, revenue per query, business AI agent adoption), <strong>(b)</strong> WhatsApp Commerce (transaction volume, take rate, merchant count), <strong>(c)</strong> Ray-Ban Meta unit sales or installed base (once supply catches demand), <strong>(d)</strong> Llama model adoption metrics (API calls, developer count, enterprise deployments), and <strong>(e)</strong> AI infrastructure efficiency (cost per inference, revenue per GPU). Meta has historically introduced new metrics 1&ndash;2 quarters before the number becomes impressively large &mdash; when a new metric appears, it likely means the underlying trend is already well-established.</p>
+</div>
+
+<div class="footer">
+  <p>Data sourced from <a href="https://www.bamsec.com">BamSEC</a> transcripts and <a href="https://www.sec.gov/edgar">EDGAR</a>. Analysis generated with Claude.</p>
+  <p style="margin-top:4px;">Portfolio Metrics Tracker &mdash; META Intermittent KPIs</p>
+</div>
+
+</body>
+</html>

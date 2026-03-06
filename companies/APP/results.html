@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AppLovin Results vs Guidance &mdash; 16-Quarter Scorecard</title>
+<style>
+  :root {
+    --company-primary: #FF6B35;
+    --company-dark: #1a1a2e;
+    --company-accent: #1E3A5F;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); background: #fff; line-height: 1.6; max-width: 1200px; margin: 0 auto; padding: 0 24px 80px; }
+  .header { background: linear-gradient(135deg, var(--company-dark), var(--company-accent)); color: #fff; padding: 48px 40px; margin: 0 -24px 40px; border-bottom: 4px solid var(--company-primary); }
+  .header h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; }
+  .header .subtitle { font-size: 1.1rem; opacity: 0.85; font-weight: 300; }
+  .quarter-nav { background: var(--company-accent); border-radius: 8px; padding: 16px 20px; margin-bottom: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .quarter-nav .label { color: #fff; font-weight: 600; font-size: 0.85rem; margin-right: 8px; white-space: nowrap; }
+  .quarter-nav .year-group { display: flex; gap: 4px; align-items: center; }
+  .quarter-nav .year-label { color: rgba(255,255,255,0.5); font-size: 0.72rem; font-weight: 600; margin-right: 2px; letter-spacing: 0.5px; }
+  .quarter-nav a { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 4px 10px; font-size: 0.78rem; font-weight: 600; text-decoration: none; transition: all 0.15s; }
+  .quarter-nav a:hover { background: rgba(255,255,255,0.25); }
+  .quarter-nav a.overview-link { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.35); padding: 4px 14px; font-size: 0.82rem; margin-left: auto; }
+  .toc { background: var(--light-bg); border: 1px solid var(--border); border-radius: 8px; padding: 24px 32px; margin-bottom: 40px; }
+  .toc h2 { font-size: 1.1rem; color: var(--company-accent); margin-bottom: 12px; }
+  .toc a { display: inline-block; color: var(--blue); text-decoration: none; padding: 3px 12px 3px 0; font-size: 0.9rem; }
+  .toc a:hover { text-decoration: underline; }
+  .section { margin-bottom: 48px; scroll-margin-top: 20px; }
+  .section h2 { font-size: 1.4rem; color: var(--company-dark); border-bottom: 3px solid var(--company-primary); padding-bottom: 8px; margin-bottom: 16px; }
+  .section h2 .num { display: inline-block; background: var(--company-primary); color: #fff; width: 28px; height: 28px; line-height: 28px; text-align: center; border-radius: 50%; font-size: 0.85rem; margin-right: 8px; vertical-align: middle; }
+  .scorecard { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 40px; }
+  .score-card { background: var(--light-bg); border: 1px solid var(--border); border-radius: 8px; padding: 20px; text-align: center; }
+  .score-card .metric-value { font-size: 2rem; font-weight: 800; color: var(--company-dark); line-height: 1.1; margin-bottom: 4px; }
+  .score-card .metric-value.green { color: var(--green); }
+  .score-card .metric-label { font-size: 0.82rem; color: var(--text-muted); font-weight: 500; }
+  .score-card .metric-sub { font-size: 0.78rem; color: var(--text-muted); margin-top: 4px; }
+  .score-card.highlight { border-color: var(--green); background: #eafaf1; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 0.88rem; }
+  thead th { background: var(--company-accent); color: #fff; padding: 10px 12px; text-align: left; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
+  thead th.right { text-align: right; }
+  tbody td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tbody td.right { text-align: right; }
+  tbody tr:nth-child(even) { background: var(--light-bg); }
+  tbody tr:hover { background: #eef2f7; }
+  .pos { color: var(--green); font-weight: 600; }
+  .neg { color: var(--red); font-weight: 600; }
+  .neutral { color: var(--amber); font-weight: 600; }
+  .raised { background: #eafaf1 !important; }
+  .lowered { background: #fef0ef !important; }
+  .bold { font-weight: 700; }
+  .muted { color: var(--text-muted); font-style: italic; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; vertical-align: middle; }
+  .tag-beat { background: #d5f5e3; color: #1e8449; }
+  .tag-miss { background: #fadbd8; color: #c0392b; }
+  .tag-met { background: #fdebd0; color: #b9770e; }
+  .tag-pending { background: #d6eaf8; color: #2471a3; }
+  .insight { background: linear-gradient(135deg, #fef9e7, #fdebd0); border-left: 4px solid var(--amber); padding: 14px 18px; margin: 16px 0; border-radius: 0 6px 6px 0; font-size: 0.9rem; }
+  .insight strong { color: var(--company-dark); }
+  .takeaways { counter-reset: takeaway; }
+  .takeaway { display: flex; gap: 16px; margin-bottom: 18px; padding: 14px 18px; background: var(--light-bg); border-radius: 8px; border: 1px solid var(--border); }
+  .takeaway-num { flex-shrink: 0; width: 32px; height: 32px; line-height: 32px; text-align: center; background: var(--company-primary); color: #fff; border-radius: 50%; font-weight: 700; font-size: 0.85rem; }
+  .takeaway-text { font-size: 0.92rem; }
+  .takeaway-text strong { color: var(--company-dark); }
+  .year-divider td { background: var(--company-accent) !important; color: #fff; font-weight: 700; font-size: 0.82rem; padding: 6px 12px; letter-spacing: 0.5px; }
+  @media (max-width: 768px) { .toc { columns: 1; } .header h1 { font-size: 1.6rem; } table { font-size: 0.8rem; } thead th, tbody td { padding: 6px 8px; } .scorecard { grid-template-columns: repeat(2, 1fr); } }
+  @media print { .header { background: #333; } .section { page-break-inside: avoid; } table { font-size: 0.75rem; } .quarter-nav { display: none; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>AppLovin Results vs Guidance</h1>
+  <div class="subtitle">16-Quarter Scorecard &mdash; Q4 2022 through Q1 2026 (Actuals vs Prior-Quarter Guidance)</div>
+</div>
+
+<div class="quarter-nav" id="qnav">
+  <a href="../../index.html" style="background:rgba(255,255,255,0.15); color:#fff; font-weight:600; margin-right:12px; text-decoration:none; padding:4px 12px; border-radius:4px;">&#x2190; Portfolio</a>
+  <span class="label">Quarter detail:</span>
+  <div class="year-group"><span class="year-label">2025</span>
+    <a href="quarters/Q4_2025.html">Q4&rsquo;25</a><a href="quarters/Q3_2025.html">Q3&rsquo;25</a><a href="quarters/Q2_2025.html">Q2&rsquo;25</a><a href="quarters/Q1_2025.html">Q1&rsquo;25</a></div>
+  <div class="year-group"><span class="year-label">2024</span>
+    <a href="quarters/Q4_2024.html">Q4&rsquo;24</a><a href="quarters/Q3_2024.html">Q3&rsquo;24</a><a href="quarters/Q2_2024.html">Q2&rsquo;24</a><a href="quarters/Q1_2024.html">Q1&rsquo;24</a></div>
+  <div class="year-group"><span class="year-label">2023</span>
+    <a href="quarters/Q4_2023.html">Q4&rsquo;23</a><a href="quarters/Q3_2023.html">Q3&rsquo;23</a><a href="quarters/Q2_2023.html">Q2&rsquo;23</a><a href="quarters/Q1_2023.html">Q1&rsquo;23</a></div>
+  <div class="year-group"><span class="year-label">2022</span>
+    <a href="quarters/Q4_2022.html">Q4&rsquo;22</a><a href="quarters/Q3_2022.html">Q3&rsquo;22</a><a href="quarters/Q2_2022.html">Q2&rsquo;22</a><a href="quarters/Q1_2022.html">Q1&rsquo;22</a></div>
+  <a href="quarters/intermittent_kpis.html" class="overview-link">Intermittent KPIs &rarr;</a>
+  <a href="comparison.html" class="overview-link">Guidance Overview &rarr;</a>
+</div>
+
+<nav class="toc">
+  <h2>Table of Contents</h2>
+  <a href="#s0">Summary Scorecard</a>
+  <a href="#s1">1. Revenue &mdash; Actuals vs Guidance</a>
+  <a href="#s2">2. Adjusted EBITDA &mdash; Actuals vs Guidance</a>
+  <a href="#s3">3. Key Takeaways</a>
+</nav>
+
+<!-- ====== SUMMARY SCORECARD ====== -->
+<div class="section" id="s0">
+  <h2>Summary Scorecard</h2>
+  <p style="margin-bottom:16px; font-size:0.88rem; color:var(--text-muted);">AppLovin guides next-quarter total revenue and adjusted EBITDA (segmented from Q4 2024; ad-only from Q2 2025). Quarterly guidance began Q3 2022. Below covers 13 completed quarters (Q4 2022 &ndash; Q4 2025); Q1 2026 is pending.</p>
+  <div class="scorecard">
+    <div class="score-card highlight">
+      <div class="metric-value green">13/13</div>
+      <div class="metric-label">Revenue beat rate vs midpoint</div>
+      <div class="metric-sub">Never missed the midpoint</div>
+    </div>
+    <div class="score-card">
+      <div class="metric-value">+5.5%</div>
+      <div class="metric-label">Avg revenue beat vs midpoint</div>
+      <div class="metric-sub">Systematic upward bias</div>
+    </div>
+    <div class="score-card highlight">
+      <div class="metric-value green">13/13</div>
+      <div class="metric-label">EBITDA beat rate vs midpoint</div>
+      <div class="metric-sub">Perfect record</div>
+    </div>
+    <div class="score-card">
+      <div class="metric-value">+11.7%</div>
+      <div class="metric-label">Avg EBITDA beat vs midpoint</div>
+      <div class="metric-sub">Extremely conservative</div>
+    </div>
+    <div class="score-card highlight">
+      <div class="metric-value green">11/13</div>
+      <div class="metric-label">Revenue exceeded high end</div>
+      <div class="metric-sub">85% of quarters</div>
+    </div>
+    <div class="score-card">
+      <div class="metric-value green">12/13</div>
+      <div class="metric-label">EBITDA exceeded high end</div>
+      <div class="metric-sub">92% of quarters</div>
+    </div>
+    <div class="score-card highlight">
+      <div class="metric-value green">0/13</div>
+      <div class="metric-label">Missed low-end (revenue)</div>
+      <div class="metric-sub">Perfect floor</div>
+    </div>
+    <div class="score-card highlight">
+      <div class="metric-value green">0/13</div>
+      <div class="metric-label">Missed low-end (EBITDA)</div>
+      <div class="metric-sub">Perfect floor</div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== SECTION 1: REVENUE ====== -->
+<div class="section" id="s1">
+  <h2><span class="num">1</span> Revenue &mdash; Actuals vs Guidance</h2>
+  <p style="margin-bottom:12px; font-size:0.88rem; color:var(--text-muted);">Scope: Total company revenue through Q1 2025; advertising revenue only from Q2 2025 (apps divested). Rows marked * are ad-only.</p>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Guided From</th><th>Guidance Range</th><th class="right">Actual</th><th class="right">vs Low</th><th class="right">vs Mid</th><th class="right">vs High</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="7">2026</td></tr>
+      <tr>
+        <td>Q1 2026*</td><td>Q4 &rsquo;25 call</td><td>$1,745&ndash;$1,775M</td>
+        <td class="right muted">Pending</td><td class="right muted">&mdash;</td><td class="right muted">&mdash;</td><td class="right muted">&mdash;</td>
+      </tr>
+      <tr class="year-divider"><td colspan="7">2025 &mdash; AD-ONLY GUIDANCE</td></tr>
+      <tr class="raised">
+        <td class="bold">Q4 2025*</td><td>Q3 &rsquo;25 call</td><td>$1,570&ndash;$1,600M</td>
+        <td class="right bold">$1,660M</td><td class="right pos">+5.7%</td><td class="right pos">+4.7%</td><td class="right pos">+3.8%</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q3 2025*</td><td>Q2 &rsquo;25 call</td><td>$1,320&ndash;$1,340M</td>
+        <td class="right bold">$1,405M</td><td class="right pos">+6.4%</td><td class="right pos">+5.6%</td><td class="right pos">+4.9%</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q2 2025*</td><td>Q1 &rsquo;25 call</td><td>$1,195&ndash;$1,215M</td>
+        <td class="right bold">$1,260M</td><td class="right pos">+5.4%</td><td class="right pos">+4.6%</td><td class="right pos">+3.7%</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q1 2025</td><td>Q4 &rsquo;24 call</td><td>$1,355&ndash;$1,385M</td>
+        <td class="right bold">$1,500M</td><td class="right pos">+10.7%</td><td class="right pos">+9.5%</td><td class="right pos">+8.3%</td>
+      </tr>
+      <tr class="year-divider"><td colspan="7">2024 &mdash; $1B+ QUARTERS</td></tr>
+      <tr class="raised">
+        <td class="bold">Q4 2024</td><td>Q3 &rsquo;24 call</td><td>$1,240&ndash;$1,260M</td>
+        <td class="right bold">$1,373M</td><td class="right pos">+10.7%</td><td class="right pos">+9.8%</td><td class="right pos">+9.0%</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q3 2024</td><td>Q2 &rsquo;24 call</td><td>$1,115&ndash;$1,135M</td>
+        <td class="right bold">$1,200M</td><td class="right pos">+7.6%</td><td class="right pos">+6.7%</td><td class="right pos">+5.7%</td>
+      </tr>
+      <tr>
+        <td>Q2 2024</td><td>Q1 &rsquo;24 call</td><td>$1,060&ndash;$1,080M</td>
+        <td class="right">$1,080M</td><td class="right pos">+1.9%</td><td class="right pos">+0.9%</td><td class="right">0.0%</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q1 2024</td><td>Q4 &rsquo;23 call</td><td>$955&ndash;$975M</td>
+        <td class="right bold">$1,060M</td><td class="right pos">+11.0%</td><td class="right pos">+9.8%</td><td class="right pos">+8.7%</td>
+      </tr>
+      <tr class="year-divider"><td colspan="7">2023 &mdash; AXON 2.0 ACCELERATION</td></tr>
+      <tr class="raised">
+        <td class="bold">Q4 2023</td><td>Q3 &rsquo;23 call</td><td>$910&ndash;$930M</td>
+        <td class="right bold">$953M</td><td class="right pos">+4.7%</td><td class="right pos">+3.6%</td><td class="right pos">+2.5%</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q3 2023</td><td>Q2 &rsquo;23 call</td><td>$780&ndash;$800M</td>
+        <td class="right bold">$864M</td><td class="right pos">+10.8%</td><td class="right pos">+9.4%</td><td class="right pos">+8.0%</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q2 2023</td><td>Q1 &rsquo;23 call</td><td>$710&ndash;$730M</td>
+        <td class="right bold">$750M</td><td class="right pos">+5.6%</td><td class="right pos">+4.2%</td><td class="right pos">+2.7%</td>
+      </tr>
+      <tr class="raised">
+        <td>Q1 2023</td><td>Q4 &rsquo;22 call</td><td>$685&ndash;$705M</td>
+        <td class="right">$715M</td><td class="right pos">+4.4%</td><td class="right pos">+2.9%</td><td class="right pos">+1.4%</td>
+      </tr>
+      <tr class="year-divider"><td colspan="7">2022</td></tr>
+      <tr>
+        <td>Q4 2022</td><td>Q3 &rsquo;22 call</td><td>~$700M</td>
+        <td class="right">$702M</td><td class="right pos">+0.3%</td><td class="right pos">+0.3%</td><td class="right">+$2M</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Revenue has beaten the midpoint every quarter for 13 consecutive quarters and exceeded the high end 11 times (85%). The two &ldquo;met&rdquo; quarters were Q4 2022 (~$700M approximate guidance, met) and Q2 2024 (exactly at $1,080M high end). The largest beat was Q1 2025 at +9.5% vs midpoint (+$130M), when the first segmented guidance dramatically understated advertising revenue momentum.</div>
+</div>
+
+<!-- ====== SECTION 2: EBITDA ====== -->
+<div class="section" id="s2">
+  <h2><span class="num">2</span> Adjusted EBITDA &mdash; Actuals vs Guidance</h2>
+  <p style="margin-bottom:12px; font-size:0.88rem; color:var(--text-muted);">Scope matches revenue: total EBITDA through Q1 2025; advertising EBITDA only from Q2 2025. * = ad-only.</p>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Guided From</th><th>Guidance Range</th><th class="right">Actual</th><th class="right">vs Low</th><th class="right">vs Mid</th><th class="right">vs High</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="7">2026</td></tr>
+      <tr>
+        <td>Q1 2026*</td><td>Q4 &rsquo;25 call</td><td>$1,465&ndash;$1,495M</td>
+        <td class="right muted">Pending</td><td class="right muted">&mdash;</td><td class="right muted">&mdash;</td><td class="right muted">&mdash;</td>
+      </tr>
+      <tr class="year-divider"><td colspan="7">2025 &mdash; $1B+ QUARTERLY EBITDA</td></tr>
+      <tr class="raised">
+        <td class="bold">Q4 2025*</td><td>Q3 &rsquo;25 call</td><td>$1,290&ndash;$1,320M</td>
+        <td class="right bold">$1,400M</td><td class="right pos">+8.5%</td><td class="right pos">+7.3%</td><td class="right pos">+6.1%</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q3 2025*</td><td>Q2 &rsquo;25 call</td><td>$1,070&ndash;$1,090M</td>
+        <td class="right bold">$1,158M</td><td class="right pos">+8.2%</td><td class="right pos">+7.2%</td><td class="right pos">+6.2%</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q2 2025*</td><td>Q1 &rsquo;25 call</td><td>$970&ndash;$990M</td>
+        <td class="right bold">$1,020M</td><td class="right pos">+5.2%</td><td class="right pos">+4.1%</td><td class="right pos">+3.0%</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q1 2025</td><td>Q4 &rsquo;24 call</td><td>$855&ndash;$885M</td>
+        <td class="right bold">$1,000M</td><td class="right pos">+17.0%</td><td class="right pos">+14.9%</td><td class="right pos">+13.0%</td>
+      </tr>
+      <tr class="year-divider"><td colspan="7">2024 &mdash; MARGIN TO 60%+</td></tr>
+      <tr class="raised">
+        <td class="bold">Q4 2024</td><td>Q3 &rsquo;24 call</td><td>$740&ndash;$760M</td>
+        <td class="right bold">$848M</td><td class="right pos">+14.6%</td><td class="right pos">+13.1%</td><td class="right pos">+11.6%</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q3 2024</td><td>Q2 &rsquo;24 call</td><td>$630&ndash;$650M</td>
+        <td class="right bold">$722M</td><td class="right pos">+14.6%</td><td class="right pos">+12.8%</td><td class="right pos">+11.1%</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q2 2024</td><td>Q1 &rsquo;24 call</td><td>$550&ndash;$570M</td>
+        <td class="right bold">$601M</td><td class="right pos">+9.3%</td><td class="right pos">+7.3%</td><td class="right pos">+5.4%</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q1 2024</td><td>Q4 &rsquo;23 call</td><td>$475&ndash;$495M</td>
+        <td class="right bold">$549M</td><td class="right pos">+15.6%</td><td class="right pos">+13.2%</td><td class="right pos">+10.9%</td>
+      </tr>
+      <tr class="year-divider"><td colspan="7">2023 &mdash; AXON 2.0 BREAKOUT</td></tr>
+      <tr class="raised">
+        <td class="bold">Q4 2023</td><td>Q3 &rsquo;23 call</td><td>$420&ndash;$440M</td>
+        <td class="right bold">$476M</td><td class="right pos">+13.3%</td><td class="right pos">+10.7%</td><td class="right pos">+8.2%</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q3 2023</td><td>Q2 &rsquo;23 call</td><td>$340&ndash;$360M</td>
+        <td class="right bold">$490M</td><td class="right pos">+44.1%</td><td class="right pos">+40.0%</td><td class="right pos">+36.1%</td>
+      </tr>
+      <tr class="raised">
+        <td class="bold">Q2 2023</td><td>Q1 &rsquo;23 call</td><td>$280&ndash;$300M</td>
+        <td class="right bold">$334M</td><td class="right pos">+19.1%</td><td class="right pos">+15.0%</td><td class="right pos">+11.2%</td>
+      </tr>
+      <tr class="raised">
+        <td>Q1 2023</td><td>Q4 &rsquo;22 call</td><td>$250&ndash;$270M</td>
+        <td class="right">$274M</td><td class="right pos">+9.4%</td><td class="right pos">+5.3%</td><td class="right pos">+1.4%</td>
+      </tr>
+      <tr class="year-divider"><td colspan="7">2022</td></tr>
+      <tr>
+        <td>Q4 2022</td><td>Q3 &rsquo;22 call</td><td>~$258M</td>
+        <td class="right">$260M</td><td class="right pos">+0.6%</td><td class="right pos">+0.6%</td><td class="right">+$2M</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> AppLovin&rsquo;s EBITDA guidance is among the most conservative in this dataset: 13/13 beats with an average of +11.7% vs midpoint. The Q3 2023 beat of +40% vs midpoint ($490M vs $350M guided midpoint) was the largest single-quarter guidance beat and marked the AXON 2.0 inflection. Even excluding that outlier, the average beat is +9.3% &mdash; indicating structural, not one-time, conservatism. EBITDA has exceeded the high end in 12 of 13 quarters (92%).</div>
+</div>
+
+<!-- ====== SECTION 3: KEY TAKEAWAYS ====== -->
+<div class="section" id="s3">
+  <h2><span class="num">3</span> Key Takeaways</h2>
+  <div class="takeaways">
+    <div class="takeaway">
+      <div class="takeaway-num">1</div>
+      <div class="takeaway-text"><strong>Perfect guidance record: 13/13 beats on both revenue and EBITDA.</strong> Since quarterly guidance began (Q3 2022 call), AppLovin has never missed the midpoint of either metric. Revenue beat rate vs high end is 85% (11/13); EBITDA beat rate vs high end is 92% (12/13). Zero quarters missed the low end on either metric.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">2</div>
+      <div class="takeaway-text"><strong>EBITDA conservatism is extreme: +11.7% average beat vs midpoint.</strong> This means guidance systematically understates results by ~12%. Even excluding the Q3 2023 outlier (+40%), the average beat is +9.3%. Revenue conservatism is more modest at +5.5% average beat.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">3</div>
+      <div class="takeaway-text"><strong>Q3 2023: the biggest guidance beat in the dataset.</strong> EBITDA of $490M vs $340&ndash;$360M guidance (+$130M, +40% vs midpoint) and revenue of $864M vs $780&ndash;$800M (+$64M, +9.4%). This was AXON 2.0&rsquo;s first full quarter, revealing a step-function model improvement that guidance structurally could not anticipate.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">4</div>
+      <div class="takeaway-text"><strong>Revenue guidance range width reveals confidence.</strong> Early ranges were ±$10M ($685&ndash;$705M for Q1 2023). By Q4 2025, ranges widened to ±$15M ($1,570&ndash;$1,600M), but the beat magnitude grew even faster. The guidance &ldquo;envelope&rdquo; consistently captures only the organic baseline, not e-commerce, self-serve, or model step-functions.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">5</div>
+      <div class="takeaway-text"><strong>Q2 2024 was the only quarter at the high end (revenue).</strong> Revenue of $1,080M matched the $1,080M high end exactly &mdash; the tightest guidance outcome in the dataset. EBITDA still beat by +$31M. This quarter followed the e-commerce pilot launch, suggesting management may have calibrated guidance upward slightly, only to resume wider beats in Q3.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">6</div>
+      <div class="takeaway-text"><strong>Guidance conservatism increased after the scope narrowed.</strong> When guidance shifted to ad-only (Q2 2025+), EBITDA beats averaged +5.7% vs mid &mdash; lower than the +13.0% average during total-company guidance (Q1 2023&ndash;Q1 2025). However, this reflects cleaner scope, not less conservatism: the ad business has less variance than the combined company.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">7</div>
+      <div class="takeaway-text"><strong>Nine consecutive quarters beating the high end (Q4 2023&ndash;Q4 2025).</strong> This streak spans the period of maximum acceleration: AXON 2.0 maturation, e-commerce TAM expansion, margin expansion from 50% to 84%, and the Apps divestiture. Every quarter delivered surprise beyond the already-beaten-before-it-started guidance.</div>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">8</div>
+      <div class="takeaway-text"><strong>EBITDA grew from $260M to $1,400M in 12 quarters (5.4&times;).</strong> Q4 2022 EBITDA of $260M at 37% margin grew to Q4 2025 EBITDA of $1,400M at 84% margin. Revenue doubled; EBITDA grew 5.4&times;. This reflects the extraordinary operating leverage of an AI-driven advertising platform with near-zero marginal costs.</div>
+    </div>
+  </div>
+</div>
+
+<footer style="text-align:center; padding:32px 0 0; border-top:1px solid var(--border); font-size:0.8rem; color:var(--text-muted);">
+  Metrics Tracker &mdash; Data sourced from AppLovin earnings call transcripts (Q1 2022 &ndash; Q4 2025) and EDGAR filings.
+</footer>
+
+</body>
+</html>

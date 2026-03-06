@@ -319,6 +319,31 @@
     .comp-table th, .comp-table td { padding: 6px 8px; }
   }
 
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+  .content-section .md-table th {
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .content-section .md-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-section .md-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+  .content-section .md-table tr:hover { background: #e8f4fd; }
+
   @media print {
     .nav-bar { display: none; }
     .header { background: #333; }
@@ -338,6 +363,8 @@
   <a class="disabled">&larr; Prev</a>
   <div class="nav-center">
     <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>
     <a href="Q4_2025.html" class="qbtn">4Q25</a>
     <a href="Q3_2025.html" class="qbtn">3Q25</a>
     <a href="Q2_2025.html" class="qbtn">2Q25</a>
@@ -358,56 +385,27 @@
   <a href="Q2_2022.html">Q2 2022 &rarr;</a>
 </div>
 
-<div class="metrics-card">
-  <div class="metric">
-    <div class="metric-label">FY 2022 Revenue Guidance</div>
-    <div class="metric-value">$59.5B - $61.5B</div>
-    <div class="metric-delta delta-down">Lowered ~$500M at midpoint</div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">FY 2022 Adj. EBITDA Guidance</div>
-    <div class="metric-value">$11.8B - $12.4B</div>
-    <div class="metric-delta delta-down">Lowered ~$650M-$750M</div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">FY 2022 Diluted EPS Guidance</div>
-    <div class="metric-value">$16.40 - $17.60</div>
-    <div class="metric-delta delta-down">Lowered from initial</div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">FY 2022 CapEx Guidance</div>
-    <div class="metric-value">$4.2B</div>
-    <div class="metric-delta delta-flat">Unchanged</div>
-  </div>
+<div class="changes-box">
+  <h3>Context</h3>
+  <ul>
+    <li><span class="change-tag ct-new">New</span> First quarter in our tracking series</li>
+  </ul>
 </div>
 
-<div class="changes-box">
-  <h3>What Changed — Baseline Quarter (No Prior)</h3>
-  <ul>
-    <li><span class="change-tag ct-new">Initial</span> Revenue guidance set: $59.5B - $61.5B (lowered vs. original FY 2022 plan)</li>
-    <li><span class="change-tag ct-new">Initial</span> Adj. EBITDA guidance set: $11.8B - $12.4B (lowered ~$650M-$750M vs. original plan)</li>
-    <li><span class="change-tag ct-new">Initial</span> Diluted EPS guidance set: $16.40 - $17.60</li>
-    <li><span class="change-tag ct-new">Initial</span> Net Income guidance set: $4.95B - $5.34B</li>
-    <li><span class="change-tag ct-new">Initial</span> CapEx guidance set: $4.2B (unchanged from original plan)</li>
-    <li><span class="change-tag ct-new">Initial</span> Admissions growth assumption: +2% to +3% (unchanged from original plan)</li>
-  </ul>
+<div class="metrics-card">
+  <div class="metric">
+    <div class="metric-label">Same-Facility Admissions</div>
+    <div class="metric-value"><strong>+2% YoY</strong> vs. Q1 2021</div>
+  </div>
 </div>
 
 <!-- Full Guidance Content -->
 <div class="content-section">
-  <h3>Full Year 2022 Guidance — Headline Ranges (UPDATED / LOWERED)</h3>
-  <table class="comp-table">
-    <thead>
-      <tr><th>Metric</th><th>New 2022 Guidance</th><th>Prior 2022 Guidance (Implied)</th><th>Change</th></tr>
-    </thead>
-    <tbody>
-      <tr><td><strong>Revenue</strong></td><td>$59.5B - $61.5B</td><td>~$60.0B - $62.0B (est.)</td><td>~-$500M midpoint</td></tr>
-      <tr><td><strong>Net Income Attributable to HCA</strong></td><td>$4.95B - $5.34B</td><td>Not restated</td><td>N/A</td></tr>
-      <tr><td><strong>Adjusted EBITDA</strong></td><td>$11.8B - $12.4B</td><td>~$12.45B - $13.15B (est.)</td><td><strong>-$650M at high end, -$750M at low end</strong></td></tr>
-      <tr><td><strong>Diluted EPS</strong></td><td>$16.40 - $17.60</td><td>Not restated</td><td>N/A</td></tr>
-      <tr><td><strong>Capital Spending</strong></td><td>$4.2B</td><td>$4.2B</td><td>Unchanged</td></tr>
-    </tbody>
-  </table>
+  <h3>Full Year 2022 Guidance (UPDATED / LOWERED)</h3>
+</div>
+<div class="content-section">
+  <h3>Headline Guidance Ranges</h3>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>New 2022 Guidance</th><th>Prior 2022 Guidance (Implied)</th><th>Change</th></tr></thead><tbody><tr><td><strong>Revenue</strong></td><td>$59.5B - $61.5B</td><td>~$60.0B - $62.0B (est.)</td><td>~-$500M midpoint</td></tr><tr><td><strong>Net Income Attributable to HCA</strong></td><td>$4.95B - $5.34B</td><td>Not restated</td><td>N/A</td></tr><tr><td><strong>Adjusted EBITDA</strong></td><td>$11.8B - $12.4B</td><td>~$12.45B - $13.15B (est.)</td><td><strong>-$650M at high end, -$750M at low end</strong></td></tr><tr><td><strong>Diluted EPS</strong></td><td>$16.40 - $17.60</td><td>Not restated</td><td>N/A</td></tr><tr><td><strong>Capital Spending</strong></td><td>$4.2B</td><td>$4.2B</td><td>Unchanged</td></tr></tbody></table></div>
 </div>
 <div class="content-section">
   <h3>Guidance Revision Drivers (Three Primary Areas)</h3>
@@ -417,14 +415,12 @@
     <li>Disruption of labor market and pressure on labor cost inflation will be <strong>slower to moderate than originally anticipated</strong></li>
     <li>Cost per FTE was <strong>~1.5% higher than planned</strong> in Q1</li>
     <li>Projected full-year impact of elevated labor costs: <strong>$400 million to $500 million</strong> above original plan</li>
-    <li>Also adjusting base wages to be responsive to market conditions</li>
-    <li><strong>2. COVID Acuity / Revenue (~1/3 of total revision)</strong></li>
+    <li>Also adjusting base wages to be responsive to market conditions <strong>2. COVID Acuity / Revenue (~1/3 of total revision)</strong></li>
     <li>Reduced acuity and revenue from Omicron COVID patients in Q1</li>
     <li>COVID inpatient revenue per admission down ~15% YoY</li>
     <li>~$150 million less COVID revenue in Q1 vs. prior year</li>
     <li>Lower COVID acuity factored into remaining guidance periods</li>
-    <li>Revenue guidance decline is "vast majority" due to lower Omicron variant acuity</li>
-    <li><strong>3. Inflationary Pressures (included in the ~2/3 cost bucket)</strong></li>
+    <li>Revenue guidance decline is "vast majority" due to lower Omicron variant acuity <strong>3. Inflationary Pressures (included in the ~2/3 cost bucket)</strong></li>
     <li>Increased inflationary pressures expected going forward</li>
     <li>Specific areas: professional fees, energy procurement, cost of utilities, and other purchased services</li>
   </ul>
@@ -438,33 +434,18 @@
   </ul>
 </div>
 <div class="content-section">
+  <h3>Confidence / Outlook</h3>
+  <ul>
+    <li>"Over the past few years, we have demonstrated an ability to adjust effectively to whatever our realities are, and I'm confident we will do it again."</li>
+  </ul>
+</div>
+<div class="content-section">
   <h3>Guidance Bridge Summary</h3>
-  <table class="comp-table">
-    <thead>
-      <tr><th>Factor</th><th>Estimated Impact on EBITDA</th><th>Direction</th></tr>
-    </thead>
-    <tbody>
-      <tr><td><strong>Labor cost / contract labor + inflation</strong></td><td>~2/3 of total revision (~$430M-$500M)</td><td>Negative</td></tr>
-      <tr><td><strong>COVID acuity / revenue shortfall</strong></td><td>~1/3 of total revision (~$215M-$250M)</td><td>Negative</td></tr>
-      <tr><td><strong>Total EBITDA Guidance Reduction</strong></td><td>~$650M-$750M (midpoint ~$700M)</td><td>Negative</td></tr>
-      <tr><td><strong>Labor cost above plan (annualized)</strong></td><td>$400M-$500M for balance of year</td><td>Negative</td></tr>
-      <tr><td><strong>COVID revenue shortfall (Q1 alone)</strong></td><td>~$150M vs. Q1 2021</td><td>Negative</td></tr>
-    </tbody>
-  </table>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Factor</th><th>Estimated Impact on EBITDA</th><th>Direction</th></tr></thead><tbody><tr><td><strong>Labor cost / contract labor + inflation</strong></td><td>~2/3 of total revision (~$430M-$500M)</td><td>Negative</td></tr><tr><td><strong>COVID acuity / revenue shortfall</strong></td><td>~1/3 of total revision (~$215M-$250M)</td><td>Negative</td></tr><tr><td><strong>Total EBITDA Guidance Reduction</strong></td><td>~$650M-$750M (midpoint ~$700M)</td><td>Negative</td></tr><tr><td><strong>Labor cost above plan (annualized)</strong></td><td>$400M-$500M for balance of year</td><td>Negative</td></tr><tr><td><strong>COVID revenue shortfall (Q1 alone)</strong></td><td>~$150M vs. Q1 2021</td><td>Negative</td></tr></tbody></table></div>
 </div>
 <div class="content-section">
   <h3>Historical EPS Surprises</h3>
-  <table class="comp-table">
-    <thead>
-      <tr><th>Quarter</th><th>Consensus</th><th>Actual</th><th>Surprise</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>FQ2 2021</td><td>$3.16</td><td>$4.37</td><td>+38.29%</td></tr>
-      <tr><td>FQ3 2021</td><td>$4.01</td><td>$4.57</td><td>+13.97%</td></tr>
-      <tr><td>FQ4 2021</td><td>$4.55</td><td>$4.42</td><td>-2.86%</td></tr>
-      <tr><td>FQ1 2022</td><td>$4.24</td><td>$4.12</td><td>-2.83%</td></tr>
-    </tbody>
-  </table>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Quarter</th><th>Consensus</th><th>Actual</th><th>Surprise</th></tr></thead><tbody><tr><td>FQ2 2021</td><td>$3.16</td><td>$4.37</td><td>+38.29%</td></tr><tr><td>FQ3 2021</td><td>$4.01</td><td>$4.57</td><td>+13.97%</td></tr><tr><td>FQ4 2021</td><td>$4.55</td><td>$4.42</td><td>-2.86%</td></tr><tr><td>FQ1 2022</td><td>$4.24</td><td>$4.12</td><td>-2.83%</td></tr></tbody></table></div>
 </div>
 <div class="content-section">
   <h3>Revenue</h3>
@@ -588,6 +569,9 @@
 </div>
 <div class="content-section">
   <h3>Labor Strategy & Resiliency Initiatives</h3>
+</div>
+<div class="content-section">
+  <h3>Three Main Focus Areas</h3>
   <ul>
     <li><strong>1. Staffing & Capacity</strong></li>
     <li>Investing in and enhancing employee recruitment and retention efforts</li>
@@ -598,13 +582,11 @@
     <li>New support staff roles: patient care techs, patient safety attendants</li>
     <li>Galen College of Nursing expansion: new schools in Austin TX, Nashville TN, parts of South Carolina with "record-level enrollment"</li>
     <li>Post-acute discharge planning improvements using new technologies for predictive patient assessments at discharge</li>
-    <li>Case management organizational structure being aligned enterprise-wide</li>
-    <li><strong>2. Resiliency Programs (Ongoing)</strong></li>
+    <li>Case management organizational structure being aligned enterprise-wide <strong>2. Resiliency Programs (Ongoing)</strong></li>
     <li>Next generation of shared services advancing efficiencies</li>
     <li>Consolidation and alignment of laboratory operations</li>
     <li>Facility management improvements</li>
-    <li>Environmental and food and nutrition support area consolidation</li>
-    <li><strong>3. Benchmarking Initiative</strong></li>
+    <li>Environmental and food and nutrition support area consolidation <strong>3. Benchmarking Initiative</strong></li>
     <li>Advancing capability to benchmark key performance metrics across the organization</li>
     <li>Intended to identify variation and opportunity to deploy best practices</li>
     <li>Focus areas: supply utilization, provider support costs, discretionary spending, and other cost areas</li>
@@ -631,67 +613,62 @@
 </div>
 <div class="content-section">
   <h3>Capital Allocation Summary</h3>
-  <table class="comp-table">
-    <thead>
-      <tr><th>Item</th><th>Q1 2022</th><th>Q1 2021</th></tr>
-    </thead>
-    <tbody>
-      <tr><td><strong>Cash Flow from Operations</strong></td><td>$1.345B</td><td>$2.0B</td></tr>
-      <tr><td><strong>Capital Spending</strong></td><td>$860M</td><td>$650M</td></tr>
-      <tr><td><strong>Share Repurchases</strong></td><td>~$2.1B</td><td>N/A</td></tr>
-      <tr><td><strong>Full Year CapEx Guidance</strong></td><td>$4.2B</td><td>N/A</td></tr>
-      <tr><td><strong>Planned Q2 Bond Redemption</strong></td><td>~$2.6B (2023 bonds)</td><td>N/A</td></tr>
-      <tr><td><strong>Available Liquidity</strong></td><td>~$7.9B</td><td>N/A</td></tr>
-      <tr><td><strong>Leverage (Debt/Adj. EBITDA)</strong></td><td>Slightly below low end of target range</td><td>N/A</td></tr>
-    </tbody>
-  </table>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Item</th><th>Q1 2022</th><th>Q1 2021</th></tr></thead><tbody><tr><td><strong>Cash Flow from Operations</strong></td><td>$1.345B</td><td>$2.0B</td></tr><tr><td><strong>Capital Spending</strong></td><td>$860M</td><td>$650M</td></tr><tr><td><strong>Share Repurchases</strong></td><td>~$2.1B</td><td>N/A</td></tr><tr><td><strong>Full Year CapEx Guidance</strong></td><td>$4.2B</td><td>N/A</td></tr><tr><td><strong>Planned Q2 Bond Redemption</strong></td><td>~$2.6B (2023 bonds)</td><td>N/A</td></tr><tr><td><strong>Available Liquidity</strong></td><td>~$7.9B</td><td>N/A</td></tr><tr><td><strong>Leverage (Debt/Adj. EBITDA)</strong></td><td>Slightly below low end of target range</td><td>N/A</td></tr></tbody></table></div>
 </div>
 <div class="content-section">
   <h3>Management Qualitative Commentary (Key Quotes)</h3>
+</div>
+<div class="content-section">
+  <h3>On the Demand Environment</h3>
   <ul>
-    <li><strong>On the Demand Environment:</strong> "We continue to believe that overall demand for health care remains strong in our markets across most categories with favorable population trends and other contributing factors that developed during the pandemic driving it."</li>
-    <li><strong>On Labor Cost Trajectory:</strong> "We now believe improvement in our labor cost will be slower than originally anticipated. This factor primarily influenced our revised outlook for 2022."</li>
-    <li>Labor costs per FTE have been roughly flat for 3 consecutive quarters, which management views as both stabilization and opportunity to reduce contract labor reliance</li>
-    <li>Contract labor cost per hour was down 5% sequentially from Q4 and improved each month within Q1</li>
-    <li><strong>On Q1 Margin Pressure:</strong> "The margins in the first quarter were clearly pressured... with somewhat unprecedented levels of cost on the labor side."</li>
-    <li>Management believes margin recovery is achievable over time through workforce alignment away from contract labor</li>
-    <li><strong>On Seasonality for 2022:</strong> Expects more normal volume seasonality in 2022 vs. prior two years; cost seasonality expected to differ as labor costs should improve sequentially</li>
-    <li><strong>On Competitive Positioning:</strong> No unusual competitive maneuvers observed; HCA benefits from competitors being local/single-market operators</li>
-    <li><strong>On Confidence / Outlook:</strong> "Over the past few years, we have demonstrated an ability to adjust effectively to whatever our realities are, and I'm confident we will do it again."</li>
+    <li>"We continue to believe that overall demand for health care remains strong in our markets across most categories with favorable population trends and other contributing factors that developed during the pandemic driving it."</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Labor Cost Trajectory</h3>
+  <ul>
+    <li>"We now believe improvement in our labor cost will be slower than originally anticipated. This factor primarily influenced our revised outlook for 2022."</li>
+    <li>"Our labor costs really haven't changed per FTE in 3 quarters. I'm considering that to be a good thing. And I'm also considering it to be the opportunity because we're using too much contract labor, and it's still at elevated, outsized rates."</li>
+    <li>"Our contract labor cost per hour in the first quarter was down 5% from the fourth quarter. And within the quarter -- within the first quarter, it was better each month, month over month."</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q1 Margin Pressure</h3>
+  <ul>
+    <li>"The margins in the first quarter were clearly pressured... with somewhat unprecedented levels of cost on the labor side."</li>
+    <li>"I do believe, over time, we can recover some of that lost margin as we continue to appropriately align our workforce with more permanent workforce or more efficient workforce coming from the contract labor category."</li>
+    <li>Q1 was "uniquely pressured from a margin standpoint, simply because of the elevated levels of contract labor and the costs thereof."</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Seasonality for 2022</h3>
+  <ul>
+    <li>"This could be a more normal period on seasonality for volume in 2022 than any that we've had over the last 2 years."</li>
+    <li>"The seasonality on our costs... are going to be different... because we're at a high watermark on labor cost per FTE in the first quarter. And typically, our costs would go up seasonally. But we think as we work through the initiatives and the alignment of our workforce, we'll have a different pattern to our cost in 2022."</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Competitive Positioning</h3>
+  <ul>
+    <li>"We haven't seen any unusual maneuvers broadly" from competitors</li>
+    <li>"We are fortunate again to have competitors that tend to be only local and in 1 market or 2 markets at the most"</li>
+    <li>"I believe over time we've been able to use our operating discipline, use our systems, use the learnings that we have across the company to create advantage for us."</li>
   </ul>
 </div>
 <div class="content-section">
   <h3>Q&A Key Disclosures Not in Prepared Remarks</h3>
   <ul>
-    <li><strong>Cost per FTE plan vs. actual:</strong> Original plan was 3%-3.5% growth; Q1 actual was ~1.5% higher than planned</li>
-    <li><strong>Projected labor cost overage:</strong> $400M-$500M impact for balance of year</li>
-    <li><strong>Pre-COVID contract labor baseline:</strong> ~9%-10% of nursing hours (vs. ~11.6% in Q1 2022)</li>
-    <li><strong>2019 contract labor level:</strong> roughly half of current levels</li>
-    <li><strong>Contract labor cost per hour Q1 vs. Q4:</strong> down 5%, improving each month within Q1</li>
-    <li><strong>Non-COVID Feb/March admissions growth:</strong> 4.5%-5% range</li>
-    <li><strong>Managed care contracted %:</strong> ~50% for 2023, ~30% for 2024</li>
-    <li><strong>Medicare IPPS proposed gross increase:</strong> just under 2%; net closer to flat after sequestration</li>
-    <li><strong>Contract duration:</strong> ~13-week contracts</li>
-    <li><strong>EBITDA margin expectation:</strong> 19%-20% in the short run (revised down from prior 20%-21%)</li>
-    <li><strong>No Q2 EBITDA guidance provided</strong> (specifically asked, not answered)</li>
-    <li><strong>No specific year-end contract labor % target given</strong> (said will "sequentially improve")</li>
-    <li><strong>Census jump Q2-Q3 2021:</strong> +8.5% (record census ever for the company)</li>
-    <li><strong>Galen College enrollment:</strong> "record-level enrollment" in several new school locations</li>
-    <li><strong>Uninsured volumes vs. 2019:</strong> down 11% (favorable mix impact)</li>
+    <li>1. <strong>Cost per FTE plan vs. actual:</strong> Original plan was 3%-3.5% growth; Q1 actual was ~1.5% higher than planned 2. <strong>Projected labor cost overage:</strong> $400M-$500M impact for balance of year 3. <strong>Pre-COVID contract labor baseline:</strong> ~9%-10% of nursing hours (vs. ~11.6% in Q1 2022) 4. <strong>2019 contract labor level:</strong> roughly half of current levels 5. <strong>Contract labor cost per hour Q1 vs. Q4:</strong> down 5%, improving each month within Q1 6. <strong>Non-COVID Feb/March admissions growth:</strong> 4.5%-5% range 7. <strong>Managed care contracted %:</strong> ~50% for 2023, ~30% for 2024 8. <strong>Medicare IPPS proposed gross increase:</strong> just under 2%; net closer to flat after sequestration 9. <strong>Contract duration:</strong> ~13-week contracts 10. <strong>EBITDA margin expectation:</strong> 19%-20% in the short run (revised down from prior 20%-21%) 11. <strong>No Q2 EBITDA guidance provided</strong> (specifically asked, not answered) 12. <strong>No specific year-end contract labor % target given</strong> (said will "sequentially improve") 13. <strong>Census jump Q2-Q3 2021:</strong> +8.5% (record census ever for the company) 14. <strong>Galen College enrollment:</strong> "record-level enrollment" in several new school locations 15. <strong>Uninsured volumes vs. 2019:</strong> down 11% (favorable mix impact)</li>
   </ul>
 </div>
 <div class="content-section">
   <h3>Consensus Estimates vs. Actuals (S&P Global)</h3>
-  <table class="comp-table">
-    <thead>
-      <tr><th>Metric</th><th>FQ1 2022 Consensus</th><th>FQ1 2022 Actual</th><th>Surprise</th></tr>
-    </thead>
-    <tbody>
-      <tr><td><strong>EPS Normalized</strong></td><td>$4.24</td><td>$4.12</td><td>-2.83%</td></tr>
-      <tr><td><strong>Revenue (mm)</strong></td><td>$14,719.73</td><td>$14,945.00</td><td>+1.53%</td></tr>
-    </tbody>
-  </table>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>FQ1 2022 Consensus</th><th>FQ1 2022 Actual</th><th>Surprise</th></tr></thead><tbody><tr><td><strong>EPS Normalized</strong></td><td>$4.24</td><td>$4.12</td><td>-2.83%</td></tr><tr><td><strong>Revenue (mm)</strong></td><td>$14,719.73</td><td>$14,945.00</td><td>+1.53%</td></tr></tbody></table></div>
 </div>
+<div class="content-section">
+  <h3>Q1 2022 Actuals (Reported)</h3>
+</div>
+
 <div class="footer-nav">
   <span></span>
   <a href="../comparison.html">Back to Overview</a>

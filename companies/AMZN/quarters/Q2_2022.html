@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AMZN Q2 2022 Earnings Call Detail</title>
+<style>
+:root {
+    --company-primary: #FF9900;
+    --company-dark: #232F3E;
+    --company-accent: #146EB4;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 40px 40px 32px;
+    margin: 0 -24px 0;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .header .meta {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    font-weight: 300;
+  }
+  .header .meta span { margin-right: 24px; }
+
+  .nav-bar {
+    background: var(--company-accent);
+    margin: 0 -24px 32px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    transition: all 0.15s;
+  }
+  .nav-bar a:hover { background: rgba(255,255,255,0.2); }
+  .nav-bar a.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .nav-center {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-center a.qbtn {
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+  }
+  .nav-center a.qbtn.current {
+    background: var(--company-primary);
+    border-color: var(--company-primary);
+  }
+  .nav-center a.qbtn:hover { background: rgba(255,255,255,0.2); }
+  .nav-back {
+    background: rgba(255,255,255,0.15) !important;
+    border-color: rgba(255,255,255,0.35) !important;
+  }
+
+  .metrics-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .metric {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+  .metric-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .metric-value {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+  .metric-delta {
+    font-size: 0.72rem;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+  .delta-up { color: var(--green); }
+  .delta-down { color: var(--red); }
+  .delta-flat { color: var(--text-muted); }
+
+  .changes-box {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 5px solid var(--amber);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .changes-box h3 {
+    font-size: 1rem;
+    color: var(--company-dark);
+    margin-bottom: 10px;
+  }
+  .changes-box ul { list-style: none; padding: 0; }
+  .changes-box li {
+    padding: 5px 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .change-tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .ct-raised { background: #d5f5e3; color: #1e8449; }
+  .ct-lowered { background: #fadbd8; color: #c0392b; }
+  .ct-changed { background: #d6eaf8; color: #2471a3; }
+  .ct-new { background: #e8daef; color: #6c3483; }
+  .ct-maintained { background: #fdebd0; color: #b9770e; }
+
+  .content-section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .content-section h3 {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .content-section ul {
+    padding: 14px 18px 14px 36px;
+    margin: 0;
+  }
+  .content-section li {
+    padding: 3px 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .content-section li strong { color: var(--company-dark); }
+
+  .prior-ref {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 40px;
+    overflow: hidden;
+  }
+  .prior-ref-header {
+    background: var(--light-bg);
+    padding: 12px 18px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--company-dark);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .prior-ref-header:hover { background: #eef2f7; }
+  .prior-ref-body { padding: 18px; display: none; }
+  .prior-ref-body.open { display: block; }
+  .prior-ref-body .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .prior-mini {
+    background: var(--light-bg);
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .prior-mini .pm-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .prior-mini .pm-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border);
+  }
+  .footer-nav a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .footer-nav a:hover { text-decoration: underline; }
+
+  /* Comparison page styles */
+  .toc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .toc a {
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 4px 0;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  .comp-section {
+    margin-bottom: 40px;
+  }
+  .comp-section h2 {
+    font-size: 1.2rem;
+    color: var(--company-dark);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--company-primary);
+  }
+
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+  }
+  .comp-table th {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .comp-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .comp-table tr:nth-child(even) { background: var(--light-bg); }
+  .comp-table tr:hover { background: #e8f4fd; }
+
+  @media (max-width: 768px) {
+    .header h1 { font-size: 1.5rem; }
+    .metrics-card { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .nav-center { display: none; }
+    body { padding: 0 16px 60px; }
+    .header { margin: 0 -16px 0; padding: 28px 24px 20px; }
+    .nav-bar { margin: 0 -16px 24px; }
+    .toc { grid-template-columns: 1fr; }
+    .comp-table { font-size: 0.78rem; }
+    .comp-table th, .comp-table td { padding: 6px 8px; }
+  }
+
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+  .content-section .md-table th {
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .content-section .md-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-section .md-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+  .content-section .md-table tr:hover { background: #e8f4fd; }
+
+  @media print {
+    .nav-bar { display: none; }
+    .header { background: #333; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>AMZN Q2 2022 Earnings Call</h1>
+  <div class="meta">
+    <span>Call Date: July 28, 2022</span>
+    <span>Reporting: Q2 2022</span>
+  </div>
+</div>
+<div class="nav-bar">
+  <a href="Q1_2022.html">&larr; Q1 2022</a>
+  <div class="nav-center">
+    <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>
+    <a href="Q4_2025.html" class="qbtn">4Q25</a>
+    <a href="Q3_2025.html" class="qbtn">3Q25</a>
+    <a href="Q2_2025.html" class="qbtn">2Q25</a>
+    <a href="Q1_2025.html" class="qbtn">1Q25</a>
+    <a href="Q4_2024.html" class="qbtn">4Q24</a>
+    <a href="Q3_2024.html" class="qbtn">3Q24</a>
+    <a href="Q2_2024.html" class="qbtn">2Q24</a>
+    <a href="Q1_2024.html" class="qbtn">1Q24</a>
+    <a href="Q4_2023.html" class="qbtn">4Q23</a>
+    <a href="Q3_2023.html" class="qbtn">3Q23</a>
+    <a href="Q2_2023.html" class="qbtn">2Q23</a>
+    <a href="Q1_2023.html" class="qbtn">1Q23</a>
+    <a href="Q4_2022.html" class="qbtn">4Q22</a>
+    <a href="Q3_2022.html" class="qbtn">3Q22</a>
+    <a href="Q2_2022.html" class="qbtn current">2Q22</a>
+    <a href="Q1_2022.html" class="qbtn">1Q22</a>
+  </div>
+  <a href="Q3_2022.html">Q3 2022 &rarr;</a>
+</div>
+
+<div class="changes-box">
+  <h3>What Changed vs Q1 2022</h3>
+  <ul>
+    <li><span class="change-tag ct-raised">Raised</span> Operating Margin midpoint up 26.3 ppts (32.0% vs 5.7%)</li>
+    <li><span class="change-tag ct-new">New</span> NEW: Prime Video advertising discussed</li>
+  </ul>
+</div>
+
+<div class="metrics-card">
+  <div class="metric" style="grid-column: 1 / -1; background: linear-gradient(135deg, var(--company-dark), var(--company-accent)); color: #fff; border: none; padding: 8px 14px;">
+    <div class="metric-label" style="color: rgba(255,255,255,0.7);">Guidance For</div>
+    <div class="metric-value" style="color: #fff; font-size: 1rem;">Q3 2022</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Operating Margin</div>
+    <div class="metric-value">~29%</div>
+    <div class="metric-delta delta-flat">Prior: 3.2%</div>
+  </div>
+</div>
+
+<!-- Full Guidance Content -->
+<div class="content-section">
+  <h3>Capital Investments (Full Year 2022 Outlook)</h3>
+  <ul>
+    <li><strong>2021 Total Capital Investments (CapEx + Equipment Finance Leases):</strong> ~$60B</li>
+    <li><strong>2022 Full Year Expectation:</strong> Slightly more than 2021's ~$60B</li>
+    <li><strong>Capital Mix Shift for 2022:</strong> - <strong>Technology Infrastructure (primarily AWS):</strong> Expected to represent a bit more than 50% of total capital investments in 2022 (up from ~40% in 2021); growing YoY - <strong>Fulfillment:</strong> Expected to be lower in 2022 vs. 2021 in dollars - <strong>Transportation:</strong> Expected to be lower in 2022 vs. 2021 in dollars - <strong>Corporate Space & Physical Stores:</strong> ~5% (unchanged)</li>
+    <li><strong>2021 Capital Mix Breakdown:</strong> - Technology Infrastructure: ~40% - Fulfillment Capacity: ~30% - Transportation: ~25% - Corporate Space & Physical Stores: ~5%</li>
+    <li><strong>Pre-Spend Dynamics:</strong> ~40% of 2022 capital spend is for warehouses/transportation capacity effective in 2023+</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Quarterly Guidance (Q3 2022)</h3>
+</div>
+<div class="content-section">
+  <h3>Key Guidance Assumptions & Cost Bridge (Q2 to Q3)</h3>
+  <ul>
+    <li><strong>Fulfillment Network Ops Improvement:</strong> ~$1.5B expected QoQ sequential cost improvement</li>
+    <li><strong>Offsets to Ops Improvement:</strong> - <strong>AWS Investments:</strong> Higher infrastructure investments to support strong customer growth; larger depreciation on growing fixed asset base; increased energy costs from utility price volatility for data centers - <strong>Digital Content for Prime Members:</strong> Thursday Night Football (starting September 15); The Lord of the Rings: The Rings of Power (premiering September 2)</li>
+    <li><strong>Net Effect:</strong> ~$1.5B ops improvement expected to be "largely offset" by AWS investment increases and digital content costs</li>
+    <li><strong>Energy Costs:</strong> New cost pressure from ramp-up in natural gas prices affecting AWS data center electricity rates</li>
+    <li><strong>Inflationary Pressures:</strong> Higher fuel, trucking, air and ocean shipping rates expected to continue into Q3</li>
+    <li><strong>Fixed Cost Leverage:</strong> Expected to improve in H2 2022 as Amazon grows into capacity; challenging YoY comp expected to have ended in Q2; slowed future network capacity additions</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Prior Quarter Guidance vs. Actuals Comparison</h3>
+</div>
+<div class="content-section">
+  <h3>Q2 2022 Guidance (Given in Q1 2022 Call) vs. Actuals</h3>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Guidance Range</th><th>Actual</th><th>Result</th></tr></thead><tbody><tr><td>Net Sales</td><td>$116.0B - $121.0B</td><td>$121.2B</td><td><strong>Exceeded top end of range</strong></td></tr><tr><td>Operating Income</td><td>-$1.0B to +$3.0B</td><td>$3.3B</td><td><strong>Above top end of range</strong></td></tr><tr><td>FX Impact on Revenue</td><td>~200 bps unfavorable</td><td>~320 bps unfavorable</td><td><strong>Worse than expected</strong></td></tr><tr><td>SBC</td><td>~$6B</td><td>~$5B+</td><td><strong>Below expectations</strong> (fewer awards vesting)</td></tr></tbody></table></div>
+</div>
+<div class="content-section">
+  <h3>Consolidated</h3>
+  <ul>
+    <li><strong>Total Net Sales:</strong> $121.2B (+10% YoY ex-FX; exceeded top end of $116B-$121B guidance range)</li>
+    <li><strong>FX Impact on Revenue:</strong> ~320 bps unfavorable (larger than the ~200 bps incorporated into Q2 guidance)</li>
+    <li><strong>Operating Income:</strong> $3.3B (above top end of -$1B to +$3B guidance range)</li>
+    <li><strong>Net Income (Loss):</strong> -$2.0B (net loss driven by Rivian valuation loss)</li>
+    <li><strong>Rivian Pretax Valuation Loss:</strong> $3.9B (included in nonoperating expense from common stock investment in Rivian Automotive)</li>
+    <li><strong>EPS (Normalized):</strong> -$0.20 (vs. consensus of $0.12)</li>
+    <li><strong>Stock-Based Compensation:</strong> ~$5B+ (below guided ~$6B; driven by fewer employee stock awards vesting than expected; still a 150 bps step-up QoQ as a % of revenue from Q1 to Q2 due to annual RSU grants)</li>
+    <li><strong>Compound Annual Growth Rate (since pre-pandemic start):</strong> 25% (higher than pre-pandemic growth rate)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Segment Results</h3>
+  <ul>
+    <li><strong>Net Sales:</strong> $19.7B (+33% YoY)</li>
+    <li><strong>Annualized Sales Run Rate:</strong> ~$79B</li>
+    <li><strong>Operating Income:</strong> $5.7B</li>
+    <li><strong>Operating Margin:</strong> ~29% (vs. ~35% in Q1 2022; sequential decline)</li>
+    <li><strong>AWS Backlog:</strong> Up 65% YoY; up ~13% QoQ</li>
+    <li><strong>AWS Backlog Weighted Average Remaining Life:</strong> ~3.9 years (up from 3.8 years in Q1)</li>
+    <li><strong>Note:</strong> Q2 includes seasonal step-up in stock-based compensation; greater mix of wage inflation costs for engineers and tech workers; increasing technology infrastructure investment</li>
+    <li><strong>Operating Income (Loss):</strong> -$1.7B</li>
+    <li><strong>FX Impact on International Operating Income:</strong> $231M unfavorable (included in the -$1.7B loss)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Third-Party Sellers</h3>
+  <ul>
+    <li><strong>3P Seller Unit Mix:</strong> 57% of all units sold on Amazon in Q2 (highest percentage ever; up from 55% in Q1 2022)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Incremental Cost Headwinds (Q2 2022 vs. Q2 2021)</h3>
+  <ul>
+    <li><strong>Total Incremental Costs:</strong> ~$4B (down from ~$6B in Q1 2022, in line with expectations)</li>
+    <li><strong>Inflationary Pressures:</strong> Remained at elevated levels, similar to Q1; includes higher fuel, trucking, air and ocean shipping rates</li>
+    <li><strong>Fulfillment Network Productivity:</strong> Improved in Q2; staffing levels more in line with rising demand; better optimization of fulfillment network</li>
+    <li><strong>Transportation Improvements:</strong> Better delivery route density; improved package deliveries per hour</li>
+    <li><strong>Fixed Cost Deleverage:</strong> Negative YoY impact relatively consistent with Q1; driven by (1) unfavorable comp vs. high holiday-level utilization in H1 2021, and (2) normal step-down in volumes off Q4 peak in H1 2022</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Employees & Headcount</h3>
+  <ul>
+    <li><strong>Headcount QoQ:</strong> Declined quarter-over-quarter (by design; adjusting from Q1 overstaffing)</li>
+    <li><strong>Headcount YoY:</strong> Up 188,000 year-over-year</li>
+    <li><strong>Headcount vs. Pre-Pandemic:</strong> Nearly double the headcount of early 2020</li>
+    <li><strong>Q1 Context:</strong> Added 14,000 workers in Q1 2022 vs. reduced net headcount by 27,000 in Q1 2021</li>
+    <li><strong>Staffing Normalization:</strong> Resolved by end of April / early May 2022 through adjusted hiring levels and normal attrition</li>
+    <li><strong>Current State:</strong> Stabilization in workforce; good hiring rates</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Prime Membership</h3>
+  <ul>
+    <li><strong>Retention:</strong> Still strong after fee increase earlier in the year</li>
+    <li><strong>Fee Increase Results:</strong> Above expectations positively</li>
+    <li><strong>In-Stock Levels:</strong> "Never been higher"</li>
+    <li><strong>Delivery Speed:</strong> Increasing</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Advertising</h3>
+  <ul>
+    <li><strong>Growth Trend:</strong> Still seeing strong advertising growth</li>
+    <li><strong>Competitive Positioning:</strong> Highly efficient; advertising at point of purchase; highly measurable</li>
+    <li><strong>Geographic Split:</strong> Majority of advertising revenue in North America; making great strides internationally</li>
+    <li><strong>Product Expansion:</strong> Expanding from consumer websites to video opportunities (Freevee, Twitch, Amazon Music ad-supported tier, Thursday Night Football streaming TV ads)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>AWS Infrastructure Footprint</h3>
+  <ul>
+    <li><strong>Availability Zones:</strong> 84 across 26 geographic regions</li>
+    <li><strong>Planned Expansion:</strong> 24 more availability zones across 8 new regions (Australia, Canada, India, Israel, New Zealand, Spain, Switzerland, U.A.E.)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Rivian Electric Delivery Vehicles</h3>
+  <ul>
+    <li><strong>Status:</strong> Started customer deliveries in the U.S.</li>
+    <li><strong>Near-Term Target:</strong> Thousands of EDVs in 100+ cities by end of 2022</li>
+    <li><strong>Long-Term Target:</strong> 100,000 vehicles across the U.S. by 2030</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Stock Split</h3>
+  <ul>
+    <li><strong>20-for-1 stock split:</strong> Effective May 27, 2022; all share and per share data retroactively adjusted</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Net Sales</h3>
+  <ul>
+    <li><strong>Q3 2022 Net Sales Guidance:</strong> Not explicitly stated as a dollar range in transcript (provided in press release)</li>
+    <li><strong>FX Impact (unfavorable):</strong> ~390 bps estimated unfavorable impact from YoY change in foreign exchange rates</li>
+    <li><strong>Prime Day Timing:</strong> July 12-13, 2022 Prime Day sales event incorporated into Q3 guidance (Prime Day was in Q2 in 2021, contributing ~400 bps to Q2 2021 YoY revenue growth)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Operating Income</h3>
+  <ul>
+    <li><strong>Q3 2022 Operating Income Guidance:</strong> $0 to $3.5B (vs. Q2 2022 actual of $3.3B)</li>
+    <li><strong>FX Impact on Operating Income:</strong> Not significant</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Strategic & Operational Commentary</h3>
+</div>
+<div class="content-section">
+  <h3>Fulfillment Network Optimization</h3>
+  <ul>
+    <li>Slowed 2022 and 2023 operations expansion plans to better align with expected customer demand</li>
+    <li>QoQ improvements in delivery speed and inventory in-stock levels</li>
+    <li>Moved quickly to adjust staffing levels and improve efficiency of significantly expanded operations network</li>
+    <li>Expect opportunity to further improve in second half of 2022</li>
+    <li>Fixed cost leverage expected to improve in H2 as company grows into capacity</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Consumer Demand & Macro Environment</h3>
+  <ul>
+    <li>Strong growth in sales through Q2; no direct macro weakness hitting businesses</li>
+    <li>Not seeing discounting pressures that other retailers are experiencing</li>
+    <li>Macroeconomic issues principally on inflation side (cost, not demand)</li>
+    <li>Management cognizant things could change quickly; conservatism built into forward guidance</li>
+    <li>Prime Day (July 12-13) described as very strong for sellers</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>AWS Strategy & Macro Resilience</h3>
+  <ul>
+    <li>Believe still in early stages of enterprise and public sector adoption of cloud</li>
+    <li>Historical precedent from 2008 downturn: cloud computing shows its value when companies face choice of building own data center vs. using cloud</li>
+    <li>Prepared to help customers optimize costs in potential economic slowdown (as in 2020)</li>
+    <li>Continuing to sign new customers in new industries including government agencies</li>
+    <li>Investment in sales force and sales support showing benefits</li>
+    <li>New customer agreements: Delta Air Lines, Riot Games, British Telecom, Jefferies Investment Bank</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>International Segment Strategy</h3>
+  <ul>
+    <li>Emerging markets (India, Brazil, Middle East) require healthy investment for expansion</li>
+    <li>Established markets (U.K., Germany, Japan) showing improved profitability over time</li>
+    <li>Investments in: Prime Video (local language content), payment methods, third-party transportation services, Internet/telecom infrastructure</li>
+    <li>Strong competition across emerging markets</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Seller Fees & Inflation Pass-Through</h3>
+  <ul>
+    <li>FBA fuel surcharge added in May to compensate for inflationary pressures</li>
+    <li>Neither Prime fee increase nor seller fee increase came close to covering Amazon's costs</li>
+    <li>Not passing through inflationary costs at 100% to external groups</li>
+    <li>Seller business remains strong; 57% unit mix is highest ever</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Buy with Prime Program</h3>
+  <ul>
+    <li>Currently invitation-only for U.S.-based merchants using FBA</li>
+    <li>Allows Prime members to shop directly from merchant online stores with Amazon-like experience (fast free delivery, seamless checkout, free returns)</li>
+    <li>Will expand to more merchants throughout 2022</li>
+    <li>Opportunity to support merchants who may or may not be FBA sellers</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Prime Video Content Pipeline (Q3 2022)</h3>
+  <ul>
+    <li>The Lord of the Rings: The Rings of Power -- premiering September 2</li>
+    <li>NFL Thursday Night Football -- exclusive access starting September 15</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Key Analyst Q&A Data Points</h3>
+  <ul>
+    <li><strong>Q2-to-Q3 EBIT bridge (Brian Nowak, Morgan Stanley):</strong> $1.5B ops improvement offset by AWS depreciation growth, AWS headcount additions (product engineers, sales, customer support), and energy cost increases; new information this quarter is pressure from electricity/natural gas prices in data centers; wage inflation concentrated in SBC (150 bps QoQ step-up as % of revenue)</li>
+    <li><strong>CapEx pre-spend dynamics (Brian Nowak, Morgan Stanley):</strong> ~40% of 2022 capital spend supports warehouses/transportation capacity effective in 2023+; adjustments to time horizon have less current-year impact than expected; capital coming down in fulfillment/transportation areas</li>
+    <li><strong>AWS margins sequential decline (Doug Anmuth, JPMorgan):</strong> Q1 ~35% to Q2 ~29%; margin rate will fluctuate based on new investment (sales force, new regions, infrastructure) offset by infrastructure efficiency gains; longer customer commitments with credits to help cloud conversion create margin variability; lot of strength in business currently</li>
+    <li><strong>AWS booking trends / macro (Doug Anmuth, JPMorgan):</strong> Drawing lessons from 2008 downturn where cloud showed value vs. building own data centers; prepared to help customers optimize costs as in 2020; continuing to sign new customers in new industries/government</li>
+    <li><strong>AWS backlog (Dave Fildes):</strong> Up 65% YoY, ~13% QoQ; weighted average remaining life ~3.9 years (growing); longer commitments are a focus</li>
+    <li><strong>Advertising geographic split (Eric Sheridan, Goldman Sachs):</strong> Majority in North America; making great strides in international; expanding product array from consumer websites to video (Twitch, Freevee, Amazon Music ad-supported tier, Thursday Night Football, streaming TV ads)</li>
+    <li><strong>Advertising macro resilience (Brian Olsavsky):</strong> Still seeing strong growth; highly efficient advertising at point of purchase; highly measurable; Amazon products compete well when companies look to optimize ad spend</li>
+    <li><strong>3P seller mix dynamics (Jason Helfstein, Oppenheimer):</strong> 57% is highest ever; Amazon "relatively indifferent" between 1P and 3P; 3P helps with selection; FBA makes 3P Prime-eligible; sellers are also large advertising customers</li>
+    <li><strong>International FX impact on operating income (Jason Helfstein, Oppenheimer):</strong> $231M unfavorable FX impact included in $1.7B International segment loss</li>
+    <li><strong>International profitability trajectory (Dave Fildes):</strong> Established markets (U.K., Germany, Japan) improving profitability over time; emerging markets (India, Brazil, Middle East) require continued investment; investments in local language video content, payment methods, transportation, telecom infrastructure</li>
+    <li><strong>Prime fee increase impact (Youssef Squali, Truist):</strong> Results above expectations positively; membership and retention still strong; in-stock never higher; delivery speed increasing; neither Prime fee nor seller fee increases came close to covering inflationary costs</li>
+    <li><strong>Buy with Prime roadmap (Youssef Squali, Truist):</strong> Currently invitation-only for FBA merchants; will expand throughout 2022; opportunity to support merchants beyond FBA with delivery and checkout tools</li>
+    <li><strong>Headcount trajectory (Stephen Ju, Credit Suisse):</strong> QoQ decline by design; Q1 added 14,000 workers (vs. Q1 2021 reduced by 27,000); Omicron overstaffing resolved by end of April / early May through hiring adjustments and natural attrition; still up 188,000 YoY; nearly double pre-pandemic levels; workforce now stabilized; good hiring rates; expect adjustments for holiday demand</li>
+    <li><strong>SBC below guide (Stephen Ju, Credit Suisse):</strong> Came in at ~$5B+ vs. ~$6B guided; primary driver was fewer employee stock awards vesting in Q2 than expected; Q1-to-Q2 step-up pattern is normal (annual RSU grants) but magnitude larger than usual due to wage inflation for technical employees</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>YoY Comp Context</h3>
+  <ul>
+    <li><strong>Pandemic CAGR:</strong> 25% compound annual growth since start of pandemic (higher than pre-pandemic)</li>
+    <li><strong>Pandemic Lapping:</strong> Elevated growth period (May 2020-May 2021) now fully lapped as of May 2022; growth rates going forward "will no longer require this historical explanation"</li>
+    <li><strong>Q2 2021 Prime Day:</strong> Contributed ~400 bps to Q2 2021 YoY revenue growth; Q2 2022 had no Prime Day (moved to July 12-13 in Q3)</li>
+    <li><strong>Q2 2021 Context:</strong> Vaccines became more available (especially in U.S.); more normal shopping patterns began emerging</li>
+    <li><strong>H2 2022 Fixed Cost Comp:</strong> Challenging YoY comp vs. high holiday-level utilization in H1 2021 expected to have ended in Q2 2022</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 2022 Actuals (Reported)</h3>
+</div>
+
+<div class="prior-ref" id="priorRef">
+  <div class="prior-ref-header" onclick="var b=document.getElementById('priorBody');b.classList.toggle('open');this.querySelector('.arrow').innerHTML=b.classList.contains('open')?'&#9650;':'&#9660;';">
+    Prior Quarter Reference: Q1 2022
+    <span class="arrow">&#9660;</span>
+  </div>
+  <div class="prior-ref-body" id="priorBody">
+    <div class="metric-grid">
+      <div class="prior-mini"><div class="pm-label">Operating Margin</div><div class="pm-value">3.2% (vs. 8.2% in Q1 2021)</div></div>
+    </div>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q1_2022.html" style="color:var(--blue);">View full Q1 2022 detail &rarr;</a></p>
+  </div>
+</div>
+
+<div class="footer-nav">
+  <a href="Q1_2022.html">&larr; Q1 2022</a>
+  <a href="../comparison.html">Back to Overview</a>
+  <a href="Q3_2022.html">Q3 2022 &rarr;</a>
+</div>
+
+</body>
+</html>

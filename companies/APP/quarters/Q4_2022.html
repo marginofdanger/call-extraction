@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APP Q4 2022 Earnings Call Detail</title>
+<style>
+:root {
+    --company-primary: #FF6B35;
+    --company-dark: #1a1a2e;
+    --company-accent: #1E3A5F;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 40px 40px 32px;
+    margin: 0 -24px 0;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .header .meta {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    font-weight: 300;
+  }
+  .header .meta span { margin-right: 24px; }
+
+  .nav-bar {
+    background: var(--company-accent);
+    margin: 0 -24px 32px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    transition: all 0.15s;
+  }
+  .nav-bar a:hover { background: rgba(255,255,255,0.2); }
+  .nav-bar a.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .nav-center {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-center a.qbtn {
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+  }
+  .nav-center a.qbtn.current {
+    background: var(--company-primary);
+    border-color: var(--company-primary);
+  }
+  .nav-center a.qbtn:hover { background: rgba(255,255,255,0.2); }
+  .nav-back {
+    background: rgba(255,255,255,0.15) !important;
+    border-color: rgba(255,255,255,0.35) !important;
+  }
+
+  .metrics-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .metric {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+  .metric-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .metric-value {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+  .metric-delta {
+    font-size: 0.72rem;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+  .delta-up { color: var(--green); }
+  .delta-down { color: var(--red); }
+  .delta-flat { color: var(--text-muted); }
+
+  .changes-box {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 5px solid var(--amber);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .changes-box h3 {
+    font-size: 1rem;
+    color: var(--company-dark);
+    margin-bottom: 10px;
+  }
+  .changes-box ul { list-style: none; padding: 0; }
+  .changes-box li {
+    padding: 5px 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .change-tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .ct-raised { background: #d5f5e3; color: #1e8449; }
+  .ct-lowered { background: #fadbd8; color: #c0392b; }
+  .ct-changed { background: #d6eaf8; color: #2471a3; }
+  .ct-new { background: #e8daef; color: #6c3483; }
+  .ct-maintained { background: #fdebd0; color: #b9770e; }
+
+  .content-section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .content-section h3 {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .content-section ul {
+    padding: 14px 18px 14px 36px;
+    margin: 0;
+  }
+  .content-section li {
+    padding: 3px 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .content-section li strong { color: var(--company-dark); }
+
+  .prior-ref {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 40px;
+    overflow: hidden;
+  }
+  .prior-ref-header {
+    background: var(--light-bg);
+    padding: 12px 18px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--company-dark);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .prior-ref-header:hover { background: #eef2f7; }
+  .prior-ref-body { padding: 18px; display: none; }
+  .prior-ref-body.open { display: block; }
+  .prior-ref-body .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .prior-mini {
+    background: var(--light-bg);
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .prior-mini .pm-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .prior-mini .pm-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border);
+  }
+  .footer-nav a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .footer-nav a:hover { text-decoration: underline; }
+
+  /* Comparison page styles */
+  .toc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .toc a {
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 4px 0;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  .comp-section {
+    margin-bottom: 40px;
+  }
+  .comp-section h2 {
+    font-size: 1.2rem;
+    color: var(--company-dark);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--company-primary);
+  }
+
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+  }
+  .comp-table th {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .comp-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .comp-table tr:nth-child(even) { background: var(--light-bg); }
+  .comp-table tr:hover { background: #e8f4fd; }
+
+  @media (max-width: 768px) {
+    .header h1 { font-size: 1.5rem; }
+    .metrics-card { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .nav-center { display: none; }
+    body { padding: 0 16px 60px; }
+    .header { margin: 0 -16px 0; padding: 28px 24px 20px; }
+    .nav-bar { margin: 0 -16px 24px; }
+    .toc { grid-template-columns: 1fr; }
+    .comp-table { font-size: 0.78rem; }
+    .comp-table th, .comp-table td { padding: 6px 8px; }
+  }
+
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+  .content-section .md-table th {
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .content-section .md-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-section .md-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+  .content-section .md-table tr:hover { background: #e8f4fd; }
+
+  @media print {
+    .nav-bar { display: none; }
+    .header { background: #333; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>APP Q4 2022 Earnings Call</h1>
+  <div class="meta">
+    <span>Call Date: February 8, 2023</span>
+    <span>Reporting: Q4 2022 (Full Year 2022)</span>
+  </div>
+</div>
+<div class="nav-bar">
+  <a href="Q3_2022.html">&larr; Q3 2022</a>
+  <div class="nav-center">
+    <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>
+    <a href="Q4_2025.html" class="qbtn">4Q25</a>
+    <a href="Q3_2025.html" class="qbtn">3Q25</a>
+    <a href="Q2_2025.html" class="qbtn">2Q25</a>
+    <a href="Q1_2025.html" class="qbtn">1Q25</a>
+    <a href="Q4_2024.html" class="qbtn">4Q24</a>
+    <a href="Q3_2024.html" class="qbtn">3Q24</a>
+    <a href="Q2_2024.html" class="qbtn">2Q24</a>
+    <a href="Q1_2024.html" class="qbtn">1Q24</a>
+    <a href="Q4_2023.html" class="qbtn">4Q23</a>
+    <a href="Q3_2023.html" class="qbtn">3Q23</a>
+    <a href="Q2_2023.html" class="qbtn">2Q23</a>
+    <a href="Q1_2023.html" class="qbtn">1Q23</a>
+    <a href="Q4_2022.html" class="qbtn current">4Q22</a>
+    <a href="Q3_2022.html" class="qbtn">3Q22</a>
+    <a href="Q2_2022.html" class="qbtn">2Q22</a>
+    <a href="Q1_2022.html" class="qbtn">1Q22</a>
+  </div>
+  <a href="Q1_2023.html">Q1 2023 &rarr;</a>
+</div>
+
+<div class="changes-box">
+  <h3>What Changed vs Q3 2022</h3>
+  <ul>
+    <li><span class="change-tag ct-changed">Changed</span> Software Platform Revenue: $306.2M (+24% YoY vs. $246.6M in Q4 2021; flat QoQ vs. $306.6M in Q3 2022) (prior: ~$350M+ (implied from "over $1 billion" FY and Q3 being the run rate quarter; grew 59% YoY))</li>
+  </ul>
+</div>
+
+<div class="metrics-card">
+  <div class="metric" style="grid-column: 1 / -1; background: linear-gradient(135deg, var(--company-dark), var(--company-accent)); color: #fff; border: none; padding: 8px 14px;">
+    <div class="metric-label" style="color: rgba(255,255,255,0.7);">Guidance For</div>
+    <div class="metric-value" style="color: #fff; font-size: 1rem;">Q1 2023</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Total Revenue</div>
+    <div class="metric-value">$685M to $705M</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Software Platform Revenue</div>
+    <div class="metric-value">$306.2M</div>
+    <div class="metric-delta delta-flat">Prior: ~$350M+</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Apps Revenue</div>
+    <div class="metric-value">$396.1M</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Adjusted EBITDA</div>
+    <div class="metric-value">$250M to $270M</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Adjusted EBITDA Margin</div>
+    <div class="metric-value">36% to 38%</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Software Platform Margin</div>
+    <div class="metric-value">61%</div>
+    <div class="metric-delta delta-flat">Prior: 62%</div>
+  </div>
+</div>
+
+<!-- Full Guidance Content -->
+<div class="content-section">
+  <h3>Quarterly Guidance (Q1 2023)</h3>
+</div>
+<div class="content-section">
+  <h3>Commentary on Q1 2023 Outlook</h3>
+  <ul>
+    <li>Herald Chen: "For the first quarter of this coming year, we're guiding to essentially the quarter being flat to the fourth quarter in total revenue as well as total EBITDA"</li>
+    <li>Shareholder letter: "For the first quarter of 2023, we see the mobile ad market remaining relatively stable. Developers continue to closely monitor their overall profitability and advertisers appear to be maintaining overall ad budgets and return on ad spend goals"</li>
+    <li>No formal full-year 2023 guidance provided (consistent with policy change announced in Q3 2022 to only provide one-quarter-ahead guidance)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Full Year 2023 Guidance</h3>
+  <ul>
+    <li><strong>No formal FY 2023 guidance issued</strong> (per policy change from Q3 2022 call: forward quarter guidance only)</li>
+    <li>Management declined to say whether 2023 will be a growth year</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Long-Term Targets and Strategic Vision</h3>
+  <ul>
+    <li><strong>Apps Segment Long-Run EBITDA Margin Target:</strong> Mid-teens% (Herald Chen: "longer run rate is probably a mid-teens type of margin for that business")</li>
+    <li><strong>Apps Revenue Near-Term Trajectory:</strong> Revenue expected to decline further in near term before reaching trough in H1 2023 (Herald Chen: "we do think in the first half of this coming year...we'll start to [reach] the trough of revenue")</li>
+    <li><strong>Apps Margin Range:</strong> Currently very high teens (19%); could fall back to low teens if investing in new game launches; mid-teens is steady state</li>
+    <li><strong>M&A Bar Elevated:</strong> "The bar for our M&A program has gone up...they would need to be highly synergistic, strategic and a great valuation"</li>
+    <li><strong>Capital Allocation:</strong> Over $1B cash on balance sheet; management still views stock as "a great place to put money to work" but being patient; $750M buyback authorization with over $400M remaining</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Consolidated Results</h3>
+  <ul>
+    <li><strong>Total Revenue:</strong> $702.3M (-11% YoY vs. $793.5M in Q4 2021; slightly above the top end of Q3-provided guidance range of $685-$705M)</li>
+    <li><strong>Net Loss:</strong> $(79.5)M; <strong>Net Margin:</strong> (11)% (vs. net income of $31.4M / +4% margin in Q4 2021)</li>
+    <li><strong>Adjusted EBITDA:</strong> $259.6M (+17% YoY vs. $221.3M in Q4 2021; near the high end of Q3-provided guidance range of $250-$270M)</li>
+    <li><strong>Adjusted EBITDA Margin:</strong> 37.0% (vs. 27.9% in Q4 2021; vs. 36.1% in Q3 2022)</li>
+    <li><strong>EPS (Basic):</strong> $(0.21)</li>
+    <li><strong>EPS (Diluted):</strong> $(0.21)</li>
+    <li><strong>Operating Loss:</strong> $(22.4)M</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Software Platform Segment</h3>
+  <ul>
+    <li><strong>Software Platform Revenue:</strong> $306.2M (+24% YoY vs. $246.6M in Q4 2021; flat QoQ vs. $306.6M in Q3 2022)</li>
+    <li><strong>Software Platform % of Total Revenue:</strong> 44% (vs. 31% in Q4 2021)</li>
+    <li><strong>Software Platform Adjusted EBITDA:</strong> $185.9M (+6% YoY vs. $175.4M in Q4 2021)</li>
+    <li><strong>Software Platform Adjusted EBITDA Margin:</strong> 61% (vs. 71% in Q4 2021; vs. 62% in Q3 2022)</li>
+    <li><strong>TSTV (Total Software Transaction Value):</strong> $331.5M (vs. $339.7M in Q4 2021) — last quarter this metric will be reported</li>
+    <li><strong>Fee Collected from AppLovin Apps (within TSTV):</strong> $25.3M (vs. $93.1M in Q4 2021)</li>
+    <li><strong>SPECs (Software Platform Enterprise Clients):</strong> 566 (vs. 538 in Q3 2022; vs. 380 in Q4 2021) — last quarter this metric will be reported</li>
+    <li><strong>Revenue per SPEC (trailing 12 months):</strong> $1,907K (vs. $1,903K in Q3 2022; vs. $1,634K in Q4 2021) — last quarter this metric will be reported</li>
+    <li><strong>Net Dollar-Based Revenue Retention:</strong> Over 160% (from Q&A, Herald Chen: "net dollar retention went up over 160%")</li>
+    <li><strong>AppDiscovery + ALX Revenue per Install (FY 2022 vs. FY 2021):</strong> +46% YoY</li>
+    <li><strong>AppDiscovery + ALX Installs (FY 2022 vs. FY 2021):</strong> +24% YoY</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Apps Segment</h3>
+  <ul>
+    <li><strong>Apps Revenue:</strong> $396.1M (-28% YoY vs. $546.9M in Q4 2021; -3% QoQ vs. $406.5M in Q3 2022)</li>
+    <li><strong>Apps Adjusted EBITDA:</strong> $73.7M (+61% YoY vs. $45.9M in Q4 2021)</li>
+    <li><strong>Apps Adjusted EBITDA Margin:</strong> 19% (vs. 8% in Q4 2021; vs. 17% in Q3 2022)</li>
+    <li><strong>Monthly Active Payers (MAPs):</strong> 1.9M (vs. 2.7M in Q4 2021)</li>
+    <li><strong>Average Revenue per Monthly Active Payer (ARPMAP):</strong> $46 (vs. $44 in Q4 2021)</li>
+    <li><strong>Studios Remaining:</strong> 11 studios plus several publishing relationships (optimization nearing completion)</li>
+    <li><strong>Revenue Mix Rename:</strong> "Business" revenue now called "In-App Advertising" (IAA); "Consumer" revenue now called "In-App Purchases" (IAP)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Special Charges</h3>
+  <ul>
+    <li><strong>Impairment and Loss on Dispositions:</strong> $100.2M in Q4 2022 ($127.9M for FY 2022, including ~$27.7M in Q3)</li>
+    <li><strong>Net Loss Charge for Divestiture/Closure of Assets:</strong> $128M total (including $100M in Q4) — related to apps portfolio optimization</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Cash Flow and Balance Sheet</h3>
+  <ul>
+    <li><strong>Cash and Cash Equivalents (End of Period):</strong> $1.08B (vs. $1.52B at end of 2021)</li>
+    <li><strong>Net Cash from Operating Activities (Q4 2022):</strong> $138.0M</li>
+    <li><strong>Free Cash Flow (Q4 2022):</strong> $131.9M (defined as operating cash flow less CapEx and finance lease payments)</li>
+    <li><strong>CapEx (Q4 2022):</strong> $41K</li>
+    <li><strong>Finance Lease Payments (Q4 2022):</strong> $6.0M</li>
+    <li><strong>Total Debt (Long-Term):</strong> $3.18B</li>
+    <li><strong>Total Liabilities:</strong> $3.95B</li>
+    <li><strong>Stockholders' Equity:</strong> $1.90B</li>
+    <li><strong>Shares Outstanding:</strong> 373.9M</li>
+    <li><strong>Share Repurchases (FY 2022):</strong> Over $340M (~$338.9M) against $750M authorized buyback</li>
+    <li><strong>Share Repurchases (Q4 2022):</strong> $0 — no buyback activity in Q4</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Free Cash Flow (8-Quarter History, as introduced this quarter)</h3>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Quarter</th><th>Operating CF</th><th>CapEx</th><th>Finance Leases</th><th>Free Cash Flow</th></tr></thead><tbody><tr><td>Q1 2021</td><td>$61.8M</td><td>$(0.1)M</td><td>$(0.8)M</td><td>$60.9M</td></tr><tr><td>Q2 2021</td><td>$90.5M</td><td>$(0.5)M</td><td>$(3.8)M</td><td>$86.1M</td></tr><tr><td>Q3 2021</td><td>$124.6M</td><td>$(0.3)M</td><td>$(5.1)M</td><td>$119.2M</td></tr><tr><td>Q4 2021</td><td>$85.0M</td><td>$(0.4)M</td><td>$(5.6)M</td><td>$79.0M</td></tr><tr><td>Q1 2022</td><td>$(31.7)M</td><td>$(0.3)M</td><td>$(6.2)M</td><td>$(38.2)M</td></tr><tr><td>Q2 2022</td><td>$106.8M</td><td>$(0.1)M</td><td>$(6.2)M</td><td>$100.5M</td></tr><tr><td>Q3 2022</td><td>$174.5M</td><td>$(0.2)M</td><td>$(5.8)M</td><td>$168.5M</td></tr><tr><td>Q4 2022</td><td>$138.0M</td><td>$(0.04)M</td><td>$(6.0)M</td><td>$131.9M</td></tr></tbody></table></div>
+</div>
+<div class="content-section">
+  <h3>Consolidated</h3>
+  <ul>
+    <li><strong>Total Revenue (FY 2022):</strong> $2,817.1M (~$2.8B; +0.9% YoY vs. $2,793.1M in FY 2021)</li>
+    <li><strong>Net Loss (FY 2022):</strong> $(192.7)M; <strong>Net Margin:</strong> (7)% (vs. net income of $35.3M / +1.3% margin in FY 2021)</li>
+    <li><strong>Adjusted EBITDA (FY 2022):</strong> $1,063.2M (~$1.06B; +46% YoY vs. $726.8M in FY 2021)</li>
+    <li><strong>Adjusted EBITDA Margin (FY 2022):</strong> 37.7% (vs. 26.0% in FY 2021)</li>
+    <li><strong>Operating Loss (FY 2022):</strong> $(47.8)M (vs. operating income of $150.0M in FY 2021)</li>
+    <li><strong>EPS Basic (FY 2022):</strong> $(0.52)</li>
+    <li><strong>EPS Diluted (FY 2022):</strong> $(0.52)</li>
+    <li><strong>Net Cash from Operating Activities (FY 2022):</strong> $387.5M</li>
+    <li><strong>Free Cash Flow (FY 2022):</strong> $362.8M (sum of quarterly FCF)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Consolidated</h3>
+  <ul>
+    <li><strong>Total Revenue:</strong> $685M to $705M (essentially flat to Q4 2022's $702M)</li>
+    <li><strong>Adjusted EBITDA:</strong> $250M to $270M (essentially flat to Q4 2022's $260M)</li>
+    <li><strong>Adjusted EBITDA Margin:</strong> 36% to 38%</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>AXON 2.0 / Core Technology Upgrade</h3>
+  <ul>
+    <li><strong>AXON 2 Development:</strong> Working on next-generation upgrade to core AI advertising engine, leveraging recent advancements in AI technologies</li>
+    <li><strong>Expected Timeline:</strong> "We do expect it to go full scale in '23" (Adam Foroughi)</li>
+    <li><strong>Deployment Model:</strong> Not a phased rollout to customers; "effectively taking the old engine and upgrading it. So it will impact the whole business at once when it does go to full scale"</li>
+    <li><strong>Expected Impact:</strong> "We believe this new platform and upgrade to our core technology will make an immense impact on our business and for our business partners"</li>
+    <li><strong>Growth Mechanism:</strong> More efficiency in the system; advertisers can hit their goals at larger scale; expected to be a "step function" improvement that continues to build over time</li>
+    <li><strong>AXON 1 Track Record:</strong> Released ~3 years ago; business grew ~10x from AXON 1 to present</li>
+    <li><strong>Investment Magnitude:</strong> Built into existing P&L; R&D team is adding people "in the tens, not hundreds or thousands"; lean engineering culture</li>
+    <li><strong>Margin Uplift Potential:</strong> Herald Chen: "If we can lift...our biggest business, in particular on the AppDiscovery side with an AXON 2.0 implementation...those are very high-margin dollars to flow through the bottom line, and that would be a pretty meaningful increase in EBITDA"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Connected TV (CTV) / Wurl Strategy</h3>
+  <ul>
+    <li><strong>Strategic Vision:</strong> Extending performance marketing capabilities from mobile to CTV; "This category of advertising is bigger than the one we operate in today, and it's much faster growing"</li>
+    <li><strong>Revenue/Numbers:</strong> "This is still really early days...we're not ready to talk numbers at this point"</li>
+    <li><strong>Full Stack Approach:</strong> AppLovin DSP + Wurl SSP = full-stack CTV offering (same model as mobile)</li>
+    <li><strong>Advertiser Diversification:</strong> CTV expected to open up non-gaming advertiser categories; Wurl works with high-profile streaming businesses</li>
+    <li><strong>Adjust Integration:</strong> Majority of Adjust's 4,000+ customers are non-gaming; these customers are "really excited about our Connected TV offering"</li>
+    <li><strong>Attribution Asset:</strong> Invested in an attribution company (one of the leaders in CTV attribution)</li>
+    <li><strong>Timeline:</strong> Longer-term play; expected to "become a big part of our Software Platform in the coming years"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Apps Segment Strategic Review and Portfolio Optimization</h3>
+  <ul>
+    <li><strong>Optimization Status:</strong> "Nearing completion" — spent last 6 months on headcount reductions, reformatting earn-outs, sale/spin/closure of underperforming assets</li>
+    <li><strong>Remaining Portfolio:</strong> 11 studios plus several publishing relationships</li>
+    <li><strong>Studios Assessment:</strong> All 11 studios have opportunities for growth; many have new games planning to launch in 2023</li>
+    <li><strong>New Game Development:</strong> Bar has gone way up; developers taking longer-term bets, more innovative concepts; success rate expected lower (1 in 4 or 5 vs. 1 in 2); hybrid IAP + IAA monetization model now a requirement</li>
+    <li><strong>Ownership Approach:</strong> "We're going to manage these things as if we own them forever. And if people do show up at the right price, we'll look to optimize the portfolio"</li>
+    <li><strong>Management Distraction Removed:</strong> Adam Foroughi: "We've removed the distraction of weaker-performing studios"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>KPI Reporting Changes (Effective Q1 2023)</h3>
+  <ul>
+    <li><strong>Metrics Being Discontinued:</strong> 1. Total Software Transaction Value (TSTV) 2. Software Platform Enterprise Clients (SPECs) 3. Revenue per Software Platform Enterprise Client (Revenue per SPEC)</li>
+    <li><strong>Rationale:</strong> Revenue mix shifting with additions of Adjust, Wurl, Array, ALX; structural differences in revenue models and client nature make aggregate metrics non-comparable and non-predictive</li>
+    <li><strong>Continuing Metrics:</strong> - Revenue per install and number of installs for AppDiscovery + ALX - Segment revenue and Adjusted EBITDA by segment - Free Cash Flow (newly introduced this quarter)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Carrier / OEM Monetization (Array)</h3>
+  <ul>
+    <li><strong>Product:</strong> Innovative products to help carriers and OEMs monetize their users</li>
+    <li><strong>Market Context:</strong> Handset device sales slowed as mobile market saturated; carriers/OEMs need better products to monetize audience</li>
+    <li><strong>Investment:</strong> Incremental headcount ("10s and 20s, not hundreds") allocated to Array initiative</li>
+    <li><strong>Revenue Contribution:</strong> Not yet material; early stage</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Macro, Industry, and Competitive Commentary</h3>
+</div>
+<div class="content-section">
+  <h3>Advertising Market Environment</h3>
+  <ul>
+    <li><strong>Stability Theme:</strong> "Soft but stable" — no further deterioration expected; performance marketing advertisers have reset expectations to current interest rate environment</li>
+    <li><strong>Performance Marketing Dynamics:</strong> Advertisers operate on LTV-to-CAC model; got conservative as cost of capital rose; values reset "a couple of quarters ago" to current interest rate levels</li>
+    <li><strong>IDFA Impact (Ongoing):</strong> Category was growing almost double digits consistently for a decade before IDFA change impaired growth; all marketing companies working on improving algorithms for privacy era</li>
+    <li><strong>Brand Dollar Softness:</strong> CPMs from brands have decayed as economy worsened; reduced density in ad auction (more impact on monetization partners than on AppLovin directly)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>MAX Platform and Advertiser Density</h3>
+  <ul>
+    <li><strong>MAX Market Share:</strong> ~2/3 of top downloaded apps in both app stores monetize using MAX</li>
+    <li><strong>Advertiser Density:</strong> "No single category makes up a huge part of our business"; super-dense auction with tons of advertisers across many genres provides resilience</li>
+    <li><strong>Hyper-Casual Impact:</strong> No meaningful exposure; stability in Q4 numbers and Q1 guidance confirm limited impact from hyper-casual publisher retrenchment</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Google Partnership and Policies</h3>
+  <ul>
+    <li><strong>Google Relationship:</strong> Large cloud customer; Google launched bidding solution on AppLovin's platform as one of the first large-scale external implementations</li>
+    <li><strong>Google Better Ads Policy:</strong> "We actually don't expect any effects from the policy" — highest quality, at-scale publishers don't engage in disruptive ad practices</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>In-App Purchase Market</h3>
+  <ul>
+    <li><strong>IAP Market Dynamics:</strong> IDFA change handicapped whale-hunting model; developers adapting to more casual games with hybrid monetization</li>
+    <li><strong>Chinese Developer Impact:</strong> Top grossing IAP games often from Chinese developers who were inefficient under zero-COVID; that constraint has reversed</li>
+    <li><strong>Hybrid Monetization Trend:</strong> Now a requirement — 95% of users were previously unmonetized; must monetize broad audience to subsidize cost of acquiring the 5% high-value users; good for MAX and AppDiscovery (more inventory)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Capital Structure and Shareholder Returns</h3>
+  <ul>
+    <li><strong>Cash Position (End of FY 2022):</strong> $1.08B</li>
+    <li><strong>Total Debt:</strong> $3.18B (long-term)</li>
+    <li><strong>Share Buyback Authorization:</strong> $750M total; ~$340M used in FY 2022; >$400M remaining</li>
+    <li><strong>Q4 2022 Buyback Activity:</strong> None — "continuing to assess our capital allocation policy as well as increase the amount of cash"</li>
+    <li><strong>Capital Allocation Posture:</strong> Herald Chen: "Nothing magical about $1 billion...we're bullish on our business...we need to be patient"; cash provides optionality for investing in projects, M&A (high bar), and share repurchases</li>
+    <li><strong>Interest Expense (Q4 2022):</strong> $54.7M (vs. $30.4M in Q4 2021; rising due to variable rate debt and higher interest rates)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>S&P Global Market Intelligence Consensus Estimates (Pre-Call)</h3>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>FQ3 2022 Consensus</th><th>FQ3 2022 Actual</th><th>Surprise</th><th>FQ4 2022 Consensus</th><th>FY 2022 Consensus</th><th>FY 2023 Consensus</th></tr></thead><tbody><tr><td>EPS (GAAP)</td><td>$0.07</td><td>$0.06</td><td>(14.29%)</td><td>$0.05</td><td>$(0.26)</td><td>$0.25</td></tr><tr><td>Revenue (mm)</td><td>$728.20</td><td>$713.10</td><td>(2.07%)</td><td>$690.47</td><td>$2,815.22</td><td>$2,790.79</td></tr></tbody></table></div>
+</div>
+<div class="content-section">
+  <h3>Key Sequential Comparisons (Q3 2022 to Q4 2022)</h3>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Q3 2022</th><th>Q4 2022</th><th>Change</th></tr></thead><tbody><tr><td>Total Revenue</td><td>$713.1M</td><td>$702.3M</td><td>-1.5% QoQ</td></tr><tr><td>Software Platform Revenue</td><td>$306.6M</td><td>$306.2M</td><td>Flat QoQ</td></tr><tr><td>Apps Revenue</td><td>$406.5M</td><td>$396.1M</td><td>-2.6% QoQ</td></tr><tr><td>Consolidated Adjusted EBITDA</td><td>$257.6M</td><td>$259.6M</td><td>+0.8% QoQ</td></tr><tr><td>Consolidated Adjusted EBITDA Margin</td><td>36.1%</td><td>37.0%</td><td>+90bps QoQ</td></tr><tr><td>Software Platform EBITDA Margin</td><td>62%</td><td>61%</td><td>-100bps QoQ</td></tr><tr><td>Apps EBITDA Margin</td><td>17%</td><td>19%</td><td>+200bps QoQ</td></tr><tr><td>SPECs</td><td>538</td><td>566</td><td>+28 QoQ</td></tr><tr><td>Revenue per SPEC</td><td>$1,903K</td><td>$1,907K</td><td>Flat QoQ</td></tr><tr><td>Free Cash Flow</td><td>$168.5M</td><td>$131.9M</td><td>-21.7% QoQ</td></tr></tbody></table></div>
+</div>
+<div class="content-section">
+  <h3>Key Year-over-Year Comparisons (Q4 2021 to Q4 2022)</h3>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Q4 2021</th><th>Q4 2022</th><th>YoY Change</th></tr></thead><tbody><tr><td>Total Revenue</td><td>$793.5M</td><td>$702.3M</td><td>-11%</td></tr><tr><td>Software Platform Revenue</td><td>$246.6M</td><td>$306.2M</td><td>+24%</td></tr><tr><td>Apps Revenue</td><td>$546.9M</td><td>$396.1M</td><td>-28%</td></tr><tr><td>Consolidated Adjusted EBITDA</td><td>$221.3M</td><td>$259.6M</td><td>+17%</td></tr><tr><td>Consolidated Adjusted EBITDA Margin</td><td>27.9%</td><td>37.0%</td><td>+910bps</td></tr><tr><td>Software Platform EBITDA</td><td>$175.4M</td><td>$185.9M</td><td>+6%</td></tr><tr><td>Software Platform EBITDA Margin</td><td>71%</td><td>61%</td><td>-1,000bps</td></tr><tr><td>Apps EBITDA</td><td>$45.9M</td><td>$73.7M</td><td>+61%</td></tr><tr><td>Apps EBITDA Margin</td><td>8%</td><td>19%</td><td>+1,100bps</td></tr><tr><td>SPECs</td><td>380</td><td>566</td><td>+49%</td></tr><tr><td>MAPs</td><td>2.7M</td><td>1.9M</td><td>-30%</td></tr><tr><td>ARPMAP</td><td>$44</td><td>$46</td><td>+5%</td></tr><tr><td>Net Income (Loss)</td><td>$31.4M</td><td>$(79.5)M</td><td>NM</td></tr></tbody></table></div>
+</div>
+<div class="content-section">
+  <h3>Quarterly Revenue and EBITDA Trend (5-Quarter History from Shareholder Letter)</h3>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Quarter</th><th>Total Revenue</th><th>SW Platform Rev</th><th>Apps Rev</th><th>Adj. EBITDA</th><th>EBITDA Margin</th><th>SW EBITDA Margin</th><th>Apps EBITDA Margin</th></tr></thead><tbody><tr><td>Q4 2021</td><td>$793M</td><td>$247M</td><td>$547M</td><td>$221M</td><td>27.9%</td><td>71%</td><td>8%</td></tr><tr><td>Q1 2022</td><td>$625M*</td><td>$119M*</td><td>$507M</td><td>$276M*</td><td>44.2%*</td><td>198%*</td><td>8%</td></tr><tr><td>Q2 2022</td><td>$776M</td><td>$318M</td><td>$459M</td><td>$270M</td><td>34.8%</td><td>62%</td><td>16%</td></tr><tr><td>Q3 2022</td><td>$713M</td><td>$307M</td><td>$407M</td><td>$258M</td><td>36.1%</td><td>62%</td><td>17%</td></tr><tr><td>Q4 2022</td><td>$702M</td><td>$306M</td><td>$396M</td><td>$260M</td><td>37.0%</td><td>61%</td><td>19%</td></tr></tbody></table> *Q1 2022 figures distorted by $210M non-recurring publisher bonuses (contra-revenue in GAAP; added back to Adjusted EBITDA)</div>
+</div>
+<div class="content-section">
+  <h3>Q4 2022 Actuals (Reported)</h3>
+</div>
+<div class="content-section">
+  <h3>Full Year 2022 Actuals</h3>
+</div>
+<div class="content-section">
+  <h3>Software Platform Segment (Full Year 2022)</h3>
+  <ul>
+    <li><strong>Software Platform Revenue (FY 2022):</strong> $1.0B (~$1,049.2M; +56% YoY)</li>
+    <li><strong>Software Platform Adjusted EBITDA (FY 2022):</strong> $808.4M (+77% YoY)</li>
+    <li><strong>Software Platform Adjusted EBITDA Margin (FY 2022):</strong> 77% reported (or 64% excluding $210M non-recurring publisher bonuses)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Apps Segment (Full Year 2022)</h3>
+  <ul>
+    <li><strong>Apps Revenue (FY 2022):</strong> ~$1.8B (~$1,767.9M; -17% YoY)</li>
+    <li><strong>Apps Adjusted EBITDA (FY 2022):</strong> $254.8M (-5% YoY)</li>
+    <li><strong>Apps Adjusted EBITDA Margin (FY 2022):</strong> 14%</li>
+  </ul>
+</div>
+
+<div class="prior-ref" id="priorRef">
+  <div class="prior-ref-header" onclick="var b=document.getElementById('priorBody');b.classList.toggle('open');this.querySelector('.arrow').innerHTML=b.classList.contains('open')?'&#9650;':'&#9660;';">
+    Prior Quarter Reference: Q3 2022
+    <span class="arrow">&#9660;</span>
+  </div>
+  <div class="prior-ref-body" id="priorBody">
+    <div class="metric-grid">
+      <div class="prior-mini"><div class="pm-label">Software Platform Revenue</div><div class="pm-value">~$350M+ (implied from "over $1 billion" FY and Q3 being the run rate quarter; grew 59% YoY)</div></div>
+      <div class="prior-mini"><div class="pm-label">Software Platform Margin</div><div class="pm-value">62%</div></div>
+    </div>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q3_2022.html" style="color:var(--blue);">View full Q3 2022 detail &rarr;</a></p>
+  </div>
+</div>
+
+<div class="footer-nav">
+  <a href="Q3_2022.html">&larr; Q3 2022</a>
+  <a href="../comparison.html">Back to Overview</a>
+  <a href="Q1_2023.html">Q1 2023 &rarr;</a>
+</div>
+
+</body>
+</html>

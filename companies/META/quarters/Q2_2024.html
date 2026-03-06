@@ -319,6 +319,31 @@
     .comp-table th, .comp-table td { padding: 6px 8px; }
   }
 
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+  .content-section .md-table th {
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .content-section .md-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-section .md-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+  .content-section .md-table tr:hover { background: #e8f4fd; }
+
   @media print {
     .nav-bar { display: none; }
     .header { background: #333; }
@@ -338,6 +363,8 @@
   <a href="Q1_2024.html">&larr; Q1 2024</a>
   <div class="nav-center">
     <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>
     <a href="Q4_2025.html" class="qbtn">4Q25</a>
     <a href="Q3_2025.html" class="qbtn">3Q25</a>
     <a href="Q2_2025.html" class="qbtn">2Q25</a>
@@ -358,6 +385,15 @@
   <a href="Q3_2024.html">Q3 2024 &rarr;</a>
 </div>
 
+<div class="changes-box">
+  <h3>What Changed vs Q1 2024</h3>
+  <ul>
+    <li><span class="change-tag ct-raised">Raised</span> Revenue Guidance (Next Q) midpoint up 5.3% vs prior quarter ($39.8B vs $37.8B)</li>
+    <li><span class="change-tag ct-raised">Raised</span> FY CapEx midpoint up 2.7% vs prior quarter ($38.5B vs $37.5B)</li>
+    <li><span class="change-tag ct-changed">Changed</span> Reality Labs Op Loss: $4.5B (prior: $3.8B)</li>
+  </ul>
+</div>
+
 <div class="metrics-card">
   <div class="metric">
     <div class="metric-label">Revenue Guidance (Next Q)</div>
@@ -376,7 +412,7 @@
   </div>
   <div class="metric">
     <div class="metric-label">Family DAP</div>
-    <div class="metric-value">~3.27B</div>
+    <div class="metric-value">~3.27B in June</div>
   </div>
   <div class="metric">
     <div class="metric-label">Operating Margin</div>
@@ -389,15 +425,6 @@
   </div>
 </div>
 
-<div class="changes-box">
-  <h3>What Changed vs Q1 2024</h3>
-  <ul>
-    <li><span class="change-tag ct-raised">Raised</span> Revenue Guidance (Next Q) midpoint up 5.3% vs prior quarter ($39.8B vs $37.8B)</li>
-    <li><span class="change-tag ct-raised">Raised</span> FY CapEx midpoint up 2.7% vs prior quarter ($38.5B vs $37.5B)</li>
-    <li><span class="change-tag ct-changed">Changed</span> Reality Labs Op Loss: $4.5B (prior: $3.8B)</li>
-  </ul>
-</div>
-
 <!-- Full Guidance Content -->
 <div class="content-section">
   <h3>Q3 2024 Revenue Guidance</h3>
@@ -408,7 +435,10 @@
   </ul>
 </div>
 <div class="content-section">
-  <h3>FY 2024 Expense Outlook</h3>
+  <h3>Full Year 2024 Guidance</h3>
+</div>
+<div class="content-section">
+  <h3>Expense Outlook</h3>
   <ul>
     <li><strong>Total Expenses:</strong> $96B - $99B (unchanged from prior outlook)</li>
     <li><strong>Reality Labs Operating Losses:</strong> expected to "increase meaningfully year-over-year" due to ongoing product development efforts and investments to further scale ecosystem</li>
@@ -468,7 +498,10 @@
   </ul>
 </div>
 <div class="content-section">
-  <h3>Family of Apps — Engagement Metrics</h3>
+  <h3>Family of Apps Segment</h3>
+</div>
+<div class="content-section">
+  <h3>Engagement Metrics</h3>
   <ul>
     <li><strong>Family DAP (Daily Active People):</strong> ~3.27B in June (also described as "more than 3.2 billion")</li>
     <li><strong>WhatsApp U.S. Monthly Actives:</strong> 100M+</li>
@@ -542,7 +575,10 @@
   </ul>
 </div>
 <div class="content-section">
-  <h3>AI Strategy — Llama Foundation Models</h3>
+  <h3>AI Strategy & Infrastructure Investment</h3>
+</div>
+<div class="content-section">
+  <h3>Llama Foundation Models</h3>
   <ul>
     <li><strong>Llama 3.1 Release:</strong> includes the "first frontier-level open source model" plus new small and medium-sized models</li>
     <li><strong>Llama 3.1 405B Parameter Model:</strong> better cost performance relative to leading closed models</li>
@@ -584,7 +620,10 @@
   </ul>
 </div>
 <div class="content-section">
-  <h3>Monetization — Video & Reels</h3>
+  <h3>Ad Monetization & Engagement Drivers</h3>
+</div>
+<div class="content-section">
+  <h3>Video & Reels</h3>
   <ul>
     <li><strong>Facebook Unified Video Player:</strong> global rollout of unified video player and ranking systems in June 2024; brings Reels, longer videos, and live into a single experience</li>
     <li><strong>Unified AI Systems Impact:</strong> already increased engagement on Facebook Reels "more than our initial move from CPUs to GPUs did"</li>
@@ -608,7 +647,10 @@
   </ul>
 </div>
 <div class="content-section">
-  <h3>Reality Labs — Ray-Ban Meta Smart Glasses</h3>
+  <h3>Metaverse & Reality Labs</h3>
+</div>
+<div class="content-section">
+  <h3>Ray-Ban Meta Smart Glasses</h3>
   <ul>
     <li><strong>Demand:</strong> outpacing ability to build them; performing "better than expected"</li>
     <li><strong>Partnership:</strong> deepening long-term partnership with EssilorLuxottica for future generations of AI glasses</li>
@@ -654,6 +696,10 @@
     <li><strong>Shops Ads:</strong> driving incremental performance for advertisers; working well with Advantage+ shopping</li>
   </ul>
 </div>
+<div class="content-section">
+  <h3>Q2 2024 Actuals</h3>
+</div>
+
 <div class="prior-ref" id="priorRef">
   <div class="prior-ref-header" onclick="var b=document.getElementById('priorBody');b.classList.toggle('open');this.querySelector('.arrow').innerHTML=b.classList.contains('open')?'&#9650;':'&#9660;';">
     Prior Quarter Reference: Q1 2024
@@ -661,9 +707,9 @@
   </div>
   <div class="prior-ref-body" id="priorBody">
     <div class="metric-grid">
-      <div class="prior-mini"><div class="pm-label">Revenue Guidance (Next Q)</div><div class="pm-value">$36.5B - $39.0B</div></div>
-      <div class="prior-mini"><div class="pm-label">FY Total Expenses</div><div class="pm-value">$96B - $99B</div></div>
-      <div class="prior-mini"><div class="pm-label">FY CapEx</div><div class="pm-value">$35B - $40B</div></div>
+      <div class="prior-mini"><div class="pm-label">Revenue Guidance (Next Q)</div><div class="pm-value">$36.5B - $39.0B (midpoint: $37.75B)</div></div>
+      <div class="prior-mini"><div class="pm-label">FY Total Expenses</div><div class="pm-value">$96B - $99B (raised from prior outlook of $94B - $99B; increase due to higher infrastructure and legal costs)</div></div>
+      <div class="prior-mini"><div class="pm-label">FY CapEx</div><div class="pm-value">$35B - $40B (raised from prior range of $30B - $37B; increase driven by accelerating infrastructure investments to support AI road map)</div></div>
       <div class="prior-mini"><div class="pm-label">Operating Margin</div><div class="pm-value">38%</div></div>
       <div class="prior-mini"><div class="pm-label">Reality Labs Op Loss</div><div class="pm-value">$3.8B</div></div>
     </div>

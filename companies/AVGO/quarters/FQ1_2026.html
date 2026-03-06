@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AVGO FQ1 2026 Earnings Call Detail</title>
+<style>
+:root {
+    --company-primary: #CC092F;
+    --company-dark: #1a1a2e;
+    --company-accent: #16213e;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 40px 40px 32px;
+    margin: 0 -24px 0;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .header .meta {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    font-weight: 300;
+  }
+  .header .meta span { margin-right: 24px; }
+
+  .nav-bar {
+    background: var(--company-accent);
+    margin: 0 -24px 32px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    transition: all 0.15s;
+  }
+  .nav-bar a:hover { background: rgba(255,255,255,0.2); }
+  .nav-bar a.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .nav-center {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-center a.qbtn {
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+  }
+  .nav-center a.qbtn.current {
+    background: var(--company-primary);
+    border-color: var(--company-primary);
+  }
+  .nav-center a.qbtn:hover { background: rgba(255,255,255,0.2); }
+  .nav-back {
+    background: rgba(255,255,255,0.15) !important;
+    border-color: rgba(255,255,255,0.35) !important;
+  }
+
+  .metrics-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .metric {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+  .metric-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .metric-value {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+  .metric-delta {
+    font-size: 0.72rem;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+  .delta-up { color: var(--green); }
+  .delta-down { color: var(--red); }
+  .delta-flat { color: var(--text-muted); }
+
+  .changes-box {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 5px solid var(--amber);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .changes-box h3 {
+    font-size: 1rem;
+    color: var(--company-dark);
+    margin-bottom: 10px;
+  }
+  .changes-box ul { list-style: none; padding: 0; }
+  .changes-box li {
+    padding: 5px 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .change-tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .ct-raised { background: #d5f5e3; color: #1e8449; }
+  .ct-lowered { background: #fadbd8; color: #c0392b; }
+  .ct-changed { background: #d6eaf8; color: #2471a3; }
+  .ct-new { background: #e8daef; color: #6c3483; }
+  .ct-maintained { background: #fdebd0; color: #b9770e; }
+
+  .content-section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .content-section h3 {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .content-section ul {
+    padding: 14px 18px 14px 36px;
+    margin: 0;
+  }
+  .content-section li {
+    padding: 3px 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .content-section li strong { color: var(--company-dark); }
+
+  .prior-ref {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 40px;
+    overflow: hidden;
+  }
+  .prior-ref-header {
+    background: var(--light-bg);
+    padding: 12px 18px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--company-dark);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .prior-ref-header:hover { background: #eef2f7; }
+  .prior-ref-body { padding: 18px; display: none; }
+  .prior-ref-body.open { display: block; }
+  .prior-ref-body .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .prior-mini {
+    background: var(--light-bg);
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .prior-mini .pm-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .prior-mini .pm-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border);
+  }
+  .footer-nav a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .footer-nav a:hover { text-decoration: underline; }
+
+  /* Comparison page styles */
+  .toc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .toc a {
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 4px 0;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  .comp-section {
+    margin-bottom: 40px;
+  }
+  .comp-section h2 {
+    font-size: 1.2rem;
+    color: var(--company-dark);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--company-primary);
+  }
+
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+  }
+  .comp-table th {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .comp-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .comp-table tr:nth-child(even) { background: var(--light-bg); }
+  .comp-table tr:hover { background: #e8f4fd; }
+
+  @media (max-width: 768px) {
+    .header h1 { font-size: 1.5rem; }
+    .metrics-card { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .nav-center { display: none; }
+    body { padding: 0 16px 60px; }
+    .header { margin: 0 -16px 0; padding: 28px 24px 20px; }
+    .nav-bar { margin: 0 -16px 24px; }
+    .toc { grid-template-columns: 1fr; }
+    .comp-table { font-size: 0.78rem; }
+    .comp-table th, .comp-table td { padding: 6px 8px; }
+  }
+
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+  .content-section .md-table th {
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .content-section .md-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-section .md-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+  .content-section .md-table tr:hover { background: #e8f4fd; }
+
+  @media print {
+    .nav-bar { display: none; }
+    .header { background: #333; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>AVGO FQ1 2026 Earnings Call</h1>
+  <div class="meta">
+    <span>Call Date: March 4, 2026</span>
+    <span>Reporting: Fiscal Q1 2026 (Nov '25 - Jan '26)</span>
+  </div>
+</div>
+<div class="nav-bar">
+  <a href="FQ4_2025.html">&larr; FQ4 2025</a>
+  <div class="nav-center">
+    <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>
+    <a href="FQ1_2026.html" class="qbtn current">F1Q26</a>
+    <a href="FQ4_2025.html" class="qbtn">F4Q25</a>
+    <a href="FQ3_2025.html" class="qbtn">F3Q25</a>
+    <a href="FQ2_2025.html" class="qbtn">F2Q25</a>
+    <a href="FQ1_2025.html" class="qbtn">F1Q25</a>
+    <a href="FQ4_2024.html" class="qbtn">F4Q24</a>
+    <a href="FQ3_2024.html" class="qbtn">F3Q24</a>
+    <a href="FQ2_2024.html" class="qbtn">F2Q24</a>
+    <a href="FQ1_2024.html" class="qbtn">F1Q24</a>
+    <a href="FQ4_2023.html" class="qbtn">F4Q23</a>
+    <a href="FQ3_2023.html" class="qbtn">F3Q23</a>
+    <a href="FQ2_2023.html" class="qbtn">F2Q23</a>
+    <a href="FQ1_2023.html" class="qbtn">F1Q23</a>
+    <a href="FQ4_2022.html" class="qbtn">F4Q22</a>
+    <a href="FQ3_2022.html" class="qbtn">F3Q22</a>
+    <a href="FQ2_2022.html" class="qbtn">F2Q22</a>
+    <a href="FQ1_2022.html" class="qbtn">F1Q22</a>
+  </div>
+  <a class="disabled">Next &rarr;</a>
+</div>
+
+<div class="changes-box">
+  <h3>What Changed vs FQ4 2025</h3>
+  <ul>
+    <li><span class="change-tag ct-changed">Changed</span> Semiconductor Revenue: ~$14.8B (+76% YoY) - AI Revenue: $10.7B (+~140% YoY; "accelerating very sharply") - Non-AI Semiconductor Revenue: ~$4.1B (+4% YoY) (prior: ~$12.3B (+50% YoY) - AI Revenue: $8.2B (~100% YoY, doubling) - Non-AI Semiconductor Revenue: ~$4.1B (flat YoY, down QoQ on wireless seasonality))</li>
+    <li><span class="change-tag ct-changed">Changed</span> Infrastructure Software Revenue: ~$7.2B (+9% YoY) (prior: ~$6.8B (+2% YoY; renewals expected seasonal in Q1))</li>
+    <li><span class="change-tag ct-changed">Changed</span> AI Revenue: $8.4B (+106% YoY) — "way above our outlook"; driven by custom accelerator business growing 140% YoY (prior: $6.5B (+74% YoY) — 10x growth over 11 quarters of reporting; driven by custom accelerators more than doubling YoY)</li>
+    <li><span class="change-tag ct-new">New</span> NEW: Networking/switching revenue breakdown</li>
+  </ul>
+</div>
+
+<div class="metrics-card">
+  <div class="metric" style="grid-column: 1 / -1; background: linear-gradient(135deg, var(--company-dark), var(--company-accent)); color: #fff; border: none; padding: 8px 14px;">
+    <div class="metric-label" style="color: rgba(255,255,255,0.7);">Guidance For</div>
+    <div class="metric-value" style="color: #fff; font-size: 1rem;">FQ2 2026</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Next-Q Revenue</div>
+    <div class="metric-value">~$22.0B</div>
+    <div class="metric-delta delta-flat">Prior: ~$19.1B</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Next-Q Adj. EBITDA % of Rev</div>
+    <div class="metric-value">~68% of revenue</div>
+    <div class="metric-delta delta-flat">Prior: ~67% of revenue</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Semiconductor Revenue</div>
+    <div class="metric-value">~$14.8B - AI Revenue: $10.7B - Non-AI Semiconductor Revenue: ~$4.1B</div>
+    <div class="metric-delta delta-flat">Prior: ~$12.3B - AI Revenue: $8.2B - Non-AI Semiconductor Revenue: ~$4.1B</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Infrastructure Software Revenue</div>
+    <div class="metric-value">~$7.2B</div>
+    <div class="metric-delta delta-flat">Prior: ~$6.8B</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">AI Revenue</div>
+    <div class="metric-value">$8.4B — "way above our outlook"; driven by custom accelerator business growing 140% YoY</div>
+    <div class="metric-delta delta-flat">Prior: $6.5B — 10x growth over 11 quarters of reporting; driven by custom accelerators more than doubling YoY</div>
+  </div>
+</div>
+
+<!-- Full Guidance Content -->
+<div class="content-section">
+  <h3>Quarterly Guidance (FQ2 2026)</h3>
+  <ul>
+    <li><strong>Revenue:</strong> ~$22.0B (+47% YoY; growth accelerating from 29% in Q1)</li>
+    <li><strong>Adjusted EBITDA:</strong> ~68% of revenue</li>
+    <li><strong>Gross Margin:</strong> flat sequentially at ~77%</li>
+    <li><strong>Semiconductor Revenue:</strong> ~$14.8B (+76% YoY) - AI Revenue: $10.7B (+~140% YoY; "accelerating very sharply") - Non-AI Semiconductor Revenue: ~$4.1B (+4% YoY)</li>
+    <li><strong>Infrastructure Software Revenue:</strong> ~$7.2B (+9% YoY)</li>
+    <li><strong>Non-GAAP Tax Rate:</strong> ~16.5% (Q2 and full year FY2026)</li>
+    <li><strong>Non-GAAP Diluted Share Count:</strong> ~4.94B (GAAP ~4.88B)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>FY2027 Outlook</h3>
+  <ul>
+    <li><strong>AI Revenue (chips only):</strong> line of sight to "significantly in excess of $100 billion" in FY2027 - This is silicon content only: XPUs, switch chips, DSPs — not rack-level revenue - ~10 gigawatts of compute capacity expected to ship in FY2027 - Dollars per gigawatt varies by customer but broadly consistent with analyst estimates</li>
+    <li><strong>Supply Chain Secured:</strong> capacity for leading-edge wafers, HBM, substrates, T-glass secured through FY2028</li>
+    <li><strong>FY2028 Growth:</strong> confirmed ability to grow in FY2028 based on secured supply; "yes" to direct question</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>FQ1 2026 Segment Revenue</h3>
+  <ul>
+    <li><strong>Semiconductor Solutions:</strong> $12.5B (+52% YoY, growth accelerating) — record; 65% of total revenue - Semiconductor GM: ~68% - Semiconductor OpEx: $1.1B (increased R&D for leading-edge AI) - Semiconductor Operating Margin: 60% (+260 bps YoY)</li>
+    <li><strong>Infrastructure Software:</strong> $6.8B (+1% YoY), in line with guidance; 35% of total revenue - Software GM: 93% - Software OpEx: $979M - Software Operating Margin: 78% (+190 bps YoY)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>FQ1 2026 AI Revenue</h3>
+  <ul>
+    <li><strong>AI Revenue:</strong> $8.4B (+106% YoY) — "way above our outlook"; driven by custom accelerator business growing 140% YoY</li>
+    <li><strong>AI Networking Revenue:</strong> grew 60% YoY; represented 1/3 of total AI revenue</li>
+    <li><strong>Custom Accelerator Revenue:</strong> +140% YoY in Q1; momentum continues in Q2</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>FQ1 2026 Non-AI Semiconductor Revenue</h3>
+  <ul>
+    <li><strong>Non-AI Revenue:</strong> $4.1B (flat YoY, in line with guidance)</li>
+    <li><strong>Enterprise Networking, Broadband, Server Storage:</strong> up YoY</li>
+    <li><strong>Wireless:</strong> seasonal decline, offset gains elsewhere</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>FQ1 2026 Software/VMware Metrics</h3>
+  <ul>
+    <li><strong>VMware Revenue:</strong> +13% YoY</li>
+    <li><strong>Total Contract Value Booked:</strong> >$9.2B in Q1</li>
+    <li><strong>ARR Growth:</strong> 19% YoY sustained</li>
+    <li><strong>VMware Cloud Foundation (VCF):</strong> described as "essential software layer in data centers" — permanent abstraction layer between AI software and physical chips; cannot be disintermediated</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>FQ1 2026 Balance Sheet & Capital Allocation</h3>
+  <ul>
+    <li><strong>Cash & Equivalents:</strong> $14.2B (down $2.0B QoQ on share repurchases)</li>
+    <li><strong>Inventory:</strong> $3.0B; 68 days on hand (vs 58 days in Q4; building for accelerating AI demand)</li>
+    <li><strong>Trade Receivables:</strong> $8.5B</li>
+    <li><strong>Gross Debt:</strong> ~$66B (long-term $63.8B + short-term $2.3B)</li>
+    <li><strong>Cash Dividends Paid:</strong> $3.1B ($0.65/share quarterly; +10% YoY)</li>
+    <li><strong>Share Repurchases:</strong> $7.8B (~23M shares) in Q1</li>
+    <li><strong>Total Capital Return:</strong> $10.9B in Q1 (dividends + buybacks)</li>
+    <li><strong>New Buyback Authorization:</strong> additional $10B authorized through end of calendar year 2026</li>
+    <li><strong>Non-GAAP Diluted Share Count:</strong> Q2 expected ~4.94B (excluding future repurchase impact)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>AI Customer Pipeline</h3>
+  <ul>
+    <li><strong>6 XPU Customers (expanded from 5):</strong> 1. <strong>Google:</strong> continued growth trajectory in FY2026 with strong demand for 7th-generation Ironwood TPU; even stronger demand expected from next-gen TPUs in FY2027+ 2. <strong>Anthropic:</strong> "very good start in 2026 for 1 gigawatt of TPU compute"; FY2027 demand expected to surge to "in excess of 3 gigawatts" 3. <strong>Meta:</strong> MTIA custom accelerator roadmap "alive and well"; shipping now; next-gen XPUs will scale to "multiple gigawatts" in FY2027+; Hock: "Contrary to recent analyst reports" 4. <strong>Customer 4 (unnamed):</strong> strong shipments this year; expected to more than double in FY2027 5. <strong>Customer 5 (unnamed):</strong> strong shipments this year; expected to more than double in FY2027 6. <strong>OpenAI (NEW — 6th customer):</strong> deploying first-generation XPU in volume in FY2027; over 1 gigawatt of compute capacity; 10 gigawatt multiyear agreement (FY2027-2029)</li>
+    <li><strong>XPU Workload Specialization:</strong> customers increasingly designing 2 chips per year — one for training, one for inference; architectures diverging from general-purpose GPU design (sparse core data routers vs dense matrix multipliers)</li>
+    <li><strong>Inference Driving Demand:</strong> "very, very interesting and surprising" — inference for LLM productization/monetization driving "substantial amount of compute capacity"</li>
+    <li><strong>Strategic Nature:</strong> all 6 customers view XPU partnership as "strategic, extremely strategic" — not optionality; multiyear, multi-generation commitments; customers share 2-4 year roadmaps</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>AI Networking</h3>
+  <ul>
+    <li><strong>AI Networking Revenue Mix:</strong> 1/3 of AI revenue in Q1; projected to grow to 40% of AI revenue in Q2</li>
+    <li><strong>Tomahawk 6:</strong> 100 Tbps — "only one out there"; capturing demand from hyperscalers regardless of GPU vs XPU; record demand</li>
+    <li><strong>Tomahawk 7 (FY2027):</strong> next-gen, 2x performance; expected to be "by far, the first out there"</li>
+    <li><strong>1.6T DSPs:</strong> "we are again the only player out there doing DSP at 1.6 terabits"</li>
+    <li><strong>200G SERDES:</strong> first to market; capturing scale-out demand; 400G SERDES running in lab, expected in FY2028</li>
+    <li><strong>AI Networking as % of AI Revenue:</strong> expected to range 33-40% going forward</li>
+    <li><strong>Ethernet Scale-Up:</strong> industry converging on Ethernet for both scale-out and scale-up; multiple hyperscalers and semiconductor peers have announced Ethernet scale-up; XPU designs increasingly use Ethernet for scale-up</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Technology & Connectivity</h3>
+  <ul>
+    <li><strong>Direct Attach Copper:</strong> XPU customers "will likely continue to stay on direct attach copper" for scale-up through 400G SERDES in FY2028; copper is lowest latency, lowest power, lowest cost</li>
+    <li><strong>CPO (Co-Packaged Optics):</strong> "will come in its time — not this year, maybe not next year"; Broadcom leads in CPO but copper preferred for scale-up today</li>
+    <li><strong>Silicon Photonics:</strong> developing for 400G → 800G → 1.6T; technology exists but not deploying soon</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Gross Margin Trajectory</h3>
+  <ul>
+    <li><strong>Rack-Level Sales Impact:</strong> CEO Hock Tan dismissed concerns about rack-level sales diluting margins: "Our gross margin is solidly at the number Kirsten reports. We will not be affected."</li>
+    <li><strong>CFO Kirsten Spears:</strong> "On further study, the impact relative to our overall mix is actually not going to be substantial at all" — walked back prior quarter's commentary about potential margin dilution from rack sales</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Competitive Dynamics (COT — Customer-Owned Tooling)</h3>
+  <ul>
+    <li><strong>COT Risk Assessment:</strong> Hock: "We will not see competition in COT for many years to come. It will come eventually, but we're still a long way off."</li>
+    <li><strong>COT Performance Gap:</strong> analyst noted COT initiatives are "2x less performance" and "2x less complex" than Broadcom's current-generation solutions; 12-18 months behind on technology</li>
+    <li><strong>Key Barriers:</strong> best-in-class silicon design, cutting-edge SERDES, advanced packaging, high-volume production yields, time to market; "Anybody can design a chip in a lab. Can you produce 100,000 of those chips quickly at yields you can afford?"</li>
+    <li><strong>Supply Chain Advantage:</strong> secured supply of T-glass, substrates, leading-edge wafers, HBM through FY2028 — "probably the first to secure that up to '28 or beyond"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Key Financial Details (from EDGAR Filing)</h3>
+  <ul>
+    <li><strong>GAAP Net Income:</strong> $7.35B ($1.50/share diluted)</li>
+    <li><strong>Non-GAAP Net Income:</strong> $10.19B ($2.05/share diluted)</li>
+    <li><strong>GAAP Gross Margin:</strong> $13.2B (68.1% of revenue)</li>
+    <li><strong>Non-GAAP Gross Margin:</strong> $14.9B (77.0% of revenue)</li>
+    <li><strong>SBC Expense:</strong> $2.18B (vs $1.28B year-ago; +70% YoY)</li>
+    <li><strong>Depreciation:</strong> $150M</li>
+    <li><strong>Operating Cash Flow:</strong> $8.26B</li>
+    <li><strong>DSO:</strong> implied ~40 days (AR $8.5B on $19.3B quarterly revenue)</li>
+    <li><strong>Next-Q Earnings Date:</strong> Wednesday, June 3, 2026 (2:00 PM PT)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>FQ1 2026 Actuals (Reported)</h3>
+  <ul>
+    <li><strong>Revenue:</strong> $19.3B (+29% YoY) — record; exceeded guidance of ~$19.1B on better-than-expected AI and semiconductor growth</li>
+    <li><strong>Gross Margin:</strong> 77% of revenue (non-GAAP; flat QoQ)</li>
+    <li><strong>Operating Expenses:</strong> $2.0B; R&D $1.5B (non-GAAP)</li>
+    <li><strong>Operating Income:</strong> $12.8B (+31% YoY) — record; operating margin 66.4% (+50 bps YoY)</li>
+    <li><strong>Adjusted EBITDA:</strong> $13.1B (68% of revenue; above 67% guidance) — record</li>
+    <li><strong>Non-GAAP EPS:</strong> $2.05 (+28% YoY)</li>
+    <li><strong>Free Cash Flow:</strong> $8.0B (41% of revenue)</li>
+    <li><strong>CapEx:</strong> $250M</li>
+    <li><strong>Non-GAAP Tax Rate:</strong> ~16.5% (global minimum tax + geographic mix)</li>
+  </ul>
+</div>
+
+<div class="prior-ref" id="priorRef">
+  <div class="prior-ref-header" onclick="var b=document.getElementById('priorBody');b.classList.toggle('open');this.querySelector('.arrow').innerHTML=b.classList.contains('open')?'&#9650;':'&#9660;';">
+    Prior Quarter Reference: FQ4 2025
+    <span class="arrow">&#9660;</span>
+  </div>
+  <div class="prior-ref-body" id="priorBody">
+    <div class="metric-grid">
+      <div class="prior-mini"><div class="pm-label">Next-Q Revenue</div><div class="pm-value">~$19.1B (+28% YoY)</div></div>
+      <div class="prior-mini"><div class="pm-label">Next-Q Adj. EBITDA % of Rev</div><div class="pm-value">~67% of revenue</div></div>
+      <div class="prior-mini"><div class="pm-label">Semiconductor Revenue</div><div class="pm-value">~$12.3B (+50% YoY) - AI Revenue: $8.2B (~100% YoY, doubling) - Non-AI Semiconductor Revenue: ~$4.1B (flat YoY, down QoQ on wireless seasonality)</div></div>
+      <div class="prior-mini"><div class="pm-label">Infrastructure Software Revenue</div><div class="pm-value">~$6.8B (+2% YoY; renewals expected seasonal in Q1)</div></div>
+      <div class="prior-mini"><div class="pm-label">AI Revenue</div><div class="pm-value">$6.5B (+74% YoY) — 10x growth over 11 quarters of reporting; driven by custom accelerators more than doubling YoY</div></div>
+      <div class="prior-mini"><div class="pm-label">Free Cash Flow</div><div class="pm-value">$26.9B (+39% YoY)</div></div>
+    </div>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="FQ4_2025.html" style="color:var(--blue);">View full FQ4 2025 detail &rarr;</a></p>
+  </div>
+</div>
+
+<div class="footer-nav">
+  <a href="FQ4_2025.html">&larr; FQ4 2025</a>
+  <a href="../comparison.html">Back to Overview</a>
+  <span></span>
+</div>
+
+</body>
+</html>

@@ -319,6 +319,31 @@
     .comp-table th, .comp-table td { padding: 6px 8px; }
   }
 
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+  .content-section .md-table th {
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .content-section .md-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-section .md-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+  .content-section .md-table tr:hover { background: #e8f4fd; }
+
   @media print {
     .nav-bar { display: none; }
     .header { background: #333; }
@@ -338,6 +363,8 @@
   <a href="Q1_2024.html">&larr; Q1 2024</a>
   <div class="nav-center">
     <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>
     <a href="Q4_2025.html" class="qbtn">4Q25</a>
     <a href="Q3_2025.html" class="qbtn">3Q25</a>
     <a href="Q2_2025.html" class="qbtn">2Q25</a>
@@ -358,54 +385,35 @@
   <a href="Q3_2024.html">Q3 2024 &rarr;</a>
 </div>
 
-<div class="metrics-card">
-  <div class="metric">
-    <div class="metric-label">FY24 Revenue Guidance</div>
-    <div class="metric-value">$69.75B - $71.75B</div>
-    <div class="metric-delta delta-up">&#9650; Raised from $67.75B - $70.25B</div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">FY24 Adj. EBITDA Guidance</div>
-    <div class="metric-value">$13.75B - $14.25B</div>
-    <div class="metric-delta delta-up">&#9650; Raised from $12.85B - $13.55B</div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">FY24 Diluted EPS Guidance</div>
-    <div class="metric-value">$21.60 - $22.80</div>
-    <div class="metric-delta delta-up">&#9650; Raised from $19.70 - $21.20</div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">FY24 CapEx Guidance</div>
-    <div class="metric-value">$5.1B - $5.3B</div>
-    <div class="metric-delta delta-flat">Unchanged vs Q1 2024</div>
-  </div>
-</div>
-
 <div class="changes-box">
   <h3>What Changed vs Q1 2024</h3>
   <ul>
-    <li><span class="change-tag ct-raised">Raised</span> Revenue guidance raised to $69.75B - $71.75B (from $67.75B - $70.25B)</li>
-    <li><span class="change-tag ct-raised">Raised</span> Adj. EBITDA guidance raised to $13.75B - $14.25B (from $12.85B - $13.55B)</li>
-    <li><span class="change-tag ct-raised">Raised</span> Diluted EPS guidance raised to $21.60 - $22.80 (from $19.70 - $21.20)</li>
-    <li><span class="change-tag ct-maintained">Maintained</span> CapEx guidance maintained at $5.1B - $5.3B</li>
-    <li><span class="change-tag ct-new">New</span> Medicaid supplemental programs reversed from $100M-$200M headwind to $100M-$200M tailwind ($200M-$400M net swing)</li>
-    <li><span class="change-tag ct-raised">Raised</span> Share repurchase estimate raised to ~$6B (from ~$5B)</li>
+    <li><span class="change-tag ct-changed">Changed</span> CapEx Guidance: $1.28 billion (prior: $1.1 billion (flattish year-over-year; timing-related))</li>
+    <li><span class="change-tag ct-changed">Changed</span> Same-Facility Admissions: +5.2% (prior: +5%)</li>
+    <li><span class="change-tag ct-new">New</span> NEW: M&A/acquisition discussion added</li>
+    <li><span class="change-tag ct-new">New</span> NEW: Medicaid redetermination impact discussed</li>
   </ul>
+</div>
+
+<div class="metrics-card">
+  <div class="metric">
+    <div class="metric-label">CapEx Guidance</div>
+    <div class="metric-value">$1.28 billion</div>
+    <div class="metric-delta delta-flat">Prior: $1.1 billion</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Same-Facility Admissions</div>
+    <div class="metric-value">+5.2%</div>
+    <div class="metric-delta delta-flat">Prior: +5%</div>
+  </div>
 </div>
 
 <!-- Full Guidance Content -->
 <div class="content-section">
   <h3>Full Year 2024 Guidance (UPDATED / RAISED)</h3>
-  <ul>
-    <li><strong>Revenue:</strong> $69.75 billion to $71.75 billion (raised from $67.75B - $70.25B)</li>
-    <li><strong>Net Income:</strong> $5.675 billion to $5.975 billion (raised from $5.2B - $5.6B)</li>
-    <li><strong>Adjusted EBITDA:</strong> $13.75 billion to $14.25 billion (raised from $12.85B - $13.55B)</li>
-    <li><strong>Diluted EPS:</strong> $21.60 to $22.80 (raised from $19.70 - $21.20)</li>
-    <li><strong>Capital Expenditures:</strong> $5.1 billion to $5.3 billion (unchanged)</li>
-    <li><strong>Share Repurchases:</strong> ~$6 billion (raised from ~$5B; subject to market conditions)</li>
-    <li><strong>Volume growth:</strong> 4% to 6% equivalent admissions (raised from 3% - 4%)</li>
-    <li><strong>Medicaid supplemental payment tailwind:</strong> $100M - $200M vs. prior year (reversed from $100M - $200M headwind)</li>
-  </ul>
+</div>
+<div class="content-section">
+  <h3>Full Year 2024 Guidance -- Key Assumptions & Outlook</h3>
 </div>
 <div class="content-section">
   <h3>Medicaid Supplemental Payment Programs -- GUIDANCE REVERSAL</h3>
@@ -600,6 +608,9 @@
   </ul>
 </div>
 <div class="content-section">
+  <h3>Special Topics</h3>
+</div>
+<div class="content-section">
   <h3>Healthcare Exchange / ACA Subsidies</h3>
   <ul>
     <li>Enhanced ACA subsidies scheduled to expire at end of 2025</li>
@@ -644,6 +655,10 @@
     <li>Performance described as "really quite clean" compared to prior years with COVID choppiness, supplemental payment timing issues, and Valesco integration challenges <em>Source: HCA Healthcare Q2 2024 Earnings Call Transcript, July 23, 2024. S&P Global Market Intelligence.</em></li>
   </ul>
 </div>
+<div class="content-section">
+  <h3>Q2 2024 Actuals (Reported)</h3>
+</div>
+
 <div class="prior-ref" id="priorRef">
   <div class="prior-ref-header" onclick="var b=document.getElementById('priorBody');b.classList.toggle('open');this.querySelector('.arrow').innerHTML=b.classList.contains('open')?'&#9650;':'&#9660;';">
     Prior Quarter Reference: Q1 2024
@@ -651,10 +666,10 @@
   </div>
   <div class="prior-ref-body" id="priorBody">
     <div class="metric-grid">
-      <div class="prior-mini"><div class="pm-label">FY24 Revenue Guidance</div><div class="pm-value">$67.75B – $70.25B</div></div>
-      <div class="prior-mini"><div class="pm-label">FY24 Adj. EBITDA Guidance</div><div class="pm-value">$12.85B – $13.55B</div></div>
-      <div class="prior-mini"><div class="pm-label">FY24 EPS Guidance</div><div class="pm-value">$19.70 – $21.20</div></div>
-      <div class="prior-mini"><div class="pm-label">FY24 CapEx Guidance</div><div class="pm-value">$5.1B – $5.3B</div></div>
+      <div class="prior-mini"><div class="pm-label">CapEx Guidance</div><div class="pm-value">$1.1 billion (flattish year-over-year; timing-related)</div></div>
+      <div class="prior-mini"><div class="pm-label">Same-Facility Admissions</div><div class="pm-value">+5%</div></div>
+      <div class="prior-mini"><div class="pm-label">Revenue Per Admission</div><div class="pm-value">+3.5% year-over-year</div></div>
+      <div class="prior-mini"><div class="pm-label">Adj. EBITDA Margin</div><div class="pm-value">19.3%</div></div>
     </div>
     <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q1_2024.html" style="color:var(--blue);">View full Q1 2024 detail &rarr;</a></p>
   </div>

@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CVNA Q2 2025 Earnings Call Detail</title>
+<style>
+:root {
+    --company-primary: #00AFF0;
+    --company-dark: #1a1a2e;
+    --company-accent: #006D9E;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 40px 40px 32px;
+    margin: 0 -24px 0;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .header .meta {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    font-weight: 300;
+  }
+  .header .meta span { margin-right: 24px; }
+
+  .nav-bar {
+    background: var(--company-accent);
+    margin: 0 -24px 32px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    transition: all 0.15s;
+  }
+  .nav-bar a:hover { background: rgba(255,255,255,0.2); }
+  .nav-bar a.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .nav-center {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-center a.qbtn {
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+  }
+  .nav-center a.qbtn.current {
+    background: var(--company-primary);
+    border-color: var(--company-primary);
+  }
+  .nav-center a.qbtn:hover { background: rgba(255,255,255,0.2); }
+  .nav-back {
+    background: rgba(255,255,255,0.15) !important;
+    border-color: rgba(255,255,255,0.35) !important;
+  }
+
+  .metrics-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .metric {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+  .metric-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .metric-value {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+  .metric-delta {
+    font-size: 0.72rem;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+  .delta-up { color: var(--green); }
+  .delta-down { color: var(--red); }
+  .delta-flat { color: var(--text-muted); }
+
+  .changes-box {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 5px solid var(--amber);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .changes-box h3 {
+    font-size: 1rem;
+    color: var(--company-dark);
+    margin-bottom: 10px;
+  }
+  .changes-box ul { list-style: none; padding: 0; }
+  .changes-box li {
+    padding: 5px 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .change-tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .ct-raised { background: #d5f5e3; color: #1e8449; }
+  .ct-lowered { background: #fadbd8; color: #c0392b; }
+  .ct-changed { background: #d6eaf8; color: #2471a3; }
+  .ct-new { background: #e8daef; color: #6c3483; }
+  .ct-maintained { background: #fdebd0; color: #b9770e; }
+
+  .content-section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .content-section h3 {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .content-section ul {
+    padding: 14px 18px 14px 36px;
+    margin: 0;
+  }
+  .content-section li {
+    padding: 3px 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .content-section li strong { color: var(--company-dark); }
+
+  .prior-ref {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 40px;
+    overflow: hidden;
+  }
+  .prior-ref-header {
+    background: var(--light-bg);
+    padding: 12px 18px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--company-dark);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .prior-ref-header:hover { background: #eef2f7; }
+  .prior-ref-body { padding: 18px; display: none; }
+  .prior-ref-body.open { display: block; }
+  .prior-ref-body .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .prior-mini {
+    background: var(--light-bg);
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .prior-mini .pm-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .prior-mini .pm-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border);
+  }
+  .footer-nav a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .footer-nav a:hover { text-decoration: underline; }
+
+  /* Comparison page styles */
+  .toc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .toc a {
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 4px 0;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  .comp-section {
+    margin-bottom: 40px;
+  }
+  .comp-section h2 {
+    font-size: 1.2rem;
+    color: var(--company-dark);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--company-primary);
+  }
+
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+  }
+  .comp-table th {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .comp-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .comp-table tr:nth-child(even) { background: var(--light-bg); }
+  .comp-table tr:hover { background: #e8f4fd; }
+
+  @media (max-width: 768px) {
+    .header h1 { font-size: 1.5rem; }
+    .metrics-card { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .nav-center { display: none; }
+    body { padding: 0 16px 60px; }
+    .header { margin: 0 -16px 0; padding: 28px 24px 20px; }
+    .nav-bar { margin: 0 -16px 24px; }
+    .toc { grid-template-columns: 1fr; }
+    .comp-table { font-size: 0.78rem; }
+    .comp-table th, .comp-table td { padding: 6px 8px; }
+  }
+
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+  .content-section .md-table th {
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .content-section .md-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-section .md-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+  .content-section .md-table tr:hover { background: #e8f4fd; }
+
+  @media print {
+    .nav-bar { display: none; }
+    .header { background: #333; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>CVNA Q2 2025 Earnings Call</h1>
+  <div class="meta">
+    <span>Call Date: July 30, 2025 (noted in transcript header; user-specified August 6, 2025)</span>
+    <span>Reporting: Q2 2025</span>
+  </div>
+</div>
+<div class="nav-bar">
+  <a href="Q1_2025.html">&larr; Q1 2025</a>
+  <div class="nav-center">
+    <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>
+    <a href="Q4_2025.html" class="qbtn">4Q25</a>
+    <a href="Q3_2025.html" class="qbtn">3Q25</a>
+    <a href="Q2_2025.html" class="qbtn current">2Q25</a>
+    <a href="Q1_2025.html" class="qbtn">1Q25</a>
+    <a href="Q4_2024.html" class="qbtn">4Q24</a>
+    <a href="Q3_2024.html" class="qbtn">3Q24</a>
+    <a href="Q2_2024.html" class="qbtn">2Q24</a>
+    <a href="Q1_2024.html" class="qbtn">1Q24</a>
+    <a href="Q4_2023.html" class="qbtn">4Q23</a>
+    <a href="Q3_2023.html" class="qbtn">3Q23</a>
+    <a href="Q2_2023.html" class="qbtn">2Q23</a>
+    <a href="Q1_2023.html" class="qbtn">1Q23</a>
+    <a href="Q4_2022.html" class="qbtn">4Q22</a>
+    <a href="Q3_2022.html" class="qbtn">3Q22</a>
+    <a href="Q2_2022.html" class="qbtn">2Q22</a>
+    <a href="Q1_2022.html" class="qbtn">1Q22</a>
+  </div>
+  <a href="Q3_2025.html">Q3 2025 &rarr;</a>
+</div>
+
+<div class="changes-box">
+  <h3>What Changed vs Q1 2025</h3>
+  <ul>
+    <li><span class="change-tag ct-new">New</span> NEW: Profitability milestone highlighted</li>
+  </ul>
+</div>
+
+<div class="metrics-card">
+  <div class="metric" style="grid-column: 1 / -1; background: linear-gradient(135deg, var(--company-dark), var(--company-accent)); color: #fff; border: none; padding: 8px 14px;">
+    <div class="metric-label" style="color: rgba(255,255,255,0.7);">Guidance For</div>
+    <div class="metric-value" style="color: #fff; font-size: 1rem;">Q3 2025</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Retail Units Sold</div>
+    <div class="metric-value">Sequential increase vs. Q2 2025; no specific unit number provided</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Adjusted EBITDA</div>
+    <div class="metric-value">$601 million — new company record; +$246 million YoY</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Adjusted EBITDA Margin</div>
+    <div class="metric-value">12.4% — new company record; +200 bps YoY - Note: transcript contains a likely typo reading "was 12.4% in Q1" — context confirms this is the Q2 figure</div>
+  </div>
+</div>
+
+<!-- Full Guidance Content -->
+<div class="content-section">
+  <h3>Quarterly Guidance (Q3 2025)</h3>
+  <ul>
+    <li><strong>Retail Units Sold:</strong> Sequential increase vs. Q2 2025 (143,280 units); no specific unit number provided</li>
+    <li><strong>Advertising Spend:</strong> Larger sequential increase in Q3 vs. the Q2 sequential increase ($12 million Q1-to-Q2 increase implies Q3 step-up will exceed $12 million)</li>
+    <li><strong>Average Selling Price (ASP):</strong> Expected to increase further in Q3 vs. Q2; management noted ASP could decline after Q3 depending on algorithmic inventory selection signals</li>
+    <li><strong>Condition:</strong> All guidance contingent on "environment remaining stable"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Full Year 2025 Guidance</h3>
+  <ul>
+    <li><strong>Adjusted EBITDA:</strong> $2.0 billion to $2.2 billion - <strong>RAISED</strong> from prior year actual of $1.38 billion (2024); implied growth of ~45%–59% YoY - Prior year (FY 2024) adjusted EBITDA: "just shy of $1.4 billion" (~$1.38 billion per management)</li>
+    <li><strong>Condition:</strong> Contingent on stable macro environment</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Long-Term Targets</h3>
+  <ul>
+    <li><strong>Retail Unit Sales Target:</strong> 3 million cars per year</li>
+    <li><strong>Adjusted EBITDA Margin Target:</strong> 13.5%</li>
+    <li><strong>Timeframe:</strong> 5 to 10 years from call date - 5-year path implies approximately 40% compounded annual growth rate from current base - 10-year path implies approximately 20% compounded annual growth rate</li>
+    <li><strong>ADESA Full Build-Out CapEx:</strong> Originally guided at ~$1 billion total across all ADESA locations (multi-year); noted to be "a little bit higher" now due to inflation since acquisition; spend will occur over a number of years</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Volume & Revenue</h3>
+  <ul>
+    <li><strong>Retail Units Sold:</strong> 143,280 — new company record; +41% YoY</li>
+    <li><strong>Revenue:</strong> $4.84 billion — new company record; +42% YoY</li>
+    <li><strong>Market Share (U.S. used car):</strong> ~1.5%</li>
+    <li><strong>Market Share (total U.S. car market):</strong> ~1%</li>
+    <li><strong>Estimated used car market growth (industry peers):</strong> <5% in units; comp-store peers averaged ~+1% YoY growth</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Gross Profit per Unit (GPU) — Non-GAAP</h3>
+  <ul>
+    <li><strong>Retail GPU:</strong> +$195 YoY - Driven by: reductions in reconditioning and inbound transport costs (~half of gain); ~$100 one-time benefit from tariff-related pricing impact in April (other half) - April retail GPU was notably elevated vs. remaining months of Q2 due to tariff-driven demand surge in late March</li>
+    <li><strong>Wholesale GPU:</strong> -$85 YoY - Driven by: faster growth in retail units sold than wholesale marketplace units, partially offset by lower wholesale vehicle depreciation rates</li>
+    <li><strong>Other GPU:</strong> +$126 YoY - Driven by: better cost of funds; higher Vehicle Service Contract (VSC) attachment rate - Partially offset by: ~$100 positive impact in Q2 2024 from selling additional (stored) loans that did not recur in Q2 2025</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>SG&A — Non-GAAP</h3>
+  <ul>
+    <li><strong>Total SG&A per Retail Unit Sold:</strong> -$460 YoY (reduction) - <strong>Carvana Operations portion:</strong> -$147 per retail unit sold YoY (operational efficiency initiatives) - <strong>Overhead portion:</strong> -$328 per retail unit sold YoY (leverage from higher unit volume)</li>
+    <li><strong>Advertising Expense:</strong> +$29 million YoY; +$44 per retail unit sold YoY; +$12 million sequentially (Q1 to Q2)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Profitability</h3>
+  <ul>
+    <li><strong>Adjusted EBITDA:</strong> $601 million — new company record; +$246 million YoY</li>
+    <li><strong>Adjusted EBITDA Margin:</strong> 12.4% — new company record; +200 bps YoY - Note: transcript contains a likely typo reading "was 12.4% in Q1" — context confirms this is the Q2 figure</li>
+    <li><strong>GAAP Operating Income:</strong> $511 million — new company record; +$252 million YoY</li>
+    <li><strong>GAAP Operating Margin:</strong> 10.6% — new company record; +300 bps YoY</li>
+    <li><strong>GAAP Net Income:</strong> $308 million; +$260 million YoY</li>
+    <li><strong>GAAP Net Income Margin:</strong> 6.4%; +500 bps YoY</li>
+    <li><strong>Incremental Adjusted EBITDA Margin (Q2 2025):</strong> >17%</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Conversion / Quality Metrics</h3>
+  <ul>
+    <li><strong>Adjusted EBITDA to GAAP Operating Income Conversion:</strong> ~85% in Q2 2025 (vs. 73% in Q2 2024)</li>
+    <li><strong>Consecutive quarters of positive net income:</strong> 6 (through Q2 2025)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Operations / Infrastructure</h3>
+  <ul>
+    <li><strong>ADESA Sites Integrated:</strong> 12 (as of Q2 2025); pace of ~3 per quarter</li>
+    <li><strong>Inbound Transport Miles:</strong> down ~20% YoY</li>
+    <li><strong>Inventory Available for Sale (selection):</strong> +50% YoY</li>
+    <li><strong>Retail sales growth over last ~2 years:</strong> approximately +80%</li>
+    <li><strong>Wholesale-to-retail ratio over last ~2 years:</strong> approximately flat</li>
+    <li><strong>Carvana IRC Utilization:</strong> slightly less than half of facility capacity</li>
+    <li><strong>Integrated ADESA site utilization:</strong> less than half of Carvana IRC utilization level</li>
+    <li><strong>Transaction speed anecdote:</strong> customer sold car in 38 minutes from offer request to funds received</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Special Topics</h3>
+</div>
+<div class="content-section">
+  <h3>Tariff Impact (Q2 2025)</h3>
+  <ul>
+    <li>Tariff announcements in late March 2025 drove stronger demand and higher margins in April</li>
+    <li>April retail GPU elevated relative to May/June; net Q2 benefit estimated at approximately <strong>+$100 per retail unit</strong></li>
+    <li>Industry peer YoY unit growth for the quarter: approximately +1% (prior quarter: approximately flat); consistent seasonal trends overall with modest pull-forward and brief subsequent slowdown</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>ADESA Integration Strategy</h3>
+  <ul>
+    <li><strong>Current phase:</strong> CapEx-light integrations of existing ADESA structures using Carvana/Carli technology and retail reconditioning processes</li>
+    <li><strong>Next phase:</strong> Fuller physical build-outs of ADESA locations to expand capacity; expected to continue through H2 2025 and into 2026</li>
+    <li><strong>Inventory pool expansion:</strong> Converting all ADESA facilities gives capacity for more than twice the number of inventory pools vs. today; reduces miles cars travel</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Finance Platform / Other GPU</h3>
+  <ul>
+    <li>Q2 2024 other GPU included approximately <strong>+$100 per unit</strong> from selling additional loans (stored in Q1 2024, sold in Q2 2024); this did not recur in Q2 2025 — a headwind to YoY other GPU comparison</li>
+    <li>Q2 2025 sell-through of loans was approximately normal (loan sales roughly in line with originations)</li>
+    <li>Cost of funds improvements driven by: expanding pool of loan investors; continued strong asset performance; vertically integrated model advantages</li>
+    <li>Management view: Auto loan buyer base is expandable; being larger has made it easier (not harder) to attract new investors</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Inventory / ASP</h3>
+  <ul>
+    <li>Three drivers of sequential inventory balance increase in Q2: (1) sales and selection growth; (2) accounting reclassification from a large retail marketplace partner (inventory moved to Carvana balance sheet); (3) higher average vehicle cost/ASP</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Unit Economics Philosophy (Q2 2025 Letter)</h3>
+  <ul>
+    <li>Management signaled intent to focus more holistically on total units and total EBITDA rather than individual GPU line items; individual line items can "jump around" quarter-to-quarter</li>
+    <li>GPU + SG&A together vs. total operating expenses gap is described as "very, very large," providing significant room for advertising and other investments</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 2025 Actuals (Reported)</h3>
+</div>
+
+<div class="prior-ref" id="priorRef">
+  <div class="prior-ref-header" onclick="var b=document.getElementById('priorBody');b.classList.toggle('open');this.querySelector('.arrow').innerHTML=b.classList.contains('open')?'&#9650;':'&#9660;';">
+    Prior Quarter Reference: Q1 2025
+    <span class="arrow">&#9660;</span>
+  </div>
+  <div class="prior-ref-body" id="priorBody">
+    <div class="metric-grid">
+    </div>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q1_2025.html" style="color:var(--blue);">View full Q1 2025 detail &rarr;</a></p>
+  </div>
+</div>
+
+<div class="footer-nav">
+  <a href="Q1_2025.html">&larr; Q1 2025</a>
+  <a href="../comparison.html">Back to Overview</a>
+  <a href="Q3_2025.html">Q3 2025 &rarr;</a>
+</div>
+
+</body>
+</html>

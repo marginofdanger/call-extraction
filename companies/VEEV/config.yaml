@@ -87,9 +87,10 @@ quarters:
   bamsec_id: bd358ac1-5288-45f8-be08-0d2428210f25
   edgar_8k_accession: 0001393052-25-000074
 - id: Q4_FY2026
-  call_date: February 26, 2026
+  call_date: March 4, 2026
   reporting_quarter: Q4 FY2026 (Nov 2025–Jan 2026, Full Year)
-  bamsec_id: ''
+  bamsec_id: b588c1fb-513f-4609-863f-788a47c48975
+  edgar_8k_accession: 0001393052-26-000007
 tracked_metrics:
   guidance_for:
     label: Guidance For

@@ -319,6 +319,31 @@
     .comp-table th, .comp-table td { padding: 6px 8px; }
   }
 
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+  .content-section .md-table th {
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .content-section .md-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-section .md-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+  .content-section .md-table tr:hover { background: #e8f4fd; }
+
   @media print {
     .nav-bar { display: none; }
     .header { background: #333; }
@@ -338,6 +363,8 @@
   <a href="Q1_2023.html">&larr; Q1 2023</a>
   <div class="nav-center">
     <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>
     <a href="Q4_2025.html" class="qbtn">4Q25</a>
     <a href="Q3_2025.html" class="qbtn">3Q25</a>
     <a href="Q2_2025.html" class="qbtn">2Q25</a>
@@ -358,62 +385,44 @@
   <a href="Q3_2023.html">Q3 2023 &rarr;</a>
 </div>
 
-<div class="metrics-card">
-  <div class="metric">
-    <div class="metric-label">FY 2023 Revenue Guidance</div>
-    <div class="metric-value">$63.25B - $64.75B</div>
-    <div class="metric-delta delta-up">Raised from $62.5B - $64.5B</div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">FY 2023 Adj. EBITDA Guidance</div>
-    <div class="metric-value">$12.3B - $12.8B</div>
-    <div class="metric-delta delta-up">Raised from $12.1B - $12.7B</div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">FY 2023 Diluted EPS Guidance</div>
-    <div class="metric-value">$17.70 - $18.90</div>
-    <div class="metric-delta delta-up">Raised from $17.25 - $18.55</div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">FY 2023 CapEx Guidance</div>
-    <div class="metric-value">~$4.7B</div>
-    <div class="metric-delta delta-up">Raised from ~$4.6B</div>
-  </div>
+<div class="changes-box">
+  <h3>What Changed vs Q1 2023</h3>
+  <ul>
+    <li><span class="change-tag ct-changed">Changed</span> Same-Facility Admissions: <strong>+2.2%</strong> YoY (prior: +4.4% year-over-year)</li>
+    <li><span class="change-tag ct-new">New</span> NEW: Cybersecurity incident discussed</li>
+  </ul>
 </div>
 
-<div class="changes-box">
-  <h3>What Changed in Guidance vs Q1 2023</h3>
-  <ul>
-    <li><span class="change-tag ct-raised">Raised</span> Revenue guidance: <strong>$63.25B - $64.75B</strong> (from $62.5B - $64.5B)</li>
-    <li><span class="change-tag ct-raised">Raised</span> Adj. EBITDA guidance: <strong>$12.3B - $12.8B</strong> (from $12.1B - $12.7B); midpoint raised ~$450M from initial 2023 guidance</li>
-    <li><span class="change-tag ct-raised">Raised</span> Net income guidance: <strong>$4.9B - $5.255B</strong> (from $4.75B - $5.16B)</li>
-    <li><span class="change-tag ct-raised">Raised</span> Diluted EPS guidance: <strong>$17.70 - $18.90</strong> (from $17.25 - $18.55)</li>
-    <li><span class="change-tag ct-raised">Raised</span> CapEx guidance: <strong>~$4.7B</strong> (from ~$4.6B)</li>
-  </ul>
+<div class="metrics-card">
+  <div class="metric">
+    <div class="metric-label">Same-Facility Admissions</div>
+    <div class="metric-value"><strong>+2.2%</strong> YoY</div>
+    <div class="metric-delta delta-flat">Prior: +4.4% year-over-year</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Revenue Per Admission</div>
+    <div class="metric-value"><strong>+2.9%</strong> YoY</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Adj. EBITDA Margin</div>
+    <div class="metric-value"><strong>19.3%</strong> in Q2 2023</div>
+  </div>
 </div>
 
 <!-- Full Guidance Content -->
 <div class="content-section">
   <h3>Full Year 2023 Guidance (Updated / Raised)</h3>
+</div>
+<div class="content-section">
+  <h3>GUIDANCE RAISE: EBITDA midpoint raised ~$450 million from initial 2023 guidance at start of year</h3>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Updated FY 2023 Guidance (Q2 Call)</th><th>Prior Guidance (if referenced)</th></tr></thead><tbody><tr><td><strong>Revenue</strong></td><td><strong>$63.25 billion - $64.75 billion</strong></td><td>Not explicitly stated on call</td></tr><tr><td><strong>Net income attributable to HCA</strong></td><td><strong>$4.9 billion - $5.255 billion</strong></td><td>Not explicitly stated on call</td></tr><tr><td><strong>Adjusted EBITDA</strong></td><td><strong>$12.3 billion - $12.8 billion</strong></td><td>~$450M below current midpoint at start of year (implied prior midpoint ~$12.1B)</td></tr><tr><td><strong>Diluted EPS</strong></td><td><strong>$17.70 - $18.90</strong></td><td>Not explicitly stated on call</td></tr><tr><td><strong>Capital spending</strong></td><td>~<strong>$4.7 billion</strong></td><td>Slightly raised (referenced as "slight raise in CapEx guide")</td></tr></tbody></table></div>
+</div>
+<div class="content-section">
+  <h3>Original Guidance Assumptions (Referenced on Call)</h3>
   <ul>
-    <li>EBITDA midpoint raised ~$450 million from initial 2023 guidance at start of year</li>
-  </ul>
-  <table class="comp-table">
-    <thead>
-      <tr><th>Metric</th><th>Updated FY 2023 Guidance (Q2 Call)</th><th>Prior Guidance (Q1 Call)</th></tr>
-    </thead>
-    <tbody>
-      <tr><td><strong>Revenue</strong></td><td><strong>$63.25B - $64.75B</strong></td><td>$62.5B - $64.5B</td></tr>
-      <tr><td><strong>Net Income Attributable to HCA</strong></td><td><strong>$4.9B - $5.255B</strong></td><td>$4.75B - $5.16B</td></tr>
-      <tr><td><strong>Adjusted EBITDA</strong></td><td><strong>$12.3B - $12.8B</strong></td><td>$12.1B - $12.7B</td></tr>
-      <tr><td><strong>Diluted EPS</strong></td><td><strong>$17.70 - $18.90</strong></td><td>$17.25 - $18.55</td></tr>
-      <tr><td><strong>Capital Spending</strong></td><td><strong>~$4.7B</strong></td><td>~$4.6B</td></tr>
-    </tbody>
-  </table>
-  <ul>
-    <li><strong>Original admission growth assumption:</strong> 1%-2%</li>
-    <li><strong>Original outpatient growth assumption:</strong> mid-single digits</li>
-    <li><strong>Original equivalent admission growth assumption:</strong> ~2%-3%</li>
+    <li><strong>Original admission growth assumption:</strong> <strong>1%-2%</strong></li>
+    <li><strong>Original outpatient growth assumption:</strong> <strong>mid-single digits</strong></li>
+    <li><strong>Original equivalent admission growth assumption:</strong> ~<strong>2%-3%</strong></li>
   </ul>
 </div>
 <div class="content-section">
@@ -506,20 +515,33 @@
   </ul>
 </div>
 <div class="content-section">
-  <h3>Forward-Looking Expectations (Volumes, Margins, Seasonality)</h3>
+  <h3>Full Year Volume Expectations (Updated)</h3>
   <ul>
     <li><strong>Full year admission growth:</strong> expected to hover around <strong>~3%</strong> (vs. 3.3% YTD)</li>
     <li><strong>Full year adjusted admission growth:</strong> expected <strong>5%-6%</strong> (vs. 5.6% YTD)</li>
     <li><strong>Full year equivalent admission growth:</strong> expected <strong>5%-6%</strong></li>
     <li>Volume trends in second half expected to be "pretty consistent" with first half</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Margin Expectations (Second Half)</h3>
+  <ul>
     <li><strong>SWB as % of revenue:</strong> expected to run "mostly where they're running year-to-date" in H2</li>
     <li><strong>Supplies as % of revenue:</strong> expected to run consistent with YTD</li>
     <li><strong>Professional fees:</strong> saw "a little pressure" in H1; management does not expect same pressure in H2</li>
     <li><strong>Overall margin profile:</strong> expected to be "slightly better in the second half of the year" vs. H1</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Seasonality</h3>
+  <ul>
     <li>Q3 expected to be weaker than Q4 (normal pre-pandemic seasonality pattern)</li>
     <li>Q4 is "always the strongest quarter of the year" driven by outpatient activity and deductibles</li>
     <li>Normal seasonality patterns have returned; reflected in guidance</li>
   </ul>
+</div>
+<div class="content-section">
+  <h3>Special Topics</h3>
 </div>
 <div class="content-section">
   <h3>Commercial Rate Cycle / Managed Care Contracting</h3>
@@ -606,6 +628,10 @@
     <li>Population growth strong in key markets: Texas, Florida, Utah, Nevada, South Carolina, Tennessee</li>
   </ul>
 </div>
+<div class="content-section">
+  <h3>Q2 2023 Actuals (Reported)</h3>
+</div>
+
 <div class="prior-ref" id="priorRef">
   <div class="prior-ref-header" onclick="var b=document.getElementById('priorBody');b.classList.toggle('open');this.querySelector('.arrow').innerHTML=b.classList.contains('open')?'&#9650;':'&#9660;';">
     Prior Quarter Reference: Q1 2023
@@ -613,10 +639,7 @@
   </div>
   <div class="prior-ref-body" id="priorBody">
     <div class="metric-grid">
-      <div class="prior-mini"><div class="pm-label">FY 2023 Revenue Guidance</div><div class="pm-value">$62.5B - $64.5B</div></div>
-      <div class="prior-mini"><div class="pm-label">FY 2023 Adj. EBITDA Guidance</div><div class="pm-value">$12.1B - $12.7B</div></div>
-      <div class="prior-mini"><div class="pm-label">FY 2023 Diluted EPS Guidance</div><div class="pm-value">$17.25 - $18.55</div></div>
-      <div class="prior-mini"><div class="pm-label">FY 2023 CapEx Guidance</div><div class="pm-value">~$4.6B</div></div>
+      <div class="prior-mini"><div class="pm-label">Same-Facility Admissions</div><div class="pm-value">+4.4% year-over-year</div></div>
     </div>
     <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q1_2023.html" style="color:var(--blue);">View full Q1 2023 detail &rarr;</a></p>
   </div>

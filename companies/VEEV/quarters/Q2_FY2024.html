@@ -319,6 +319,31 @@
     .comp-table th, .comp-table td { padding: 6px 8px; }
   }
 
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+  .content-section .md-table th {
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .content-section .md-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-section .md-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+  .content-section .md-table tr:hover { background: #e8f4fd; }
+
   @media print {
     .nav-bar { display: none; }
     .header { background: #333; }
@@ -339,6 +364,8 @@
   <div class="nav-center">
     <a href="../comparison.html" class="nav-back">Overview</a>
     <a href="../results.html" class="nav-back">Results</a>
+    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>
+    <a href="Q4_FY2026.html" class="qbtn">4Q2026</a>
     <a href="Q3_FY2026.html" class="qbtn">3Q2026</a>
     <a href="Q2_FY2026.html" class="qbtn">2Q2026</a>
     <a href="Q1_FY2026.html" class="qbtn">1Q2026</a>
@@ -426,15 +453,11 @@
 </div>
 <div class="content-section">
   <h3>Q2 FY2024 Guidance vs. Actuals Summary</h3>
-  <ul>
-    <li>| Metric | Q2 Guidance (from Q1 call) | Q2 Actual | Beat | |--------|---------------------------|-----------|------| | <strong>Total Revenue</strong> | $580M - $582M | $590.2M | +$8-10M | | <strong>Non-GAAP Operating Income</strong> | $199M - $201M | $211.9M | +$11-13M | | <strong>Non-GAAP Diluted EPS</strong> | $1.12 - $1.13 | $1.21 | +$0.08-0.09 |</li>
-  </ul>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Q2 Guidance (from Q1 call)</th><th>Q2 Actual</th><th>Beat</th></tr></thead><tbody><tr><td><strong>Total Revenue</strong></td><td>$580M - $582M</td><td>$590.2M</td><td>+$8-10M</td></tr><tr><td><strong>Non-GAAP Operating Income</strong></td><td>$199M - $201M</td><td>$211.9M</td><td>+$11-13M</td></tr><tr><td><strong>Non-GAAP Diluted EPS</strong></td><td>$1.12 - $1.13</td><td>$1.21</td><td>+$0.08-0.09</td></tr></tbody></table></div>
 </div>
 <div class="content-section">
   <h3>FY2024 Full Year Guidance Revision Summary</h3>
-  <ul>
-    <li>| Metric | Prior (Q1 FY2024 call) | Updated (Q2 FY2024 call) | Change | |--------|------------------------|--------------------------|--------| | <strong>Total Revenue</strong> | $2,360M - $2,370M | $2,365M - $2,370M | Narrowed/raised low end +$5M | | <strong>Non-GAAP Operating Income</strong> | ~$810M | ~$820M | +$10M | | <strong>Non-GAAP Diluted EPS</strong> | ~$4.59 | ~$4.68 | +$0.09 | | <strong>Subscription Revenue</strong> | (not specified) | Increased ~$5M (commercial) | +$5M | | <strong>Normalized Billings Growth</strong> | ~15% | ~15% | Unchanged | | <strong>FY2025 Revenue</strong> | At least $2,800M | At least $2,800M | Reiterated | | <strong>FY2025 Non-GAAP Op Income</strong> | At least $1,000M | At least $1,000M | Reiterated |</li>
-  </ul>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Prior (Q1 FY2024 call)</th><th>Updated (Q2 FY2024 call)</th><th>Change</th></tr></thead><tbody><tr><td><strong>Total Revenue</strong></td><td>$2,360M - $2,370M</td><td>$2,365M - $2,370M</td><td>Narrowed/raised low end +$5M</td></tr><tr><td><strong>Non-GAAP Operating Income</strong></td><td>~$810M</td><td>~$820M</td><td>+$10M</td></tr><tr><td><strong>Non-GAAP Diluted EPS</strong></td><td>~$4.59</td><td>~$4.68</td><td>+$0.09</td></tr><tr><td><strong>Subscription Revenue</strong></td><td>(not specified)</td><td>Increased ~$5M (commercial)</td><td>+$5M</td></tr><tr><td><strong>Normalized Billings Growth</strong></td><td>~15%</td><td>~15%</td><td>Unchanged</td></tr><tr><td><strong>FY2025 Revenue</strong></td><td>At least $2,800M</td><td>At least $2,800M</td><td>Reiterated</td></tr><tr><td><strong>FY2025 Non-GAAP Op Income</strong></td><td>At least $1,000M</td><td>At least $1,000M</td><td>Reiterated</td></tr></tbody></table></div>
 </div>
 <div class="content-section">
   <h3>Revenue</h3>

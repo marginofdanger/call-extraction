@@ -319,6 +319,31 @@
     .comp-table th, .comp-table td { padding: 6px 8px; }
   }
 
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+  .content-section .md-table th {
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .content-section .md-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-section .md-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+  .content-section .md-table tr:hover { background: #e8f4fd; }
+
   @media print {
     .nav-bar { display: none; }
     .header { background: #333; }
@@ -338,6 +363,8 @@
   <a href="Q2_2022.html">&larr; Q2 2022</a>
   <div class="nav-center">
     <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>
     <a href="Q4_2025.html" class="qbtn">4Q25</a>
     <a href="Q3_2025.html" class="qbtn">3Q25</a>
     <a href="Q2_2025.html" class="qbtn">2Q25</a>
@@ -358,39 +385,29 @@
   <a href="Q4_2022.html">Q4 2022 &rarr;</a>
 </div>
 
-<div class="metrics-card">
-  <div class="metric">
-    <div class="metric-label">FY 2022 Revenue Guidance</div>
-    <div class="metric-value">Unchanged</div>
-    <div class="metric-delta delta-flat">Maintained at prior ranges</div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">FY 2022 CapEx Guidance</div>
-    <div class="metric-value">~$4.2B</div>
-    <div class="metric-delta delta-flat">Unchanged</div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">FY 2022 Share Repurchase</div>
-    <div class="metric-value">~$7B</div>
-    <div class="metric-delta delta-flat">Unchanged</div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">FY 2023 Guidance</div>
-    <div class="metric-value">Deferred</div>
-    <div class="metric-delta delta-flat">To early January</div>
-  </div>
-</div>
-
 <div class="changes-box">
   <h3>What Changed vs Q2 2022</h3>
   <ul>
-    <li><span class="change-tag ct-maintained">Maintained</span> FY 2022 guidance ranges maintained unchanged (wider than typical at this point in the year)</li>
-    <li><span class="change-tag ct-maintained">Maintained</span> FY 2022 CapEx: ~$4.2B (unchanged)</li>
-    <li><span class="change-tag ct-maintained">Maintained</span> FY 2022 Share Repurchase: ~$7B (unchanged)</li>
-    <li><span class="change-tag ct-new">New</span> FY 2023 formal guidance deferred to early January due to inflation uncertainty</li>
-    <li><span class="change-tag ct-new">New</span> Preliminary FY 2023 CapEx: ~$4.2B (directional commentary only)</li>
-    <li><span class="change-tag ct-new">New</span> Preliminary 2023 demand growth outlook: ~1%-2%</li>
+    <li><span class="change-tag ct-changed">Changed</span> Adj. EBITDA Margin: 19.4% (prior: 20.5% (vs. ~19.7% in Q1 2022))</li>
+    <li><span class="change-tag ct-new">New</span> NEW: Natural disaster impact discussed</li>
+    <li><span class="change-tag ct-new">New</span> NEW: Medicaid redetermination impact discussed</li>
   </ul>
+</div>
+
+<div class="metrics-card">
+  <div class="metric">
+    <div class="metric-label">Same-Facility Admissions</div>
+    <div class="metric-value">Down 1.5% year-over-year</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Revenue Per Admission</div>
+    <div class="metric-value">Generally comparable between Q2 and Q3 2022</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Adj. EBITDA Margin</div>
+    <div class="metric-value">19.4%</div>
+    <div class="metric-delta delta-flat">Prior: 20.5%</div>
+  </div>
 </div>
 
 <!-- Full Guidance Content -->
@@ -415,42 +432,13 @@
 </div>
 <div class="content-section">
   <h3>Guidance Status Summary</h3>
-  <table class="comp-table">
-    <thead><tr><th>Item</th><th>Status</th><th>Detail</th></tr></thead>
-    <tbody>
-      <tr><td><strong>FY 2022 Guidance</strong></td><td>UNCHANGED</td><td>Maintained at prior ranges (wider than typical at this point in the year)</td></tr>
-      <tr><td><strong>FY 2023 Guidance</strong></td><td>DEFERRED</td><td>Will not provide typical early outlook; deferred to early January due to inflation uncertainty</td></tr>
-      <tr><td><strong>FY 2022 CapEx</strong></td><td>~$4.2 billion</td><td>Unchanged</td></tr>
-      <tr><td><strong>FY 2022 Share Repurchase</strong></td><td>~$7 billion</td><td>Full year expectation</td></tr>
-      <tr><td><strong>FY 2023 CapEx</strong></td><td>~$4.2 billion (materially in that range)</td><td>Preliminary; planning stages</td></tr>
-    </tbody>
-  </table>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Item</th><th>Status</th><th>Detail</th></tr></thead><tbody><tr><td><strong>FY 2022 Guidance</strong></td><td>UNCHANGED</td><td>Maintained at prior ranges (wider than typical at this point in the year)</td></tr><tr><td><strong>FY 2023 Guidance</strong></td><td>DEFERRED</td><td>Will not provide typical early outlook; deferred to early January due to inflation uncertainty</td></tr><tr><td><strong>FY 2022 CapEx</strong></td><td>~$4.2 billion</td><td>Unchanged</td></tr><tr><td><strong>FY 2022 Share Repurchase</strong></td><td>~$7 billion</td><td>Full year expectation</td></tr><tr><td><strong>FY 2023 CapEx</strong></td><td>~$4.2 billion (materially in that range)</td><td>Preliminary; planning stages</td></tr></tbody></table></div>
 </div>
 <div class="content-section">
   <h3>S&P Global Market Intelligence Consensus Estimates (as of Oct 21, 2022)</h3>
-  <table class="comp-table">
-    <thead><tr><th>Metric</th><th>FQ3 2022 Consensus</th><th>FQ3 2022 Actual</th><th>Surprise</th></tr></thead>
-    <tbody>
-      <tr><td><strong>EPS Normalized</strong></td><td>$3.86</td><td>$3.93</td><td>+1.81%</td></tr>
-      <tr><td><strong>Revenue (mm)</strong></td><td>$15,000.98</td><td>$14,971.00</td><td>-0.20%</td></tr>
-    </tbody>
-  </table>
-  <table class="comp-table">
-    <thead><tr><th>EPS Normalized History</th><th>Consensus</th><th>Actual</th><th>Surprise</th></tr></thead>
-    <tbody>
-      <tr><td>FQ4 2021</td><td>$4.55</td><td>$4.42</td><td>-2.86%</td></tr>
-      <tr><td>FQ1 2022</td><td>$4.24</td><td>$4.12</td><td>-2.83%</td></tr>
-      <tr><td>FQ2 2022</td><td>$3.71</td><td>$4.21</td><td>+13.48%</td></tr>
-      <tr><td>FQ3 2022</td><td>$3.86</td><td>$3.93</td><td>+1.81%</td></tr>
-    </tbody>
-  </table>
-  <table class="comp-table">
-    <thead><tr><th>Forward Consensus</th><th>FQ4 2022</th><th>FY 2022</th><th>FY 2023</th></tr></thead>
-    <tbody>
-      <tr><td><strong>EPS Normalized</strong></td><td>$4.86</td><td>$17.06</td><td>$18.91</td></tr>
-      <tr><td><strong>Revenue (mm)</strong></td><td>$15,585.39</td><td>$60,331.36</td><td>$63,379.15</td></tr>
-    </tbody>
-  </table>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>FQ3 2022 Consensus</th><th>FQ3 2022 Actual</th><th>Surprise</th></tr></thead><tbody><tr><td><strong>EPS Normalized</strong></td><td>$3.86</td><td>$3.93</td><td>+1.81%</td></tr><tr><td><strong>Revenue (mm)</strong></td><td>$15,000.98</td><td>$14,971.00</td><td>-0.20%</td></tr></tbody></table></div>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>EPS Normalized History</th><th>Consensus</th><th>Actual</th><th>Surprise</th></tr></thead><tbody><tr><td>FQ4 2021</td><td>$4.55</td><td>$4.42</td><td>-2.86%</td></tr><tr><td>FQ1 2022</td><td>$4.24</td><td>$4.12</td><td>-2.83%</td></tr><tr><td>FQ2 2022</td><td>$3.71</td><td>$4.21</td><td>+13.48%</td></tr><tr><td>FQ3 2022</td><td>$3.86</td><td>$3.93</td><td>+1.81%</td></tr></tbody></table></div>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Forward Consensus</th><th>FQ4 2022</th><th>FY 2022</th><th>FY 2023</th></tr></thead><tbody><tr><td><strong>EPS Normalized</strong></td><td>$4.86</td><td>$17.06</td><td>$18.91</td></tr><tr><td><strong>Revenue (mm)</strong></td><td>$15,585.39</td><td>$60,331.36</td><td>$63,379.15</td></tr></tbody></table></div>
 </div>
 <div class="content-section">
   <h3>Income Statement / Profitability</h3>
@@ -561,10 +549,20 @@
   </ul>
 </div>
 <div class="content-section">
-  <h3>Preliminary 2023 Outlook: Other Key Items</h3>
+  <h3>Capital Expenditure</h3>
   <ul>
     <li><strong>2023 CapEx:</strong> Anticipated to stay materially in the range of ~$4.2 billion</li>
-    <li><strong>Florida DPP:</strong> Not anticipated to be a headwind for 2023; annual program subject to annual CMS approval; management anticipates program will continue in its material form</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Florida DPP (2023)</h3>
+  <ul>
+    <li><strong>Not anticipated to be a headwind</strong> for 2023; annual program subject to annual CMS approval; management anticipates program will continue in its material form</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Public Health Emergency / Medicaid Redetermination</h3>
+  <ul>
     <li><strong>COVID DRG Add-On:</strong> Not material at current COVID volume levels</li>
     <li><strong>Medicaid Redeterminations:</strong> Will occur when PHE expires; HCA has evaluated and has planning exercises in place</li>
   </ul>
@@ -614,10 +612,7 @@
 <div class="content-section">
   <h3>Four Key Themes from Q3 (CEO)</h3>
   <ul>
-    <li><strong>Top line metrics are stable;</strong> normal seasonality patterns beginning to emerge</li>
-    <li><strong>Making progress on human resource agenda;</strong> engagement levels are up</li>
-    <li><strong>Inflation is real</strong> -- a pressure point, but being managed through resiliency agenda and other initiatives</li>
-    <li><strong>Long-term growth prospects exist across the portfolio</strong></li>
+    <li>1. <strong>Top line metrics are stable;</strong> normal seasonality patterns beginning to emerge 2. <strong>Making progress on human resource agenda;</strong> engagement levels are up 3. <strong>Inflation is real</strong> -- a pressure point, but being managed through resiliency agenda and other initiatives 4. <strong>Long-term growth prospects exist across the portfolio</strong></li>
   </ul>
 </div>
 <div class="content-section">
@@ -658,45 +653,7 @@
 </div>
 <div class="content-section">
   <h3>Key Quantitative Data Summary Table</h3>
-  <table class="comp-table">
-    <thead><tr><th>Metric</th><th>Value</th><th>Period/Comparison</th></tr></thead>
-    <tbody>
-      <tr><td>Adjusted EBITDA</td><td>$2.902 billion</td><td>Q3 2022</td></tr>
-      <tr><td>Adjusted EBITDA Margin</td><td>19.4%</td><td>Q3 2022</td></tr>
-      <tr><td>Diluted EPS</td><td>$3.93</td><td>Q3 2022 (excl. $0.02 loss on sale)</td></tr>
-      <tr><td>Same-Facility Admissions</td><td>-1.5% YoY</td><td>Q3 2022</td></tr>
-      <tr><td>Non-COVID Admissions</td><td>+6.9% YoY</td><td>Q3 2022</td></tr>
-      <tr><td>Non-COVID Admissions</td><td>+2.7% YTD</td><td>YTD Q3 2022</td></tr>
-      <tr><td>COVID Admissions</td><td>-60% YoY</td><td>Q3 2022</td></tr>
-      <tr><td>COVID % of Admissions</td><td>~5%</td><td>Q3 2022</td></tr>
-      <tr><td>COVID % of Admissions (prior year)</td><td>~13%</td><td>Q3 2021</td></tr>
-      <tr><td>Non-COVID Rev/Adj Admission Growth</td><td>~+2 pts YoY</td><td>Q3 2022 (ex-Florida DPP)</td></tr>
-      <tr><td>Florida DPP Revenue</td><td>~$266 million</td><td>Q3 2022</td></tr>
-      <tr><td>Florida DPP Expenses</td><td>~$125 million</td><td>Q3 2022</td></tr>
-      <tr><td>Hurricane Ian Impact</td><td>~$35 million</td><td>Q3 2022</td></tr>
-      <tr><td>Contract Labor as % of SWB</td><td>~7.2%</td><td>Q3 2022</td></tr>
-      <tr><td>Contract Labor Sequential Change</td><td>-19%</td><td>Q3 vs. Q2 2022</td></tr>
-      <tr><td>Employed Wage Increase</td><td>~4%+</td><td>Q3 vs. Q2 2022</td></tr>
-      <tr><td>SWB Cost Per Hour</td><td>Flat</td><td>Q3 vs. Q2 2022</td></tr>
-      <tr><td>Cash Flow from Operations</td><td>$3.02 billion</td><td>Q3 2022</td></tr>
-      <tr><td>Capital Spending</td><td>$1.13 billion</td><td>Q3 2022</td></tr>
-      <tr><td>Share Repurchases</td><td>~$700 million</td><td>Q3 2022</td></tr>
-      <tr><td>Share Repurchases YTD</td><td>~$5.5 billion</td><td>YTD Q3 2022</td></tr>
-      <tr><td>Available Liquidity</td><td>~$3.9 billion</td><td>End of Q3 2022</td></tr>
-      <tr><td>Debt/Adj. EBITDA</td><td>Just above low end of leverage range</td><td>End of Q3 2022</td></tr>
-      <tr><td>Return on Invested Capital</td><td>High teens %</td><td>Current</td></tr>
-      <tr><td>Capacity Turned Away</td><td>~1%-1.5% of admissions</td><td>Q3 2022</td></tr>
-      <tr><td>Managed Care Contracted for 2023</td><td>~70%</td><td>As of Q3 2022</td></tr>
-      <tr><td>Managed Care Contracted for 2024</td><td>~45%</td><td>As of Q3 2022</td></tr>
-      <tr><td>Contract Rate Escalators</td><td>Mid-single digits</td><td>New/renegotiated contracts</td></tr>
-      <tr><td>2023 Expected Demand Growth</td><td>~1%-2%</td><td>Preliminary outlook</td></tr>
-      <tr><td>FY 2022 Total CapEx Guidance</td><td>~$4.2 billion</td><td>Full year 2022</td></tr>
-      <tr><td>FY 2022 Share Repurchase Expected</td><td>~$7 billion</td><td>Full year 2022</td></tr>
-      <tr><td>2022 Non-Recurring: TX Out-of-Period</td><td>~$150 million</td><td>Recorded in 2022</td></tr>
-      <tr><td>2022 Non-Recurring: COVID Payments</td><td>~$300 million</td><td>Received in 2022</td></tr>
-      <tr><td>Outpatient Activity vs. Q3 2019</td><td>+5%-6%</td><td>Q3 2022 vs. Q3 2019</td></tr>
-    </tbody>
-  </table>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Value</th><th>Period/Comparison</th></tr></thead><tbody><tr><td>Adjusted EBITDA</td><td>$2.902 billion</td><td>Q3 2022</td></tr><tr><td>Adjusted EBITDA Margin</td><td>19.4%</td><td>Q3 2022</td></tr><tr><td>Diluted EPS</td><td>$3.93</td><td>Q3 2022 (excl. $0.02 loss on sale)</td></tr><tr><td>Same-Facility Admissions</td><td>-1.5% YoY</td><td>Q3 2022</td></tr><tr><td>Non-COVID Admissions</td><td>+6.9% YoY</td><td>Q3 2022</td></tr><tr><td>Non-COVID Admissions</td><td>+2.7% YTD</td><td>YTD Q3 2022</td></tr><tr><td>COVID Admissions</td><td>-60% YoY</td><td>Q3 2022</td></tr><tr><td>COVID % of Admissions</td><td>~5%</td><td>Q3 2022</td></tr><tr><td>COVID % of Admissions (prior year)</td><td>~13%</td><td>Q3 2021</td></tr><tr><td>Non-COVID Rev/Adj Admission Growth</td><td>~+2 pts YoY</td><td>Q3 2022 (ex-Florida DPP)</td></tr><tr><td>Florida DPP Revenue</td><td>~$266 million</td><td>Q3 2022</td></tr><tr><td>Florida DPP Expenses</td><td>~$125 million</td><td>Q3 2022</td></tr><tr><td>Hurricane Ian Impact</td><td>~$35 million</td><td>Q3 2022</td></tr><tr><td>Contract Labor as % of SWB</td><td>~7.2%</td><td>Q3 2022</td></tr><tr><td>Contract Labor Sequential Change</td><td>-19%</td><td>Q3 vs. Q2 2022</td></tr><tr><td>Employed Wage Increase</td><td>~4%+</td><td>Q3 vs. Q2 2022</td></tr><tr><td>SWB Cost Per Hour</td><td>Flat</td><td>Q3 vs. Q2 2022</td></tr><tr><td>Cash Flow from Operations</td><td>$3.02 billion</td><td>Q3 2022</td></tr><tr><td>Capital Spending</td><td>$1.13 billion</td><td>Q3 2022</td></tr><tr><td>Share Repurchases</td><td>~$700 million</td><td>Q3 2022</td></tr><tr><td>Share Repurchases YTD</td><td>~$5.5 billion</td><td>YTD Q3 2022</td></tr><tr><td>Available Liquidity</td><td>~$3.9 billion</td><td>End of Q3 2022</td></tr><tr><td>Debt/Adj. EBITDA</td><td>Just above low end of leverage range</td><td>End of Q3 2022</td></tr><tr><td>Return on Invested Capital</td><td>High teens %</td><td>Current</td></tr><tr><td>Capacity Turned Away</td><td>~1%-1.5% of admissions</td><td>Q3 2022</td></tr><tr><td>Managed Care Contracted for 2023</td><td>~70%</td><td>As of Q3 2022</td></tr><tr><td>Managed Care Contracted for 2024</td><td>~45%</td><td>As of Q3 2022</td></tr><tr><td>Contract Rate Escalators</td><td>Mid-single digits</td><td>New/renegotiated contracts</td></tr><tr><td>2023 Expected Demand Growth</td><td>~1%-2%</td><td>Preliminary outlook</td></tr><tr><td>FY 2022 Total CapEx Guidance</td><td>~$4.2 billion</td><td>Full year 2022</td></tr><tr><td>FY 2022 Share Repurchase Expected</td><td>~$7 billion</td><td>Full year 2022</td></tr><tr><td>2022 Non-Recurring: TX Out-of-Period</td><td>~$150 million</td><td>Recorded in 2022</td></tr><tr><td>2022 Non-Recurring: COVID Payments</td><td>~$300 million</td><td>Received in 2022</td></tr><tr><td>Outpatient Activity vs. Q3 2019</td><td>+5%-6%</td><td>Q3 2022 vs. Q3 2019</td></tr></tbody></table></div>
 </div>
 <div class="content-section">
   <h3>Q3 2022 Actuals (Reported)</h3>
@@ -709,9 +666,8 @@
   </div>
   <div class="prior-ref-body" id="priorBody">
     <div class="metric-grid">
-      <div class="prior-mini"><div class="pm-label">FY 2022 Guidance</div><div class="pm-value">Unchanged from Q1</div></div>
-      <div class="prior-mini"><div class="pm-label">FY 2022 CapEx</div><div class="pm-value">~$4.2B</div></div>
-      <div class="prior-mini"><div class="pm-label">EBITDA Margin Planning</div><div class="pm-value">19%-20%</div></div>
+      <div class="prior-mini"><div class="pm-label">CapEx Guidance</div><div class="pm-value">~$4.2 billion (per analyst reference; management did not dispute)</div></div>
+      <div class="prior-mini"><div class="pm-label">Adj. EBITDA Margin</div><div class="pm-value">20.5% (vs. ~19.7% in Q1 2022)</div></div>
     </div>
     <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q2_2022.html" style="color:var(--blue);">View full Q2 2022 detail &rarr;</a></p>
   </div>

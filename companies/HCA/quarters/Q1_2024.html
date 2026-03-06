@@ -319,6 +319,31 @@
     .comp-table th, .comp-table td { padding: 6px 8px; }
   }
 
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+  .content-section .md-table th {
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .content-section .md-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-section .md-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+  .content-section .md-table tr:hover { background: #e8f4fd; }
+
   @media print {
     .nav-bar { display: none; }
     .header { background: #333; }
@@ -338,6 +363,8 @@
   <a href="Q4_2023.html">&larr; Q4 2023</a>
   <div class="nav-center">
     <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>
     <a href="Q4_2025.html" class="qbtn">4Q25</a>
     <a href="Q3_2025.html" class="qbtn">3Q25</a>
     <a href="Q2_2025.html" class="qbtn">2Q25</a>
@@ -358,55 +385,50 @@
   <a href="Q2_2024.html">Q2 2024 &rarr;</a>
 </div>
 
-<div class="metrics-card">
-  <div class="metric">
-    <div class="metric-label">FY Revenue Guidance</div>
-    <div class="metric-value">$67.75B - $70.25B</div>
-    <div class="metric-delta delta-flat">Reaffirmed</div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">FY Adj. EBITDA Guidance</div>
-    <div class="metric-value">$12.85B - $13.55B</div>
-    <div class="metric-delta delta-flat">Reaffirmed</div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">FY Diluted EPS Guidance</div>
-    <div class="metric-value">$19.70 - $21.20</div>
-    <div class="metric-delta delta-flat">Reaffirmed</div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">FY CapEx Guidance</div>
-    <div class="metric-value">~$5.2B</div>
-    <div class="metric-delta delta-flat">Reaffirmed ($5.1B - $5.3B)</div>
-  </div>
-</div>
-
 <div class="changes-box">
   <h3>What Changed vs Q4 2023</h3>
   <ul>
-    <li><span class="change-tag ct-maintained">Maintained</span> Revenue guidance: $67.75B - $70.25B (reaffirmed, no change)</li>
-    <li><span class="change-tag ct-maintained">Maintained</span> Adj. EBITDA guidance: $12.85B - $13.55B (reaffirmed, no change)</li>
-    <li><span class="change-tag ct-maintained">Maintained</span> Diluted EPS guidance: $19.70 - $21.20 (reaffirmed, no change)</li>
-    <li><span class="change-tag ct-maintained">Maintained</span> CapEx guidance: $5.1B - $5.3B (reaffirmed, no change)</li>
-    <li><span class="change-tag ct-maintained">Maintained</span> Equiv. admissions growth: +3% to +4% (reaffirmed; Q1 actual +5% suggests high end)</li>
-    <li><span class="change-tag ct-new">New</span> Guidance philosophy: management moving away from quarterly resets; will only adjust for material circumstances</li>
+    <li><span class="change-tag ct-changed">Changed</span> CapEx Guidance: $1.1 billion (flattish year-over-year; timing-related) (prior: just above <strong>$4.7 billion</strong> (in line with expectations))</li>
+    <li><span class="change-tag ct-changed">Changed</span> Same-Facility Admissions: +5% (prior: +3% year-over-year)</li>
+    <li><span class="change-tag ct-changed">Changed</span> Revenue Per Admission: +3.5% year-over-year (prior: +2.7%)</li>
   </ul>
+</div>
+
+<div class="metrics-card">
+  <div class="metric">
+    <div class="metric-label">CapEx Guidance</div>
+    <div class="metric-value">$1.1 billion</div>
+    <div class="metric-delta delta-flat">Prior: just above <strong>$4.7 billion</strong></div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Same-Facility Admissions</div>
+    <div class="metric-value">+5%</div>
+    <div class="metric-delta delta-flat">Prior: +3% year-over-year</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Revenue Per Admission</div>
+    <div class="metric-value">+3.5% year-over-year</div>
+    <div class="metric-delta delta-flat">Prior: +2.7%</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Adj. EBITDA Margin</div>
+    <div class="metric-value">19.3%</div>
+  </div>
 </div>
 
 <!-- Full Guidance Content -->
 <div class="content-section">
   <h3>Full Year 2024 Guidance (Reaffirmed)</h3>
   <ul>
-    <li><strong>All guidance ranges reaffirmed</strong> with no changes from Q4 2023 / FY2023 earnings call</li>
-    <li><strong>Revenue:</strong> $67.75B - $70.25B</li>
-    <li><strong>Adjusted EBITDA:</strong> $12.85B - $13.55B</li>
-    <li><strong>Diluted EPS:</strong> $19.70 - $21.20</li>
-    <li><strong>Capital expenditures:</strong> ~$5.2B ($5.1B - $5.3B)</li>
-    <li><strong>Cash flow from operations:</strong> $9.5B - $10.0B</li>
-    <li><strong>Same-facility equivalent admission growth:</strong> +3% to +4% (Q1 actual +5%; management acknowledged they may end up on the high side)</li>
-    <li><strong>Revenue per equivalent admission growth:</strong> +2% to +3%</li>
-    <li><strong>Wage inflation assumption:</strong> 2.5% to 3%</li>
-    <li><strong>Guidance philosophy change:</strong> management moving away from quarterly resets; will only adjust for material circumstances. CFO Bill Rutherford: "We want to get out of the trend, if you will, of trying to reset guidance every quarter-by-quarter"</li>
+    <li>> <strong>Management stated guidance ranges are reaffirmed with no changes from the ranges provided at the Q4 2023 / FY2023 earnings call.</strong> Management explicitly noted they do not plan to adjust guidance quarter-by-quarter unless there are material circumstances warranting a change. Ranges were set wide enough to accommodate a range of outcomes.</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Guidance Philosophy Change</h3>
+  <ul>
+    <li>Management explicitly stated they are moving away from resetting guidance every quarter; will only adjust for material circumstances on either side</li>
+    <li>Guidance ranges intentionally set wide enough to accommodate a range of outcomes</li>
+    <li>CFO Bill Rutherford: "We want to get out of the trend, if you will, of trying to reset guidance every quarter-by-quarter"</li>
   </ul>
 </div>
 <div class="content-section">
@@ -497,6 +519,14 @@
   </ul>
 </div>
 <div class="content-section">
+  <h3>Guided Metrics (Reaffirmed, Unchanged)</h3>
+  <ul>
+    <li><strong>Same-facility equivalent admission growth:</strong> 3% to 4% (for full year; Q1 came in above 5%, management acknowledged they may end up on the high side)</li>
+    <li><strong>Capital expenditures:</strong> ~$5.2 billion</li>
+    <li><strong>Wage inflation assumption:</strong> 2.5% to 3% <em>(Note: Specific revenue, EBITDA, and EPS guidance ranges were not restated on this call; management referred to the ranges as previously provided at year-end and noted they are reaffirmed.)</em></li>
+  </ul>
+</div>
+<div class="content-section">
   <h3>Medicaid Directed Payment Programs (DPP) / DSH</h3>
   <ul>
     <li><strong>FY 2023 gross DPP/DSH amount reported:</strong> $3.9 billion</li>
@@ -573,46 +603,10 @@
 </div>
 <div class="content-section">
   <h3>Key Q&A Data Points Summary</h3>
-  <table class="comp-table">
-    <thead>
-      <tr><th>Metric</th><th>Value</th><th>Context</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>Diluted EPS (adjusted)</td><td>$5.36</td><td>+~9% YoY</td></tr>
-      <tr><td>Adjusted EBITDA</td><td>$3.35 billion</td><td>+5.7% YoY</td></tr>
-      <tr><td>EBITDA margin</td><td>19.3%</td><td>--</td></tr>
-      <tr><td>Revenue growth (consolidated)</td><td>11.2%</td><td>YoY</td></tr>
-      <tr><td>Same-facility revenue growth</td><td>~9%</td><td>YoY</td></tr>
-      <tr><td>Rev/equiv admission growth</td><td>3.5%</td><td>Same-facility, YoY</td></tr>
-      <tr><td>IP admissions growth</td><td>+6%</td><td>Same-facility, YoY</td></tr>
-      <tr><td>Equivalent admissions growth</td><td>+5%</td><td>Same-facility, YoY</td></tr>
-      <tr><td>ER visits growth</td><td>+7%</td><td>Same-facility, YoY</td></tr>
-      <tr><td>IP surgeries growth</td><td>~+2%</td><td>Same-facility, YoY</td></tr>
-      <tr><td>OP surgery cases</td><td>-2%</td><td>Same-facility, YoY</td></tr>
-      <tr><td>Commercial % of equiv admissions</td><td>~36%</td><td>vs. 34% prior year</td></tr>
-      <tr><td>Managed care volume growth</td><td>+12%-13%</td><td>YoY</td></tr>
-      <tr><td>HICS volume growth</td><td>~+50%</td><td>YoY</td></tr>
-      <tr><td>HICS market enrollment growth</td><td>>30%</td><td>In HCA markets</td></tr>
-      <tr><td>Commercial ER visit growth</td><td>+20%</td><td>YoY</td></tr>
-      <tr><td>Medicaid ER visits</td><td>-10%</td><td>YoY</td></tr>
-      <tr><td>Contract labor decline</td><td>-21.7%</td><td>YoY</td></tr>
-      <tr><td>Contract labor % of total labor</td><td>5.1%</td><td>Q1 2024</td></tr>
-      <tr><td>Labor cost % of revenue improvement</td><td>-100 bps</td><td>YoY</td></tr>
-      <tr><td>Supply cost % of revenue improvement</td><td>-10 bps</td><td>YoY</td></tr>
-      <tr><td>Wage inflation</td><td>2.5%-3%</td><td>In line with expectations</td></tr>
-      <tr><td>SWB per adjusted patient day</td><td>~3%</td><td>Growth rate</td></tr>
-      <tr><td>Cash flow from operations</td><td>~$2.5 billion</td><td>Q1 2024</td></tr>
-      <tr><td>CapEx</td><td>$1.1 billion</td><td>Q1 2024</td></tr>
-      <tr><td>Share repurchases</td><td>~$1.2 billion</td><td>Q1 2024</td></tr>
-      <tr><td>Sites of care</td><td>~2,600</td><td>+~5% YoY</td></tr>
-      <tr><td>Bed capacity added</td><td>~2%</td><td>YoY</td></tr>
-      <tr><td>FY23 DPP/DSH gross</td><td>$3.9 billion</td><td>Disclosed in 10-K</td></tr>
-      <tr><td>Hospitals growing >10% admissions</td><td>56</td><td>~1/3 of portfolio</td></tr>
-      <tr><td>Full year CapEx guidance</td><td>~$5.2 billion</td><td>Reaffirmed</td></tr>
-      <tr><td>Equiv admission growth guidance</td><td>3%-4%</td><td>Full year, reaffirmed</td></tr>
-      <tr><td>Q1 prior year favorable settlement</td><td>$145 million</td><td>In Q1 2023 EBITDA comp</td></tr>
-    </tbody>
-  </table>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Value</th><th>Context</th></tr></thead><tbody><tr><td>Diluted EPS (adjusted)</td><td>$5.36</td><td>+~9% YoY</td></tr><tr><td>Adjusted EBITDA</td><td>$3.35 billion</td><td>+5.7% YoY</td></tr><tr><td>EBITDA margin</td><td>19.3%</td><td>--</td></tr><tr><td>Revenue growth (consolidated)</td><td>11.2%</td><td>YoY</td></tr><tr><td>Same-facility revenue growth</td><td>~9%</td><td>YoY</td></tr><tr><td>Rev/equiv admission growth</td><td>3.5%</td><td>Same-facility, YoY</td></tr><tr><td>IP admissions growth</td><td>+6%</td><td>Same-facility, YoY</td></tr><tr><td>Equivalent admissions growth</td><td>+5%</td><td>Same-facility, YoY</td></tr><tr><td>ER visits growth</td><td>+7%</td><td>Same-facility, YoY</td></tr><tr><td>IP surgeries growth</td><td>~+2%</td><td>Same-facility, YoY</td></tr><tr><td>OP surgery cases</td><td>-2%</td><td>Same-facility, YoY</td></tr><tr><td>Commercial % of equiv admissions</td><td>~36%</td><td>vs. 34% prior year</td></tr><tr><td>Managed care volume growth</td><td>+12%-13%</td><td>YoY</td></tr><tr><td>HICS volume growth</td><td>~+50%</td><td>YoY</td></tr><tr><td>HICS market enrollment growth</td><td>>30%</td><td>In HCA markets</td></tr><tr><td>Commercial ER visit growth</td><td>+20%</td><td>YoY</td></tr><tr><td>Medicaid ER visits</td><td>-10%</td><td>YoY</td></tr><tr><td>Contract labor decline</td><td>-21.7%</td><td>YoY</td></tr><tr><td>Contract labor % of total labor</td><td>5.1%</td><td>Q1 2024</td></tr><tr><td>Labor cost % of revenue improvement</td><td>-100 bps</td><td>YoY</td></tr><tr><td>Supply cost % of revenue improvement</td><td>-10 bps</td><td>YoY</td></tr><tr><td>Wage inflation</td><td>2.5%-3%</td><td>In line with expectations</td></tr><tr><td>SWB per adjusted patient day</td><td>~3%</td><td>Growth rate</td></tr><tr><td>Cash flow from operations</td><td>~$2.5 billion</td><td>Q1 2024</td></tr><tr><td>CapEx</td><td>$1.1 billion</td><td>Q1 2024</td></tr><tr><td>Share repurchases</td><td>~$1.2 billion</td><td>Q1 2024</td></tr><tr><td>Sites of care</td><td>~2,600</td><td>+~5% YoY</td></tr><tr><td>Bed capacity added</td><td>~2%</td><td>YoY</td></tr><tr><td>FY23 DPP/DSH gross</td><td>$3.9 billion</td><td>Disclosed in 10-K</td></tr><tr><td>Hospitals growing >10% admissions</td><td>56</td><td>~1/3 of portfolio</td></tr><tr><td>Full year CapEx guidance</td><td>~$5.2 billion</td><td>Reaffirmed</td></tr><tr><td>Equiv admission growth guidance</td><td>3%-4%</td><td>Full year, reaffirmed</td></tr><tr><td>Q1 prior year favorable settlement</td><td>$145 million</td><td>In Q1 2023 EBITDA comp</td></tr></tbody></table></div>
+</div>
+<div class="content-section">
+  <h3>Q1 2024 Actuals (Reported)</h3>
 </div>
 
 <div class="prior-ref" id="priorRef">
@@ -622,12 +616,12 @@
   </div>
   <div class="prior-ref-body" id="priorBody">
     <div class="metric-grid">
-      <div class="prior-mini"><div class="pm-label">FY Revenue Guidance</div><div class="pm-value">$67.75B - $70.25B</div></div>
-      <div class="prior-mini"><div class="pm-label">FY Adj. EBITDA Guidance</div><div class="pm-value">$12.85B - $13.55B</div></div>
-      <div class="prior-mini"><div class="pm-label">FY Diluted EPS Guidance</div><div class="pm-value">$19.70 - $21.20</div></div>
-      <div class="prior-mini"><div class="pm-label">FY CapEx Guidance</div><div class="pm-value">$5.1B - $5.3B</div></div>
-      <div class="prior-mini"><div class="pm-label">FY Equiv. Admissions Growth</div><div class="pm-value">+3% to +4%</div></div>
-      <div class="prior-mini"><div class="pm-label">FY Cash Flow from Ops</div><div class="pm-value">$9.5B - $10.0B</div></div>
+      <div class="prior-mini"><div class="pm-label">FY Revenue Guidance</div><div class="pm-value">$67.75 billion to $70.25 billion</div></div>
+      <div class="prior-mini"><div class="pm-label">FY Adj. EBITDA Guidance</div><div class="pm-value">$12.85 billion to $13.55 billion</div></div>
+      <div class="prior-mini"><div class="pm-label">FY Diluted EPS Guidance</div><div class="pm-value">$19.70 to $21.20</div></div>
+      <div class="prior-mini"><div class="pm-label">CapEx Guidance</div><div class="pm-value">just above <strong>$4.7 billion</strong> (in line with expectations)</div></div>
+      <div class="prior-mini"><div class="pm-label">Same-Facility Admissions</div><div class="pm-value">+3% year-over-year</div></div>
+      <div class="prior-mini"><div class="pm-label">Revenue Per Admission</div><div class="pm-value">+2.7%</div></div>
     </div>
     <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q4_2023.html" style="color:var(--blue);">View full Q4 2023 detail &rarr;</a></p>
   </div>

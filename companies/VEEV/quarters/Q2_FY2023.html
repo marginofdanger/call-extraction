@@ -319,6 +319,31 @@
     .comp-table th, .comp-table td { padding: 6px 8px; }
   }
 
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+  .content-section .md-table th {
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .content-section .md-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-section .md-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+  .content-section .md-table tr:hover { background: #e8f4fd; }
+
   @media print {
     .nav-bar { display: none; }
     .header { background: #333; }
@@ -339,6 +364,8 @@
   <div class="nav-center">
     <a href="../comparison.html" class="nav-back">Overview</a>
     <a href="../results.html" class="nav-back">Results</a>
+    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>
+    <a href="Q4_FY2026.html" class="qbtn">4Q2026</a>
     <a href="Q3_FY2026.html" class="qbtn">3Q2026</a>
     <a href="Q2_FY2026.html" class="qbtn">2Q2026</a>
     <a href="Q1_FY2026.html" class="qbtn">1Q2026</a>
@@ -375,16 +402,16 @@
 <!-- Full Guidance Content -->
 <div class="content-section">
   <h3>Quarterly Guidance (Q3 FY2023 - Quarter ending October 31, 2022)</h3>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Q3 FY2023 Guidance</th></tr></thead><tbody><tr><td><strong>Total Revenue</strong></td><td><strong>$545M - $547M</strong></td></tr><tr><td><strong>Non-GAAP Operating Income</strong></td><td><strong>$209M - $211M</strong></td></tr><tr><td><strong>Non-GAAP Diluted EPS</strong></td><td><strong>$1.07 - $1.08</strong></td></tr></tbody></table></div>
   <ul>
-    <li>| Metric | Q3 FY2023 Guidance | |--------|--------------------| | <strong>Total Revenue</strong> | <strong>$545M - $547M</strong> | | <strong>Non-GAAP Operating Income</strong> | <strong>$209M - $211M</strong> | | <strong>Non-GAAP Diluted EPS</strong> | <strong>$1.07 - $1.08</strong> |</li>
     <li><strong>Implied Q3 Non-GAAP Operating Margin:</strong> ~38.3% - 38.6%</li>
     <li><strong>Implied Q3 Revenue YoY Growth:</strong> ~16-17% (vs. Q3 FY2022 total revenue of ~$463M)</li>
   </ul>
 </div>
 <div class="content-section">
   <h3>Full Year FY2023 Guidance (Year ending January 31, 2023)</h3>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Updated FY2023 Guidance (Q2 Call)</th><th>Prior FY2023 Guidance (Q1 Call)</th><th>Change</th></tr></thead><tbody><tr><td><strong>Total Revenue</strong></td><td><strong>$2,140M - $2,145M</strong></td><td>$2,165M - $2,175M</td><td><strong>Lowered by ~$25-$30M (~1.5% at top end)</strong></td></tr><tr><td><strong>Non-GAAP Operating Income</strong></td><td><strong>~$820M</strong></td><td>~$835M</td><td><strong>Lowered by ~$15M</strong></td></tr><tr><td><strong>Non-GAAP Diluted EPS</strong></td><td><strong>~$4.17</strong></td><td>~$4.16</td><td>Roughly flat (slight increase)</td></tr></tbody></table></div>
   <ul>
-    <li>| Metric | Updated FY2023 Guidance (Q2 Call) | Prior FY2023 Guidance (Q1 Call) | Change | |--------|-----------------------------------|----------------------------------|--------| | <strong>Total Revenue</strong> | <strong>$2,140M - $2,145M</strong> | $2,165M - $2,175M | <strong>Lowered by ~$25-$30M (~1.5% at top end)</strong> | | <strong>Non-GAAP Operating Income</strong> | <strong>~$820M</strong> | ~$835M | <strong>Lowered by ~$15M</strong> | | <strong>Non-GAAP Diluted EPS</strong> | <strong>~$4.17</strong> | ~$4.16 | Roughly flat (slight increase) |</li>
     <li><strong>Implied FY2023 Revenue Growth:</strong> ~18% on a constant-currency basis (per CEO Gassner)</li>
     <li><strong>Implied FY2023 Non-GAAP Operating Margin:</strong> ~38.2% - 38.3%</li>
   </ul>
@@ -408,47 +435,42 @@
 </div>
 <div class="content-section">
   <h3>Long-Term Targets</h3>
-  <ul>
-    <li>| Metric | Target | Timeframe | |--------|--------|-----------| | <strong>Revenue Target</strong> | <strong>Cross $3B</strong> | <strong>By 2025 (calendar year)</strong> | | <strong>Commercial subscription growth (long-term)</strong> | <strong>~10% over time</strong> | Ongoing | | <strong>Progress vs. $3B target</strong> | "Continue to track ahead of our goal" | Per CEO Gassner |</li>
-  </ul>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Target</th><th>Timeframe</th></tr></thead><tbody><tr><td><strong>Revenue Target</strong></td><td><strong>Cross $3B</strong></td><td><strong>By 2025 (calendar year)</strong></td></tr><tr><td><strong>Commercial subscription growth (long-term)</strong></td><td><strong>~10% over time</strong></td><td>Ongoing</td></tr><tr><td><strong>Progress vs. $3B target</strong></td><td>"Continue to track ahead of our goal"</td><td>Per CEO Gassner</td></tr></tbody></table></div>
 </div>
 <div class="content-section">
   <h3>Q2 FY2023 Revenue</h3>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Q2 FY2023</th><th>Q2 FY2022</th><th>YoY Change</th></tr></thead><tbody><tr><td><strong>Total Revenue</strong></td><td><strong>$534.2M</strong></td><td>$455.6M</td><td><strong>+17%</strong></td></tr><tr><td><strong>Subscription Services Revenue</strong></td><td><strong>$428.6M</strong></td><td>$366.4M</td><td><strong>+17%</strong></td></tr><tr><td><strong>Professional Services & Other Revenue</strong></td><td><strong>$105.6M</strong></td><td>$89.2M</td><td>+18%</td></tr></tbody></table></div>
   <ul>
-    <li>| Metric | Q2 FY2023 | Q2 FY2022 | YoY Change | |--------|-----------|-----------|------------| | <strong>Total Revenue</strong> | <strong>$534.2M</strong> | $455.6M | <strong>+17%</strong> | | <strong>Subscription Services Revenue</strong> | <strong>$428.6M</strong> | $366.4M | <strong>+17%</strong> | | <strong>Professional Services & Other Revenue</strong> | <strong>$105.6M</strong> | $89.2M | +18% |</li>
     <li><strong>Revenue vs. Guidance:</strong> Total revenue of $534.2M exceeded Q2 guidance range of $529-$531M (beat by ~$3-$5M)</li>
   </ul>
 </div>
 <div class="content-section">
   <h3>Q2 FY2023 Revenue Breakdown by Segment</h3>
   <ul>
-    <li><strong>Subscription Services Revenue by Product Area:</strong> | Segment | Q2 FY2023 | Q2 FY2022 | YoY Change | |---------|-----------|-----------|------------| | <strong>Veeva Commercial Solutions (Subscription)</strong> | <strong>$236.4M</strong> | $218.1M | <strong>+8%</strong> | | <strong>Veeva R&D Solutions (Subscription)</strong> | <strong>$192.3M</strong> | $148.3M | <strong>+30%</strong> | | <strong>Total Subscription Services</strong> | <strong>$428.6M</strong> | $366.4M | <strong>+17%</strong> | <strong>Professional Services Revenue by Product Area:</strong> | Segment | Q2 FY2023 | Q2 FY2022 | YoY Change | |---------|-----------|-----------|------------| | <strong>Veeva Commercial Solutions (Services)</strong> | <strong>$44.4M</strong> | $39.0M | +14% | | <strong>Veeva R&D Solutions (Services)</strong> | <strong>$61.1M</strong> | $50.2M | +22% | | <strong>Total Professional Services</strong> | <strong>$105.6M</strong> | $89.2M | +18% | <strong>Total Revenue by Segment (Subscription + Services):</strong> | Segment | Q2 FY2023 | Q2 FY2022 | YoY Change | |---------|-----------|-----------|------------| | <strong>Veeva Commercial Solutions (Total)</strong> | <strong>$280.8M</strong> | $257.1M | <strong>+9%</strong> | | <strong>Veeva R&D Solutions (Total)</strong> | <strong>$253.4M</strong> | $198.5M | <strong>+28%</strong> |</li>
+    <li><strong>Subscription Services Revenue by Product Area:</strong></li>
   </ul>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Segment</th><th>Q2 FY2023</th><th>Q2 FY2022</th><th>YoY Change</th></tr></thead><tbody><tr><td><strong>Veeva Commercial Solutions (Subscription)</strong></td><td><strong>$236.4M</strong></td><td>$218.1M</td><td><strong>+8%</strong></td></tr><tr><td><strong>Veeva R&D Solutions (Subscription)</strong></td><td><strong>$192.3M</strong></td><td>$148.3M</td><td><strong>+30%</strong></td></tr><tr><td><strong>Total Subscription Services</strong></td><td><strong>$428.6M</strong></td><td>$366.4M</td><td><strong>+17%</strong></td></tr></tbody></table> **Professional Services Revenue by Product Area:**</div>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Segment</th><th>Q2 FY2023</th><th>Q2 FY2022</th><th>YoY Change</th></tr></thead><tbody><tr><td><strong>Veeva Commercial Solutions (Services)</strong></td><td><strong>$44.4M</strong></td><td>$39.0M</td><td>+14%</td></tr><tr><td><strong>Veeva R&D Solutions (Services)</strong></td><td><strong>$61.1M</strong></td><td>$50.2M</td><td>+22%</td></tr><tr><td><strong>Total Professional Services</strong></td><td><strong>$105.6M</strong></td><td>$89.2M</td><td>+18%</td></tr></tbody></table> **Total Revenue by Segment (Subscription + Services):**</div>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Segment</th><th>Q2 FY2023</th><th>Q2 FY2022</th><th>YoY Change</th></tr></thead><tbody><tr><td><strong>Veeva Commercial Solutions (Total)</strong></td><td><strong>$280.8M</strong></td><td>$257.1M</td><td><strong>+9%</strong></td></tr><tr><td><strong>Veeva R&D Solutions (Total)</strong></td><td><strong>$253.4M</strong></td><td>$198.5M</td><td><strong>+28%</strong></td></tr></tbody></table></div>
 </div>
 <div class="content-section">
   <h3>Q2 FY2023 Profitability</h3>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Q2 FY2023</th><th>Q2 FY2022</th><th>YoY Change</th></tr></thead><tbody><tr><td><strong>GAAP Operating Income</strong></td><td><strong>$101.1M</strong></td><td>$124.6M</td><td>-19%</td></tr><tr><td><strong>GAAP Operating Margin</strong></td><td><strong>18.9%</strong></td><td>27.4%</td><td>-850bps</td></tr><tr><td><strong>Non-GAAP Operating Income</strong></td><td><strong>$202.0M</strong></td><td>$191.6M</td><td><strong>+5%</strong></td></tr><tr><td><strong>Non-GAAP Operating Margin</strong></td><td><strong>37.8%</strong></td><td>42.1%</td><td>-430bps</td></tr><tr><td><strong>GAAP Net Income</strong></td><td><strong>$90.6M</strong></td><td>$108.9M</td><td>-17%</td></tr><tr><td><strong>Non-GAAP Net Income</strong></td><td><strong>$166.2M</strong></td><td>$152.7M</td><td>+9%</td></tr><tr><td><strong>GAAP Diluted EPS</strong></td><td><strong>$0.56</strong></td><td>$0.67</td><td>-16%</td></tr><tr><td><strong>Non-GAAP Diluted EPS</strong></td><td><strong>$1.03</strong></td><td>$0.94</td><td><strong>+10%</strong></td></tr></tbody></table></div>
   <ul>
-    <li>| Metric | Q2 FY2023 | Q2 FY2022 | YoY Change | |--------|-----------|-----------|------------| | <strong>GAAP Operating Income</strong> | <strong>$101.1M</strong> | $124.6M | -19% | | <strong>GAAP Operating Margin</strong> | <strong>18.9%</strong> | 27.4% | -850bps | | <strong>Non-GAAP Operating Income</strong> | <strong>$202.0M</strong> | $191.6M | <strong>+5%</strong> | | <strong>Non-GAAP Operating Margin</strong> | <strong>37.8%</strong> | 42.1% | -430bps | | <strong>GAAP Net Income</strong> | <strong>$90.6M</strong> | $108.9M | -17% | | <strong>Non-GAAP Net Income</strong> | <strong>$166.2M</strong> | $152.7M | +9% | | <strong>GAAP Diluted EPS</strong> | <strong>$0.56</strong> | $0.67 | -16% | | <strong>Non-GAAP Diluted EPS</strong> | <strong>$1.03</strong> | $0.94 | <strong>+10%</strong> |</li>
     <li><strong>Non-GAAP Operating Income vs. Guidance:</strong> $202.0M was at the midpoint of Q2 guidance range of $201-$203M (in line)</li>
   </ul>
 </div>
 <div class="content-section">
   <h3>Q2 FY2023 Gross Margins</h3>
-  <ul>
-    <li>| Metric | Q2 FY2023 | Q2 FY2022 | |--------|-----------|-----------| | <strong>GAAP Total Gross Margin</strong> | <strong>71.6%</strong> | 73.2% | | <strong>Non-GAAP Total Gross Margin</strong> | <strong>74.7%</strong> | 75.8% | | <strong>GAAP Subscription Gross Margin</strong> | <strong>85.1%</strong> | 85.3% | | <strong>Non-GAAP Subscription Gross Margin</strong> | <strong>85.7%</strong> | 85.9% | | <strong>GAAP Professional Services Gross Margin</strong> | <strong>17.0%</strong> | 23.5% | | <strong>Non-GAAP Professional Services Gross Margin</strong> | <strong>30.2%</strong> | 34.4% |</li>
-  </ul>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Q2 FY2023</th><th>Q2 FY2022</th></tr></thead><tbody><tr><td><strong>GAAP Total Gross Margin</strong></td><td><strong>71.6%</strong></td><td>73.2%</td></tr><tr><td><strong>Non-GAAP Total Gross Margin</strong></td><td><strong>74.7%</strong></td><td>75.8%</td></tr><tr><td><strong>GAAP Subscription Gross Margin</strong></td><td><strong>85.1%</strong></td><td>85.3%</td></tr><tr><td><strong>Non-GAAP Subscription Gross Margin</strong></td><td><strong>85.7%</strong></td><td>85.9%</td></tr><tr><td><strong>GAAP Professional Services Gross Margin</strong></td><td><strong>17.0%</strong></td><td>23.5%</td></tr><tr><td><strong>Non-GAAP Professional Services Gross Margin</strong></td><td><strong>30.2%</strong></td><td>34.4%</td></tr></tbody></table></div>
 </div>
 <div class="content-section">
   <h3>Q2 FY2023 Key Operating Metrics</h3>
-  <ul>
-    <li>| Metric | Q2 FY2023 | |--------|-----------| | <strong>Stock-Based Compensation</strong> | $96.0M (vs. $62.4M in Q2 FY2022, +54% YoY) | | <strong>Amortization of Purchased Intangibles</strong> | $4.9M | | <strong>GAAP R&D Expense</strong> | $134.0M (25.1% of revenue) | | <strong>Non-GAAP R&D Expense</strong> | $95.1M (17.8% of revenue) | | <strong>GAAP S&M Expense</strong> | $89.6M (16.8% of revenue) | | <strong>Non-GAAP S&M Expense</strong> | $62.0M (11.6% of revenue) | | <strong>GAAP G&A Expense</strong> | $57.8M (10.8% of revenue) | | <strong>Non-GAAP G&A Expense</strong> | $40.2M (7.5% of revenue) | | <strong>Diluted Shares Outstanding</strong> | 162.1M |</li>
-  </ul>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Q2 FY2023</th></tr></thead><tbody><tr><td><strong>Stock-Based Compensation</strong></td><td>$96.0M (vs. $62.4M in Q2 FY2022, +54% YoY)</td></tr><tr><td><strong>Amortization of Purchased Intangibles</strong></td><td>$4.9M</td></tr><tr><td><strong>GAAP R&D Expense</strong></td><td>$134.0M (25.1% of revenue)</td></tr><tr><td><strong>Non-GAAP R&D Expense</strong></td><td>$95.1M (17.8% of revenue)</td></tr><tr><td><strong>GAAP S&M Expense</strong></td><td>$89.6M (16.8% of revenue)</td></tr><tr><td><strong>Non-GAAP S&M Expense</strong></td><td>$62.0M (11.6% of revenue)</td></tr><tr><td><strong>GAAP G&A Expense</strong></td><td>$57.8M (10.8% of revenue)</td></tr><tr><td><strong>Non-GAAP G&A Expense</strong></td><td>$40.2M (7.5% of revenue)</td></tr><tr><td><strong>Diluted Shares Outstanding</strong></td><td>162.1M</td></tr></tbody></table></div>
 </div>
 <div class="content-section">
   <h3>Q2 FY2023 / H1 FY2023 Cash Flow & Balance Sheet</h3>
-  <ul>
-    <li>| Metric | Q2 FY2023 | H1 FY2023 (6 months) | |--------|-----------|----------------------| | <strong>GAAP Operating Cash Flow</strong> | $93.4M | $574.4M | | <strong>Non-GAAP Operating Cash Flow</strong> | $129.2M | $607.3M | | <strong>Cash & Cash Equivalents</strong> | $1.14B | | | <strong>Short-Term Investments</strong> | $1.78B | | | <strong>Total Cash + Investments</strong> | ~$2.92B | | | <strong>Total Assets</strong> | $4.12B | | | <strong>Deferred Revenue</strong> | $684.6M (vs. $731.7M at Jan 31, 2022) | | <strong>Accounts Receivable</strong> | $313.2M | | | <strong>Goodwill</strong> | $439.9M | |</li>
-  </ul>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Q2 FY2023</th><th>H1 FY2023 (6 months)</th></tr></thead><tbody><tr><td><strong>GAAP Operating Cash Flow</strong></td><td>$93.4M</td><td>$574.4M</td></tr><tr><td><strong>Non-GAAP Operating Cash Flow</strong></td><td>$129.2M</td><td>$607.3M</td></tr><tr><td><strong>Cash & Cash Equivalents</strong></td><td>$1.14B</td><td></td></tr><tr><td><strong>Short-Term Investments</strong></td><td>$1.78B</td><td></td></tr><tr><td><strong>Total Cash + Investments</strong></td><td>~$2.92B</td><td></td></tr><tr><td><strong>Total Assets</strong></td><td>$4.12B</td><td></td></tr><tr><td><strong>Deferred Revenue</strong></td><td>$684.6M (vs. $731.7M at Jan 31, 2022)</td></tr><tr><td><strong>Accounts Receivable</strong></td><td>$313.2M</td><td></td></tr><tr><td><strong>Goodwill</strong></td><td>$439.9M</td><td></td></tr></tbody></table></div>
 </div>
 <div class="content-section">
   <h3>Q3 Billings Commentary (from Q&A)</h3>
@@ -619,9 +641,7 @@
 </div>
 <div class="content-section">
   <h3>Key Consensus Estimates at Time of Report</h3>
-  <ul>
-    <li>| Metric | Consensus | Actual | Surprise | |--------|-----------|--------|----------| | <strong>Q2 FY2023 EPS (Normalized)</strong> | $1.01 | $1.03 | +1.98% | | <strong>Q2 FY2023 Revenue</strong> | $530.7M | $534.2M | +0.66% | | <strong>Q3 FY2023 EPS Consensus</strong> | $1.07 | | | | <strong>Q3 FY2023 Revenue Consensus</strong> | $551.7M | | | | <strong>FY2023 EPS Consensus</strong> | $4.16 | | | | <strong>FY2023 Revenue Consensus</strong> | $2,165.6M | | | | <strong>FY2024 EPS Consensus</strong> | $4.79 | | | | <strong>FY2024 Revenue Consensus</strong> | $2,538.0M | | | <em>Data sources: Q2 FY2023 earnings call transcript, Q2 FY2023 press release (8-K), Q2 FY2023 10-Q financials. Prior quarter guidance from Q1 FY2023 earnings release.</em></li>
-  </ul>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Consensus</th><th>Actual</th><th>Surprise</th></tr></thead><tbody><tr><td><strong>Q2 FY2023 EPS (Normalized)</strong></td><td>$1.01</td><td>$1.03</td><td>+1.98%</td></tr><tr><td><strong>Q2 FY2023 Revenue</strong></td><td>$530.7M</td><td>$534.2M</td><td>+0.66%</td></tr><tr><td><strong>Q3 FY2023 EPS Consensus</strong></td><td>$1.07</td><td></td><td></td></tr><tr><td><strong>Q3 FY2023 Revenue Consensus</strong></td><td>$551.7M</td><td></td><td></td></tr><tr><td><strong>FY2023 EPS Consensus</strong></td><td>$4.16</td><td></td><td></td></tr><tr><td><strong>FY2023 Revenue Consensus</strong></td><td>$2,165.6M</td><td></td><td></td></tr><tr><td><strong>FY2024 EPS Consensus</strong></td><td>$4.79</td><td></td><td></td></tr><tr><td><strong>FY2024 Revenue Consensus</strong></td><td>$2,538.0M</td><td></td><td></td></tr></tbody></table> *Data sources: Q2 FY2023 earnings call transcript, Q2 FY2023 press release (8-K), Q2 FY2023 10-Q financials. Prior quarter guidance from Q1 FY2023 earnings release.*</div>
 </div>
 <div class="content-section">
   <h3>Q2 FY2023 Actuals (Reported)</h3>

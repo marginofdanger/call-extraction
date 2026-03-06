@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CVNA Q2 2023 Earnings Call Detail</title>
+<style>
+:root {
+    --company-primary: #00AFF0;
+    --company-dark: #1a1a2e;
+    --company-accent: #006D9E;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 40px 40px 32px;
+    margin: 0 -24px 0;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .header .meta {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    font-weight: 300;
+  }
+  .header .meta span { margin-right: 24px; }
+
+  .nav-bar {
+    background: var(--company-accent);
+    margin: 0 -24px 32px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    transition: all 0.15s;
+  }
+  .nav-bar a:hover { background: rgba(255,255,255,0.2); }
+  .nav-bar a.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .nav-center {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-center a.qbtn {
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+  }
+  .nav-center a.qbtn.current {
+    background: var(--company-primary);
+    border-color: var(--company-primary);
+  }
+  .nav-center a.qbtn:hover { background: rgba(255,255,255,0.2); }
+  .nav-back {
+    background: rgba(255,255,255,0.15) !important;
+    border-color: rgba(255,255,255,0.35) !important;
+  }
+
+  .metrics-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .metric {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+  .metric-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .metric-value {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+  .metric-delta {
+    font-size: 0.72rem;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+  .delta-up { color: var(--green); }
+  .delta-down { color: var(--red); }
+  .delta-flat { color: var(--text-muted); }
+
+  .changes-box {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 5px solid var(--amber);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .changes-box h3 {
+    font-size: 1rem;
+    color: var(--company-dark);
+    margin-bottom: 10px;
+  }
+  .changes-box ul { list-style: none; padding: 0; }
+  .changes-box li {
+    padding: 5px 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .change-tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .ct-raised { background: #d5f5e3; color: #1e8449; }
+  .ct-lowered { background: #fadbd8; color: #c0392b; }
+  .ct-changed { background: #d6eaf8; color: #2471a3; }
+  .ct-new { background: #e8daef; color: #6c3483; }
+  .ct-maintained { background: #fdebd0; color: #b9770e; }
+
+  .content-section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .content-section h3 {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .content-section ul {
+    padding: 14px 18px 14px 36px;
+    margin: 0;
+  }
+  .content-section li {
+    padding: 3px 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .content-section li strong { color: var(--company-dark); }
+
+  .prior-ref {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 40px;
+    overflow: hidden;
+  }
+  .prior-ref-header {
+    background: var(--light-bg);
+    padding: 12px 18px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--company-dark);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .prior-ref-header:hover { background: #eef2f7; }
+  .prior-ref-body { padding: 18px; display: none; }
+  .prior-ref-body.open { display: block; }
+  .prior-ref-body .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .prior-mini {
+    background: var(--light-bg);
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .prior-mini .pm-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .prior-mini .pm-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border);
+  }
+  .footer-nav a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .footer-nav a:hover { text-decoration: underline; }
+
+  /* Comparison page styles */
+  .toc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .toc a {
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 4px 0;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  .comp-section {
+    margin-bottom: 40px;
+  }
+  .comp-section h2 {
+    font-size: 1.2rem;
+    color: var(--company-dark);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--company-primary);
+  }
+
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+  }
+  .comp-table th {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .comp-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .comp-table tr:nth-child(even) { background: var(--light-bg); }
+  .comp-table tr:hover { background: #e8f4fd; }
+
+  @media (max-width: 768px) {
+    .header h1 { font-size: 1.5rem; }
+    .metrics-card { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .nav-center { display: none; }
+    body { padding: 0 16px 60px; }
+    .header { margin: 0 -16px 0; padding: 28px 24px 20px; }
+    .nav-bar { margin: 0 -16px 24px; }
+    .toc { grid-template-columns: 1fr; }
+    .comp-table { font-size: 0.78rem; }
+    .comp-table th, .comp-table td { padding: 6px 8px; }
+  }
+
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+  .content-section .md-table th {
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .content-section .md-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-section .md-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+  .content-section .md-table tr:hover { background: #e8f4fd; }
+
+  @media print {
+    .nav-bar { display: none; }
+    .header { background: #333; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>CVNA Q2 2023 Earnings Call</h1>
+  <div class="meta">
+    <span>Call Date: July 19, 2023</span>
+    <span>Reporting: Q2 2023</span>
+  </div>
+</div>
+<div class="nav-bar">
+  <a href="Q1_2023.html">&larr; Q1 2023</a>
+  <div class="nav-center">
+    <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>
+    <a href="Q4_2025.html" class="qbtn">4Q25</a>
+    <a href="Q3_2025.html" class="qbtn">3Q25</a>
+    <a href="Q2_2025.html" class="qbtn">2Q25</a>
+    <a href="Q1_2025.html" class="qbtn">1Q25</a>
+    <a href="Q4_2024.html" class="qbtn">4Q24</a>
+    <a href="Q3_2024.html" class="qbtn">3Q24</a>
+    <a href="Q2_2024.html" class="qbtn">2Q24</a>
+    <a href="Q1_2024.html" class="qbtn">1Q24</a>
+    <a href="Q4_2023.html" class="qbtn">4Q23</a>
+    <a href="Q3_2023.html" class="qbtn">3Q23</a>
+    <a href="Q2_2023.html" class="qbtn current">2Q23</a>
+    <a href="Q1_2023.html" class="qbtn">1Q23</a>
+    <a href="Q4_2022.html" class="qbtn">4Q22</a>
+    <a href="Q3_2022.html" class="qbtn">3Q22</a>
+    <a href="Q2_2022.html" class="qbtn">2Q22</a>
+    <a href="Q1_2022.html" class="qbtn">1Q22</a>
+  </div>
+  <a href="Q3_2023.html">Q3 2023 &rarr;</a>
+</div>
+
+<div class="changes-box">
+  <h3>What Changed vs Q1 2023</h3>
+  <ul>
+    <li><span class="change-tag ct-changed">Changed</span> Adjusted EBITDA: Expect positive adjusted EBITDA in Q3 for the second consecutive quarter (prior: Expect positive adjusted EBITDA in Q2 -- <strong>achieving Step 1 of 3-step plan</strong>)</li>
+    <li><span class="change-tag ct-new">New</span> NEW: Debt restructuring discussed</li>
+  </ul>
+</div>
+
+<div class="metrics-card">
+  <div class="metric" style="grid-column: 1 / -1; background: linear-gradient(135deg, var(--company-dark), var(--company-accent)); color: #fff; border: none; padding: 8px 14px;">
+    <div class="metric-label" style="color: rgba(255,255,255,0.7);">Guidance For</div>
+    <div class="metric-value" style="color: #fff; font-size: 1rem;">Q3 2023</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Adjusted EBITDA</div>
+    <div class="metric-value">Expect positive adjusted EBITDA in Q3 for the second consecutive quarter</div>
+    <div class="metric-delta delta-flat">Prior: Expect positive adjusted EBITDA in Q2 -- <strong>achieving Step 1 of 3-step plan</strong></div>
+  </div>
+</div>
+
+<!-- Full Guidance Content -->
+<div class="content-section">
+  <h3>Quarterly Guidance (Q3 2023)</h3>
+</div>
+<div class="content-section">
+  <h3>Conservative Outlook Caveat</h3>
+  <ul>
+    <li>Management explicitly noted: early date of earnings call within the quarter (July 19); chose to provide conservative, round-number outlook figures with expected upside</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Long-Term Targets</h3>
+</div>
+<div class="content-section">
+  <h3>Long-Term Financial Goal (Reiterated)</h3>
+  <ul>
+    <li><strong>Ultimate Goal:</strong> Generate significant GAAP net income and free cash flow</li>
+    <li><strong>Key Non-GAAP Metrics (Management Focus):</strong> Non-GAAP gross profit, non-GAAP SG&A expense, adjusted EBITDA</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Long-Term Market Opportunity (Reiterated)</h3>
+  <ul>
+    <li><strong>Vision:</strong> Largest and most profitable automotive retailer</li>
+    <li><strong>Scale Ambition:</strong> Selling millions of cars per year</li>
+    <li><strong>Historical Growth Capability:</strong> ~100% per year for first 8 years in a flat market</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>FCF / Liquidity Outlook (from Q&A)</h3>
+  <ul>
+    <li><strong>PIK Feature Impact:</strong> Could potentially generate reported positive FCF depending on EBITDA levels over next year (since PIK eliminates cash interest payments for 2 years)</li>
+    <li><strong>Post-Exchange Liquidity:</strong> Strong position with $1.5 billion cash/revolving availability + $2 billion unpledged assets</li>
+    <li><strong>Liquidity Trend:</strong> Committed liquidity resources actually increased quarter-over-quarter in Q2 <em>Data sourced from Carvana Co. FQ2 2023 Earnings Call Transcript (July 19, 2023) and S&P Global Market Intelligence. All GPU and SG&A figures are non-GAAP unless otherwise noted. EBITDA refers to adjusted EBITDA.</em></li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Retail Units & Revenue</h3>
+  <ul>
+    <li><strong>Retail Units Sold:</strong> 76,530 (-35% YoY; -3% sequentially vs. Q1 2023's 79,240)</li>
+    <li><strong>Sequential Decline Drivers:</strong> (1) Reduced inventory size, (2) reduced advertising, (3) increased benchmark interest rates and credit spreads, (4) continued focus on executing profitability initiatives</li>
+    <li><strong>Total Revenue:</strong> $2.968 billion (-24% YoY; +14% sequentially)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Industry / Macro Context</h3>
+  <ul>
+    <li><strong>Used Car Market:</strong> Total used car sales approximately 10% below baseline levels</li>
+    <li><strong>Independent Dealer Market:</strong> Likely impacted more than franchise dealers over last 1.5 years (i.e., Carvana's direct market impacted more than the 10% overall decline)</li>
+    <li><strong>Depreciation Trends:</strong> Depreciation clearly elevated; looks very similar to prior year but started approximately one month earlier; slightly more severe than prior year so far</li>
+    <li><strong>Depreciation Character:</strong> Happening in orderly fashion; wholesale market positioned to absorb depreciation and pass through to retail market; not yet impacting retail spreads meaningfully</li>
+    <li><strong>Best Case Scenario (per management):</strong> Significant depreciation that is foreseen, enabling wholesale market to organize and buy at sufficient margins to absorb depreciation, while improving customer affordability</li>
+    <li><strong>Affordability:</strong> Function of both elevated car prices and elevated interest rates; most consumers buy with financing; monthly payment = f(car price, rates); signs of improvement on car price side</li>
+    <li><strong>Consumer Dynamic:</strong> Elevated prices + elevated interest rates = more difficult affordability for customers</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Gross Profit Per Unit (GPU)</h3>
+  <ul>
+    <li><strong>Non-GAAP Total GPU:</strong> $7,030 (+$2,234 sequentially vs. Q1 2023's $4,796) -- <strong>company all-time record</strong></li>
+    <li><strong>Non-GAAP Retail GPU:</strong> $2,862 (vs. Q1's $1,591; +$1,271 sequentially)</li>
+    <li><strong>Non-GAAP Wholesale GPU:</strong> $1,228 (vs. Q1's $1,236; -$8 sequentially; approximately flat)</li>
+    <li><strong>Non-GAAP Other GPU:</strong> $2,940 (vs. Q1's $1,969; +$971 sequentially)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>GPU Nonrecurring Items & Adjustments (Q2)</h3>
+  <ul>
+    <li><strong>Total Nonrecurring Benefits to GPU:</strong> ~$900 per unit</li>
+    <li><strong>Total Nonrecurring Benefits to Adjusted EBITDA:</strong> ~$70 million</li>
+    <li><strong>Retail Inventory Allowance Adjustment:</strong> ~$250 per unit benefit to retail GPU (~$20 million benefit to adjusted EBITDA)</li>
+    <li><strong>Excess Loan Sales (Other GPU):</strong> Sold more receivables than originated; greater volume of loans sold in Q2 vs. Q1; estimated ~$650 per unit benefit to other GPU from higher-than-normalized loan volume held and sold (~$50 million benefit to adjusted EBITDA)</li>
+    <li><strong>Implied Underlying Total GPU (ex-nonrecurring):</strong> ~$6,130 ($7,030 - $900)</li>
+    <li><strong>Management Commentary on Underlying GPU:</strong> "Still $6,000, which is a number that I think was unimaginable for the vast majority of our history and completely unimaginable from the perspective of even 3 months ago"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Retail GPU Sequential Drivers (Q2 vs. Q1)</h3>
+  <ul>
+    <li><strong>Positive:</strong> ~$250 retail inventory allowance adjustment benefit</li>
+    <li><strong>Positive:</strong> Lower average days of sale (normalized inventory now flowing through)</li>
+    <li><strong>Positive:</strong> Lower retail market depreciation rates</li>
+    <li><strong>Positive:</strong> Wider spreads between wholesale and retail market prices</li>
+    <li><strong>Positive:</strong> Lower reconditioning and inbound transport costs</li>
+    <li><strong>Positive:</strong> Higher customer sourcing rate vs. FY 2021</li>
+    <li><strong>Positive:</strong> Higher revenue from additional services vs. FY 2021</li>
+    <li><strong>Seasonal Tailwind:</strong> Q2 is on average the strongest quarter of the year for retail GPU</li>
+    <li><strong>Market Tailwind:</strong> Period of high wholesale-to-retail spreads followed by lower-than-expected retail depreciation</li>
+    <li><strong>Market Tailwind:</strong> Some unexpected appreciation early in year that was not in plan</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Wholesale GPU Sequential Drivers (Q2 vs. Q1)</h3>
+  <ul>
+    <li><strong>Negative:</strong> Higher wholesale market depreciation rates in Q2 vs. Q1 (negatively impacted wholesale vehicle gross profit per wholesale unit sold)</li>
+    <li><strong>Positive (Offset):</strong> Operational improvements allowing higher wholesale units sold volume</li>
+    <li><strong>Net:</strong> Approximately flat quarter-over-quarter ($1,228 vs. $1,236)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Other GPU Sequential Drivers (Q2 vs. Q1)</h3>
+  <ul>
+    <li><strong>Positive:</strong> Greater volume of loans sold in Q2 compared to Q1</li>
+    <li><strong>Positive:</strong> Estimated ~$650 benefit from higher-than-normalized volume of loans held and sold</li>
+    <li><strong>Positive:</strong> Higher origination interest rates relative to benchmark interest rates</li>
+    <li><strong>Positive:</strong> Higher average loan size</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Finance Receivables Balance</h3>
+  <ul>
+    <li><strong>March 31, 2023:</strong> ~$1.6 billion on balance sheet (built up over Q4 2022 and Q1 2023)</li>
+    <li><strong>June 30, 2023:</strong> ~$1.1 billion (down $500 million sequentially)</li>
+    <li><strong>Normalized Level Context:</strong> $1.1 billion is still higher than normalized; additional loans available to sell over coming quarters yielding additional nonrecurring revenue in GPU</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>SG&A</h3>
+  <ul>
+    <li><strong>Non-GAAP SG&A Reduction (Q2 vs. Q1):</strong> -$21 million sequentially</li>
+    <li><strong>Primary Driver of Q2 Reduction:</strong> Continued reductions in non-advertising expenses</li>
+    <li><strong>Advertising Expenses (Q2 vs. Q1):</strong> Approximately flat quarter-over-quarter</li>
+    <li><strong>Advertising Low Point:</strong> Q1 2023 expected to be the near-term low point for quarterly advertising expense; company seeks to optimize spend to balance unit volume and profitability</li>
+    <li><strong>Other SG&A (Q2 vs. Q1):</strong> Basically flat quarter-over-quarter</li>
+    <li><strong>Cost Reduction Sustainability:</strong> Management believes cost reductions achieved over the past year are long-lasting and sustainable; believes further efficiencies remain in all areas</li>
+    <li><strong>Annualized Cost Reduction Achieved:</strong> $1.1 billion over the last year</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>SG&A Per Unit Reduction Framework (3 Drivers)</h3>
+  <ul>
+    <li>1. <strong>Step 2 Operations Efficiency (Per Unit Basis):</strong> Opportunities to reduce operations expenses per retail unit sold by completing pipeline of projects to automate manual work, optimize staffing and routing, increase deep funnel conversion, among other initiatives 2. <strong>Step 2 Corporate/Technology/Facilities (Absolute Dollar Basis):</strong> Opportunities to reduce and optimize corporate technology and facilities expenses through continued focus on zero-based budgeting and other efficiency gains 3. <strong>Step 3 Volume Leverage (Per Unit Basis):</strong> Significant opportunity to leverage corporate technology and facilities expense base at higher volumes, leading to significant per-unit SG&A leverage</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>EBITDA & Margins</h3>
+  <ul>
+    <li><strong>Adjusted EBITDA:</strong> +$155 million, or +5.2% of revenue -- <strong>company all-time record; first positive adjusted EBITDA quarter; completes Step 1 of 3-step plan</strong></li>
+    <li><strong>Adjusted EBITDA (ex-nonrecurring):</strong> ~$85 million ($155 million - $70 million nonrecurring items)</li>
+    <li><strong>Sequential Improvement:</strong> From -$24 million in Q1 (i.e., +$179 million improvement)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Inventory</h3>
+  <ul>
+    <li><strong>Inventory Down YoY:</strong> >55% (over 50%, "something in the over 55%")</li>
+    <li><strong>Inventory Down Sequentially:</strong> Down again quarter-over-quarter</li>
+    <li><strong>Implied Turn Time (inventory/daily sales):</strong> ~62 days (end-of-Q2 inventory relative to Q2 retail units sold)</li>
+    <li><strong>Turn Time Context:</strong> ~62 days is in a normal range that Carvana has operated in historically</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Inspection Center Utilization</h3>
+  <ul>
+    <li><strong>Current Utilization:</strong> Approximately 25% capacity, maybe slightly more</li>
+    <li><strong>Cost Performance:</strong> Reconditioning costs in inspection centers are below full year 2021 levels despite operating at only ~25% capacity</li>
+    <li><strong>Reconditioning Cost Per Retail Unit Sold:</strong> Pushed down over last year; below FY 2021 levels</li>
+    <li><strong>Reconditioning Gains:</strong> Process-driven and technology-driven, not quality-driven (enhanced inventory management system, in-sourcing of previously outsourced services, rightsized staffing)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Balance Sheet & Liquidity (as of June 30, 2023)</h3>
+  <ul>
+    <li><strong>Total Liquidity Resources:</strong> ~$3.5 billion</li>
+    <li><strong>Cash and Revolving Availability:</strong> ~$1.5 billion (mix of just over $500 million cash + just under $1 billion revolving availability)</li>
+    <li><strong>Unpledged Real Estate and Other Assets:</strong> ~$2.0 billion, including >$1 billion of real estate acquired with ADESA</li>
+    <li><strong>Committed Liquidity Resources:</strong> Stepped up quarter-over-quarter (increased liquidity in Q2)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Customer Sourcing</h3>
+  <ul>
+    <li><strong>Customer Sourcing Rate:</strong> Higher share of retail units sourced from customers vs. FY 2021 (continuing trend)</li>
+    <li><strong>Platform Advantage:</strong> Transactional website with large traffic; accurate valuations; convenient process (online value, schedule pickup, Carvana picks up)</li>
+    <li><strong>Enhancements:</strong> Built improvements to differentiate vehicle value better and pass some benefits to customers</li>
+    <li><strong>Disposition Channels:</strong> Cars planned for retail go to inspection centers; cars planned for wholesale go to ADESA</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>ADESA</h3>
+  <ul>
+    <li><strong>Performance:</strong> Great quarter; on a great path; flowing through to GPU</li>
+    <li><strong>Dealer Business Market Share:</strong> Improved over last many months</li>
+    <li><strong>Commercial Business Market Share:</strong> Improved over last many months</li>
+    <li><strong>Market Recovery Signs:</strong> More normal activity from rental fleets; starting to get a sense off-lease volume may come back in not-too-distant future (not quite there yet)</li>
+    <li><strong>Infrastructure Value:</strong> Reduces capital investments needed for future growth; supports logistics network</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Retail Units</h3>
+  <ul>
+    <li><strong>Direction:</strong> Expect similar retail units sold in Q3 compared to Q2 (i.e., approximately 76,530)</li>
+    <li><strong>Condition:</strong> As long as macroeconomic and industry environment remains stable</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>GPU</h3>
+  <ul>
+    <li><strong>Non-GAAP Total GPU:</strong> Expect >$5,000 in Q3</li>
+    <li><strong>Upside Commentary:</strong> Management sees upside to the >$5,000 figure but electing to provide conservative outlook given early date of earnings call within the quarter</li>
+    <li><strong>No Specific Loan Volume Assumed:</strong> Did not specify a particular volume of loans sold associated with the >$5,000 GPU outlook; additional loan sales from remaining excess receivables ($1.1 billion, still above normalized) could provide further upside</li>
+    <li><strong>Retail GPU (Q3):</strong> Expect another strong quarter; will not have the ~$250 allowance benefit; fundamental gains remain (customer sourcing success, additional services revenue, cost efficiency in reconditioning and logistics)</li>
+    <li><strong>GPU Sustainability:</strong> Operating at meaningfully higher GPU levels than at any point in the past; fundamental reasons driving the improvement</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>SG&A</h3>
+  <ul>
+    <li><strong>Non-GAAP SG&A Expense (Q3):</strong> Expect similar SG&A expense in Q3 compared to Q2</li>
+    <li><strong>Further Opportunities:</strong> Continue to see opportunities to further reduce non-GAAP SG&A expenses over time</li>
+    <li><strong>Other SG&A Specifically:</strong> Opportunities to further reduce from Q1/Q2 levels over time; may bounce around quarter-to-quarter due to recurring/nonrecurring items</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>EBITDA</h3>
+  <ul>
+    <li><strong>Adjusted EBITDA:</strong> Expect positive adjusted EBITDA in Q3 for the second consecutive quarter</li>
+    <li><strong>Upside Commentary:</strong> Management sees upside to positive adjusted EBITDA outlook</li>
+    <li><strong>Context:</strong> Further demonstrating Step 1 completion of 3-step plan toward positive free cash flow</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Three-Step Plan (Updated Status)</h3>
+  <ul>
+    <li><strong>Step 1 (COMPLETED Q2 2023):</strong> Drive business to positive adjusted EBITDA -- <strong>COMPLETED; $155 million adjusted EBITDA in Q2</strong></li>
+    <li><strong>Step 2 (NOW IN PROGRESS):</strong> Drive business to repeated and significant positive unit economics - "Maintaining the exact same operating cadence" as Step 1 - Rolling out similar internal efficiency program over next year (prior year's program targeting Q2 was "incredibly successful") - Holding units approximately flat and focusing on efficiencies - Significant gains yet to be had</li>
+    <li><strong>Step 3 (FUTURE):</strong> Return to growth - Not yet making this pivot; "in due time, we certainly plan to" - Multiple factors will drive transition: internal operational progress, capital structure improvements - Growth pivot expected to be relatively comfortable given history and infrastructure (ADESA) - When growth restarts: fixed cost leverage expected to outweigh incremental variable cost increases - Capital investments (larger/more inspection centers, logistics pathways) already largely built; ADESA reduces future CapEx needs</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Growth Cost Framework</h3>
+  <ul>
+    <li><strong>Variable Cost Position:</strong> In a great spot; all-time best efficiencies</li>
+    <li><strong>Fixed Cost Leverage:</strong> Disproportionately larger share of expenses are now fixed vs. history; growth math is beneficial (fixed costs leveraged by volume)</li>
+    <li><strong>Management View:</strong> Growth cost increases "will probably be helpful from an expense perspective because the fixed component is probably a larger and more mechanical component than the variable component"</li>
+    <li><strong>Growth Investments:</strong> Some incremental costs inevitable, but expected to be "dwarfed by the improvements in the business otherwise due to the leveraging of fixed costs"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Debt Restructuring / Transaction Support Agreement</h3>
+</div>
+<div class="content-section">
+  <h3>Transaction Overview (Announced July 19, 2023)</h3>
+  <ul>
+    <li><strong>Agreement Reached With:</strong> >90% of holders of senior unsecured notes</li>
+    <li><strong>Exchange:</strong> ~$5.2 billion of senior unsecured notes exchanged for new senior secured notes</li>
+    <li><strong>New Note Maturities:</strong> December 2028 through June 2031</li>
+    <li><strong>Total Debt Reduction:</strong> >$1.2 billion face value reduction</li>
+    <li><strong>Cash Interest Expense Reduction:</strong> >$430 million per year savings over the next 2 years</li>
+    <li><strong>Near-Term Maturity Elimination:</strong> >83% of 2025 and 2027 senior unsecured note maturities extended</li>
+    <li><strong>First Meaningful Note Maturity Post-Exchange:</strong> December 2028</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Mechanism</h3>
+  <ul>
+    <li><strong>Majority of Debt Reduction:</strong> Exchange of collateral (pledging ADESA real estate and other assets) for reduction in face value of debt; NOT primarily a cash paydown</li>
+    <li><strong>Cash Consideration Component:</strong> Funded by $350 million equity raise</li>
+    <li><strong>Remainder of Exchange:</strong> Straight swap of existing senior unsecured notes for new tranches of senior secured notes</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Equity Component</h3>
+  <ul>
+    <li><strong>Total Equity Raise Commitment:</strong> $350 million (part of transaction support agreement)</li>
+    <li><strong>Garcia Family Commitment:</strong> ~$125 million</li>
+    <li><strong>Market Raise:</strong> ~$225 million</li>
+    <li><strong>ATM Program:</strong> Larger ATM facility also established (characterized as "good corporate housekeeping")</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>New Note Features</h3>
+  <ul>
+    <li><strong>PIK (Pay-in-Kind) Interest Option:</strong> Option to pay PIK interest for 2 years (reduces near-term cash interest burden)</li>
+    <li><strong>2028 Notes Call Feature:</strong> 1-year no-call period only; callable at par + half a coupon after 1 year</li>
+    <li><strong>2030 Notes Call Feature:</strong> 2-year no-call period (shorter than typical); callable at par + half a coupon after 2 years</li>
+    <li><strong>Equity Prepayment Provision:</strong> 2028 and 2030 notes allow prepayment with proceeds from equity raises</li>
+    <li><strong>Deleveraging Optionality:</strong> Multiple features facilitate decreasing leverage over time if desired</li>
+    <li><strong>Garcia Family Commitment Adjustment:</strong> If more equity raised over time via ATM, family commitment decreases proportionally</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Management Commentary on Transaction</h3>
+  <ul>
+    <li>Characterized as "win-win" for Carvana and senior unsecured noteholders</li>
+    <li>Business performance in 2023 created room for mutually beneficial deal</li>
+    <li>Bondholder group described as "very productive to work with" and "solution oriented"</li>
+    <li>Preserving collateral for years in unsecured structure now being deployed for debt reduction / better terms</li>
+    <li>Multi-dimensional improvement: lower leverage, longer maturities, more prepayment flexibility, lower cash interest expense</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q&A Supplemental Data</h3>
+</div>
+<div class="content-section">
+  <h3>Market Share / Competitive Positioning</h3>
+  <ul>
+    <li><strong>Carvana Market Share:</strong> ~1% of ~40 million unit/year market (reiterated from prior quarters)</li>
+    <li><strong>Business Replication Difficulty:</strong> Emphasized as capital intensive, complicated, hard to replicate</li>
+    <li><strong>Competitive Moat:</strong> Customer offering quality, business scalability, difficulty of replication</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Reconditioning Cost Detail (from Q&A)</h3>
+  <ul>
+    <li><strong>Reconditioning Cost Per Retail Unit Sold:</strong> Below FY 2021 levels</li>
+    <li><strong>Utilization Context:</strong> Inspection centers operating at ~25% capacity, yet costs still below FY 2021 levels</li>
+    <li><strong>Gains Source:</strong> Process and technology driven (enhanced inventory management, in-sourcing, rightsized staffing); explicitly NOT from reducing quality of reconditioning</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Inbound Transport / Logistics (from Q&A)</h3>
+  <ul>
+    <li><strong>Inbound Transport Costs:</strong> Improving; fulfillment teams making logistics network more efficient</li>
+    <li><strong>Further Opportunities:</strong> Continue to see opportunities in reconditioning and inbound transport despite significant progress already made</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Return to Growth Timing (from Q&A)</h3>
+  <ul>
+    <li><strong>Not Yet Pivoting:</strong> Company explicitly not yet making the pivot to growth</li>
+    <li><strong>Spreadsheet Math:</strong> "If you put it in a spreadsheet, it's going to tell you that we're supposed to grow as quickly as possible" given GPU and variable cost position</li>
+    <li><strong>Discipline:</strong> Maintaining Step 2 focus despite favorable unit economics math; benefiting from simplicity of holding units flat</li>
+    <li><strong>Growth Readiness:</strong> Well positioned for growth when time comes; ADESA significantly reduces capital investment needed</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Affordability / Market Recovery (from Q&A)</h3>
+  <ul>
+    <li><strong>Used Car Sales vs. Baseline:</strong> Approximately 10% below normal</li>
+    <li><strong>Independent Market Impact:</strong> Likely impacted more than franchise market</li>
+    <li><strong>Recovery Catalyst:</strong> Car prices normalizing + interest rates normalizing = improved affordability</li>
+    <li><strong>Management Stance:</strong> "Most importantly, when it's time to grow, we'll take control of that, and we'll control our own destiny"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Q2 2023 Actuals (Reported)</h3>
+</div>
+
+<div class="prior-ref" id="priorRef">
+  <div class="prior-ref-header" onclick="var b=document.getElementById('priorBody');b.classList.toggle('open');this.querySelector('.arrow').innerHTML=b.classList.contains('open')?'&#9650;':'&#9660;';">
+    Prior Quarter Reference: Q1 2023
+    <span class="arrow">&#9660;</span>
+  </div>
+  <div class="prior-ref-body" id="priorBody">
+    <div class="metric-grid">
+      <div class="prior-mini"><div class="pm-label">Adjusted EBITDA</div><div class="pm-value">Expect positive adjusted EBITDA in Q2 -- <strong>achieving Step 1 of 3-step plan</strong></div></div>
+    </div>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q1_2023.html" style="color:var(--blue);">View full Q1 2023 detail &rarr;</a></p>
+  </div>
+</div>
+
+<div class="footer-nav">
+  <a href="Q1_2023.html">&larr; Q1 2023</a>
+  <a href="../comparison.html">Back to Overview</a>
+  <a href="Q3_2023.html">Q3 2023 &rarr;</a>
+</div>
+
+</body>
+</html>

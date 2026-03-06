@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amazon Results vs Guidance &mdash; 16-Quarter Scorecard</title>
+<style>
+  :root {
+    --company-primary: #FF9900;
+    --company-dark: #232F3E;
+    --company-accent: #146EB4;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 48px 40px;
+    margin: 0 -24px 40px;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; }
+  .header .subtitle { font-size: 1.1rem; opacity: 0.85; font-weight: 300; }
+
+  .quarter-nav {
+    background: var(--company-accent);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+  .quarter-nav .label { color: #fff; font-weight: 600; font-size: 0.85rem; margin-right: 8px; white-space: nowrap; }
+  .quarter-nav .year-group { display: flex; gap: 4px; align-items: center; }
+  .quarter-nav .year-label { color: rgba(255,255,255,0.5); font-size: 0.72rem; font-weight: 600; margin-right: 2px; letter-spacing: 0.5px; }
+  .quarter-nav a {
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+  .quarter-nav a:hover { background: rgba(255,255,255,0.25); }
+  .quarter-nav a.overview-link {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.35);
+    padding: 4px 14px;
+    font-size: 0.82rem;
+    margin-left: auto;
+  }
+
+  .toc {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 32px;
+    margin-bottom: 40px;
+  }
+  .toc h2 { font-size: 1.1rem; color: var(--company-accent); margin-bottom: 12px; }
+  .toc a { display: inline-block; color: var(--blue); text-decoration: none; padding: 3px 12px 3px 0; font-size: 0.9rem; }
+  .toc a:hover { text-decoration: underline; }
+
+  .section { margin-bottom: 48px; scroll-margin-top: 20px; }
+  .section h2 { font-size: 1.4rem; color: var(--company-dark); border-bottom: 3px solid var(--company-primary); padding-bottom: 8px; margin-bottom: 16px; }
+  .section h2 .num {
+    display: inline-block; background: var(--company-primary); color: #fff;
+    width: 28px; height: 28px; line-height: 28px; text-align: center;
+    border-radius: 50%; font-size: 0.85rem; margin-right: 8px; vertical-align: middle;
+  }
+
+  .scorecard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .score-card {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+  }
+  .score-card .metric-value { font-size: 2rem; font-weight: 800; color: var(--company-dark); line-height: 1.1; margin-bottom: 4px; }
+  .score-card .metric-value.green { color: var(--green); }
+  .score-card .metric-label { font-size: 0.82rem; color: var(--text-muted); font-weight: 500; }
+  .score-card .metric-sub { font-size: 0.78rem; color: var(--text-muted); margin-top: 4px; }
+  .score-card.highlight { border-color: var(--green); background: #eafaf1; }
+
+  table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 0.88rem; }
+  thead th {
+    background: var(--company-accent); color: #fff; padding: 10px 12px;
+    text-align: left; font-weight: 600; font-size: 0.82rem;
+    text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap;
+  }
+  thead th.right { text-align: right; }
+  tbody td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tbody td.right { text-align: right; }
+  tbody tr:nth-child(even) { background: var(--light-bg); }
+  tbody tr:hover { background: #eef2f7; }
+
+  .pos { color: var(--green); font-weight: 600; }
+  .neg { color: var(--red); font-weight: 600; }
+  .neutral { color: var(--amber); font-weight: 600; }
+  .raised { background: #eafaf1 !important; }
+  .lowered { background: #fef0ef !important; }
+  .bold { font-weight: 700; }
+  .muted { color: var(--text-muted); font-style: italic; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; vertical-align: middle; }
+  .tag-beat { background: #d5f5e3; color: #1e8449; }
+  .tag-miss { background: #fadbd8; color: #c0392b; }
+  .tag-met { background: #fdebd0; color: #b9770e; }
+  .tag-pending { background: #d6eaf8; color: #2471a3; }
+
+  .insight {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 4px solid var(--amber);
+    padding: 14px 18px; margin: 16px 0;
+    border-radius: 0 6px 6px 0; font-size: 0.9rem;
+  }
+  .insight strong { color: var(--company-dark); }
+
+  .takeaways { counter-reset: takeaway; }
+  .takeaway {
+    display: flex; gap: 16px; margin-bottom: 18px; padding: 14px 18px;
+    background: var(--light-bg); border-radius: 8px; border: 1px solid var(--border);
+  }
+  .takeaway-num {
+    flex-shrink: 0; width: 32px; height: 32px; line-height: 32px;
+    text-align: center; background: var(--company-primary); color: #fff;
+    border-radius: 50%; font-weight: 700; font-size: 0.85rem;
+  }
+  .takeaway-text { font-size: 0.92rem; }
+  .takeaway-text strong { color: var(--company-dark); }
+
+  .year-divider td {
+    background: var(--company-accent) !important; color: #fff;
+    font-weight: 700; font-size: 0.82rem; padding: 6px 12px; letter-spacing: 0.5px;
+  }
+
+  @media (max-width: 768px) {
+    .toc { columns: 1; }
+    .header h1 { font-size: 1.6rem; }
+    table { font-size: 0.8rem; }
+    thead th, tbody td { padding: 6px 8px; }
+    .quarter-nav { gap: 4px; }
+    .scorecard { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media print {
+    .header { background: #333; }
+    .section { page-break-inside: avoid; }
+    table { font-size: 0.75rem; }
+    .quarter-nav { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Amazon Results vs Guidance</h1>
+  <div class="subtitle">16-Quarter Scorecard &mdash; Q2 2022 through Q1 2026 (Actuals vs Prior-Quarter Guidance)</div>
+</div>
+
+<div class="quarter-nav" id="qnav">
+  <a href="../../index.html" style="background:rgba(255,255,255,0.15); color:#fff; font-weight:600; margin-right:12px; text-decoration:none; padding:4px 12px; border-radius:4px;">&#x2190; Portfolio</a>
+  <span class="label">Quarter detail:</span>
+  <div class="year-group">
+    <span class="year-label">2025</span>
+    <a href="quarters/Q4_2025.html">Q4&rsquo;25</a>
+    <a href="quarters/Q3_2025.html">Q3&rsquo;25</a>
+    <a href="quarters/Q2_2025.html">Q2&rsquo;25</a>
+    <a href="quarters/Q1_2025.html">Q1&rsquo;25</a>
+  </div>
+  <div class="year-group">
+    <span class="year-label">2024</span>
+    <a href="quarters/Q4_2024.html">Q4&rsquo;24</a>
+    <a href="quarters/Q3_2024.html">Q3&rsquo;24</a>
+    <a href="quarters/Q2_2024.html">Q2&rsquo;24</a>
+    <a href="quarters/Q1_2024.html">Q1&rsquo;24</a>
+  </div>
+  <div class="year-group">
+    <span class="year-label">2023</span>
+    <a href="quarters/Q4_2023.html">Q4&rsquo;23</a>
+    <a href="quarters/Q3_2023.html">Q3&rsquo;23</a>
+    <a href="quarters/Q2_2023.html">Q2&rsquo;23</a>
+    <a href="quarters/Q1_2023.html">Q1&rsquo;23</a>
+  </div>
+  <div class="year-group">
+    <span class="year-label">2022</span>
+    <a href="quarters/Q4_2022.html">Q4&rsquo;22</a>
+    <a href="quarters/Q3_2022.html">Q3&rsquo;22</a>
+    <a href="quarters/Q2_2022.html">Q2&rsquo;22</a>
+    <a href="quarters/Q1_2022.html">Q1&rsquo;22</a>
+  </div>
+  <a href="quarters/intermittent_kpis.html" class="overview-link">Intermittent KPIs &rarr;</a>
+  <a href="comparison.html" class="overview-link">Guidance Overview &rarr;</a>
+</div>
+
+<nav class="toc">
+  <h2>Table of Contents</h2>
+  <a href="#s0">Summary Scorecard</a>
+  <a href="#s1">1. Revenue &mdash; Actuals vs Guidance</a>
+  <a href="#s2">2. Operating Income &mdash; Actuals vs Guidance</a>
+  <a href="#s3">3. Key Takeaways</a>
+</nav>
+
+<!-- ====== SUMMARY SCORECARD ====== -->
+<div class="section" id="s0">
+  <h2>Summary Scorecard</h2>
+  <p style="margin-bottom:16px; font-size:0.88rem; color:var(--text-muted);">Amazon guides only on next-quarter net sales and operating income. No gross margin, operating margin, or full-year guidance is provided. Below covers 15 completed quarters (Q2 2022 &ndash; Q4 2025); Q1 2026 is pending.</p>
+  <div class="scorecard">
+    <div class="score-card highlight">
+      <div class="metric-value green">14/15</div>
+      <div class="metric-label">Revenue beat rate vs midpoint</div>
+      <div class="metric-sub">Only miss: Q3 2022 (&minus;0.3%)</div>
+    </div>
+    <div class="score-card">
+      <div class="metric-value">+2.2%</div>
+      <div class="metric-label">Avg revenue beat vs midpoint</div>
+      <div class="metric-sub">Consistent upward bias</div>
+    </div>
+    <div class="score-card highlight">
+      <div class="metric-value green">14/15</div>
+      <div class="metric-label">OI beat rate vs midpoint</div>
+      <div class="metric-sub">Only miss: Q3 &rsquo;25 ($4.3B charges)*</div>
+    </div>
+    <div class="score-card">
+      <div class="metric-value">+$2.8B</div>
+      <div class="metric-label">Avg OI beat vs midpoint</div>
+      <div class="metric-sub">Systematically conservative</div>
+    </div>
+    <div class="score-card highlight">
+      <div class="metric-value green">11/15</div>
+      <div class="metric-label">Revenue exceeded high end</div>
+      <div class="metric-sub">73% of quarters</div>
+    </div>
+    <div class="score-card">
+      <div class="metric-value green">11/15</div>
+      <div class="metric-label">OI exceeded high end</div>
+      <div class="metric-sub">73% of quarters</div>
+    </div>
+    <div class="score-card highlight">
+      <div class="metric-value green">0/15</div>
+      <div class="metric-label">Missed low-end (revenue)</div>
+      <div class="metric-sub">Perfect floor: never missed</div>
+    </div>
+    <div class="score-card">
+      <div class="metric-value green">0/15</div>
+      <div class="metric-label">Missed low-end (OI)</div>
+      <div class="metric-sub">Perfect floor: never missed</div>
+    </div>
+  </div>
+  <p style="font-size:0.8rem; color:var(--text-muted);">*Q3 2025 reported OI of $17.4B includes $4.3B in special charges. Adjusted OI of $21.7B beat the high end by $1.2B. On an adjusted basis, OI beat rate vs midpoint is 15/15 (100%).</p>
+</div>
+
+<!-- ====== SECTION 1: Revenue ====== -->
+<div class="section" id="s1">
+  <h2><span class="num">1</span> Revenue (Net Sales) &mdash; Actuals vs Guidance</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Quarter</th>
+        <th>Guided From</th>
+        <th>Guidance Range</th>
+        <th class="right">Actual</th>
+        <th class="right">vs Low</th>
+        <th class="right">vs Mid</th>
+        <th class="right">vs High</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="7">2026</td></tr>
+      <tr>
+        <td>Q1 2026</td><td>Q4 &rsquo;25 call</td>
+        <td>$173.5B &ndash; $178.5B</td>
+        <td class="right muted">Pending</td>
+        <td class="right muted">&mdash;</td>
+        <td class="right muted">&mdash;</td>
+        <td class="right muted">&mdash;</td>
+      </tr>
+      <tr class="year-divider"><td colspan="7">2025</td></tr>
+      <tr class="raised">
+        <td>Q4 2025</td><td>Q3 &rsquo;25 call</td>
+        <td>$206.0B &ndash; $213.0B</td>
+        <td class="right bold">$213.4B</td>
+        <td class="right pos">+3.6%</td>
+        <td class="right pos">+1.9%</td>
+        <td class="right pos">+0.2%</td>
+      </tr>
+      <tr class="raised">
+        <td>Q3 2025</td><td>Q2 &rsquo;25 call</td>
+        <td>$174.0B &ndash; $179.5B</td>
+        <td class="right bold">$180.2B</td>
+        <td class="right pos">+3.6%</td>
+        <td class="right pos">+2.0%</td>
+        <td class="right pos">+0.4%</td>
+      </tr>
+      <tr class="raised">
+        <td>Q2 2025</td><td>Q1 &rsquo;25 call</td>
+        <td>$159.0B &ndash; $164.0B</td>
+        <td class="right bold">$167.7B</td>
+        <td class="right pos">+5.5%</td>
+        <td class="right pos">+3.8%</td>
+        <td class="right pos">+2.3%</td>
+      </tr>
+      <tr class="raised">
+        <td>Q1 2025</td><td>Q4 &rsquo;24 call</td>
+        <td>$151.0B &ndash; $155.5B</td>
+        <td class="right bold">$155.7B</td>
+        <td class="right pos">+3.1%</td>
+        <td class="right pos">+1.6%</td>
+        <td class="right pos">+0.1%</td>
+      </tr>
+      <tr class="year-divider"><td colspan="7">2024</td></tr>
+      <tr>
+        <td>Q4 2024</td><td>Q3 &rsquo;24 call</td>
+        <td>$181.5B &ndash; $188.5B</td>
+        <td class="right">$187.8B</td>
+        <td class="right pos">+3.5%</td>
+        <td class="right pos">+1.5%</td>
+        <td class="right neg">&minus;0.4%</td>
+      </tr>
+      <tr class="raised">
+        <td>Q3 2024</td><td>Q2 &rsquo;24 call</td>
+        <td>$154.0B &ndash; $158.5B</td>
+        <td class="right bold">$158.9B</td>
+        <td class="right pos">+3.2%</td>
+        <td class="right pos">+1.7%</td>
+        <td class="right pos">+0.3%</td>
+      </tr>
+      <tr>
+        <td>Q2 2024</td><td>Q1 &rsquo;24 call</td>
+        <td>$144.0B &ndash; $149.0B</td>
+        <td class="right">$148.0B</td>
+        <td class="right pos">+2.8%</td>
+        <td class="right pos">+1.0%</td>
+        <td class="right neg">&minus;0.7%</td>
+      </tr>
+      <tr>
+        <td>Q1 2024</td><td>Q4 &rsquo;23 call</td>
+        <td>$138.0B &ndash; $143.5B</td>
+        <td class="right">$143.3B</td>
+        <td class="right pos">+3.8%</td>
+        <td class="right pos">+1.8%</td>
+        <td class="right neg">&minus;0.1%</td>
+      </tr>
+      <tr class="year-divider"><td colspan="7">2023</td></tr>
+      <tr class="raised">
+        <td>Q4 2023</td><td>Q3 &rsquo;23 call</td>
+        <td>$160.0B &ndash; $167.0B</td>
+        <td class="right bold">$170.0B</td>
+        <td class="right pos">+6.3%</td>
+        <td class="right pos">+4.0%</td>
+        <td class="right pos">+1.8%</td>
+      </tr>
+      <tr class="raised">
+        <td>Q3 2023</td><td>Q2 &rsquo;23 call</td>
+        <td>$138.0B &ndash; $143.0B</td>
+        <td class="right bold">$143.1B</td>
+        <td class="right pos">+3.7%</td>
+        <td class="right pos">+1.9%</td>
+        <td class="right pos">+0.1%</td>
+      </tr>
+      <tr class="raised">
+        <td>Q2 2023</td><td>Q1 &rsquo;23 call</td>
+        <td>$127.0B &ndash; $133.0B</td>
+        <td class="right bold">$134.4B</td>
+        <td class="right pos">+5.8%</td>
+        <td class="right pos">+3.4%</td>
+        <td class="right pos">+1.1%</td>
+      </tr>
+      <tr class="raised">
+        <td>Q1 2023</td><td>Q4 &rsquo;22 call</td>
+        <td>$121.0B &ndash; $126.0B</td>
+        <td class="right bold">$127.4B</td>
+        <td class="right pos">+5.3%</td>
+        <td class="right pos">+3.2%</td>
+        <td class="right pos">+1.1%</td>
+      </tr>
+      <tr class="year-divider"><td colspan="7">2022</td></tr>
+      <tr class="raised">
+        <td>Q4 2022</td><td>Q3 &rsquo;22 call</td>
+        <td>$140.0B &ndash; $148.0B</td>
+        <td class="right bold">$149.2B</td>
+        <td class="right pos">+6.6%</td>
+        <td class="right pos">+3.6%</td>
+        <td class="right pos">+0.8%</td>
+      </tr>
+      <tr>
+        <td>Q3 2022</td><td>Q2 &rsquo;22 call</td>
+        <td>$125.0B &ndash; $130.0B</td>
+        <td class="right">$127.1B</td>
+        <td class="right pos">+1.7%</td>
+        <td class="right neg">&minus;0.3%</td>
+        <td class="right neg">&minus;2.2%</td>
+      </tr>
+      <tr class="raised">
+        <td>Q2 2022</td><td>Q1 &rsquo;22 call</td>
+        <td>$116.0B &ndash; $121.0B</td>
+        <td class="right bold">$121.2B</td>
+        <td class="right pos">+4.5%</td>
+        <td class="right pos">+2.3%</td>
+        <td class="right pos">+0.2%</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Amazon beat revenue guidance midpoint in 14 of 15 quarters, averaging +2.2% above midpoint. The single miss (Q3 2022, &minus;0.3%) was driven by FX headwinds worse than guided (~460 bps actual vs. ~390 bps assumed). Revenue never missed the low end in any quarter. The guidance range acts as a conservative floor, not a midpoint estimate &mdash; Amazon exceeded the high end in 11 of 15 quarters (73%).</div>
+</div>
+
+<!-- ====== SECTION 2: Operating Income ====== -->
+<div class="section" id="s2">
+  <h2><span class="num">2</span> Operating Income &mdash; Actuals vs Guidance</h2>
+  <p style="margin-bottom:12px; font-size:0.85rem; color:var(--text-muted);">Actuals are reported GAAP figures. Quarters with material special charges are noted. Dollar differences shown ($B).</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Quarter</th>
+        <th>Guided From</th>
+        <th>Guidance Range</th>
+        <th class="right">Actual</th>
+        <th class="right">vs Low</th>
+        <th class="right">vs Mid</th>
+        <th class="right">vs High</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="7">2026</td></tr>
+      <tr>
+        <td>Q1 2026</td><td>Q4 &rsquo;25 call</td>
+        <td>$16.5B &ndash; $21.5B</td>
+        <td class="right muted">Pending</td>
+        <td class="right muted">&mdash;</td>
+        <td class="right muted">&mdash;</td>
+        <td class="right muted">&mdash;</td>
+      </tr>
+      <tr class="year-divider"><td colspan="7">2025</td></tr>
+      <tr>
+        <td>Q4 2025 <sup>&dagger;</sup></td><td>Q3 &rsquo;25 call</td>
+        <td>$21.0B &ndash; $26.0B</td>
+        <td class="right bold">$25.0B</td>
+        <td class="right pos">+$4.0B</td>
+        <td class="right pos">+$1.5B</td>
+        <td class="right neg">&minus;$1.0B</td>
+      </tr>
+      <tr>
+        <td>Q3 2025 <sup>&dagger;</sup></td><td>Q2 &rsquo;25 call</td>
+        <td>$15.5B &ndash; $20.5B</td>
+        <td class="right">$17.4B</td>
+        <td class="right pos">+$1.9B</td>
+        <td class="right neg">&minus;$0.6B</td>
+        <td class="right neg">&minus;$3.1B</td>
+      </tr>
+      <tr class="raised">
+        <td>Q2 2025</td><td>Q1 &rsquo;25 call</td>
+        <td>$13.0B &ndash; $17.5B</td>
+        <td class="right bold">$19.2B</td>
+        <td class="right pos">+$6.2B</td>
+        <td class="right pos">+$4.0B</td>
+        <td class="right pos">+$1.7B</td>
+      </tr>
+      <tr class="raised">
+        <td>Q1 2025</td><td>Q4 &rsquo;24 call</td>
+        <td>$14.0B &ndash; $18.0B</td>
+        <td class="right bold">$18.4B</td>
+        <td class="right pos">+$4.4B</td>
+        <td class="right pos">+$2.4B</td>
+        <td class="right pos">+$0.4B</td>
+      </tr>
+      <tr class="year-divider"><td colspan="7">2024</td></tr>
+      <tr class="raised">
+        <td>Q4 2024</td><td>Q3 &rsquo;24 call</td>
+        <td>$16.0B &ndash; $20.0B</td>
+        <td class="right bold">$21.2B</td>
+        <td class="right pos">+$5.2B</td>
+        <td class="right pos">+$3.2B</td>
+        <td class="right pos">+$1.2B</td>
+      </tr>
+      <tr class="raised">
+        <td>Q3 2024</td><td>Q2 &rsquo;24 call</td>
+        <td>$11.5B &ndash; $15.0B</td>
+        <td class="right bold">$17.4B</td>
+        <td class="right pos">+$5.9B</td>
+        <td class="right pos">+$4.2B</td>
+        <td class="right pos">+$2.4B</td>
+      </tr>
+      <tr class="raised">
+        <td>Q2 2024</td><td>Q1 &rsquo;24 call</td>
+        <td>$10.0B &ndash; $14.0B</td>
+        <td class="right bold">$14.7B</td>
+        <td class="right pos">+$4.7B</td>
+        <td class="right pos">+$2.7B</td>
+        <td class="right pos">+$0.7B</td>
+      </tr>
+      <tr class="raised">
+        <td>Q1 2024</td><td>Q4 &rsquo;23 call</td>
+        <td>$8.0B &ndash; $12.0B</td>
+        <td class="right bold">$15.3B</td>
+        <td class="right pos">+$7.3B</td>
+        <td class="right pos">+$5.3B</td>
+        <td class="right pos">+$3.3B</td>
+      </tr>
+      <tr class="year-divider"><td colspan="7">2023</td></tr>
+      <tr class="raised">
+        <td>Q4 2023</td><td>Q3 &rsquo;23 call</td>
+        <td>$7.0B &ndash; $11.0B</td>
+        <td class="right bold">$13.2B</td>
+        <td class="right pos">+$6.2B</td>
+        <td class="right pos">+$4.2B</td>
+        <td class="right pos">+$2.2B</td>
+      </tr>
+      <tr class="raised">
+        <td>Q3 2023</td><td>Q2 &rsquo;23 call</td>
+        <td>$5.5B &ndash; $8.5B</td>
+        <td class="right bold">$11.2B</td>
+        <td class="right pos">+$5.7B</td>
+        <td class="right pos">+$4.2B</td>
+        <td class="right pos">+$2.7B</td>
+      </tr>
+      <tr class="raised">
+        <td>Q2 2023</td><td>Q1 &rsquo;23 call</td>
+        <td>$2.0B &ndash; $5.5B</td>
+        <td class="right bold">$7.7B</td>
+        <td class="right pos">+$5.7B</td>
+        <td class="right pos">+$4.0B</td>
+        <td class="right pos">+$2.2B</td>
+      </tr>
+      <tr class="raised">
+        <td>Q1 2023</td><td>Q4 &rsquo;22 call</td>
+        <td>$0 &ndash; $4.0B</td>
+        <td class="right bold">$4.8B</td>
+        <td class="right pos">+$4.8B</td>
+        <td class="right pos">+$2.8B</td>
+        <td class="right pos">+$0.8B</td>
+      </tr>
+      <tr class="year-divider"><td colspan="7">2022</td></tr>
+      <tr>
+        <td>Q4 2022</td><td>Q3 &rsquo;22 call</td>
+        <td>$0 &ndash; $4.0B</td>
+        <td class="right">$2.7B</td>
+        <td class="right pos">+$2.7B</td>
+        <td class="right pos">+$0.7B</td>
+        <td class="right neg">&minus;$1.3B</td>
+      </tr>
+      <tr>
+        <td>Q3 2022</td><td>Q2 &rsquo;22 call</td>
+        <td>$0 &ndash; $3.5B</td>
+        <td class="right">$2.5B</td>
+        <td class="right pos">+$2.5B</td>
+        <td class="right pos">+$0.8B</td>
+        <td class="right neg">&minus;$1.0B</td>
+      </tr>
+      <tr class="raised">
+        <td>Q2 2022</td><td>Q1 &rsquo;22 call</td>
+        <td>&minus;$1.0B &ndash; $3.0B</td>
+        <td class="right bold">$3.3B</td>
+        <td class="right pos">+$4.3B</td>
+        <td class="right pos">+$2.3B</td>
+        <td class="right pos">+$0.3B</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size:0.82rem; color:var(--text-muted); margin-top:8px;">
+    <sup>&dagger;</sup> <strong>Q3 2025:</strong> Reported $17.4B includes $2.5B FTC settlement + $1.8B severance = $4.3B charges. Adjusted OI: $21.7B (would have beaten high end by $1.2B).<br>
+    <sup>&dagger;</sup> <strong>Q4 2025:</strong> Reported $25.0B includes $1.1B Italy tax + $0.73B severance + $0.61B impairments = $2.4B charges. Adjusted OI: $27.4B (would have beaten high end by $1.4B).
+  </p>
+  <div class="insight"><strong>Key Insight:</strong> Amazon&rsquo;s OI guidance conservatism is extraordinary. The average beat vs midpoint is $2.8B &mdash; meaning actual OI typically lands nearly $3B above the guided midpoint. The most extreme beat was Q1 2024 ($15.3B actual vs. $10.0B midpoint, +$5.3B). From Q1 2023 through Q2 2025, Amazon beat the high end of OI guidance in 10 consecutive quarters. The only &ldquo;miss&rdquo; vs midpoint (Q3 &rsquo;25) was entirely driven by $4.3B in nonrecurring charges.</div>
+</div>
+
+<!-- ====== SECTION 3: Key Takeaways ====== -->
+<div class="section" id="s3">
+  <h2><span class="num">3</span> Key Takeaways</h2>
+  <div class="takeaways">
+
+    <div class="takeaway">
+      <div class="takeaway-num">1</div>
+      <div class="takeaway-text"><strong>Amazon never missed the low end of guidance.</strong> Across 15 quarters and 2 metrics (30 data points), Amazon never delivered below the low end of its guided range. The guidance floor is a perfectly reliable minimum.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">2</div>
+      <div class="takeaway-text"><strong>OI guidance is systematically sandbagged by ~$2.8B per quarter.</strong> The average beat vs midpoint of $2.8B represents a 20&ndash;25% upside to the guided midpoint. This is among the most conservative guidance patterns in large-cap tech. From Q2 2023 through Q2 2025, the average beat was $3.6B.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">3</div>
+      <div class="takeaway-text"><strong>Revenue guidance is more precisely calibrated.</strong> The average beat of +2.2% is meaningful but moderate. Revenue guidance accuracy tightened over time: the average beat was 2.7% in 2022&ndash;2023 vs. 1.7% in 2024&ndash;2025, suggesting management is calibrating more precisely as the business stabilizes.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">4</div>
+      <div class="takeaway-text"><strong>The Q1 2024 OI beat was the largest in the dataset.</strong> Amazon guided $8.0B&ndash;$12.0B and delivered $15.3B &mdash; $5.3B above midpoint and $3.3B above the high end. This reflected the compounding impact of cost restructuring, fulfillment regionalization, and the server life extension (~$900M/Q benefit).</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">5</div>
+      <div class="takeaway-text"><strong>The only revenue miss was FX-driven.</strong> Q3 2022 was the sole quarter where revenue missed the midpoint (&minus;0.3%). FX headwinds were ~460 bps vs. the ~390 bps assumed in guidance &mdash; the incremental ~$900M FX headwind accounts for the entire shortfall.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">6</div>
+      <div class="takeaway-text"><strong>OI guidance became dramatically more conservative from 2023 onward.</strong> Average OI beat vs midpoint: $1.3B (Q2&ndash;Q4 2022) &rarr; $3.8B (Q1&ndash;Q4 2023) &rarr; $3.9B (Q1&ndash;Q4 2024) &rarr; $2.3B (Q1&ndash;Q4 2025, depressed by one-time charges). Management learned during the 2022 uncertainty to guide conservatively and never stopped.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">7</div>
+      <div class="takeaway-text"><strong>Special charges distort the 2025 OI picture.</strong> On a reported basis, Q3 and Q4 2025 appear weaker vs guidance. On an adjusted basis ($21.7B and $27.4B respectively), both would have beaten the high end. Investors should track adjusted OI vs guidance for a cleaner signal.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">8</div>
+      <div class="takeaway-text"><strong>Q2 2025 was the largest revenue beat.</strong> Revenue of $167.7B exceeded the high end ($164.0B) by $3.7B (+2.3%), the largest absolute and percentage beat vs high end in the dataset. This occurred despite elevated tariff uncertainty, suggesting underlying demand remains robust.</div>
+    </div>
+
+  </div>
+</div>
+
+<footer style="text-align:center; padding:32px 0; border-top:2px solid var(--border); margin-top:60px; color:var(--text-muted); font-size:0.82rem;">
+  <strong>Metrics Tracker</strong> &mdash; Data from Amazon earnings call transcripts and press releases, Q1 2022 &ndash; Q4 2025<br>
+  Actuals compared against prior-quarter guidance ranges
+</footer>
+
+</body>
+</html>

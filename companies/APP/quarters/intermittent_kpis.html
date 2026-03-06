@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APP Intermittent KPIs &mdash; Q1 2022 through Q4 2025</title>
+<style>
+:root {
+  --company-primary: #FF6B35;
+  --company-dark: #1a1a2e;
+  --company-accent: #1E3A5F;
+  --green: #27ae60;
+  --red: #e74c3c;
+  --amber: #f39c12;
+  --blue: #2980b9;
+  --light-bg: #f8f9fa;
+  --border: #dee2e6;
+  --text: #2c3e50;
+  --text-muted: #6c757d;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); background: #fff; line-height: 1.6; max-width: 1200px; margin: 0 auto; padding: 0 24px 80px; }
+.header { background: linear-gradient(135deg, var(--company-dark), var(--company-accent)); color: #fff; padding: 48px 40px; margin: 0 -24px 40px; border-bottom: 4px solid var(--company-primary); }
+.header h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; }
+.header .subtitle { font-size: 1.1rem; opacity: 0.85; font-weight: 300; }
+.quarter-nav { background: var(--company-accent); border-radius: 8px; padding: 16px 20px; margin-bottom: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.quarter-nav .label { color: #fff; font-weight: 600; font-size: 0.85rem; margin-right: 8px; white-space: nowrap; }
+.quarter-nav .year-group { display: flex; gap: 4px; align-items: center; }
+.quarter-nav .year-label { color: rgba(255,255,255,0.5); font-size: 0.72rem; font-weight: 600; margin-right: 2px; letter-spacing: 0.5px; }
+.quarter-nav a { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 4px 10px; font-size: 0.78rem; font-weight: 600; text-decoration: none; transition: all 0.15s; }
+.quarter-nav a:hover { background: rgba(255,255,255,0.25); }
+.quarter-nav a.overview-link { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.35); padding: 4px 14px; font-size: 0.82rem; margin-left: auto; }
+.toc { background: var(--light-bg); border: 1px solid var(--border); border-radius: 8px; padding: 24px 32px; margin-bottom: 40px; columns: 2; column-gap: 40px; }
+.toc h2 { font-size: 1.1rem; color: var(--company-accent); margin-bottom: 12px; column-span: all; }
+.toc a { display: block; color: var(--blue); text-decoration: none; padding: 3px 0; font-size: 0.9rem; break-inside: avoid; }
+.toc a:hover { text-decoration: underline; }
+.section { margin-bottom: 48px; scroll-margin-top: 20px; }
+.section h2 { font-size: 1.4rem; color: var(--company-dark); border-bottom: 3px solid var(--company-primary); padding-bottom: 8px; margin-bottom: 16px; }
+.section h2 .num { display: inline-block; background: var(--company-primary); color: #fff; width: 28px; height: 28px; line-height: 28px; text-align: center; border-radius: 50%; font-size: 0.85rem; margin-right: 8px; vertical-align: middle; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 0.88rem; }
+thead th { background: var(--company-accent); color: #fff; padding: 10px 12px; text-align: left; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
+thead th.right { text-align: right; }
+tbody td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+tbody td.right { text-align: right; }
+tbody tr:nth-child(even) { background: var(--light-bg); }
+tbody tr:hover { background: #eef2f7; }
+.pos { color: var(--green); font-weight: 600; }
+.neg { color: var(--red); font-weight: 600; }
+.neutral { color: var(--amber); font-weight: 600; }
+.raised { background: #eafaf1 !important; }
+.lowered { background: #fef0ef !important; }
+.bold { font-weight: 700; }
+.muted { color: var(--text-muted); font-style: italic; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; vertical-align: middle; }
+.tag-new { background: #d6eaf8; color: #2471a3; }
+.tag-disc { background: #fadbd8; color: #c0392b; }
+.tag-emerged { background: #d5f5e3; color: #1e8449; }
+.tag-peak { background: #fdebd0; color: #d68910; }
+.insight { background: linear-gradient(135deg, #fef9e7, #fdebd0); border-left: 4px solid var(--amber); padding: 14px 18px; margin: 16px 0; border-radius: 0 6px 6px 0; font-size: 0.9rem; }
+.insight strong { color: var(--company-dark); }
+.year-divider td { background: var(--company-accent) !important; color: #fff; font-weight: 700; font-size: 0.82rem; padding: 6px 12px; letter-spacing: 0.5px; }
+.analysis { margin-top: 48px; padding: 32px; background: var(--light-bg); border: 1px solid var(--border); border-radius: 8px; }
+.analysis h2 { font-size: 1.3rem; color: var(--company-dark); margin-bottom: 16px; border-bottom: 3px solid var(--company-primary); padding-bottom: 8px; }
+.analysis h3 { font-size: 1.05rem; color: var(--company-dark); margin: 20px 0 8px; }
+.analysis p { font-size: 0.92rem; margin-bottom: 12px; }
+.footer { margin-top: 60px; padding-top: 20px; border-top: 2px solid var(--border); font-size: 0.82rem; color: var(--text-muted); text-align: center; }
+.footer a { color: var(--blue); text-decoration: none; }
+.footer a:hover { text-decoration: underline; }
+@media (max-width: 768px) { .toc { columns: 1; } .header h1 { font-size: 1.6rem; } table { font-size: 0.8rem; } thead th, tbody td { padding: 6px 8px; } }
+@media print { .header { background: #333; } .section { page-break-inside: avoid; } table { font-size: 0.75rem; } .quarter-nav { display: none; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>AppLovin Intermittent KPIs</h1>
+  <div class="subtitle">Metrics disclosed more than once but not on a regular basis &mdash; Q1 2022 through Q4 2025</div>
+</div>
+
+<nav class="quarter-nav">
+  <span class="label">Quarters:</span>
+  <div class="year-group">
+    <span class="year-label">2025</span>
+    <a href="Q4_2025.html">Q4</a>
+    <a href="Q3_2025.html">Q3</a>
+    <a href="Q2_2025.html">Q2</a>
+    <a href="Q1_2025.html">Q1</a>
+  </div>
+  <div class="year-group">
+    <span class="year-label">2024</span>
+    <a href="Q4_2024.html">Q4</a>
+    <a href="Q3_2024.html">Q3</a>
+    <a href="Q2_2024.html">Q2</a>
+    <a href="Q1_2024.html">Q1</a>
+  </div>
+  <div class="year-group">
+    <span class="year-label">2023</span>
+    <a href="Q4_2023.html">Q4</a>
+    <a href="Q3_2023.html">Q3</a>
+    <a href="Q2_2023.html">Q2</a>
+    <a href="Q1_2023.html">Q1</a>
+  </div>
+  <div class="year-group">
+    <span class="year-label">2022</span>
+    <a href="Q4_2022.html">Q4</a>
+    <a href="Q3_2022.html">Q3</a>
+    <a href="Q2_2022.html">Q2</a>
+    <a href="Q1_2022.html">Q1</a>
+  </div>
+  <a class="overview-link" href="../comparison.html">Guidance Overview</a>
+  <a class="overview-link" href="../results.html">Results Scorecard</a>
+</nav>
+
+<div class="toc">
+  <h2>Table of Contents</h2>
+  <a href="#s1">1. E-Commerce / Web Advertising</a>
+  <a href="#s2">2. AXON Technology Lifecycle</a>
+  <a href="#s3">3. Step-Function Enhancement Tracker</a>
+  <a href="#s4">4. Flow-Through Rate</a>
+  <a href="#s5">5. Long-Term 20-30% Growth Target</a>
+  <a href="#s6">6. SPECs (Software Platform Enterprise Clients)</a>
+  <a href="#s7">7. NDRR (Net Dollar Revenue Retention)</a>
+  <a href="#s8">8. Apps Divestiture</a>
+  <a href="#s9">9. EBITDA Per Employee</a>
+  <a href="#s10">10. CTV / Wurl</a>
+  <a href="#s11">11. Array (OEM/Carrier Platform)</a>
+  <a href="#s12">12. Self-Serve AXON Ads Platform</a>
+  <a href="#s13">13. FCF Conversion</a>
+  <a href="#s14">14. Share Repurchases</a>
+  <a href="#analysis">Analysis: What the Disclosure Patterns Reveal</a>
+</div>
+
+<!-- SECTION 1: E-COMMERCE -->
+<div class="section" id="s1">
+  <h2><span class="num">1</span> E-Commerce / Web Advertising</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Status</th><th>Key Data Points</th><th>Signal</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025 &mdash; E-COMMERCE EXPLOSION</td></tr>
+      <tr class="raised"><td class="bold">Q4 2025</td><td>Scaling rapidly</td><td>$1.66B total rev; e-com "expanding impact"; self-serve live since Oct 1; prospecting campaigns launched; 57% qualified-lead-to-go-live rate; gen-AI interactive page piloting 100+ customers; video gen-AI "going live shortly"; conversion rate "obviously higher now" vs. 1% baseline; peak ~5% on confident predictions; Israeli cookware case study: $4M &rarr; $16M &rarr; $80M projected</td><td><span class="tag tag-peak">PEAK MOMENTUM</span></td></tr>
+      <tr class="raised"><td class="bold">Q3 2025</td><td>Self-serve launched Oct 1</td><td>~10% of ad rev for year; ~50% week-over-week spend growth from new self-serve advertisers; international traffic opened (all except EU); GMV threshold raised to $100M+; Shopify app live; dynamic product ads live; AXON Ads Manager quietly launched; referral-based opening Oct 1; GA planned H1 2026</td><td><span class="tag tag-emerged">INFLECTION</span></td></tr>
+      <tr><td class="bold">Q2 2025</td><td>Constrained onboarding</td><td>~10% of ad rev; hundreds of advertisers; $1B run rate; sub-1% of potential market; U.S. only; GMV floor raised to $100M+ to constrain intake; limited onboarding to prep for self-serve launch</td><td><span class="tag tag-new">BUILDING</span></td></tr>
+      <tr class="raised"><td class="bold">Q1 2025</td><td>$1B run rate</td><td>~$1B run rate; 600+ advertisers; sub-3% churn (run rate &gt;$250K); &lt;0.1% market penetration; U.S. only; ~20-person team; CEO rated model "B+"; self-serve dashboard launching Q2 for select customers</td><td><span class="tag tag-emerged">BREAKOUT</span></td></tr>
+      <tr class="year-divider"><td colspan="4">2024 &mdash; PILOT TO PROOF</td></tr>
+      <tr class="raised"><td class="bold">Q4 2024</td><td>First meaningful holiday rev</td><td>First quarter capturing e-com holiday dollars; "not in the tens...certainly not in the thousands" of advertisers; ~20-person go-to-market team; CFO: "material portion of revenue from e-commerce in 2025"; targeting mid-market D2C with $10M-$250M GMV</td><td><span class="tag tag-emerged">VALIDATION</span></td></tr>
+      <tr><td class="bold">Q3 2024</td><td>Pilot exceeding expectations</td><td>"tens to hundreds total shops"; early data exceeded expectations with nearly 100% incrementality; self-serve planned for 2025; CEO: "best product I've ever seen released by us"; defined "material" as 10%+ of revenue</td><td><span class="tag tag-new">PILOT</span></td></tr>
+      <tr><td class="bold">Q2 2024</td><td>Pilot launched</td><td>Pilot live "a few months"; "results are looking really promising, materially better than what we would have expected"; CEO expects "material impact in '25 and beyond"; not limited to e-commerce &mdash; any website with measurable transactions; audience "skews female and middle age"</td><td><span class="tag tag-new">LAUNCH</span></td></tr>
+      <tr><td class="bold">Q1 2024</td><td>Announced</td><td>Web advertising product "will be brought to market this quarter" (Q2 2024); most e-com still on web, not apps; CEO: "there is nothing that limits our models to just gaming"</td><td><span class="tag tag-new">ANNOUNCED</span></td></tr>
+      <tr class="year-divider"><td colspan="4">2022-2023 &mdash; NOT YET CONCEIVED</td></tr>
+      <tr><td class="muted">Q1 2022 &ndash; Q4 2023</td><td colspan="3" class="muted">E-commerce / web advertising not yet discussed. Focus was entirely on mobile app install advertising.</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Insight:</strong> From zero to $1B+ run rate in under 18 months. E-commerce went from unmentioned (Q1 2022&ndash;Q4 2023) to announced (Q1 2024) to AppLovin's second growth engine (2025). The trajectory is the most dramatic new-vertical expansion in ad tech history &mdash; and the self-serve platform opening in Q4 2025 sets up 2026 as the year e-commerce could rival gaming in growth contribution.</div>
+</div>
+
+<!-- SECTION 2: AXON TECHNOLOGY LIFECYCLE -->
+<div class="section" id="s2">
+  <h2><span class="num">2</span> AXON Technology Lifecycle</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>AXON Version / Status</th><th>Key Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="3">2025 &mdash; CONTINUOUS EVOLUTION</td></tr>
+      <tr><td class="bold">Q4 2025</td><td>AXON model (versioning dropped)</td><td>Prospecting campaigns product launched; gen-AI interactive page piloting; video model "going live shortly"; CEO: "the e-com model is starting from a worse place &mdash; it's just earlier stage, less data"; two separate models (gaming + e-com) learning simultaneously</td></tr>
+      <tr><td class="bold">Q3 2025</td><td>Multiple incremental lifts</td><td>"Our teams delivered multiple incremental lifts in our core models"; AXON Ads Manager launched; CEO: "AXON 2 has shown phenomenal growth for 8, 9 quarters now since release"</td></tr>
+      <tr><td class="bold">Q2 2025</td><td>No step-function</td><td>"Nothing that's like double-digit step function"; iterative lifts continue; gaming 30-40% YoY grower; market penetration "materially higher than 70%"</td></tr>
+      <tr class="raised"><td class="bold">Q1 2025</td><td>Model efficiency wins</td><td>"The team found wins in the model, and it became more effective"; not a major version jump; CEO suggested dropping version naming: "Maybe it's just the AXON model"; incremental updates (2.2, 2.3, 2.4) each drove double-digit QoQ growth; ad spend ~quadrupled since AXON 2 rollout</td></tr>
+      <tr class="year-divider"><td colspan="3">2024 &mdash; AXON 2.0 DOMINANCE</td></tr>
+      <tr><td class="bold">Q4 2024</td><td>No step-function in Q4</td><td>Growth from holiday season + self-learning baseline; segment renamed from "Software Platform" to "Advertising"; ~1,000 people in advertising business; 28-day models described as "most performant"</td></tr>
+      <tr class="raised"><td class="bold">Q3 2024</td><td>Step-function enhancement</td><td>"This quarter, we saw one of those step changes"; growth entirely from gaming side; 4-5% QoQ organic from self-learning + step-function; multiple enhancements in 2024; one of largest GPU deployments in world; Google Cloud contract renewed early</td></tr>
+      <tr><td class="bold">Q2 2024</td><td>AXON 2.0 &mdash; 1 year old</td><td>~3-4% per quarter organic lift from data; step-functions add on top; CEO: "these AI technologies are very, very new"; every month bigger than prior month since AXON 2 launch</td></tr>
+      <tr><td class="bold">Q1 2024</td><td>AXON 2.0 &mdash; engineering step-function</td><td>Q1 outperformance "predominantly due to enhancements to the models"; described as "early stage" with models still improving; install volume +87% YoY, revenue per install +5% YoY; competitive moat is "really, really complicated" and "multiyear effort to replicate"</td></tr>
+      <tr class="year-divider"><td colspan="3">2023 &mdash; AXON 2.0 LAUNCH &amp; BREAKOUT</td></tr>
+      <tr><td class="bold">Q4 2023</td><td>AXON 2.0 &mdash; 6 months old</td><td>"Early-stage technology"; SW Platform rev grew ~50% in 2 quarters since launch ($406M &rarr; $576M); ~80% incremental flow-through; 5-year EBITDA growth from $136M (2019) to ~$1.3B</td></tr>
+      <tr class="raised"><td class="bold">Q3 2023</td><td>AXON 2.0 &mdash; first full quarter</td><td>"First inning"; "vast majority" of Q3 over-performance; AXON 3 not discussed; SW Platform hit $2B annualized run rate; 72% EBITDA margin</td></tr>
+      <tr class="raised"><td class="bold">Q2 2023</td><td><span class="tag tag-emerged">AXON 2.0 LAUNCHED</span></td><td>Rolled out toward second part of Q2; "growth in our platform really 100% from the advancements in our core technology"; opens door to advertisers beyond gaming; compared to ChatGPT-3 &rarr; ChatGPT-4</td></tr>
+      <tr><td class="bold">Q1 2023</td><td>AXON 2.0 not yet rolled out</td><td>Q1 performance entirely on AXON 1.0; staged rollout beginning post-Q1; analogized to OpenAI GPT-3 &rarr; GPT-4; "AXON 3, AXON 4, AXON 5 in future"</td></tr>
+      <tr class="year-divider"><td colspan="3">2022 &mdash; AXON 1.0 ERA</td></tr>
+      <tr><td class="bold">Q4 2022</td><td>AXON 2 in development</td><td>"Working on next-generation upgrade"; expected full scale in 2023; "will impact the whole business at once"; AXON 1 track record: business grew ~10x from launch; "step function" improvement expected</td></tr>
+      <tr><td class="bold">Q3 2022</td><td>AXON 1.0 &mdash; rebuilding core</td><td>Initial AXON release ~2 years ago drove ~30% growth for 4 quarters; working on "significant rebuild of core systems"; error rate reduction is key growth mechanism</td></tr>
+      <tr><td class="bold">Q2 2022</td><td>AXON 1.0 &mdash; 7 quarters old</td><td>Over 500% software revenue growth in 7 quarters since AXON launch ($88M Q1 2021 &rarr; $318M); step-function revenue gains from prediction error reduction; two paths to improvement: code + more data</td></tr>
+      <tr><td class="bold">Q1 2022</td><td>AXON 1.0 &mdash; 18 months old</td><td>"Continues to improve"; growth inflection point was AXON's release; customers spend more due to ML performance, not market growth; third-party data now sufficient (own games data no longer necessary)</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Insight:</strong> AXON's evolution tells the entire AppLovin story. From AXON 1.0's 10x growth over its first 3 years, to AXON 2.0's game-changing Q2 2023 launch that drove software margins from 62% to 84%, to the dropping of version numbers altogether in 2025 as continuous improvement became the norm. The technology is the moat.</div>
+</div>
+
+<!-- SECTION 3: STEP-FUNCTION ENHANCEMENT TRACKER -->
+<div class="section" id="s3">
+  <h2><span class="num">3</span> Step-Function Enhancement Tracker</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Step-Function?</th><th>Revenue Beat vs. Guide</th><th>Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025 &mdash; ~2 PER YEAR CADENCE</td></tr>
+      <tr><td class="bold">Q4 2025</td><td class="pos">Yes (recent model uplift)</td><td class="pos">+$60M</td><td>CEO: "just a few weeks ago, we had a pretty sizable uplift"; e-com advertisers saw "huge improvement in ROAS"</td></tr>
+      <tr><td class="bold">Q3 2025</td><td class="pos">Yes (multiple incremental)</td><td class="pos">+$65M</td><td>"Our teams delivered multiple incremental lifts in our core models this quarter"</td></tr>
+      <tr><td class="bold">Q2 2025</td><td class="neg">No</td><td class="pos">+$45M</td><td>"Nothing that's like double-digit step function"; iterative lifts only</td></tr>
+      <tr class="raised"><td class="bold">Q1 2025</td><td class="pos">Yes (efficiency wins)</td><td class="pos">+$110M</td><td>"The team found wins in the model"; not major version jump but "became more effective"</td></tr>
+      <tr class="year-divider"><td colspan="4">2024 &mdash; MULTIPLE ENHANCEMENTS</td></tr>
+      <tr><td class="bold">Q4 2024</td><td class="neg">No</td><td class="pos">+$113M</td><td>"This quarter, we did not have one of those [step-function model enhancements]"; growth from holiday + self-learning</td></tr>
+      <tr class="raised"><td class="bold">Q3 2024</td><td class="pos">Yes</td><td class="pos">+$65M</td><td>"This quarter, we saw one of those step changes"; CEO: "we've had multiple of those this year"</td></tr>
+      <tr><td class="bold">Q2 2024</td><td class="muted">Organic only</td><td class="pos">~$0 (at high end)</td><td>~3-4% per quarter organic; no specific step-function mentioned</td></tr>
+      <tr class="raised"><td class="bold">Q1 2024</td><td class="pos">Yes</td><td class="pos">+$85M</td><td>"Predominantly due to enhancements to the models themselves"; research science team breakthrough</td></tr>
+      <tr class="year-divider"><td colspan="4">2023 &mdash; AXON 2.0 WAS THE STEP-FUNCTION</td></tr>
+      <tr class="raised"><td class="bold">Q2 2023</td><td class="pos">Yes &mdash; AXON 2.0 launch</td><td class="pos">+$20M rev, +$34M EBITDA</td><td>AXON 2.0 rollout was itself the step-function; "growth 100% from advancements in our core technology"</td></tr>
+      <tr class="year-divider"><td colspan="4">2022 &mdash; CONCEPT INTRODUCED</td></tr>
+      <tr><td class="bold">Q3 2022</td><td class="muted">Concept defined</td><td>&mdash;</td><td>AXON 1.0 release described as a "step function" upgrade that drove ~30% growth for 4 subsequent quarters</td></tr>
+      <tr><td class="bold">Q2 2022</td><td class="muted">Framework outlined</td><td>&mdash;</td><td>"Each accuracy improvement increases business in a step function, not gradual"</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Insight:</strong> Management's framework: 3-5% QoQ from self-learning (market growth + data flywheel), plus ~1-2 unpredictable step-function model enhancements per year adding ~10%+ annually. In practice, 2024 had 2+ step-functions and 2025 had at least 3. The "unpredictable" upside has been remarkably consistent.</div>
+</div>
+
+<!-- SECTION 4: FLOW-THROUGH RATE -->
+<div class="section" id="s4">
+  <h2><span class="num">4</span> Flow-Through Rate (Incremental Revenue to EBITDA)</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>QoQ Flow-Through</th><th>YoY Flow-Through</th><th>Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025 &mdash; STABILIZING AT ~95%</td></tr>
+      <tr><td class="bold">Q4 2025</td><td class="pos">~95%</td><td>&mdash;</td><td>"Relentless dedication to execution"; consistent with Q3</td></tr>
+      <tr><td class="bold">Q3 2025</td><td class="pos">95%</td><td>&mdash;</td><td>"Slightly above Q2"; operating leverage + FX benefit</td></tr>
+      <tr><td class="bold">Q2 2025</td><td>81%</td><td>&mdash;</td><td>"Very strong 81%"; reflects stable cost base</td></tr>
+      <tr><td class="bold">Q1 2025</td><td class="pos">104%</td><td>&mdash;</td><td>"Exceptional"; ~100% after adjusting for nonrecurring costs</td></tr>
+      <tr class="year-divider"><td colspan="4">2024 &mdash; VOLATILE BUT HIGH</td></tr>
+      <tr><td class="bold">Q4 2024</td><td class="neutral">75%</td><td>89%</td><td>Lower due to GPU/data center step-up; CFO: "flow-through will normalize"</td></tr>
+      <tr class="raised"><td class="bold">Q3 2024</td><td class="pos">107%</td><td>91%</td><td>Reported 107%; ~100% normalized (Google Cloud renewal, PSU vesting, FX benefits)</td></tr>
+      <tr><td class="bold">Q2 2024</td><td class="pos">87%</td><td>81%</td><td>"Illustrating our ability to remain disciplined with costs"</td></tr>
+      <tr><td class="bold">Q1 2024</td><td>71%</td><td>84%</td><td>GPU capacity reserve step-up absorbed; YoY flow-through 84% per CEO</td></tr>
+      <tr class="year-divider"><td colspan="4">2023 &mdash; CONCEPT INTRODUCED</td></tr>
+      <tr class="raised"><td class="bold">Q4 2023</td><td>~80%</td><td>&mdash;</td><td>CEO: "roughly 80% flow-through &mdash; we don't really expect that to be different"</td></tr>
+      <tr><td class="bold">Q3 2023</td><td>&mdash;</td><td>&mdash;</td><td>"High flow-through from revenue to adjusted EBITDA as we scale"</td></tr>
+      <tr class="raised"><td class="bold">Q2 2023</td><td class="pos">&gt;100%</td><td>&mdash;</td><td>Incremental EBITDA exceeded incremental revenue; first time &gt;100% reported</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Insight:</strong> Flow-through above 75% on a tech platform is extraordinary. AppLovin's relatively fixed cost base (engineers, data centers) means each dollar of model improvement drops almost entirely to EBITDA. The occasional dip (Q4 2024's 75%) always reflects a discrete investment (GPU step-up) that quickly normalizes. The steady-state ~95% in 2025 reflects a business that has essentially reached its structural cost floor.</div>
+</div>
+
+<!-- SECTION 5: LONG-TERM 20-30% GROWTH TARGET -->
+<div class="section" id="s5">
+  <h2><span class="num">5</span> Long-Term 20-30% Growth Target</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Target Stated</th><th>Actual YoY Growth (Advertising)</th><th>Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025 &mdash; STILL MASSIVELY EXCEEDING</td></tr>
+      <tr><td class="bold">Q4 2025</td><td>20-30% (implied)</td><td class="pos">+66% YoY</td><td>"We continue to grow very quickly despite the numbers getting much bigger"</td></tr>
+      <tr><td class="bold">Q3 2025</td><td>20-30% reaffirmed</td><td class="pos">+68% YoY</td><td>"We are confident we can sustain 20% to 30% year-over-year growth driven by just gaming"; gaming alone growing 30-40%</td></tr>
+      <tr><td class="bold">Q2 2025</td><td>20-30% reaffirmed</td><td class="pos">+77% YoY</td><td>"Gaming is still a 30% to 40% grower for us, so well above our 20% to 30% long-term goals"</td></tr>
+      <tr><td class="bold">Q1 2025</td><td>20-30% reaffirmed</td><td class="pos">+71% YoY</td><td>CFO: "we continue to believe that 20% to 30% is the right long-term growth rate"; framework: 3-5% QoQ RL + ~10% annual step-functions</td></tr>
+      <tr class="year-divider"><td colspan="4">2024 &mdash; FRAMEWORK ESTABLISHED</td></tr>
+      <tr><td class="bold">Q3 2024</td><td>20-30% reiterated</td><td class="pos">+66% YoY</td><td>Breakout: 20% = market; 30% = one enhancement/yr; &gt;30% = multiple; 4-5% QoQ from self-learning</td></tr>
+      <tr><td class="bold">Q2 2024</td><td>20-30% reiterated</td><td class="pos">+75% YoY</td><td>"I'm communicating it now because I do have strong confidence in it"; 5-7% QoQ = 20-30% annual</td></tr>
+      <tr><td class="bold">Q1 2024</td><td><span class="tag tag-new">20-30% FIRST STATED</span></td><td class="pos">+91% YoY</td><td>"I typically don't communicate externally about our goals if I don't have confidence in it"; 3 growth pillars: gaming penetration, verticals, AXON improvements</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Insight:</strong> The 20-30% target was first articulated in Q1 2024 when AppLovin was growing at 91% YoY. It was always positioned as a floor, achievable from gaming alone, with e-commerce additive. Actual growth has never dropped below 66% YoY during the target period. The gap between the target and reality reveals how dramatically management underpromises.</div>
+</div>
+
+<!-- SECTION 6: SPECs -->
+<div class="section" id="s6">
+  <h2><span class="num">6</span> SPECs (Software Platform Enterprise Clients) <span class="tag tag-disc">DISCONTINUED Q1 2023</span></h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>SPECs Count</th><th>Revenue per SPEC (TTM)</th><th>Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2022 &mdash; METRIC'S FULL LIFESPAN</td></tr>
+      <tr><td class="bold">Q4 2022</td><td class="bold">566 <span class="tag tag-disc">FINAL</span></td><td>$1,907K</td><td>Last quarter this metric reported; +49% YoY vs. 380 in Q4 2021</td></tr>
+      <tr><td class="bold">Q3 2022</td><td>538</td><td>$1,903K</td><td>Record; +35 QoQ; NDRR declined to 166% but SPECs still growing</td></tr>
+      <tr><td class="bold">Q2 2022</td><td>503</td><td>&mdash;</td><td>Surpassed 500 milestone; record</td></tr>
+      <tr><td class="bold">Q1 2022</td><td>519 (normalized)</td><td>$603K (normalized)</td><td>Nearly tripled in 12 months; +58 QoQ; average revenue per SPEC increasing</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Insight:</strong> SPECs grew from ~180 (Q4 2021 implied) to 566 over 4 reported quarters, then were discontinued when management decided the revenue mix shift (adding Adjust, Wurl, Array, ALX) made aggregate client counts non-comparable. The discontinuation was a signal that AppLovin was becoming a multi-product platform, not just an app install network.</div>
+</div>
+
+<!-- SECTION 7: NDRR -->
+<div class="section" id="s7">
+  <h2><span class="num">7</span> NDRR (Net Dollar Revenue Retention) <span class="tag tag-disc">DISCONTINUED Q1 2023</span></h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>NDRR (LTM)</th><th>QoQ Change</th><th>Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2022 &mdash; METRIC'S FULL LIFESPAN</td></tr>
+      <tr><td class="bold">Q4 2022</td><td class="bold">&gt;160% <span class="tag tag-disc">FINAL</span></td><td>&mdash;</td><td>Herald Chen: "net dollar retention went up over 160%"; last disclosure</td></tr>
+      <tr><td class="bold">Q3 2022</td><td>166%</td><td class="neg">-3,800 bps</td><td>Sharp decline from 204%; macro headwinds and advertiser ROAS tightening</td></tr>
+      <tr><td class="bold">Q2 2022</td><td>204%</td><td>&mdash;</td><td>Over 200% for 5 consecutive quarters; improved YoY</td></tr>
+      <tr><td class="bold">Q1 2022</td><td>258% (normalized)</td><td>&mdash;</td><td>~265% referenced in Q&A; normalized for $210M contra revenue</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Insight:</strong> NDRR crashed from 258% to 160% in 3 quarters as the macro environment forced advertisers to tighten ROAS goals. Rather than watch a declining metric erode confidence, management discontinued it alongside SPECs in Q1 2023. By the time AXON 2.0 launched in Q2 2023, net retention was likely back above 200% &mdash; but the metric was already gone.</div>
+</div>
+
+<!-- SECTION 8: APPS DIVESTITURE -->
+<div class="section" id="s8">
+  <h2><span class="num">8</span> Apps Divestiture</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Status</th><th>Key Details</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="3">2025 &mdash; DIVESTITURE COMPLETED</td></tr>
+      <tr class="raised"><td class="bold">Q2 2025</td><td class="pos">CLOSED</td><td>Sale to Tripledot closed end of Q2; $425M net cash received; Apps reported as discontinued operations; slight ad revenue pickup from studios becoming third-party advertisers</td></tr>
+      <tr><td class="bold">Q1 2025</td><td>Definitive agreement signed</td><td>Signed May 7, 2025; buyer: Tripledot Studios; $400M cash + 20% ownership stake in combined business; close targeted Q2 2025</td></tr>
+      <tr class="year-divider"><td colspan="3">2024 &mdash; ANNOUNCED</td></tr>
+      <tr><td class="bold">Q4 2024</td><td><span class="tag tag-new">ANNOUNCED</span></td><td>Exclusive term sheet to sell entire Apps business; total consideration ~$900M ($500M cash + minority equity); CEO: "we've never been a game developer at heart"; targeting Q2 2025 close</td></tr>
+      <tr><td class="bold">Q3 2024</td><td>Open to divestiture</td><td>CFO: "we're comfortable in divesting that business if the opportunity arises"</td></tr>
+      <tr><td class="bold">Q2 2024</td><td>Open to divestiture</td><td>CEO: "we continue to be open to it, and we're really just waiting for the market to improve"</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Insight:</strong> The Apps business went from being 80%+ of revenue at IPO to a divestiture at just $400M cash + 20% equity in Tripledot. The consideration dropped from the initial $500M cash term sheet (Q4 2024) to $400M at signing (Q1 2025). AppLovin shed its gaming roots to become the purest AI advertising platform in public markets.</div>
+</div>
+
+<!-- SECTION 9: EBITDA PER EMPLOYEE -->
+<div class="section" id="s9">
+  <h2><span class="num">9</span> EBITDA Per Employee (Advertising Business)</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Run Rate EBITDA / Employee</th><th>Headcount Context</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="3">2025 &mdash; INDUSTRY-LEADING EFFICIENCY</td></tr>
+      <tr class="raised"><td class="bold">Q1 2025</td><td class="pos">~$4M annually</td><td>CEO: "Our run rate adjusted EBITDA per employee in our advertising business has risen to approximately $4 million annually"</td></tr>
+      <tr class="year-divider"><td colspan="3">2024 &mdash; METRIC INTRODUCED</td></tr>
+      <tr><td class="bold">Q4 2024</td><td>~$3M annually</td><td>~1,000 people in entire advertising business (Adjust + Wurl + AppLovin); e-com team ~20 people; CEO: "my favorite metric going forward &mdash; we expect that number to rise"</td></tr>
+      <tr><td class="bold">Q3 2024</td><td><span class="tag tag-new">&gt;$1.5M annually</span></td><td>CEO: "our business generating over $1.5 million in run rate adjusted EBITDA per employee" &mdash; first disclosure</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Insight:</strong> From &gt;$1.5M to $4M per employee in just 3 quarters. This metric was introduced as CEO Adam Foroughi's "favorite" and represents AppLovin's philosophy of extreme operational leverage: ~1,000 employees generating $4.5B+ in annual EBITDA. For context, Meta generates ~$700K EBITDA per employee. AppLovin is 5-6x more efficient.</div>
+</div>
+
+<!-- SECTION 10: CTV / WURL -->
+<div class="section" id="s10">
+  <h2><span class="num">10</span> CTV / Wurl</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Status</th><th>Key Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="3">2025 &mdash; DEPRIORITIZED, WAITING ON DEMAND</td></tr>
+      <tr><td class="bold">Q4 2025</td><td class="muted">Not focused</td><td>CEO: "right now, we're focused on the demand side"; CTV supply infrastructure built but "everywhere else is struggling to monetize except in the walled gardens and except on games"</td></tr>
+      <tr><td class="bold">Q3 2025</td><td class="muted">Supply-ready, demand-focused</td><td>CEO: "we've talked about CTV in the past too"; acknowledged "pinged all the time" but demand-side work is priority</td></tr>
+      <tr><td class="bold">Q2 2025</td><td class="muted">Not discussed</td><td>No CTV/Wurl discussion in Q2 2025 transcript</td></tr>
+      <tr><td class="bold">Q1 2025</td><td class="muted">Not discussed</td><td>No specific CTV/Wurl updates</td></tr>
+      <tr class="year-divider"><td colspan="3">2024 &mdash; STRATEGIC BUT IMMATERIAL</td></tr>
+      <tr><td class="bold">Q4 2024</td><td>Longer-term play</td><td>CEO: "we haven't really focused on it yet at all"; supply live but "a gaming ad on a full-screen television asking a user to go download a game on the phone, it's just not that compelling"; non-gaming ads could unlock CTV</td></tr>
+      <tr><td class="bold">Q3 2024</td><td>Deprioritized vs. e-com</td><td>Resources reallocated from Wurl/CTV to e-commerce go-to-market; "longer-term focus, not short-term focus"</td></tr>
+      <tr><td class="bold">Q2 2024</td><td>Mentioned briefly</td><td>"As we broaden out our demand base outside of gaming, we expect the new categories will really help grow our CTV footprint"</td></tr>
+      <tr><td class="bold">Q1 2024</td><td>Supply built out</td><td>Wurl has done "a great job of bringing a lot of supply online"; "still too small to break out"; e-com could extend naturally to CTV</td></tr>
+      <tr class="year-divider"><td colspan="3">2023 &mdash; EARLY INTEGRATION</td></tr>
+      <tr><td class="bold">Q4 2023</td><td>Early stage</td><td>"CTV testing and the rollout is early stage"; "multiple years" before material; early Q4 revenue contributions noted</td></tr>
+      <tr><td class="bold">Q3 2023</td><td>AXON 2.0 integrated for testing</td><td>"Made strides by integrating AXON 2 into our CTV initiative during its testing phase"</td></tr>
+      <tr><td class="bold">Q2 2023</td><td>Strategic priority</td><td>"Extending AXON 2.0 to CTV is a stated strategic priority"</td></tr>
+      <tr><td class="bold">Q1 2023</td><td>Early, early stage</td><td>"We don't expect this to have a material financial impact in the near term"</td></tr>
+      <tr class="year-divider"><td colspan="3">2022 &mdash; ACQUIRED &amp; INTEGRATED</td></tr>
+      <tr><td class="bold">Q4 2022</td><td>Strategic vision</td><td>"This category of advertising is bigger than the one we operate in today"; full-stack CTV (DSP + SSP); Adjust's 4,000+ non-gaming customers "excited"</td></tr>
+      <tr><td class="bold">Q3 2022</td><td>Wurl revenue: $30M-$50M range</td><td>"Not meaningful from overall AppLovin revenue standpoint"; strategic entry point</td></tr>
+      <tr><td class="bold">Q2 2022</td><td>Testing mobile gaming on CTV</td><td>"Still in early stages of testing, the results are promising"</td></tr>
+      <tr><td class="bold">Q1 2022</td><td><span class="tag tag-new">ACQUIRED</span></td><td>Wurl acquisition; "performance marketing opportunity on streaming TV"</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Insight:</strong> CTV/Wurl is the longest-running "tomorrow's opportunity" in the AppLovin story &mdash; mentioned in 13 of 16 quarters but never becoming material. The pivotal insight is that CTV needs non-gaming ad demand to work (no one wants a game install ad on their TV), and that demand is only now arriving via e-commerce. CTV may finally activate in 2026-2027 as the self-serve platform brings diverse advertisers at scale.</div>
+</div>
+
+<!-- SECTION 11: ARRAY -->
+<div class="section" id="s11">
+  <h2><span class="num">11</span> Array (OEM/Carrier Marketing Platform) <span class="tag tag-disc">QUIETLY ABANDONED</span></h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Status</th><th>Key Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="3">2024-2025 &mdash; DISAPPEARED FROM NARRATIVE</td></tr>
+      <tr><td class="muted">Q1 2024 &ndash; Q4 2025</td><td class="muted">Not mentioned</td><td class="muted">Array disappeared entirely from earnings calls starting Q1 2024. Resources likely redirected to e-commerce.</td></tr>
+      <tr class="year-divider"><td colspan="3">2023 &mdash; AXON 2.0 INTEGRATION ATTEMPTED</td></tr>
+      <tr><td class="bold">Q4 2023</td><td>Early contributions</td><td>CFO referenced "early contributions from our array business" as one of Q4 growth factors</td></tr>
+      <tr><td class="bold">Q3 2023</td><td>AXON 2.0 extended</td><td>"Extending AXON 2.0 to Array this quarter"; expected to "materially accelerate the potential to scale"</td></tr>
+      <tr><td class="bold">Q2 2023</td><td>Referenced alongside Wurl</td><td>AXON 2.0 to be extended to Array; no specific financial details</td></tr>
+      <tr><td class="bold">Q1 2023</td><td>Early stages</td><td>"Still in early stages; not material"; "we expect when we're talking to you all in 3 years, we're talking about big parts of our business"</td></tr>
+      <tr class="year-divider"><td colspan="3">2022 &mdash; INTRODUCED</td></tr>
+      <tr><td class="bold">Q4 2022</td><td>Incremental headcount</td><td>"10s and 20s, not hundreds" allocated; early stage; not yet material revenue</td></tr>
+      <tr><td class="bold">Q2 2022</td><td><span class="tag tag-new">LAUNCHED</span></td><td>Marketing platform for carriers and OEMs; revenue-sharing model; "meaningful revenue contribution expected 2023, scaling 2024-2025"</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Insight:</strong> Array is the clearest example of AppLovin's willingness to kill initiatives that don't scale. Introduced in Q2 2022 with promises of meaningful revenue by 2024-2025, it generated only "early contributions" in Q4 2023 before vanishing entirely. The resources were almost certainly redirected to e-commerce, which launched in Q2 2024 and reached $1B run rate in under a year.</div>
+</div>
+
+<!-- SECTION 12: SELF-SERVE AXON ADS PLATFORM -->
+<div class="section" id="s12">
+  <h2><span class="num">12</span> Self-Serve AXON Ads Platform</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Status</th><th>Key Details</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="3">2025 &mdash; BUILDING THE NEXT DECADE</td></tr>
+      <tr class="raised"><td class="bold">Q4 2025</td><td>Referral-only; GA H1 2026</td><td>57% qualified-lead-to-go-live rate (43% breakage, mostly from lack of video ads); gen-AI tools expected to solve breakage; paid marketing LTV-to-CAC breakeven ~30 days; testing ads on social/search; no minimum GMV gating anymore; CEO: "we said first half of this year [2026], that's still on track"</td></tr>
+      <tr class="raised"><td class="bold">Q3 2025</td><td><span class="tag tag-emerged">OCT 1 LAUNCH</span></td><td>AXON Ads Manager launched October 1 (referral only); ~50% week-over-week spend growth from new advertisers; "no significant hiccups, no major bugs"; predominantly shops; Shopify app in App Store; dynamic product ads live; international traffic opened (all except EU); GA planned H1 2026</td></tr>
+      <tr><td class="bold">Q2 2025</td><td>Quietly launched</td><td>"Recently, we took the first step towards opening up our platform broadly, quietly launching our new AXON ads manager"; Shopify app live; credit card billing; agents planned</td></tr>
+      <tr><td class="bold">Q1 2025</td><td>Launching Q2 for select</td><td>"We'll be launching it this quarter for select customers"; staged rollout: current customers &rarr; all customers &rarr; staged opening &rarr; fully open ("several quarters")</td></tr>
+      <tr class="year-divider"><td colspan="3">2024 &mdash; TIMELINE ESTABLISHED</td></tr>
+      <tr><td class="bold">Q3 2024</td><td>Planned for 2025</td><td>"Self-service platform launching some point next year [2025]"; CEO: "we're still on track"</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Insight:</strong> The self-serve AXON Ads platform is the key to AppLovin's transition from a curated, high-touch advertiser model to Meta-like scale. The 57% lead-to-go-live rate reveals the main bottleneck: advertisers lack video ads in the right format. Generative AI creative tools are the solution, and are already piloting. General availability in H1 2026, combined with paid marketing for advertiser acquisition, could unlock exponential advertiser count growth.</div>
+</div>
+
+<!-- SECTION 13: FCF CONVERSION -->
+<div class="section" id="s13">
+  <h2><span class="num">13</span> FCF Conversion (Free Cash Flow as % of EBITDA)</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>FCF / EBITDA</th><th>Guided Target</th><th>Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025 &mdash; STRUCTURAL IMPROVEMENT</td></tr>
+      <tr><td class="bold">Q4 2025</td><td class="pos">~94% ($1.31B / $1.4B)</td><td>&mdash;</td><td>FCF +88% YoY; cash balance grew to $2.5B</td></tr>
+      <tr><td class="bold">Q3 2025</td><td class="pos">~91% ($1.049B / $1.158B)</td><td>&mdash;</td><td>Elevated &mdash; no semiannual bond interest in Q3</td></tr>
+      <tr><td class="bold">Q2 2025</td><td>75% ($768M / $1.02B)</td><td>&mdash;</td><td>Lower due to semiannual bond interest + prior-year taxes</td></tr>
+      <tr><td class="bold">Q1 2025</td><td class="pos">82%</td><td>&mdash;</td><td>CFO: "representing an impressive 82% flow-through from adjusted EBITDA to free cash flow"</td></tr>
+      <tr class="year-divider"><td colspan="4">2024 &mdash; ~70% TARGET EXCEEDED</td></tr>
+      <tr><td class="bold">Q4 2024</td><td class="pos">82%</td><td>~70%</td><td>CFO: "representing 82% flow-through"</td></tr>
+      <tr><td class="bold">Q3 2024</td><td>76%</td><td>~70%</td><td>"Consistent with adjusted EBITDA growth"</td></tr>
+      <tr><td class="bold">Q2 2024</td><td>74%</td><td>~70%</td><td>"Relatively stable base of cash tax and interest"</td></tr>
+      <tr><td class="bold">Q1 2024</td><td>71%</td><td>~70%</td><td>"Incredible"; above target</td></tr>
+      <tr class="year-divider"><td colspan="4">2023 &mdash; TARGET RAISED</td></tr>
+      <tr><td class="bold">Q4 2023</td><td>69% (FY 2023)</td><td class="pos">~70% (RAISED)</td><td>Target raised from 50-60% to ~70%; FY 2023 FCF of $1B on $1.5B EBITDA</td></tr>
+      <tr><td class="bold">Q3 2023</td><td class="neg">~40%</td><td>50-60%</td><td>Below range; temporary &mdash; delayed cash collections expected to reverse in Q4</td></tr>
+      <tr><td class="bold">Q2 2023</td><td>66%</td><td>50-60%</td><td>Above target range; H1 2023 FCF &gt;$500M</td></tr>
+      <tr><td class="bold">Q1 2023</td><td>&mdash;</td><td><span class="tag tag-new">50-60%</span></td><td>First formal FCF conversion target established; Q1 elevated by delayed customer payments</td></tr>
+      <tr class="year-divider"><td colspan="4">2022 &mdash; PRE-METRIC ERA</td></tr>
+      <tr><td class="bold">Q1 2022</td><td>&mdash;</td><td>65-75% (unlevered)</td><td>"EBITDA-to-Unlevered Free Cash Flow Conversion: 65%-75% normalized run rate"</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Insight:</strong> FCF conversion has risen relentlessly: from an initial 50-60% target (Q1 2023), raised to ~70% (Q4 2023), to consistently exceeding 80% by 2025. The improvement reflects the growing dominance of the advertising segment, which has near-zero capex and a largely fixed cost base. At 82%+ conversion, AppLovin converts EBITDA to cash more efficiently than almost any software company at scale.</div>
+</div>
+
+<!-- SECTION 14: SHARE REPURCHASES -->
+<div class="section" id="s14">
+  <h2><span class="num">14</span> Share Repurchases</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Amount Deployed</th><th>Shares Retired/Withheld</th><th>Cumulative / Authorization</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025 &mdash; $2.58B TOTAL FOR YEAR</td></tr>
+      <tr><td class="bold">Q4 2025</td><td>$482M</td><td>~800K shares</td><td>WA diluted: ~340M; remaining authorization: ~$3.28B; +$3.2B incremental authorization in Q3</td></tr>
+      <tr><td class="bold">Q3 2025</td><td>$571M</td><td>~1.3M shares</td><td>WA diluted: 341M; Board approved +$3.2B increase</td></tr>
+      <tr><td class="bold">Q2 2025</td><td>$341M</td><td>~900K shares</td><td>WA diluted: 342M; funded by FCF</td></tr>
+      <tr><td class="bold">Q1 2025</td><td class="bold">$1.2B</td><td>3.4M shares</td><td>338M end-of-quarter; funded by FCF + temporary revolver draw</td></tr>
+      <tr class="year-divider"><td colspan="4">2024 &mdash; $2.1B TOTAL FOR YEAR</td></tr>
+      <tr><td class="bold">Q4 2024</td><td>$508M</td><td>1.6M shares withheld</td><td>FY 2024: 25.7M shares for $2.1B at avg ~$83/share; 340M shares outstanding</td></tr>
+      <tr><td class="bold">Q3 2024</td><td>$437M</td><td>5M shares</td><td>+$2B authorization increase; $2.3B total remaining</td></tr>
+      <tr><td class="bold">Q2 2024</td><td>$356M</td><td>4.2M shares withheld</td><td>Nearly $3B cumulative since 2022; 83.6M shares total</td></tr>
+      <tr><td class="bold">Q1 2024</td><td>&mdash;</td><td>14.9M shares</td><td>~$2.6B cumulative since early 2022; ~20% pro forma share reduction; 79M total shares</td></tr>
+      <tr class="year-divider"><td colspan="4">2023 &mdash; $1.2B+ AT AVG &lt;$25</td></tr>
+      <tr><td class="bold">Q4 2023</td><td>$0 (no directed opportunity)</td><td>&mdash;</td><td>+$1.25B authorization increase; directed large-block strategy</td></tr>
+      <tr><td class="bold">Q3 2023</td><td>$582M</td><td>&mdash;</td><td>YTD through Q3: $1.2B at WA price &lt;$25/share</td></tr>
+      <tr><td class="bold">Q2 2023</td><td>$507M</td><td>&mdash;</td><td>YTD through Aug 8: $601M; $107M remaining under original program</td></tr>
+      <tr><td class="bold">Q1 2023</td><td>~$76M</td><td>&mdash;</td><td>YTD through May 8: ~$202M; ~$210M remaining of $750M</td></tr>
+      <tr class="year-divider"><td colspan="4">2022 &mdash; PROGRAM INITIATED</td></tr>
+      <tr><td class="bold">Q4 2022</td><td>$0</td><td>&mdash;</td><td>No activity; &gt;$400M remaining; $1.08B cash on balance sheet</td></tr>
+      <tr><td class="bold">Q2 2022</td><td>~$340M cumulative</td><td>&mdash;</td><td>~$340M used of $750M program at avg ~$38/share</td></tr>
+      <tr><td class="bold">Q1 2022</td><td>~$45M</td><td>&mdash;</td><td><span class="tag tag-new">$750M buyback program</span> authorized; ~$45M used thus far</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Insight:</strong> AppLovin has deployed over $5.8B in cumulative share repurchases since early 2022, reducing diluted shares from ~380M to ~340M (-11%). The most remarkable period was 2023, when $1.2B was deployed at a weighted average price under $25 per share &mdash; shares that would be worth over $500 each by late 2025. The buyback program is among the most value-creating in recent tech history.</div>
+</div>
+
+<!-- ANALYSIS SECTION -->
+<div class="analysis" id="analysis">
+  <h2>What the Disclosure Patterns Reveal</h2>
+
+  <h3>The AI Monetization Arc</h3>
+  <p>AppLovin's intermittent KPIs tell the story of the most dramatic AI monetization transformation in public markets. In Q1 2022, the company was a mobile gaming conglomerate struggling to explain $210M in publisher bonuses, with an advertising engine (AXON 1.0) that was growing but still unproven at scale. By Q4 2025, it was a $5.5B/year pure-play AI advertising platform with 84% EBITDA margins, $4M in EBITDA per employee, and a self-serve ads platform poised to open to millions of businesses worldwide.</p>
+
+  <h3>Metrics That Disappeared Tell the Story</h3>
+  <p>The discontinued metrics are as revealing as the active ones. SPECs and NDRR were killed in Q1 2023 because the business was becoming too complex for simple customer counts. Array was quietly abandoned when e-commerce proved to be the superior growth vector. CTV/Wurl has been discussed for 13 quarters but remains immaterial because the demand prerequisite (non-gaming advertisers) is only now arriving at scale. Each abandoned metric corresponds to a strategic pivot that ultimately proved correct.</p>
+
+  <h3>The Step-Function Rhythm</h3>
+  <p>Perhaps the most important intermittent KPI is the step-function enhancement tracker. Management's framework (3-5% QoQ baseline + ~10% annual from model breakthroughs) was first formalized in Q1 2024. But the data shows the actual cadence has been roughly 2-3 enhancements per year, each adding 10-15% of incremental growth. The "unpredictable" upside has been more predictable than the guidance suggests, which is why AppLovin has beaten the high end of guidance for 9 consecutive quarters.</p>
+
+  <h3>The Margin Machine</h3>
+  <p>Flow-through rates above 75% and EBITDA margins at 84% represent an advertising business that has essentially reached its structural cost floor. The only variable cost is data center capacity (~10% of revenue growth), and everything else is largely fixed. When a company generates $4M in EBITDA per employee and converts 82% of EBITDA to free cash flow, the only constraint is how fast the AI models can improve &mdash; and those improvements are accelerating, not decelerating.</p>
+
+  <h3>What Comes Next</h3>
+  <p>The convergence of catalysts in 2026 is unprecedented in AppLovin's history: self-serve AXON Ads general availability in H1 2026, paid marketing for advertiser acquisition, generative AI creative tools closing the ad-count gap, international expansion (including EU), lead generation categories beyond e-commerce, and continued gaming model improvements. The intermittent KPIs that matter most going forward &mdash; self-serve conversion rates, advertiser count growth, e-commerce share of revenue, and conversion rate per 1,000 impressions &mdash; will likely transition from intermittent to regular disclosure as the business matures.</p>
+</div>
+
+<div class="footer">
+  Data sourced from AppLovin quarterly earnings call transcripts, Q1 2022 through Q4 2025. | <a href="../comparison.html">Metrics Tracker</a>
+</div>
+
+</body>
+</html>

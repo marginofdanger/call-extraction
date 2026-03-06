@@ -319,6 +319,31 @@
     .comp-table th, .comp-table td { padding: 6px 8px; }
   }
 
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+  .content-section .md-table th {
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .content-section .md-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-section .md-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+  .content-section .md-table tr:hover { background: #e8f4fd; }
+
   @media print {
     .nav-bar { display: none; }
     .header { background: #333; }
@@ -338,6 +363,8 @@
   <a href="Q3_2024.html">&larr; Q3 2024</a>
   <div class="nav-center">
     <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>
     <a href="Q4_2025.html" class="qbtn">4Q25</a>
     <a href="Q3_2025.html" class="qbtn">3Q25</a>
     <a href="Q2_2025.html" class="qbtn">2Q25</a>
@@ -358,42 +385,52 @@
   <a href="Q1_2025.html">Q1 2025 &rarr;</a>
 </div>
 
-<div class="metrics-card">
-  <div class="metric">
-    <div class="metric-label">FY25 Revenue Guidance</div>
-    <div class="metric-value">$72.8B – $75.8B</div>
-    <div class="metric-delta delta-flat">New</div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">FY25 Adj. EBITDA Guidance</div>
-    <div class="metric-value">$14.3B – $15.1B</div>
-    <div class="metric-delta delta-flat">New</div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">FY25 Diluted EPS Guidance</div>
-    <div class="metric-value">$24.05 – $25.85</div>
-    <div class="metric-delta delta-flat">New</div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">FY25 CapEx Guidance</div>
-    <div class="metric-value">~$5.0B – $5.2B</div>
-    <div class="metric-delta delta-flat">New</div>
-  </div>
-</div>
-
 <div class="changes-box">
   <h3>What Changed vs Q3 2024</h3>
   <ul>
-    <li><span class="change-tag ct-new">New</span> FY 2025 Revenue guidance introduced: $72.8B – $75.8B (Q3 had FY24 guidance: $69.75B – $71.75B)</li>
-    <li><span class="change-tag ct-new">New</span> FY 2025 Adj. EBITDA guidance introduced: $14.3B – $15.1B (Q3 had FY24 guidance: $13.75B – $14.25B)</li>
-    <li><span class="change-tag ct-new">New</span> FY 2025 Diluted EPS guidance introduced: $24.05 – $25.85 (Q3 had FY24 guidance: $21.60 – $22.80)</li>
-    <li><span class="change-tag ct-new">New</span> FY 2025 CapEx guidance introduced: ~$5.0B – $5.2B (Q3 had FY24 guidance: ~$5.0B)</li>
-    <li><span class="change-tag ct-new">New</span> Leverage ratio target lowered to 2.75x – 3.75x (from 3.0x – 4.0x)</li>
-    <li><span class="change-tag ct-new">New</span> $10 billion new share repurchase authorization; dividend raised to $0.72/share (from $0.66)</li>
+    <li><span class="change-tag ct-changed">Changed</span> CapEx Guidance: $1.29 billion in the quarter (prior: <strong>$1.19 billion</strong> in Q3 2024)</li>
+    <li><span class="change-tag ct-changed">Changed</span> Adj. EBITDA Margin: declined 60 basis points vs. prior year quarter - <strong>Hurricane impact on EBITDA margin:</strong> 100-basis point unfavorable impact (Largo Hospital in Tampa + North Carolina division) (prior: <strong>+90 basis points</strong> YoY)</li>
+    <li><span class="change-tag ct-new">New</span> NEW: M&A/acquisition discussion added</li>
   </ul>
 </div>
 
+<div class="metrics-card">
+  <div class="metric">
+    <div class="metric-label">FY Revenue Guidance</div>
+    <div class="metric-value">$72.8 billion to $75.8 billion</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">FY Adj. EBITDA Guidance</div>
+    <div class="metric-value">$14.3 billion to $15.1 billion</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">FY Diluted EPS Guidance</div>
+    <div class="metric-value">$24.05 to $25.85</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">CapEx Guidance</div>
+    <div class="metric-value">$1.29 billion in the quarter</div>
+    <div class="metric-delta delta-flat">Prior: <strong>$1.19 billion</strong> in Q3 2024</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Same-Facility Admissions</div>
+    <div class="metric-value">+3% year-over-year</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Revenue Per Admission</div>
+    <div class="metric-value">+2.9% over prior year, in line with expectations</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Adj. EBITDA Margin</div>
+    <div class="metric-value">declined 60 basis points vs. prior year quarter - <strong>Hurricane impact on EBITDA margin:</strong> 100-basis point unfavorable impact</div>
+    <div class="metric-delta delta-flat">Prior: <strong>+90 basis points</strong> YoY</div>
+  </div>
+</div>
+
 <!-- Full Guidance Content -->
+<div class="content-section">
+  <h3>Full Year 2025 Guidance</h3>
+</div>
 <div class="content-section">
   <h3>Hurricane Impact Assumptions (2025 Guidance)</h3>
   <ul>
@@ -640,6 +677,9 @@
   </ul>
 </div>
 <div class="content-section">
+  <h3>Special Topics</h3>
+</div>
+<div class="content-section">
   <h3>Healthcare Exchanges / ACA Subsidies</h3>
   <ul>
     <li><strong>Exchange enrollment (2025):</strong> ~25 million nationally, up 12% to 15% over 2024</li>
@@ -691,17 +731,14 @@
 <div class="content-section">
   <h3>Key Flags & Observations</h3>
   <ul>
-    <li><strong>1. Leverage ratio LOWERED:</strong> From 3.0x-4.0x to 2.75x-3.75x — signals confidence in balance sheet and intent to maintain lower leverage</li>
-    <li><strong>2. Medicaid supplemental net benefit significantly exceeded expectations in 2024:</strong> $400M actual vs. $100M-$200M prior expectation — driven by onetime items NOT expected to recur</li>
-    <li><strong>3. 2025 supplemental payment headwind:</strong> flat to -$250M vs. 2024 — partially offsets the 2024 outperformance</li>
-    <li><strong>4. 2025 guidance aligns with preliminary outlook</strong> provided on prior (Q3) call — no surprise raise or cut</li>
-    <li><strong>5. Volume deceleration expected:</strong> 3%-4% EA growth in 2025 vs. 4.5% in 2024; driven by slower exchange enrollment growth, non-repeat of Two-Midnight Rule benefit, and Medicaid redetermination stabilization</li>
-    <li><strong>6. Hurricane headwinds expected to be neutral in 2025</strong> (Largo recovery offset by NC lingering weakness)</li>
-    <li><strong>7. $10 billion new buyback authorization</strong> — significant shareholder return capacity</li>
-    <li><strong>8. Dividend raised ~9%</strong> ($0.66 to $0.72 per quarter)</li>
-    <li><strong>9. Tennessee Medicaid supplemental program:</strong> 2024 partial-year approved but not recognized in Q4 2024; new 2025 calendar-year program not yet approved</li>
-    <li><strong>10. Tariff exposure limited:</strong> 70% of supply spend contracted at firm pricing; monitoring but cannot size impact yet</li>
+    <li>1. <strong>Leverage ratio LOWERED:</strong> From 3.0x-4.0x to 2.75x-3.75x -- signals confidence in balance sheet and intent to maintain lower leverage 2. <strong>Medicaid supplemental net benefit significantly exceeded expectations in 2024:</strong> $400M actual vs. $100M-$200M prior expectation -- driven by onetime items NOT expected to recur 3. <strong>2025 supplemental payment headwind:</strong> flat to -$250M vs. 2024 -- partially offsets the 2024 outperformance 4. <strong>2025 guidance aligns with preliminary outlook</strong> provided on prior (Q3) call -- no surprise raise or cut 5. <strong>Volume deceleration expected:</strong> 3%-4% EA growth in 2025 vs. 4.5% in 2024; driven by slower exchange enrollment growth, non-repeat of Two-Midnight Rule benefit, and Medicaid redetermination stabilization 6. <strong>Hurricane headwinds expected to be neutral in 2025</strong> (Largo recovery offset by NC lingering weakness) 7. <strong>$10 billion new buyback authorization</strong> -- significant shareholder return capacity 8. <strong>Dividend raised ~9%</strong> ($0.66 to $0.72 per quarter) 9. <strong>Tennessee Medicaid supplemental program:</strong> 2024 partial-year approved but not recognized in Q4 2024; new 2025 calendar-year program not yet approved 10. <strong>Tariff exposure limited:</strong> 70% of supply spend contracted at firm pricing; monitoring but cannot size impact yet</li>
   </ul>
+</div>
+<div class="content-section">
+  <h3>Q4 2024 Actuals (Reported)</h3>
+</div>
+<div class="content-section">
+  <h3>Full Year 2024 Actuals</h3>
 </div>
 <div class="content-section">
   <h3>Hurricane Impact (Full Year 2024)</h3>
@@ -738,10 +775,8 @@
   </div>
   <div class="prior-ref-body" id="priorBody">
     <div class="metric-grid">
-      <div class="prior-mini"><div class="pm-label">FY24 Revenue Guidance</div><div class="pm-value">$69.75B – $71.75B</div></div>
-      <div class="prior-mini"><div class="pm-label">FY24 Adj. EBITDA Guidance</div><div class="pm-value">$13.75B – $14.25B</div></div>
-      <div class="prior-mini"><div class="pm-label">FY24 EPS Guidance</div><div class="pm-value">$21.60 – $22.80</div></div>
-      <div class="prior-mini"><div class="pm-label">FY24 CapEx Guidance</div><div class="pm-value">~$5.0B</div></div>
+      <div class="prior-mini"><div class="pm-label">CapEx Guidance</div><div class="pm-value"><strong>$1.19 billion</strong> in Q3 2024</div></div>
+      <div class="prior-mini"><div class="pm-label">Adj. EBITDA Margin</div><div class="pm-value"><strong>+90 basis points</strong> YoY</div></div>
     </div>
     <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q3_2024.html" style="color:var(--blue);">View full Q3 2024 detail &rarr;</a></p>
   </div>

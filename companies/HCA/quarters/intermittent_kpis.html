@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HCA Intermittent KPIs &mdash; 16-Quarter Disclosure Tracker</title>
+<style>
+  :root {
+    --company-primary: #C8952E;
+    --company-dark: #0D1B2A;
+    --company-accent: #1B365D;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); background: #fff; line-height: 1.6; max-width: 1200px; margin: 0 auto; padding: 0 24px 80px; }
+  .header { background: linear-gradient(135deg, var(--company-dark), var(--company-accent)); color: #fff; padding: 48px 40px; margin: 0 -24px 40px; border-bottom: 4px solid var(--company-primary); }
+  .header h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; }
+  .header .subtitle { font-size: 1.1rem; opacity: 0.85; font-weight: 300; }
+  .quarter-nav { background: var(--company-accent); border-radius: 8px; padding: 16px 20px; margin-bottom: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .quarter-nav .label { color: #fff; font-weight: 600; font-size: 0.85rem; margin-right: 8px; white-space: nowrap; }
+  .quarter-nav .year-group { display: flex; gap: 4px; align-items: center; }
+  .quarter-nav .year-label { color: rgba(255,255,255,0.5); font-size: 0.72rem; font-weight: 600; margin-right: 2px; letter-spacing: 0.5px; }
+  .quarter-nav a { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 4px 10px; font-size: 0.78rem; font-weight: 600; text-decoration: none; transition: all 0.15s; }
+  .quarter-nav a:hover { background: rgba(255,255,255,0.25); }
+  .quarter-nav a.overview-link { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.35); padding: 4px 14px; font-size: 0.82rem; margin-left: auto; }
+  .toc { background: var(--light-bg); border: 1px solid var(--border); border-radius: 8px; padding: 24px 32px; margin-bottom: 40px; columns: 2; column-gap: 40px; }
+  .toc h2 { font-size: 1.1rem; color: var(--company-accent); margin-bottom: 12px; column-span: all; }
+  .toc a { display: block; color: var(--blue); text-decoration: none; padding: 3px 0; font-size: 0.9rem; break-inside: avoid; }
+  .toc a:hover { text-decoration: underline; }
+  .section { margin-bottom: 48px; scroll-margin-top: 20px; }
+  .section h2 { font-size: 1.4rem; color: var(--company-dark); border-bottom: 3px solid var(--company-primary); padding-bottom: 8px; margin-bottom: 16px; }
+  .section h2 .num { display: inline-block; background: var(--company-primary); color: #fff; width: 28px; height: 28px; line-height: 28px; text-align: center; border-radius: 50%; font-size: 0.85rem; margin-right: 8px; vertical-align: middle; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 0.88rem; }
+  thead th { background: var(--company-accent); color: #fff; padding: 10px 12px; text-align: left; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
+  thead th.right { text-align: right; }
+  tbody td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tbody td.right { text-align: right; }
+  tbody tr:nth-child(even) { background: var(--light-bg); }
+  tbody tr:hover { background: #eef2f7; }
+  .pos { color: var(--green); font-weight: 600; }
+  .neg { color: var(--red); font-weight: 600; }
+  .neutral { color: var(--amber); font-weight: 600; }
+  .raised { background: #eafaf1 !important; }
+  .lowered { background: #fef0ef !important; }
+  .bold { font-weight: 700; }
+  .muted { color: var(--text-muted); font-style: italic; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; vertical-align: middle; }
+  .tag-new { background: #d6eaf8; color: #2471a3; }
+  .tag-disc { background: #fadbd8; color: #c0392b; }
+  .tag-emerged { background: #d5f5e3; color: #1e8449; }
+  .tag-peak { background: #fdebd0; color: #d35400; }
+  .insight { background: linear-gradient(135deg, #fef9e7, #fdebd0); border-left: 4px solid var(--amber); padding: 14px 18px; margin: 16px 0; border-radius: 0 6px 6px 0; font-size: 0.9rem; }
+  .insight strong { color: var(--company-dark); }
+  .year-divider td { background: var(--company-accent) !important; color: #fff; font-weight: 700; font-size: 0.82rem; padding: 6px 12px; letter-spacing: 0.5px; }
+  .analysis { margin-top: 48px; padding: 32px; background: var(--light-bg); border: 1px solid var(--border); border-radius: 8px; }
+  .analysis h2 { font-size: 1.3rem; color: var(--company-dark); margin-bottom: 16px; border-bottom: 3px solid var(--company-primary); padding-bottom: 8px; }
+  .analysis h3 { font-size: 1.05rem; color: var(--company-dark); margin: 20px 0 8px; }
+  .analysis p { font-size: 0.92rem; margin-bottom: 12px; }
+  .footer { margin-top: 60px; padding-top: 20px; border-top: 2px solid var(--border); font-size: 0.82rem; color: var(--text-muted); text-align: center; }
+  .footer a { color: var(--blue); text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 768px) { .toc { columns: 1; } .header h1 { font-size: 1.6rem; } table { font-size: 0.8rem; } thead th, tbody td { padding: 6px 8px; } }
+  @media print { .header { background: #333; } .section { page-break-inside: avoid; } table { font-size: 0.75rem; } .quarter-nav { display: none; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>HCA Healthcare Intermittent KPIs</h1>
+  <div class="subtitle">Metrics disclosed more than once but not on a regular basis &mdash; Q1 2022 through Q4 2025</div>
+</div>
+
+<div class="quarter-nav" id="qnav">
+  <a href="../../index.html" style="background:rgba(255,255,255,0.15); color:#fff; font-weight:600; margin-right:12px; text-decoration:none; padding:4px 12px; border-radius:4px;">&#x2190; Portfolio</a>
+  <span class="label">Quarters:</span>
+  <div class="year-group"><span class="year-label">2025</span>
+    <a href="Q4_2025.html">Q4</a><a href="Q3_2025.html">Q3</a><a href="Q2_2025.html">Q2</a><a href="Q1_2025.html">Q1</a>
+  </div>
+  <div class="year-group"><span class="year-label">2024</span>
+    <a href="Q4_2024.html">Q4</a><a href="Q3_2024.html">Q3</a><a href="Q2_2024.html">Q2</a><a href="Q1_2024.html">Q1</a>
+  </div>
+  <div class="year-group"><span class="year-label">2023</span>
+    <a href="Q4_2023.html">Q4</a><a href="Q3_2023.html">Q3</a><a href="Q2_2023.html">Q2</a><a href="Q1_2023.html">Q1</a>
+  </div>
+  <div class="year-group"><span class="year-label">2022</span>
+    <a href="Q4_2022.html">Q4</a><a href="Q3_2022.html">Q3</a><a href="Q2_2022.html">Q2</a><a href="Q1_2022.html">Q1</a>
+  </div>
+  <a href="../comparison.html" class="overview-link">Guidance Overview &rarr;</a>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+  <h2>Table of Contents</h2>
+  <a href="#s1">1. Contract Labor as % of SWB</a>
+  <a href="#s2">2. COVID Admissions as % of Total</a>
+  <a href="#s3">3. Health Insurance Exchange (HICS) Volume Growth</a>
+  <a href="#s4">4. HICS as % of Revenue &amp; Admissions</a>
+  <a href="#s5">5. Medicaid Volume Trends</a>
+  <a href="#s6">6. Capacity Declination Rate</a>
+  <a href="#s7">7. Inpatient Occupancy Rate</a>
+  <a href="#s8">8. Hurricane Financial Impact</a>
+  <a href="#s9">9. Valesco Physician Services EBITDA Impact</a>
+  <a href="#s10">10. Professional Fee Expense Growth</a>
+  <a href="#s11">11. Medicaid Supplemental Payment Net Benefit</a>
+  <a href="#s12">12. Managed Care Contracting Progress</a>
+  <a href="#s13">13. RN Turnover &amp; Hiring Metrics</a>
+  <a href="#s14">14. Capital Return &amp; Dividends</a>
+  <a href="#s15">15. Resiliency Program &amp; Exchange Headwind</a>
+  <a href="#analysis">Written Analysis</a>
+</div>
+
+<!-- SECTION 1: Contract Labor -->
+<div class="section" id="s1">
+  <h2><span class="num">1</span> Contract Labor as % of SWB</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>Contract Labor %</th><th>Measure Basis</th><th>Trend</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">2025 &mdash; NORMALIZATION COMPLETE</td></tr>
+      <tr><td>Q4 2025</td><td class="bold">4.2%</td><td>% of SWB</td><td><span class="pos">&#x2193;</span></td><td>Approaching pre-pandemic baseline of ~4.1%</td></tr>
+      <tr><td>Q3 2025</td><td>4.2%</td><td>% of SWB</td><td><span class="pos">&#x2193;</span></td><td>Flat sequentially</td></tr>
+      <tr><td>Q2 2025</td><td>4.3%</td><td>% of SWB</td><td><span class="pos">&#x2193;</span></td><td>Steady improvement</td></tr>
+      <tr><td>Q1 2025</td><td>4.4%</td><td>% of SWB</td><td><span class="pos">&#x2193;</span></td><td>Down 70 bps YoY</td></tr>
+      <tr class="year-divider"><td colspan="5">2024 &mdash; STEADY DECLINE</td></tr>
+      <tr><td>Q4 2024</td><td>4.5&ndash;4.6%</td><td>% of SWB</td><td><span class="pos">&#x2193;</span></td><td>Approaching normalized levels</td></tr>
+      <tr><td>Q3 2024</td><td>4.6%</td><td>% of total labor cost</td><td><span class="pos">&#x2193;</span></td><td>Down from 5.1% in Q1</td></tr>
+      <tr><td>Q2 2024</td><td>4.8%</td><td>% of total labor costs</td><td><span class="pos">&#x2193;</span></td><td>Continued improvement</td></tr>
+      <tr><td>Q1 2024</td><td>5.1%</td><td>% of total labor cost</td><td><span class="pos">&#x2193;</span></td><td>Down sharply from 7.1% a year ago</td></tr>
+      <tr class="year-divider"><td colspan="5">2023 &mdash; RAPID IMPROVEMENT</td></tr>
+      <tr><td>Q4 2023</td><td class="muted">Not specifically quantified</td><td>&mdash;</td><td>&mdash;</td><td>Discussed qualitatively only</td></tr>
+      <tr><td>Q3 2023</td><td class="muted">Not specifically quantified</td><td>&mdash;</td><td>&mdash;</td><td>Continued normalization</td></tr>
+      <tr><td>Q2 2023</td><td>6.8%</td><td>% of SWB</td><td><span class="pos">&#x2193;</span></td><td>Down from 7.1% in Q1</td></tr>
+      <tr><td>Q1 2023</td><td>7.1%</td><td>% of SWB</td><td><span class="pos">&#x2193;</span></td><td>Also 10.3% of nursing hours</td></tr>
+      <tr class="year-divider"><td colspan="5">2022 &mdash; PEAK LABOR CRISIS</td></tr>
+      <tr class="lowered"><td>Q4 2022</td><td>~7.8%</td><td>% of SWB</td><td><span class="neg">&#x2191;</span></td><td>Seasonal uptick from Q3</td></tr>
+      <tr><td>Q3 2022</td><td>~7.2%</td><td>% of SWB</td><td><span class="pos">&#x2193;</span></td><td>First major improvement from peak</td></tr>
+      <tr><td>Q2 2022</td><td>just above 8%</td><td>% of SWB</td><td><span class="pos">&#x2193;</span></td><td>End-of-June rate; declining through quarter</td></tr>
+      <tr class="lowered"><td>Q1 2022</td><td class="bold">~11.6%</td><td>% of nursing hours</td><td><span class="tag tag-peak">PEAK</span></td><td>Omicron-driven peak; cost per hour down 5% QoQ</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Contract labor declined from the pandemic peak of ~11.6% to ~4.2% over 15 quarters, a 64% reduction. The metric's very prominence as a KPI tells the story &mdash; it dominated every earnings call in 2022, then gradually faded from the headline as normalization was achieved by late 2025.</div>
+</div>
+
+<!-- SECTION 2: COVID Admissions -->
+<div class="section" id="s2">
+  <h2><span class="num">2</span> COVID Admissions as % of Total</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>COVID %</th><th>vs Prior Year</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2023 &mdash; FADING TO IMMATERIAL</td></tr>
+      <tr><td>Q4 2023</td><td>~2%</td><td>&mdash;</td><td>Last quantified disclosure</td></tr>
+      <tr><td>Q2 2023</td><td>~1%</td><td>&mdash;</td><td>Approaching de minimis</td></tr>
+      <tr><td>Q1 2023</td><td>~3%</td><td>vs 9.7% prior year</td><td>Massive YoY improvement</td></tr>
+      <tr class="year-divider"><td colspan="4">2022 &mdash; OMICRON THROUGH NORMALIZATION</td></tr>
+      <tr><td>Q4 2022 (FY)</td><td>5.2%</td><td>vs 7.8% FY2021</td><td>Full year figure</td></tr>
+      <tr><td>Q3 2022</td><td>~5%</td><td>vs ~13% Q3 2021</td><td>Still meaningful but declining</td></tr>
+      <tr><td>Q2 2022</td><td>~3%</td><td>&mdash;</td><td>Brief trough between waves</td></tr>
+      <tr class="lowered"><td>Q1 2022</td><td class="bold">~10%</td><td>&mdash;</td><td>Omicron peak; revenue per COVID admission down ~15% YoY (lower acuity)</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> COVID admissions fell from 10% of total to ~1-2% over 7 quarters (Q1 2022 through Q4 2023), then disappeared from disclosure entirely. The Omicron wave was uniquely disruptive because it combined high volumes with low acuity, compressing revenue per admission ~15%. Government support revenue peaked at ~$280M in FY2022 and dropped to ~$30M in Q1 2023.</div>
+</div>
+
+<!-- SECTION 3: HICS Volume Growth -->
+<div class="section" id="s3">
+  <h2><span class="num">3</span> Health Insurance Exchange (HICS) Volume Growth</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>HICS Volume YoY</th><th>Context</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025 &mdash; DECELERATION &amp; SUBSIDY CLIFF RISK</td></tr>
+      <tr><td>Q4 2025</td><td class="neg">+2.5%</td><td>FY2025</td><td>Growth nearly exhausted; subsidy expiration looming</td></tr>
+      <tr><td>Q3 2025</td><td class="neg">+8.0%</td><td>YoY</td><td>Sharp deceleration continues</td></tr>
+      <tr><td>Q2 2025</td><td>+15.8%</td><td>YTD</td><td>Moderating from peak growth</td></tr>
+      <tr><td>Q1 2025</td><td>+22.4%</td><td>YoY</td><td>Still growing but decelerating significantly</td></tr>
+      <tr class="year-divider"><td colspan="4">2024 &mdash; PEAK EXCHANGE GROWTH</td></tr>
+      <tr class="raised"><td>Q4 2024 (FY)</td><td class="pos bold">+44&ndash;45%</td><td>Full year</td><td><span class="tag tag-peak">PEAK YEAR</span></td></tr>
+      <tr class="raised"><td>Q3 2024</td><td class="pos">+43%</td><td>YoY</td><td>Still accelerating</td></tr>
+      <tr class="raised"><td>Q2 2024</td><td class="pos">+46%</td><td>YoY</td><td>Near-peak growth rate</td></tr>
+      <tr class="raised"><td>Q1 2024</td><td class="pos bold">close to +50%</td><td>YoY</td><td>Enrollment in HCA markets up &gt;30%</td></tr>
+      <tr class="year-divider"><td colspan="4">2023 &mdash; INITIAL SURGE</td></tr>
+      <tr><td>Q1 2023</td><td class="pos">+19%</td><td>YoY</td><td><span class="tag tag-new">FIRST DISCLOSED</span> FL +18%, TX ~30%</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Exchange volumes followed a classic adoption curve: +19% when first disclosed in Q1 2023, peaking near +50% in Q1 2024, then decelerating sharply to +2.5% by Q4 2025. The metric's rising prominence directly correlates with increased ACA subsidy risk &mdash; the larger the revenue dependency, the greater the cliff risk. By Q4 2025, HICS represented ~10% of HCA's revenue.</div>
+</div>
+
+<!-- SECTION 4: HICS as % of Revenue -->
+<div class="section" id="s4">
+  <h2><span class="num">4</span> HICS as % of Revenue &amp; Admissions</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>% of Eq. Admissions</th><th>% of Revenue</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025</td></tr>
+      <tr><td>Q4 2025 (FY)</td><td>~8%</td><td>~10%</td><td>Largest single-payer policy risk factor</td></tr>
+      <tr><td>Q2 2025</td><td>~8%</td><td>just over 10%</td><td>Revenue share exceeds volume share (higher acuity)</td></tr>
+      <tr><td>Q1 2025</td><td>~8%</td><td>~10%</td><td>Stable QoQ</td></tr>
+      <tr class="year-divider"><td colspan="4">2024</td></tr>
+      <tr><td>Q4 2024 (FY)</td><td>7.5%</td><td>~9%</td><td>Full year; significant payer mix shift</td></tr>
+      <tr><td>Q2 2024</td><td>~7%</td><td>~8&ndash;9%</td><td>~7% of ER visits as well</td></tr>
+      <tr><td>Q1 2024</td><td>~6%</td><td class="muted">&mdash;</td><td><span class="tag tag-new">FIRST DISCLOSED</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Exchange patients grew from ~6% to ~8% of admissions in just 6 quarters, with a disproportionately higher revenue share (~10%) due to commercial pricing. This metric only began being disclosed in Q1 2024 precisely because the dependency reached a level where investors needed to assess the ACA subsidy expiration risk. Revenue share exceeding volume share is actually a negative risk factor &mdash; the revenue at risk is proportionally larger than the volume at risk.</div>
+</div>
+
+<!-- SECTION 5: Medicaid Volume -->
+<div class="section" id="s5">
+  <h2><span class="num">5</span> Medicaid Volume Trends (Redetermination Impact)</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>Medicaid Eq. Adm. YoY</th><th>Medicaid % of Total</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025 &mdash; RECOVERY</td></tr>
+      <tr class="raised"><td>Q4 2025</td><td class="pos">+2.2%</td><td class="muted">&mdash;</td><td>Second consecutive quarter of growth</td></tr>
+      <tr class="raised"><td>Q3 2025</td><td class="pos">+1.4%</td><td class="muted">&mdash;</td><td><span class="tag tag-emerged">TURNED POSITIVE</span></td></tr>
+      <tr><td>Q2 2025</td><td>-1.2%</td><td class="muted">&mdash;</td><td>YTD; nearly flat; 60% of volumes in non-expansion states</td></tr>
+      <tr><td>Q1 2025</td><td>-1.4%</td><td class="muted">&mdash;</td><td>Flattening rapidly</td></tr>
+      <tr class="year-divider"><td colspan="4">2024 &mdash; REDETERMINATION DRAG</td></tr>
+      <tr class="lowered"><td>Q3 2024</td><td class="neg">-8.5%</td><td>17&ndash;18%</td><td>Peak headwind; redeterminations in full swing</td></tr>
+      <tr class="lowered"><td>Q2 2024</td><td class="neg bold">-10%</td><td class="muted">&mdash;</td><td><span class="tag tag-peak">TROUGH</span> Worst quarter for Medicaid volumes</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Medicaid redeterminations created a sharp V-shaped pattern: volumes fell -10% at the trough (Q2 2024) as states unwound pandemic continuous enrollment, then recovered to +2.2% by Q4 2025. Critically, many of the Medicaid patients who lost coverage migrated to ACA exchanges, amplifying HICS growth (Section 3) while softening the Medicaid decline's net impact on total admissions.</div>
+</div>
+
+<!-- SECTION 6: Capacity Declination -->
+<div class="section" id="s6">
+  <h2><span class="num">6</span> Capacity Declination / Diversion Rate</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>Declination Rate</th><th>Trend</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2023 &mdash; IMPROVING RAPIDLY</td></tr>
+      <tr><td>Q4 2023</td><td>~10% of referred patients</td><td><span class="pos">&#x2193;</span></td><td>Reframed as "90% acceptance rate"; last disclosure</td></tr>
+      <tr><td>Q3 2023</td><td>0.9%</td><td>&#x2194;</td><td>Consistent with Q2</td></tr>
+      <tr><td>Q2 2023</td><td class="pos">0.8%</td><td><span class="pos">&#x2193;</span></td><td>Down from 1.5%; 47% improvement QoQ</td></tr>
+      <tr><td>Q1 2023</td><td>1.5%</td><td><span class="pos">&#x2193;</span></td><td>Down from 2.0%; 25% improvement</td></tr>
+      <tr class="year-divider"><td colspan="4">2022 &mdash; CAPACITY CONSTRAINT</td></tr>
+      <tr class="lowered"><td>Q4 2022</td><td class="neg bold">~2.0%</td><td><span class="neg">&#x2191;</span></td><td><span class="tag tag-peak">PEAK</span> of total admissions turned away</td></tr>
+      <tr class="lowered"><td>Q3 2022</td><td>~1&ndash;1.5%</td><td><span class="tag tag-new">NEW METRIC</span></td><td>First quantified; driven by staffing shortages</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> This metric was born from the post-COVID capacity crisis and had a clear lifecycle: introduced when the problem peaked (~2% of admissions turned away in Q4 2022), tracked through resolution (down to 0.8% by Q2 2023), then retired by 2024. Its brief 6-quarter lifespan is itself the story &mdash; the capacity constraint was severe but temporary, resolved through hiring and bed additions.</div>
+</div>
+
+<!-- SECTION 7: Occupancy -->
+<div class="section" id="s7">
+  <h2><span class="num">7</span> Inpatient Occupancy Rate</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>Occupancy</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="3">2025</td></tr>
+      <tr><td>Q4 2025</td><td>73&ndash;74%</td><td>Stable; bed additions absorbing demand growth</td></tr>
+      <tr><td>Q2 2025</td><td>~73&ndash;74%</td><td>North of 70%</td></tr>
+      <tr class="raised"><td>Q1 2025</td><td class="pos bold">77%</td><td>vs 75% prior year; seasonal peak</td></tr>
+      <tr class="year-divider"><td colspan="3">2024</td></tr>
+      <tr><td>Q2 2024</td><td>low-to-mid-70s%</td><td>Demand-driven</td></tr>
+      <tr class="year-divider"><td colspan="3">2023</td></tr>
+      <tr><td>Q4 2023</td><td>low 70s%</td><td>Seasonal softness</td></tr>
+      <tr><td>Q1 2023</td><td>~73&ndash;74%</td><td>San Antonio at ~90%; capacity constraint in growth markets</td></tr>
+      <tr class="year-divider"><td colspan="3">2022</td></tr>
+      <tr><td>Q2 2022</td><td>~72%</td><td><span class="tag tag-new">FIRST DISCLOSED</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Occupancy rose from ~72% to a peak of 77% over 3 years, reflecting strong demand in HCA's markets. The 77% peak in Q1 2025 prompted discussion of capacity pipeline (~2.5% bed growth), as management balanced the tension between high utilization (good for margins) and declining capacity to accept transfers. Individual markets like San Antonio (~90%) illustrate the geographic variation that aggregate figures obscure.</div>
+</div>
+
+<!-- SECTION 8: Hurricane -->
+<div class="section" id="s8">
+  <h2><span class="num">8</span> Hurricane Financial Impact</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>Event</th><th>EBITDA Impact</th><th>EPS Impact</th><th>Detail</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">2025 &mdash; LINGERING COMPARISONS</td></tr>
+      <tr><td>Q3 2025</td><td>Helene/Milton comps</td><td>~flat YoY</td><td>&mdash;</td><td>Q3 2024 had $50M hurricane impact in comp</td></tr>
+      <tr><td>Q2 2025</td><td>Helene/Milton comps</td><td>slightly negative</td><td>&mdash;</td><td>Hurricane markets still recovering</td></tr>
+      <tr><td>Q1 2025</td><td>Helene/Milton comps</td><td>~flat YoY</td><td>&mdash;</td><td>Offsetting factors in hurricane markets</td></tr>
+      <tr class="year-divider"><td colspan="5">2024 &mdash; HELENE &amp; MILTON</td></tr>
+      <tr class="lowered"><td>Q4 2024 (FY)</td><td>Helene + Milton</td><td class="neg bold">~$250M</td><td class="neg">-$0.73</td><td>Mission Hospital water costs $13M+; Largo Hospital closed permanently</td></tr>
+      <tr class="lowered"><td>Q3 2024</td><td>Hurricane Helene</td><td class="neg">~$50M</td><td class="neg">-$0.15</td><td>29 hospitals in storm path</td></tr>
+      <tr class="year-divider"><td colspan="5">2022 &mdash; HURRICANE IAN</td></tr>
+      <tr><td>Q3 2022</td><td>Hurricane Ian</td><td class="neg">~$35M</td><td>&mdash;</td><td>4 hospitals evacuated; 2 in Charlotte County damaged</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Hurricane impact was an intermittent but material EBITDA swing factor. Ian (2022) was a ~$35M event; Helene/Milton (2024) were ~$250M combined, 7x larger, with the permanent closure of Largo Hospital and multi-year recovery at Mission Hospital. The 2024 storms accounted for ~$0.73 of diluted EPS drag &mdash; a material portion of the full-year guidance miss. Hurricane comps persisted as EBITDA bridge items through all of 2025.</div>
+</div>
+
+<!-- SECTION 9: Valesco -->
+<div class="section" id="s9">
+  <h2><span class="num">9</span> Valesco Physician Services EBITDA Impact</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>Quarterly EBITDA Impact</th><th>Margin Drag</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025</td></tr>
+      <tr><td>Q3 2025</td><td>historical $40&ndash;50M/quarter drag</td><td class="muted">&mdash;</td><td>"Continued financial improvement"</td></tr>
+      <tr class="year-divider"><td colspan="4">2024 &mdash; STABILIZATION</td></tr>
+      <tr><td>Q3 2024</td><td>improving; "on plan"</td><td class="muted">&mdash;</td><td>5,500 physicians integrated</td></tr>
+      <tr><td>Q2 2024</td><td>~$250M revenue; ~1% EBITDA drag</td><td>~1%</td><td>Run rate improving</td></tr>
+      <tr><td>Q1 2024</td><td>better than expected</td><td class="muted">&mdash;</td><td>Sequential improvement</td></tr>
+      <tr class="year-divider"><td colspan="4">2023 &mdash; ACQUISITION &amp; INTEGRATION SHOCK</td></tr>
+      <tr><td>Q4 2023</td><td class="neg">~$50M/quarter</td><td class="muted">&mdash;</td><td>Reduced from Q3 peak; FY total: ~$150M loss (9 months)</td></tr>
+      <tr class="lowered"><td>Q3 2023</td><td class="neg bold">-$100M</td><td class="neg">-80 bps</td><td><span class="tag tag-peak">WORST QUARTER</span> ~$200M revenue / ~$250M cost per quarter</td></tr>
+      <tr><td>Q2 2023</td><td>~breakeven at EBITDA</td><td>~30 bps</td><td><span class="tag tag-new">FIRST DISCLOSED</span> Acquired April 2023; ~$220M+ revenue</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Valesco (the physician services business acquired from bankrupt Envision in April 2023) followed a classic acquisition integration arc: initial shock (-$100M EBITDA in Q3 2023, -80 bps margin drag), gradual stabilization, and eventual absorption into normal operations by late 2024. The ~$150M cumulative loss in 9 months of FY2023 was a significant drag, but the disclosure frequency tells the story &mdash; management stopped calling it out separately once it was no longer a material standalone drag.</div>
+</div>
+
+<!-- SECTION 10: Professional Fees -->
+<div class="section" id="s10">
+  <h2><span class="num">10</span> Professional Fee Expense Growth</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>Prof. Fee YoY Growth</th><th>% of Other OpEx</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025</td></tr>
+      <tr><td>Q3 2025</td><td>+11%</td><td>~24%</td><td>~+1% sequentially; stubbornly elevated</td></tr>
+      <tr><td>Q2 2025</td><td>+10%</td><td class="muted">&mdash;</td><td>Stable rate of increase</td></tr>
+      <tr><td>Q1 2025</td><td>+11%</td><td class="muted">&mdash;</td><td>Approximately flat sequentially vs Q4 2024</td></tr>
+      <tr class="year-divider"><td colspan="4">2024 &mdash; MODERATION FROM PEAK</td></tr>
+      <tr><td>Q3 2024</td><td>+10%</td><td class="muted">&mdash;</td><td>Flat sequentially; target achieved</td></tr>
+      <tr><td>Q2 2024</td><td>+13%</td><td class="muted">&mdash;</td><td>Decelerating toward 8-10% target</td></tr>
+      <tr class="year-divider"><td colspan="4">2023 &mdash; STRUCTURAL SHOCK</td></tr>
+      <tr><td>Q4 2023 (FY)</td><td class="neg">+15&ndash;20%</td><td class="muted">&mdash;</td><td>Target for 2024: 8-10%; driven by Envision bankruptcy and Valesco</td></tr>
+      <tr class="lowered"><td>Q3 2023 (YTD)</td><td class="neg bold">~+20%</td><td>22&ndash;24%</td><td><span class="tag tag-peak">PEAK</span> Q1: 22%, Q2: 24%, Q3: just under 24% of other OpEx</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Professional fee expense growth was a structural cost escalation driven by the Envision bankruptcy (which increased hospital-based physician subsidies industry-wide) and HCA's own Valesco integration. Growth peaked at ~20% YoY in 2023 and moderated to ~10-11% by 2024-2025, but remained well above normal inflation. At ~24% of "Other Operating Expenses," it became a persistent margin headwind requiring continuous management attention.</div>
+</div>
+
+<!-- SECTION 11: Supplemental Payments -->
+<div class="section" id="s11">
+  <h2><span class="num">11</span> Medicaid Supplemental Payment Net Benefit</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>YoY Net Benefit</th><th>Key Programs</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025 &mdash; LARGEST BENEFIT YEAR</td></tr>
+      <tr class="raised"><td>Q4 2025 (FY)</td><td class="pos bold">+$420M FY</td><td>TN (largest), NC, NV, VA, FL</td><td>Record year; significantly exceeded initial expectations</td></tr>
+      <tr class="raised"><td>Q3 2025</td><td class="pos">~$240M YTD</td><td>Tennessee largest driver</td><td>TN cash received; accrual began in Q3</td></tr>
+      <tr><td>Q2 2025</td><td>~$100M; H1 $180M</td><td>Multiple state programs</td><td>Tracking well above guidance</td></tr>
+      <tr><td>Q1 2025</td><td>~$80M</td><td class="muted">&mdash;</td><td>Q1 benefit</td></tr>
+      <tr class="year-divider"><td colspan="4">2024 &mdash; EXCEEDED GUIDANCE</td></tr>
+      <tr class="raised"><td>Q4 2024 (FY)</td><td class="pos">~$400M FY</td><td>NC, FL, NV, others</td><td>vs initial guidance of $100-200M; Tennessee NOT in 2024</td></tr>
+      <tr><td>Q3 2024</td><td>"modest"; tracking to $200M</td><td class="muted">&mdash;</td><td>High end of range</td></tr>
+      <tr><td>Q2 2024</td><td>~$125M</td><td>FL DPP, NC (new)</td><td><span class="tag tag-new">FIRST QUANTIFIED</span></td></tr>
+      <tr class="year-divider"><td colspan="4">2023 &mdash; NC PROGRAM APPROVAL</td></tr>
+      <tr><td>Q4 2023</td><td>~$250M YoY increase</td><td>NC new; FL expanded</td><td>New North Carolina program was single largest driver</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Medicaid supplemental payments evolved from a background item to a headline EBITDA bridge factor, growing from ~$250M YoY benefit in 2023 to $420M in FY2025. The Tennessee DPP was the most dramatic example &mdash; delayed CMS approval created volatile quarterly recognition, with no benefit accrued until Q3 2025 despite approval in late June. These programs collectively provided ~$800M+ of cumulative benefit over 2023-2025, becoming an essential earnings driver.</div>
+</div>
+
+<!-- SECTION 12: Managed Care Contracting -->
+<div class="section" id="s12">
+  <h2><span class="num">12</span> Managed Care Contracting Progress</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>2023 Contracted</th><th>2024 Contracted</th><th>2025 Contracted</th><th>2026 Contracted</th><th>2027 Contracted</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="6">2025</td></tr>
+      <tr><td>Q3 2025</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>~80%</td><td>~33%</td></tr>
+      <tr><td>Q2 2025</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>~80%</td><td>~33%</td></tr>
+      <tr><td>Q1 2025</td><td>&mdash;</td><td>&mdash;</td><td>&gt;90%</td><td>&gt;75%</td><td>~25%</td></tr>
+      <tr class="year-divider"><td colspan="6">2024</td></tr>
+      <tr><td>Q4 2024</td><td>&mdash;</td><td>&mdash;</td><td>80%</td><td>60%</td><td>~20%</td></tr>
+      <tr><td>Q3 2024</td><td>&mdash;</td><td>&mdash;</td><td>80%</td><td>54%</td><td>~20%</td></tr>
+      <tr class="year-divider"><td colspan="6">2023</td></tr>
+      <tr><td>Q2 2023</td><td>&mdash;</td><td>~70%+</td><td>~25%</td><td>&mdash;</td><td>&mdash;</td></tr>
+      <tr><td>Q1 2023</td><td>&mdash;</td><td>~67%</td><td>~25%</td><td>&mdash;</td><td>&mdash;</td></tr>
+      <tr class="year-divider"><td colspan="6">2022</td></tr>
+      <tr><td>Q4 2022</td><td>~70%</td><td>~40%</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+      <tr><td>Q3 2022</td><td>~70%</td><td>~45%</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+      <tr><td>Q1 2022</td><td>~50%</td><td>~30%</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Managed care contracting progress provides a rolling window of revenue visibility. The pattern is remarkably consistent: ~50% contracted 18-24 months out, ~70-80% by 12 months, and &gt;90% by 6 months prior. Rate escalators embedded in these contracts (typically 5-7% annually) provide a high-confidence floor for revenue growth, making the uncontracted portion (primarily new volumes and payer mix) the key variable.</div>
+</div>
+
+<!-- SECTION 13: RN Turnover & Hiring -->
+<div class="section" id="s13">
+  <h2><span class="num">13</span> RN Turnover &amp; Hiring Metrics</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>RN Turnover Rate</th><th>Hiring Growth</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2023 &mdash; APPROACHING PRE-PANDEMIC</td></tr>
+      <tr><td>Q2 2023</td><td class="pos">17%</td><td>Nurse hiring +9% YoY</td><td>Approaching pre-pandemic ~14.5-15%</td></tr>
+      <tr><td>Q1 2023</td><td>~17%</td><td>RN hiring +19% vs 4Q avg; total +13% YoY</td><td>Annualized last 6 months</td></tr>
+      <tr class="year-divider"><td colspan="4">2022 &mdash; LABOR MARKET RECOVERY</td></tr>
+      <tr><td>Q4 2022</td><td class="neg">~18&ndash;18.5%</td><td>Hiring +6% YoY (FY)</td><td>Pre-pandemic: ~13-14%; industry avg: mid-to-upper-20s%</td></tr>
+      <tr><td>Q2 2022</td><td class="muted">&mdash;</td><td class="pos">Recruitment up 18% vs Q1; turnover down &gt;20% vs Q1</td><td><span class="tag tag-new">FIRST DISCLOSED</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Turnover and hiring metrics had a short 4-5 quarter disclosure window during the peak of the staffing crisis. Turnover fell from ~18.5% to ~17% over this period, a significant improvement but still above the pre-pandemic ~14% baseline. Notably, HCA's turnover at peak was far below the industry average (mid-to-upper-20s%), demonstrating the competitive advantage of the Galen nursing pipeline and workplace stability programs. By mid-2023, the staffing narrative shifted from crisis to normalization and these metrics disappeared.</div>
+</div>
+
+<!-- SECTION 14: Capital Return -->
+<div class="section" id="s14">
+  <h2><span class="num">14</span> Capital Return &amp; Dividends</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>Dividend (Quarterly)</th><th>New Buyback Auth.</th><th>Leverage Target</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">2025</td></tr>
+      <tr class="raised"><td>Q4 2025</td><td class="pos bold">$0.78</td><td>$10B new</td><td>2.75x&ndash;3.75x</td><td>+8% dividend increase; 4th consecutive annual raise</td></tr>
+      <tr class="year-divider"><td colspan="5">2024</td></tr>
+      <tr class="raised"><td>Q4 2024</td><td class="pos">$0.72</td><td>$10B new</td><td class="pos">2.75x&ndash;3.75x (lowered from 3.0-4.0x)</td><td>Leverage target lowered for first time; record buyback authorization</td></tr>
+      <tr class="year-divider"><td colspan="5">2023</td></tr>
+      <tr><td>Q4 2023</td><td>$0.66</td><td>$6B new ($6.3B total)</td><td>3.0x&ndash;4.0x</td><td>Plan ~$5B in buybacks for 2024</td></tr>
+      <tr class="year-divider"><td colspan="5">2022</td></tr>
+      <tr><td>Q4 2022</td><td>$0.60</td><td>$3B new ($4.5B total)</td><td>3.0x&ndash;4.0x</td><td>Up from $0.56</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> The capital return trajectory shows accelerating shareholder returns: dividend per share grew 39% from $0.56 to $0.78 over 4 years, while buyback authorizations escalated from $3B to $10B annually. The Q4 2024 leverage target reduction (from 3.0-4.0x to 2.75-3.75x) was a meaningful policy shift, signaling balance sheet conservatism while still increasing absolute shareholder returns &mdash; a reflection of strong free cash flow growth.</div>
+</div>
+
+<!-- SECTION 15: Resiliency & Exchange Headwind -->
+<div class="section" id="s15">
+  <h2><span class="num">15</span> Resiliency Program &amp; Exchange Headwind</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>Resiliency Savings Target</th><th>Exchange EBITDA Headwind</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025&ndash;2026 GUIDANCE</td></tr>
+      <tr class="lowered"><td>Q4 2025</td><td>~$400M incremental for 2026</td><td class="neg bold">$600M&ndash;$900M adverse</td><td>15-20% HICS volume decline assumed; ~15-20% migrate to ESI, rest to uninsured with ~30% utilization decline</td></tr>
+      <tr><td>Q3 2025</td><td>$600M&ndash;$800M reiterated</td><td class="muted">Qualitative only</td><td>Deferred to Q4 for sizing</td></tr>
+      <tr><td>Q2 2025</td><td>$600M&ndash;$800M reiterated</td><td class="muted">&mdash;</td><td>~1.5 years into 5-year plan</td></tr>
+      <tr><td>Q1 2025</td><td>"accelerated and enhanced"</td><td class="muted">&mdash;</td><td>~1.5 years into 5-year outlook</td></tr>
+      <tr><td>Q3 2024</td><td>$600M&ndash;$800M (from Nov 2023 Investor Day)</td><td class="muted">&mdash;</td><td><span class="tag tag-new">FIRST DISCLOSED</span> Length of stay down ~1.5% YTD</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> The $600-900M exchange headwind sized at Q4 2025 was the single most important forward-looking metric for HCA, representing ~5-7% of annual EBITDA. Management's response &mdash; $400M incremental resiliency savings in 2026 plus the structural $600-800M multi-year program &mdash; attempts to offset roughly half the worst case. The gap between the headwind ($900M high end) and the offset (~$400M incremental) explains why HCA's 2026 guidance was the widest range in the company's history.</div>
+</div>
+
+<!-- ANALYSIS -->
+<div class="analysis" id="analysis">
+  <h2>Written Analysis: HCA's Intermittent Disclosure Patterns</h2>
+
+  <h3>1. The Four Eras of HCA's Disclosure Narrative (2022-2025)</h3>
+  <p>HCA's intermittent KPIs reveal four distinct narrative eras, each defined by which metrics management chose to highlight:</p>
+  <p><strong>Era 1: Labor Crisis (2022).</strong> Contract labor percentage, cost per FTE, turnover rates, and hiring metrics dominated every call. These KPIs were existential &mdash; they determined whether HCA could staff its hospitals and serve patients. The contract labor peak of 11.6% (Q1 2022) represented approximately $400M+ of incremental annualized cost above pre-pandemic levels.</p>
+  <p><strong>Era 2: COVID Transition &amp; Capacity (2022-2023).</strong> As the labor crisis eased, COVID admissions, capacity declination rates, and Galen nursing school metrics took center stage. The declination rate (patients turned away) was a novel KPI born from the unique post-pandemic staffing shortage &mdash; a metric that hospitals never had to report before.</p>
+  <p><strong>Era 3: Payer Mix Transformation (2023-2025).</strong> The Medicaid redetermination and ACA exchange surge created an entirely new set of KPIs: HICS volume growth, exchange as percentage of revenue, Medicaid volume declines, and Medicare Advantage observation mix. These metrics shifted from operational curiosities to the dominant analytical framework.</p>
+  <p><strong>Era 4: Policy Risk &amp; Cost Offsets (2025-2026).</strong> The ACA subsidy expiration risk prompted the emergence of the exchange headwind quantification ($600-900M) and the resiliency program savings target &mdash; forward-looking metrics designed to bracket downside scenarios.</p>
+
+  <h3>2. Disclosure as Strategic Communication</h3>
+  <p>Management's choice of which intermittent metrics to introduce, emphasize, and retire reveals their strategic narrative priorities. Contract labor was disclosed when it was a headwind and gradually stopped being emphasized once it became a tailwind (saving money vs. costing money). Medicaid supplemental payments were barely mentioned until 2024, then became a headline item when they started contributing $400M+ annually &mdash; management disclosed good news louder than neutral news.</p>
+  <p>The Tennessee DPP is instructive: management disclosed the CMS application status for 6 consecutive quarters, building investor expectations before the program's approval. This level of disclosure granularity (individual state regulatory filings) is unusual and reflects the program's outsized financial impact.</p>
+
+  <h3>3. Structural Metrics vs. Cyclical Metrics</h3>
+  <p>Some intermittent KPIs reflect structural business changes (Valesco acquisition, professional fee escalation, bed capacity additions), while others reflect cyclical or external forces (COVID volumes, hurricanes, exchange growth). The structural metrics tend to have longer disclosure windows (8-10 quarters) because they require ongoing management explanation. Cyclical metrics tend to appear, peak, and disappear in 4-6 quarters as the event passes through the P&L.</p>
+  <p>The most analytically useful intermittent metrics are those that bridge the structural and cyclical &mdash; like contract labor, which started as a COVID-era crisis (cyclical) but whose normalization revealed a structural improvement in HCA's labor cost position relative to pre-pandemic levels.</p>
+
+  <h3>4. The Volume vs. Revenue Paradox</h3>
+  <p>Several intermittent metrics illuminate HCA's fundamental paradox: volume growth has been consistently strong (~3-5% equivalent admissions), but revenue growth per admission has been even stronger (~5-7%), driven by acuity shifts, payer mix improvements, and commercial rate escalators. The exchange volume metrics (Section 3-4) are the clearest expression of this &mdash; HICS patients contribute ~8% of admissions but ~10% of revenue because they carry commercial rates. This makes the ACA subsidy expiration a disproportionately large revenue risk relative to volume risk.</p>
+
+  <h3>5. What the Missing Quarters Tell You</h3>
+  <p>The quarters where a metric is <em>not</em> disclosed are often as informative as when it is. Contract labor was not specifically quantified in Q4 2023 or Q3 2023 &mdash; precisely the quarters where management wanted to pivot the narrative away from labor (which was no longer a crisis) toward volume and payer mix themes. Similarly, COVID admissions disappeared from disclosure after Q4 2023, which was the call where management effectively declared the pandemic operationally over.</p>
+  <p>The absence of occupancy rate data in Q4 2024 is notable &mdash; this was the quarter dominated by hurricane disclosures, and drawing attention to high occupancy during a period where several hospitals were damaged or closed would have been tone-deaf. Disclosure is always a choice, and what management omits is as deliberate as what they include.</p>
+
+  <h3>6. Forward-Looking Metric Hierarchy</h3>
+  <p>HCA's most valuable intermittent metrics for forward analysis are: (1) managed care contracting progress, which provides 12-24 month revenue visibility; (2) the exchange headwind quantification, which brackets the single largest near-term risk; and (3) supplemental payment program status, which has become a $400M+ annual variable. These three metrics collectively determine the majority of HCA's earnings trajectory for 2026-2027, yet none of them are "regular" disclosures that appear in standardized financial reporting. They exist only in earnings call commentary, which makes this intermittent KPI tracking exercise analytically essential.</p>
+</div>
+
+<div class="footer">
+  <p>HCA Healthcare Intermittent KPIs &mdash; Q1 2022 through Q4 2025 &mdash; Data from earnings call transcripts</p>
+  <p><a href="../comparison.html">Guidance Overview</a> &middot; <a href="../../index.html">Metrics Tracker</a></p>
+</div>
+
+</body>
+</html>

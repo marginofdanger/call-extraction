@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CVNA Q4 2022 Earnings Call Detail</title>
+<style>
+:root {
+    --company-primary: #00AFF0;
+    --company-dark: #1a1a2e;
+    --company-accent: #006D9E;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 40px 40px 32px;
+    margin: 0 -24px 0;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .header .meta {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    font-weight: 300;
+  }
+  .header .meta span { margin-right: 24px; }
+
+  .nav-bar {
+    background: var(--company-accent);
+    margin: 0 -24px 32px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    transition: all 0.15s;
+  }
+  .nav-bar a:hover { background: rgba(255,255,255,0.2); }
+  .nav-bar a.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .nav-center {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-center a.qbtn {
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+  }
+  .nav-center a.qbtn.current {
+    background: var(--company-primary);
+    border-color: var(--company-primary);
+  }
+  .nav-center a.qbtn:hover { background: rgba(255,255,255,0.2); }
+  .nav-back {
+    background: rgba(255,255,255,0.15) !important;
+    border-color: rgba(255,255,255,0.35) !important;
+  }
+
+  .metrics-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .metric {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+  .metric-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .metric-value {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+  .metric-delta {
+    font-size: 0.72rem;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+  .delta-up { color: var(--green); }
+  .delta-down { color: var(--red); }
+  .delta-flat { color: var(--text-muted); }
+
+  .changes-box {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 5px solid var(--amber);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .changes-box h3 {
+    font-size: 1rem;
+    color: var(--company-dark);
+    margin-bottom: 10px;
+  }
+  .changes-box ul { list-style: none; padding: 0; }
+  .changes-box li {
+    padding: 5px 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .change-tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .ct-raised { background: #d5f5e3; color: #1e8449; }
+  .ct-lowered { background: #fadbd8; color: #c0392b; }
+  .ct-changed { background: #d6eaf8; color: #2471a3; }
+  .ct-new { background: #e8daef; color: #6c3483; }
+  .ct-maintained { background: #fdebd0; color: #b9770e; }
+
+  .content-section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .content-section h3 {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .content-section ul {
+    padding: 14px 18px 14px 36px;
+    margin: 0;
+  }
+  .content-section li {
+    padding: 3px 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .content-section li strong { color: var(--company-dark); }
+
+  .prior-ref {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 40px;
+    overflow: hidden;
+  }
+  .prior-ref-header {
+    background: var(--light-bg);
+    padding: 12px 18px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--company-dark);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .prior-ref-header:hover { background: #eef2f7; }
+  .prior-ref-body { padding: 18px; display: none; }
+  .prior-ref-body.open { display: block; }
+  .prior-ref-body .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .prior-mini {
+    background: var(--light-bg);
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .prior-mini .pm-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .prior-mini .pm-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border);
+  }
+  .footer-nav a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .footer-nav a:hover { text-decoration: underline; }
+
+  /* Comparison page styles */
+  .toc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .toc a {
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 4px 0;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  .comp-section {
+    margin-bottom: 40px;
+  }
+  .comp-section h2 {
+    font-size: 1.2rem;
+    color: var(--company-dark);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--company-primary);
+  }
+
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+  }
+  .comp-table th {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .comp-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .comp-table tr:nth-child(even) { background: var(--light-bg); }
+  .comp-table tr:hover { background: #e8f4fd; }
+
+  @media (max-width: 768px) {
+    .header h1 { font-size: 1.5rem; }
+    .metrics-card { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .nav-center { display: none; }
+    body { padding: 0 16px 60px; }
+    .header { margin: 0 -16px 0; padding: 28px 24px 20px; }
+    .nav-bar { margin: 0 -16px 24px; }
+    .toc { grid-template-columns: 1fr; }
+    .comp-table { font-size: 0.78rem; }
+    .comp-table th, .comp-table td { padding: 6px 8px; }
+  }
+
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+  .content-section .md-table th {
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .content-section .md-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-section .md-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+  .content-section .md-table tr:hover { background: #e8f4fd; }
+
+  @media print {
+    .nav-bar { display: none; }
+    .header { background: #333; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>CVNA Q4 2022 Earnings Call</h1>
+  <div class="meta">
+    <span>Call Date: February 23, 2023</span>
+    <span>Reporting: Q4 2022 (Full Year 2022)</span>
+  </div>
+</div>
+<div class="nav-bar">
+  <a href="Q3_2022.html">&larr; Q3 2022</a>
+  <div class="nav-center">
+    <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>
+    <a href="Q4_2025.html" class="qbtn">4Q25</a>
+    <a href="Q3_2025.html" class="qbtn">3Q25</a>
+    <a href="Q2_2025.html" class="qbtn">2Q25</a>
+    <a href="Q1_2025.html" class="qbtn">1Q25</a>
+    <a href="Q4_2024.html" class="qbtn">4Q24</a>
+    <a href="Q3_2024.html" class="qbtn">3Q24</a>
+    <a href="Q2_2024.html" class="qbtn">2Q24</a>
+    <a href="Q1_2024.html" class="qbtn">1Q24</a>
+    <a href="Q4_2023.html" class="qbtn">4Q23</a>
+    <a href="Q3_2023.html" class="qbtn">3Q23</a>
+    <a href="Q2_2023.html" class="qbtn">2Q23</a>
+    <a href="Q1_2023.html" class="qbtn">1Q23</a>
+    <a href="Q4_2022.html" class="qbtn current">4Q22</a>
+    <a href="Q3_2022.html" class="qbtn">3Q22</a>
+    <a href="Q2_2022.html" class="qbtn">2Q22</a>
+    <a href="Q1_2022.html" class="qbtn">1Q22</a>
+  </div>
+  <a href="Q1_2023.html">Q1 2023 &rarr;</a>
+</div>
+
+<div class="changes-box">
+  <h3>What Changed vs Q3 2022</h3>
+  <ul>
+    <li><span class="change-tag ct-maintained">Maintained</span> Key metrics largely maintained from prior quarter</li>
+  </ul>
+</div>
+
+<div class="metrics-card">
+  <div class="metric" style="grid-column: 1 / -1; background: linear-gradient(135deg, var(--company-dark), var(--company-accent)); color: #fff; border: none; padding: 8px 14px;">
+    <div class="metric-label" style="color: rgba(255,255,255,0.7);">Guidance For</div>
+    <div class="metric-value" style="color: #fff; font-size: 1rem;">Q1 2023</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Total GPU</div>
+    <div class="metric-value">Expect sequential increase in total GPU in Q1 vs. Q4</div>
+  </div>
+</div>
+
+<!-- Full Guidance Content -->
+<div class="content-section">
+  <h3>Quarterly Guidance (Q1 2023)</h3>
+</div>
+<div class="content-section">
+  <h3>Long-Term Targets</h3>
+</div>
+<div class="content-section">
+  <h3>Long-Term GPU Target</h3>
+  <ul>
+    <li><strong>Total GPU Target:</strong> >$4,000 (reiterated from prior quarters)</li>
+    <li><strong>Achievability:</strong> "At current, higher, or lower volume levels"</li>
+    <li><strong>GPU Bridge from Q4 2022 Reported ($2,667) to >$4,000 (management walk):</strong> - Retail inventory allowance normalization: +$600/unit - Wholesale inventory allowance normalization: +$100/unit - Loan sale timing normalization: +~$500/unit - Turn time normalization (sub-90-day aged vehicles): +$600/unit - Non-vehicle COGS opportunity: +$600 (called out for Q1/Q2 vs. prior achievement levels); additional $300-$400 beyond that - Total identified bridge: ~$2,700+ per unit of identified upside from Q4 reported levels</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Long-Term Financial Goal</h3>
+  <ul>
+    <li><strong>Ultimate Goal:</strong> Generate significant net income and free cash flow</li>
+    <li><strong>Capital Plan:</strong> Plan is to NOT need to raise additional capital, but "subtle changes in the shape of those curves can change the answer quite a bit"</li>
+    <li><strong>Growth Timing:</strong> Not yet known; "not obviously that far away"; currently third step in plan after EBITDA breakeven and positive unit economics</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Long-Term Market Opportunity</h3>
+  <ul>
+    <li><strong>Market Size:</strong> ~40 million units per year</li>
+    <li><strong>Carvana Market Share:</strong> ~1%</li>
+    <li><strong>Vision:</strong> "The nation's largest and most profitable automotive retailer"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Retail Units & Revenue</h3>
+  <ul>
+    <li><strong>Retail Units Sold:</strong> 86,977 (-23% YoY; -15% sequentially vs. Q3 2022's 102,570)</li>
+    <li><strong>Sequential Decline Context:</strong> Only slightly larger than industry's sequential decline of 12%, despite several profitability-focused actions (normalizing inventory, reducing advertising, proactively adjusting to benchmark rate increases, profitability initiatives)</li>
+    <li><strong>Total Revenue:</strong> $2.8 billion (-24% YoY; -16% sequentially), approximately in line with retail units sold decline</li>
+    <li><strong>Second Largest Used Vehicle Seller in the U.S.:</strong> For the third consecutive year</li>
+    <li><strong>Market Position:</strong> ~1% market share in a ~40 million unit/year market</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Industry Context</h3>
+  <ul>
+    <li><strong>Industry Sequential Decline (Q4 vs. Q3):</strong> ~12%</li>
+    <li><strong>Market Outlook:</strong> Generally looking at the market being "flattish" going forward</li>
+    <li><strong>Wholesale Market (early 2023):</strong> "Reasonably strong" with potential appreciation; seasonal inventory build and car price appreciation typical around tax refund season observed in early 2023</li>
+    <li><strong>Vehicle Price Outlook:</strong> "Smarter guess over the next year or 2 is that it will be a depreciating environment on average because car prices are still elevated relative to other goods"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Gross Profit Per Unit (GPU)</h3>
+  <ul>
+    <li><strong>Non-GAAP Total GPU:</strong> $2,667 (vs. Q3's $3,870; decrease of -$1,203 sequentially)</li>
+    <li><strong>Non-GAAP Retail GPU:</strong> $632 (vs. Q3's $1,267; decrease of -$635 sequentially)</li>
+    <li><strong>Non-GAAP Wholesale GPU:</strong> $552 (vs. Q3's $682; decrease of -$130 sequentially)</li>
+    <li><strong>Non-GAAP Other GPU:</strong> $1,483 (vs. Q3's $1,921; decrease of -$438 sequentially)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>GPU Unique Items & Adjustments (Q4)</h3>
+  <ul>
+    <li><strong>Retail Inventory Allowance Adjustment:</strong> $52 million, or $598 per unit (primarily driven by elevated industry-wide retail depreciation rates and higher-than-normalized inventory size relative to sales volumes)</li>
+    <li><strong>Wholesale Inventory Allowance Adjustment:</strong> $5 million (included in wholesale GPU impact)</li>
+    <li><strong>Wholesale Loss on Retail Vehicles Sold in Wholesale Market:</strong> $4 million (combined with wholesale allowance = $103 per unit impact on wholesale GPU)</li>
+    <li><strong>Loan Sale Timing Shift (Ally):</strong> ~$42 million, or ~$483 per retail unit sold (sale of loan pool shifted from December to January to align with upsize and extension of forward flow purchase agreement)</li>
+    <li><strong>Total Unique Items Impact on Adjusted EBITDA:</strong> $103 million negative (combined retail, wholesale, and other GPU items)</li>
+    <li><strong>Vehicles Sold Within 90 Days of Acquisition:</strong> Realized approximately $600 per unit higher retail GPU than aggregate retail GPU in Q4 (illustrating turn-time impact on margins)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Retail GPU Sequential Drivers (Q4 vs. Q3)</h3>
+  <ul>
+    <li><strong>Negative:</strong> $598 per unit retail inventory allowance adjustment</li>
+    <li><strong>Negative:</strong> Higher retail depreciation rates</li>
+    <li><strong>Positive:</strong> Wider spreads between retail prices and acquisition prices</li>
+    <li><strong>Positive:</strong> Lower cost of sales</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Wholesale GPU Sequential Drivers (Q4 vs. Q3)</h3>
+  <ul>
+    <li><strong>Negative:</strong> Combined $103 per unit impact from $5 million wholesale inventory allowance + $4 million loss on retail vehicles sold in wholesale channel</li>
+    <li><strong>Negative:</strong> Lower seasonal wholesale marketplace volume</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Other GPU Sequential Drivers (Q4 vs. Q3)</h3>
+  <ul>
+    <li><strong>Negative:</strong> Shift in timing of loan sale to Ally from December to January (-$483 per unit / -$42 million)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>GPU Reporting Change (New in Q4)</h3>
+  <ul>
+    <li><strong>New Non-GAAP Metrics:</strong> Introduced non-GAAP gross profit and non-GAAP SG&A expense that adjust for certain noncash and nonrecurring revenues and expenses</li>
+    <li><strong>Adjusted EBITDA Definition Update:</strong> Now excludes revenue from route warrants, share-based compensation, and restructuring expenses</li>
+    <li><strong>Supplemental Tables:</strong> Posted on IR website Events and Presentations page</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>SG&A</h3>
+  <ul>
+    <li><strong>Non-GAAP SG&A Reduction (Q4 vs. Q3):</strong> -$60 million sequentially (following >$60 million sequential reduction in Q3)</li>
+    <li><strong>SG&A Reduction Components:</strong> Broad-based, including advertising, compensation and benefits, logistics, and other</li>
+    <li><strong>SG&A Per Unit Leverage:</strong> NOT yet meaningfully levered on a per-unit basis because retail units sold have declined at a pace similar to SG&A expense reductions</li>
+    <li><strong>Leverage Expectation:</strong> Stabilizing weekly retail unit sales will allow SG&A expense savings to "catch up" to retail unit volumes, enabling SG&A leverage</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>EBITDA & Margins</h3>
+  <ul>
+    <li><strong>Adjusted EBITDA:</strong> Loss of $291 million, or -10.1% of revenue</li>
+    <li><strong>EBITDA Impact of Unique Items:</strong> Negatively impacted by $103 million due to the unique retail, wholesale, and other GPU items described above</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Goodwill Impairment</h3>
+  <ul>
+    <li><strong>Goodwill Impairment Expense:</strong> $847 million (recorded due to decline in trading prices of securities by end of Q4)</li>
+    <li><strong>Not Related to:</strong> Changes in long-term expectations for the business or operations of any prior acquisitions</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Inventory & Working Capital</h3>
+  <ul>
+    <li><strong>Inventory Normalization:</strong> "Significant moves" in normalizing inventory size in Q4 and so far in Q1 2023</li>
+    <li><strong>Inventory Size (Q1 2023 status):</strong> "Much closer to a normal size relative to sales volumes" than in Q4</li>
+    <li><strong>Inventory Reduction Approach:</strong> Purchasing fewer retail vehicles; accelerated in Q4</li>
+    <li><strong>Turn Time Impact:</strong> Higher-than-normalized inventory size led to longer turn times, increasing vehicle depreciation and negatively impacting retail GPU</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Balance Sheet & Liquidity (as of December 31, 2022)</h3>
+  <ul>
+    <li><strong>Total Liquidity Resources:</strong> ~$3.9 billion (down from ~$4.4 billion at end of Q3)</li>
+    <li><strong>Cash and Revolving Availability:</strong> $1.9 billion (down from $2.3 billion at end of Q3)</li>
+    <li><strong>Unpledged Real Estate and Other Assets:</strong> $2.0 billion, including >$1.1 billion of real estate acquired with ADESA</li>
+    <li><strong>Approximate Real Estate Breakdown:</strong> ~$2 billion total; ~half ADESA, ~half original Carvana real estate; majority is inspection centers described as "high-quality financeable properties"</li>
+    <li><strong>Finance Receivables (loans on balance sheet, end of Q4):</strong> ~$1.3 billion (referenced by analyst; ~$1 billion extra loans shifted over year-end due to Ally renewal timing)</li>
+    <li><strong>Additional Capital Options (management cited):</strong> Real estate financing, additional secured debt capacity, additional unsecured debt capacity, equity issuance</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Interest Expense Context</h3>
+  <ul>
+    <li><strong>Annual Interest Expense (analyst reference):</strong> ~$600 million</li>
+    <li><strong>Annual CapEx (analyst reference):</strong> $100 million+</li>
+    <li><strong>Implied Annual Cash Burn at EBITDA Breakeven (analyst estimate):</strong> ~$700 million (interest + CapEx)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>IRC / Production Capacity</h3>
+  <ul>
+    <li><strong>Annual IRC Capacity at Full Utilization:</strong> ~1.3 million units (including ADESA locations; up from ~1.2 million at end of Q3)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>ADESA Integration</h3>
+  <ul>
+    <li><strong>ADESA Sites:</strong> 56 locations nationwide</li>
+    <li><strong>Wholesale Vehicle Routing to ADESA:</strong> 75% of cars bought from customers planned for wholesale now landing at ADESA properties</li>
+    <li><strong>ADESA Benefits:</strong> Lower transportation costs (closer proximity), rapid inspection and sale, efficiency gains in wholesale, logistics, and ultimately reconditioning</li>
+    <li><strong>ADESA Timing of Benefits:</strong> Most benefits expected in "step 3" (return to growth phase); ADESA team described as doing "a great job" in a tough post-pandemic auction environment</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Operational Efficiency Metrics (Cited in Prepared Remarks)</h3>
+  <ul>
+    <li><strong>Average Delivery Distance:</strong> Down 25% since early 2022</li>
+    <li><strong>Activity Pairing Rate:</strong> Now 1 out of 3 retail deliveries paired with a vehicle pickup (vs. 1 out of 14 one year ago)</li>
+    <li><strong>Customer Care Time Per Sale:</strong> Advocates spending 40% less time on the phone per sale vs. early 2022</li>
+    <li><strong>Vending Machine Pickup Rate:</strong> 40% of customers nationwide now picking up at a vending machine (roughly double vs. early 2022); only available in a subset of markets</li>
+    <li><strong>Customer Experience Quality:</strong> Improved over the last 6 months despite all cost-reduction initiatives</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Ally Partnership</h3>
+  <ul>
+    <li><strong>Renewal:</strong> Completed seventh-year renewal of Ally forward flow purchase agreement (upsized and extended)</li>
+    <li><strong>Ally Spread:</strong> Ally has "more spread" than historically, but "reflective of market conditions"; Carvana passes spreads on and earns "similar finance GPU to what we've earned in the past"</li>
+    <li><strong>Securitization:</strong> Also closed first securitization of 2023 (as of call date)</li>
+    <li><strong>Multi-Channel Strategy:</strong> Will continue to operate multichannel loan sale strategy; plan to "catch up on loan sales in the first half of this year"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Key Annual Metrics</h3>
+  <ul>
+    <li><strong>FY 2022 Retail Units Sold:</strong> 412,296 (-3% YoY; first year of YoY retail unit decline)</li>
+    <li><strong>FY 2022 Revenue:</strong> $13.604 billion (+6% YoY; ninth consecutive year of revenue growth)</li>
+    <li><strong>Market Share:</strong> Ninth consecutive year of market share gains, against backdrop of double-digit industry declines</li>
+    <li><strong>Capital Invested Since 2013:</strong> >$4 billion in IRC infrastructure, first-party logistics network, and last-mile delivery network</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>S&P Global Market Intelligence Consensus (as of Feb 24, 2023)</h3>
+  <ul>
+    <li><strong>FQ4 2022 EPS Consensus:</strong> ($2.37) | <strong>FQ4 2022 EPS Actual:</strong> Not separately stated (FQ3 actual was ($2.67) vs. ($1.97) consensus)</li>
+    <li><strong>FY 2022 Revenue Consensus:</strong> $13,845.31 million | <strong>FY 2022 Revenue Actual:</strong> ~$13,604 million</li>
+    <li><strong>FY 2023 EPS Consensus:</strong> ($7.60)</li>
+    <li><strong>FY 2023 Revenue Consensus:</strong> $13,003.23 million</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Retail Units</h3>
+  <ul>
+    <li><strong>Direction:</strong> Expect sequential reduction in retail units sold in Q1 vs. Q4</li>
+    <li><strong>Drivers:</strong> Continuing to normalize inventory size, optimizing marketing spend, making progress on profitability initiatives</li>
+    <li><strong>Weekly Sales Volume:</strong> Expect weekly retail unit sales volume to stabilize relative to the declines seen in H2 2022 as seasonal headwinds transition to seasonal tailwinds</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>GPU</h3>
+  <ul>
+    <li><strong>Total GPU:</strong> Expect sequential increase in total GPU in Q1 vs. Q4</li>
+    <li><strong>Retail GPU:</strong> Expect increase in Q1 vs. Q4, due to multiple offsetting effects: - <strong>Negative:</strong> Purchasing fewer retail vehicles means fewer low-age units added to website, increasing average age of inventory and retail units sold, reducing retail GPU - <strong>Positive:</strong> Expect lower inventory size to lead to a retail inventory allowance adjustment benefit in Q1 - <strong>Net:</strong> Q1 retail GPU expected to be higher than Q4</li>
+    <li><strong>Other GPU:</strong> Expect sequential increase in Q1, following the shift in loan sale timing from December to January</li>
+    <li><strong>Retail GPU Context (no meaningful gains expected in Q1):</strong> "While we don't expect to see meaningful gains on retail GPU in Q1, we expect to see the benefits of reducing inventory size become apparent in the following quarters"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>SG&A</h3>
+  <ul>
+    <li><strong>Target:</strong> Approximately $100 million aggregate reduction in quarterly non-GAAP SG&A expense by Q2 2023 compared to Q4 2022 (over the next 2 quarters)</li>
+    <li><strong>Note:</strong> Original transcript says "$1 million reduction" but contextually this is "$100 million" based on all other references throughout the call; confirmed by Ernie Garcia's remark: "driving down SG&A dollars by $100 million over the next 2 quarters"</li>
+    <li><strong>Scope:</strong> Broad-based across all large SG&A expense components, including payroll, advertising, logistics, and the "other" expense bucket (including categories traditionally thought of as fixed / corporate and technology expenses)</li>
+    <li><strong>No Additional Forced Reductions:</strong> Do NOT expect future reductions to involve force reductions (layoffs)</li>
+    <li><strong>Cumulative SG&A Reduction:</strong> Will complete over $1 billion annualized SG&A cost reduction since Q1 2022</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>EBITDA</h3>
+  <ul>
+    <li><strong>Near-Term Direction:</strong> Expect the combination of (1) SG&A reduction, (2) stabilizing weekly unit sales, and (3) reduced inventory to lead to "significantly improved adjusted EBITDA profitability over the next 2 quarters"</li>
+    <li><strong>No Specific Timeline for Breakeven:</strong> "As fast as possible"; no explicit quarter named for EBITDA breakeven</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Three-Step Plan</h3>
+  <ul>
+    <li><strong>Step 1 (Current Focus):</strong> Drive business to breakeven adjusted EBITDA - Believe achievable at current volume levels - Believe can achieve "significantly positive EBITDA at current volumes"</li>
+    <li><strong>Step 2:</strong> Drive business to significant positive unit economics (positive free cash flow) - "Breakeven adjusted EBITDA is a milestone, but it is not our goal. Our goal is positive free cash flow."</li>
+    <li><strong>Step 3:</strong> Return to growth - Will head into growth as a "much more efficient company" with an "infrastructure advantage that is materially different than the infrastructure advantage we had when we were growing last time"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Special Topics</h3>
+</div>
+<div class="content-section">
+  <h3>Debt / Liquidity / Going Concern Risk</h3>
+  <ul>
+    <li><strong>Interest Expense Burden:</strong> ~$600 million annually, even at EBITDA breakeven implies significant cash burn</li>
+    <li><strong>Analyst Concern (Rajat Gupta, JPMorgan):</strong> With ~$600 million interest + ~$100 million CapEx, reaching EBITDA breakeven still implies ~$700 million+ annual cash burn; "you also need to add more debt at some stage to continue to just pay the ongoing additional debt"</li>
+    <li><strong>Management Response on Restructuring:</strong> Did not commit to any restructuring; focused on 3-step operating plan; "believed and continue to believe that we have the opportunity to run that plan and to not need to raise additional capital"</li>
+    <li><strong>Capital Options Enumerated (if needed):</strong> (1) ~$2 billion of real estate (high-quality, financeable inspection centers), (2) capacity for more secured debt, (3) capacity for more unsecured debt, (4) equity issuance</li>
+    <li><strong>Analyst Estimate (Michael Montani, Evercore):</strong> 2023 EBITDA loss of $400 million to $600 million; ~$1 billion+ cash burn including interest expense; assumes slight decline in units, low $3,000s total GPU, SG&A improvements as discussed. Management declined to confirm or deny, directing to the shareholder letter.</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Advertising Strategy</h3>
+  <ul>
+    <li><strong>Direction:</strong> Pulling back "pretty dramatically" on marketing; more to come</li>
+    <li><strong>Channel Mix:</strong> More likely to cut direct marketing channels; will be more careful with brand channels to preserve long-term brand equity</li>
+    <li><strong>Brand Strength:</strong> "Highly likely that our brand is materially stronger than it was a couple of years ago"</li>
+    <li><strong>Testing Approach:</strong> Using markets as "laboratories" to turn on and off different marketing channels; finding room to pull back in most cases due to lower ROI in current environment</li>
+    <li><strong>Share of Voice:</strong> Not specifically quantified but acknowledged as declining</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Vending Machine / Omnichannel Evolution</h3>
+  <ul>
+    <li><strong>Vending Machine Pickup:</strong> 40% of customers nationwide now picking up at vending machines (despite vending machines only in a subset of markets); roughly double since early 2022</li>
+    <li><strong>Non-Vending Machine Pickup:</strong> Testing pickup at non-vending machine locations</li>
+    <li><strong>Incentivization:</strong> Company IS incentivizing customers to do pickups</li>
+    <li><strong>Customer Experience Impact:</strong> Testing all kinds of opportunities to decrease operational costs while monitoring customer speed and experience; seeing "really strong results"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Inventory Mix Strategy</h3>
+  <ul>
+    <li><strong>Approach:</strong> Evaluate customer shopping patterns on site, balance against market supply signals</li>
+    <li><strong>Current Direction:</strong> No particular patterns or shifts in mix worth calling out at this time; focus remains on normalizing total inventory size</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Cost Reduction Progress (Operational Metrics Not Yet Fully in Financials)</h3>
+  <ul>
+    <li><strong>Management Characterization:</strong> "The progress is really beginning to show up. This will continue to get clearer and to require less explanation over time"</li>
+    <li><strong>Transition Costs:</strong> Shrinking inventory = buying fewer cars = IRC overhead spread over fewer cars = efficiency temporarily suppressed; described as "transitory"</li>
+    <li><strong>Negative Feedback Loops from Shrinking:</strong> Acknowledged: "when we are shrinking, that creates negative feedback loops that we have to be mindful of and make it a little bit harder"</li>
+    <li><strong>Recent Learning (Last 3-4 Months):</strong> "More of our projects are probably having bigger operational gains than we may have hoped for, but they're also pushing in the direction of fewer sales"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Consensus Estimates (S&P Global, as of Feb 24, 2023)</h3>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>FQ4 2021</th><th>FQ1 2022</th><th>FQ2 2022</th><th>FQ3 2022</th><th>FQ4 2022</th><th>FY 2022</th><th>FY 2023</th></tr></thead><tbody><tr><td><strong>EPS (Normalized) Consensus</strong></td><td>($0.82)</td><td>($1.58)</td><td>($1.98)</td><td>($1.97)</td><td>($2.37)</td><td>($10.12)</td><td>($7.60)</td></tr><tr><td><strong>EPS (Normalized) Actual</strong></td><td>($1.02)</td><td>($2.89)</td><td>($2.35)</td><td>($2.67)</td><td>--</td><td>--</td><td>--</td></tr><tr><td><strong>Revenue Consensus (mm)</strong></td><td>--</td><td>--</td><td>--</td><td>$3,693.91</td><td>$3,047.91</td><td>$13,845.31</td><td>$13,003.23</td></tr><tr><td><strong>Revenue Actual (mm)</strong></td><td>--</td><td>--</td><td>--</td><td>$3,386.00</td><td>--</td><td>--</td><td>--</td></tr></tbody></table> *Data sourced from Carvana Co. FQ4 2022 Earnings Call Transcript (February 23, 2023) and S&P Global Market Intelligence estimates. All GPU and SG&A figures are non-GAAP unless otherwise noted. EBITDA refers to adjusted EBITDA.*</div>
+</div>
+<div class="content-section">
+  <h3>Q4 2022 Actuals (Reported)</h3>
+</div>
+<div class="content-section">
+  <h3>Full Year 2022 Actuals</h3>
+</div>
+
+<div class="prior-ref" id="priorRef">
+  <div class="prior-ref-header" onclick="var b=document.getElementById('priorBody');b.classList.toggle('open');this.querySelector('.arrow').innerHTML=b.classList.contains('open')?'&#9650;':'&#9660;';">
+    Prior Quarter Reference: Q3 2022
+    <span class="arrow">&#9660;</span>
+  </div>
+  <div class="prior-ref-body" id="priorBody">
+    <div class="metric-grid">
+    </div>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q3_2022.html" style="color:var(--blue);">View full Q3 2022 detail &rarr;</a></p>
+  </div>
+</div>
+
+<div class="footer-nav">
+  <a href="Q3_2022.html">&larr; Q3 2022</a>
+  <a href="../comparison.html">Back to Overview</a>
+  <a href="Q1_2023.html">Q1 2023 &rarr;</a>
+</div>
+
+</body>
+</html>

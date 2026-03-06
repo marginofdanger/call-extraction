@@ -319,6 +319,31 @@
     .comp-table th, .comp-table td { padding: 6px 8px; }
   }
 
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+  .content-section .md-table th {
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .content-section .md-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-section .md-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+  .content-section .md-table tr:hover { background: #e8f4fd; }
+
   @media print {
     .nav-bar { display: none; }
     .header { background: #333; }
@@ -339,6 +364,8 @@
   <div class="nav-center">
     <a href="../comparison.html" class="nav-back">Overview</a>
     <a href="../results.html" class="nav-back">Results</a>
+    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>
+    <a href="Q4_FY2026.html" class="qbtn">4Q2026</a>
     <a href="Q3_FY2026.html" class="qbtn">3Q2026</a>
     <a href="Q2_FY2026.html" class="qbtn">2Q2026</a>
     <a href="Q1_FY2026.html" class="qbtn">1Q2026</a>
@@ -414,9 +441,7 @@
 </div>
 <div class="content-section">
   <h3>Guidance Changes vs Prior Quarter (Q2 FY2025 Call)</h3>
-  <ul>
-    <li>| Metric | Q2 Call Guidance | Q3 Call Guidance (Updated) | Change | |--------|-----------------|---------------------------|--------| | Total Revenue | $2,704M-$2,710M | $2,722M-$2,725M | +$15M-$18M | | Non-GAAP OI | ~$1,080M | ~$1,120M | +~$40M | | Non-GAAP Diluted EPS | ~$6.22 | ~$6.44 | +$0.22 |</li>
-  </ul>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Q2 Call Guidance</th><th>Q3 Call Guidance (Updated)</th><th>Change</th></tr></thead><tbody><tr><td>Total Revenue</td><td>$2,704M-$2,710M</td><td>$2,722M-$2,725M</td><td>+$15M-$18M</td></tr><tr><td>Non-GAAP OI</td><td>~$1,080M</td><td>~$1,120M</td><td>+~$40M</td></tr><tr><td>Non-GAAP Diluted EPS</td><td>~$6.22</td><td>~$6.44</td><td>+$0.22</td></tr></tbody></table></div>
 </div>
 <div class="content-section">
   <h3>Long-Term Targets</h3>

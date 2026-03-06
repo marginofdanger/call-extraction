@@ -319,6 +319,31 @@
     .comp-table th, .comp-table td { padding: 6px 8px; }
   }
 
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+  .content-section .md-table th {
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .content-section .md-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-section .md-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+  .content-section .md-table tr:hover { background: #e8f4fd; }
+
   @media print {
     .nav-bar { display: none; }
     .header { background: #333; }
@@ -339,6 +364,8 @@
   <div class="nav-center">
     <a href="../comparison.html" class="nav-back">Overview</a>
     <a href="../results.html" class="nav-back">Results</a>
+    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>
+    <a href="Q4_FY2026.html" class="qbtn">4Q2026</a>
     <a href="Q3_FY2026.html" class="qbtn">3Q2026</a>
     <a href="Q2_FY2026.html" class="qbtn current">2Q2026</a>
     <a href="Q1_FY2026.html" class="qbtn">1Q2026</a>
@@ -375,8 +402,8 @@
 <!-- Full Guidance Content -->
 <div class="content-section">
   <h3>Quarterly Guidance (Q3 FY2026 - Quarter ending October 31, 2025)</h3>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Q3 FY2026 Guidance</th></tr></thead><tbody><tr><td><strong>Total Revenue</strong></td><td><strong>$790M - $793M</strong></td></tr><tr><td><strong>Non-GAAP Operating Income</strong></td><td><strong>$348M - $350M</strong></td></tr><tr><td><strong>Non-GAAP Diluted EPS</strong></td><td><strong>$1.94 - $1.95</strong></td></tr></tbody></table></div>
   <ul>
-    <li>| Metric | Q3 FY2026 Guidance | |--------|--------------------| | <strong>Total Revenue</strong> | <strong>$790M - $793M</strong> | | <strong>Non-GAAP Operating Income</strong> | <strong>$348M - $350M</strong> | | <strong>Non-GAAP Diluted EPS</strong> | <strong>$1.94 - $1.95</strong> |</li>
     <li><strong>Implied Q3 Non-GAAP Operating Margin:</strong> ~44.0% - 44.1%</li>
     <li><strong>Implied Q3 Revenue YoY Growth:</strong> ~15-16% (vs. Q3 FY2025 total revenue of ~$685M)</li>
     <li><strong>Implied Q3 Revenue Sequential Change:</strong> Roughly flat to slight increase from Q2 ($789.1M)</li>
@@ -384,8 +411,8 @@
 </div>
 <div class="content-section">
   <h3>Full Year FY2026 Guidance (Year ending January 31, 2026)</h3>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Updated FY2026 Guidance (Q2 Call)</th><th>Prior FY2026 Guidance (Q1 Call)</th><th>Initial FY2026 Guidance (Q4 FY2025 Call)</th><th>Change (Q2 vs Q1)</th></tr></thead><tbody><tr><td><strong>Total Revenue</strong></td><td><strong>$3,134M - $3,140M</strong></td><td>$3,090M - $3,100M</td><td>$3,040M - $3,055M</td><td><strong>Raised ~$40M at midpoint</strong></td></tr><tr><td><strong>Non-GAAP Operating Income</strong></td><td><strong>~$1,388M</strong></td><td>~$1,360M</td><td>~$1,300M</td><td><strong>Raised ~$28M</strong></td></tr><tr><td><strong>Non-GAAP Diluted EPS</strong></td><td><strong>~$7.78</strong></td><td>~$7.63</td><td>~$7.32</td><td><strong>Raised ~$0.15</strong></td></tr></tbody></table></div>
   <ul>
-    <li>| Metric | Updated FY2026 Guidance (Q2 Call) | Prior FY2026 Guidance (Q1 Call) | Initial FY2026 Guidance (Q4 FY2025 Call) | Change (Q2 vs Q1) | |--------|-----------------------------------|----------------------------------|------------------------------------------|-------------------| | <strong>Total Revenue</strong> | <strong>$3,134M - $3,140M</strong> | $3,090M - $3,100M | $3,040M - $3,055M | <strong>Raised ~$40M at midpoint</strong> | | <strong>Non-GAAP Operating Income</strong> | <strong>~$1,388M</strong> | ~$1,360M | ~$1,300M | <strong>Raised ~$28M</strong> | | <strong>Non-GAAP Diluted EPS</strong> | <strong>~$7.78</strong> | ~$7.63 | ~$7.32 | <strong>Raised ~$0.15</strong> |</li>
     <li><strong>Implied FY2026 Revenue Growth:</strong> ~14% YoY (vs. FY2025 total revenue of $2,746.6M)</li>
     <li><strong>Implied FY2026 Non-GAAP Operating Margin:</strong> ~44.2% - 44.3%</li>
     <li><strong>Implied FY2026 Revenue midpoint:</strong> ~$3,137M (vs. prior ~$3,095M; vs. initial ~$3,048M)</li>
@@ -403,14 +430,12 @@
 </div>
 <div class="content-section">
   <h3>Implied Q4 FY2026 Guidance (Backing into from Full Year minus H1 + Q3)</h3>
-  <ul>
-    <li>| Metric | Implied Q4 FY2026 | |--------|-------------------| | <strong>Total Revenue</strong> | ~$796M - $799M (FY midpoint $3,137M minus H1 $1,548.1M minus Q3 midpoint $791.5M) | | <strong>Non-GAAP Operating Income</strong> | ~$336M (FY $1,388M minus H1 $702.5M minus Q3 midpoint $349M) |</li>
-  </ul>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Implied Q4 FY2026</th></tr></thead><tbody><tr><td><strong>Total Revenue</strong></td><td>~$796M - $799M (FY midpoint $3,137M minus H1 $1,548.1M minus Q3 midpoint $791.5M)</td></tr><tr><td><strong>Non-GAAP Operating Income</strong></td><td>~$336M (FY $1,388M minus H1 $702.5M minus Q3 midpoint $349M)</td></tr></tbody></table></div>
 </div>
 <div class="content-section">
   <h3>Long-Term Targets</h3>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Target</th><th>Timeframe</th></tr></thead><tbody><tr><td><strong>Revenue Target</strong></td><td><strong>$6 billion</strong></td><td><strong>5-year plan (by ~FY2031 / CY2030)</strong></td></tr><tr><td><strong>Revenue Run Rate Milestone</strong></td><td><strong>$3 billion achieved</strong></td><td><strong>Calendar 2025 target -- crossed in Q1 FY2026</strong></td></tr><tr><td><strong>Veeva AI Revenue Contribution</strong></td><td><strong>No material revenue contribution expected in FY2027 or FY2028</strong></td><td>Near-term</td></tr><tr><td><strong>Veeva AI Market Impact</strong></td><td><strong>"Significant increase in our market size" -- will play out over many years</strong></td><td>Long-term</td></tr></tbody></table></div>
   <ul>
-    <li>| Metric | Target | Timeframe | |--------|--------|-----------| | <strong>Revenue Target</strong> | <strong>$6 billion</strong> | <strong>5-year plan (by ~FY2031 / CY2030)</strong> | | <strong>Revenue Run Rate Milestone</strong> | <strong>$3 billion achieved</strong> | <strong>Calendar 2025 target -- crossed in Q1 FY2026</strong> | | <strong>Veeva AI Revenue Contribution</strong> | <strong>No material revenue contribution expected in FY2027 or FY2028</strong> | Near-term | | <strong>Veeva AI Market Impact</strong> | <strong>"Significant increase in our market size" -- will play out over many years</strong> | Long-term |</li>
     <li>CEO Gassner: "We're very happy with our 5-year plan, we have a lot of confidence in our $6 billion revenue plan."</li>
     <li>On Veeva AI: "I don't expect any material revenue contribution for '26 or '27, for example, but I expect it's a significant increase in our market size, and that will play out over many years."</li>
     <li>Investor Day scheduled for <strong>October 16, 2025</strong></li>
@@ -418,8 +443,8 @@
 </div>
 <div class="content-section">
   <h3>Q2 FY2026 Revenue</h3>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Q2 FY2026</th><th>Q2 FY2025</th><th>YoY Change</th></tr></thead><tbody><tr><td><strong>Total Revenue</strong></td><td><strong>$789.1M</strong></td><td>$676.2M</td><td><strong>+17%</strong></td></tr><tr><td><strong>Subscription Services Revenue</strong></td><td><strong>$659.2M</strong></td><td>$561.3M</td><td><strong>+17%</strong></td></tr><tr><td><strong>Professional Services & Other Revenue</strong></td><td><strong>$129.9M</strong></td><td>$114.9M</td><td>+13%</td></tr></tbody></table></div>
   <ul>
-    <li>| Metric | Q2 FY2026 | Q2 FY2025 | YoY Change | |--------|-----------|-----------|------------| | <strong>Total Revenue</strong> | <strong>$789.1M</strong> | $676.2M | <strong>+17%</strong> | | <strong>Subscription Services Revenue</strong> | <strong>$659.2M</strong> | $561.3M | <strong>+17%</strong> | | <strong>Professional Services & Other Revenue</strong> | <strong>$129.9M</strong> | $114.9M | +13% |</li>
     <li><strong>Revenue vs. Guidance:</strong> Total revenue of $789.1M exceeded Q2 guidance range of $766-$769M (beat by ~$20-$23M)</li>
     <li>CEO Gassner: "We had another strong quarter, delivering Q2 results ahead of our guidance. Total revenue in the quarter was $789 million."</li>
     <li>CFO Van Wagener: "We delivered another strong quarter, with results for all metrics outperforming our guidance."</li>
@@ -428,16 +453,21 @@
 <div class="content-section">
   <h3>Q2 FY2026 Revenue Breakdown by Segment</h3>
   <ul>
-    <li><strong>Subscription Services Revenue by Product Area:</strong> | Segment | Q2 FY2026 | Q2 FY2025 | YoY Change | |---------|-----------|-----------|------------| | <strong>Veeva Commercial Solutions (Subscription)</strong> | <strong>$307.5M</strong> | $271.8M | <strong>+13%</strong> | | <strong>Veeva R&D Solutions (Subscription)</strong> | <strong>$351.7M</strong> | $289.5M | <strong>+21%</strong> | | <strong>Total Subscription Services</strong> | <strong>$659.2M</strong> | $561.3M | <strong>+17%</strong> |</li>
+    <li><strong>Subscription Services Revenue by Product Area:</strong></li>
+  </ul>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Segment</th><th>Q2 FY2026</th><th>Q2 FY2025</th><th>YoY Change</th></tr></thead><tbody><tr><td><strong>Veeva Commercial Solutions (Subscription)</strong></td><td><strong>$307.5M</strong></td><td>$271.8M</td><td><strong>+13%</strong></td></tr><tr><td><strong>Veeva R&D Solutions (Subscription)</strong></td><td><strong>$351.7M</strong></td><td>$289.5M</td><td><strong>+21%</strong></td></tr><tr><td><strong>Total Subscription Services</strong></td><td><strong>$659.2M</strong></td><td>$561.3M</td><td><strong>+17%</strong></td></tr></tbody></table></div>
+  <ul>
     <li>R&D subscription growth of +21% YoY; CFO noted R&D subscriptions "sequentially rose the most in 2 years"</li>
     <li>R&D growth described as "broad-based" and "things firming up as we go into the second half"</li>
-    <li>Commercial subscription sequentially "flattish quarter-on-quarter" per analyst question; Crossix remains main driver <strong>Professional Services Revenue by Product Area:</strong> | Segment | Q2 FY2026 | Q2 FY2025 | YoY Change | |---------|-----------|-----------|------------| | <strong>Veeva Commercial Solutions (Services)</strong> | <strong>$47.7M</strong> | $45.1M | +6% | | <strong>Veeva R&D Solutions (Services)</strong> | <strong>$82.2M</strong> | $69.8M | +18% | | <strong>Total Professional Services</strong> | <strong>$129.9M</strong> | $114.9M | +13% | <strong>Total Revenue by Segment (Subscription + Services):</strong> | Segment | Q2 FY2026 | Q2 FY2025 | YoY Change | |---------|-----------|-----------|------------| | <strong>Veeva Commercial Solutions (Total)</strong> | <strong>$355.2M</strong> | $316.9M | <strong>+12%</strong> | | <strong>Veeva R&D Solutions (Total)</strong> | <strong>$433.9M</strong> | $359.3M | <strong>+21%</strong> |</li>
+    <li>Commercial subscription sequentially "flattish quarter-on-quarter" per analyst question; Crossix remains main driver <strong>Professional Services Revenue by Product Area:</strong></li>
   </ul>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Segment</th><th>Q2 FY2026</th><th>Q2 FY2025</th><th>YoY Change</th></tr></thead><tbody><tr><td><strong>Veeva Commercial Solutions (Services)</strong></td><td><strong>$47.7M</strong></td><td>$45.1M</td><td>+6%</td></tr><tr><td><strong>Veeva R&D Solutions (Services)</strong></td><td><strong>$82.2M</strong></td><td>$69.8M</td><td>+18%</td></tr><tr><td><strong>Total Professional Services</strong></td><td><strong>$129.9M</strong></td><td>$114.9M</td><td>+13%</td></tr></tbody></table> **Total Revenue by Segment (Subscription + Services):**</div>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Segment</th><th>Q2 FY2026</th><th>Q2 FY2025</th><th>YoY Change</th></tr></thead><tbody><tr><td><strong>Veeva Commercial Solutions (Total)</strong></td><td><strong>$355.2M</strong></td><td>$316.9M</td><td><strong>+12%</strong></td></tr><tr><td><strong>Veeva R&D Solutions (Total)</strong></td><td><strong>$433.9M</strong></td><td>$359.3M</td><td><strong>+21%</strong></td></tr></tbody></table></div>
 </div>
 <div class="content-section">
   <h3>Q2 FY2026 Profitability</h3>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Q2 FY2026</th><th>Q2 FY2025</th><th>YoY Change</th></tr></thead><tbody><tr><td><strong>GAAP Operating Income</strong></td><td><strong>$195.9M</strong></td><td>$166.5M</td><td>+18%</td></tr><tr><td><strong>GAAP Operating Margin</strong></td><td><strong>24.8%</strong></td><td>24.6%</td><td>+20bps</td></tr><tr><td><strong>Non-GAAP Operating Income</strong></td><td><strong>$352.6M</strong></td><td>$279.8M</td><td><strong>+26%</strong></td></tr><tr><td><strong>Non-GAAP Operating Margin</strong></td><td><strong>44.7%</strong></td><td>41.4%</td><td><strong>+330bps</strong></td></tr><tr><td><strong>GAAP Net Income</strong></td><td><strong>$200.3M</strong></td><td>$171.0M</td><td>+17%</td></tr><tr><td><strong>Non-GAAP Net Income</strong></td><td><strong>$333.4M</strong></td><td>$267.3M</td><td>+25%</td></tr><tr><td><strong>GAAP Diluted EPS</strong></td><td><strong>$1.19</strong></td><td>$1.04</td><td>+14%</td></tr><tr><td><strong>Non-GAAP Diluted EPS</strong></td><td><strong>$1.99</strong></td><td>$1.62</td><td><strong>+23%</strong></td></tr></tbody></table></div>
   <ul>
-    <li>| Metric | Q2 FY2026 | Q2 FY2025 | YoY Change | |--------|-----------|-----------|------------| | <strong>GAAP Operating Income</strong> | <strong>$195.9M</strong> | $166.5M | +18% | | <strong>GAAP Operating Margin</strong> | <strong>24.8%</strong> | 24.6% | +20bps | | <strong>Non-GAAP Operating Income</strong> | <strong>$352.6M</strong> | $279.8M | <strong>+26%</strong> | | <strong>Non-GAAP Operating Margin</strong> | <strong>44.7%</strong> | 41.4% | <strong>+330bps</strong> | | <strong>GAAP Net Income</strong> | <strong>$200.3M</strong> | $171.0M | +17% | | <strong>Non-GAAP Net Income</strong> | <strong>$333.4M</strong> | $267.3M | +25% | | <strong>GAAP Diluted EPS</strong> | <strong>$1.19</strong> | $1.04 | +14% | | <strong>Non-GAAP Diluted EPS</strong> | <strong>$1.99</strong> | $1.62 | <strong>+23%</strong> |</li>
     <li><strong>Non-GAAP Operating Income vs. Guidance:</strong> $352.6M exceeded Q2 guidance range of $335-$337M (beat by ~$16-$18M)</li>
     <li><strong>Non-GAAP Diluted EPS vs. Guidance:</strong> $1.99 exceeded Q2 guidance range of $1.89-$1.90 (beat by ~$0.09-$0.10)</li>
     <li>CEO Gassner: "Total revenue in the quarter was $789 million with non-GAAP operating income of $353 million."</li>
@@ -446,21 +476,15 @@
 </div>
 <div class="content-section">
   <h3>Q2 FY2026 Gross Margins</h3>
-  <ul>
-    <li>| Metric | Q2 FY2026 | Q2 FY2025 | |--------|-----------|-----------| | <strong>GAAP Total Gross Margin</strong> | <strong>75.3%</strong> | 74.8% | | <strong>Non-GAAP Total Gross Margin</strong> | <strong>77.5%</strong> | 77.2% | | <strong>GAAP Subscription Gross Margin</strong> | <strong>85.8%</strong> | 86.0% | | <strong>Non-GAAP Subscription Gross Margin</strong> | <strong>86.2%</strong> | 86.5% | | <strong>GAAP Professional Services Gross Margin</strong> | <strong>21.9%</strong> | 20.3% | | <strong>Non-GAAP Professional Services Gross Margin</strong> | <strong>33.4%</strong> | 31.9% |</li>
-  </ul>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Q2 FY2026</th><th>Q2 FY2025</th></tr></thead><tbody><tr><td><strong>GAAP Total Gross Margin</strong></td><td><strong>75.3%</strong></td><td>74.8%</td></tr><tr><td><strong>Non-GAAP Total Gross Margin</strong></td><td><strong>77.5%</strong></td><td>77.2%</td></tr><tr><td><strong>GAAP Subscription Gross Margin</strong></td><td><strong>85.8%</strong></td><td>86.0%</td></tr><tr><td><strong>Non-GAAP Subscription Gross Margin</strong></td><td><strong>86.2%</strong></td><td>86.5%</td></tr><tr><td><strong>GAAP Professional Services Gross Margin</strong></td><td><strong>21.9%</strong></td><td>20.3%</td></tr><tr><td><strong>Non-GAAP Professional Services Gross Margin</strong></td><td><strong>33.4%</strong></td><td>31.9%</td></tr></tbody></table></div>
 </div>
 <div class="content-section">
   <h3>Q2 FY2026 Key Operating Metrics</h3>
-  <ul>
-    <li>| Metric | Q2 FY2026 | |--------|-----------| | <strong>Stock-Based Compensation</strong> | $122.0M (vs. $108.4M in Q2 FY2025, +13% YoY) | | <strong>Amortization of Purchased Intangibles</strong> | $4.1M | | <strong>Litigation Settlement-Related Charges</strong> | $30.6M | | <strong>GAAP R&D Expense</strong> | $192.7M (24.4% of revenue) | | <strong>Non-GAAP R&D Expense</strong> | $139.3M (17.7% of revenue) | | <strong>GAAP S&M Expense</strong> | $109.4M (13.9% of revenue) | | <strong>Non-GAAP S&M Expense</strong> | $81.2M (10.3% of revenue) | | <strong>GAAP G&A Expense</strong> | $95.8M (12.1% of revenue) | | <strong>Non-GAAP G&A Expense</strong> | $38.7M (4.9% of revenue) | | <strong>Non-GAAP Tax Rate</strong> | 21.0% (estimated annual effective rate) | | <strong>Diluted Shares Outstanding</strong> | 167.7M | | <strong>Other Income, Net</strong> | $69.5M (vs. $58.6M in Q2 FY2025) |</li>
-  </ul>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Q2 FY2026</th></tr></thead><tbody><tr><td><strong>Stock-Based Compensation</strong></td><td>$122.0M (vs. $108.4M in Q2 FY2025, +13% YoY)</td></tr><tr><td><strong>Amortization of Purchased Intangibles</strong></td><td>$4.1M</td></tr><tr><td><strong>Litigation Settlement-Related Charges</strong></td><td>$30.6M</td></tr><tr><td><strong>GAAP R&D Expense</strong></td><td>$192.7M (24.4% of revenue)</td></tr><tr><td><strong>Non-GAAP R&D Expense</strong></td><td>$139.3M (17.7% of revenue)</td></tr><tr><td><strong>GAAP S&M Expense</strong></td><td>$109.4M (13.9% of revenue)</td></tr><tr><td><strong>Non-GAAP S&M Expense</strong></td><td>$81.2M (10.3% of revenue)</td></tr><tr><td><strong>GAAP G&A Expense</strong></td><td>$95.8M (12.1% of revenue)</td></tr><tr><td><strong>Non-GAAP G&A Expense</strong></td><td>$38.7M (4.9% of revenue)</td></tr><tr><td><strong>Non-GAAP Tax Rate</strong></td><td>21.0% (estimated annual effective rate)</td></tr><tr><td><strong>Diluted Shares Outstanding</strong></td><td>167.7M</td></tr><tr><td><strong>Other Income, Net</strong></td><td>$69.5M (vs. $58.6M in Q2 FY2025)</td></tr></tbody></table></div>
 </div>
 <div class="content-section">
   <h3>Q2 FY2026 / H1 FY2026 Cash Flow & Balance Sheet</h3>
-  <ul>
-    <li>| Metric | Q2 FY2026 | H1 FY2026 (6 months) | |--------|-----------|----------------------| | <strong>GAAP Operating Cash Flow</strong> | $238.4M | $1,115.6M | | <strong>Non-GAAP Operating Cash Flow</strong> | $225.4M | $1,100.0M | | <strong>Cash & Cash Equivalents</strong> | $1.93B | | | <strong>Short-Term Investments</strong> | $4.47B | | | <strong>Total Cash + Investments</strong> | ~$6.40B | | | <strong>Total Assets</strong> | $8.00B | | | <strong>Total Equity</strong> | $6.64B | | | <strong>Deferred Revenue</strong> | $1,107.7M (vs. $1,274.0M at Jan 31, 2025) | | <strong>Accounts Receivable</strong> | $422.1M | | | <strong>Goodwill</strong> | $439.9M | | | <strong>Shares Outstanding</strong> | 163.9M | |</li>
-  </ul>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Q2 FY2026</th><th>H1 FY2026 (6 months)</th></tr></thead><tbody><tr><td><strong>GAAP Operating Cash Flow</strong></td><td>$238.4M</td><td>$1,115.6M</td></tr><tr><td><strong>Non-GAAP Operating Cash Flow</strong></td><td>$225.4M</td><td>$1,100.0M</td></tr><tr><td><strong>Cash & Cash Equivalents</strong></td><td>$1.93B</td><td></td></tr><tr><td><strong>Short-Term Investments</strong></td><td>$4.47B</td><td></td></tr><tr><td><strong>Total Cash + Investments</strong></td><td>~$6.40B</td><td></td></tr><tr><td><strong>Total Assets</strong></td><td>$8.00B</td><td></td></tr><tr><td><strong>Total Equity</strong></td><td>$6.64B</td><td></td></tr><tr><td><strong>Deferred Revenue</strong></td><td>$1,107.7M (vs. $1,274.0M at Jan 31, 2025)</td></tr><tr><td><strong>Accounts Receivable</strong></td><td>$422.1M</td><td></td></tr><tr><td><strong>Goodwill</strong></td><td>$439.9M</td><td></td></tr><tr><td><strong>Shares Outstanding</strong></td><td>163.9M</td><td></td></tr></tbody></table></div>
 </div>
 <div class="content-section">
   <h3>Q2 FY2026 Billings Commentary</h3>
@@ -644,9 +668,7 @@
 </div>
 <div class="content-section">
   <h3>Key Events & Dates</h3>
-  <ul>
-    <li>| Event | Date | |-------|------| | <strong>Q2 FY2026 Earnings Call</strong> | August 27, 2025 | | <strong>Veeva Investor Day</strong> | October 16, 2025 | | <strong>Veeva CRM End of Salesforce OEM</strong> | ~9 months from Q2 call (~mid-2026) | <em>Data sources: Q2 FY2026 earnings call transcript (S&P Global), Q2 FY2026 press release (8-K filed August 27, 2025), Q2 FY2026 10-Q financials. Prior quarter guidance from Q1 FY2026 and Q4 FY2025 earnings releases. All financial figures in thousands unless otherwise noted.</em></li>
-  </ul>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Event</th><th>Date</th></tr></thead><tbody><tr><td><strong>Q2 FY2026 Earnings Call</strong></td><td>August 27, 2025</td></tr><tr><td><strong>Veeva Investor Day</strong></td><td>October 16, 2025</td></tr><tr><td><strong>Veeva CRM End of Salesforce OEM</strong></td><td>~9 months from Q2 call (~mid-2026)</td></tr></tbody></table> *Data sources: Q2 FY2026 earnings call transcript (S&P Global), Q2 FY2026 press release (8-K filed August 27, 2025), Q2 FY2026 10-Q financials. Prior quarter guidance from Q1 FY2026 and Q4 FY2025 earnings releases. All financial figures in thousands unless otherwise noted.*</div>
 </div>
 <div class="content-section">
   <h3>Q2 FY2026 Actuals (Reported)</h3>

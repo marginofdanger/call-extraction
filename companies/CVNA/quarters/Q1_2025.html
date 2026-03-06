@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CVNA Q1 2025 Earnings Call Detail</title>
+<style>
+:root {
+    --company-primary: #00AFF0;
+    --company-dark: #1a1a2e;
+    --company-accent: #006D9E;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 40px 40px 32px;
+    margin: 0 -24px 0;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .header .meta {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    font-weight: 300;
+  }
+  .header .meta span { margin-right: 24px; }
+
+  .nav-bar {
+    background: var(--company-accent);
+    margin: 0 -24px 32px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    transition: all 0.15s;
+  }
+  .nav-bar a:hover { background: rgba(255,255,255,0.2); }
+  .nav-bar a.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .nav-center {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-center a.qbtn {
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+  }
+  .nav-center a.qbtn.current {
+    background: var(--company-primary);
+    border-color: var(--company-primary);
+  }
+  .nav-center a.qbtn:hover { background: rgba(255,255,255,0.2); }
+  .nav-back {
+    background: rgba(255,255,255,0.15) !important;
+    border-color: rgba(255,255,255,0.35) !important;
+  }
+
+  .metrics-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .metric {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+  .metric-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .metric-value {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+  .metric-delta {
+    font-size: 0.72rem;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+  .delta-up { color: var(--green); }
+  .delta-down { color: var(--red); }
+  .delta-flat { color: var(--text-muted); }
+
+  .changes-box {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 5px solid var(--amber);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .changes-box h3 {
+    font-size: 1rem;
+    color: var(--company-dark);
+    margin-bottom: 10px;
+  }
+  .changes-box ul { list-style: none; padding: 0; }
+  .changes-box li {
+    padding: 5px 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .change-tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .ct-raised { background: #d5f5e3; color: #1e8449; }
+  .ct-lowered { background: #fadbd8; color: #c0392b; }
+  .ct-changed { background: #d6eaf8; color: #2471a3; }
+  .ct-new { background: #e8daef; color: #6c3483; }
+  .ct-maintained { background: #fdebd0; color: #b9770e; }
+
+  .content-section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .content-section h3 {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .content-section ul {
+    padding: 14px 18px 14px 36px;
+    margin: 0;
+  }
+  .content-section li {
+    padding: 3px 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .content-section li strong { color: var(--company-dark); }
+
+  .prior-ref {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 40px;
+    overflow: hidden;
+  }
+  .prior-ref-header {
+    background: var(--light-bg);
+    padding: 12px 18px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--company-dark);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .prior-ref-header:hover { background: #eef2f7; }
+  .prior-ref-body { padding: 18px; display: none; }
+  .prior-ref-body.open { display: block; }
+  .prior-ref-body .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .prior-mini {
+    background: var(--light-bg);
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .prior-mini .pm-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .prior-mini .pm-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--company-dark);
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border);
+  }
+  .footer-nav a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .footer-nav a:hover { text-decoration: underline; }
+
+  /* Comparison page styles */
+  .toc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .toc a {
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 4px 0;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  .comp-section {
+    margin-bottom: 40px;
+  }
+  .comp-section h2 {
+    font-size: 1.2rem;
+    color: var(--company-dark);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--company-primary);
+  }
+
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+  }
+  .comp-table th {
+    background: var(--company-accent);
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .comp-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .comp-table tr:nth-child(even) { background: var(--light-bg); }
+  .comp-table tr:hover { background: #e8f4fd; }
+
+  @media (max-width: 768px) {
+    .header h1 { font-size: 1.5rem; }
+    .metrics-card { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .nav-center { display: none; }
+    body { padding: 0 16px 60px; }
+    .header { margin: 0 -16px 0; padding: 28px 24px 20px; }
+    .nav-bar { margin: 0 -16px 24px; }
+    .toc { grid-template-columns: 1fr; }
+    .comp-table { font-size: 0.78rem; }
+    .comp-table th, .comp-table td { padding: 6px 8px; }
+  }
+
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+  .content-section .md-table th {
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .content-section .md-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-section .md-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+  .content-section .md-table tr:hover { background: #e8f4fd; }
+
+  @media print {
+    .nav-bar { display: none; }
+    .header { background: #333; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>CVNA Q1 2025 Earnings Call</h1>
+  <div class="meta">
+    <span>Call Date: May 7, 2025</span>
+    <span>Reporting: Q1 2025</span>
+  </div>
+</div>
+<div class="nav-bar">
+  <a href="Q4_2024.html">&larr; Q4 2024</a>
+  <div class="nav-center">
+    <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>
+    <a href="Q4_2025.html" class="qbtn">4Q25</a>
+    <a href="Q3_2025.html" class="qbtn">3Q25</a>
+    <a href="Q2_2025.html" class="qbtn">2Q25</a>
+    <a href="Q1_2025.html" class="qbtn current">1Q25</a>
+    <a href="Q4_2024.html" class="qbtn">4Q24</a>
+    <a href="Q3_2024.html" class="qbtn">3Q24</a>
+    <a href="Q2_2024.html" class="qbtn">2Q24</a>
+    <a href="Q1_2024.html" class="qbtn">1Q24</a>
+    <a href="Q4_2023.html" class="qbtn">4Q23</a>
+    <a href="Q3_2023.html" class="qbtn">3Q23</a>
+    <a href="Q2_2023.html" class="qbtn">2Q23</a>
+    <a href="Q1_2023.html" class="qbtn">1Q23</a>
+    <a href="Q4_2022.html" class="qbtn">4Q22</a>
+    <a href="Q3_2022.html" class="qbtn">3Q22</a>
+    <a href="Q2_2022.html" class="qbtn">2Q22</a>
+    <a href="Q1_2022.html" class="qbtn">1Q22</a>
+  </div>
+  <a href="Q2_2025.html">Q2 2025 &rarr;</a>
+</div>
+
+<div class="changes-box">
+  <h3>What Changed vs Q4 2024</h3>
+  <ul>
+    <li><span class="change-tag ct-new">New</span> NEW: ADESA wholesale integration discussed</li>
+  </ul>
+</div>
+
+<div class="metrics-card">
+  <div class="metric" style="grid-column: 1 / -1; background: linear-gradient(135deg, var(--company-dark), var(--company-accent)); color: #fff; border: none; padding: 8px 14px;">
+    <div class="metric-label" style="color: rgba(255,255,255,0.7);">Guidance For</div>
+    <div class="metric-value" style="color: #fff; font-size: 1rem;">Q2 2025</div>
+  </div>
+</div>
+
+<!-- Full Guidance Content -->
+<div class="content-section">
+  <h3>Quarterly Guidance (Q2 2025)</h3>
+</div>
+<div class="content-section">
+  <h3>Full Year 2025 Guidance</h3>
+</div>
+<div class="content-section">
+  <h3>Long-Term Targets</h3>
+</div>
+<div class="content-section">
+  <h3>Long-Term Financial Model (Reiterated)</h3>
+  <ul>
+    <li><strong>EBITDA Margin Range:</strong> 8% to 13.5% (established at 2018 Analyst Day)</li>
+    <li><strong>Current Position:</strong> Q1 2025 at 11.5%; last 4 consecutive quarters within range</li>
+    <li><strong>Target:</strong> Explicitly targeting <strong>13.5%</strong> (high end) -- "we are on a very good path right now"</li>
+    <li><strong>Profitability Comparison:</strong> "Approximately twice as profitable as the average public automotive retailer" as measured by adjusted EBITDA margin</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Guidance Scorecard (Q4 Call Guidance vs. Q1 Actuals)</h3>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Q4 Call Guidance (for Q1)</th><th>Q1 Actual</th><th>Result</th></tr></thead><tbody><tr><td>Retail Units</td><td>"Sequential increase" vs. Q4's 114,379</td><td>133,898 (+17.1% sequential)</td><td><strong>MASSIVE BEAT</strong> (significant sequential increase)</td></tr><tr><td>Adjusted EBITDA</td><td>"Sequential increase" vs. Q4's $359M</td><td>$488M (+$129M sequential)</td><td><strong>MASSIVE BEAT</strong> (new all-time record)</td></tr><tr><td>FY 2025 Retail Units</td><td>"Significant growth" vs. FY 2024's 416,348</td><td>On track (reiterated)</td><td><strong>ON TRACK</strong></td></tr><tr><td>FY 2025 EBITDA</td><td>"Significant growth" vs. FY 2024's $1,378M</td><td>On track (reiterated)</td><td><strong>ON TRACK</strong></td></tr><tr><td>Retail GPU Seasonality</td><td>Q4 and Q1 are "lowest quarters"</td><td>Q1 retail GPU $3,308 vs. Q4's $3,331 (-$23 seq.)</td><td><strong>IN LINE</strong> (both low quarters as guided)</td></tr><tr><td>Interest Expense Step-Down</td><td>"Meaningful step down" in GAAP net interest expense in 2025</td><td>Q1 at $139M vs. Q1 2024's $173M (-$34M); PIK interest $72M vs. $142M (-$70M)</td><td><strong>CLEARLY DELIVERING</strong></td></tr></tbody></table></div>
+</div>
+<div class="content-section">
+  <h3>Retail Units & Revenue</h3>
+  <ul>
+    <li><strong>Retail Units Sold:</strong> 133,898 (+45.7% YoY vs. Q1 2024's 91,878; +17.1% sequentially vs. Q4 2024's 114,379) -- <strong>NEW ALL-TIME COMPANY RECORD</strong></li>
+    <li><strong>Total Revenue:</strong> $4,232 million (+38.3% YoY vs. Q1 2024's $3,061 million; +19.3% sequentially vs. Q4 2024's $3,547 million) -- <strong>NEW ALL-TIME COMPANY RECORD</strong></li>
+    <li><strong>Retail Vehicle Sales:</strong> $2,980 million (+37.0% YoY vs. Q1 2024's $2,175 million)</li>
+    <li><strong>Wholesale Sales & Revenues:</strong> $863 million (+31.4% YoY vs. Q1 2024's $657 million)</li>
+    <li><strong>Other Sales & Revenues:</strong> $389 million (+69.9% YoY vs. Q1 2024's $229 million)</li>
+    <li><strong>Industry Context:</strong> Fifth consecutive quarter of positive net income; set new records for retail units sold, revenue, adjusted EBITDA, GAAP operating income, and GAAP operating margin; for the fifth consecutive quarter, fastest-growing AND most profitable public automotive retailer</li>
+    <li><strong>Prior Q1 Peak Comparison:</strong> Company-level sales up ~25% vs. previous best Q1; Atlanta and Phoenix (two of largest/most mature markets) also up ~25% vs. their previous Q1 highs</li>
+    <li><strong>Industry Growth Context:</strong> 46% retail unit growth in a "roughly flat industry"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Per Unit Selling Prices</h3>
+  <ul>
+    <li><strong>Retail Vehicle ASP:</strong> $22,256 (-6.0% YoY vs. Q1 2024's $23,673; -$56 sequentially vs. Q4 2024's $22,312)</li>
+    <li><strong>Wholesale Vehicle ASP:</strong> $9,865 (+2.5% YoY vs. Q1 2024's $9,625)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Unit Volumes (Non-Retail)</h3>
+  <ul>
+    <li><strong>Wholesale Vehicle Units Sold:</strong> 63,454 (+43.7% YoY vs. Q1 2024's 44,155)</li>
+    <li><strong>Wholesale Marketplace Units Transacted:</strong> 248,624 (+2.5% YoY vs. Q1 2024's 242,647)</li>
+    <li><strong>Wholesale Marketplace Revenue:</strong> $237 million (+2.2% YoY vs. Q1 2024's $232 million)</li>
+    <li><strong>Wholesale Marketplace Gross Profit:</strong> $47 million (+42.4% YoY vs. Q1 2024's $33 million)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Gross Profit Per Unit (GPU) -- Non-GAAP</h3>
+  <ul>
+    <li><strong>Non-GAAP Total GPU:</strong> $7,140 (+$338 YoY vs. Q1 2024's $6,802; +$224 sequentially vs. Q4 2024's $6,916)</li>
+    <li><strong>Non-GAAP Retail GPU:</strong> $3,308 (+$97 YoY vs. Q1 2024's $3,211; -$23 sequentially vs. Q4 2024's $3,331)</li>
+    <li><strong>Non-GAAP Wholesale GPU (per retail unit):</strong> $964 (-$189 YoY vs. Q1 2024's $1,153; +$107 sequentially vs. Q4 2024's $857)</li>
+    <li><strong>Non-GAAP Other GPU:</strong> $2,868 (+$430 YoY vs. Q1 2024's $2,438; +$140 sequentially vs. Q4 2024's $2,728)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>GAAP GPU (Per Retail Unit)</h3>
+  <ul>
+    <li><strong>GAAP Total GPU:</strong> $6,938 (+$506 YoY vs. Q1 2024's $6,432)</li>
+    <li><strong>GAAP Retail GPU:</strong> $3,204 (+$124 YoY vs. Q1 2024's $3,080)</li>
+    <li><strong>GAAP Wholesale GPU (per retail unit):</strong> $829 (-$31 YoY vs. Q1 2024's $860)</li>
+    <li><strong>GAAP Other GPU:</strong> $2,905 (+$413 YoY vs. Q1 2024's $2,492)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Non-GAAP GPU Sub-Components (from Supplement)</h3>
+  <ul>
+    <li><strong>Wholesale Vehicle GPU (per retail unit, non-GAAP):</strong> $493 (-$29 YoY vs. Q1 2024's $522; +$91 sequentially vs. Q4 2024's $402)</li>
+    <li><strong>Wholesale Marketplace GPU (per retail unit, non-GAAP):</strong> $471 (-$160 YoY vs. Q1 2024's $631; +$16 sequentially vs. Q4 2024's $455)</li>
+    <li><strong>Per Wholesale Unit -- Wholesale Vehicle Gross Profit:</strong> $1,009 (-3.2% YoY vs. Q1 2024's $1,042)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Retail GPU Drivers (Q1 YoY, +$97)</h3>
+  <ul>
+    <li><strong>Positive:</strong> Reductions in reconditioning and inbound transport costs; lower retail depreciation rates</li>
+    <li><strong>Partially Offset By:</strong> Lower spreads between wholesale and retail market prices</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Wholesale GPU Drivers (Q1 YoY, -$189)</h3>
+  <ul>
+    <li><strong>Negative:</strong> Faster growth in retail units than wholesale vehicle and wholesale marketplace units (denominator effect); higher wholesale vehicle depreciation rates</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Other GPU Drivers (Q1 YoY, +$430)</h3>
+  <ul>
+    <li><strong>Positive:</strong> Higher spreads between origination interest rates and funding costs; higher attachment rate on vehicle service contracts</li>
+    <li><strong>Finance GPU Context (Ernie):</strong> "Exceptional finance GPU this quarter"; improving trend over the last 1.5+ years; added another large pool of loan buyers this quarter</li>
+    <li><strong>Gain on Sale:</strong> Increased sequentially to over 11% of receivables sold (per Morgan Stanley Q&A); gain on loan sales = $273 million vs. $144 million in Q1 2024</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Gross Profit (Dollars)</h3>
+  <ul>
+    <li><strong>GAAP Gross Profit:</strong> $929 million (+57.2% YoY vs. Q1 2024's $591 million)</li>
+    <li><strong>Non-GAAP Gross Profit:</strong> $956 million (+53.0% YoY vs. Q1 2024's $625 million)</li>
+    <li><strong>GAAP Retail Vehicle Gross Profit:</strong> $429 million (+51.6% YoY vs. Q1 2024's $283 million)</li>
+    <li><strong>Non-GAAP Retail Gross Profit:</strong> $443 million (vs. Q1 2024's $295 million)</li>
+    <li><strong>GAAP Wholesale Gross Profit:</strong> $111 million (+40.5% YoY vs. Q1 2024's $79 million)</li>
+    <li><strong>Non-GAAP Wholesale Vehicle Gross Profit:</strong> $66 million (vs. Q1 2024's $48 million)</li>
+    <li><strong>Non-GAAP Wholesale Marketplace Gross Profit:</strong> $63 million (vs. Q1 2024's $58 million)</li>
+    <li><strong>GAAP Other Gross Profit:</strong> $389 million (+69.9% YoY vs. Q1 2024's $229 million)</li>
+    <li><strong>Non-GAAP Other Gross Profit:</strong> $384 million (vs. Q1 2024's $224 million)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>SG&A</h3>
+  <ul>
+    <li><strong>GAAP SG&A:</strong> $535 million (+17.3% YoY vs. Q1 2024's $456 million; +$41 million sequentially vs. Q4 2024's $494 million)</li>
+    <li><strong>Non-GAAP SG&A:</strong> $468 million (+20.0% YoY vs. Q1 2024's $390 million; +$36 million sequentially vs. Q4 2024's $432 million)</li>
+    <li><strong>GAAP SG&A Per Retail Unit:</strong> $3,996 (-$967 YoY vs. Q1 2024's $4,963)</li>
+    <li><strong>Non-GAAP SG&A Per Retail Unit:</strong> $3,495 (-$750 YoY vs. Q1 2024's $4,245; -$282 sequentially vs. Q4 2024's $3,777)</li>
+    <li><strong>YoY Leverage:</strong> Retail units sold increased 46% YoY while non-GAAP SG&A increased only 20%, leading to $750 reduction in SG&A per retail unit YoY</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>SG&A Component Breakdown (GAAP)</h3>
+  <ul>
+    <li><strong>Compensation & Benefits:</strong> $199 million (+$15 million sequentially vs. Q4 2024's $184 million; +$26 million YoY vs. Q1 2024's $173 million)</li>
+    <li><strong>Advertising:</strong> $72 million (+$8 million sequentially vs. Q4 2024's $64 million; +$18 million YoY vs. Q1 2024's $54 million)</li>
+    <li><strong>Market Occupancy:</strong> $16 million (flat sequentially vs. Q4; -$2 million YoY vs. Q1 2024's $18 million)</li>
+    <li><strong>Logistics:</strong> $37 million (+$5 million sequentially vs. Q4 2024's $32 million; +$8 million YoY vs. Q1 2024's $29 million)</li>
+    <li><strong>Other SG&A:</strong> $211 million (+$13 million sequentially vs. Q4 2024's $198 million; +$29 million YoY vs. Q1 2024's $182 million)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Carvana Operations Expense</h3>
+  <ul>
+    <li><strong>Carvana Operations Expense Per Retail Unit:</strong> $1,658 (-$192 YoY vs. Q1 2024 (implied ~$1,850); -$38 sequentially vs. Q4 2024's $1,696)</li>
+    <li><strong>Overhead Expense (Dollar):</strong> $160 million (+$9 million YoY vs. Q1 2024's $151 million; flat sequentially vs. Q4 2024's ~$159-$160 million)</li>
+    <li><strong>Overhead Per Retail Unit Reduction:</strong> -$449 YoY (fixed cost leverage)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>EBITDA & Margins</h3>
+  <ul>
+    <li><strong>Adjusted EBITDA:</strong> $488 million (+$253 million YoY vs. Q1 2024's $235 million; +$129 million sequentially vs. Q4 2024's $359 million) -- <strong>NEW ALL-TIME COMPANY RECORD</strong></li>
+    <li><strong>Adjusted EBITDA Margin:</strong> 11.5% (+3.8pp YoY vs. Q1 2024's 7.7%; +1.4pp sequentially vs. Q4 2024's 10.1%) -- <strong>Industry-leading; well within 8%-13.5% long-term model</strong></li>
+    <li><strong>Adjusted EBITDA Per Retail Unit:</strong> $3,645 (+$1,087 YoY vs. Q1 2024's $2,558)</li>
+    <li><strong>EBITDA Cash Conversion:</strong> Approximately 80% of adjusted EBITDA converted to GAAP operating income</li>
+    <li><strong>GAAP Operating Income:</strong> $394 million (+$260 million YoY vs. Q1 2024's $134 million; +$134 million sequentially vs. Q4 2024's $260 million) -- <strong>NEW ALL-TIME COMPANY RECORD</strong></li>
+    <li><strong>GAAP Operating Margin:</strong> 9.3% -- <strong>Leading the public auto retail industry</strong> (+4.9pp YoY vs. Q1 2024's 4.4%)</li>
+    <li><strong>GAAP Net Income (Consolidated):</strong> $373 million (+$324 million YoY vs. Q1 2024's $49 million)</li>
+    <li><strong>GAAP Net Income Attributable to Carvana Co.:</strong> $216 million (+$188 million YoY vs. Q1 2024's $28 million)</li>
+    <li><strong>Net Income Margin:</strong> 8.8% (+7.2pp YoY vs. Q1 2024's 1.6%)</li>
+    <li><strong>Net Income Per Retail Unit:</strong> $2,786 (+$2,253 YoY vs. Q1 2024's $533)</li>
+    <li><strong>EPS (Basic):</strong> $1.61 (vs. Q1 2024's $0.24)</li>
+    <li><strong>EPS (Diluted):</strong> $1.51 (vs. Q1 2024's $0.23)</li>
+    <li><strong>Fifth consecutive quarter of positive net income</strong></li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Non-GAAP Reconciliation Items</h3>
+  <ul>
+    <li><strong>D&A in Cost of Sales:</strong> $31 million (vs. Q1 2024's $39 million; -$8 million YoY)</li>
+    <li><strong>D&A in SG&A:</strong> $42 million (vs. Q1 2024's $43 million; -$1 million YoY)</li>
+    <li><strong>Total D&A:</strong> $73 million (vs. Q1 2024's $82 million; -$9 million YoY)</li>
+    <li><strong>SBC in Cost of Sales:</strong> $1 million (vs. Q1 2024's $0 million)</li>
+    <li><strong>SBC in SG&A:</strong> $25 million (vs. Q1 2024's $23 million)</li>
+    <li><strong>Loss on Debt Extinguishment:</strong> $2 million (vs. Q1 2024's $0 million)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Balance Sheet (March 31, 2025)</h3>
+  <ul>
+    <li><strong>Cash & Cash Equivalents:</strong> $1,858 million (+$142 million sequentially vs. December 31, 2024's $1,716 million)</li>
+    <li><strong>Restricted Cash:</strong> $46 million</li>
+    <li><strong>Total Cash + Restricted Cash:</strong> $1,904 million</li>
+    <li><strong>Accounts Receivable (net):</strong> $369 million (vs. $303 million at Dec 31, 2024)</li>
+    <li><strong>Finance Receivables Held for Sale (net):</strong> $737 million (vs. $612 million at Dec 31, 2024)</li>
+    <li><strong>Vehicle Inventory:</strong> $1,503 million (-$105 million sequentially vs. December 31, 2024's $1,608 million)</li>
+    <li><strong>Total Current Assets:</strong> $5,137 million (vs. $4,869 million at Dec 31, 2024)</li>
+    <li><strong>Property & Equipment (net):</strong> $2,743 million (vs. $2,773 million at Dec 31, 2024)</li>
+    <li><strong>Goodwill:</strong> $2 million (new; from franchise dealership acquisition)</li>
+    <li><strong>Total Assets:</strong> $8,878 million (+$394 million sequentially vs. December 31, 2024's $8,484 million)</li>
+    <li><strong>Total Liabilities:</strong> $7,105 million (-$4 million sequentially vs. December 31, 2024's $7,109 million)</li>
+    <li><strong>Long-Term Debt (ex-current):</strong> $5,269 million (+$13 million sequentially vs. December 31, 2024's $5,256 million)</li>
+    <li><strong>Current Portion of Long-Term Debt:</strong> $308 million (vs. $309 million at Dec 31, 2024)</li>
+    <li><strong>Total Stockholders' Equity:</strong> $1,773 million (+$398 million sequentially vs. December 31, 2024's $1,375 million)</li>
+    <li><strong>Total Equity Attributable to Carvana Co.:</strong> $1,504 million (+$244 million sequentially vs. December 31, 2024's $1,260 million)</li>
+    <li><strong>Accumulated Deficit:</strong> -$1,200 million (improved from -$1,416 million at Dec 31, 2024; +$216 million improvement = Q1 net income to Carvana Co.)</li>
+    <li><strong>Shares Outstanding (Class A):</strong> 134,399 thousand (vs. 133,271 thousand at Dec 31, 2024; +1,128 thousand)</li>
+    <li><strong>Shares Outstanding (Class B):</strong> 79,119 thousand (unchanged)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Cash Flow (Q1 2025)</h3>
+  <ul>
+    <li><strong>Operating Cash Flow:</strong> $232 million (vs. Q1 2024's $101 million; +$131 million YoY)</li>
+    <li><strong>CapEx:</strong> -$27 million (vs. Q1 2024's -$18 million)</li>
+    <li><strong>Free Cash Flow (implied):</strong> ~$205 million ($232M - $27M)</li>
+    <li><strong>Payments for Acquisitions (net):</strong> -$24 million (franchise dealership purchase)</li>
+    <li><strong>Net Cash from Investing:</strong> -$35 million (vs. Q1 2024's +$7 million)</li>
+    <li><strong>Net Cash from Financing:</strong> -$53 million (vs. Q1 2024's -$375 million)</li>
+    <li><strong>Long-Term Debt Payments:</strong> -$77 million (vs. Q1 2024's -$23 million)</li>
+    <li><strong>Originations of Finance Receivables:</strong> -$2,660 million (vs. Q1 2024's -$1,846 million; +44% YoY)</li>
+    <li><strong>Proceeds from Sale of Finance Receivables (net):</strong> $2,699 million (vs. Q1 2024's $1,825 million)</li>
+    <li><strong>Gain on Loan Sales:</strong> $273 million (vs. Q1 2024's $144 million; +89.6% YoY)</li>
+    <li><strong>Payment-in-Kind Interest Expense:</strong> $72 million (vs. Q1 2024's $142 million; -$70 million YoY -- <strong>significant step down</strong>)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Interest Expense</h3>
+  <ul>
+    <li><strong>GAAP Net Interest Expense (Q1):</strong> $139 million (-$34 million YoY vs. Q1 2024's $173 million; flat-to-slightly-lower vs. Q4 2024's $148 million)</li>
+    <li><strong>Other Income (net):</strong> -$122 million (gain; driven by unrealized gain on Root warrants of $158 million vs. $75 million in Q1 2024)</li>
+    <li><strong>PIK Interest:</strong> $72 million (vs. Q1 2024's $142 million) -- reflects debt exchange transition to lower PIK rates</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Retail Units</h3>
+  <ul>
+    <li><strong>Direction:</strong> Expect a <strong>sequential increase in retail units sold</strong> in Q2 2025 vs. Q1 2025's 133,898</li>
+    <li><strong>Conditioned On:</strong> "Assuming the environment remains stable"</li>
+    <li><strong>Records:</strong> Expects Q2 to set <strong>all-time company record</strong> for retail units sold</li>
+    <li><strong>Source:</strong> Mark Jenkins: "Looking toward Q2, we expect a sequential increase in both retail units sold and adjusted EBITDA, leading to all-time company records on both metrics"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Adjusted EBITDA</h3>
+  <ul>
+    <li><strong>Direction:</strong> Expect a <strong>sequential increase in adjusted EBITDA</strong> in Q2 2025 vs. Q1 2025's $488 million</li>
+    <li><strong>Conditioned On:</strong> "Assuming the environment remains stable"</li>
+    <li><strong>Records:</strong> Expects Q2 to set <strong>all-time company record</strong> for adjusted EBITDA (i.e., above $488 million)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Retail GPU Seasonality (Q2 vs. Q1)</h3>
+  <ul>
+    <li><strong>Normal Seasonal Pattern:</strong> Q4 and Q1 are the "lower quarters of the year" for retail GPU; Q2 and Q3 are the "higher quarters of the year"</li>
+    <li><strong>This Year Expectation:</strong> "That's a reasonable expectation for this year based on what we're seeing as well... no reason to think that this year would be any different on that front at this time" (Mark Jenkins)</li>
+    <li><strong>Implication:</strong> Non-GAAP retail GPU expected to increase from Q1's $3,308 in Q2, following seasonal uplift</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Retail Units</h3>
+  <ul>
+    <li><strong>Direction:</strong> Remain on track to deliver <strong>significant growth in retail units sold</strong> in FY 2025 vs. FY 2024's 416,348</li>
+    <li><strong>Reiterated:</strong> "We remain on track to deliver significant growth in both retail units sold and adjusted EBITDA in FY 2025"</li>
+    <li><strong>No Specific Quantification:</strong> Management did not define "significant" or provide a range</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Adjusted EBITDA</h3>
+  <ul>
+    <li><strong>Direction:</strong> Remain on track to deliver <strong>significant growth in adjusted EBITDA</strong> in FY 2025 vs. FY 2024's $1,378 million</li>
+    <li><strong>Reiterated:</strong> Same language as Q4 call -- "significant growth"</li>
+    <li><strong>No Specific Quantification:</strong> No dollar amount or range provided</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>EBITDA Margin Walk (Ernie, Q&A)</h3>
+  <ul>
+    <li><strong>Q1 Base:</strong> 11.5% adjusted EBITDA margin in a "traditionally seasonally weak quarter"</li>
+    <li><strong>Fixed Cost Leverage:</strong> "A couple of points of fixed cost leverage from there" -- implies 2+ percentage points of additional margin from scale alone</li>
+    <li><strong>Mature Market Benefit:</strong> Older, more mature markets with larger market shares are "a couple of hundred dollars better" per unit than average (advertising leverage)</li>
+    <li><strong>Fundamental Gains:</strong> "Very significant fundamental gains to be had" -- YoY fundamental gains unlocked ~$1,000 per unit of value</li>
+    <li><strong>Mental Math Implication:</strong> 11.5% + couple points of leverage + fundamental gains "gets you well beyond our 13.5% target" -- but management plans to share that excess with customers as fuel for growth</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>CapEx</h3>
+  <ul>
+    <li><strong>Mark Jenkins reference:</strong> "Mark's given some CapEx guidance for this year" (Ernie referenced existing CapEx guidance without specifying a number on this call)</li>
+    <li><strong>Q1 Actual CapEx:</strong> $27 million</li>
+    <li><strong>Acquisitions:</strong> $24 million for franchise dealership purchase (separate from CapEx)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>NEW: 5-to-10-Year Objective (Introduced This Quarter)</h3>
+  <ul>
+    <li><strong>Target:</strong> Grow to <strong>3 million annual retail sales</strong> with <strong>13.5% adjusted EBITDA margins</strong> in the <strong>next 5 to 10 years</strong> -- <strong>MAJOR NEW LONG-TERM OBJECTIVE</strong></li>
+    <li><strong>Current Run Rate:</strong> 133,898 Q1 units x 4 = ~536K annualized (vs. 3 million target)</li>
+    <li><strong>Current EBITDA Margin:</strong> 11.5% in Q1 (vs. 13.5% target)</li>
+    <li><strong>Path Description:</strong> "Continue marching straight to 13.5% EBITDA margin and rapidly grow to 3 million units while sharing significant additional value with our customers along the way"</li>
+    <li><strong>Priority Framework:</strong> Over the next 5-10 years, will <strong>prioritize growth over margin within reasonable margin ranges</strong>; plan to manage speed of growth to ensure exceptional customer experiences and high-quality, efficient operations</li>
+    <li><strong>NOT An Imminent Margin Reduction:</strong> Sharon Zackfia clarification -- "We are not creating this long-term plan with kind of reasonable flexibility built into it to set ourselves up for an imminent reduction in margin. That is not our plan."</li>
+    <li><strong>Market Context:</strong> 40 million used cars + 16 million new cars = 56 million total annual vehicle transactions; at Q1 annualized run rate, Carvana is ~1% of total market; 3 million units would be ~7.5% of 40 million used car market</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Production Ramp Mechanics (from Shareholder Letter & Q&A)</h3>
+  <ul>
+    <li><strong>Last 12 Months Production Growth:</strong> Averaged increasing production by <strong>~80 units per week</strong>; done "very consistently"</li>
+    <li><strong>10-Year Path to 3M Units:</strong> Would need to increase production growth to <strong>~90 units per week</strong> -- "feels very achievable"</li>
+    <li><strong>5-Year Path to 3M Units:</strong> Would need to increase production growth to <strong>~180 units per week</strong> -- "sounds a bit further away" but aided by facility expansion</li>
+    <li><strong>Current Producing Locations:</strong> ~23 locations on average over the last year</li>
+    <li><strong>Future Producing Locations:</strong> Expect over time to have <strong>~60 locations</strong> producing cars</li>
+    <li><strong>Historical Context:</strong> In 2018-2021, grew significantly faster per facility on a per-facility basis</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Fundamental Gains Sharing Strategy (Reiterated & Expanded)</h3>
+  <ul>
+    <li><strong>YoY Gains Unlocked:</strong> ~$1,000 per unit of EBITDA margin value unlocked YoY (Ernie, Q&A)</li>
+    <li><strong>Future Gains Direction:</strong> Will seek to share "the significant majority" of future fundamental gains with customers</li>
+    <li><strong>Sharing Mechanisms:</strong> (1) Economic -- lower prices, lower rates, higher bids on customer sell-to-us vehicles; (2) Experience -- faster deliveries, better digital tools, better phone responsiveness; (3) Investment in operational capabilities</li>
+    <li><strong>Not Just Price:</strong> "Simple, faster and fun are also areas that are worthy of investment" -- investing focus more than dollars in some cases</li>
+    <li><strong>NPS:</strong> Near 3-year highs driven by these experience investments</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>GAAP Operating Income vs. EBITDA Growth</h3>
+  <ul>
+    <li><strong>Reiterated:</strong> "Expect our GAAP operating income to grow faster than adjusted EBITDA over time"</li>
+    <li><strong>Reason:</strong> Currently carry expenses supporting 1 million+ unit retail sales capacity vs. ~134K actual quarterly volume (~536K annualized)</li>
+    <li><strong>Cash Conversion Quality:</strong> "Our adjusted EBITDA is of very high quality compared to many rapidly growing companies due to our relatively low noncash expenses"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Capacity & Scale</h3>
+  <ul>
+    <li><strong>Current Reconditioning Capacity (Pre-ADESA):</strong> Over 1 million retail units/year</li>
+    <li><strong>Full ADESA Integration Capacity:</strong> Approximately 3 million retail units/year</li>
+    <li><strong>Current Market Share:</strong> ~1% of ~56 million total vehicle transactions (used + new)</li>
+    <li><strong>TAM Expansion:</strong> For the first time, management referenced the combined used + new TAM of 56 million (previously focused on 40 million used)</li>
+    <li><strong>Competitive Context:</strong> In other retail verticals, having at least 7.5% market share (3M/40M) is "not abnormal" and generally significantly larger</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Special Topics</h3>
+</div>
+<div class="content-section">
+  <h3>Tariff Impact Assessment (Updated)</h3>
+  <ul>
+    <li><strong>Directional View:</strong> If tariffs drive up car prices, "all else constant, that's bad"; but likely would drive up new car prices by more than used car prices, so "may be a directional benefit to used cars"</li>
+    <li><strong>Benefit to Value Players:</strong> May benefit business models able to offer value to consumers -- Carvana believes they fit that description</li>
+    <li><strong>Observed Behavior:</strong> When tariffs first announced, saw "a small pull forward of demand"; reacted by pulling levers to keep sales on plan; then saw "probably a little bit of a trough thereafter"; since then "feels like it's stabilized"</li>
+    <li><strong>Operating Approach:</strong> Running business "with the kind of idea of operating like it's any other year"; adaptive system inherently adjusts (e.g., if customers prefer less expensive cars, automatically starts buying less expensive cars)</li>
+    <li><strong>Parts Tariffs on Recon Costs:</strong> "We'll see exactly how these tariffs end up playing out"; not making any particular prediction; mental model is that shared input cost changes get "passed through" in a competitive market (retail GPUs have been stable despite enormous swings in car prices over the last 5-6 years)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Franchise Dealership Acquisition</h3>
+  <ul>
+    <li><strong>Status:</strong> Purchased a small franchise dealership (new vehicle opportunity)</li>
+    <li><strong>Details:</strong> "Very early... in the process now of experimenting and learning"</li>
+    <li><strong>Cost:</strong> $24 million acquisition cost (from cash flow statement)</li>
+    <li><strong>Goodwill:</strong> $2 million recorded</li>
+    <li><strong>TAM Implication:</strong> Management now referencing "40 million used cars sold every year... an additional 16 million new cars sold every year" as total addressable market</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Recession Resilience (Ernie, Q&A)</h3>
+  <ul>
+    <li><strong>Current vs. 2022 Position:</strong> "Very, very different company... we were not a money-making company [in 2022]"; now "the most profitable automotive retailer by a pretty long way"</li>
+    <li><strong>Profitability Buffer:</strong> "Approximately twice as profitable as the average public automotive retailer" -- "significant margin to work with" plus "significant cash balances" while "simultaneously growing very quickly"</li>
+    <li><strong>Expected Behavior in Downturn:</strong> Would look "much more like other highly profitable automotive retailers have dealt with difficult environments in the past" rather than like 2022-2023</li>
+    <li><strong>Finance GPU Resilience:</strong> Through COVID, saw finance GPU "go down a little bit, but recover a quarter later"; through 2022-2023, "GPU go down a little bit, but not all that much" -- competitive market means inputs get priced in</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Lending & Loan Monetization</h3>
+  <ul>
+    <li><strong>Securitization Program:</strong> "Stronger than it's ever been"</li>
+    <li><strong>Residual Buyer Base:</strong> More recurring buyers in the residual sale portion than ever before</li>
+    <li><strong>Ally Arrangement:</strong> Continues to be "great for us over a long period of time"</li>
+    <li><strong>New Pool of Buyers:</strong> "Added another large pool of buyers this quarter" (pooled loan sales)</li>
+    <li><strong>Origination-to-Benchmark Spread:</strong> Wider this quarter than in some previous quarters (beneficial for Other GPU)</li>
+    <li><strong>Fundamental Gains in Lending:</strong> (1) Improving credit scoring, pricing, underwriting; (2) Using more data; (3) Lowering cost of funds by adding new buyers; "still see meaningful opportunities for further fundamental gains in both areas"</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Retail Marketplace / ADESA Integration</h3>
+  <ul>
+    <li><strong>Commercial Seller Offering:</strong> Developing offerings where commercial sellers can send cars to Carvana and either: (1) wholesale through physical ADESA auction; (2) wholesale through ADESA Clear (digital auction, expanding in 2025); (3) sell via retail marketplace</li>
+    <li><strong>ADESA Clear:</strong> Digital auction offering that "has been expanding this year"</li>
+    <li><strong>Status:</strong> "Incredibly early in that story"; see "real fundamental opportunity for a faster and lower-cost offering"</li>
+    <li><strong>Ancillary Revenue (3PL, Reconditioning):</strong> Opportunities exist but "not a near-term focus"; near-term focus is growing core car-selling business</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Inventory Sourcing (Marvin Fong, Q&A)</h3>
+  <ul>
+    <li><strong>Consumer Sourcing Mix:</strong> ~80-85% of retail units sourced from consumers (analyst reference)</li>
+    <li><strong>Stability Expectation:</strong> Economics have been "remarkably stable over a long period of time" across several orders of magnitude of growth; expects same going forward</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Customer Awareness & Adoption</h3>
+  <ul>
+    <li><strong>Awareness:</strong> Generally pretty good -- consumers recognize the Carvana logo</li>
+    <li><strong>Understanding:</strong> Lower levels -- many customers don't fully know about broad selection, simple financing, 7-day returns, trade-in values</li>
+    <li><strong>Trust:</strong> Built through friends/family/neighbor referrals; takes time given people buy cars once every 5-6 years</li>
+    <li><strong>All Markets Growing:</strong> Both newer and older markets continue to grow at exciting rates; growth is not just newer markets catching up to older ones</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Vehicle Mix at Scale</h3>
+  <ul>
+    <li><strong>No Major Shift Needed:</strong> "Not obvious that our average sale needs to move all that much" as they scale to 3 million units</li>
+    <li><strong>Current Distribution:</strong> Selling across the spectrum of cars less than 10 years old; ~85% of used cars sold in the U.S. are less than 10 years old</li>
+    <li><strong>Opportunity:</strong> Room to go both upmarket and "a little bit downmarket" but core offering likely to remain reflective of current mix</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Key Year-Over-Year Comparisons</h3>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Q1 2025</th><th>Q1 2024</th><th>Change</th></tr></thead><tbody><tr><td>Retail Units</td><td>133,898</td><td>91,878</td><td>+45.7%</td></tr><tr><td>Total Revenue</td><td>$4,232M</td><td>$3,061M</td><td>+38.3%</td></tr><tr><td>Non-GAAP Total GPU</td><td>$7,140</td><td>$6,802</td><td>+$338</td></tr><tr><td>Non-GAAP Retail GPU</td><td>$3,308</td><td>$3,211</td><td>+$97</td></tr><tr><td>Non-GAAP Wholesale GPU</td><td>$964</td><td>$1,153</td><td>-$189</td></tr><tr><td>Non-GAAP Other GPU</td><td>$2,868</td><td>$2,438</td><td>+$430</td></tr><tr><td>Non-GAAP SG&A</td><td>$468M</td><td>$390M</td><td>+20.0%</td></tr><tr><td>Non-GAAP SG&A Per Unit</td><td>$3,495</td><td>$4,245</td><td>-$750</td></tr><tr><td>Adjusted EBITDA</td><td>$488M</td><td>$235M</td><td>+$253M (+107.7%)</td></tr><tr><td>Adjusted EBITDA Margin</td><td>11.5%</td><td>7.7%</td><td>+3.8pp</td></tr><tr><td>GAAP Operating Income</td><td>$394M</td><td>$134M</td><td>+$260M (+194.0%)</td></tr><tr><td>GAAP Operating Margin</td><td>9.3%</td><td>4.4%</td><td>+4.9pp</td></tr><tr><td>GAAP Net Income</td><td>$373M</td><td>$49M</td><td>+$324M</td></tr><tr><td>Net Income Margin</td><td>8.8%</td><td>1.6%</td><td>+7.2pp</td></tr><tr><td>EPS (Diluted)</td><td>$1.51</td><td>$0.23</td><td>+$1.28</td></tr><tr><td>GAAP Net Interest Expense</td><td>$139M</td><td>$173M</td><td>-$34M</td></tr></tbody></table></div>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Q1 2025</th><th>Q4 2024</th><th>Sequential Change</th></tr></thead><tbody><tr><td>Retail Units</td><td>133,898</td><td>114,379</td><td>+17.1%</td></tr><tr><td>Total Revenue</td><td>$4,232M</td><td>$3,547M</td><td>+19.3%</td></tr><tr><td>Non-GAAP Total GPU</td><td>$7,140</td><td>$6,916</td><td>+$224</td></tr><tr><td>Non-GAAP Retail GPU</td><td>$3,308</td><td>$3,331</td><td>-$23</td></tr><tr><td>Non-GAAP Wholesale GPU</td><td>$964</td><td>$857</td><td>+$107</td></tr><tr><td>Non-GAAP Other GPU</td><td>$2,868</td><td>$2,728</td><td>+$140</td></tr><tr><td>Non-GAAP SG&A</td><td>$468M</td><td>$432M</td><td>+$36M</td></tr><tr><td>Non-GAAP SG&A Per Unit</td><td>$3,495</td><td>$3,777</td><td>-$282</td></tr><tr><td>Adjusted EBITDA</td><td>$488M</td><td>$359M</td><td>+$129M</td></tr><tr><td>Adjusted EBITDA Margin</td><td>11.5%</td><td>10.1%</td><td>+1.4pp</td></tr><tr><td>GAAP Operating Income</td><td>$394M</td><td>$260M</td><td>+$134M</td></tr><tr><td>Cash & Equivalents</td><td>$1,858M</td><td>$1,716M</td><td>+$142M</td></tr><tr><td>Vehicle Inventory</td><td>$1,503M</td><td>$1,608M</td><td>-$105M</td></tr></tbody></table></div>
+</div>
+<div class="content-section">
+  <h3>Quarterly Progression (Last 5 Quarters)</h3>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Q1 2024</th><th>Q2 2024</th><th>Q3 2024</th><th>Q4 2024</th><th>Q1 2025</th></tr></thead><tbody><tr><td>Retail Units</td><td>91,878</td><td>101,440</td><td>108,651</td><td>114,379</td><td>133,898</td></tr><tr><td>Revenue ($M)</td><td>$3,061</td><td>$3,410</td><td>$3,655</td><td>$3,547</td><td>$4,232</td></tr><tr><td>Non-GAAP Total GPU</td><td>$6,802</td><td>$7,344</td><td>$7,685</td><td>$6,916</td><td>$7,140</td></tr><tr><td>Non-GAAP Retail GPU</td><td>$3,211</td><td>$3,539</td><td>$3,617</td><td>$3,331</td><td>$3,308</td></tr><tr><td>Non-GAAP Wholesale GPU</td><td>$1,153</td><td>$1,104</td><td>$1,123</td><td>$857</td><td>$964</td></tr><tr><td>Non-GAAP Other GPU</td><td>$2,438</td><td>$2,701</td><td>$2,945</td><td>$2,728</td><td>$2,868</td></tr><tr><td>Non-GAAP SG&A ($M)</td><td>$390</td><td>$390</td><td>$406</td><td>$432</td><td>$468</td></tr><tr><td>Non-GAAP SG&A/Unit</td><td>$4,245</td><td>$3,845</td><td>$3,737</td><td>$3,777</td><td>$3,495</td></tr><tr><td>Adj. EBITDA ($M)</td><td>$235</td><td>$355</td><td>$429</td><td>$359</td><td>$488</td></tr><tr><td>Adj. EBITDA Margin</td><td>7.7%</td><td>10.4%</td><td>11.7%</td><td>10.1%</td><td>11.5%</td></tr><tr><td>GAAP Operating Income ($M)</td><td>$134</td><td>$259</td><td>$337</td><td>$260</td><td>$394</td></tr><tr><td>GAAP Net Income ($M)</td><td>$49</td><td>$48</td><td>$148</td><td>$159</td><td>$373</td></tr></tbody></table> *Data sourced from Carvana Co. FQ1 2025 Earnings Call Transcript (May 7, 2025), Q1 2025 GAAP financial statements and supplemental tables from EDGAR (Accession: 0001690820-25-000160), and S&P Global Market Intelligence. All GPU and SG&A figures are non-GAAP unless otherwise noted. EBITDA refers to adjusted EBITDA. Dollar amounts in millions unless otherwise specified. YoY prior-year figures use reported actuals from the filing.*</div>
+</div>
+<div class="content-section">
+  <h3>Q1 2025 Actuals (Reported)</h3>
+</div>
+
+<div class="prior-ref" id="priorRef">
+  <div class="prior-ref-header" onclick="var b=document.getElementById('priorBody');b.classList.toggle('open');this.querySelector('.arrow').innerHTML=b.classList.contains('open')?'&#9650;':'&#9660;';">
+    Prior Quarter Reference: Q4 2024
+    <span class="arrow">&#9660;</span>
+  </div>
+  <div class="prior-ref-body" id="priorBody">
+    <div class="metric-grid">
+    </div>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q4_2024.html" style="color:var(--blue);">View full Q4 2024 detail &rarr;</a></p>
+  </div>
+</div>
+
+<div class="footer-nav">
+  <a href="Q4_2024.html">&larr; Q4 2024</a>
+  <a href="../comparison.html">Back to Overview</a>
+  <a href="Q2_2025.html">Q2 2025 &rarr;</a>
+</div>
+
+</body>
+</html>

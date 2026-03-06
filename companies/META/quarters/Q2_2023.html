@@ -319,6 +319,31 @@
     .comp-table th, .comp-table td { padding: 6px 8px; }
   }
 
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+  .content-section .md-table th {
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .content-section .md-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-section .md-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+  .content-section .md-table tr:hover { background: #e8f4fd; }
+
   @media print {
     .nav-bar { display: none; }
     .header { background: #333; }
@@ -338,6 +363,8 @@
   <a href="Q1_2023.html">&larr; Q1 2023</a>
   <div class="nav-center">
     <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>
     <a href="Q4_2025.html" class="qbtn">4Q25</a>
     <a href="Q3_2025.html" class="qbtn">3Q25</a>
     <a href="Q2_2025.html" class="qbtn">2Q25</a>
@@ -358,20 +385,32 @@
   <a href="Q3_2023.html">Q3 2023 &rarr;</a>
 </div>
 
+<div class="changes-box">
+  <h3>What Changed vs Q1 2023</h3>
+  <ul>
+    <li><span class="change-tag ct-raised">Raised</span> Revenue Guidance (Next Q) midpoint up 8.1% vs prior quarter ($33.2B vs $30.8B)</li>
+    <li><span class="change-tag ct-raised">Raised</span> FY Total Expenses midpoint up 1.7% vs prior quarter ($89.5B vs $88.0B)</li>
+    <li><span class="change-tag ct-lowered">Lowered</span> FY CapEx midpoint down 9.5% vs prior quarter ($28.5B vs $31.5B)</li>
+    <li><span class="change-tag ct-changed">Changed</span> Operating Margin: 29% (prior: 25%)</li>
+    <li><span class="change-tag ct-changed">Changed</span> Reality Labs Op Loss: $3.7B (prior: $4.0B)</li>
+    <li><span class="change-tag ct-new">New</span> NEW: New product launch discussed</li>
+  </ul>
+</div>
+
 <div class="metrics-card">
   <div class="metric">
     <div class="metric-label">Revenue Guidance (Next Q)</div>
-    <div class="metric-value">$32.0B - $34.5B</div>
+    <div class="metric-value">$32.0B-$34.5B</div>
     <div class="metric-delta delta-flat">Prior: $29.5B - $32.0B</div>
   </div>
   <div class="metric">
     <div class="metric-label">FY Total Expenses</div>
-    <div class="metric-value">$88B - $91B</div>
+    <div class="metric-value">$88B-$91B</div>
     <div class="metric-delta delta-flat">Prior: $86B - $90B</div>
   </div>
   <div class="metric">
     <div class="metric-label">FY CapEx</div>
-    <div class="metric-value">$27B - $30B</div>
+    <div class="metric-value">$27B-$30B</div>
     <div class="metric-delta delta-flat">Prior: $30B - $33B</div>
   </div>
   <div class="metric">
@@ -386,19 +425,16 @@
   </div>
 </div>
 
-<div class="changes-box">
-  <h3>What Changed vs Q1 2023</h3>
-  <ul>
-    <li><span class="change-tag ct-raised">Raised</span> Revenue Guidance (Next Q) midpoint up 8.1% vs prior quarter ($33.2B vs $30.8B)</li>
-    <li><span class="change-tag ct-raised">Raised</span> FY Total Expenses midpoint up 1.7% vs prior quarter ($89.5B vs $88.0B)</li>
-    <li><span class="change-tag ct-lowered">Lowered</span> FY CapEx midpoint down 9.5% vs prior quarter ($28.5B vs $31.5B)</li>
-    <li><span class="change-tag ct-changed">Changed</span> Operating Margin: 29% (prior: 25%)</li>
-    <li><span class="change-tag ct-changed">Changed</span> Reality Labs Op Loss: $3.7B (prior: $4.0B)</li>
-    <li><span class="change-tag ct-new">New</span> NEW: New product launch discussed</li>
-  </ul>
-</div>
-
 <!-- Full Guidance Content -->
+<div class="content-section">
+  <h3>Q3 2023 Guidance</h3>
+</div>
+<div class="content-section">
+  <h3>Full Year 2023 Guidance</h3>
+</div>
+<div class="content-section">
+  <h3>2024 Preliminary Outlook (Qualitative)</h3>
+</div>
 <div class="content-section">
   <h3>Consolidated Results</h3>
   <ul>
@@ -434,7 +470,10 @@
   </ul>
 </div>
 <div class="content-section">
-  <h3>Family of Apps — Engagement Metrics</h3>
+  <h3>Family of Apps Segment</h3>
+</div>
+<div class="content-section">
+  <h3>Engagement Metrics</h3>
   <ul>
     <li><strong>Family Daily Active People (DAP):</strong> ~3.07B in June</li>
     <li><strong>Family Monthly Active People (MAP):</strong> ~3.88B in June</li>
@@ -501,7 +540,10 @@
   </ul>
 </div>
 <div class="content-section">
-  <h3>Q3 2023 Revenue Guidance</h3>
+  <h3>Reality Labs Segment</h3>
+</div>
+<div class="content-section">
+  <h3>Revenue</h3>
   <ul>
     <li><strong>Revenue:</strong> $32.0B-$34.5B (midpoint: $33.25B, implying ~20% YoY growth at midpoint)</li>
     <li><strong>FX Assumption:</strong> ~3% tailwind to YoY total revenue growth (based on current exchange rates)</li>
@@ -555,6 +597,9 @@
     <li><strong>Capital Intensity:</strong> management mindful of intention to reduce capital intensity of investments over time</li>
     <li><strong>AI CapEx Uncertainty:</strong> exact level of AI CapEx unclear since it depends on how quickly new AI products scale; management wants capacity in place in case products scale very quickly</li>
   </ul>
+</div>
+<div class="content-section">
+  <h3>Special Topics</h3>
 </div>
 <div class="content-section">
   <h3>Threads Launch and Early Performance</h3>
@@ -655,6 +700,9 @@
 </div>
 <div class="content-section">
   <h3>Q2 2023 Actuals</h3>
+</div>
+<div class="content-section">
+  <h3>Q2 Actuals</h3>
   <ul>
     <li><strong>RL Revenue:</strong> $276M (-39% YoY, due to lower Quest 2 sales)</li>
     <li><strong>RL Expenses:</strong> $4.0B (+23% YoY, due to lapping a reduction in Reality Labs loss reserves in Q2 of last year as well as growth in employee-related costs)</li>
@@ -670,12 +718,12 @@
   </div>
   <div class="prior-ref-body" id="priorBody">
     <div class="metric-grid">
-      <div class="prior-mini"><div class="pm-label">Revenue Guidance (Next Q)</div><div class="pm-value">$29.5B - $32.0B</div></div>
-      <div class="prior-mini"><div class="pm-label">FY Total Expenses</div><div class="pm-value">$86B - $90B</div></div>
-      <div class="prior-mini"><div class="pm-label">FY CapEx</div><div class="pm-value">$30B - $33B</div></div>
-      <div class="prior-mini"><div class="pm-label">Family DAP</div><div class="pm-value">3.0B+</div></div>
-      <div class="prior-mini"><div class="pm-label">Ad Impressions Growth</div><div class="pm-value">+26% YoY</div></div>
-      <div class="prior-mini"><div class="pm-label">Avg Price Per Ad</div><div class="pm-value">-17% YoY</div></div>
+      <div class="prior-mini"><div class="pm-label">Revenue Guidance (Next Q)</div><div class="pm-value">$29.5B - $32.0B (midpoint: $30.75B)</div></div>
+      <div class="prior-mini"><div class="pm-label">FY Total Expenses</div><div class="pm-value">$86B - $90B (updated from prior March outlook)</div></div>
+      <div class="prior-mini"><div class="pm-label">FY CapEx</div><div class="pm-value">$30B - $33B (unchanged from prior estimate)</div></div>
+      <div class="prior-mini"><div class="pm-label">Family DAP</div><div class="pm-value">3.0B+ (surpassed 3 billion daily active people in March for the first time)</div></div>
+      <div class="prior-mini"><div class="pm-label">Ad Impressions Growth</div><div class="pm-value">+26% YoY (primarily driven by Asia Pacific and Rest of World)</div></div>
+      <div class="prior-mini"><div class="pm-label">Avg Price Per Ad</div><div class="pm-value">-17% YoY (driven by strong impression growth from lower monetizing services/regions, FX depreciation, and lower advertising demand)</div></div>
       <div class="prior-mini"><div class="pm-label">Operating Margin</div><div class="pm-value">25%</div></div>
       <div class="prior-mini"><div class="pm-label">Reality Labs Op Loss</div><div class="pm-value">$4.0B</div></div>
     </div>

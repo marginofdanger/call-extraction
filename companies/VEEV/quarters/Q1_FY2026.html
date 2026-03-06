@@ -319,6 +319,31 @@
     .comp-table th, .comp-table td { padding: 6px 8px; }
   }
 
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+  .content-section .md-table th {
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .content-section .md-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-section .md-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+  .content-section .md-table tr:hover { background: #e8f4fd; }
+
   @media print {
     .nav-bar { display: none; }
     .header { background: #333; }
@@ -339,6 +364,8 @@
   <div class="nav-center">
     <a href="../comparison.html" class="nav-back">Overview</a>
     <a href="../results.html" class="nav-back">Results</a>
+    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>
+    <a href="Q4_FY2026.html" class="qbtn">4Q2026</a>
     <a href="Q3_FY2026.html" class="qbtn">3Q2026</a>
     <a href="Q2_FY2026.html" class="qbtn">2Q2026</a>
     <a href="Q1_FY2026.html" class="qbtn current">1Q2026</a>
@@ -407,9 +434,7 @@
 </div>
 <div class="content-section">
   <h3>Guidance Changes vs. Prior (Q4 FY2025 initial guidance)</h3>
-  <ul>
-    <li>| Metric | Prior (Q4 FY2025) | Updated (Q1 FY2026) | Change | |--------|-------------------|---------------------|--------| | Total Revenue | $3,040-$3,055M | $3,090-$3,100M | +$45M at midpoint | | Non-GAAP Operating Income | ~$1,300M | ~$1,360M | +$60M | | Non-GAAP Diluted EPS | ~$7.32 | ~$7.63 | +$0.31 |</li>
-  </ul>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Prior (Q4 FY2025)</th><th>Updated (Q1 FY2026)</th><th>Change</th></tr></thead><tbody><tr><td>Total Revenue</td><td>$3,040-$3,055M</td><td>$3,090-$3,100M</td><td>+$45M at midpoint</td></tr><tr><td>Non-GAAP Operating Income</td><td>~$1,300M</td><td>~$1,360M</td><td>+$60M</td></tr><tr><td>Non-GAAP Diluted EPS</td><td>~$7.32</td><td>~$7.63</td><td>+$0.31</td></tr></tbody></table></div>
 </div>
 <div class="content-section">
   <h3>Full Year Guidance Commentary</h3>

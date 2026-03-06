@@ -319,6 +319,31 @@
     .comp-table th, .comp-table td { padding: 6px 8px; }
   }
 
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+  .content-section .md-table th {
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .content-section .md-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-section .md-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+  .content-section .md-table tr:hover { background: #e8f4fd; }
+
   @media print {
     .nav-bar { display: none; }
     .header { background: #333; }
@@ -338,6 +363,8 @@
   <a href="Q2_2023.html">&larr; Q2 2023</a>
   <div class="nav-center">
     <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>
     <a href="Q4_2025.html" class="qbtn">4Q25</a>
     <a href="Q3_2025.html" class="qbtn">3Q25</a>
     <a href="Q2_2025.html" class="qbtn">2Q25</a>
@@ -358,63 +385,42 @@
   <a href="Q4_2023.html">Q4 2023 &rarr;</a>
 </div>
 
-<div class="metrics-card">
-  <div class="metric">
-    <div class="metric-label">FY 2023 Revenue Guidance</div>
-    <div class="metric-value">$63.5B – $64.5B</div>
-    <div class="metric-delta delta-flat">Prior: <strong>$63.25B – $64.75B</strong></div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">FY 2023 Adj. EBITDA Guidance</div>
-    <div class="metric-value">$12.3B – $12.6B</div>
-    <div class="metric-delta delta-down">Prior: <strong>$12.3B – $12.8B</strong></div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">FY 2023 Diluted EPS Guidance</div>
-    <div class="metric-value">$17.80 – $18.50</div>
-    <div class="metric-delta delta-down">Prior: <strong>$17.70 – $18.90</strong></div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">FY 2023 CapEx Guidance</div>
-    <div class="metric-value">~$4.7B</div>
-    <div class="metric-delta delta-flat">Prior: <strong>~$4.7B</strong></div>
-  </div>
+<div class="changes-box">
+  <h3>What Changed vs Q2 2023</h3>
+  <ul>
+    <li><span class="change-tag ct-changed">Changed</span> Same-Facility Admissions: +3.4% YoY (prior: <strong>+2.2%</strong> YoY)</li>
+    <li><span class="change-tag ct-changed">Changed</span> Revenue Per Admission: +3.6% YoY (prior: <strong>+2.9%</strong> YoY)</li>
+  </ul>
 </div>
 
-<div class="changes-box">
-  <h3>What Changed vs Q2 2023 Guidance</h3>
-  <ul>
-    <li><span class="change-tag ct-changed">Narrowed</span> <strong>Revenue:</strong> $63.5B – $64.5B (was $63.25B – $64.75B) — low end raised, high end lowered</li>
-    <li><span class="change-tag ct-lowered">Lowered</span> <strong>Adj. EBITDA:</strong> $12.3B – $12.6B (was $12.3B – $12.8B) — top end cut $200M due to Valesco losses</li>
-    <li><span class="change-tag ct-lowered">Lowered</span> <strong>Net Income:</strong> $4.94B – $5.13B (was $4.9B – $5.255B) — top end lowered</li>
-    <li><span class="change-tag ct-lowered">Lowered</span> <strong>Diluted EPS:</strong> $17.80 – $18.50 (was $17.70 – $18.90) — top end cut $0.40</li>
-    <li><span class="change-tag ct-maintained">Maintained</span> <strong>Capital Spending:</strong> ~$4.7B (unchanged)</li>
-    <li><span class="change-tag ct-maintained">Maintained</span> <strong>Long-term EBITDA Margin:</strong> 19% – 20% sustainable range reaffirmed</li>
-  </ul>
+<div class="metrics-card">
+  <div class="metric">
+    <div class="metric-label">Same-Facility Admissions</div>
+    <div class="metric-value">+3.4% YoY</div>
+    <div class="metric-delta delta-flat">Prior: <strong>+2.2%</strong> YoY</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Revenue Per Admission</div>
+    <div class="metric-value">+3.6% YoY</div>
+    <div class="metric-delta delta-flat">Prior: <strong>+2.9%</strong> YoY</div>
+  </div>
 </div>
 
 <!-- Full Guidance Content -->
 <div class="content-section">
   <h3>Full Year 2023 Guidance (Updated Q3 2023)</h3>
   <ul>
-    <li><strong>GUIDANCE REVISION:</strong> Top end of guidance lowered primarily due to Valesco venture losses.</li>
+    <li>> <strong>GUIDANCE REVISION:</strong> Top end of guidance lowered primarily due to Valesco venture losses. Management stated: "we have lowered the top side of our earnings guidance for the year to reflect the effects of these losses."</li>
   </ul>
-  <table class="comp-table">
-    <thead><tr><th>Metric</th><th>Updated FY 2023 Guidance (Q3 Call)</th></tr></thead>
-    <tbody>
-      <tr><td><strong>Revenue</strong></td><td>$63.5 billion – $64.5 billion</td></tr>
-      <tr><td><strong>Net Income Attributable to HCA Healthcare</strong></td><td>$4.94 billion – $5.13 billion</td></tr>
-      <tr><td><strong>Adjusted EBITDA</strong></td><td>$12.3 billion – $12.6 billion</td></tr>
-      <tr><td><strong>Diluted EPS</strong></td><td>$17.80 – $18.50</td></tr>
-      <tr><td><strong>Capital Spending</strong></td><td>approximately $4.7 billion</td></tr>
-    </tbody>
-  </table>
-
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Updated FY 2023 Guidance (Q3 Call)</th></tr></thead><tbody><tr><td><strong>Revenue</strong></td><td>$63.5 billion - $64.5 billion</td></tr><tr><td><strong>Net Income Attributable to HCA Healthcare</strong></td><td>$4.94 billion - $5.13 billion</td></tr><tr><td><strong>Adjusted EBITDA</strong></td><td>$12.3 billion - $12.6 billion</td></tr><tr><td><strong>Diluted EPS</strong></td><td>$17.80 - $18.50</td></tr><tr><td><strong>Capital Spending</strong></td><td>approximately $4.7 billion</td></tr></tbody></table></div>
 </div>
 <div class="content-section">
   <h3>Forward Outlook & Qualitative Commentary</h3>
+</div>
+<div class="content-section">
+  <h3>Long-Term Margin Target</h3>
   <ul>
-    <li><strong>Long-Term EBITDA Margin Target:</strong> 19% to 20% described as "fairly sustainable" (management confirmed confidence in maintaining this)</li>
+    <li><strong>Adjusted EBITDA Margin Range:</strong> 19% to 20% described as "fairly sustainable" (management confirmed confidence in maintaining this)</li>
   </ul>
 </div>
 <div class="content-section">
@@ -435,6 +441,11 @@
     <li><strong>Emergency Room Visits Growth:</strong> +3.5% (same-facility)</li>
     <li><strong>Outpatient Surgeries Growth:</strong> ~+1% YoY (same-facility)</li>
     <li><strong>Outpatient Cardiology Procedures Growth:</strong> ~+5% YoY (same-facility)</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Revenue Per Unit</h3>
+  <ul>
     <li><strong>Revenue Per Equivalent Admission Growth:</strong> +3.6% YoY</li>
   </ul>
 </div>
@@ -484,6 +495,9 @@
 </div>
 <div class="content-section">
   <h3>Year-to-Date 2023 Performance (Through Q3)</h3>
+</div>
+<div class="content-section">
+  <h3>Volume Metrics (Same-Facility, YTD Basis)</h3>
   <ul>
     <li><strong>Same-Facility Admissions Growth:</strong> +3.3% YTD</li>
     <li><strong>Equivalent Admissions Growth:</strong> +5.1% YTD</li>
@@ -491,15 +505,41 @@
     <li><strong>Same-Facility ER Visits Growth:</strong> +5.7% YTD</li>
     <li><strong>Inpatient Surgeries Growth:</strong> +2.3% YTD</li>
     <li><strong>Outpatient Surgeries Growth:</strong> +3.1% YTD</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Payer Mix (YTD, Same-Facility Basis)</h3>
+  <ul>
     <li><strong>Managed Care Admissions Growth:</strong> +5.3% YTD</li>
     <li><strong>Medicare Admissions Growth:</strong> +4.3% YTD</li>
     <li><strong>Medicaid and Uninsured Admissions:</strong> slightly down from prior year YTD</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Revenue & Margin (YTD)</h3>
+  <ul>
     <li><strong>Same-Facility Revenue Growth:</strong> +6.4% YTD</li>
     <li><strong>Case Mix Index:</strong> held steady, increased slightly over prior year</li>
     <li><strong>Same-Facility Labor Costs:</strong> below prior year as a percentage of revenue</li>
     <li><strong>Same-Facility Supply Costs:</strong> below prior year as a percentage of revenue</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Contract Labor (YTD)</h3>
+  <ul>
     <li><strong>Contract Labor Expense:</strong> down 18% YTD, or over $300 million below prior year</li>
-    <li><strong>Professional Fee Expense Growth (Contracted Providers):</strong> approximately +20% YTD; rate of growth slowed in Q3 vs. Q2</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>Professional Fee Expense</h3>
+  <ul>
+    <li><strong>Professional Fee Expense Growth (Contracted Providers):</strong> approximately +20% YTD</li>
+    <li><strong>Rate of Growth:</strong> slowed in Q3 vs. Q2</li>
+  </ul>
+</div>
+<div class="content-section">
+  <h3>EPS Growth</h3>
+  <ul>
     <li><strong>Diluted EPS Growth (ex losses on sale of facilities and losses on retirement of debt):</strong> +7.2% YTD</li>
   </ul>
 </div>
@@ -576,23 +616,10 @@
 </div>
 <div class="content-section">
   <h3>Q&A Key Data Points (Supplemental)</h3>
-  <table class="comp-table">
-    <thead><tr><th>Topic</th><th>Detail</th><th>Source</th></tr></thead>
-    <tbody>
-      <tr><td><strong>Valesco Revenue (YTD)</strong></td><td>~$380M (~$200M/quarter run rate going forward)</td><td>Bill Rutherford (Brian Tanquilut Q&A)</td></tr>
-      <tr><td><strong>Valesco Cost Structure</strong></td><td>~$250M/quarter (implying ~$50M loss/quarter)</td><td>Bill Rutherford (John Ransom Q&A)</td></tr>
-      <tr><td><strong>Pro Fees % of Other OpEx</strong></td><td>Q1: 22%, Q2: 24%, Q3: just under 24%</td><td>Bill Rutherford (Gary Taylor Q&A)</td></tr>
-      <tr><td><strong>Valesco Q3 EBITDA Impact</strong></td><td>~80 bps margin; ~50 bps Valesco, ~40 bps pro fees, balance supplemental</td><td>Bill Rutherford (Ben Hendrix Q&A)</td></tr>
-      <tr><td><strong>Valesco Ex-EBITDA Margin</strong></td><td>Excluding Valesco, other operating off ~120 bps</td><td>Bill Rutherford (Ben Hendrix Q&A)</td></tr>
-      <tr><td><strong>Florida DPP</strong></td><td>Slightly above expectations but offset by other programs below</td><td>Sam Hazen (A.J. Rice Q&A)</td></tr>
-      <tr><td><strong>Bariatric Surgery Revenue</strong></td><td>Less than 0.5% of overall revenue</td><td>Sam Hazen (Jason Cassorla Q&A)</td></tr>
-      <tr><td><strong>Longer-Term EBITDA Margin</strong></td><td>19%-20% described as sustainable</td><td>Bill Rutherford (Jamie Perse Q&A)</td></tr>
-      <tr><td><strong>Calendar Headwind Q3</strong></td><td>1 fewer surgical day vs. prior year Q3</td><td>Sam Hazen (Jason Cassorla Q&A)</td></tr>
-      <tr><td><strong>Valesco Scale</strong></td><td>~5,000 physicians, ~200 programs</td><td>Sam Hazen (Brian Tanquilut Q&A)</td></tr>
-      <tr><td><strong>Patient Satisfaction (ER)</strong></td><td>Up 4-5 points since ER revitalization began</td><td>Sam Hazen (Whit Mayo Q&A)</td></tr>
-      <tr><td><strong>ER Wait Time</strong></td><td>9-10 minutes to see clinician upon arrival</td><td>Sam Hazen (Whit Mayo Q&A)</td></tr>
-    </tbody>
-  </table>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Topic</th><th>Detail</th><th>Source</th></tr></thead><tbody><tr><td><strong>Valesco Revenue (YTD)</strong></td><td>~$380 million (~$200 million/quarter run rate going forward)</td><td>Bill Rutherford (Brian Tanquilut Q&A)</td></tr><tr><td><strong>Valesco Cost Structure</strong></td><td>~$250 million/quarter (implying ~$50 million loss/quarter)</td><td>Bill Rutherford (John Ransom Q&A confirmation)</td></tr><tr><td><strong>Pro Fees % of Other OpEx</strong></td><td>Q1: 22%, Q2: 24%, Q3: just under 24%</td><td>Bill Rutherford (Gary Taylor Q&A)</td></tr><tr><td><strong>Valesco Q3 EBITDA Impact</strong></td><td>~80 bps margin; ~50 bps from Valesco, ~40 bps pro fees, balance from supplemental expenses</td><td>Bill Rutherford (Ben Hendrix Q&A)</td></tr><tr><td><strong>Valesco Ex-EBITDA Margin Impact</strong></td><td>Excluding Valesco, other operating off ~120 bps</td><td>Bill Rutherford (Ben Hendrix Q&A)</td></tr><tr><td><strong>Florida DPP</strong></td><td>Slightly above expectations but offset by other programs below expectations</td><td>Sam Hazen (A.J. Rice Q&A)</td></tr><tr><td><strong>Bariatric Surgery Revenue</strong></td><td>Less than 0.5% of overall revenue</td><td>Sam Hazen (Jason Cassorla Q&A)</td></tr><tr><td><strong>Longer-Term EBITDA Margin</strong></td><td>19%-20% described as sustainable</td><td>Bill Rutherford (Jamie Perse Q&A)</td></tr><tr><td><strong>Calendar Headwind Q3</strong></td><td>1 fewer surgical day vs. prior year Q3</td><td>Sam Hazen (Jason Cassorla Q&A)</td></tr><tr><td><strong>Valesco Scale</strong></td><td>~5,000 physicians, ~200 programs</td><td>Sam Hazen (Brian Tanquilut Q&A)</td></tr><tr><td><strong>Patient Satisfaction (ER)</strong></td><td>Up 4-5 points since ER revitalization program began</td><td>Sam Hazen (Whit Mayo Q&A)</td></tr><tr><td><strong>ER Wait Time</strong></td><td>9-10 minutes to see clinician upon arrival</td><td>Sam Hazen (Whit Mayo Q&A)</td></tr></tbody></table></div>
+</div>
+<div class="content-section">
+  <h3>Q3 2023 Actuals (Reported)</h3>
 </div>
 
 <div class="prior-ref" id="priorRef">
@@ -602,10 +629,9 @@
   </div>
   <div class="prior-ref-body" id="priorBody">
     <div class="metric-grid">
-      <div class="prior-mini"><div class="pm-label">FY 2023 Revenue Guidance</div><div class="pm-value">$63.25B – $64.75B</div></div>
-      <div class="prior-mini"><div class="pm-label">FY 2023 Adj. EBITDA Guidance</div><div class="pm-value">$12.3B – $12.8B</div></div>
-      <div class="prior-mini"><div class="pm-label">FY 2023 Diluted EPS Guidance</div><div class="pm-value">$17.70 – $18.90</div></div>
-      <div class="prior-mini"><div class="pm-label">FY 2023 CapEx Guidance</div><div class="pm-value">~$4.7B</div></div>
+      <div class="prior-mini"><div class="pm-label">Same-Facility Admissions</div><div class="pm-value"><strong>+2.2%</strong> YoY</div></div>
+      <div class="prior-mini"><div class="pm-label">Revenue Per Admission</div><div class="pm-value"><strong>+2.9%</strong> YoY</div></div>
+      <div class="prior-mini"><div class="pm-label">Adj. EBITDA Margin</div><div class="pm-value"><strong>19.3%</strong> in Q2 2023</div></div>
     </div>
     <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q2_2023.html" style="color:var(--blue);">View full Q2 2023 detail &rarr;</a></p>
   </div>

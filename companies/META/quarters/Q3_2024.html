@@ -319,6 +319,31 @@
     .comp-table th, .comp-table td { padding: 6px 8px; }
   }
 
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+  .content-section .md-table th {
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .content-section .md-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-section .md-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+  .content-section .md-table tr:hover { background: #e8f4fd; }
+
   @media print {
     .nav-bar { display: none; }
     .header { background: #333; }
@@ -338,6 +363,8 @@
   <a href="Q2_2024.html">&larr; Q2 2024</a>
   <div class="nav-center">
     <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>
     <a href="Q4_2025.html" class="qbtn">4Q25</a>
     <a href="Q3_2025.html" class="qbtn">3Q25</a>
     <a href="Q2_2025.html" class="qbtn">2Q25</a>
@@ -358,21 +385,33 @@
   <a href="Q4_2024.html">Q4 2024 &rarr;</a>
 </div>
 
+<div class="changes-box">
+  <h3>What Changed vs Q2 2024</h3>
+  <ul>
+    <li><span class="change-tag ct-raised">Raised</span> Revenue Guidance (Next Q) midpoint up 17.0% vs prior quarter ($46.5B vs $39.8B)</li>
+    <li><span class="change-tag ct-lowered">Lowered</span> FY Total Expenses midpoint down 0.5% vs prior quarter ($97.0B vs $97.5B)</li>
+    <li><span class="change-tag ct-changed">Changed</span> Family DAP: more than 3.2B daily (September 2024) (prior: ~3.27B in June (also described as "more than 3.2 billion"))</li>
+    <li><span class="change-tag ct-changed">Changed</span> Operating Margin: 43% (prior: 38%)</li>
+    <li><span class="change-tag ct-changed">Changed</span> Reality Labs Op Loss: $4.4B (prior: $4.5B)</li>
+    <li><span class="change-tag ct-new">New</span> NEW: New product launch discussed</li>
+  </ul>
+</div>
+
 <div class="metrics-card">
   <div class="metric">
     <div class="metric-label">Revenue Guidance (Next Q)</div>
-    <div class="metric-value">$45.0B - $48.0B</div>
+    <div class="metric-value">$45.0B to $48.0B</div>
     <div class="metric-delta delta-flat">Prior: $38.5B - $41.0B</div>
   </div>
   <div class="metric">
     <div class="metric-label">FY Total Expenses</div>
-    <div class="metric-value">$96.0B - $98.0B</div>
+    <div class="metric-value">$96.0B to $98.0B</div>
     <div class="metric-delta delta-flat">Prior: $96B - $99B</div>
   </div>
   <div class="metric">
     <div class="metric-label">Family DAP</div>
-    <div class="metric-value">3.2B+</div>
-    <div class="metric-delta delta-flat">Prior: ~3.27B</div>
+    <div class="metric-value">more than 3.2B daily</div>
+    <div class="metric-delta delta-flat">Prior: ~3.27B in June</div>
   </div>
   <div class="metric">
     <div class="metric-label">Ad Impressions Growth</div>
@@ -392,18 +431,6 @@
     <div class="metric-value">$4.4B</div>
     <div class="metric-delta delta-flat">Prior: $4.5B</div>
   </div>
-</div>
-
-<div class="changes-box">
-  <h3>What Changed vs Q2 2024</h3>
-  <ul>
-    <li><span class="change-tag ct-raised">Raised</span> Revenue Guidance (Next Q) midpoint up 17.0% ($46.5B vs $39.8B)</li>
-    <li><span class="change-tag ct-lowered">Lowered</span> FY Total Expenses midpoint down 0.5% ($97.0B vs $97.5B)</li>
-    <li><span class="change-tag ct-changed">Changed</span> Family DAP: 3.2B+ (prior: ~3.27B)</li>
-    <li><span class="change-tag ct-changed">Changed</span> Operating Margin: 43% (prior: 38%)</li>
-    <li><span class="change-tag ct-changed">Changed</span> Reality Labs Op Loss: $4.4B (prior: $4.5B)</li>
-    <li><span class="change-tag ct-new">New</span> New product launch discussed</li>
-  </ul>
 </div>
 
 <!-- Full Guidance Content -->
@@ -490,7 +517,10 @@
   </ul>
 </div>
 <div class="content-section">
-  <h3>Family of Apps — Engagement Metrics</h3>
+  <h3>Engagement and Product Metrics</h3>
+</div>
+<div class="content-section">
+  <h3>Family of Apps Engagement</h3>
   <ul>
     <li><strong>Family DAP:</strong> more than 3.2B daily (September 2024)</li>
     <li><strong>Facebook Time Spent:</strong> +8% increase in 2024 (driven by AI-driven feed and video recommendations)</li>
@@ -529,7 +559,10 @@
   </ul>
 </div>
 <div class="content-section">
-  <h3>AI Strategy — Llama Ecosystem</h3>
+  <h3>AI Strategy and Llama Development</h3>
+</div>
+<div class="content-section">
+  <h3>Llama Ecosystem</h3>
   <ul>
     <li><strong>Llama Token Usage:</strong> grown "exponentially" in 2024</li>
     <li><strong>Llama 3.2 Release:</strong> includes leading small models that run on device and open-source multimodal models</li>
@@ -566,7 +599,10 @@
   </ul>
 </div>
 <div class="content-section">
-  <h3>Reality Labs — Ray-Ban Meta Glasses</h3>
+  <h3>Reality Labs and Wearables</h3>
+</div>
+<div class="content-section">
+  <h3>Ray-Ban Meta Glasses</h3>
   <ul>
     <li><strong>Demand:</strong> "very strong"; clear edition sold out almost immediately and was trading online for over $1,000</li>
     <li><strong>AI Integration:</strong> Meta AI integration with real-time multimodal AI, language translation, visual recognition</li>
@@ -617,7 +653,10 @@
   </ul>
 </div>
 <div class="content-section">
-  <h3>Q&A — Internal AI Productivity (Justin Post, BofA)</h3>
+  <h3>Q&A Highlights — Additional Quantitative and Qualitative Detail</h3>
+</div>
+<div class="content-section">
+  <h3>Internal AI Productivity (Justin Post, BofA)</h3>
   <ul>
     <li><strong>Internal Coding Agent:</strong> seeing "a lot of adoption" internally of Meta's internal assistant and coding agent</li>
     <li><strong>Content Moderation:</strong> hope to deploy AI tools over time to make content moderation more efficient and effective</li>
@@ -698,10 +737,10 @@
   </div>
   <div class="prior-ref-body" id="priorBody">
     <div class="metric-grid">
-      <div class="prior-mini"><div class="pm-label">Revenue Guidance (Next Q)</div><div class="pm-value">$38.5B - $41.0B</div></div>
-      <div class="prior-mini"><div class="pm-label">FY Total Expenses</div><div class="pm-value">$96B - $99B</div></div>
-      <div class="prior-mini"><div class="pm-label">FY CapEx</div><div class="pm-value">$37B - $40B</div></div>
-      <div class="prior-mini"><div class="pm-label">Family DAP</div><div class="pm-value">~3.27B</div></div>
+      <div class="prior-mini"><div class="pm-label">Revenue Guidance (Next Q)</div><div class="pm-value">$38.5B - $41.0B (midpoint: $39.75B)</div></div>
+      <div class="prior-mini"><div class="pm-label">FY Total Expenses</div><div class="pm-value">$96B - $99B (unchanged from prior outlook)</div></div>
+      <div class="prior-mini"><div class="pm-label">FY CapEx</div><div class="pm-value">$37B - $40B (raised from prior range of $35B - $40B; low end raised by $2B)</div></div>
+      <div class="prior-mini"><div class="pm-label">Family DAP</div><div class="pm-value">~3.27B in June (also described as "more than 3.2 billion")</div></div>
       <div class="prior-mini"><div class="pm-label">Operating Margin</div><div class="pm-value">38%</div></div>
       <div class="prior-mini"><div class="pm-label">Reality Labs Op Loss</div><div class="pm-value">$4.5B</div></div>
     </div>

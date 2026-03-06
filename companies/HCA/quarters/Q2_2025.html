@@ -319,6 +319,31 @@
     .comp-table th, .comp-table td { padding: 6px 8px; }
   }
 
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+  .content-section .md-table th {
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .content-section .md-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-section .md-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+  .content-section .md-table tr:hover { background: #e8f4fd; }
+
   @media print {
     .nav-bar { display: none; }
     .header { background: #333; }
@@ -338,6 +363,8 @@
   <a href="Q1_2025.html">&larr; Q1 2025</a>
   <div class="nav-center">
     <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>
     <a href="Q4_2025.html" class="qbtn">4Q25</a>
     <a href="Q3_2025.html" class="qbtn">3Q25</a>
     <a href="Q2_2025.html" class="qbtn current">2Q25</a>
@@ -358,44 +385,40 @@
   <a href="Q3_2025.html">Q3 2025 &rarr;</a>
 </div>
 
-<div class="metrics-card">
-  <div class="metric">
-    <div class="metric-label">Revenue Guidance</div>
-    <div class="metric-value">$74.0B - $76.0B</div>
-    <div class="metric-delta delta-up">Prior: $72.8B - $75.8B</div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">Adj. EBITDA Guidance</div>
-    <div class="metric-value">$14.7B - $15.3B</div>
-    <div class="metric-delta delta-up">Prior: $14.3B - $15.1B</div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">Diluted EPS Guidance</div>
-    <div class="metric-value">$25.50 - $27.00</div>
-    <div class="metric-delta delta-up">Prior: $24.05 - $25.85</div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">Capital Spending</div>
-    <div class="metric-value">~$5.0B</div>
-    <div class="metric-delta delta-flat">Unchanged</div>
-  </div>
-</div>
-
 <div class="changes-box">
   <h3>What Changed vs Q1 2025</h3>
   <ul>
-    <li><span class="change-tag ct-raised">Raised</span> Revenue: $74.0B - $76.0B (prior: $72.8B - $75.8B)</li>
-    <li><span class="change-tag ct-raised">Raised</span> Adj. EBITDA: $14.7B - $15.3B (prior: $14.3B - $15.1B); midpoint +$300M, split ~$150M supplemental payments / ~$150M operations</li>
-    <li><span class="change-tag ct-raised">Raised</span> Net Income: $6.11B - $6.48B (prior: $5.85B - $6.29B)</li>
-    <li><span class="change-tag ct-raised">Raised</span> Diluted EPS: $25.50 - $27.00 (prior: $24.05 - $25.85)</li>
-    <li><span class="change-tag ct-lowered">Lowered</span> Volume Growth: 2% - 3% equiv. admissions (prior: 3% - 4%)</li>
-    <li><span class="change-tag ct-maintained">Maintained</span> Capital Spending: ~$5.0B (unchanged)</li>
+    <li><span class="change-tag ct-changed">Changed</span> CapEx Guidance: $1.2 billion (prior: $991 million (5.4% of revenue; described as lighter than typical; expect step-up remainder of year))</li>
+    <li><span class="change-tag ct-changed">Changed</span> Same-Facility Admissions: 1.7% (prior: +2.8% year-over-year (as reported); ~3.8% adjusted for leap year effect)</li>
+    <li><span class="change-tag ct-changed">Changed</span> Adj. EBITDA Margin: improved 30 basis points vs. prior year quarter (prior: +110 basis points year-over-year)</li>
+    <li><span class="change-tag ct-new">New</span> NEW: Labor/staffing discussion added</li>
   </ul>
+</div>
+
+<div class="metrics-card">
+  <div class="metric">
+    <div class="metric-label">CapEx Guidance</div>
+    <div class="metric-value">$1.2 billion</div>
+    <div class="metric-delta delta-flat">Prior: $991 million</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Same-Facility Admissions</div>
+    <div class="metric-value">1.7%</div>
+    <div class="metric-delta delta-flat">Prior: +2.8% year-over-year; ~3.8% adjusted for leap year effect</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Adj. EBITDA Margin</div>
+    <div class="metric-value">improved 30 basis points vs. prior year quarter</div>
+    <div class="metric-delta delta-flat">Prior: +110 basis points year-over-year</div>
+  </div>
 </div>
 
 <!-- Full Guidance Content -->
 <div class="content-section">
-  <h3>Full Year 2025 Guidance (UPDATED / RAISED) &mdash; Volume</h3>
+  <h3>Full Year 2025 Guidance (UPDATED / RAISED)</h3>
+</div>
+<div class="content-section">
+  <h3>Volume Guidance</h3>
   <ul>
     <li><strong>Equivalent admissions growth (full year 2025):</strong> 2% to 3%</li>
     <li><strong>Status:</strong> LOWERED from original 3% to 4% guidance</li>
@@ -563,7 +586,10 @@
   </ul>
 </div>
 <div class="content-section">
-  <h3>One Big Beautiful Bill Act &mdash; Medicaid Provisions</h3>
+  <h3>One Big Beautiful Bill Act / Policy Environment</h3>
+</div>
+<div class="content-section">
+  <h3>Medicaid Provisions</h3>
   <ul>
     <li><strong>Management view:</strong> adverse impacts over next few years are "manageable"</li>
     <li><strong>Key mitigants:</strong> - Grandfathering provisions for supplemental programs (including previously submitted applications for state-directed payments) - Time lines for phasing in work requirements and supplemental payment program changes - Bifurcation between expansion and non-expansion states lessens impact to HCA</li>
@@ -594,7 +620,10 @@
   </ul>
 </div>
 <div class="content-section">
-  <h3>Financial Resiliency Program &mdash; Investor Day Target (End of 2023)</h3>
+  <h3>Financial Resiliency Program</h3>
+</div>
+<div class="content-section">
+  <h3>Investor Day Target (End of 2023)</h3>
   <ul>
     <li><strong>$600 million to $800 million</strong> in targeted savings over 5 years</li>
     <li><strong>Progress:</strong> approximately 1.5 years into 5-year outlook; efforts have been both "accelerated and enhanced" in light of potential policy challenges</li>
@@ -603,9 +632,7 @@
 <div class="content-section">
   <h3>Three Main Categories</h3>
   <ul>
-    <li><strong>1. Benchmarking:</strong> corporate and shared service functions benchmarked against Fortune 100; field-based facility benchmarking on operational and cost metrics; leverage best practices</li>
-    <li><strong>2. Automation & Digital Transformation:</strong> focused on administrative and operational platforms; includes case management, length of stay improvements</li>
-    <li><strong>3. Shared Service Platform Expansion:</strong> adding additional functions over time; driving scale, standardization, and best practice benefits</li>
+    <li>1. <strong>Benchmarking:</strong> corporate and shared service functions benchmarked against Fortune 100; field-based facility benchmarking on operational and cost metrics; leverage best practices 2. <strong>Automation & Digital Transformation:</strong> focused on administrative and operational platforms; includes case management, length of stay improvements 3. <strong>Shared Service Platform Expansion:</strong> adding additional functions over time; driving scale, standardization, and best practice benefits</li>
   </ul>
 </div>
 <div class="content-section">
@@ -618,7 +645,10 @@
   </ul>
 </div>
 <div class="content-section">
-  <h3>Q&A Data Points &mdash; Leap Year Impact</h3>
+  <h3>Q&A Quantitative Data Points (Incremental)</h3>
+</div>
+<div class="content-section">
+  <h3>Leap Year Impact</h3>
   <ul>
     <li><strong>H1 2025 vs. H1 2024 volume impact from leap year:</strong> approximately 50 basis points</li>
   </ul>
@@ -655,6 +685,9 @@
   </ul>
 </div>
 <div class="content-section">
+  <h3>Q2 2025 Actuals (Reported)</h3>
+</div>
+<div class="content-section">
   <h3>Supplemental Payment Programs (Full Year 2025)</h3>
   <ul>
     <li><strong>Net benefit vs. prior year:</strong> flat to $100 million favorable (year-over-year)</li>
@@ -673,10 +706,10 @@
   </div>
   <div class="prior-ref-body" id="priorBody">
     <div class="metric-grid">
-      <div class="prior-mini"><div class="pm-label">Revenue Guidance</div><div class="pm-value">$72.8B - $75.8B</div></div>
-      <div class="prior-mini"><div class="pm-label">Adj. EBITDA Guidance</div><div class="pm-value">$14.3B - $15.1B</div></div>
-      <div class="prior-mini"><div class="pm-label">Diluted EPS Guidance</div><div class="pm-value">$24.05 - $25.85</div></div>
-      <div class="prior-mini"><div class="pm-label">Capital Spending</div><div class="pm-value">~$5.0B</div></div>
+      <div class="prior-mini"><div class="pm-label">CapEx Guidance</div><div class="pm-value">$991 million (5.4% of revenue; described as lighter than typical; expect step-up remainder of year)</div></div>
+      <div class="prior-mini"><div class="pm-label">Same-Facility Admissions</div><div class="pm-value">+2.8% year-over-year (as reported); ~3.8% adjusted for leap year effect</div></div>
+      <div class="prior-mini"><div class="pm-label">Revenue Per Admission</div><div class="pm-value">approximately 3% year-over-year (~2.9% per analyst reference)</div></div>
+      <div class="prior-mini"><div class="pm-label">Adj. EBITDA Margin</div><div class="pm-value">+110 basis points year-over-year</div></div>
     </div>
     <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q1_2025.html" style="color:var(--blue);">View full Q1 2025 detail &rarr;</a></p>
   </div>

@@ -319,6 +319,31 @@
     .comp-table th, .comp-table td { padding: 6px 8px; }
   }
 
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+  .content-section .md-table th {
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .content-section .md-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-section .md-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+  .content-section .md-table tr:hover { background: #e8f4fd; }
+
   @media print {
     .nav-bar { display: none; }
     .header { background: #333; }
@@ -339,6 +364,8 @@
   <div class="nav-center">
     <a href="../comparison.html" class="nav-back">Overview</a>
     <a href="../results.html" class="nav-back">Results</a>
+    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>
+    <a href="Q4_FY2026.html" class="qbtn">4Q2026</a>
     <a href="Q3_FY2026.html" class="qbtn">3Q2026</a>
     <a href="Q2_FY2026.html" class="qbtn">2Q2026</a>
     <a href="Q1_FY2026.html" class="qbtn">1Q2026</a>
@@ -442,8 +469,9 @@
 </div>
 <div class="content-section">
   <h3>Beat vs. Prior Guidance Summary</h3>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Q4 FY2025 Actual</th><th>Q4 Guidance (from Q3 call)</th><th>Beat</th></tr></thead><tbody><tr><td>Total Revenue</td><td>$720.9M</td><td>$696M - $699M</td><td>+$22-$25M above high end</td></tr><tr><td>Non-GAAP Operating Income</td><td>$307.7M</td><td>~$296-$298M</td><td>+$10-$12M</td></tr><tr><td>Non-GAAP Diluted EPS</td><td>$1.74</td><td>~$1.57-$1.58</td><td>+$0.16-$0.17</td></tr></tbody></table></div>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>FY2025 Actual</th><th>FY2025 Guidance (from Q3 call)</th><th>Beat</th></tr></thead><tbody><tr><td>Total Revenue</td><td>$2,746.6M</td><td>$2,722M - $2,725M</td><td>+$22-$25M above high end</td></tr><tr><td>Non-GAAP Operating Income</td><td>$1,152.3M</td><td>~$1,130M</td><td>+$22M</td></tr><tr><td>Non-GAAP Diluted EPS</td><td>$6.60</td><td>~$6.46</td><td>+$0.14</td></tr></tbody></table></div>
   <ul>
-    <li>| Metric | Q4 FY2025 Actual | Q4 Guidance (from Q3 call) | Beat | |--------|-----------------|---------------------------|------| | Total Revenue | $720.9M | $696M - $699M | +$22-$25M above high end | | Non-GAAP Operating Income | $307.7M | ~$296-$298M | +$10-$12M | | Non-GAAP Diluted EPS | $1.74 | ~$1.57-$1.58 | +$0.16-$0.17 | | Metric | FY2025 Actual | FY2025 Guidance (from Q3 call) | Beat | |--------|--------------|-------------------------------|------| | Total Revenue | $2,746.6M | $2,722M - $2,725M | +$22-$25M above high end | | Non-GAAP Operating Income | $1,152.3M | ~$1,130M | +$22M | | Non-GAAP Diluted EPS | $6.60 | ~$6.46 | +$0.14 |</li>
     <li><strong>Beat Attribution:</strong> "Roughly half of the outperformance compared to guidance was driven by strong growth and execution in the business" (per prepared remarks)</li>
   </ul>
 </div>

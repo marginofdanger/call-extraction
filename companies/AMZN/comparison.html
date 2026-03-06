@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amazon Metrics Evolution &mdash; 16-Quarter Comparison</title>
+<style>
+  :root {
+    --company-primary: #FF9900;
+    --company-dark: #232F3E;
+    --company-accent: #146EB4;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.6;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--company-dark), var(--company-accent));
+    color: #fff;
+    padding: 48px 40px;
+    margin: 0 -24px 40px;
+    border-bottom: 4px solid var(--company-primary);
+  }
+  .header h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; }
+  .header .subtitle { font-size: 1.1rem; opacity: 0.85; font-weight: 300; }
+
+  .quarter-nav {
+    background: var(--company-accent);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+  .quarter-nav .label { color: #fff; font-weight: 600; font-size: 0.85rem; margin-right: 8px; white-space: nowrap; }
+  .quarter-nav .year-group { display: flex; gap: 4px; align-items: center; }
+  .quarter-nav .year-label { color: rgba(255,255,255,0.5); font-size: 0.72rem; font-weight: 600; margin-right: 2px; letter-spacing: 0.5px; }
+  .quarter-nav a {
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+  .quarter-nav a:hover { background: rgba(255,255,255,0.25); }
+  .quarter-nav a.overview-link {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.35);
+    padding: 4px 14px;
+    font-size: 0.82rem;
+    margin-left: auto;
+  }
+
+  .toc {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 32px;
+    margin-bottom: 40px;
+    columns: 2;
+    column-gap: 40px;
+  }
+  .toc h2 { font-size: 1.1rem; color: var(--company-accent); margin-bottom: 12px; column-span: all; }
+  .toc a { display: block; color: var(--blue); text-decoration: none; padding: 3px 0; font-size: 0.9rem; break-inside: avoid; }
+  .toc a:hover { text-decoration: underline; }
+
+  .section { margin-bottom: 48px; scroll-margin-top: 20px; }
+  .section h2 { font-size: 1.4rem; color: var(--company-dark); border-bottom: 3px solid var(--company-primary); padding-bottom: 8px; margin-bottom: 16px; }
+  .section h2 .num {
+    display: inline-block; background: var(--company-primary); color: #fff;
+    width: 28px; height: 28px; line-height: 28px; text-align: center;
+    border-radius: 50%; font-size: 0.85rem; margin-right: 8px; vertical-align: middle;
+  }
+
+  table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 0.88rem; }
+  thead th {
+    background: var(--company-accent); color: #fff; padding: 10px 12px;
+    text-align: left; font-weight: 600; font-size: 0.82rem;
+    text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap;
+  }
+  tbody td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tbody tr:nth-child(even) { background: var(--light-bg); }
+  tbody tr:hover { background: #eef2f7; }
+
+  .pos { color: var(--green); font-weight: 600; }
+  .neg { color: var(--red); font-weight: 600; }
+  .neutral { color: var(--amber); font-weight: 600; }
+  .raised { background: #eafaf1 !important; }
+  .lowered { background: #fef0ef !important; }
+  .bold { font-weight: 700; }
+  .muted { color: var(--text-muted); font-style: italic; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; vertical-align: middle; }
+  .tag-raised { background: #d5f5e3; color: #1e8449; }
+  .tag-lowered { background: #fadbd8; color: #c0392b; }
+  .tag-maintained { background: #fdebd0; color: #b9770e; }
+  .tag-new { background: #d6eaf8; color: #2471a3; }
+
+  .insight {
+    background: linear-gradient(135deg, #fef9e7, #fdebd0);
+    border-left: 4px solid var(--amber);
+    padding: 14px 18px; margin: 16px 0;
+    border-radius: 0 6px 6px 0; font-size: 0.9rem;
+  }
+  .insight strong { color: var(--company-dark); }
+
+  .takeaways { counter-reset: takeaway; }
+  .takeaway {
+    display: flex; gap: 16px; margin-bottom: 18px; padding: 14px 18px;
+    background: var(--light-bg); border-radius: 8px; border: 1px solid var(--border);
+  }
+  .takeaway-num {
+    flex-shrink: 0; width: 32px; height: 32px; line-height: 32px;
+    text-align: center; background: var(--company-primary); color: #fff;
+    border-radius: 50%; font-weight: 700; font-size: 0.85rem;
+  }
+  .takeaway-text { font-size: 0.92rem; }
+  .takeaway-text strong { color: var(--company-dark); }
+
+  .year-divider td {
+    background: var(--company-accent) !important; color: #fff;
+    font-weight: 700; font-size: 0.82rem; padding: 6px 12px; letter-spacing: 0.5px;
+  }
+
+  @media (max-width: 768px) {
+    .toc { columns: 1; }
+    .header h1 { font-size: 1.6rem; }
+    table { font-size: 0.8rem; }
+    thead th, tbody td { padding: 6px 8px; }
+    .quarter-nav { gap: 4px; }
+  }
+  @media print {
+    .header { background: #333; }
+    .section { page-break-inside: avoid; }
+    table { font-size: 0.75rem; }
+    .quarter-nav { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Amazon Metrics Evolution</h1>
+  <div class="subtitle">16-Quarter Comparison &mdash; Q1 2022 through Q4 2025 (Call Dates: April 2022 &ndash; February 2026)</div>
+</div>
+
+<div class="quarter-nav" id="qnav">
+  <a href="../../index.html" style="background:rgba(255,255,255,0.15); color:#fff; font-weight:600; margin-right:12px; text-decoration:none; padding:4px 12px; border-radius:4px;">&#x2190; Portfolio</a>
+  <span class="label">Quarter detail:</span>
+  <div class="year-group">
+    <span class="year-label">2025</span>
+    <a href="quarters/Q4_2025.html">Q4&rsquo;25</a>
+    <a href="quarters/Q3_2025.html">Q3&rsquo;25</a>
+    <a href="quarters/Q2_2025.html">Q2&rsquo;25</a>
+    <a href="quarters/Q1_2025.html">Q1&rsquo;25</a>
+  </div>
+  <div class="year-group">
+    <span class="year-label">2024</span>
+    <a href="quarters/Q4_2024.html">Q4&rsquo;24</a>
+    <a href="quarters/Q3_2024.html">Q3&rsquo;24</a>
+    <a href="quarters/Q2_2024.html">Q2&rsquo;24</a>
+    <a href="quarters/Q1_2024.html">Q1&rsquo;24</a>
+  </div>
+  <div class="year-group">
+    <span class="year-label">2023</span>
+    <a href="quarters/Q4_2023.html">Q4&rsquo;23</a>
+    <a href="quarters/Q3_2023.html">Q3&rsquo;23</a>
+    <a href="quarters/Q2_2023.html">Q2&rsquo;23</a>
+    <a href="quarters/Q1_2023.html">Q1&rsquo;23</a>
+  </div>
+  <div class="year-group">
+    <span class="year-label">2022</span>
+    <a href="quarters/Q4_2022.html">Q4&rsquo;22</a>
+    <a href="quarters/Q3_2022.html">Q3&rsquo;22</a>
+    <a href="quarters/Q2_2022.html">Q2&rsquo;22</a>
+    <a href="quarters/Q1_2022.html">Q1&rsquo;22</a>
+  </div>
+  <a href="quarters/intermittent_kpis.html" class="overview-link">Intermittent KPIs &rarr;</a>
+  <a href="results.html" class="overview-link">Results Scorecard &rarr;</a>
+</div>
+
+<nav class="toc">
+  <h2>Table of Contents</h2>
+  <a href="#s1">1. Quarterly Net Sales Guidance</a>
+  <a href="#s2">2. Quarterly Operating Income Guidance</a>
+  <a href="#s3">3. AWS Revenue &amp; Growth Rate</a>
+  <a href="#s4">4. AWS Operating Margin</a>
+  <a href="#s5">5. AWS Backlog Evolution</a>
+  <a href="#s6">6. North America Margin Recovery</a>
+  <a href="#s7">7. International Margin Recovery</a>
+  <a href="#s8">8. Advertising Revenue</a>
+  <a href="#s9">9. CapEx &amp; Infrastructure Investment</a>
+  <a href="#s10">10. Free Cash Flow</a>
+  <a href="#s11">11. Fulfillment Regionalization &amp; Delivery Speed</a>
+  <a href="#s12">12. AI &amp; Generative AI Strategy</a>
+  <a href="#s13">13. Custom Silicon Roadmap</a>
+  <a href="#s14">14. Grocery Strategy</a>
+  <a href="#s15">15. Project Kuiper</a>
+  <a href="#s16">16. Headcount &amp; Workforce</a>
+  <a href="#s17">17. 3P Seller Mix</a>
+  <a href="#s18">18. FX Impact on Guidance</a>
+  <a href="#s19">19. Key Takeaways</a>
+</nav>
+
+<!-- ====== SECTION 1 ====== -->
+<div class="section" id="s1">
+  <h2><span class="num">1</span> Quarterly Net Sales Guidance</h2>
+  <p style="margin-bottom:12px; font-size:0.88rem; color:var(--text-muted);">Amazon guides next-quarter net sales each earnings call. No full-year revenue guidance is provided.</p>
+  <table>
+    <thead>
+      <tr><th>Call</th><th>Guidance For</th><th>Net Sales Range</th><th>Midpoint</th><th>FX Impact</th><th>Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="6">2026 &mdash; MEGA CAPEX ERA</td></tr>
+      <tr><td>Feb &rsquo;26</td><td>Q1 2026</td><td class="bold">$173.5B &ndash; $178.5B</td><td>$176.0B</td><td>~180 bps favorable</td><td>Leap-year comp (-120 bps); Kuiper ~$1B cost increase in N.A.</td></tr>
+      <tr class="year-divider"><td colspan="6">2025 &mdash; SCALING AT SCALE</td></tr>
+      <tr><td>Oct &rsquo;25</td><td>Q4 2025</td><td class="bold">$206.0B &ndash; $213.0B</td><td>$209.5B</td><td>~190 bps favorable</td><td>Holiday quarter; largest-ever guided range by dollar value</td></tr>
+      <tr><td>Jul &rsquo;25</td><td>Q3 2025</td><td>$174.0B &ndash; $179.5B</td><td>$176.8B</td><td>~130 bps favorable</td><td>Tariff uncertainty persists but no demand attenuation</td></tr>
+      <tr><td>May &rsquo;25</td><td>Q2 2025</td><td>$159.0B &ndash; $164.0B</td><td>$161.5B</td><td>~10 bps headwind</td><td>Wider range reflecting tariff/macro uncertainty</td></tr>
+      <tr><td>Feb &rsquo;25</td><td>Q1 2025</td><td>$151.0B &ndash; $155.5B</td><td>$153.3B</td><td>~$2.1B (~150 bps)</td><td>Leap-year comp: Q1 &rsquo;24 had extra day (~$1.5B)</td></tr>
+      <tr class="year-divider"><td colspan="6">2024 &mdash; AI DEMAND ACCELERATION</td></tr>
+      <tr><td>Oct &rsquo;24</td><td>Q4 2024</td><td>$181.5B &ndash; $188.5B</td><td>$185.0B</td><td>~10 bps unfavorable</td><td>Record holiday quarter guided</td></tr>
+      <tr><td>Aug &rsquo;24</td><td>Q3 2024</td><td>$154.0B &ndash; $158.5B</td><td>$156.3B</td><td>~90 bps unfavorable</td><td>Continued consumer trade-down lowering ASPs</td></tr>
+      <tr><td>Apr &rsquo;24</td><td>Q2 2024</td><td>$144.0B &ndash; $149.0B</td><td>$146.5B</td><td>~60 bps unfavorable</td><td>After record Q1 OI beat</td></tr>
+      <tr><td>Feb &rsquo;24</td><td>Q1 2024</td><td>$138.0B &ndash; $143.5B</td><td>$140.8B</td><td>Not quantified</td><td>Server life extension: 5&rarr;6 years (~$900M/Q OI benefit)</td></tr>
+      <tr class="year-divider"><td colspan="6">2023 &mdash; PROFITABILITY INFLECTION</td></tr>
+      <tr><td>Oct &rsquo;23</td><td>Q4 2023</td><td>$160.0B &ndash; $167.0B</td><td>$163.5B</td><td>~40 bps favorable</td><td>Holiday quarter; AWS reaccelerating</td></tr>
+      <tr><td>Aug &rsquo;23</td><td>Q3 2023</td><td>$138.0B &ndash; $143.0B</td><td>$140.5B</td><td>Modest</td><td>After OI beat 2x high end ($7.7B vs. $5.5B)</td></tr>
+      <tr><td>Apr &rsquo;23</td><td>Q2 2023</td><td>$127.0B &ndash; $133.0B</td><td>$130.0B</td><td>~30 bps unfavorable</td><td>N.A. swung to profit; AWS at ~11% exit rate</td></tr>
+      <tr><td>Feb &rsquo;23</td><td>Q1 2023</td><td>$121.0B &ndash; $126.0B</td><td>$123.5B</td><td>~210 bps unfavorable</td><td>18,000+ role eliminations; cost focus</td></tr>
+      <tr class="year-divider"><td colspan="6">2022 &mdash; POST-PANDEMIC RESET</td></tr>
+      <tr><td>Oct &rsquo;22</td><td>Q4 2022</td><td>$140.0B &ndash; $148.0B</td><td>$144.0B</td><td>~460 bps unfavorable</td><td>Wide $8B range reflecting macro uncertainty</td></tr>
+      <tr><td>Jul &rsquo;22</td><td>Q3 2022</td><td>$125.0B &ndash; $130.0B</td><td>$127.5B</td><td>~390 bps unfavorable</td><td>Strong dollar headwind intensifying</td></tr>
+      <tr><td>Apr &rsquo;22</td><td>Q2 2022</td><td>$116.0B &ndash; $121.0B</td><td>$118.5B</td><td>~$2B (~200 bps)</td><td>$6B incremental cost headwinds; pandemic overhang</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Revenue guidance midpoints grew 49% from $118.5B (Q2 &rsquo;22) to $176.0B (Q1 &rsquo;26) over 4 years. The holiday quarter expanded from $144.0B guided (Q4 &rsquo;22) to $209.5B (Q4 &rsquo;25) &mdash; a 46% increase. Amazon consistently beat the top end of revenue guidance in 14 of 16 quarters, making the guided range effectively a conservative floor.</div>
+</div>
+
+<!-- ====== SECTION 2 ====== -->
+<div class="section" id="s2">
+  <h2><span class="num">2</span> Quarterly Operating Income Guidance</h2>
+  <table>
+    <thead>
+      <tr><th>Call</th><th>Guidance For</th><th>OI Range</th><th>Midpoint</th><th>vs Prior Q Mid</th><th>Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="6">2026</td></tr>
+      <tr><td>Feb &rsquo;26</td><td>Q1 2026</td><td class="bold">$16.5B &ndash; $21.5B</td><td>$19.0B</td><td class="neg">&minus;19%</td><td>Kuiper ~$1B YoY cost; $730M severance; seasonal Q1 dip</td></tr>
+      <tr class="year-divider"><td colspan="6">2025</td></tr>
+      <tr class="raised"><td>Oct &rsquo;25</td><td>Q4 2025</td><td class="bold">$21.0B &ndash; $26.0B</td><td>$23.5B</td><td class="pos">+31%</td><td>Record high midpoint; holiday leverage</td></tr>
+      <tr><td>Jul &rsquo;25</td><td>Q3 2025</td><td>$15.5B &ndash; $20.5B</td><td>$18.0B</td><td class="pos">+18%</td><td>$5B range reflects tariff uncertainty</td></tr>
+      <tr><td>May &rsquo;25</td><td>Q2 2025</td><td>$13.0B &ndash; $17.5B</td><td>$15.3B</td><td class="neg">&minus;5%</td><td>Widest-ever $4.5B range; tariff caution</td></tr>
+      <tr><td>Feb &rsquo;25</td><td>Q1 2025</td><td>$14.0B &ndash; $18.0B</td><td>$16.0B</td><td class="neg">&minus;11%</td><td>Useful-life change netting ~&minus;$400M for FY &rsquo;25</td></tr>
+      <tr class="year-divider"><td colspan="6">2024</td></tr>
+      <tr class="raised"><td>Oct &rsquo;24</td><td>Q4 2024</td><td>$16.0B &ndash; $20.0B</td><td>$18.0B</td><td class="pos">+36%</td><td>Holiday leverage; AWS margin expansion</td></tr>
+      <tr><td>Aug &rsquo;24</td><td>Q3 2024</td><td>$11.5B &ndash; $15.0B</td><td>$13.3B</td><td class="pos">+10%</td><td>Seasonal SBC step-down</td></tr>
+      <tr><td>Apr &rsquo;24</td><td>Q2 2024</td><td>$10.0B &ndash; $14.0B</td><td>$12.0B</td><td class="pos">+20%</td><td>SBC step-up headwind baked in</td></tr>
+      <tr><td>Feb &rsquo;24</td><td>Q1 2024</td><td>$8.0B &ndash; $12.0B</td><td>$10.0B</td><td class="pos">+11%</td><td>Includes ~$900M server life extension benefit</td></tr>
+      <tr class="year-divider"><td colspan="6">2023</td></tr>
+      <tr class="raised"><td>Oct &rsquo;23</td><td>Q4 2023</td><td>$7.0B &ndash; $11.0B</td><td>$9.0B</td><td class="pos">+29%</td><td>Record OI trajectory; AWS margin inflecting</td></tr>
+      <tr><td>Aug &rsquo;23</td><td>Q3 2023</td><td>$5.5B &ndash; $8.5B</td><td>$7.0B</td><td class="pos">+87%</td><td>After Q2 &rsquo;23 OI beat 2x top end</td></tr>
+      <tr class="raised"><td>Apr &rsquo;23</td><td>Q2 2023</td><td>$2.0B &ndash; $5.5B</td><td>$3.8B</td><td class="pos">+88%</td><td>First meaningful guidance raise; cost improvements landing</td></tr>
+      <tr><td>Feb &rsquo;23</td><td>Q1 2023</td><td>$0 &ndash; $4.0B</td><td>$2.0B</td><td>Flat</td><td>Restructuring charges; zero floor maintained</td></tr>
+      <tr class="year-divider"><td colspan="6">2022</td></tr>
+      <tr><td>Oct &rsquo;22</td><td>Q4 2022</td><td>$0 &ndash; $4.0B</td><td>$2.0B</td><td class="pos">+14%</td><td>Holiday quarter but margin pressure persists</td></tr>
+      <tr><td>Jul &rsquo;22</td><td>Q3 2022</td><td>$0 &ndash; $3.5B</td><td>$1.8B</td><td class="pos">+75%</td><td>Zero floor; excess capacity weighing</td></tr>
+      <tr class="lowered"><td>Apr &rsquo;22</td><td>Q2 2022</td><td>&minus;$1.0B &ndash; $3.0B</td><td>$1.0B</td><td>&mdash;</td><td>Negative OI possible; $6B incremental costs</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> OI guidance midpoints exploded from $1.0B (Q2 &rsquo;22, with potential loss) to $23.5B (Q4 &rsquo;25) &mdash; a 23x increase in 3.5 years. The zero floor disappeared after Q1 &rsquo;23 as cost improvements compounded. Amazon beat the top end of OI guidance in 13 of 16 quarters, often by $2B&ndash;$3B, suggesting systematic conservatism in profitability guidance.</div>
+</div>
+
+<!-- ====== SECTION 3 ====== -->
+<div class="section" id="s3">
+  <h2><span class="num">3</span> AWS Revenue &amp; Growth Rate</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>AWS Revenue</th><th>YoY Growth</th><th>QoQ Change</th><th>Run Rate</th><th>Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="6">2025 &mdash; REACCELERATION</td></tr>
+      <tr class="raised"><td>Q4 2025</td><td class="bold">$35.6B</td><td class="pos bold">+24%</td><td class="pos">+7.9%</td><td>$142B</td><td>Fastest growth in 13 quarters; capacity constraints easing</td></tr>
+      <tr><td>Q3 2025</td><td>$33.0B</td><td class="pos">+20%</td><td class="pos">+6.8%</td><td>$132B</td><td>Fastest in 11 quarters; Trainium2 multibillion revenue</td></tr>
+      <tr><td>Q2 2025</td><td>$30.9B</td><td>+17.5%</td><td class="pos">+5.5%</td><td>$124B</td><td>Capacity constraint persists; power #1 bottleneck</td></tr>
+      <tr><td>Q1 2025</td><td>$29.3B</td><td>+17%</td><td class="pos">+1.7%</td><td>$117B</td><td>Slight deceleration; capacity-limited growth</td></tr>
+      <tr class="year-divider"><td colspan="6">2024 &mdash; STEADY REACCELERATION</td></tr>
+      <tr><td>Q4 2024</td><td>$28.8B</td><td>+19%</td><td class="pos">+4.7%</td><td>$115B</td><td>4th consecutive quarter at 19%</td></tr>
+      <tr><td>Q3 2024</td><td>$27.5B</td><td>+19%</td><td class="pos">+4.6%</td><td>$110B</td><td>AI run rate growing triple digits</td></tr>
+      <tr><td>Q2 2024</td><td>$26.3B</td><td>+19%</td><td class="pos">+5.2%</td><td>$105B</td><td>Continued reacceleration; multibillion AI run rate</td></tr>
+      <tr><td>Q1 2024</td><td>$25.0B</td><td>+17%</td><td class="pos">+3.3%</td><td>$100B</td><td>Optimization cycle ending; gen AI momentum</td></tr>
+      <tr class="year-divider"><td colspan="6">2023 &mdash; OPTIMIZATION TROUGH &amp; RECOVERY</td></tr>
+      <tr><td>Q4 2023</td><td>$24.2B</td><td>+13%</td><td class="pos">+4.8%</td><td>$97B</td><td>Reacceleration from 12% trough; $155.7B backlog</td></tr>
+      <tr><td>Q3 2023</td><td>$23.1B</td><td>+12%</td><td class="pos">+4.5%</td><td>$92B</td><td>Growth stabilized; gen AI &ldquo;pretty significant business already&rdquo;</td></tr>
+      <tr><td>Q2 2023</td><td>$22.1B</td><td class="neg">+12%</td><td class="pos">+3.3%</td><td>$88B</td><td>Growth trough; optimization moderating</td></tr>
+      <tr><td>Q1 2023</td><td>$21.4B</td><td class="neg">+16%</td><td>Flat</td><td>$86B</td><td>Deceleration continues; April exit ~11%</td></tr>
+      <tr class="year-divider"><td colspan="6">2022 &mdash; POST-BOOM DECELERATION</td></tr>
+      <tr><td>Q4 2022</td><td>$21.4B</td><td class="neg">+20%</td><td class="pos">+4.4%</td><td>$85B</td><td>January run rate mid-teens; deceleration</td></tr>
+      <tr><td>Q3 2022</td><td>$20.5B</td><td>+27%</td><td class="pos">+4.1%</td><td>$82B</td><td>Back end exited mid-20s growth; energy cost pressure</td></tr>
+      <tr><td>Q2 2022</td><td>$19.7B</td><td>+33%</td><td class="pos">+7.1%</td><td>$79B</td><td>Backlog up 65% YoY</td></tr>
+      <tr><td>Q1 2022</td><td>$18.4B</td><td class="pos">+37%</td><td>&mdash;</td><td>$74B</td><td>$88.9B backlog (+68% YoY)</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> AWS traced a classic deceleration-trough-reacceleration arc: from +37% (Q1 &rsquo;22) to a +12% trough (Q2&ndash;Q3 &rsquo;23) driven by cloud optimization, then reaccelerating to +24% (Q4 &rsquo;25) as AI demand exploded. Revenue nearly doubled from $18.4B to $35.6B quarterly in 16 quarters. The $100B run rate milestone was crossed in Q1 &rsquo;24; it stands at $142B exiting Q4 &rsquo;25.</div>
+</div>
+
+<!-- ====== SECTION 4 ====== -->
+<div class="section" id="s4">
+  <h2><span class="num">4</span> AWS Operating Margin</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>AWS OI</th><th>Margin</th><th>QoQ &Delta;</th><th>Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">2025</td></tr>
+      <tr><td>Q4 2025</td><td>$12.5B</td><td class="bold">35.1%</td><td class="pos">+50 bps</td><td>Record quarterly OI ($12.5B); growth investment weighing slightly</td></tr>
+      <tr><td>Q3 2025</td><td>$11.4B</td><td>34.6%</td><td class="pos">+170 bps</td><td>Trainium2 driving efficiency gains</td></tr>
+      <tr><td>Q2 2025</td><td>$10.2B</td><td class="neg">32.9%</td><td class="neg">&minus;630 bps</td><td>Massive CapEx ramp ($31.4B); infrastructure buildout pressure</td></tr>
+      <tr class="raised"><td>Q1 2025</td><td>$11.5B</td><td class="pos bold">39.2%</td><td class="pos">+240 bps</td><td>Cycle peak margin; before CapEx acceleration fully hit</td></tr>
+      <tr class="year-divider"><td colspan="5">2024</td></tr>
+      <tr><td>Q4 2024</td><td>$10.6B</td><td>36.8%</td><td class="neg">&minus;130 bps</td><td>~$920M accelerated depreciation for retired servers</td></tr>
+      <tr class="raised"><td>Q3 2024</td><td>$10.4B</td><td class="pos">38.1%</td><td class="pos">+260 bps</td><td>Near-peak; AI demand driving utilization</td></tr>
+      <tr><td>Q2 2024</td><td>$9.3B</td><td>35.5%</td><td class="neg">&minus;210 bps</td><td>SBC step-up and investment ramp</td></tr>
+      <tr class="raised"><td>Q1 2024</td><td>$9.4B</td><td class="pos bold">37.6%</td><td class="pos">+800 bps</td><td>Server life extension ~$900M/Q benefit; optimization ending</td></tr>
+      <tr class="year-divider"><td colspan="5">2023</td></tr>
+      <tr><td>Q4 2023</td><td>$7.2B</td><td>29.6%</td><td class="neg">&minus;70 bps</td><td>Holiday investment; still +560 bps from Q1 trough</td></tr>
+      <tr class="raised"><td>Q3 2023</td><td>$7.0B</td><td class="pos">30.3%</td><td class="pos">+610 bps</td><td>Huge inflection; lower energy costs; utilization improving</td></tr>
+      <tr><td>Q2 2023</td><td>$5.4B</td><td>24.2%</td><td class="pos">+20 bps</td><td>Bottomed; optimization cycle waning</td></tr>
+      <tr class="lowered"><td>Q1 2023</td><td>$5.1B</td><td class="neg bold">24.0%</td><td class="neg">&minus;30 bps</td><td>Cycle trough; customer optimization peak; $270M severance</td></tr>
+      <tr class="year-divider"><td colspan="5">2022</td></tr>
+      <tr><td>Q4 2022</td><td>$5.2B</td><td class="neg">24.3%</td><td class="neg">&minus;200 bps</td><td>Deceleration + energy costs + hiring</td></tr>
+      <tr><td>Q3 2022</td><td>$5.4B</td><td>26.3%</td><td class="neg">&minus;270 bps</td><td>Energy costs ~200 bps drag</td></tr>
+      <tr><td>Q2 2022</td><td>$5.7B</td><td class="neg">29.0%</td><td class="neg">&minus;630 bps</td><td>SBC step-up; wage inflation; infrastructure investment</td></tr>
+      <tr><td>Q1 2022</td><td>$6.5B</td><td class="pos">35.3%</td><td>&mdash;</td><td>Starting point; pre-optimization-cycle</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> AWS margin traced a deep V: from 35.3% (Q1 &rsquo;22) down to a 24.0% trough (Q1 &rsquo;23) as customers optimized spend and energy costs spiked, then recovered to a 39.2% peak (Q1 &rsquo;25) aided by server life extension and AI-driven utilization. Margins have since compressed to 33&ndash;35% as massive CapEx ($31B+/quarter) flows through depreciation. CEO Jassy has said AI margins will expand over time, echoing early AWS margin trajectory.</div>
+</div>
+
+<!-- ====== SECTION 5 ====== -->
+<div class="section" id="s5">
+  <h2><span class="num">5</span> AWS Backlog Evolution</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Backlog</th><th>YoY Growth</th><th>Avg. Remaining Life</th><th>Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">2025</td></tr>
+      <tr class="raised"><td>Q4 2025</td><td class="bold">$244.0B</td><td class="pos bold">+40%</td><td>Not stated</td><td>Record; October deals exceeded total Q3 deal volume; OpenAI &ldquo;big&rdquo; agreement</td></tr>
+      <tr><td>Q3 2025</td><td>$200.0B</td><td class="pos">~+25%</td><td>Not stated</td><td>October deals exceeded Q3 total deal volume (second consecutive quarter)</td></tr>
+      <tr><td>Q2 2025</td><td>$195.0B</td><td class="pos">+25%</td><td>Not stated</td><td>Acceleration from +20% in Q1</td></tr>
+      <tr><td>Q1 2025</td><td>$189.0B</td><td>+20%</td><td>4.1 years</td><td>Duration lengthening reflects long-term AI commitments</td></tr>
+      <tr class="year-divider"><td colspan="5">2024</td></tr>
+      <tr><td>Q4 2024</td><td colspan="4" class="muted">Not disclosed</td></tr>
+      <tr><td>Q3 2024</td><td colspan="4" class="muted">Not disclosed</td></tr>
+      <tr><td>Q2 2024</td><td>$156.6B</td><td>+19%</td><td>Not stated</td><td>Modest sequential growth from $155.7B</td></tr>
+      <tr><td>Q1 2024</td><td colspan="4" class="muted">Not disclosed</td></tr>
+      <tr class="year-divider"><td colspan="5">2023</td></tr>
+      <tr><td>Q4 2023</td><td>$155.7B</td><td class="pos">+$45B YoY</td><td>Not stated</td><td>+$20B QoQ; massive Q4 deal activity</td></tr>
+      <tr><td>Q3 2023</td><td colspan="4" class="muted">Not disclosed; September deals exceeded total Q3 deal volume</td></tr>
+      <tr><td>Q1&ndash;Q2 2023</td><td colspan="4" class="muted">Not disclosed</td></tr>
+      <tr class="year-divider"><td colspan="5">2022</td></tr>
+      <tr><td>Q3 2022</td><td>$104.3B</td><td>+57%</td><td>Not stated</td><td>Growing despite optimization cycle</td></tr>
+      <tr><td>Q2 2022</td><td class="muted">Not disclosed</td><td>+65% YoY</td><td>3.9 years</td><td>+13% QoQ</td></tr>
+      <tr><td>Q1 2022</td><td>$88.9B</td><td>+68%</td><td>3.8 years</td><td>Strong long-term commitments despite near-term softness</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> AWS backlog nearly tripled from $88.9B to $244B over 16 quarters. Growth reaccelerated from +19% (Q2 &rsquo;24) to +40% (Q4 &rsquo;25) as AI infrastructure deals surged. The weighted average remaining life increased from 3.8 to 4.1 years, reflecting longer-duration AI training and inference commitments. Backlog growth now significantly outpaces revenue growth (+40% vs. +24%), signaling sustained demand runway.</div>
+</div>
+
+<!-- ====== SECTION 6 ====== -->
+<div class="section" id="s6">
+  <h2><span class="num">6</span> North America Margin Recovery</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Revenue</th><th>Operating Income</th><th>Margin</th><th>YoY &Delta;</th><th>Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="6">2025</td></tr>
+      <tr class="raised"><td>Q4 2025</td><td>$127.1B</td><td class="bold">$11.5B</td><td class="pos bold">9.0%</td><td class="pos">+100 bps</td><td>Record margin; holiday leverage + cost-to-serve gains</td></tr>
+      <tr><td>Q3 2025</td><td>$106.3B</td><td>$4.8B (adj. $7.3B)</td><td>4.5% (adj. 6.9%)</td><td>&mdash;</td><td>$2.5B FTC settlement charge; adj. margin healthy</td></tr>
+      <tr><td>Q2 2025</td><td>$100.1B</td><td>$7.5B</td><td class="pos">7.5%</td><td class="pos">+190 bps</td><td>Crossed $100B quarterly N.A. revenue for first time</td></tr>
+      <tr><td>Q1 2025</td><td>$92.9B</td><td>$5.8B</td><td>6.3%</td><td class="pos">+50 bps</td><td>Steady improvement; leap-year comp headwind</td></tr>
+      <tr class="year-divider"><td colspan="6">2024</td></tr>
+      <tr class="raised"><td>Q4 2024</td><td>$115.6B</td><td>$9.3B</td><td class="pos bold">8.0%</td><td class="pos">+190 bps</td><td>Massive holiday quarter; fulfillment efficiencies compounding</td></tr>
+      <tr><td>Q3 2024</td><td>$95.5B</td><td>$5.7B</td><td>5.9%</td><td class="pos">+100 bps</td><td>Kuiper and Prime Video weighing ~20 bps</td></tr>
+      <tr><td>Q2 2024</td><td>$90.0B</td><td>$5.1B</td><td>5.6%</td><td class="pos">+170 bps</td><td>Consumer trade-down lowering ASPs; strong unit growth</td></tr>
+      <tr><td>Q1 2024</td><td>$86.3B</td><td>$5.0B</td><td>5.8%</td><td class="pos">+460 bps</td><td>Massive YoY swing; cost restructuring bearing fruit</td></tr>
+      <tr class="year-divider"><td colspan="6">2023 &mdash; THE TURNAROUND</td></tr>
+      <tr><td>Q4 2023</td><td>$105.5B</td><td>$6.5B</td><td class="pos">6.1%</td><td class="pos">+640 bps</td><td>From -0.3% to 6.1% in 4 quarters</td></tr>
+      <tr><td>Q3 2023</td><td>$87.9B</td><td>$4.3B</td><td>4.9%</td><td class="pos">+540 bps</td><td>Regionalization benefits accelerating</td></tr>
+      <tr class="raised"><td>Q2 2023</td><td>$82.5B</td><td>$3.2B</td><td>3.9%</td><td>&mdash;</td><td>Strong profitability; fulfillment cost leverage emerging</td></tr>
+      <tr class="raised"><td>Q1 2023</td><td>$76.9B</td><td>$898M</td><td class="pos">1.2%</td><td class="pos">+350 bps</td><td>Swing to profit from -$1.6B; inflection quarter</td></tr>
+      <tr class="year-divider"><td colspan="6">2022 &mdash; LOSS TERRITORY</td></tr>
+      <tr class="lowered"><td>Q4 2022</td><td>$93.4B</td><td class="neg">&minus;$240M</td><td class="neg">&minus;0.3%</td><td>&mdash;</td><td>Best of the loss quarters; Rivian included</td></tr>
+      <tr class="lowered"><td>Q3 2022</td><td>$78.8B</td><td class="neg">&minus;$412M</td><td class="neg">&minus;0.5%</td><td>&mdash;</td><td>Excess capacity; inventory misallocation</td></tr>
+      <tr class="lowered"><td>Q1 2022</td><td>$69.2B</td><td class="neg">&minus;$1.57B</td><td class="neg bold">&minus;2.3%</td><td>&mdash;</td><td>Worst quarter; $6B incremental costs; pandemic overhang</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> North America underwent one of the most dramatic margin recoveries in large-cap tech history: from &minus;2.3% (Q1 &rsquo;22) to 9.0% (Q4 &rsquo;25) &mdash; an 1,130 bps improvement. The inflection point was Q1 &rsquo;23 when N.A. swung back to profit. CEO Jassy had said pre-pandemic target was 4&ndash;6% with &ldquo;additional upside&rdquo; possible; the segment now consistently operates above that range, driven by fulfillment regionalization, cost-to-serve reduction (3 consecutive years), and advertising revenue.</div>
+</div>
+
+<!-- ====== SECTION 7 ====== -->
+<div class="section" id="s7">
+  <h2><span class="num">7</span> International Margin Recovery</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Revenue</th><th>Operating Income</th><th>Margin</th><th>Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">2025</td></tr>
+      <tr><td>Q4 2025</td><td>$50.7B</td><td>$1.0B</td><td>2.1%</td><td>Holiday quarter; FX tailwind; Kuiper and new market investments</td></tr>
+      <tr><td>Q3 2025</td><td>$40.9B</td><td>$1.2B</td><td>2.9%</td><td>Down from Q2 peak; investment in newer markets</td></tr>
+      <tr class="raised"><td>Q2 2025</td><td>$36.8B</td><td>$1.5B</td><td class="pos bold">4.1%</td><td>Record margin; applying U.S. regionalization playbook</td></tr>
+      <tr><td>Q1 2025</td><td>$33.5B</td><td>$1.0B</td><td>3.0%</td><td>Steady profitability</td></tr>
+      <tr class="year-divider"><td colspan="5">2024</td></tr>
+      <tr><td>Q4 2024</td><td>$43.4B</td><td>$1.3B</td><td>3.0%</td><td>Holiday quarter; scale benefits</td></tr>
+      <tr class="raised"><td>Q3 2024</td><td>$35.9B</td><td>$1.3B</td><td class="pos">3.6%</td><td>Strong quarter; FX turning favorable</td></tr>
+      <tr><td>Q2 2024</td><td>$31.7B</td><td>$273M</td><td>0.9%</td><td>Seasonal dip; SBC step-up</td></tr>
+      <tr class="raised"><td>Q1 2024</td><td>$31.9B</td><td>$903M</td><td class="pos">2.8%</td><td>First profitable Q1 ever for International</td></tr>
+      <tr class="year-divider"><td colspan="5">2023 &mdash; APPROACHING BREAKEVEN</td></tr>
+      <tr><td>Q4 2023</td><td>$40.2B</td><td class="neg">&minus;$419M</td><td class="neg">&minus;1.0%</td><td>Near breakeven; investment in newer markets</td></tr>
+      <tr class="raised"><td>Q3 2023</td><td>$32.1B</td><td class="neg">&minus;$95M</td><td>&minus;0.3%</td><td>Near-breakeven; first signal of turnaround</td></tr>
+      <tr><td>Q2 2023</td><td>$29.7B</td><td class="neg">&minus;$895M</td><td class="neg">&minus;3.0%</td><td>Improving from trough</td></tr>
+      <tr><td>Q1 2023</td><td>$29.1B</td><td class="neg">&minus;$1.2B</td><td class="neg">&minus;4.3%</td><td>Still deep in losses; FX headwind fading</td></tr>
+      <tr class="year-divider"><td colspan="5">2022 &mdash; DEEP LOSSES</td></tr>
+      <tr><td>Q4 2022</td><td>$34.5B</td><td class="neg">&minus;$2.2B</td><td class="neg">&minus;6.5%</td><td>European energy crisis; FX headwind</td></tr>
+      <tr class="lowered"><td>Q3 2022</td><td>$27.7B</td><td class="neg">&minus;$2.47B</td><td class="neg bold">&minus;8.9%</td><td>Worst quarter; EU recession + extreme FX headwind</td></tr>
+      <tr><td>Q1 2022</td><td>$28.8B</td><td class="neg">&minus;$1.28B</td><td class="neg">&minus;4.5%</td><td>Post-pandemic excess costs; FX turning hostile</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> International margin improved 1,300 bps from &minus;8.9% (Q3 &rsquo;22) to +4.1% (Q2 &rsquo;25). The segment was unprofitable for 8 consecutive quarters (Q1 &rsquo;22 through Q4 &rsquo;23) before crossing into sustained profitability in Q1 &rsquo;24. The trajectory mirrors North America but lags by ~4 quarters, as Amazon applies its U.S. regionalization playbook internationally. Margins remain more volatile due to FX exposure and newer-market investment.</div>
+</div>
+
+<!-- ====== SECTION 8 ====== -->
+<div class="section" id="s8">
+  <h2><span class="num">8</span> Advertising Revenue</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Ad Revenue</th><th>YoY Growth</th><th>Run Rate</th><th>Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">2025 &mdash; PRIME VIDEO ADS &amp; ACCELERATION</td></tr>
+      <tr class="raised"><td>Q4 2025</td><td class="bold">$21.3B</td><td class="pos">+22%</td><td>$85B</td><td>+$12B incremental in FY &rsquo;25; 315M ad-supported viewers across 16 countries</td></tr>
+      <tr><td>Q3 2025</td><td>$17.7B</td><td class="pos">+24%</td><td>$71B</td><td>3rd consecutive quarter of acceleration; Netflix/Spotify DSP integrations</td></tr>
+      <tr><td>Q2 2025</td><td>$15.7B</td><td class="pos">+22%</td><td>$63B</td><td>Roku partnership (80M CTV households); Disney real-time ad exchange</td></tr>
+      <tr><td>Q1 2025</td><td>$13.9B</td><td>+19%</td><td>$56B</td><td>Re-accelerating from Q4 &rsquo;24 trough; ad-supported audience &gt;300M</td></tr>
+      <tr class="year-divider"><td colspan="5">2024 &mdash; PRIME VIDEO ADS LAUNCH</td></tr>
+      <tr><td>Q4 2024</td><td>$17.3B</td><td>+18%</td><td>$69B</td><td>TTM $56B; Prime Video ads first year &ldquo;pleased&rdquo;</td></tr>
+      <tr><td>Q3 2024</td><td>$14.3B</td><td>+19%</td><td>$57B</td><td>Prime Video entering first broadcast season; upfronts strong</td></tr>
+      <tr><td>Q2 2024</td><td>$12.8B</td><td>+20%</td><td>$51B</td><td>TTM &gt;$50B; Prime Video ads &ldquo;very beginning&rdquo;</td></tr>
+      <tr><td>Q1 2024</td><td>~$11.8B</td><td>+24% ex-FX</td><td>$47B</td><td>Prime Video ads launched January 2024; &ldquo;really good start&rdquo;</td></tr>
+      <tr class="year-divider"><td colspan="5">2023 &mdash; APPROACHING $50B</td></tr>
+      <tr><td>Q4 2023</td><td>~$14.6B</td><td>+26% ex-FX</td><td>$58B</td><td>Sponsored TV launched; Prime Video ads announced for 2024</td></tr>
+      <tr><td>Q3 2023</td><td>$12.1B</td><td class="pos">+26%</td><td>$48B</td><td>Approaching $50B run rate; re-accelerated</td></tr>
+      <tr><td>Q2 2023</td><td>$10.7B</td><td>+22%</td><td>$43B</td><td>375M+ items sold on Prime Day</td></tr>
+      <tr><td>Q1 2023</td><td>$9.5B</td><td>+23% ex-FX</td><td>$38B</td><td>&ldquo;Bucking wider advertising trends&rdquo;</td></tr>
+      <tr class="year-divider"><td colspan="5">2022 &mdash; RESILIENT GROWTH</td></tr>
+      <tr><td>Q4 2022</td><td>$11.6B</td><td>+23% ex-FX</td><td>$46B</td><td>Resilient despite macro weakness; growing into video</td></tr>
+      <tr><td>Q3 2022</td><td>$9.5B</td><td>+30% ex-FX</td><td>$38B</td><td>TNF drove record Prime sign-ups; Freevee; Twitch</td></tr>
+      <tr><td>Q1 2022</td><td>$7.9B</td><td>+25% ex-FX</td><td>$32B</td><td>Strong foundation; search + display dominated</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Advertising grew from a $32B run rate to $85B in 4 years &mdash; nearly tripling &mdash; while maintaining 18&ndash;30% growth throughout. This is Amazon&rsquo;s highest-margin revenue stream. The 2024 launch of Prime Video ads (315M viewers across 16 countries by Q4 &rsquo;25) added an entirely new advertising surface. Growth re-accelerated from +18% (Q4 &rsquo;24) to +24% (Q3 &rsquo;25), suggesting Prime Video ads are still in early innings.</div>
+</div>
+
+<!-- ====== SECTION 9 ====== -->
+<div class="section" id="s9">
+  <h2><span class="num">9</span> CapEx &amp; Infrastructure Investment</h2>
+  <table>
+    <thead>
+      <tr><th>Period</th><th>Quarterly CapEx</th><th>Annual / Guided</th><th>vs Prior Year</th><th>Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">FY 2026 GUIDANCE</td></tr>
+      <tr class="raised"><td>FY 2026 (guided)</td><td>&mdash;</td><td class="bold">~$200B</td><td class="pos">+60%</td><td>Predominantly AWS; &ldquo;maybe once-in-a-lifetime opportunity&rdquo;</td></tr>
+      <tr class="year-divider"><td colspan="5">2025 &mdash; $125B YEAR</td></tr>
+      <tr><td>Q4 2025</td><td>$26.3B</td><td rowspan="4" style="vertical-align:middle;">~$125B<br><span class="muted">(raised from ~$105B)</span></td><td rowspan="4" style="vertical-align:middle;" class="pos">+63% YoY</td><td>Declined from Q3 peak; power additions +1.2 GW in Q4</td></tr>
+      <tr><td>Q3 2025</td><td class="bold">$34.2B</td><td>Peak quarterly CapEx; YTD $89.9B; ~$125B guided</td></tr>
+      <tr><td>Q2 2025</td><td>$31.4B</td><td>Guided &ldquo;representative&rdquo; of H2 rate; implies ~$118B+</td></tr>
+      <tr><td>Q1 2025</td><td>$24.3B</td><td>Back-half loaded; capacity arriving H2</td></tr>
+      <tr class="year-divider"><td colspan="5">2024 &mdash; THE RAMP BEGINS</td></tr>
+      <tr><td>Q4 2024</td><td>$26.3B</td><td rowspan="4" style="vertical-align:middle;">~$75B&ndash;$78B</td><td rowspan="4" style="vertical-align:middle;" class="pos">+55% YoY</td><td>&ldquo;Reasonably representative&rdquo; of 2025 quarterly rate</td></tr>
+      <tr><td>Q3 2024</td><td>$22.6B</td><td>CEO: &ldquo;suspect we&rsquo;ll spend more than $75B in 2025&rdquo;</td></tr>
+      <tr><td>Q2 2024</td><td>$17.6B</td><td>H2 higher than H1; implies &gt;$61B</td></tr>
+      <tr><td>Q1 2024</td><td>$14.0B</td><td>CFO: &ldquo;low quarter for the year&rdquo;</td></tr>
+      <tr class="year-divider"><td colspan="5">2023 &mdash; EFFICIENCY YEAR</td></tr>
+      <tr><td>FY 2023</td><td>&mdash;</td><td>$48.4B</td><td class="neg">&minus;17%</td><td>Reduced from $59B; mix shifted to AWS infrastructure</td></tr>
+      <tr class="year-divider"><td colspan="5">2022 &mdash; POST-PANDEMIC DIGESTION</td></tr>
+      <tr><td>FY 2022</td><td>&mdash;</td><td>$63.6B (gross)</td><td class="pos">~+6%</td><td>~50% tech infrastructure; fulfillment &amp; transport cut ~1/3 from plan</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Amazon&rsquo;s CapEx trajectory is one of the most aggressive in corporate history: $60B (FY &rsquo;22) &rarr; $48B (FY &rsquo;23, efficiency year) &rarr; ~$76B (FY &rsquo;24) &rarr; ~$125B (FY &rsquo;25) &rarr; ~$200B guided (FY &rsquo;26). The FY &rsquo;26 figure would make Amazon the largest capital spender on earth. CEO Jassy justified it by noting data centers are useful 20&ndash;30 years and this is &ldquo;possibly the biggest tech opportunity since the Internet.&rdquo; Power capacity is the binding constraint: 3.9 GW added in 2025 (doubled from 2022), targeting ~7.8 GW by 2027.</div>
+</div>
+
+<!-- ====== SECTION 10 ====== -->
+<div class="section" id="s10">
+  <h2><span class="num">10</span> Free Cash Flow</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>TTM FCF</th><th>QoQ &Delta;</th><th>TTM OCF</th><th>Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">2025</td></tr>
+      <tr class="lowered"><td>Q4 2025</td><td class="neg">$11.2B</td><td class="neg">&minus;$3.6B</td><td>$139.5B (+20% YoY)</td><td>OCF record but CapEx absorption compressing FCF</td></tr>
+      <tr><td>Q3 2025</td><td class="neg">$14.8B</td><td class="neg">&minus;$3.4B</td><td>&mdash;</td><td>Down due to $50.9B YoY increase in net CapEx</td></tr>
+      <tr><td>Q2 2025</td><td>$18.2B</td><td class="neg">&minus;$7.7B</td><td>&mdash;</td><td>CapEx ramp accelerating; $31.4B in Q2 alone</td></tr>
+      <tr><td>Q1 2025</td><td>$25.9B</td><td class="neg">&minus;$10.3B</td><td>&mdash;</td><td>Declining as CapEx outpaces OCF growth</td></tr>
+      <tr class="year-divider"><td colspan="5">2024</td></tr>
+      <tr><td>Q4 2024</td><td>$36.2B</td><td class="neg">&minus;$9.9B</td><td>$115.9B</td><td>CapEx ramp starting to compress FCF</td></tr>
+      <tr><td>Q3 2024</td><td>$46.1B</td><td class="neg">&minus;$5.3B</td><td>&mdash;</td><td>Declining from peak as CapEx ramp kicks in</td></tr>
+      <tr class="raised"><td>Q2 2024</td><td class="pos bold">$51.4B</td><td class="pos">+$2.6B</td><td>&mdash;</td><td>All-time peak TTM FCF; before CapEx inflection</td></tr>
+      <tr><td>Q1 2024</td><td class="pos">$48.8B</td><td class="pos">+$13.3B</td><td>&mdash;</td><td>Massive recovery continues</td></tr>
+      <tr class="year-divider"><td colspan="5">2023 &mdash; THE RECOVERY</td></tr>
+      <tr><td>Q4 2023</td><td class="pos">$35.5B</td><td class="pos">+$14.1B</td><td>&mdash;</td><td>+$48.3B YoY swing; CapEx down 17%</td></tr>
+      <tr><td>Q3 2023</td><td class="pos">$21.4B</td><td class="pos">+$13.5B</td><td>&mdash;</td><td>$41.1B YoY swing; profitability + lower CapEx</td></tr>
+      <tr class="raised"><td>Q2 2023</td><td class="pos">$7.9B</td><td class="pos">+$11.2B</td><td>&mdash;</td><td>Swing to positive FCF for first time in 5 quarters</td></tr>
+      <tr><td>Q1 2023</td><td class="neg">&minus;$3.3B</td><td class="pos">+$8.3B</td><td>&mdash;</td><td>Improving but still negative</td></tr>
+      <tr class="year-divider"><td colspan="5">2022 &mdash; NEGATIVE FCF</td></tr>
+      <tr><td>Q4 2022</td><td class="neg">&minus;$11.6B</td><td>&mdash;</td><td>&mdash;</td><td>FY 2022 negative; pandemic CapEx overhang</td></tr>
+      <tr class="lowered"><td>Q3 2022</td><td class="neg bold">&minus;$19.7B</td><td>&mdash;</td><td>&mdash;</td><td>Near-trough; massive CapEx + operating losses</td></tr>
+      <tr class="lowered"><td>Q1 2022</td><td class="neg bold">&minus;$18.6B</td><td>&mdash;</td><td>&mdash;</td><td>Worst TTM FCF on record; pandemic expansion costs</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> FCF traced a dramatic arc: &minus;$19.7B (Q3 &rsquo;22) &rarr; +$51.4B peak (Q2 &rsquo;24) &rarr; $11.2B (Q4 &rsquo;25). The recovery from negative $20B to positive $50B in just 8 quarters was driven by profitability improvement and reduced CapEx. The subsequent decline from $51B to $11B reflects the massive AI infrastructure ramp ($125B CapEx in 2025). With $200B CapEx guided for 2026, FCF will likely remain compressed despite record $139.5B operating cash flow. This is a deliberate trade: sacrificing near-term FCF for long-term AI infrastructure positioning.</div>
+</div>
+
+<!-- ====== SECTION 11 ====== -->
+<div class="section" id="s11">
+  <h2><span class="num">11</span> Fulfillment Regionalization &amp; Delivery Speed</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Network Architecture</th><th>Delivery Speed</th><th>Cost-to-Serve</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025 &mdash; 10 REGIONS, 3-HOUR DELIVERY</td></tr>
+      <tr class="raised"><td>Q4 2025</td><td>10 U.S. regions; 1M+ robots deployed; expanded from 8 to 10 regions</td><td class="pos bold">8B+ items same/next day U.S. (+30% YoY); same-day +70% items YoY; ~100M customers used same-day; 3-hour in select cities; Amazon Now (30-min) in India/Mexico/UAE</td><td class="pos">Reduced per-unit for 3rd consecutive year globally</td></tr>
+      <tr><td>Q3 2025</td><td>15+ inbound buildings operational; inbound lead time &minus;4 days YoY; $4B+ committed to rural expansion</td><td>Fastest ever for 3rd year running; 3-hour delivery in select U.S. cities; perishable same-day in 1,000+ cities expanding to 2,300</td><td>Shipping costs +8% vs. units +11% (positive leverage)</td></tr>
+      <tr><td>Q2 2025</td><td>Direct lanes +40% YoY; packages traveled 12% less distance; handling touches down 15%; 1 millionth robot deployed</td><td>30% more same/next day items YoY; expanding to 4,000+ smaller cities/towns</td><td class="pos">Outbound shipping +6% vs. units +12% (strong leverage)</td></tr>
+      <tr><td>Q1 2025</td><td>Newly re-architected inbound network fully rolled out; improved placement, higher units/package</td><td>New records; fastest ever globally; most same/next day items in any quarter</td><td>Inbound improvements driving productivity gains</td></tr>
+      <tr class="year-divider"><td colspan="4">2024 &mdash; INBOUND OVERHAUL</td></tr>
+      <tr><td>Q4 2024</td><td>Redesigned U.S. inbound network rolled out; ideal-building placement +40% YoY; same-day sites +60% (140+ metros)</td><td>9B+ units same/next day around world in FY 2024; fastest-ever for 2nd year</td><td class="pos">Reduced per-unit for 2nd consecutive year</td></tr>
+      <tr><td>Q3 2024</td><td>15+ new inbound buildings opened; inventory spread +25% YoY; Shreveport facility: newest robotics, &minus;25% processing time</td><td>40M+ customers used same-day (+25% YoY); fastest ever for 2nd year</td><td>Continued improvement from inventory placement</td></tr>
+      <tr><td>Q2 2024</td><td>Inbound network regionalization: next major initiative; units per box optimization continuing</td><td>5B+ units same/next day YTD; fastest ever</td><td>Core stores margin improved QoQ</td></tr>
+      <tr><td>Q1 2024</td><td>Inbound overhaul underway; seller incentives for cost-efficient inbounding; international applying U.S. lessons</td><td>March: nearly 60% same/next day in top 60 U.S. metros; 3/4 items same/next day in Toronto, London, Tokyo</td><td>CEO: &ldquo;I don&rsquo;t think we&rsquo;re at the limits&rdquo;; same-day is &ldquo;least expensive in the network&rdquo;</td></tr>
+      <tr class="year-divider"><td colspan="4">2023 &mdash; REGIONALIZATION DELIVERS</td></tr>
+      <tr><td>Q4 2023</td><td>First per-unit cost-to-serve decline since 2018; U.S. cost-to-serve down &gt;$0.45/unit</td><td>7B+ items same/next day globally in 2023; Q4 same/next day +65% YoY in U.S.</td><td class="pos">First decline since 2018; landmark milestone</td></tr>
+      <tr><td>Q3 2023</td><td>Results &ldquo;exceeding optimistic expectations&rdquo;; higher local in-stock; more FC-to-station direct connections</td><td>On pace for fastest Prime delivery speeds in 29-year history</td><td>Lower inflation (line haul, ocean, rail); lower energy costs</td></tr>
+      <tr class="raised"><td>Q2 2023</td><td>20% fewer touches/package; 19% fewer miles traveled; 1,000+ bps increase in in-region deliveries (76%); planning to double same-day facilities</td><td>&gt;50% of Prime orders same/next day in top 60 metros; 1.8B+ units same/next day YTD (~4x 2019)</td><td class="pos">Shipping +6% vs. units +9%; fulfillment +5% vs. units +9%</td></tr>
+      <tr class="raised"><td>Q1 2023</td><td>U.S. network transitioned from national to 8 interconnected regions &mdash; &ldquo;just recently completed&rdquo;; &ldquo;quite bullish on early results&rdquo;</td><td>On track for fastest Prime delivery speeds ever in 2023</td><td>Revenue/unit growth outpacing fulfillment/shipping cost growth</td></tr>
+      <tr class="year-divider"><td colspan="4">2022 &mdash; EXCESS CAPACITY</td></tr>
+      <tr><td>Q3 2022</td><td>Over $1B in operations cost improvements; targeted $1.5B but fell $0.5B short (high inventory)</td><td>Speeds getting very close to pre-pandemic target</td><td>~$4B incremental costs (improving from $6B)</td></tr>
+      <tr class="lowered"><td>Q1 2022</td><td>Doubled operations footprint over 2 years; now excess capacity; delivery speed approaching pre-pandemic levels</td><td>Approaching pre-pandemic levels</td><td class="neg">$6B incremental costs ($2B inflation, $2B productivity, $2B fixed cost deleverage)</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> The 2023 national-to-regional network transformation (1 network &rarr; 8 regions &rarr; 10 regions) was arguably Amazon&rsquo;s most impactful operational initiative since Prime itself. It yielded 3 consecutive years of per-unit cost-to-serve reduction while simultaneously accelerating delivery speed: from &ldquo;approaching pre-pandemic levels&rdquo; (Q1 &rsquo;22) to 8B+ same/next day items (Q4 &rsquo;25). The compounding effect &mdash; faster + cheaper &mdash; is the engine behind N.A.&rsquo;s margin recovery (Section 6).</div>
+</div>
+
+<!-- ====== SECTION 12 ====== -->
+<div class="section" id="s12">
+  <h2><span class="num">12</span> AI &amp; Generative AI Strategy</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>AI Business Scale</th><th>Key Developments</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="3">2025 &mdash; MULTIBILLION-DOLLAR, TRIPLE DIGITS</td></tr>
+      <tr class="raised"><td>Q4 2025</td><td class="pos bold">Graviton+Trainium &gt;$10B ARR (triple-digit growth); Bedrock multibillion ARR (+60% QoQ customer spend); Trainium2: 1.4M chips, multibillion ARR, 100K+ companies</td><td>Trainium3 just shipping (~40% better than T2; nearly all supply committed by mid-2026); T4 in development; &ldquo;conversations about Trainium5&rdquo;; OpenAI agreement; AI demand &ldquo;barbelled&rdquo;: labs + enterprise productivity, massive middle still to come</td></tr>
+      <tr><td>Q3 2025</td><td>Trainium2 revenue multibillion, +150% QoQ, fully subscribed; Project Rainier at ~500K T2 chips (going to 1M); Bedrock tokens majority on Trainium; Connect &gt;$1B ARR</td><td>Trainium3 preview expected end of 2025; CEO: &ldquo;Bedrock could be as big as EC2&rdquo;; AgentCore 1M+ SDK downloads; Kiro IDE 100K+ developers; Rufus 250M active customers (+140% monthly users YoY)</td></tr>
+      <tr><td>Q2 2025</td><td>Large, fast-growing, triple-digit YoY, multibillion-dollar; &ldquo;more demand than supply&rdquo;; 80&ndash;90% of cost at scale will be inference</td><td>Anthropic newest Claude models trained on Trainium2; Strands open source; AgentCore launched; Kiro agentic IDE (hundreds of thousands of developers in first weeks); NVIDIA Grace Blackwell launched</td></tr>
+      <tr><td>Q1 2025</td><td>Multibillion ARR; triple-digit YoY growth; &ldquo;as fast as we put capacity in, it&rsquo;s consumed&rdquo;</td><td>Amazon Nova models + Nova Sonic (speech-to-speech) + Nova Act (browser actions); Bedrock has Claude 3.7, Llama 4, DeepSeek R1; Alexa+ launched (&gt;100K users)</td></tr>
+      <tr class="year-divider"><td colspan="3">2024 &mdash; SCALING PROOF POINTS</td></tr>
+      <tr><td>Q4 2024</td><td>Multibillion ARR; triple-digit % growth; ~1,000 gen AI applications across Amazon</td><td>Amazon Nova model family; Trainium2 GA at re:Invent; Project Rainier (hundreds of thousands of T2 chips for Anthropic); DeepSeek commentary: &ldquo;Jevons Paradox&rdquo; &mdash; lower inference costs positive</td></tr>
+      <tr><td>Q3 2024</td><td>Multibillion run rate, triple-digit % YoY, growing 3x faster than AWS at same stage; &ldquo;demand exceeds supply&rdquo;</td><td>Bedrock added Claude 3.5, Llama 3.2, Mistral Large 2; SageMaker HyperPod saves 40% training time; Trainium2 starting to ramp</td></tr>
+      <tr><td>Q2 2024</td><td>&ldquo;Multibillion-dollar revenue run rate, growing dramatically&rdquo;; 2x more ML/gen AI features in GA than all other cloud providers combined</td><td>Amazon Q saved Amazon $260M / 4,500 developer-years migrating 30K Java apps; GPU supply remains scarce</td></tr>
+      <tr class="raised"><td>Q1 2024</td><td>&ldquo;Multibillion-dollar revenue run rate already&rdquo;; Bedrock: tens of thousands of customers</td><td>CEO: &ldquo;Possibly biggest tech opportunity since the Internet&rdquo;; Amazon Q GA; Trainium2 coming H2; Anthropic training on Trainium; 85%+ of global IT still on-premises</td></tr>
+      <tr class="year-divider"><td colspan="3">2023 &mdash; FRAMEWORK ESTABLISHED</td></tr>
+      <tr><td>Q4 2023</td><td>&ldquo;Pretty big number&rdquo; but &ldquo;relatively small&rdquo; vs. $100B AWS; &ldquo;tens of billions of dollars over next several years&rdquo;</td><td>Trainium2 announced (4x faster, 3x memory); Amazon Q launched; Rufus AI shopping assistant; re:Invent biggest ever; &ldquo;many thousands&rdquo; of Bedrock customers</td></tr>
+      <tr><td>Q3 2023</td><td>&ldquo;Growing very, very quickly&rdquo;; &ldquo;pretty significant business already by any measure&rdquo;; &ldquo;tens of billions of dollars for AWS over next several years&rdquo;</td><td>Anthropic chose AWS as primary cloud + Trainium; Bedrock GA; CodeWhisperer customization; Perplexity.ai &ldquo;all in with AWS&rdquo;</td></tr>
+      <tr><td>Q2 2023</td><td>&ldquo;Very early stages... a few steps into a marathon&rdquo;</td><td>Three-layer framework reiterated; Graviton: 50K+ customers; Bedrock: Claude 2, Stability AI, AI21, Cohere; CodeWhisperer &ldquo;very strong start&rdquo;</td></tr>
+      <tr class="raised"><td>Q1 2023</td><td><span class="tag tag-new">First Disclosure</span> Three-layer AI framework: (1) Chips (Trainium/Inferentia), (2) Bedrock (managed foundational models), (3) Applications (CodeWhisperer)</td><td>CEO: &ldquo;Every single business inside Amazon building on top of LLMs&rdquo;; GPUs &ldquo;expensive and scarce&rdquo;; Trainium2 + Inferentia2 released</td></tr>
+      <tr class="year-divider"><td colspan="3">2022 &mdash; PRE-GEN-AI ERA</td></tr>
+      <tr><td>Q3 2022</td><td class="muted">Not discussed</td><td>Graviton3 noted as 40% better price performance; customers using for cost optimization</td></tr>
+      <tr><td>Q1&ndash;Q2 2022</td><td class="muted">Not discussed</td><td class="muted">Generative AI not yet a topic in earnings calls</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> AI went from undiscussed (2022) to a &gt;$10B ARR combined business (Graviton + Trainium, Q4 &rsquo;25) in just 3 years. The progression from &ldquo;a few steps into a marathon&rdquo; (Q2 &rsquo;23) to &ldquo;demand exceeds supply&rdquo; (Q3 &rsquo;24) to &ldquo;Bedrock could be as big as EC2&rdquo; (Q3 &rsquo;25) charts the fastest-growing business in Amazon&rsquo;s history. Amazon is betting $200B on CapEx in 2026 primarily because of AI demand. The CEO&rsquo;s &ldquo;barbelled demand&rdquo; framework (AI labs + enterprise productivity + massive untapped middle) suggests we are still in early innings.</div>
+</div>
+
+<!-- ====== SECTION 13 ====== -->
+<div class="section" id="s13">
+  <h2><span class="num">13</span> Custom Silicon Roadmap</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Chip</th><th>Status</th><th>Performance / Scale</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025 &mdash; TRAINIUM BECOMES BACKBONE</td></tr>
+      <tr class="raised"><td>Q4 2025</td><td>Trainium3</td><td><span class="tag tag-new">Just Started Shipping</span></td><td>~40% better than T2; nearly all supply committed by mid-2026</td></tr>
+      <tr><td>Q4 2025</td><td>Trainium2</td><td>GA; 1.4M chips landed</td><td>Multibillion ARR; fully subscribed; 100K+ companies; 30&ndash;40% better price performance vs. GPU</td></tr>
+      <tr><td>Q4 2025</td><td>Graviton</td><td>Production</td><td>Multibillion ARR growing 50%+ YoY; 90%+ of AWS top 1,000 customers</td></tr>
+      <tr><td>Q4 2025</td><td>Combined</td><td>&mdash;</td><td class="pos bold">&gt;$10B annual run rate (triple-digit growth)</td></tr>
+      <tr><td>Q3 2025</td><td>Trainium2</td><td>Revenue multibillion; +150% QoQ</td><td>Project Rainier: ~500K chips (going to 1M); Bedrock token majority on Trainium</td></tr>
+      <tr><td>Q3 2025</td><td>Trainium3</td><td>Preview expected end of 2025</td><td>~40% better than T2; fuller volumes early 2026</td></tr>
+      <tr><td>Q1&ndash;Q2 2025</td><td>Trainium2</td><td>Landing in larger quantities</td><td>Anthropic newest Claude models trained on T2; 30&ndash;40% better price performance</td></tr>
+      <tr class="year-divider"><td colspan="4">2024 &mdash; TRAINIUM2 ARRIVES</td></tr>
+      <tr><td>Q4 2024</td><td>Trainium2</td><td><span class="tag tag-new">GA at re:Invent</span></td><td>EC2 instances 30&ndash;40% more price performant; Project Rainier launched</td></tr>
+      <tr><td>Q4 2024</td><td>Trainium3</td><td>Expected preview &ldquo;late in &rsquo;25&rdquo;</td><td>Trainium4 &ldquo;defining thereafter&rdquo;</td></tr>
+      <tr><td>Q3 2024</td><td>Trainium2</td><td>Starting to ramp</td><td>&ldquo;Very compelling price performance&rdquo;; multiple returns to suppliers for more supply</td></tr>
+      <tr><td>Q1 2024</td><td>Trainium2</td><td>Coming H2 2024 / early 2025</td><td>Anthropic training future models on Trainium</td></tr>
+      <tr class="year-divider"><td colspan="4">2023 &mdash; DIFFERENTIATION EMERGES</td></tr>
+      <tr><td>Q4 2023</td><td>Trainium2</td><td>Announced</td><td>4x faster training, 3x more memory vs. T1</td></tr>
+      <tr><td>Q3 2023</td><td>Trainium/Inferentia</td><td>Anthropic chose for future LLMs</td><td>Chip shortage making custom silicon very attractive</td></tr>
+      <tr><td>Q1 2023</td><td>Trainium2 / Inferentia2</td><td>Released</td><td>&ldquo;Pretty differentiated and very significant&rdquo; price/performance</td></tr>
+      <tr class="year-divider"><td colspan="4">2022</td></tr>
+      <tr><td>Q3 2022</td><td>Graviton3</td><td>Production</td><td>40% better price performance vs. x86</td></tr>
+      <tr><td>Q1&ndash;Q2 2022</td><td colspan="3" class="muted">Custom silicon not discussed</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Amazon&rsquo;s custom silicon strategy went from Graviton (general compute) to a full AI chip roadmap: Trainium → T2 → T3 (shipping) → T4 (in development) → T5 (in conversation). The combined Graviton + Trainium business exceeds $10B ARR. Project Rainier (500K&ndash;1M Trainium2 chips for Anthropic) and the fact that &ldquo;nearly all T3 supply is committed by mid-2026&rdquo; demonstrate how custom silicon has become a core competitive moat for AWS.</div>
+</div>
+
+<!-- ====== SECTION 14 ====== -->
+<div class="section" id="s14">
+  <h2><span class="num">14</span> Grocery Strategy</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Scale</th><th>Key Developments</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="3">2025</td></tr>
+      <tr class="raised"><td>Q4 2025</td><td class="pos bold">&gt;$150B gross sales</td><td>Go-to grocer for 150M+ Americans; perishable same-day in thousands of cities; 100+ new Whole Foods planned; &ldquo;Daily Shop&rdquo; smaller format (3 open); perishable shoppers shop 2x+ more often</td></tr>
+      <tr><td>Q3 2025</td><td>&gt;$100B gross sales (ex-WFM/Fresh)</td><td>Top 3 U.S. grocer; perishable same-day in 1,000+ cities expanding to 2,300; fresh customers return 2x as often</td></tr>
+      <tr><td>Q2 2025</td><td class="muted">Not specifically discussed</td><td>Everyday essentials outpacing rest globally; pharmacy +50% YoY YTD; 1 in 3 units sold</td></tr>
+      <tr><td>Q1 2025</td><td>&gt;$100B gross sales (ex-WFM/Fresh)</td><td>Everyday essentials grew 2x+ rest of business; 1 in 3 units sold in U.S.</td></tr>
+      <tr class="year-divider"><td colspan="3">2024</td></tr>
+      <tr><td>Q4 2024</td><td class="muted">Not broken out</td><td>Amazon Haul (ultra-low-priced products) launched</td></tr>
+      <tr><td>Q1 2024</td><td class="muted">Not broken out</td><td>Non-perishables &ldquo;very rapid rate&rdquo;; Whole Foods &ldquo;Daily Shops&rdquo; (smaller format) launching; Fresh V2 &ldquo;meaningfully better&rdquo;; $9.99/month Prime grocery delivery</td></tr>
+      <tr class="year-divider"><td colspan="3">2023</td></tr>
+      <tr><td>Q4 2023</td><td class="muted">Not broken out</td><td>Fresh V2 format testing &ldquo;very promising&rdquo;; Whole Foods growing with improved profitability</td></tr>
+      <tr><td>Q2 2023</td><td class="muted">Not broken out</td><td>Fresh testing new formats in Chicago/SoCal; &ldquo;won&rsquo;t expand unless we see resonance&rdquo;</td></tr>
+      <tr><td>Q1 2023</td><td class="muted">Not broken out</td><td>CEO: &ldquo;Wish we were further along&rdquo;; Whole Foods profitability improved; Fresh experimenting</td></tr>
+      <tr class="year-divider"><td colspan="3">2022</td></tr>
+      <tr><td>Q4 2022</td><td class="muted">Not broken out</td><td>CEO outlined 3 pillars: online grocery (large/growing), Whole Foods (improving profitability), Fresh (paused expansion until format found)</td></tr>
+      <tr><td>Q1&ndash;Q3 2022</td><td colspan="2" class="muted">Grocery not discussed in detail</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Grocery evolved from &ldquo;wish we were further along&rdquo; (Q1 &rsquo;23) to &ldquo;go-to grocer for 150M+ Americans&rdquo; with &gt;$150B in gross sales (Q4 &rsquo;25). The strategy crystallized around non-perishable everyday essentials (now 1 in 3 U.S. units) combined with perishable same-day delivery. The 100+ planned new Whole Foods stores and &ldquo;Daily Shop&rdquo; format represent Amazon&rsquo;s biggest physical retail bet since Whole Foods acquisition.</div>
+</div>
+
+<!-- ====== SECTION 15 ====== -->
+<div class="section" id="s15">
+  <h2><span class="num">15</span> Project Kuiper</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Status</th><th>Key Milestones</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="3">2025&ndash;2026</td></tr>
+      <tr><td>Q4 2025</td><td class="bold">180 satellites launched; commercial launch expected 2026</td><td>Leo Ultra terminal: 1 Gbps down, 400 Mbps up; 20+ launches in 2026, 30+ in 2027; AT&amp;T, DIRECTV, JetBlue, Australia NBN; ~$1B YoY N.A. cost increase in 2026</td></tr>
+      <tr><td>Q3 2025</td><td>150+ satellites; pre-commercial agreements</td><td>3rd successful launch; enterprise/government agreements; JetBlue, Australia NBN, Kazakhtelecom; &ldquo;later this year or early next year&rdquo; commercialization</td></tr>
+      <tr><td>Q2 2025</td><td>Third launch completed</td><td>&ldquo;Impressive&rdquo; pre-commercial agreements</td></tr>
+      <tr><td>Q1 2025</td><td>First production satellites launched</td><td>Expecting to offer service to customers later in 2025</td></tr>
+      <tr class="year-divider"><td colspan="3">2024</td></tr>
+      <tr><td>Q4 2024</td><td>Production satellite launches &ldquo;in coming months&rdquo;</td><td>Will capitalize certain costs once commercial viability achieved</td></tr>
+      <tr><td>Q2 2024</td><td>Accelerating satellite manufacturing</td><td>Vrio (DIRECTV LatAm) distribution deal; production satellites shipping late 2024</td></tr>
+      <tr class="year-divider"><td colspan="3">2023</td></tr>
+      <tr><td>Q4 2023</td><td>Production satellite launch planned H1 2024</td><td>Beta testing H2 2024; targeting 400M&ndash;500M underserved households globally</td></tr>
+      <tr><td>Q3 2023</td><td>Successful launch of 2 prototype satellites</td><td>Partnership with Vodafone/Vodacom</td></tr>
+      <tr><td>Q1 2023</td><td>Designs released</td><td>&ldquo;Pretty exciting customer reception&rdquo;; &ldquo;chance to be a very large business&rdquo;</td></tr>
+      <tr class="year-divider"><td colspan="3">2022</td></tr>
+      <tr><td>Q4 2022</td><td>&ldquo;Remains a priority investment&rdquo;</td><td>Minimal detail</td></tr>
+      <tr><td>Q1 2022</td><td>Referenced as item in T&amp;C line</td><td>No substantive detail</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Kuiper progressed from a line item (Q1 &rsquo;22) to 180 satellites in orbit with commercial launch expected in 2026. The ~$1B annual N.A. cost increase starting in 2026 quantifies the near-term P&amp;L drag, but Amazon is targeting 400M&ndash;500M underserved households. The Leo Ultra terminal (1 Gbps / 400 Mbps) exceeds many terrestrial broadband speeds. With 20+ launches planned in 2026 and 30+ in 2027, this is approaching inflection from cost center to revenue contributor.</div>
+</div>
+
+<!-- ====== SECTION 16 ====== -->
+<div class="section" id="s16">
+  <h2><span class="num">16</span> Headcount &amp; Workforce</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>Headcount</th><th>YoY Change</th><th>Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025</td></tr>
+      <tr><td>Q4 2025</td><td class="muted">Not stated</td><td>&mdash;</td><td>$730M severance; $610M store impairments; &ldquo;culture-driven, not financially or AI-driven&rdquo;; removing layers, operating as &ldquo;world&rsquo;s largest start-up&rdquo;</td></tr>
+      <tr><td>Q3 2025</td><td>1,578,000</td><td>+2%</td><td>$1.8B severance charge (same restructuring rationale)</td></tr>
+      <tr class="year-divider"><td colspan="4">2024</td></tr>
+      <tr><td>Q3 2024</td><td>1,551,000</td><td>+3%</td><td>Headcount stabilized; modest growth</td></tr>
+      <tr><td>Q2 2024</td><td>1,532,000</td><td>+5%</td><td>Growing again after restructuring</td></tr>
+      <tr class="year-divider"><td colspan="4">2023 &mdash; RESTRUCTURING</td></tr>
+      <tr class="lowered"><td>Q3 2023</td><td>1,500,000</td><td>&minus;3%</td><td>Seasonal hiring ramping; layoffs largely complete</td></tr>
+      <tr><td>Q2 2023</td><td>1,461,000</td><td>&minus;4%</td><td>Essentially flat QoQ; restructuring winding down</td></tr>
+      <tr class="lowered"><td>Q1 2023</td><td>1,465,000</td><td class="neg">&minus;10%</td><td>9,000 additional eliminations; cumulative ~27,000 corporate roles; $470M severance</td></tr>
+      <tr class="year-divider"><td colspan="4">2022 &mdash; FROM PEAK TO CUTS</td></tr>
+      <tr class="lowered"><td>Q4 2022</td><td>1,541,000</td><td>&minus;4%</td><td>18,000+ role eliminations (stores, devices, HR); $640M severance</td></tr>
+      <tr><td>Q3 2022</td><td>1,544,000</td><td>+5%</td><td>Pausing hiring; winding down Amazon Care, Fabric.com, Explore</td></tr>
+      <tr><td>Q2 2022</td><td class="muted">Not stated</td><td>+188K YoY</td><td>Declined QoQ by design; adjusting from Q1 overstaffing</td></tr>
+      <tr class="lowered"><td>Q1 2022</td><td class="bold">1,622,000</td><td class="neg">+28%</td><td>Peaked at 1.7M mid-Q due to Omicron overstaffing; nearly double pre-pandemic</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Amazon&rsquo;s workforce went through a dramatic cycle: pandemic expansion to 1.62M&ndash;1.7M (Q1 &rsquo;22), then aggressive restructuring eliminating ~27,000 corporate roles (Q4 &rsquo;22 through Q1 &rsquo;23), bottoming at ~1.46M (Q2 &rsquo;23), then gradual regrowth to 1.58M (Q3 &rsquo;25). The Q3&ndash;Q4 2025 severance charges ($2.5B combined) represent a second restructuring wave, this time framed as &ldquo;culture-driven&rdquo; layer removal rather than cost reduction.</div>
+</div>
+
+<!-- ====== SECTION 17 ====== -->
+<div class="section" id="s17">
+  <h2><span class="num">17</span> 3P Seller Mix</h2>
+  <table>
+    <thead>
+      <tr><th>Quarter</th><th>3P Unit Share</th><th>&Delta;</th><th>Commentary</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2025</td></tr>
+      <tr><td>Q4 2025</td><td>61%</td><td>&minus;1pp QoQ</td><td>Down from 62% peak; slight holiday 1P mix shift</td></tr>
+      <tr class="raised"><td>Q2&ndash;Q3 2025</td><td class="pos bold">62%</td><td>&mdash;</td><td>Record high; 1.3M+ sellers using gen AI for listings (Q3)</td></tr>
+      <tr><td>Q1 2025</td><td>61%</td><td>Flat</td><td>Stable</td></tr>
+      <tr class="year-divider"><td colspan="4">2024</td></tr>
+      <tr><td>Q4 2024</td><td>61%</td><td>&mdash;</td><td>FY 2024: 61% (highest full-year ever)</td></tr>
+      <tr><td>Q3 2024</td><td>60%</td><td>&minus;1pp</td><td>Slight seasonal dip</td></tr>
+      <tr><td>Q1&ndash;Q2 2024</td><td>61%</td><td>&mdash;</td><td>Steady at record level</td></tr>
+      <tr class="year-divider"><td colspan="4">2023</td></tr>
+      <tr><td>Q4 2023</td><td>61%</td><td><span class="tag tag-new">New Record</span></td><td>First time at 61%</td></tr>
+      <tr><td>Q2&ndash;Q3 2023</td><td>60%</td><td>&mdash;</td><td>First time at 60%; Amazon Business $35B gross sales run rate (Q2)</td></tr>
+      <tr><td>Q1 2023</td><td>59%</td><td>Flat</td><td>&mdash;</td></tr>
+      <tr class="year-divider"><td colspan="4">2022</td></tr>
+      <tr><td>Q4 2022</td><td>59%</td><td>+1pp</td><td>Record at the time</td></tr>
+      <tr><td>Q3 2022</td><td>58%</td><td>+1pp</td><td>Record at the time</td></tr>
+      <tr><td>Q2 2022</td><td>57%</td><td>+2pp</td><td>Highest ever at the time</td></tr>
+      <tr><td>Q1 2022</td><td>55%</td><td>&mdash;</td><td>Starting point</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> 3P seller share rose from 55% to 62% over 16 quarters &mdash; a steady 700 bps shift. This is structurally positive for margins: 3P generates higher-margin take-rate revenue (seller services, fulfillment fees, advertising) vs. lower-margin 1P retail. The marketplace flywheel &mdash; more sellers &rarr; more selection &rarr; more customers &rarr; more advertising &rarr; higher margins &mdash; remains Amazon&rsquo;s most durable competitive advantage.</div>
+</div>
+
+<!-- ====== SECTION 18 ====== -->
+<div class="section" id="s18">
+  <h2><span class="num">18</span> FX Impact on Guidance</h2>
+  <table>
+    <thead>
+      <tr><th>Call</th><th>Guidance For</th><th>FX Impact</th><th>Direction</th></tr>
+    </thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">2026</td></tr>
+      <tr><td>Feb &rsquo;26</td><td>Q1 2026</td><td>~180 bps favorable</td><td class="pos">Tailwind</td></tr>
+      <tr class="year-divider"><td colspan="4">2025</td></tr>
+      <tr><td>Oct &rsquo;25</td><td>Q4 2025</td><td>~190 bps favorable</td><td class="pos">Tailwind</td></tr>
+      <tr><td>Jul &rsquo;25</td><td>Q3 2025</td><td>~130 bps favorable</td><td class="pos">Tailwind</td></tr>
+      <tr><td>May &rsquo;25</td><td>Q2 2025</td><td>~10 bps headwind</td><td>Negligible</td></tr>
+      <tr><td>Feb &rsquo;25</td><td>Q1 2025</td><td>~$2.1B (~150 bps)</td><td class="neg">Headwind</td></tr>
+      <tr class="year-divider"><td colspan="4">2024</td></tr>
+      <tr><td>Oct &rsquo;24</td><td>Q4 2024</td><td>~10 bps unfavorable</td><td>Negligible</td></tr>
+      <tr><td>Aug &rsquo;24</td><td>Q3 2024</td><td>~90 bps unfavorable</td><td class="neg">Headwind</td></tr>
+      <tr><td>Apr &rsquo;24</td><td>Q2 2024</td><td>~60 bps unfavorable</td><td class="neg">Headwind</td></tr>
+      <tr><td>Feb &rsquo;24</td><td>Q1 2024</td><td class="muted">Not quantified</td><td>&mdash;</td></tr>
+      <tr class="year-divider"><td colspan="4">2023</td></tr>
+      <tr><td>Oct &rsquo;23</td><td>Q4 2023</td><td>~40 bps favorable</td><td class="pos">Tailwind</td></tr>
+      <tr><td>Aug &rsquo;23</td><td>Q3 2023</td><td class="muted">Modest / not quantified</td><td>&mdash;</td></tr>
+      <tr><td>Apr &rsquo;23</td><td>Q2 2023</td><td>~30 bps unfavorable</td><td>Negligible</td></tr>
+      <tr><td>Feb &rsquo;23</td><td>Q1 2023</td><td>~210 bps unfavorable</td><td class="neg">Headwind</td></tr>
+      <tr class="year-divider"><td colspan="4">2022 &mdash; STRONG DOLLAR HEADWIND</td></tr>
+      <tr class="lowered"><td>Oct &rsquo;22</td><td>Q4 2022</td><td class="neg bold">~460 bps unfavorable</td><td class="neg">Severe</td></tr>
+      <tr class="lowered"><td>Jul &rsquo;22</td><td>Q3 2022</td><td class="neg">~390 bps unfavorable</td><td class="neg">Severe</td></tr>
+      <tr><td>Apr &rsquo;22</td><td>Q2 2022</td><td>~$2B (~200 bps)</td><td class="neg">Headwind</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> FX swung from a severe ~460 bps headwind (Q4 &rsquo;22) to a ~190 bps tailwind (Q4 &rsquo;25) &mdash; a 650 bps swing. The 2022 strong-dollar headwind shaved billions from reported revenue and hit International margins particularly hard. By H2 2025, the dollar weakened significantly, providing tailwinds that boosted reported growth by 150&ndash;190 bps. With ~30% of revenue international, FX remains a material factor in quarter-to-quarter comparisons.</div>
+</div>
+
+<!-- ====== SECTION 19 ====== -->
+<div class="section" id="s19">
+  <h2><span class="num">19</span> Key Takeaways</h2>
+  <div class="takeaways">
+
+    <div class="takeaway">
+      <div class="takeaway-num">1</div>
+      <div class="takeaway-text"><strong>The greatest margin recovery in large-cap tech.</strong> Consolidated operating margin went from ~2% (2022, with negative N.A. and International) to 11&ndash;12% (2025). N.A. margin improved 1,130 bps (&minus;2.3% &rarr; 9.0%), International improved 1,300 bps (&minus;8.9% &rarr; 4.1%), and OI guidance midpoints expanded 23x ($1.0B &rarr; $23.5B).</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">2</div>
+      <div class="takeaway-text"><strong>AWS traced a textbook deceleration-trough-reacceleration arc.</strong> Growth fell from +37% (Q1 &rsquo;22) to a +12% trough (Q2&ndash;Q3 &rsquo;23) driven by customer optimization, then reaccelerated to +24% (Q4 &rsquo;25) as AI demand exploded. Revenue nearly doubled from $18.4B to $35.6B quarterly.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">3</div>
+      <div class="takeaway-text"><strong>AI went from undiscussed to &gt;$10B ARR in 3 years.</strong> Generative AI was not mentioned in 2022 earnings calls. By Q4 &rsquo;25, Graviton + Trainium combined exceeded $10B ARR with triple-digit growth, Bedrock was multibillion ARR, and Amazon was spending $200B in 2026 CapEx predominantly for AI infrastructure.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">4</div>
+      <div class="takeaway-text"><strong>CapEx trajectory is unprecedented in corporate history.</strong> From $48B (FY &rsquo;23, efficiency year) to $125B (FY &rsquo;25) to ~$200B guided (FY &rsquo;26) &mdash; a 4x increase in 3 years. Power capacity is the binding constraint: 3.9 GW added in 2025, targeting ~7.8 GW by 2027.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">5</div>
+      <div class="takeaway-text"><strong>Fulfillment regionalization was transformational.</strong> The 2023 transition from 1 national network to 8 (now 10) regions delivered 3 consecutive years of per-unit cost-to-serve reduction while accelerating delivery speed to 8B+ same/next-day items. This flywheel &mdash; faster + cheaper simultaneously &mdash; powers the N.A. margin story.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">6</div>
+      <div class="takeaway-text"><strong>Advertising became an $85B run-rate business.</strong> From $32B (Q1 &rsquo;22) to $85B (Q4 &rsquo;25), advertising nearly tripled while maintaining 18&ndash;30% growth. The 2024 launch of Prime Video ads (315M viewers, 16 countries) added a new high-margin revenue surface that reaccelerated growth from +18% to +24%.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">7</div>
+      <div class="takeaway-text"><strong>AWS backlog signals multi-year demand visibility.</strong> Backlog nearly tripled from $88.9B to $244B, with growth reaccelerating to +40% YoY (Q4 &rsquo;25). The weighted average remaining life of 4.1 years provides exceptional revenue visibility. Backlog growth outpacing revenue growth (+40% vs. +24%) is bullish for sustained acceleration.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">8</div>
+      <div class="takeaway-text"><strong>Amazon systematically sandbagged guidance.</strong> Revenue beat the top end of guidance in 14 of 16 quarters. OI beat the top end in 13 of 16 quarters, often by $2B&ndash;$3B. This consistent pattern makes the guided ranges effectively a conservative floor, not a midpoint estimate.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">9</div>
+      <div class="takeaway-text"><strong>FCF peaked then deliberately compressed.</strong> TTM FCF swung from &minus;$19.7B (Q3 &rsquo;22) to +$51.4B (Q2 &rsquo;24), then declined to $11.2B (Q4 &rsquo;25) as CapEx exploded. This is not deterioration &mdash; OCF hit a record $139.5B. Amazon is choosing to reinvest cash flow at historically aggressive levels.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">10</div>
+      <div class="takeaway-text"><strong>Custom silicon is Amazon&rsquo;s hidden moat.</strong> Trainium3 just started shipping with nearly all supply committed by mid-2026. Trainium4 is in development. The Anthropic partnership (Project Rainier: 500K&ndash;1M chips) validates the technology. Over 90% of AWS&rsquo;s top 1,000 customers use Graviton.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">11</div>
+      <div class="takeaway-text"><strong>Grocery crossed the credibility threshold.</strong> From &ldquo;wish we were further along&rdquo; (Q1 &rsquo;23) to &gt;$150B gross sales and &ldquo;go-to grocer for 150M+ Americans&rdquo; (Q4 &rsquo;25). The plan to open 100+ new Whole Foods stores signals a durable physical retail commitment. Perishable shoppers shop 2x+ more often, creating a powerful retention flywheel.</div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-num">12</div>
+      <div class="takeaway-text"><strong>Kuiper is approaching revenue inflection.</strong> From a line item (2022) to 180 satellites in orbit with commercial launch expected 2026. The ~$1B annual cost increase and 50+ launches planned in 2026&ndash;2027 show serious commitment. The Leo Ultra terminal (1 Gbps / 400 Mbps) targeting 400M&ndash;500M underserved households could become Amazon&rsquo;s next platform-scale business.</div>
+    </div>
+
+  </div>
+</div>
+
+<footer style="text-align:center; padding:32px 0; border-top:2px solid var(--border); margin-top:60px; color:var(--text-muted); font-size:0.82rem;">
+  <strong>Metrics Tracker</strong> &mdash; Data from Amazon earnings call transcripts, Q1 2022 &ndash; Q4 2025<br>
+  Guidance ranges from quarterly press releases and earnings call commentary
+</footer>
+
+</body>
+</html>

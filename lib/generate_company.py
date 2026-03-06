@@ -562,6 +562,31 @@ def build_css(config):
     .comp-table th, .comp-table td {{ padding: 6px 8px; }}
   }}
 
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {{
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }}
+  .content-section .md-table th {{
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }}
+  .content-section .md-table td {{
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }}
+  .content-section .md-table tr:nth-child(even) {{ background: rgba(0,0,0,0.02); }}
+  .content-section .md-table tr:hover {{ background: #e8f4fd; }}
+
   @media print {{
     .nav-bar {{ display: none; }}
     .header {{ background: #333; }}
@@ -625,6 +650,9 @@ def generate_quarter_html(ticker, q_key, idx, quarters, config):
     w('  <div class="nav-center">')
     w(f'    <a href="../comparison.html" class="nav-back">Overview</a>')
     w(f'    <a href="../results.html" class="nav-back">Results</a>')
+    kpi_path = os.path.join(company_dir(ticker), 'quarters', 'intermittent_kpis.html')
+    if os.path.exists(kpi_path):
+        w(f'    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>')
     for q in reversed(quarters):
         cls = ' current' if q == q_key else ''
         w(f'    <a href="{q}.html" class="qbtn{cls}">{q_short(q)}</a>')
@@ -696,10 +724,20 @@ def generate_quarter_html(ticker, q_key, idx, quarters, config):
         w('<div class="content-section">')
         w(f'  <h3>{sec["title"]}</h3>')
         if sec['items']:
-            w('  <ul>')
+            in_list = False
             for item in sec['items']:
-                w(f'    <li>{md_inline(item)}</li>')
-            w('  </ul>')
+                if item.startswith('<table'):
+                    if in_list:
+                        w('  </ul>')
+                        in_list = False
+                    w(f'  <div style="padding: 4px 18px 8px;">{item}</div>')
+                else:
+                    if not in_list:
+                        w('  <ul>')
+                        in_list = True
+                    w(f'    <li>{md_inline(item)}</li>')
+            if in_list:
+                w('  </ul>')
         w('</div>')
 
     # Prior Quarter Reference

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AVGO Intermittent KPIs &mdash; 17-Quarter Disclosure Tracker</title>
+<style>
+  :root {
+    --company-primary: #CC092F;
+    --company-dark: #1a1a2e;
+    --company-accent: #16213e;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); background: #fff; line-height: 1.6; max-width: 1200px; margin: 0 auto; padding: 0 24px 80px; }
+  .header { background: linear-gradient(135deg, var(--company-dark), var(--company-accent)); color: #fff; padding: 48px 40px; margin: 0 -24px 40px; border-bottom: 4px solid var(--company-primary); }
+  .header h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; }
+  .header .subtitle { font-size: 1.1rem; opacity: 0.85; font-weight: 300; }
+  .quarter-nav { background: var(--company-accent); border-radius: 8px; padding: 16px 20px; margin-bottom: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .quarter-nav .label { color: #fff; font-weight: 600; font-size: 0.85rem; margin-right: 8px; white-space: nowrap; }
+  .quarter-nav .year-group { display: flex; gap: 4px; align-items: center; }
+  .quarter-nav .year-label { color: rgba(255,255,255,0.5); font-size: 0.72rem; font-weight: 600; margin-right: 2px; letter-spacing: 0.5px; }
+  .quarter-nav a { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 4px 10px; font-size: 0.78rem; font-weight: 600; text-decoration: none; transition: all 0.15s; }
+  .quarter-nav a:hover { background: rgba(255,255,255,0.25); }
+  .quarter-nav a.overview-link { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.35); padding: 4px 14px; font-size: 0.82rem; margin-left: auto; }
+  .toc { background: var(--light-bg); border: 1px solid var(--border); border-radius: 8px; padding: 24px 32px; margin-bottom: 40px; columns: 2; column-gap: 40px; }
+  .toc h2 { font-size: 1.1rem; color: var(--company-accent); margin-bottom: 12px; column-span: all; }
+  .toc a { display: block; color: var(--blue); text-decoration: none; padding: 3px 0; font-size: 0.9rem; break-inside: avoid; }
+  .toc a:hover { text-decoration: underline; }
+  .section { margin-bottom: 48px; scroll-margin-top: 20px; }
+  .section h2 { font-size: 1.4rem; color: var(--company-dark); border-bottom: 3px solid var(--company-primary); padding-bottom: 8px; margin-bottom: 16px; }
+  .section h2 .num { display: inline-block; background: var(--company-primary); color: #fff; width: 28px; height: 28px; line-height: 28px; text-align: center; border-radius: 50%; font-size: 0.85rem; margin-right: 8px; vertical-align: middle; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 0.88rem; }
+  thead th { background: var(--company-accent); color: #fff; padding: 10px 12px; text-align: left; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
+  thead th.right { text-align: right; }
+  tbody td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tbody td.right { text-align: right; }
+  tbody tr:nth-child(even) { background: var(--light-bg); }
+  tbody tr:hover { background: #eef2f7; }
+  .pos { color: var(--green); font-weight: 600; }
+  .neg { color: var(--red); font-weight: 600; }
+  .neutral { color: var(--amber); font-weight: 600; }
+  .raised { background: #eafaf1 !important; }
+  .lowered { background: #fef0ef !important; }
+  .bold { font-weight: 700; }
+  .muted { color: var(--text-muted); font-style: italic; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; vertical-align: middle; }
+  .tag-new { background: #d6eaf8; color: #2471a3; }
+  .tag-disc { background: #fadbd8; color: #c0392b; }
+  .tag-emerged { background: #d5f5e3; color: #1e8449; }
+  .tag-peak { background: #fdebd0; color: #d35400; }
+  .insight { background: linear-gradient(135deg, #fef9e7, #fdebd0); border-left: 4px solid var(--amber); padding: 14px 18px; margin: 16px 0; border-radius: 0 6px 6px 0; font-size: 0.9rem; }
+  .insight strong { color: var(--company-dark); }
+  .year-divider td { background: var(--company-accent) !important; color: #fff; font-weight: 700; font-size: 0.82rem; padding: 6px 12px; letter-spacing: 0.5px; }
+  .analysis { margin-top: 48px; padding: 32px; background: var(--light-bg); border: 1px solid var(--border); border-radius: 8px; }
+  .analysis h2 { font-size: 1.3rem; color: var(--company-dark); margin-bottom: 16px; border-bottom: 3px solid var(--company-primary); padding-bottom: 8px; }
+  .analysis h3 { font-size: 1.05rem; color: var(--company-dark); margin: 20px 0 8px; }
+  .analysis p { font-size: 0.92rem; margin-bottom: 12px; }
+  .footer { margin-top: 60px; padding-top: 20px; border-top: 2px solid var(--border); font-size: 0.82rem; color: var(--text-muted); text-align: center; }
+  .footer a { color: var(--blue); text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 768px) { .toc { columns: 1; } .header h1 { font-size: 1.6rem; } table { font-size: 0.8rem; } thead th, tbody td { padding: 6px 8px; } }
+  @media print { .header { background: #333; } .section { page-break-inside: avoid; } table { font-size: 0.75rem; } .quarter-nav { display: none; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Broadcom Intermittent KPIs</h1>
+  <div class="subtitle">Metrics disclosed more than once but not on a regular basis &mdash; FQ1 2022 through FQ1 2026</div>
+</div>
+
+<div class="quarter-nav" id="qnav">
+  <a href="../../index.html" style="background:rgba(255,255,255,0.15); color:#fff; font-weight:600; margin-right:12px; text-decoration:none; padding:4px 12px; border-radius:4px;">&#x2190; Portfolio</a>
+  <span class="label">Quarters:</span>
+  <div class="year-group"><span class="year-label">FY26</span>
+    <a href="FQ1_2026.html">FQ1</a>
+  </div>
+  <div class="year-group"><span class="year-label">FY25</span>
+    <a href="FQ4_2025.html">FQ4</a><a href="FQ3_2025.html">FQ3</a><a href="FQ2_2025.html">FQ2</a><a href="FQ1_2025.html">FQ1</a>
+  </div>
+  <div class="year-group"><span class="year-label">FY24</span>
+    <a href="FQ4_2024.html">FQ4</a><a href="FQ3_2024.html">FQ3</a><a href="FQ2_2024.html">FQ2</a><a href="FQ1_2024.html">FQ1</a>
+  </div>
+  <div class="year-group"><span class="year-label">FY23</span>
+    <a href="FQ4_2023.html">FQ4</a><a href="FQ3_2023.html">FQ3</a><a href="FQ2_2023.html">FQ2</a><a href="FQ1_2023.html">FQ1</a>
+  </div>
+  <div class="year-group"><span class="year-label">FY22</span>
+    <a href="FQ4_2022.html">FQ4</a><a href="FQ3_2022.html">FQ3</a><a href="FQ2_2022.html">FQ2</a><a href="FQ1_2022.html">FQ1</a>
+  </div>
+  <a href="../comparison.html" class="overview-link">Guidance Overview &rarr;</a>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+  <h2>Table of Contents</h2>
+  <a href="#s1">1. Custom AI Accelerator Customer Count</a>
+  <a href="#s2">2. AI Revenue Mix (XPU vs Networking)</a>
+  <a href="#s3">3. AI SAM &amp; Backlog</a>
+  <a href="#s4">4. Semiconductor End-Market Breakdown (Discontinued)</a>
+  <a href="#s5">5. VCF Customer Adoption Rate</a>
+  <a href="#s6">6. VMware ABV &amp; Total Contract Value</a>
+  <a href="#s7">7. VMware Operating Cost Restructuring</a>
+  <a href="#s8">8. Pre-VMware Software Renewal Rates</a>
+  <a href="#s9">9. Debt Refinancing: Floating to Fixed</a>
+  <a href="#s10">10. Hardware Backlog &amp; Lead Times</a>
+  <a href="#s11">11. Tomahawk Product Roadmap</a>
+  <a href="#s12">12. Capital Returns &amp; Dividends</a>
+  <a href="#analysis">Written Analysis</a>
+</div>
+
+<!-- SECTION 1: XPU Customers -->
+<div class="section" id="s1">
+  <h2><span class="num">1</span> Custom AI Accelerator Customer Count</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>Production Customers</th><th>Prospects / Engagements</th><th>Named Customers</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">FY2026 &mdash; EXPLICIT NAMING</td></tr>
+      <tr class="raised"><td>FQ1 2026</td><td class="pos bold">6</td><td>&mdash;</td><td>Google, Anthropic, Meta, Cust 4, Cust 5, OpenAI</td><td><span class="tag tag-emerged">OPENAI ADDED</span> First time all named; OpenAI is 6th</td></tr>
+      <tr class="year-divider"><td colspan="5">FY2025 &mdash; RAPID EXPANSION</td></tr>
+      <tr><td>FQ4 2025</td><td class="pos">5</td><td>2 prospects</td><td>Anthropic, OpenAI connections</td><td>5th customer $1B order; first customer naming</td></tr>
+      <tr><td>FQ3 2025</td><td>4</td><td>3 prospects</td><td class="muted">&mdash;</td><td>One prospect converted to customer</td></tr>
+      <tr><td>FQ1 2025</td><td>3</td><td>4 engagement partners</td><td class="muted">&mdash;</td><td><span class="tag tag-new">PROSPECT PIPELINE FIRST DISCLOSED</span> 7 total relationships</td></tr>
+      <tr class="year-divider"><td colspan="5">FY2024 &mdash; BROADENING BEYOND GOOGLE</td></tr>
+      <tr><td>FQ3 2024</td><td>3</td><td class="muted">&mdash;</td><td class="muted">&mdash;</td><td>Third customer meaningful contribution</td></tr>
+      <tr><td>FQ1 2024</td><td>2</td><td class="muted">&mdash;</td><td class="muted">&mdash;</td><td>Second hyperscaler enters production</td></tr>
+      <tr class="year-divider"><td colspan="5">FY2023 &mdash; SINGLE-CUSTOMER ERA</td></tr>
+      <tr><td>FQ4 2023</td><td>"broadened beyond one"</td><td class="muted">&mdash;</td><td class="muted">&mdash;</td><td>Multiple customers, but revenue from original customer dominant</td></tr>
+      <tr><td>FQ3 2023</td><td>1</td><td class="muted">&mdash;</td><td class="muted">&mdash;</td><td>"Still one hyperscale customer" (Google)</td></tr>
+      <tr><td>FQ2 2023</td><td>1</td><td class="muted">&mdash;</td><td class="muted">&mdash;</td><td><span class="tag tag-new">FIRST DISCLOSED</span> "Essentially one customer" for compute offload</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> The customer count journey from 1 to 6 over 12 quarters is the single most important KPI in Broadcom's transformation story. It tracks directly to revenue scale: 1 customer = ~$1B/quarter AI revenue (FQ3 2023); 6 customers = $8.4B/quarter (FQ1 2026). The shift from anonymous "hyperscalers" to explicit naming (Google, Meta, Anthropic, OpenAI) at FQ4 2025-FQ1 2026 reflects both competitive confidence and customer willingness to be identified.</div>
+</div>
+
+<!-- SECTION 2: AI Revenue Mix -->
+<div class="section" id="s2">
+  <h2><span class="num">2</span> AI Revenue Mix (XPU vs Networking)</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>XPU / Compute %</th><th>Networking %</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2025</td></tr>
+      <tr><td>FQ3 2025</td><td>65%</td><td>35%</td><td>Networking share rebalancing from FQ1-FQ2 peak</td></tr>
+      <tr><td>FQ2 2025</td><td>60%</td><td>40%</td><td>Consistent with FQ1</td></tr>
+      <tr><td>FQ1 2025</td><td>60%</td><td class="pos bold">40%</td><td>Atypical; norm ~70/30; networking benefiting from cluster scale-out</td></tr>
+      <tr class="year-divider"><td colspan="4">FY2024</td></tr>
+      <tr><td>FQ4 2024</td><td>~67%</td><td>~33%</td><td>Similar to Q3; networking proportion expected to increase</td></tr>
+      <tr><td>FQ3 2024</td><td>~67%</td><td>~33%</td><td>2/3 compute, 1/3 networking</td></tr>
+      <tr><td>FQ2 2024</td><td>~67%</td><td>~33%</td><td>Heading toward 60/40 per management</td></tr>
+      <tr><td>FQ1 2024</td><td>~70%</td><td>~30%</td><td><span class="tag tag-new">FIRST DISCLOSED</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> The networking share of AI revenue grew from ~30% to 35-40% over 7 quarters, reflecting the deployment sequence: hyperscalers first buy XPUs (training), then scale out with networking infrastructure (inference clusters). The FQ1-FQ2 2025 peak of 40% networking coincided with massive Tomahawk 5 deployments. This metric matters because networking carries higher gross margins than XPUs (which include HBM memory pass-through), so mix shifts directly impact profitability.</div>
+</div>
+
+<!-- SECTION 3: AI SAM & Backlog -->
+<div class="section" id="s3">
+  <h2><span class="num">3</span> AI SAM &amp; Backlog</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>Metric</th><th>Value</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2026 &mdash; REVENUE LINE OF SIGHT</td></tr>
+      <tr class="raised"><td>FQ1 2026</td><td>FY2027 AI Revenue Target</td><td class="pos bold">"Significantly in excess of $100B"</td><td>Silicon content only; ~10 GW compute capacity to ship</td></tr>
+      <tr class="year-divider"><td colspan="4">FY2025 &mdash; BACKLOG ERA</td></tr>
+      <tr class="raised"><td>FQ4 2025</td><td>Total AI Backlog (18-month)</td><td class="pos bold">$73B</td><td>$53B XPUs + $20B networking; AI switch backlog &gt;$10B</td></tr>
+      <tr><td>FQ4 2025</td><td>Total Consolidated Backlog</td><td>$162B record</td><td>AI + software + non-AI semi</td></tr>
+      <tr><td>FQ3 2025</td><td>4th Customer Order Value</td><td>&gt;$10B</td><td>Single customer in one quarter</td></tr>
+      <tr><td>FQ3 2025</td><td>Total Consolidated Backlog</td><td>$110B record</td><td>&mdash;</td></tr>
+      <tr class="year-divider"><td colspan="4">FQ4 2024 &mdash; SAM ERA</td></tr>
+      <tr><td>FQ2 2025</td><td>FY2027 AI SAM</td><td>$60B&ndash;$90B</td><td>CEO: "Stop talking about SAM now" &mdash; replaced by backlog</td></tr>
+      <tr><td>FQ1 2025</td><td>FY2027 AI SAM</td><td>$60B&ndash;$90B</td><td>Each of 3 customers racing to 1M XPU clusters by 2027</td></tr>
+      <tr><td>FQ4 2024</td><td>FY2027 AI SAM</td><td class="bold">$60B&ndash;$90B</td><td><span class="tag tag-new">LANDMARK METRIC</span> From 3 existing customers alone</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> The evolution from SAM ($60-90B estimate at FQ4 2024) to backlog ($73B actual orders at FQ4 2025) to revenue line of sight (">$100B" for FY2027 at FQ1 2026) shows a metric maturing from speculative to concrete. Hock Tan's decision to retire the SAM metric ("stop talking about SAM") in FQ2 2025 reflects management's preference for verifiable over theoretical. The $73B backlog represents ~3 quarters of current revenue run-rate, providing extraordinary forward visibility.</div>
+</div>
+
+<!-- SECTION 4: End-Market Breakdown -->
+<div class="section" id="s4">
+  <h2><span class="num">4</span> Semiconductor End-Market Revenue Breakdown (Discontinued)</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>Networking</th><th>Wireless</th><th>Server Storage</th><th>Broadband</th><th>Industrial</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="6">FY2024 &mdash; FINAL YEAR OF REPORTING</td></tr>
+      <tr><td>FQ4 2024</td><td>$4.5B</td><td>$2.2B</td><td>$992M</td><td class="neg">$465M</td><td>$173M</td></tr>
+      <tr><td>FQ3 2024</td><td>$4.0B</td><td>$1.7B</td><td>$861M</td><td class="neg">$557M</td><td>$164M</td></tr>
+      <tr><td>FQ2 2024</td><td class="pos bold">$4.0B</td><td>$1.6B</td><td>$824M</td><td class="neg">$730M</td><td>$234M</td></tr>
+      <tr><td>FQ1 2024</td><td>$3.8B</td><td>$1.6B</td><td>$824M</td><td class="neg">$730M</td><td>$234M</td></tr>
+      <tr class="year-divider"><td colspan="6">FY2023 &mdash; AI DIVERGENCE BEGINS</td></tr>
+      <tr><td>FQ4 2023</td><td>$3.3B</td><td>$2.0B</td><td>$887M</td><td>$940M</td><td>$215M</td></tr>
+      <tr><td>FQ3 2023</td><td>$3.1B</td><td>$2.0B</td><td>$1.0B</td><td>$950M</td><td>$236M</td></tr>
+      <tr><td>FQ2 2023</td><td>$2.8B</td><td>$1.6B</td><td>$1.1B</td><td>$1.1B</td><td>$236M</td></tr>
+      <tr><td>FQ1 2023</td><td>$2.6B</td><td>$1.6B</td><td class="pos bold">$1.3B</td><td>$1.2B</td><td>$260M</td></tr>
+      <tr class="year-divider"><td colspan="6">FY2022 &mdash; SUPPLY-CONSTRAINED PEAK</td></tr>
+      <tr><td>FQ4 2022</td><td>$2.3B</td><td>$2.1B</td><td>$1.2B</td><td>$1.2B</td><td>$229M</td></tr>
+      <tr><td>FQ3 2022</td><td>$2.5B</td><td>$2.1B</td><td>$1.1B</td><td>$1.0B</td><td>$234M</td></tr>
+      <tr><td>FQ2 2022</td><td>$2.3B</td><td>$1.6B</td><td>$1.1B</td><td>$1.1B</td><td>$244M</td></tr>
+      <tr><td>FQ1 2022</td><td>$1.9B</td><td>$2.0B</td><td>$801M</td><td>$911M</td><td>$243M</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:0.85rem; color:var(--text-muted); margin-top:4px;"><span class="tag tag-disc">DISCONTINUED</span> From FQ1 FY2025, Broadcom switched to AI / Non-AI semiconductor segmentation. These end-market breakdowns are no longer reported.</p>
+  <div class="insight"><strong>Key Insight:</strong> This table captures the entire lifecycle of Broadcom's legacy semiconductor reporting framework. The narrative is stark: Networking grew from $1.9B to $4.5B (+137%) while Broadband collapsed from $1.2B to $465M (-61%). The legacy segments were discontinued precisely because they no longer captured the relevant story &mdash; the AI/Non-AI split better reflects Broadcom's strategic reality where >60% of semiconductor revenue is AI-driven.</div>
+</div>
+
+<!-- SECTION 5: VCF Adoption -->
+<div class="section" id="s5">
+  <h2><span class="num">5</span> VCF Customer Adoption Rate (Top 10,000)</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>Adoption %</th><th>Other Detail</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2025 &mdash; APPROACHING SATURATION</td></tr>
+      <tr class="raised"><td>FQ3 2025</td><td class="pos bold">&gt;90%</td><td class="muted">&mdash;</td><td>Approaching saturation; shifted to "Phase 2" deployment focus</td></tr>
+      <tr class="raised"><td>FQ2 2025</td><td class="pos">&gt;87%</td><td class="muted">&mdash;</td><td>Strong sequential acceleration</td></tr>
+      <tr><td>FQ1 2025</td><td>~70%</td><td class="muted">&mdash;</td><td>7,000 of top 10,000 customers</td></tr>
+      <tr class="year-divider"><td colspan="4">FY2024 &mdash; RAPID S-CURVE</td></tr>
+      <tr><td>FQ4 2024</td><td>45%</td><td>21M CPU cores booked</td><td>4,500 of 10,000 customers</td></tr>
+      <tr><td>FQ3 2024</td><td>&gt;30%</td><td>&gt;15M CPU cores; VCF &gt;80% of bookings</td><td>Rapid acceleration from Q2</td></tr>
+      <tr><td>FQ2 2024</td><td>~30%</td><td class="muted">&mdash;</td><td><span class="tag tag-new">FIRST DISCLOSED</span> ~3,000 of largest 10,000 customers</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> VCF adoption traced a textbook S-curve: 30% at introduction (FQ2 2024), inflecting through 45% (FQ4 2024), then accelerating to &gt;90% in just 5 quarters. This is one of the fastest enterprise software conversion cycles on record, validating Broadcom's controversial strategy of forcing VMware customers from perpetual licenses to subscription bundles. The metric is nearing its natural expiration &mdash; once adoption hits ~95-100%, it becomes irrelevant.</div>
+</div>
+
+<!-- SECTION 6: ABV & TCV -->
+<div class="section" id="s6">
+  <h2><span class="num">6</span> VMware ABV &amp; Total Contract Value</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>Metric</th><th>Value</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2026 &mdash; TCV ERA</td></tr>
+      <tr><td>FQ1 2026</td><td>Total Contract Value</td><td class="bold">&gt;$9.2B</td><td>Multi-year contract value in quarter</td></tr>
+      <tr class="year-divider"><td colspan="4">FY2025 &mdash; TRANSITION TO TCV</td></tr>
+      <tr class="raised"><td>FQ4 2025</td><td>Total Contract Value</td><td class="pos bold">&gt;$10.4B</td><td>Record quarter; software backlog $73B</td></tr>
+      <tr><td>FQ3 2025</td><td>Total Contract Value</td><td>&gt;$8.4B</td><td><span class="tag tag-new">TCV METRIC INTRODUCED</span></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2024 &mdash; ABV ERA</td></tr>
+      <tr><td>FQ4 2024</td><td>VMware ABV</td><td>$2.7B</td><td>VCF ~70% of total bookings; <span class="tag tag-disc">LAST ABV REPORT</span></td></tr>
+      <tr><td>FQ3 2024</td><td>VMware ABV</td><td>$2.5B</td><td>+32% QoQ</td></tr>
+      <tr><td>FQ2 2024</td><td>VMware ABV</td><td>$1.9B</td><td><span class="tag tag-new">FIRST ABV REPORT</span> (up from $1.2B in FQ1)</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> The metric evolution from ABV to TCV reflects the maturation of VMware's subscription model. ABV (Annualized Booking Value) was relevant during the conversion phase when annual run-rate mattered; TCV (Total Contract Value) became relevant once multi-year contracts were the norm and total backlog became the more meaningful indicator. The $10.4B TCV in FQ4 2025 implies an ~$73B software backlog on a base of ~$24B annual software revenue &mdash; approximately 3 years of forward visibility.</div>
+</div>
+
+<!-- SECTION 7: VMware Cost Restructuring -->
+<div class="section" id="s7">
+  <h2><span class="num">7</span> VMware Operating Cost Restructuring</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>Quarterly OpEx Run Rate</th><th>Operating Margin</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2024 &mdash; RESTRUCTURING COMPLETE</td></tr>
+      <tr class="raised"><td>FQ4 2024</td><td class="pos bold">$1.2B</td><td class="pos bold">~70%</td><td>Below target; transformation declared complete</td></tr>
+      <tr><td>FQ3 2024</td><td>$1.3B</td><td class="muted">&mdash;</td><td>Target achieved; FQ4 target $1.2B</td></tr>
+      <tr><td>FQ2 2024</td><td>$1.6B</td><td class="muted">&mdash;</td><td>Down from $2.3B pre-acquisition; rapid cost extraction</td></tr>
+      <tr class="lowered"><td>FQ1 2024</td><td>~$2.3B (pre-acq. run rate)</td><td class="neg">&lt;30%</td><td>$658M cash restructuring/integration charges</td></tr>
+      <tr><td>FQ4 2023</td><td class="muted">Pre-acquisition</td><td class="muted">&mdash;</td><td>Transition spending target ~$1B during FY2024</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Broadcom cut VMware's quarterly operating expense from $2.3B to $1.2B in 4 quarters &mdash; a 48% reduction &mdash; while simultaneously converting the business from perpetual to subscription. Operating margin went from &lt;30% to ~70%. Total restructuring cash costs were ~$2.5-3B, paid back in under 2 quarters of margin improvement. This was one of the most aggressive and successful enterprise software restructurings in history.</div>
+</div>
+
+<!-- SECTION 8: Pre-VMware Renewal Rates -->
+<div class="section" id="s8">
+  <h2><span class="num">8</span> Pre-VMware Software Renewal Rates</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>Consolidated Renewal</th><th>Strategic Account Renewal</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2023 &mdash; FINAL REPORTS</td></tr>
+      <tr><td>FQ4 2023</td><td>119% (FY avg: 116%)</td><td>130% (FY avg: 124%)</td><td><span class="tag tag-disc">LAST DISCLOSURE</span></td></tr>
+      <tr><td>FQ3 2023</td><td>117% (TTM: 115%)</td><td>127% (TTM: 125%)</td><td>&mdash;</td></tr>
+      <tr><td>FQ2 2023</td><td>114% (TTM: 117%)</td><td>120% (TTM: 128%)</td><td>Cyclical trough</td></tr>
+      <tr><td>FQ1 2023</td><td>119% (TTM: 119%)</td><td>129% (TTM: 134%)</td><td>&mdash;</td></tr>
+      <tr class="year-divider"><td colspan="4">FY2022</td></tr>
+      <tr class="raised"><td>FQ3 2022</td><td class="pos bold">128% (TTM: 122%)</td><td class="pos bold">140% (TTM: 137%)</td><td>Peak renewal rates</td></tr>
+      <tr><td>FQ1 2022</td><td>121%</td><td>136%</td><td><span class="tag tag-new">FIRST IN DATASET</span></td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:0.85rem; color:var(--text-muted); margin-top:4px;"><span class="tag tag-disc">DISCONTINUED</span> VMware acquisition fundamentally changed the software business composition. Renewal rates not applicable to the new subscription model.</p>
+  <div class="insight"><strong>Key Insight:</strong> The pre-VMware software business had steady 115-128% consolidated renewal rates and 120-140% strategic account rates, demonstrating healthy upselling. These metrics disappeared after the VMware acquisition because the software segment's composition changed entirely &mdash; from CA/Symantec/Brocade (low growth, high retention) to VMware-dominated (high growth, subscription conversion). The shift from measuring "renewal" to measuring "conversion" reflects the fundamental strategic pivot.</div>
+</div>
+
+<!-- SECTION 9: Debt Refinancing -->
+<div class="section" id="s9">
+  <h2><span class="num">9</span> Debt Refinancing: Floating to Fixed Rate Transition</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>Fixed Rate Debt</th><th>Floating Rate Debt</th><th>Total Gross Debt</th><th>Floating WAC</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="6">FY2025 &mdash; MISSION ACCOMPLISHED</td></tr>
+      <tr class="raised"><td>FQ4 2025</td><td>$67.1B</td><td class="pos bold">$0</td><td>$67.1B</td><td>&mdash;</td><td>100% fixed rate; floating eliminated entirely</td></tr>
+      <tr><td>FQ3 2025</td><td>$65.8B</td><td>$0.5B</td><td>$66.3B</td><td class="muted">&mdash;</td><td>Floating rate essentially eliminated</td></tr>
+      <tr><td>FQ1 2025</td><td>$58.8B</td><td>$6B + $4B CP</td><td>$68.8B</td><td>5.4%</td><td>Major progress from FQ4</td></tr>
+      <tr class="year-divider"><td colspan="6">FY2024 &mdash; AGGRESSIVE REFINANCING</td></tr>
+      <tr><td>FQ4 2024</td><td>$56B</td><td>$14B</td><td>$69.8B</td><td>5.9%</td><td>Replaced $5B floating with fixed in Q4</td></tr>
+      <tr><td>FQ3 2024</td><td>$51B</td><td>$17B</td><td>$68B</td><td>6.0%</td><td>Replaced $5B floating with fixed; $4.2B additional reduction</td></tr>
+      <tr><td>FQ2 2024</td><td>$48B</td><td>$22B</td><td>$70B</td><td>6.3%</td><td>$2B floating repaid; continuing $2B/quarter pace</td></tr>
+      <tr class="lowered"><td>FQ1 2024</td><td>$48B</td><td class="neg bold">$30B</td><td>$75.9B</td><td class="neg">6.6%</td><td><span class="tag tag-peak">PEAK FLOATING</span> VMware acquisition financing</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Broadcom eliminated $30B of floating rate debt in 7 quarters, one of the most aggressive corporate deleveraging campaigns in tech history. The floating rate cost of 6.6% (FQ1 2024) versus the fixed rate cost of 3.8% implied ~$850M in annual interest savings once complete. This debt restructuring directly funded the expansion of cash returns to shareholders, with capital returns rising from $15.3B (FY2023) to $22.2B (FY2024).</div>
+</div>
+
+<!-- SECTION 10: Hardware Backlog & Lead Times -->
+<div class="section" id="s10">
+  <h2><span class="num">10</span> Hardware Backlog &amp; Lead Times (Supply-Chain Era)</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>Semi Backlog</th><th>Lead Times</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2024</td></tr>
+      <tr><td>FQ1 2024</td><td class="muted">&mdash;</td><td>52 weeks</td><td><span class="tag tag-disc">LAST LEAD TIME DISCLOSURE</span></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2023 &mdash; PEAK CONSTRAINTS</td></tr>
+      <tr><td>FQ2 2023</td><td class="muted">&mdash;</td><td>50 weeks</td><td>Fully booked for FY2023</td></tr>
+      <tr><td>FQ1 2023</td><td class="muted">&mdash;</td><td>50 weeks</td><td>Fully booked for FY2023 (noncancelable)</td></tr>
+      <tr class="year-divider"><td colspan="4">FY2022 &mdash; SUPPLY CRUNCH</td></tr>
+      <tr><td>FQ4 2022</td><td>Fully booked FY23</td><td>50 weeks</td><td>Noncancelable orders</td></tr>
+      <tr><td>FQ3 2022</td><td class="neg bold">$31B</td><td>50 weeks</td><td>Up from $25B; <span class="tag tag-peak">PEAK BACKLOG</span></td></tr>
+      <tr><td>FQ1 2022</td><td>&gt;$25B</td><td>50 weeks</td><td><span class="tag tag-new">FIRST DISCLOSED</span></td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:0.85rem; color:var(--text-muted); margin-top:4px;"><span class="tag tag-disc">DISCONTINUED</span> Lead times and legacy backlog are no longer reported. Replaced by AI-specific backlog (Section 3).</p>
+  <div class="insight"><strong>Key Insight:</strong> The legacy backlog and 50-week lead times were artifacts of the COVID-era supply crunch, persisting through FQ1 2024. These metrics were superseded by AI-specific backlog metrics (Section 3) once the relevant constraint shifted from supply availability to AI demand. The transition from "$31B semiconductor backlog at 50-week lead times" (FQ3 2022) to "$73B AI backlog at 18-month delivery" (FQ4 2025) perfectly captures Broadcom's business transformation.</div>
+</div>
+
+<!-- SECTION 11: Tomahawk Roadmap -->
+<div class="section" id="s11">
+  <h2><span class="num">11</span> Tomahawk Product Roadmap</h2>
+  <table>
+    <thead><tr><th>Quarter</th><th>Product</th><th>Status</th><th>Performance</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="5">FY2026</td></tr>
+      <tr><td>FQ1 2026</td><td>TH6 / TH7</td><td>TH6: record demand; TH7: FY2027</td><td>TH6: 100 Tbps; TH7: 2x</td><td>TH6 "only product of its kind on market"</td></tr>
+      <tr class="year-divider"><td colspan="5">FY2025</td></tr>
+      <tr><td>FQ4 2025</td><td>TH6</td><td>Record booking rates</td><td>100 Tbps</td><td>&mdash;</td></tr>
+      <tr><td>FQ3 2025</td><td>TH5 / TH6 / Jericho4</td><td>TH5 deployed; TH6 launched June; J4 announced</td><td>TH6: 102.4 Tbps; J4: 51.2 Tbps</td><td>Broadest product lineup in Ethernet switching</td></tr>
+      <tr><td>FQ2 2025</td><td>TH6</td><td>Proof-of-concept with customers</td><td>102.4 Tbps</td><td>On track for mid-2025 launch</td></tr>
+      <tr><td>FQ1 2025</td><td>TH5 / TH6 / TH7 / TH8</td><td>TH5 enhanced (doubled radix); TH6 taped out</td><td class="muted">&mdash;</td><td>TH7 &amp; TH8 planning started</td></tr>
+      <tr class="year-divider"><td colspan="5">FY2024</td></tr>
+      <tr><td>FQ2 2024</td><td>TH5 / TH6</td><td>TH5: shipping; TH6: on track late 2025</td><td>TH6: 100 Tbps</td><td>&mdash;</td></tr>
+      <tr><td>FQ1 2024</td><td>TH5</td><td>"Going great guns"</td><td class="muted">&mdash;</td><td>&mdash;</td></tr>
+      <tr class="year-divider"><td colspan="5">FY2023</td></tr>
+      <tr><td>FQ3 2023</td><td>TH6</td><td>Development started</td><td>&gt;100 Tbps; 1.6T connectivity</td><td><span class="tag tag-new">TH6 FIRST MENTIONED</span></td></tr>
+      <tr><td>FQ2 2023</td><td>TH5 / Jericho3</td><td>Pre-launch</td><td>32K GPU clusters at 800 Gbps</td><td>&mdash;</td></tr>
+      <tr class="year-divider"><td colspan="5">FY2022</td></tr>
+      <tr><td>FQ3 2022</td><td>TH4 / TH5</td><td>TH5 announced (51.2 Tbps)</td><td class="muted">&mdash;</td><td>TH4 still &lt;30% of total TH volume; all 4 generations shipping</td></tr>
+      <tr><td>FQ1 2022</td><td>TH4</td><td>Deploying at hyperscale</td><td class="muted">&mdash;</td><td><span class="tag tag-new">FIRST IN DATASET</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Broadcom's Tomahawk cadence has accelerated from a ~2-year cycle (TH4 to TH5) to annual-plus upgrades (TH5 to TH6 to TH7), driven by AI networking demand. The performance trajectory (51.2 Tbps TH5 &rarr; 102.4 Tbps TH6 &rarr; ~200 Tbps TH7) doubles with each generation. The addition of Jericho4 and the co-packaged optics roadmap (Bailly) signal that Broadcom is building a full-stack networking platform rather than selling point products.</div>
+</div>
+
+<!-- SECTION 12: Capital Returns -->
+<div class="section" id="s12">
+  <h2><span class="num">12</span> Capital Returns &amp; Dividends</h2>
+  <table>
+    <thead><tr><th>Fiscal Year</th><th>Dividend/Share (Quarterly)</th><th>Total Dividends</th><th>Total Buybacks</th><th>Total Capital Returns</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="6">POST-SPLIT ERA (10:1 split July 2024)</td></tr>
+      <tr class="raised"><td>FY2025</td><td class="pos">$0.65</td><td>$11.1B</td><td>$6.4B</td><td>$17.5B</td><td>+10% dividend; buybacks reduced (deleveraging priority)</td></tr>
+      <tr class="raised"><td>FY2024</td><td>$0.59</td><td>$9.8B</td><td class="pos bold">$12.4B</td><td class="pos bold">$22.2B</td><td>Record; 14th consecutive dividend increase</td></tr>
+      <tr class="year-divider"><td colspan="6">PRE-SPLIT ERA</td></tr>
+      <tr><td>FY2023</td><td>$5.25</td><td>$7.6B</td><td>$7.7B</td><td>$15.3B</td><td>13th consecutive increase; buybacks paused for VMware</td></tr>
+      <tr><td>FY2022</td><td>$4.60</td><td>$7.0B</td><td>$8.5B</td><td>$15.5B</td><td>12th consecutive increase</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Broadcom's capital return program has been remarkably consistent at $15-22B annually through the entire VMware acquisition and integration period. The FY2024 spike to $22.2B reflected the combination of VMware cash flows (higher earnings) with aggressive buybacks. FY2025's reduction to $17.5B was deliberate &mdash; debt paydown took priority. The 15th consecutive dividend increase (10% in FY2025) maintains the streak through every market cycle.</div>
+</div>
+
+<!-- ANALYSIS -->
+<div class="analysis" id="analysis">
+  <h2>Written Analysis: Broadcom's Intermittent Disclosure Patterns</h2>
+
+  <h3>1. Three Simultaneous Transformations</h3>
+  <p>Broadcom's intermittent KPIs reveal a company undergoing three simultaneous transformations, each with its own metric lifecycle:</p>
+  <p><strong>Transformation 1: AI Revenue Emergence.</strong> The metrics evolved from "compute offload ASICs" (FQ1 2022) to "AI Revenue" (FQ2 2023) to "AI SAM" (FQ4 2024) to "AI Backlog" (FQ3 2025) to "FY2027 Revenue Line of Sight" (FQ1 2026). Each metric matured from speculative to concrete as the business scaled. The customer count journey from 1 to 6 (Sections 1-2) is the clearest expression of this arc.</p>
+  <p><strong>Transformation 2: VMware Integration.</strong> ABV, VCF adoption, operating cost run-rate, and restructuring charges all followed a classic acquisition integration lifecycle: intensive disclosure during the restructuring (5-6 quarters), then retirement as the business normalized. The entire VMware integration metric suite had a ~6-quarter active life before transitioning to TCV and broader software metrics.</p>
+  <p><strong>Transformation 3: Balance Sheet Restructuring.</strong> The floating-to-fixed debt transition (Section 9) was a pure execution story &mdash; $30B eliminated in 7 quarters &mdash; tracked with the precision of a project management dashboard. Once complete, the metrics disappeared.</p>
+
+  <h3>2. The Metric Succession Pattern</h3>
+  <p>Broadcom exhibits a distinctive pattern: old metrics are retired and replaced by new ones that better capture the business reality. Semiconductor end-market breakdowns were replaced by AI/Non-AI. ABV was replaced by TCV. SAM was replaced by backlog. Renewal rates were replaced by VCF adoption. Each replacement signals a strategic pivot: the company is telling investors "stop thinking about us this way; start thinking about us that way."</p>
+  <p>Hock Tan's explicit retirement of the SAM metric ("stop talking about SAM now") in FQ2 2025 is the clearest example. SAM was theoretical; backlog is contractual. The shift from theoretical to contractual framing mirrors Broadcom's broader culture of under-promising and over-delivering.</p>
+
+  <h3>3. The Legacy Business Disappearance</h3>
+  <p>Perhaps the most striking pattern is what <em>stopped</em> being disclosed: the 5-segment semiconductor breakdown (Section 4), the pre-VMware renewal rates (Section 8), and the hardware backlog/lead times (Section 10) all disappeared as their relevance faded. Broadband went from a $1.2B/quarter business to $465M &mdash; a 61% decline that management simply stopped drawing attention to once AI revenue dwarfed it. Industrial revenue at $173M/quarter became rounding error on a $14B semiconductor segment.</p>
+  <p>This selective disclosure disappearance is not deceptive; it reflects genuine strategic prioritization. The legacy segments collectively represent <25% of semiconductor revenue and are shrinking, while AI represents >60% and is growing 70%+ annually. Investors following the old framework would miss the real story.</p>
+
+  <h3>4. The XPU Customer Count as Master Narrative</h3>
+  <p>If there is one intermittent metric that captures the entire Broadcom AI story, it is the XPU customer count (Section 1). Each customer addition &mdash; from 1 (Google, FQ2 2023) to 2 (FQ1 2024) to 3 (FQ3 2024) to 6 (FQ1 2026) &mdash; was a revenue step-function. The progression from anonymous "hyperscalers" to explicit naming (FQ4 2025-FQ1 2026) reflects both the maturation of these relationships and the competitive dynamics that made secrecy less necessary (NVIDIA's dominance meant custom silicon adoption was no longer a competitive surprise).</p>
+
+  <h3>5. Forward-Looking Metric Hierarchy</h3>
+  <p>For forward analysis, the most valuable intermittent metrics are: (1) AI backlog ($73B, providing 18-month visibility); (2) XPU customer count and prospect pipeline (the S-curve of adoption); and (3) Total Contract Value in software ($10.4B, indicating subscription durability). These three metrics collectively determine Broadcom's revenue trajectory for the next 2-3 years and are not available in any standardized financial filing &mdash; only in earnings call commentary.</p>
+</div>
+
+<div class="footer">
+  <p>Broadcom Intermittent KPIs &mdash; FQ1 2022 through FQ1 2026 &mdash; Data from earnings call transcripts</p>
+  <p><a href="../comparison.html">Guidance Overview</a> &middot; <a href="../../index.html">Metrics Tracker</a></p>
+</div>
+
+</body>
+</html>

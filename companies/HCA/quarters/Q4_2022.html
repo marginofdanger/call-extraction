@@ -319,6 +319,31 @@
     .comp-table th, .comp-table td { padding: 6px 8px; }
   }
 
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+  .content-section .md-table th {
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .content-section .md-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-section .md-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+  .content-section .md-table tr:hover { background: #e8f4fd; }
+
   @media print {
     .nav-bar { display: none; }
     .header { background: #333; }
@@ -338,6 +363,8 @@
   <a href="Q3_2022.html">&larr; Q3 2022</a>
   <div class="nav-center">
     <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>
     <a href="Q4_2025.html" class="qbtn">4Q25</a>
     <a href="Q3_2025.html" class="qbtn">3Q25</a>
     <a href="Q2_2025.html" class="qbtn">2Q25</a>
@@ -358,56 +385,39 @@
   <a href="Q1_2023.html">Q1 2023 &rarr;</a>
 </div>
 
-<div class="metrics-card">
-  <div class="metric">
-    <div class="metric-label">FY 2023 Revenue Guidance</div>
-    <div class="metric-value">$61.5B - $63.5B</div>
-    <div class="metric-delta delta-up">New — first formal 2023 guidance</div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">FY 2023 Adj. EBITDA Guidance</div>
-    <div class="metric-value">$11.8B - $12.4B</div>
-    <div class="metric-delta delta-up">New — first formal 2023 guidance</div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">FY 2023 Diluted EPS Guidance</div>
-    <div class="metric-value">$16.40 - $17.60</div>
-    <div class="metric-delta delta-up">New — first formal 2023 guidance</div>
-  </div>
-  <div class="metric">
-    <div class="metric-label">FY 2023 CapEx Guidance</div>
-    <div class="metric-value">~$4.3B</div>
-    <div class="metric-delta delta-flat">Prior preliminary: ~$4.2B</div>
-  </div>
+<div class="changes-box">
+  <h3>What Changed vs Q3 2022</h3>
+  <ul>
+    <li><span class="change-tag ct-changed">Changed</span> Same-Facility Admissions: +2.9% YoY (prior: Down 1.5% year-over-year)</li>
+    <li><span class="change-tag ct-changed">Changed</span> Revenue Per Admission: -2.6% YoY (influenced by drop in COVID activity) (prior: Generally comparable between Q2 and Q3 2022)</li>
+    <li><span class="change-tag ct-new">New</span> NEW: M&A/acquisition discussion added</li>
+  </ul>
 </div>
 
-<div class="changes-box">
-  <h3>What Changed vs Q3 2022 (Guidance)</h3>
-  <ul>
-    <li><span class="change-tag ct-new">New</span> FY 2023 Revenue guidance introduced: $61.5B - $63.5B (previously deferred)</li>
-    <li><span class="change-tag ct-new">New</span> FY 2023 Adj. EBITDA guidance introduced: $11.8B - $12.4B (previously deferred)</li>
-    <li><span class="change-tag ct-new">New</span> FY 2023 Diluted EPS guidance introduced: $16.40 - $17.60 (previously deferred)</li>
-    <li><span class="change-tag ct-new">New</span> FY 2023 Cash flow from operations guidance: $8.5B - $9.0B</li>
-    <li><span class="change-tag ct-changed">Changed</span> FY 2023 CapEx: ~$4.3B (prior preliminary estimate: ~$4.2B)</li>
-    <li><span class="change-tag ct-new">New</span> FY 2023 same-facility equiv. admissions growth: ~2% - 3%</li>
-    <li><span class="change-tag ct-new">New</span> Supplemental payment headwinds quantified: ~$280M COVID support + ~$154M net TX DPP + $50M-$100M 340B reduction</li>
-  </ul>
+<div class="metrics-card">
+  <div class="metric">
+    <div class="metric-label">FY Revenue Guidance</div>
+    <div class="metric-value">approximately 2%</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Same-Facility Admissions</div>
+    <div class="metric-value">+2.9% YoY</div>
+    <div class="metric-delta delta-flat">Prior: Down 1.5% year-over-year</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Revenue Per Admission</div>
+    <div class="metric-value">-2.6% YoY</div>
+    <div class="metric-delta delta-flat">Prior: Generally comparable between Q2 and Q3 2022</div>
+  </div>
 </div>
 
 <!-- Full Guidance Content -->
 <div class="content-section">
-  <h3>Full Year 2023 Guidance — Headline Ranges</h3>
-  <table class="comp-table">
-    <thead><tr><th>Metric</th><th>Low</th><th>High</th><th>Midpoint</th></tr></thead>
-    <tbody>
-      <tr><td><strong>Revenue</strong></td><td>$61.5 billion</td><td>$63.5 billion</td><td>$62.5 billion</td></tr>
-      <tr><td><strong>Net income attr. to HCA</strong></td><td>$4.525 billion</td><td>$4.895 billion</td><td>$4.71 billion</td></tr>
-      <tr><td><strong>Adjusted EBITDA</strong></td><td>$11.8 billion</td><td>$12.4 billion</td><td>$12.1 billion</td></tr>
-      <tr><td><strong>Diluted EPS</strong></td><td>$16.40</td><td>$17.60</td><td>$17.00</td></tr>
-      <tr><td><strong>Capital spending</strong></td><td>~$4.3 billion</td><td>~$4.3 billion</td><td>~$4.3 billion</td></tr>
-      <tr><td><strong>Cash flow from operations</strong></td><td>$8.5 billion</td><td>$9.0 billion</td><td>$8.75 billion</td></tr>
-    </tbody>
-  </table>
+  <h3>Full Year 2023 Guidance</h3>
+</div>
+<div class="content-section">
+  <h3>Headline Guidance Ranges</h3>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Low</th><th>High</th><th>Midpoint</th></tr></thead><tbody><tr><td><strong>Revenue</strong></td><td>$61.5 billion</td><td>$63.5 billion</td><td>$62.5 billion</td></tr><tr><td><strong>Net income attributable to HCA Healthcare</strong></td><td>$4.525 billion</td><td>$4.895 billion</td><td>$4.71 billion</td></tr><tr><td><strong>Adjusted EBITDA</strong></td><td>$11.8 billion</td><td>$12.4 billion</td><td>$12.1 billion</td></tr><tr><td><strong>Diluted EPS</strong></td><td>$16.40</td><td>$17.60</td><td>$17.00</td></tr><tr><td><strong>Capital spending</strong></td><td>~$4.3 billion</td><td>~$4.3 billion</td><td>~$4.3 billion</td></tr><tr><td><strong>Cash flow from operations</strong></td><td>$8.5 billion</td><td>$9.0 billion</td><td>$8.75 billion</td></tr></tbody></table></div>
 </div>
 <div class="content-section">
   <h3>Key Guidance Assumptions</h3>
@@ -441,23 +451,12 @@
 <div class="content-section">
   <h3>Long-Term Investment Plan (4 Pillars)</h3>
   <ul>
-    <li><strong>1. Advancing clinical systems and digital capabilities</strong> — alpha pilot underway on clinical system upgrades; beta pilot expected later in 2023; cloud-based standardized information for actionable insights</li>
-    <li><strong>2. Transforming care models with innovative solutions</strong> — care transformation team led by physician and clinical team with industrial engineers and data analysts; major obstetrics initiative rolling out in 2023</li>
-    <li><strong>3. Expanding workforce development programs</strong> — seventh Galen College of Nursing School opened in 2022</li>
-    <li><strong>4. Investing capital in networks to expand offerings</strong> — freestanding ER pipeline, greenfield hospitals, ASC de novo development</li>
+    <li>1. <strong>Advancing clinical systems and digital capabilities</strong> -- alpha pilot underway on clinical system upgrades; beta pilot expected later in 2023; cloud-based standardized information for actionable insights 2. <strong>Transforming care models with innovative solutions</strong> -- care transformation team led by physician and clinical team with industrial engineers and data analysts; major obstetrics initiative rolling out in 2023 3. <strong>Expanding workforce development programs</strong> -- seventh Galen College of Nursing School opened in 2022 4. <strong>Investing capital in networks to expand offerings</strong> -- freestanding ER pipeline, greenfield hospitals, ASC de novo development</li>
   </ul>
 </div>
 <div class="content-section">
   <h3>Quarterly EPS History (FY 2022)</h3>
-  <table class="comp-table">
-    <thead><tr><th>Quarter</th><th>Consensus</th><th>Actual</th><th>Surprise</th></tr></thead>
-    <tbody>
-      <tr><td><strong>FQ1 2022</strong></td><td>$4.24</td><td>$4.12</td><td>(2.83%)</td></tr>
-      <tr><td><strong>FQ2 2022</strong></td><td>$3.71</td><td>$4.21</td><td>13.48%</td></tr>
-      <tr><td><strong>FQ3 2022</strong></td><td>$3.86</td><td>$3.93</td><td>1.81%</td></tr>
-      <tr><td><strong>FQ4 2022</strong></td><td>$4.79</td><td>$4.64</td><td>(3.13%)</td></tr>
-    </tbody>
-  </table>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Quarter</th><th>Consensus</th><th>Actual</th><th>Surprise</th></tr></thead><tbody><tr><td><strong>FQ1 2022</strong></td><td>$4.24</td><td>$4.12</td><td>(2.83%)</td></tr><tr><td><strong>FQ2 2022</strong></td><td>$3.71</td><td>$4.21</td><td>13.48%</td></tr><tr><td><strong>FQ3 2022</strong></td><td>$3.86</td><td>$3.93</td><td>1.81%</td></tr><tr><td><strong>FQ4 2022</strong></td><td>$4.79</td><td>$4.64</td><td>(3.13%)</td></tr></tbody></table></div>
 </div>
 <div class="content-section">
   <h3>Volume Metrics (Same-Facility, Year-over-Year)</h3>
@@ -583,6 +582,9 @@
   </ul>
 </div>
 <div class="content-section">
+  <h3>Strategic / Operational Commentary</h3>
+</div>
+<div class="content-section">
   <h3>Portfolio / M&A Activity</h3>
   <ul>
     <li><strong>Sarah Cannon Research Institute JV with McKesson:</strong> closed in Q4 2022 (combining cancer research entities)</li>
@@ -606,54 +608,22 @@
 <div class="content-section">
   <h3>2023 Organizational Priorities</h3>
   <ul>
-    <li><strong>1. Overcoming labor and capacity challenges</strong></li>
-    <li><strong>2. Countering inflationary pressures</strong></li>
-    <li><strong>3. Accelerating growth with winning plays</strong> — capital investments in outpatient facilities, clinical equipment, service line expansion</li>
+    <li>1. <strong>Overcoming labor and capacity challenges</strong> 2. <strong>Countering inflationary pressures</strong> 3. <strong>Accelerating growth with winning plays</strong> -- capital investments in outpatient facilities, clinical equipment, service line expansion</li>
   </ul>
 </div>
 <div class="content-section">
   <h3>Q&A Key Data Points (Supplemental)</h3>
-  <table class="comp-table">
-    <thead><tr><th>Topic</th><th>Data Point</th><th>Source</th></tr></thead>
-    <tbody>
-      <tr><td><strong>Contract labor Q4 2022</strong></td><td>Down ~16% YoY; 7.8% of total SWB</td><td>Bill Rutherford (Gary Taylor Q&A)</td></tr>
-      <tr><td><strong>Capacity miss rate Q4</strong></td><td>~2% of total admissions via transfer centers</td><td>Sam Hazen (Ben Hendrix Q&A)</td></tr>
-      <tr><td><strong>Capacity miss rate Q3</strong></td><td>1% to 1.5% of total admissions</td><td>Referenced from prior quarter</td></tr>
-      <tr><td><strong>RN turnover (current run rate)</strong></td><td>~18% to 18.5%</td><td>Sam Hazen (Ann Hynes Q&A)</td></tr>
-      <tr><td><strong>RN turnover (pre-pandemic)</strong></td><td>~13% to 14%</td><td>Sam Hazen (Ann Hynes Q&A)</td></tr>
-      <tr><td><strong>RN turnover (industry avg)</strong></td><td>Mid- to upper-20s%</td><td>Sam Hazen (Ann Hynes Q&A)</td></tr>
-      <tr><td><strong>Total joint volume Q4</strong></td><td>+6%</td><td>Sam Hazen (Calvin Sternick Q&A)</td></tr>
-      <tr><td><strong>Urgent care centers</strong></td><td>260 currently; expected >300 in 2023</td><td>Sam Hazen (Calvin Sternick Q&A)</td></tr>
-      <tr><td><strong>2023 commercial contracts signed</strong></td><td>~70% contracted</td><td>Sam Hazen (Jamie Perse Q&A)</td></tr>
-      <tr><td><strong>2024 commercial contracts signed</strong></td><td>~40% contracted</td><td>Sam Hazen (Jamie Perse Q&A)</td></tr>
-      <tr><td><strong>Commercial rate escalators</strong></td><td>Mid-single-digit inflators (last 3 Qs of 2022)</td><td>Sam Hazen (Jamie Perse Q&A)</td></tr>
-      <tr><td><strong>2022 CapEx vs. initial plan</strong></td><td>Actual ~$4.4B vs. initial $4.2B</td><td>Bill Rutherford (Joshua Raskin Q&A)</td></tr>
-      <tr><td><strong>Incremental long-term investment (2023 vs. 2022)</strong></td><td>~$150 million</td><td>Bill Rutherford (Lance Wilkes Q&A)</td></tr>
-      <tr><td><strong>Supply cost contracts under firm pricing in 2022</strong></td><td>~60%</td><td>Bill Rutherford (Andrew Mok Q&A)</td></tr>
-      <tr><td><strong>Supply cost per unit growth (2023E)</strong></td><td>~2%</td><td>Bill Rutherford (Andrew Mok Q&A)</td></tr>
-      <tr><td><strong>COVID admissions 2023E</strong></td><td>3% to 4% of total (down from 5.2% in 2022)</td><td>Bill Rutherford (Stephen Baxter Q&A)</td></tr>
-      <tr><td><strong>Inpatient admission growth 2023E</strong></td><td>~2%</td><td>Bill Rutherford (Stephen Baxter Q&A)</td></tr>
-      <tr><td><strong>Outpatient revenue growth 2023E</strong></td><td>Mid-single-digit</td><td>Bill Rutherford (Stephen Baxter Q&A)</td></tr>
-      <tr><td><strong>ER physician / anesthesiologist subsidies</strong></td><td>Some upward pressure; factored into guidance via other OpEx</td><td>Bill Rutherford (Ann Hynes Q&A)</td></tr>
-      <tr><td><strong>Envision JV close timing</strong></td><td>Spring 2023; full assimilation through rest of 2023</td><td>Sam Hazen (Brian Tanquilut Q&A)</td></tr>
-      <tr><td><strong>Greenfield hospitals</strong></td><td>1 under construction (San Antonio); 7-10 land parcels</td><td>Sam Hazen (Jason Cassorla Q&A)</td></tr>
-      <tr><td><strong>Share repurchase authorization</strong></td><td>~$4.5B total available; majority in 2023</td><td>Bill Rutherford (Jason Cassorla Q&A)</td></tr>
-    </tbody>
-  </table>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Topic</th><th>Data Point</th><th>Source</th></tr></thead><tbody><tr><td><strong>Contract labor Q4 2022</strong></td><td>Down ~16% YoY; 7.8% of total SWB</td><td>Bill Rutherford (Gary Taylor Q&A)</td></tr><tr><td><strong>Capacity miss rate Q4</strong></td><td>~2% of total admissions via transfer centers</td><td>Sam Hazen (Ben Hendrix Q&A)</td></tr><tr><td><strong>Capacity miss rate Q3</strong></td><td>1% to 1.5% of total admissions</td><td>Referenced from prior quarter</td></tr><tr><td><strong>RN turnover (current run rate)</strong></td><td>~18% to 18.5%</td><td>Sam Hazen (Ann Hynes Q&A)</td></tr><tr><td><strong>RN turnover (pre-pandemic)</strong></td><td>~13% to 14%</td><td>Sam Hazen (Ann Hynes Q&A)</td></tr><tr><td><strong>RN turnover (industry avg)</strong></td><td>Mid- to upper-20s%</td><td>Sam Hazen (Ann Hynes Q&A)</td></tr><tr><td><strong>Total joint volume Q4</strong></td><td>+6%</td><td>Sam Hazen (Calvin Sternick Q&A)</td></tr><tr><td><strong>Urgent care centers</strong></td><td>260 currently; expected >300 in 2023</td><td>Sam Hazen (Calvin Sternick Q&A)</td></tr><tr><td><strong>2023 commercial contracts signed</strong></td><td>~70% contracted</td><td>Sam Hazen (Jamie Perse Q&A)</td></tr><tr><td><strong>2024 commercial contracts signed</strong></td><td>~40% contracted</td><td>Sam Hazen (Jamie Perse Q&A)</td></tr><tr><td><strong>Commercial rate escalators</strong></td><td>"Mid-single-digit inflators" on contracts closed in last 3 quarters of 2022</td><td>Sam Hazen (Jamie Perse Q&A)</td></tr><tr><td><strong>2022 CapEx vs. initial plan</strong></td><td>Actual ~$4.4B vs. initial expectation of $4.2B</td><td>Bill Rutherford (Joshua Raskin Q&A)</td></tr><tr><td><strong>Incremental long-term investment (2023 vs. 2022)</strong></td><td>~$150 million</td><td>Bill Rutherford (Lance Wilkes Q&A)</td></tr><tr><td><strong>Supply cost contracts under firm pricing in 2022</strong></td><td>~60%</td><td>Bill Rutherford (Andrew Mok Q&A)</td></tr><tr><td><strong>Supply cost per unit growth (2023E)</strong></td><td>~2%</td><td>Bill Rutherford (Andrew Mok Q&A)</td></tr><tr><td><strong>COVID admissions 2023E</strong></td><td>3% to 4% of total (down from 5.2% in 2022)</td><td>Bill Rutherford (Stephen Baxter Q&A)</td></tr><tr><td><strong>Inpatient admission growth 2023E</strong></td><td>~2%</td><td>Bill Rutherford (Stephen Baxter Q&A)</td></tr><tr><td><strong>Outpatient revenue growth 2023E</strong></td><td>Mid-single-digit</td><td>Bill Rutherford (Stephen Baxter Q&A)</td></tr><tr><td><strong>ER physician / anesthesiologist subsidies</strong></td><td>"Some upward pressure" factored into guidance; flows through other OpEx</td><td>Bill Rutherford (Ann Hynes Q&A)</td></tr><tr><td><strong>Envision JV close timing</strong></td><td>Spring 2023; full assimilation through rest of 2023</td><td>Sam Hazen (Brian Tanquilut Q&A)</td></tr><tr><td><strong>Greenfield hospitals</strong></td><td>1 under construction (San Antonio); 7-10 land parcels for future development</td><td>Sam Hazen (Jason Cassorla Q&A)</td></tr><tr><td><strong>Share repurchase authorization</strong></td><td>~$4.5 billion total available; majority expected to be completed in 2023</td><td>Bill Rutherford (Jason Cassorla Q&A)</td></tr></tbody></table> *Extraction completed from HCA Healthcare Q4 2022 Earnings Call Transcript (January 27, 2023). All figures sourced from management prepared remarks and Q&A session.*</div>
 </div>
 <div class="content-section">
   <h3>S&P Global Market Intelligence Consensus vs. Actuals</h3>
-  <table class="comp-table">
-    <thead><tr><th>Metric</th><th>FQ4 2022 Consensus</th><th>FQ4 2022 Actual</th><th>Surprise</th><th>FY 2022 Consensus</th><th>FY 2022 Actual</th><th>Surprise</th></tr></thead>
-    <tbody>
-      <tr><td><strong>EPS Normalized</strong></td><td>$4.79</td><td>$4.64</td><td>(3.13%)</td><td>$17.03</td><td>$16.89</td><td>(0.82%)</td></tr>
-      <tr><td><strong>Revenue (mm)</strong></td><td>$15,630.31</td><td>$15,497.00</td><td>(0.85%)</td><td>$60,416.10</td><td>$60,233.00</td><td>(0.30%)</td></tr>
-    </tbody>
-  </table>
-  <ul>
-    <li><strong>FQ1 2023 Consensus EPS:</strong> $4.47 | <strong>FY 2023 Consensus EPS:</strong> $18.11</li>
-    <li><strong>FQ1 2023 Consensus Revenue:</strong> $15,454.07mm | <strong>FY 2023 Consensus Revenue:</strong> $62,805.85mm</li>
-  </ul>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>FQ4 2022 Consensus</th><th>FQ4 2022 Actual</th><th>Surprise</th><th>FY 2022 Consensus</th><th>FY 2022 Actual</th><th>Surprise</th></tr></thead><tbody><tr><td><strong>EPS Normalized</strong></td><td>$4.79</td><td>$4.64</td><td>(3.13%)</td><td>$17.03</td><td>$16.89</td><td>(0.82%)</td></tr><tr><td><strong>Revenue (mm)</strong></td><td>$15,630.31</td><td>$15,497.00</td><td>(0.85%)</td><td>$60,416.10</td><td>$60,233.00</td><td>(0.30%)</td></tr></tbody></table> **FQ1 2023 Consensus EPS:** $4.47 | **FY 2023 Consensus EPS:** $18.11 **FQ1 2023 Consensus Revenue:** $15,454.07mm | **FY 2023 Consensus Revenue:** $62,805.85mm</div>
+</div>
+<div class="content-section">
+  <h3>Q4 2022 Actuals (Reported)</h3>
+</div>
+<div class="content-section">
+  <h3>Full Year 2022 Actuals</h3>
 </div>
 
 <div class="prior-ref" id="priorRef">
@@ -663,10 +633,9 @@
   </div>
   <div class="prior-ref-body" id="priorBody">
     <div class="metric-grid">
-      <div class="prior-mini"><div class="pm-label">FY 2022 Guidance</div><div class="pm-value">Maintained (unchanged)</div></div>
-      <div class="prior-mini"><div class="pm-label">FY 2023 Guidance</div><div class="pm-value">Deferred to January</div></div>
-      <div class="prior-mini"><div class="pm-label">FY 2022 CapEx</div><div class="pm-value">~$4.2B</div></div>
-      <div class="prior-mini"><div class="pm-label">FY 2023 CapEx (Prelim)</div><div class="pm-value">~$4.2B</div></div>
+      <div class="prior-mini"><div class="pm-label">Same-Facility Admissions</div><div class="pm-value">Down 1.5% year-over-year</div></div>
+      <div class="prior-mini"><div class="pm-label">Revenue Per Admission</div><div class="pm-value">Generally comparable between Q2 and Q3 2022</div></div>
+      <div class="prior-mini"><div class="pm-label">Adj. EBITDA Margin</div><div class="pm-value">19.4%</div></div>
     </div>
     <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;"><a href="Q3_2022.html" style="color:var(--blue);">View full Q3 2022 detail &rarr;</a></p>
   </div>

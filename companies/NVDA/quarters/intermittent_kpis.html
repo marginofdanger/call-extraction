@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NVIDIA Intermittent KPIs &mdash; 16-Quarter Disclosure Tracker</title>
+<style>
+  :root {
+    --company-primary: #76b900;
+    --company-dark: #1a1a1a;
+    --company-accent: #333333;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --amber: #f39c12;
+    --blue: #2980b9;
+    --light-bg: #f8f9fa;
+    --border: #dee2e6;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); background: #fff; line-height: 1.6; max-width: 1200px; margin: 0 auto; padding: 0 24px 80px; }
+  .header { background: linear-gradient(135deg, var(--company-dark), var(--company-accent)); color: #fff; padding: 48px 40px; margin: 0 -24px 40px; border-bottom: 4px solid var(--company-primary); }
+  .header h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; }
+  .header .subtitle { font-size: 1.1rem; opacity: 0.85; font-weight: 300; }
+  .quarter-nav { background: var(--company-accent); border-radius: 8px; padding: 16px 20px; margin-bottom: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .quarter-nav .label { color: #fff; font-weight: 600; font-size: 0.85rem; margin-right: 8px; white-space: nowrap; }
+  .quarter-nav .year-group { display: flex; gap: 4px; align-items: center; }
+  .quarter-nav .year-label { color: rgba(255,255,255,0.5); font-size: 0.72rem; font-weight: 600; margin-right: 2px; letter-spacing: 0.5px; }
+  .quarter-nav a { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 4px 10px; font-size: 0.78rem; font-weight: 600; text-decoration: none; transition: all 0.15s; }
+  .quarter-nav a:hover { background: rgba(255,255,255,0.25); }
+  .quarter-nav a.overview-link { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.35); padding: 4px 14px; font-size: 0.82rem; margin-left: auto; }
+  .toc { background: var(--light-bg); border: 1px solid var(--border); border-radius: 8px; padding: 24px 32px; margin-bottom: 40px; columns: 2; column-gap: 40px; }
+  .toc h2 { font-size: 1.1rem; color: var(--company-accent); margin-bottom: 12px; column-span: all; }
+  .toc a { display: block; color: var(--blue); text-decoration: none; padding: 3px 0; font-size: 0.9rem; break-inside: avoid; }
+  .toc a:hover { text-decoration: underline; }
+  .section { margin-bottom: 48px; scroll-margin-top: 20px; }
+  .section h2 { font-size: 1.4rem; color: var(--company-dark); border-bottom: 3px solid var(--company-primary); padding-bottom: 8px; margin-bottom: 16px; }
+  .section h2 .num { display: inline-block; background: var(--company-primary); color: #fff; width: 28px; height: 28px; line-height: 28px; text-align: center; border-radius: 50%; font-size: 0.85rem; margin-right: 8px; vertical-align: middle; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 0.88rem; }
+  thead th { background: var(--company-accent); color: #fff; padding: 10px 12px; text-align: left; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
+  thead th.right { text-align: right; }
+  tbody td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tbody td.right { text-align: right; }
+  tbody tr:nth-child(even) { background: var(--light-bg); }
+  tbody tr:hover { background: #eef2f7; }
+  .pos { color: var(--green); font-weight: 600; }
+  .neg { color: var(--red); font-weight: 600; }
+  .neutral { color: var(--amber); font-weight: 600; }
+  .raised { background: #eafaf1 !important; }
+  .lowered { background: #fef0ef !important; }
+  .bold { font-weight: 700; }
+  .muted { color: var(--text-muted); font-style: italic; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; vertical-align: middle; }
+  .tag-new { background: #d6eaf8; color: #2471a3; }
+  .tag-disc { background: #fadbd8; color: #c0392b; }
+  .tag-emerged { background: #d5f5e3; color: #1e8449; }
+  .tag-peak { background: #fdebd0; color: #d68910; }
+  .insight { background: linear-gradient(135deg, #fef9e7, #fdebd0); border-left: 4px solid var(--amber); padding: 14px 18px; margin: 16px 0; border-radius: 0 6px 6px 0; font-size: 0.9rem; }
+  .insight strong { color: var(--company-dark); }
+  .year-divider td { background: var(--company-accent) !important; color: #fff; font-weight: 700; font-size: 0.82rem; padding: 6px 12px; letter-spacing: 0.5px; }
+  .analysis { margin-top: 48px; padding: 32px; background: var(--light-bg); border: 1px solid var(--border); border-radius: 8px; }
+  .analysis h2 { font-size: 1.3rem; color: var(--company-dark); margin-bottom: 16px; border-bottom: 3px solid var(--company-primary); padding-bottom: 8px; }
+  .analysis h3 { font-size: 1.05rem; color: var(--company-dark); margin: 20px 0 8px; }
+  .analysis p { font-size: 0.92rem; margin-bottom: 12px; }
+  .footer { margin-top: 60px; padding-top: 20px; border-top: 2px solid var(--border); font-size: 0.82rem; color: var(--text-muted); text-align: center; }
+  .footer a { color: var(--blue); text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 768px) { .toc { columns: 1; } .header h1 { font-size: 1.6rem; } table { font-size: 0.8rem; } thead th, tbody td { padding: 6px 8px; } }
+  @media print { .header { background: #333; } .section { page-break-inside: avoid; } table { font-size: 0.75rem; } .quarter-nav { display: none; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>NVIDIA Intermittent KPIs</h1>
+  <div class="subtitle">Metrics disclosed more than once but not on a regular basis &mdash; Q1 FY2023 through Q4 FY2026</div>
+</div>
+
+<div class="quarter-nav" id="qnav">
+  <a href="../../index.html" style="background:rgba(255,255,255,0.15); color:#fff; font-weight:600; margin-right:12px; text-decoration:none; padding:4px 12px; border-radius:4px;">&#x2190; Portfolio</a>
+  <span class="label">Quarter detail:</span>
+  <div class="year-group"><span class="year-label">FY26</span>
+    <a href="Q4_2026.html">Q4</a><a href="Q3_2026.html">Q3</a><a href="Q2_2026.html">Q2</a><a href="Q1_2026.html">Q1</a></div>
+  <div class="year-group"><span class="year-label">FY25</span>
+    <a href="Q4_2025.html">Q4</a><a href="Q3_2025.html">Q3</a><a href="Q2_2025.html">Q2</a><a href="Q1_2025.html">Q1</a></div>
+  <div class="year-group"><span class="year-label">FY24</span>
+    <a href="Q4_2024.html">Q4</a><a href="Q3_2024.html">Q3</a><a href="Q2_2024.html">Q2</a><a href="Q1_2024.html">Q1</a></div>
+  <div class="year-group"><span class="year-label">FY23</span>
+    <a href="Q4_2023.html">Q4</a><a href="Q3_2023.html">Q3</a><a href="Q2_2023.html">Q2</a><a href="Q1_2023.html">Q1</a></div>
+  <a href="../comparison.html" class="overview-link">Guidance Overview &rarr;</a>
+  <a href="../results.html" class="overview-link">Results Scorecard &rarr;</a>
+</div>
+
+<nav class="toc">
+  <h2>Table of Contents</h2>
+  <a href="#s1">1. China Data Center Revenue (% of DC)</a>
+  <a href="#s2">2. Sovereign AI Revenue</a>
+  <a href="#s3">3. Blackwell Revenue Ramp</a>
+  <a href="#s4">4. Networking Revenue</a>
+  <a href="#s5">5. Spectrum-X Ethernet for AI</a>
+  <a href="#s6">6. Gross Margin Recovery Arc</a>
+  <a href="#s7">7. Inventory Charges &amp; Write-downs</a>
+  <a href="#s8">8. CSP Revenue Mix (% of Data Center)</a>
+  <a href="#s9">9. Software &amp; Services Run Rate</a>
+  <a href="#s10">10. Inference as % of Data Center</a>
+  <a href="#s11">11. Automotive Design Win Pipeline</a>
+  <a href="#s12">12. Product Cadence &amp; Architecture Rhythm</a>
+  <a href="#s13">13. RTX Games/Apps &amp; Installed Base</a>
+  <a href="#s14">14. CSP Aggregate CapEx &amp; Revenue Visibility</a>
+  <a href="#analysis">Analysis: What the Disclosure Patterns Reveal</a>
+</nav>
+
+<!-- ====== SECTION 1: CHINA DC REVENUE ====== -->
+<div class="section" id="s1">
+  <h2><span class="num">1</span> China Data Center Revenue (% of DC)</h2>
+  <p style="margin-bottom:12px; font-size:0.88rem; color:var(--text-muted);">The complete arc of a 20&ndash;25% revenue stream going to effectively zero across three export control phases. The most consequential geopolitical impact on any single company in modern tech. <span class="tag tag-disc">Terminated Q3 FY2026</span></p>
+  <table>
+    <thead><tr><th>Quarter</th><th class="right">China DC %</th><th>Phase</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2026 &mdash; TERMINATION</td></tr>
+      <tr class="lowered"><td>Q4 FY2026</td><td class="right neg">Zero</td><td>Excluded from outlook</td><td>Some H200 approved by USG but none shipped <span class="tag tag-disc">ZERO REVENUE</span></td></tr>
+      <tr class="lowered"><td>Q3 FY2026</td><td class="right neg">~$50M H20</td><td>Effectively zero</td><td>China compute revenue excluded from outlook</td></tr>
+      <tr class="lowered"><td>Q2 FY2026</td><td class="right neg">Low single-digit %</td><td>Declining</td><td>$650M H20 sold to non-China customer</td></tr>
+      <tr class="lowered"><td>Q1 FY2026</td><td class="right neg">$4.6B shipped + $2.5B unable</td><td>Crisis</td><td>$4.5B inventory charge; Apr 9 H20 ban <span class="tag tag-peak">$4.5B CHARGE</span></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2025 &mdash; H20 WORKAROUND</td></tr>
+      <tr><td>Q4 FY2025</td><td class="right">~50% of pre-control</td><td>Well below historical</td><td>~half of pre-export-control levels</td></tr>
+      <tr><td>Q3 FY2025</td><td class="right">Grew sequentially</td><td>Well below pre-control</td><td>H20 ramping</td></tr>
+      <tr><td>Q2 FY2025</td><td class="right">Grew sequentially</td><td>Below pre-control</td><td>&mdash;</td></tr>
+      <tr><td>Q1 FY2025</td><td class="right">Mid-single-digit %</td><td>Expected to continue</td><td>H20 ramp <span class="tag tag-emerged">H20 ERA</span></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2024 &mdash; INITIAL CONTROLS</td></tr>
+      <tr class="lowered"><td>Q4 FY2024</td><td class="right neg">Mid-single-digit %</td><td>Collapsed from 20&ndash;25%</td><td>Oct 2023 export controls hit <span class="tag tag-peak">COLLAPSE</span></td></tr>
+      <tr><td>Q3 FY2024</td><td class="right">20&ndash;25%</td><td>&ldquo;Decline significantly in Q4&rdquo;</td><td>Last quarter at historical levels</td></tr>
+      <tr><td>Q2 FY2024</td><td class="right">20&ndash;25%</td><td>Within historical range</td><td><span class="tag tag-new">FIRST QUANTIFIED</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> A $10B+ annual revenue stream went from 20&ndash;25% of Data Center to effectively zero in 8 quarters across three distinct phases: the Oct 2023 initial controls (20&ndash;25% &rarr; mid-single-digit), the H20 workaround period (mid-single-digit, gradually growing), and the Apr 2025 total H20 ban (collapse to zero). The $4.5B inventory charge in Q1 FY2026 was the largest single geopolitical charge in semiconductor history.</div>
+</div>
+
+<!-- ====== SECTION 2: SOVEREIGN AI ====== -->
+<div class="section" id="s2">
+  <h2><span class="num">2</span> Sovereign AI Revenue</h2>
+  <p style="margin-bottom:12px; font-size:0.88rem; color:var(--text-muted);">The replacement revenue narrative for lost China business &mdash; from concept to $30B in just 10 quarters. <span class="tag tag-emerged">Emerged Q3 FY2024</span></p>
+  <table>
+    <thead><tr><th>Quarter</th><th class="right">Revenue Scale</th><th>Change</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2026 &mdash; MASSIVE SCALE</td></tr>
+      <tr class="raised"><td>Q4 FY2026</td><td class="right bold">&gt;$30B (FY2026)</td><td class="pos">Tripled YoY</td><td>Canada, France, Netherlands, Singapore, U.K. <span class="tag tag-peak">RECORD</span></td></tr>
+      <tr><td>Q3 FY2026</td><td class="right muted">Not restated</td><td>&mdash;</td><td>$500B pipeline visibility mentioned</td></tr>
+      <tr class="raised"><td>Q2 FY2026</td><td class="right bold">&gt;$20B (on track)</td><td class="pos">&gt;2x YoY</td><td>More than double last year</td></tr>
+      <tr><td>Q1 FY2026</td><td class="right">Every nation investing</td><td>&mdash;</td><td>&mdash;</td></tr>
+      <tr class="year-divider"><td colspan="4">FY2025 &mdash; RAPID SCALING</td></tr>
+      <tr><td>Q4 FY2025</td><td class="right">France &euro;200B; EU &euro;200B</td><td>&mdash;</td><td>Regional cloud increasing share</td></tr>
+      <tr><td>Q3 FY2025</td><td class="right">Pipeline intact</td><td>&mdash;</td><td>India GPUs nearly 10x by year-end</td></tr>
+      <tr class="raised"><td>Q2 FY2025</td><td class="right">Low double-digit $B</td><td class="pos">Raised from high single-digit</td><td><span class="tag tag-emerged">RAISED</span></td></tr>
+      <tr><td>Q1 FY2025</td><td class="right">High single-digit $B</td><td>&mdash;</td><td>First annual revenue estimate</td></tr>
+      <tr class="year-divider"><td colspan="4">FY2024 &mdash; CONCEPT TO QUANTIFICATION</td></tr>
+      <tr><td>Q4 FY2024</td><td class="right">Nations investing</td><td>Growing demand driver</td><td>&mdash;</td></tr>
+      <tr><td>Q3 FY2024</td><td class="right">&ldquo;Multibillion opportunity&rdquo;</td><td>&mdash;</td><td><span class="tag tag-new">FIRST DISCLOSED</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Sovereign AI went from a concept (&ldquo;multibillion opportunity&rdquo; in Q3 FY2024) to $30B+ in realized revenue (FY2026) in just 10 quarters. It emerged precisely as China revenue was closing &mdash; serving as both a replacement demand driver and a geopolitical diversification strategy. The trajectory was consistently raised: high single-digit &rarr; low double-digit &rarr; $20B+ &rarr; $30B+. Every nation now views AI infrastructure as strategic.</div>
+</div>
+
+<!-- ====== SECTION 3: BLACKWELL REVENUE ====== -->
+<div class="section" id="s3">
+  <h2><span class="num">3</span> Blackwell Revenue Ramp</h2>
+  <p style="margin-bottom:12px; font-size:0.88rem; color:var(--text-muted);">The fastest product ramp in semiconductor history &mdash; from zero to dominant platform in 4 quarters. <span class="tag tag-emerged">Production Q4 FY2025</span></p>
+  <table>
+    <thead><tr><th>Quarter</th><th class="right">Revenue</th><th>Status</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2026 &mdash; DOMINANCE</td></tr>
+      <tr class="raised"><td>Q4 FY2026</td><td class="right bold">~$41B (est. ~2/3 of $62B DC)</td><td>Dominant</td><td>Grace Blackwell ~2/3 of DC revenue <span class="tag tag-peak">DOMINANT</span></td></tr>
+      <tr><td>Q3 FY2026</td><td class="right">GB300 ~2/3 of Blackwell; Hopper ~$2B</td><td>GB300 ramp</td><td>GB300 production shipments began</td></tr>
+      <tr><td>Q2 FY2026</td><td class="right">Tens of billions</td><td>Full scale</td><td>GB300 began production shipments</td></tr>
+      <tr><td>Q1 FY2026</td><td class="right">~70% of DC compute</td><td>Generally available</td><td>GB200 NVL racks GA</td></tr>
+      <tr class="year-divider"><td colspan="4">FY2025 &mdash; LAUNCH</td></tr>
+      <tr class="raised"><td>Q4 FY2025</td><td class="right bold">$11B</td><td class="pos">Fastest ramp ever</td><td>Exceeded &ldquo;several billion&rdquo; guidance <span class="tag tag-peak">RECORD RAMP</span></td></tr>
+      <tr><td>Q3 FY2025</td><td class="right">13,000 samples shipped</td><td>Expected &gt;&ldquo;several billion&rdquo; in Q4</td><td>&mdash;</td></tr>
+      <tr><td>Q2 FY2025</td><td class="right">Widely sampling</td><td>Mask change for yield; several $B Q4</td><td>Mask change anxiety <span class="tag tag-new">MASK CHANGE</span></td></tr>
+      <tr><td>Q1 FY2025</td><td class="right">Full production</td><td>Production shipments starting Q2</td><td>&ldquo;A lot of Blackwell revenue this year&rdquo;</td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Blackwell went from zero to $11B in a single quarter (Q4 FY2025), then to ~$41B quarterly implied within 4 quarters. The mask change in Q2 FY2025 created significant investor anxiety about delays but turned out to be a ~2 month setback that was fully recovered. The transition from &ldquo;several billion&rdquo; guidance to $11B actual in Q4 FY2025 set the tone for consistent guidance beats throughout the ramp.</div>
+</div>
+
+<!-- ====== SECTION 4: NETWORKING REVENUE ====== -->
+<div class="section" id="s4">
+  <h2><span class="num">4</span> Networking Revenue</h2>
+  <p style="margin-bottom:12px; font-size:0.88rem; color:var(--text-muted);">From a supporting detail to NVIDIA&rsquo;s second-largest revenue category &mdash; 10x growth in 2 years. <span class="tag tag-emerged">Quantified Q3 FY2024</span></p>
+  <table>
+    <thead><tr><th>Quarter</th><th class="right">Revenue</th><th class="right">YoY Growth</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2026 &mdash; EXPLOSIVE GROWTH</td></tr>
+      <tr class="raised"><td>Q4 FY2026</td><td class="right bold">$11.0B quarterly</td><td class="right pos">+3.5x YoY</td><td>FY2026 exceeded $31B (10x vs FY2025) <span class="tag tag-peak">RECORD</span></td></tr>
+      <tr><td>Q3 FY2026</td><td class="right">$8.2B quarterly</td><td class="right pos">+162% YoY</td><td>Record</td></tr>
+      <tr><td>Q2 FY2026</td><td class="right">$7.3B quarterly</td><td class="right pos">+98% YoY</td><td>Record; +46% QoQ</td></tr>
+      <tr><td>Q1 FY2026</td><td class="right">$5.0B quarterly</td><td class="right pos">+64% QoQ</td><td>NVLink exceeded $1B</td></tr>
+      <tr class="year-divider"><td colspan="4">FY2025 &mdash; SCALE-UP</td></tr>
+      <tr><td>Q4 FY2025</td><td class="right muted">Not separately disclosed</td><td>&mdash;</td><td>&mdash;</td></tr>
+      <tr class="raised"><td>Q4 FY2024</td><td class="right">$13B+ annualized</td><td class="right pos">InfiniBand 5x+ YoY</td><td>&mdash;</td></tr>
+      <tr><td>Q3 FY2024</td><td class="right">$10B+ annualized</td><td class="right pos">InfiniBand 5x YoY</td><td>First $10B threshold <span class="tag tag-new">FIRST QUANTIFIED</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Networking went from ~$3B annual to $31B annual in 2 years, making NVIDIA &ldquo;the largest networking company in the world.&rdquo; The growth was driven by the NVLink 72 rack architecture where networking becomes integral to every GPU sale. The 10x growth from FY2025 to FY2026 is one of the most dramatic category expansions in technology history.</div>
+</div>
+
+<!-- ====== SECTION 5: SPECTRUM-X ====== -->
+<div class="section" id="s5">
+  <h2><span class="num">5</span> Spectrum-X Ethernet for AI</h2>
+  <p style="margin-bottom:12px; font-size:0.88rem; color:var(--text-muted);">The fastest networking product to reach $10B &mdash; from zero to $11&ndash;12B annualized in ~2 years. <span class="tag tag-new">Launched Q1 FY2025</span></p>
+  <table>
+    <thead><tr><th>Quarter</th><th class="right">Run Rate</th><th>Status</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2026 &mdash; SCALE</td></tr>
+      <tr class="raised"><td>Q4 FY2026</td><td class="right bold">$11&ndash;12B annualized (H2)</td><td>At scale</td><td>Spectrum-XGS announced <span class="tag tag-peak">RECORD</span></td></tr>
+      <tr><td>Q3 FY2026</td><td class="right">$10B+ annualized</td><td>Maintained</td><td>&mdash;</td></tr>
+      <tr><td>Q2 FY2026</td><td class="right">&gt;$10B annualized</td><td class="pos">Up from $8B+</td><td>&mdash;</td></tr>
+      <tr class="raised"><td>Q1 FY2026</td><td class="right">&gt;$8B annualized</td><td class="pos">Rapid scale-up</td><td>Google Cloud &amp; Meta added <span class="tag tag-emerged">KEY CUSTOMERS</span></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2025 &mdash; RAMP</td></tr>
+      <tr><td>Q3 FY2025</td><td class="right">3x+ YoY</td><td>Growing</td><td>xAI using for largest GPU cluster</td></tr>
+      <tr><td>Q2 FY2025</td><td class="right">Doubled sequentially</td><td>On track for multibillion</td><td>&mdash;</td></tr>
+      <tr><td>Q1 FY2025</td><td class="right">Started shipping</td><td>Multibillion within a year</td><td><span class="tag tag-new">FIRST SHIPPED</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Spectrum-X effectively created a new market segment: &ldquo;Ethernet for AI.&rdquo; NVIDIA entered Ethernet networking from zero and reached $10B+ annualized in about 2 years, adding Google Cloud and Meta as customers along the way. The product&rsquo;s success is strategically important because it gives NVIDIA an alternative to InfiniBand, expanding the addressable market for AI networking.</div>
+</div>
+
+<!-- ====== SECTION 6: GROSS MARGIN ARC ====== -->
+<div class="section" id="s6">
+  <h2><span class="num">6</span> Gross Margin Recovery Arc</h2>
+  <p style="margin-bottom:12px; font-size:0.88rem; color:var(--text-muted);">The V-shaped margin compression and recovery during the Blackwell ramp &mdash; Wall Street&rsquo;s most-watched NVIDIA metric for 8 quarters.</p>
+  <table>
+    <thead><tr><th>Quarter</th><th class="right">Non-GAAP GM</th><th>Forward Language</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2026 &mdash; RECOVERY</td></tr>
+      <tr class="raised"><td>Q3 FY2026</td><td class="right bold pos">75.0% guided</td><td>Target achieved</td><td>Mid-70s% reached <span class="tag tag-emerged">TARGET HIT</span></td></tr>
+      <tr><td>Q2 FY2026</td><td class="right">73.5% guided</td><td>Mid-70s% exit reaffirmed</td><td>Improving</td></tr>
+      <tr><td>Q1 FY2026</td><td class="right">72.0% guided</td><td>Working toward mid-70s%</td><td>&mdash;</td></tr>
+      <tr class="year-divider"><td colspan="4">FY2025 &mdash; TROUGH</td></tr>
+      <tr class="lowered"><td>Q4 FY2025</td><td class="right neg">71.0% guided</td><td>Likely bottom; mid-70s% late FY2026</td><td><span class="tag tag-peak">TROUGH</span></td></tr>
+      <tr><td>Q3 FY2025</td><td class="right">Low 70s% early FY2026</td><td>Mid-70s% H2 FY2026</td><td>&mdash;</td></tr>
+      <tr><td>Q2 FY2025</td><td class="right muted">Not yet compressed</td><td>Q4 may dip but &ldquo;not as low&rdquo; as 71&ndash;72%</td><td>&mdash;</td></tr>
+      <tr><td>Q1 FY2025</td><td class="right">Mid-70s% for year</td><td>&mdash;</td><td>&mdash;</td></tr>
+      <tr><td>Q4 FY2024</td><td class="right">Beyond Q1, return to mid-70s%</td><td>&mdash;</td><td>First compression signal <span class="tag tag-new">FIRST FLAGGED</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Non-GAAP GM dipped ~800 bps from 78.9% peak to 71.0% trough as Blackwell ramped (7 chip types, new packaging, yield learning), then recovered to 75.0% within 3 quarters. Management telegraphed the recovery timeline 6+ quarters in advance (&ldquo;mid-70s% by late FY2026&rdquo;) and met it precisely. The V-shape was textbook new-product margin compression &mdash; the key was NVIDIA&rsquo;s transparent forward guidance that prevented the dip from becoming a narrative crisis.</div>
+</div>
+
+<!-- ====== SECTION 7: INVENTORY CHARGES ====== -->
+<div class="section" id="s7">
+  <h2><span class="num">7</span> Inventory Charges &amp; Write-downs</h2>
+  <p style="margin-bottom:12px; font-size:0.88rem; color:var(--text-muted);">Each charge marks a distinct crisis moment &mdash; from crypto bust to export controls. Escalating in magnitude.</p>
+  <table>
+    <thead><tr><th>Quarter</th><th class="right">Charge Amount</th><th>Cause</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2026 &mdash; GEOPOLITICAL</td></tr>
+      <tr class="lowered"><td>Q1 FY2026</td><td class="right neg bold">$4.5B</td><td>H20 export ban</td><td>H20 inventory + purchase obligations <span class="tag tag-peak">LARGEST EVER</span></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2023 &mdash; DOWNCYCLE</td></tr>
+      <tr class="lowered"><td>Q3 FY2023</td><td class="right neg">$702M</td><td>A100 China export controls</td><td>First export control wave; A100 write-down</td></tr>
+      <tr class="lowered"><td>Q2 FY2023</td><td class="right neg">$1.22B</td><td>Crypto/macro crash</td><td>Purchase commitments from shortage period <span class="tag tag-new">FIRST CHARGE</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> The three charges form a narrative arc of escalating geopolitical stakes: $1.22B (macro/crypto, fixable), $702M (first export controls, manageable), $4.5B (total China shutdown, transformative). Each charge marked a structural inflection point &mdash; not just a write-down but a signal that the prior business model assumption was permanently changing.</div>
+</div>
+
+<!-- ====== SECTION 8: CSP MIX ====== -->
+<div class="section" id="s8">
+  <h2><span class="num">8</span> CSP Revenue Mix (% of Data Center)</h2>
+  <p style="margin-bottom:12px; font-size:0.88rem; color:var(--text-muted);">NVIDIA&rsquo;s customer concentration risk metric &mdash; oscillating 40&ndash;50% as non-hyperscaler demand diversifies.</p>
+  <table>
+    <thead><tr><th>Quarter</th><th class="right">CSP % of DC</th><th>Non-CSP Trend</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2026</td></tr>
+      <tr><td>Q4 FY2026</td><td class="right">Slightly &gt;50%</td><td class="pos">Growth led by non-CSP</td><td>Model makers, enterprises, sovereigns growing faster</td></tr>
+      <tr class="year-divider"><td colspan="4">FY2025</td></tr>
+      <tr><td>Q4 FY2025</td><td class="right">~50%</td><td>Nearly 2x YoY</td><td>&mdash;</td></tr>
+      <tr><td>Q3 FY2025</td><td class="right">~50%</td><td>2x+ YoY</td><td>&mdash;</td></tr>
+      <tr><td>Q2 FY2025</td><td class="right">~45%</td><td>&mdash;</td><td>Diversification signal</td></tr>
+      <tr><td>Q1 FY2025</td><td class="right">Mid-40s %</td><td>&mdash;</td><td><span class="tag tag-emerged">DIVERSIFICATION</span></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2024</td></tr>
+      <tr><td>Q4 FY2024</td><td class="right">&gt;50%</td><td>Consumer Internet ~50%</td><td>&mdash;</td></tr>
+      <tr><td>Q3 FY2024</td><td class="right">~50%</td><td>&mdash;</td><td>&mdash;</td></tr>
+      <tr><td>Q2 FY2024</td><td class="right">&gt;50%</td><td>&mdash;</td><td>&mdash;</td></tr>
+      <tr><td>Q4 FY2023</td><td class="right">~40% (trailing 4Q)</td><td>&mdash;</td><td><span class="tag tag-new">FIRST DISCLOSED</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> CSP concentration oscillated between 40&ndash;50% across 9 quarters, never meaningfully exceeding 50%. The critical narrative shift came in FY2026 when management explicitly stated &ldquo;growth led by non-hyperscaler customers&rdquo; &mdash; model makers (OpenAI, Anthropic), enterprises, and sovereign nations. This diversification reduces the risk of any single hyperscaler pulling back.</div>
+</div>
+
+<!-- ====== SECTION 9: SOFTWARE REVENUE ====== -->
+<div class="section" id="s9">
+  <h2><span class="num">9</span> Software &amp; Services Run Rate</h2>
+  <p style="margin-bottom:12px; font-size:0.88rem; color:var(--text-muted);">Tracking NVIDIA&rsquo;s platform monetization transition &mdash; from &ldquo;hundreds of millions&rdquo; to $2B+ run rate. <span class="tag tag-emerged">Emerged Q4 FY2023</span></p>
+  <table>
+    <thead><tr><th>Quarter</th><th class="right">Run Rate</th><th>Key Milestone</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2025</td></tr>
+      <tr class="raised"><td>Q3 FY2025</td><td class="right bold">$1.5B; expects $2B+ exit</td><td class="pos">Raised</td><td><span class="tag tag-peak">NEAR TARGET</span></td></tr>
+      <tr><td>Q2 FY2025</td><td class="right">Approaching $2B exit</td><td>&mdash;</td><td>&mdash;</td></tr>
+      <tr class="year-divider"><td colspan="4">FY2024</td></tr>
+      <tr class="raised"><td>Q4 FY2024</td><td class="right">$1B annualized</td><td class="pos">Milestone hit</td><td><span class="tag tag-emerged">$1B MILESTONE</span></td></tr>
+      <tr><td>Q3 FY2024</td><td class="right">On track for $1B</td><td>&mdash;</td><td>NVIDIA AI Enterprise $4,500/GPU/year pricing</td></tr>
+      <tr class="year-divider"><td colspan="4">FY2023</td></tr>
+      <tr><td>Q4 FY2023</td><td class="right">&ldquo;Hundreds of millions&rdquo;</td><td>&mdash;</td><td><span class="tag tag-new">FIRST DISCLOSED</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> Software revenue grew from &ldquo;hundreds of millions&rdquo; to $2B+ run rate in ~2 years, anchored by the $4,500/GPU/year NVIDIA AI Enterprise pricing. While small relative to hardware ($200B+), the metric tracks NVIDIA&rsquo;s platform strategy and represents high-margin recurring revenue. The metric&rsquo;s gradual disappearance from headline guidance suggests it became table-stakes rather than a differentiated disclosure.</div>
+</div>
+
+<!-- ====== SECTION 10: INFERENCE % ====== -->
+<div class="section" id="s10">
+  <h2><span class="num">10</span> Inference as % of Data Center Revenue</h2>
+  <p style="margin-bottom:12px; font-size:0.88rem; color:var(--text-muted);">NVIDIA&rsquo;s answer to the &ldquo;training is a bubble&rdquo; thesis &mdash; demonstrating 40%+ from recurring inference workloads. <span class="tag tag-disc">Mission accomplished Q3 FY2025</span></p>
+  <table>
+    <thead><tr><th>Quarter</th><th class="right">Inference % of DC</th><th>Caveat</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2025</td></tr>
+      <tr><td>Q2 FY2025</td><td class="right bold">&gt;40%</td><td>&ldquo;Likely understated&rdquo;</td><td>Growing; trailing 4Q basis</td></tr>
+      <tr><td>Q1 FY2025</td><td class="right">~40%</td><td>&ldquo;Probably understated&rdquo;</td><td>&mdash;</td></tr>
+      <tr class="year-divider"><td colspan="4">FY2024</td></tr>
+      <tr><td>Q4 FY2024</td><td class="right">~40%</td><td>&ldquo;Estimate likely understated&rdquo;</td><td><span class="tag tag-new">FIRST QUANTIFIED</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> NVIDIA disclosed the 40%+ inference figure specifically to counter the &ldquo;training is one-time CapEx&rdquo; bear thesis. By demonstrating that inference (recurring, growing) accounted for nearly half of DC revenue, NVIDIA argued its demand was sustainable. The metric disappeared after 3 quarters once the narrative was won &mdash; replaced by inference throughput improvements (200x cost reduction) as the forward-looking metric.</div>
+</div>
+
+<!-- ====== SECTION 11: AUTO DESIGN WINS ====== -->
+<div class="section" id="s11">
+  <h2><span class="num">11</span> Automotive Design Win Pipeline &amp; DC Vertical</h2>
+  <p style="margin-bottom:12px; font-size:0.88rem; color:var(--text-muted);">A metric that evolved from design win dollars to DC infrastructure revenue &mdash; reflecting NVIDIA&rsquo;s strategic pivot in automotive monetization.</p>
+  <table>
+    <thead><tr><th>Quarter</th><th class="right">Value</th><th>Metric Type</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2025&ndash;26 &mdash; DC VERTICAL</td></tr>
+      <tr class="raised"><td>Q4 FY2025</td><td class="right bold">~$5B (FY2026 target)</td><td>Automotive in DC</td><td><span class="tag tag-peak">$5B TARGET</span></td></tr>
+      <tr><td>Q2 FY2025</td><td class="right">Multibillion</td><td>Automotive in DC</td><td>Every automaker developing AV using NVIDIA DCs</td></tr>
+      <tr><td>Q1 FY2025</td><td class="right">Largest enterprise vertical</td><td>Automotive in DC</td><td>Expected largest vertical this year <span class="tag tag-emerged">PIVOT</span></td></tr>
+      <tr><td>Q4 FY2024</td><td class="right">&gt;$1B (FY2024)</td><td>Automotive in DC</td><td>~80 vehicle manufacturers <span class="tag tag-new">NEW METRIC</span></td></tr>
+      <tr class="year-divider"><td colspan="4">FY2023&ndash;24 &mdash; DESIGN WIN PIPELINE</td></tr>
+      <tr><td>Q1 FY2024</td><td class="right">$14B (over 6 years)</td><td>Design wins</td><td>Up from $11B <span class="tag tag-disc">LAST DISCLOSURE</span></td></tr>
+      <tr><td>Q2 FY2023</td><td class="right">$11B (over 6 years)</td><td>Design wins</td><td>Maintained</td></tr>
+      <tr><td>Q1 FY2023</td><td class="right">$11B (over 6 years)</td><td>Design wins</td><td>Up from $8B <span class="tag tag-new">FIRST DISCLOSED</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> NVIDIA&rsquo;s automotive metric evolved from &ldquo;$11&ndash;14B design win pipeline over 6 years&rdquo; to &ldquo;$5B annually in DC infrastructure.&rdquo; The strategic pivot was fundamental: instead of selling $300&ndash;600M/quarter in-vehicle chips, NVIDIA sells billions in DC infrastructure for AV training and simulation. The &ldquo;Automotive in DC&rdquo; metric replaced the design win pipeline precisely when the revenue model shifted from hardware-in-car to cloud-infrastructure-for-car.</div>
+</div>
+
+<!-- ====== SECTION 12: PRODUCT CADENCE ====== -->
+<div class="section" id="s12">
+  <h2><span class="num">12</span> Product Cadence &amp; Architecture Rhythm</h2>
+  <p style="margin-bottom:12px; font-size:0.88rem; color:var(--text-muted);">NVIDIA&rsquo;s competitive moat declaration &mdash; accelerating from every 2 years to annual releases.</p>
+  <table>
+    <thead><tr><th>Quarter</th><th>Cadence Language</th><th>Roadmap Details</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2026</td></tr>
+      <tr><td>Q4 FY2026</td><td>Annual; committed to X-factor leaps</td><td>Extends through 2028+</td><td>&mdash;</td></tr>
+      <tr><td>Q3 FY2026</td><td>On track; X-factor each gen</td><td>GB200 &rarr; GB300 &rarr; Rubin</td><td>&mdash;</td></tr>
+      <tr><td>Q2 FY2026</td><td>Annual cadence</td><td>&mdash;</td><td>&mdash;</td></tr>
+      <tr class="year-divider"><td colspan="4">FY2025</td></tr>
+      <tr><td>Q4 FY2025</td><td>Annual rhythm; extends through 2028</td><td>&mdash;</td><td>Formalized long-term commitment</td></tr>
+      <tr><td>Q2 FY2025</td><td>Annual rhythm; more products each year</td><td>&mdash;</td><td>&mdash;</td></tr>
+      <tr><td>Q1 FY2025</td><td>1-year rhythm</td><td>After Blackwell, another coming</td><td>&mdash;</td></tr>
+      <tr class="year-divider"><td colspan="4">FY2024</td></tr>
+      <tr><td>Q3 FY2024</td><td class="bold">Every ~6 months</td><td>Up from every 2 years</td><td><span class="tag tag-new">FIRST DISCLOSED</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> The acceleration from a 2-year product cycle to annual releases is NVIDIA&rsquo;s primary competitive moat argument. The &ldquo;6 months&rdquo; claim in Q3 FY2024 was aspirational; the settled message is &ldquo;annual rhythm, extending through 2028.&rdquo; This cadence prevents competitors (AMD, custom ASICs) from catching up because each generation offers an &ldquo;X-factor&rdquo; improvement that resets the competitive landscape.</div>
+</div>
+
+<!-- ====== SECTION 13: RTX ECOSYSTEM ====== -->
+<div class="section" id="s13">
+  <h2><span class="num">13</span> RTX Games/Apps &amp; Installed Base</h2>
+  <p style="margin-bottom:12px; font-size:0.88rem; color:var(--text-muted);">Gaming ecosystem health metrics that evolved from &ldquo;RTX ray tracing&rdquo; to &ldquo;AI-powered apps.&rdquo;</p>
+  <table>
+    <thead><tr><th>Quarter</th><th class="right">RTX Apps Count</th><th class="right">Installed Base</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2026</td></tr>
+      <tr><td>Q1 FY2026</td><td class="right muted">Not restated</td><td class="right">100M+ RTX PCs</td><td>&mdash;</td></tr>
+      <tr class="year-divider"><td colspan="4">FY2025</td></tr>
+      <tr><td>Q2 FY2025</td><td class="right bold">600 AI-powered</td><td class="right">100M+ RTX PCs</td><td>Rebranded from &ldquo;RTX apps&rdquo; to &ldquo;AI-powered&rdquo; <span class="tag tag-emerged">REBRAND</span></td></tr>
+      <tr><td>Q1 FY2025</td><td class="right muted">&mdash;</td><td class="right">100M+ RTX PCs</td><td>Installed base metric introduced</td></tr>
+      <tr class="year-divider"><td colspan="4">FY2024</td></tr>
+      <tr><td>Q4 FY2024</td><td class="right">500+</td><td class="right">100M+</td><td>&mdash;</td></tr>
+      <tr><td>Q3 FY2024</td><td class="right">475+</td><td class="right">100M+ GPUs</td><td><span class="tag tag-new">INSTALLED BASE DISCLOSED</span></td></tr>
+      <tr><td>Q2 FY2024</td><td class="right">330+</td><td class="right muted">&mdash;</td><td>&mdash;</td></tr>
+      <tr class="year-divider"><td colspan="4">FY2023</td></tr>
+      <tr><td>Q4 FY2023</td><td class="right">400+</td><td class="right muted">&mdash;</td><td>&mdash;</td></tr>
+      <tr><td>Q3 FY2023</td><td class="right">350+</td><td class="right muted">&mdash;</td><td>&mdash;</td></tr>
+      <tr><td>Q1 FY2023</td><td class="right">250+</td><td class="right muted">&mdash;</td><td><span class="tag tag-new">FIRST DISCLOSED</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> RTX ecosystem apps grew from 250 to 600 over 16 quarters, but the more important signal was the <em>rebranding</em> from &ldquo;RTX games&rdquo; to &ldquo;AI-powered apps&rdquo; at Q4 FY2024/Q2 FY2025. This reflects the narrative pivot from ray tracing to AI as the key RTX value proposition. The 100M+ installed base has been flat for 5 quarters, suggesting it serves as a credibility anchor rather than a growth metric.</div>
+</div>
+
+<!-- ====== SECTION 14: CSP CAPEX & VISIBILITY ====== -->
+<div class="section" id="s14">
+  <h2><span class="num">14</span> CSP Aggregate CapEx &amp; Revenue Visibility</h2>
+  <p style="margin-bottom:12px; font-size:0.88rem; color:var(--text-muted);">External demand validation: the capital commitments of NVIDIA&rsquo;s customers and unprecedented $500B+ forward visibility. <span class="tag tag-new">Introduced Q2 FY2026</span></p>
+  <table>
+    <thead><tr><th>Quarter</th><th class="right">CSP Aggregate CapEx</th><th class="right">NVIDIA Visibility</th><th>Commentary</th></tr></thead>
+    <tbody>
+      <tr class="year-divider"><td colspan="4">FY2026 &mdash; UNPRECEDENTED SCALE</td></tr>
+      <tr class="raised"><td>Q4 FY2026</td><td class="right bold">~$700B/year (top 5)</td><td class="right bold">Exceeding $500B</td><td>Up ~$120B since start of year <span class="tag tag-peak">RECORD</span></td></tr>
+      <tr><td>Q3 FY2026</td><td class="right">~$600B (2026)</td><td class="right">$500B (CY2025&ndash;CY2026)</td><td>$200B+ higher than start of year <span class="tag tag-new">$500B DISCLOSED</span></td></tr>
+      <tr><td>Q2 FY2026</td><td class="right">~$600B/year</td><td class="right muted">&mdash;</td><td>Top 4 CSP CapEx doubled in 2 years <span class="tag tag-new">FIRST DISCLOSED</span></td></tr>
+    </tbody>
+  </table>
+  <div class="insight"><strong>Key Insight:</strong> These are NVIDIA&rsquo;s most powerful demand validation metrics. CSP aggregate CapEx was revised up $200B+ within a single year ($600B &rarr; $700B), an unprecedented acceleration. The $500B revenue visibility figure (Q3 FY2026) is extraordinary for a hardware company &mdash; most semiconductor firms provide 1 quarter of guidance. NVIDIA&rsquo;s 2-year forward visibility reflects multi-year customer commitments that are structurally different from traditional chip ordering patterns.</div>
+</div>
+
+<!-- ====== ANALYSIS SECTION ====== -->
+<div class="analysis" id="analysis">
+  <h2>Analysis: What the Disclosure Patterns Reveal</h2>
+
+  <h3>1. Three Narrative Eras in 16 Quarters</h3>
+  <p>NVIDIA&rsquo;s 16 quarters divide into three distinct eras, each defined by which intermittent metrics dominated:</p>
+  <p><strong>Era 1: Downcycle &amp; Restructuring (Q1&ndash;Q4 FY2023)</strong> &mdash; Dominated by inventory charges ($1.22B, $702M), CapEx guidance (a metric that later vanished), Arm termination charges, and supercomputer rankings as a credibility anchor. Gaming was weak, data center was stagnant at $3&ndash;4B/quarter. Management was defensive.</p>
+  <p><strong>Era 2: The AI Explosion (Q1 FY2024 &ndash; Q4 FY2025)</strong> &mdash; Data Center revenue went from $4.3B to $35.6B quarterly. New metrics emerged: China DC percentage (tracking export control impact), inference share (countering the bubble thesis), Blackwell production status, and CSP revenue mix. The narrative shifted from &ldquo;how bad is the downturn?&rdquo; to &ldquo;how fast can NVIDIA ship?&rdquo;</p>
+  <p><strong>Era 3: Platform Dominance (Q1&ndash;Q4 FY2026)</strong> &mdash; Revenue exceeded $200B annually. Networking became a $31B category. New metrics: sovereign AI revenue ($30B+), $500B revenue visibility, $700B customer CapEx, content per gigawatt. NVIDIA moved from describing itself as a chip company to presenting itself as the infrastructure layer for AI.</p>
+
+  <h3>2. The China Story: From 20% to Zero</h3>
+  <p>The China DC revenue metric tells perhaps the most dramatic corporate story of the AI era:</p>
+  <p>&bull; <strong>Phase 1 (Q2&ndash;Q3 FY2024):</strong> 20&ndash;25% of DC, &ldquo;within historical range.&rdquo; Business as usual.</p>
+  <p>&bull; <strong>Phase 2 (Q4 FY2024&ndash;Q4 FY2025):</strong> Oct 2023 controls drop it to mid-single-digit %. H20 workaround provides partial recovery.</p>
+  <p>&bull; <strong>Phase 3 (Q1&ndash;Q4 FY2026):</strong> Apr 2025 H20 ban. $4.5B write-down. Revenue goes to zero. China &ldquo;excluded from outlook.&rdquo;</p>
+  <p>This $10B+ annual revenue stream was eliminated in 8 quarters. But NVIDIA replaced it: sovereign AI alone reached $30B, and the customer base diversified from 3&ndash;4 hyperscalers to hundreds of national programs, enterprises, and AI startups.</p>
+
+  <h3>3. Metrics That Served Their Purpose and Disappeared</h3>
+  <p>Several intermittent metrics are revealing for when they stopped being reported:</p>
+  <p>&bull; <strong>CapEx guidance</strong> (5 quarters, then gone) &mdash; vanished when NVIDIA shifted from &ldquo;chip company&rdquo; to &ldquo;platform company&rdquo; model where fab partners bear the CapEx.</p>
+  <p>&bull; <strong>Inference % of DC</strong> (3 quarters) &mdash; introduced to counter the &ldquo;training bubble&rdquo; thesis, dropped once the narrative was won.</p>
+  <p>&bull; <strong>Automotive design wins</strong> (4 quarters) &mdash; replaced by &ldquo;automotive as DC vertical&rdquo; when the monetization strategy shifted.</p>
+  <p>&bull; <strong>Supercomputer rankings</strong> (2 quarters) &mdash; credibility anchor during the downturn, unnecessary once revenue spoke for itself.</p>
+  <p>&bull; <strong>NVIDIA AI Enterprise pricing</strong> (4 quarters at $4,500) &mdash; established pricing power, then became baseline assumption.</p>
+
+  <h3>4. The Emerging Metric Hierarchy for Forward Forecasting</h3>
+  <p>The intermittent metrics that matter most for forecasting NVIDIA&rsquo;s next 12 months, in order:</p>
+  <p><strong>1. CSP CapEx trajectory</strong> &mdash; Any deceleration from $700B would be the first real demand warning signal.</p>
+  <p><strong>2. Networking revenue growth</strong> &mdash; If NVLink/Spectrum-X growth slows, it signals the system-level sale is saturating.</p>
+  <p><strong>3. Sovereign AI revenue</strong> &mdash; Whether the $30B sustains or was a one-time buildout wave will define FY2027.</p>
+  <p><strong>4. Gross margin trajectory</strong> &mdash; Now at 75%, the question is whether Rubin will create another compression cycle or if NVIDIA has learned to manage product transitions smoother.</p>
+  <p><strong>5. Non-CSP customer growth</strong> &mdash; The shift from &gt;50% CSP to &ldquo;growth led by non-CSP&rdquo; must continue for the demand durability thesis.</p>
+
+  <h3>5. The Replacement Revenue Thesis</h3>
+  <p>NVIDIA&rsquo;s intermittent KPIs reveal a masterclass in demand diversification under geopolitical pressure:</p>
+  <p>&bull; <strong>China revenue lost:</strong> ~$10B+ annually (from 20&ndash;25% of DC)</p>
+  <p>&bull; <strong>Sovereign AI gained:</strong> $30B+ annually in FY2026 (3x the China loss)</p>
+  <p>&bull; <strong>Networking gained:</strong> $31B annually (from ~$3B, a category that barely existed before the AI era)</p>
+  <p>&bull; <strong>Spectrum-X gained:</strong> $11&ndash;12B annualized (a product that didn&rsquo;t exist 2 years ago)</p>
+  <p>The company that lost its second-largest geographic market found replacements that exceeded the loss by 7x within 2 years. The intermittent metrics document this substitution in real time.</p>
+</div>
+
+<div class="footer">
+  <p>Data source: NVIDIA quarterly earnings call transcripts Q1 FY2023 &ndash; Q4 FY2026 | <a href="../comparison.html">Guidance Overview</a> &middot; <a href="../results.html">Results Scorecard</a> &middot; <a href="../../index.html">Metrics Tracker</a></p>
+</div>
+
+</body>
+</html>

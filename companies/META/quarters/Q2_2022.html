@@ -319,6 +319,31 @@
     .comp-table th, .comp-table td { padding: 6px 8px; }
   }
 
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+  .content-section .md-table th {
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .content-section .md-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-section .md-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+  .content-section .md-table tr:hover { background: #e8f4fd; }
+
   @media print {
     .nav-bar { display: none; }
     .header { background: #333; }
@@ -338,6 +363,8 @@
   <a href="Q1_2022.html">&larr; Q1 2022</a>
   <div class="nav-center">
     <a href="../comparison.html" class="nav-back">Overview</a>
+    <a href="../results.html" class="nav-back">Results</a>
+    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>
     <a href="Q4_2025.html" class="qbtn">4Q25</a>
     <a href="Q3_2025.html" class="qbtn">3Q25</a>
     <a href="Q2_2025.html" class="qbtn">2Q25</a>
@@ -358,24 +385,35 @@
   <a href="Q3_2022.html">Q3 2022 &rarr;</a>
 </div>
 
+<div class="changes-box">
+  <h3>What Changed vs Q1 2022</h3>
+  <ul>
+    <li><span class="change-tag ct-lowered">Lowered</span> FY Total Expenses midpoint down 3.4% vs prior quarter ($86.5B vs $89.5B)</li>
+    <li><span class="change-tag ct-changed">Changed</span> Ad Impressions Growth: Increased 15% YoY (driven by Asia Pacific and Rest of World) (prior: +15% YoY (driven primarily by Asia Pacific and Rest of World))</li>
+    <li><span class="change-tag ct-changed">Changed</span> Avg Price Per Ad: Decreased 14% YoY (driven by reduction in advertiser demand, mix shift toward lower monetizing services/regions, and foreign currency depreciation) (prior: -8% YoY (driven primarily by ongoing mix shift in ad impressions towards regions and services that monetize at lower rates))</li>
+    <li><span class="change-tag ct-changed">Changed</span> Operating Margin: 29% (prior: 31%)</li>
+    <li><span class="change-tag ct-changed">Changed</span> Reality Labs Op Loss: $2.8B (prior: $3.0B)</li>
+  </ul>
+</div>
+
 <div class="metrics-card">
   <div class="metric">
     <div class="metric-label">FY Total Expenses</div>
-    <div class="metric-value">$85B - $88B</div>
-    <div class="metric-delta delta-flat">Prior: $87B - $92B</div>
+    <div class="metric-value">$85B-$88B</div>
+    <div class="metric-delta delta-flat">Prior: $87B-$92B</div>
   </div>
   <div class="metric">
     <div class="metric-label">FY CapEx</div>
-    <div class="metric-value">$30B - $34B</div>
+    <div class="metric-value">$30B-$34B</div>
   </div>
   <div class="metric">
     <div class="metric-label">Ad Impressions Growth</div>
-    <div class="metric-value">+15% YoY</div>
+    <div class="metric-value">Increased 15% YoY</div>
     <div class="metric-delta delta-flat">Prior: +15% YoY</div>
   </div>
   <div class="metric">
     <div class="metric-label">Avg Price Per Ad</div>
-    <div class="metric-value">-14% YoY</div>
+    <div class="metric-value">Decreased 14% YoY</div>
     <div class="metric-delta delta-flat">Prior: -8% YoY</div>
   </div>
   <div class="metric">
@@ -388,17 +426,6 @@
     <div class="metric-value">$2.8B</div>
     <div class="metric-delta delta-flat">Prior: $3.0B</div>
   </div>
-</div>
-
-<div class="changes-box">
-  <h3>What Changed vs Q1 2022</h3>
-  <ul>
-    <li><span class="change-tag ct-lowered">Lowered</span> FY Total Expenses: $85B - $88B (prior: $87B - $92B)</li>
-    <li><span class="change-tag ct-changed">Changed</span> Ad Impressions Growth: +15% YoY (prior: +15% YoY)</li>
-    <li><span class="change-tag ct-changed">Changed</span> Avg Price Per Ad: -14% YoY (prior: -8%)</li>
-    <li><span class="change-tag ct-changed">Changed</span> Operating Margin: 29% (prior: 31%)</li>
-    <li><span class="change-tag ct-changed">Changed</span> Reality Labs Op Loss: $2.8B (prior: $3.0B)</li>
-  </ul>
 </div>
 
 <!-- Full Guidance Content -->
@@ -593,6 +620,9 @@
     <li><strong>Cash Position:</strong> $40.5B in cash and marketable securities at end of Q2</li>
   </ul>
 </div>
+<div class="content-section">
+  <h3>Q2 2022 Actuals</h3>
+</div>
 
 <div class="prior-ref" id="priorRef">
   <div class="prior-ref-header" onclick="var b=document.getElementById('priorBody');b.classList.toggle('open');this.querySelector('.arrow').innerHTML=b.classList.contains('open')?'&#9650;':'&#9660;';">
@@ -601,10 +631,10 @@
   </div>
   <div class="prior-ref-body" id="priorBody">
     <div class="metric-grid">
-      <div class="prior-mini"><div class="pm-label">Revenue Guidance (Next Q)</div><div class="pm-value">$28B - $30B</div></div>
-      <div class="prior-mini"><div class="pm-label">FY Total Expenses</div><div class="pm-value">$87B - $92B</div></div>
-      <div class="prior-mini"><div class="pm-label">Ad Impressions Growth</div><div class="pm-value">+15% YoY</div></div>
-      <div class="prior-mini"><div class="pm-label">Avg Price Per Ad</div><div class="pm-value">-8% YoY</div></div>
+      <div class="prior-mini"><div class="pm-label">Revenue Guidance (Next Q)</div><div class="pm-value">$28B-$30B (midpoint: $29B)</div></div>
+      <div class="prior-mini"><div class="pm-label">FY Total Expenses</div><div class="pm-value">$87B-$92B (lowered from prior outlook of $90B-$95B)</div></div>
+      <div class="prior-mini"><div class="pm-label">Ad Impressions Growth</div><div class="pm-value">+15% YoY (driven primarily by Asia Pacific and Rest of World)</div></div>
+      <div class="prior-mini"><div class="pm-label">Avg Price Per Ad</div><div class="pm-value">-8% YoY (driven primarily by ongoing mix shift in ad impressions towards regions and services that monetize at lower rates)</div></div>
       <div class="prior-mini"><div class="pm-label">Operating Margin</div><div class="pm-value">31%</div></div>
       <div class="prior-mini"><div class="pm-label">Reality Labs Op Loss</div><div class="pm-value">$3.0B</div></div>
     </div>

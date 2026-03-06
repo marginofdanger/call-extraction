@@ -319,6 +319,31 @@
     .comp-table th, .comp-table td { padding: 6px 8px; }
   }
 
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+  .content-section .md-table th {
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .content-section .md-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-section .md-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+  .content-section .md-table tr:hover { background: #e8f4fd; }
+
   @media print {
     .nav-bar { display: none; }
     .header { background: #333; }
@@ -339,6 +364,8 @@
   <div class="nav-center">
     <a href="../comparison.html" class="nav-back">Overview</a>
     <a href="../results.html" class="nav-back">Results</a>
+    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>
+    <a href="Q4_FY2026.html" class="qbtn">4Q2026</a>
     <a href="Q3_FY2026.html" class="qbtn">3Q2026</a>
     <a href="Q2_FY2026.html" class="qbtn">2Q2026</a>
     <a href="Q1_FY2026.html" class="qbtn">1Q2026</a>
@@ -401,9 +428,7 @@
 </div>
 <div class="content-section">
   <h3>Full Year FY2024 Guidance (Feb 2023 - Jan 2024)</h3>
-  <ul>
-    <li>| Metric | Updated Q3 Guidance | Prior Q2 Guidance | Change | |--------|-------------------|-------------------|--------| | <strong>Total Revenue</strong> | $2,353M - $2,355M | $2,365M - $2,370M | Lowered ~$12-15M | | <strong>Non-GAAP Operating Income</strong> | ~$830M | ~$820M | Raised ~$10M | | <strong>Non-GAAP Diluted EPS</strong> | ~$4.76 | ~$4.68 | Raised ~$0.08 |</li>
-  </ul>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Updated Q3 Guidance</th><th>Prior Q2 Guidance</th><th>Change</th></tr></thead><tbody><tr><td><strong>Total Revenue</strong></td><td>$2,353M - $2,355M</td><td>$2,365M - $2,370M</td><td>Lowered ~$12-15M</td></tr><tr><td><strong>Non-GAAP Operating Income</strong></td><td>~$830M</td><td>~$820M</td><td>Raised ~$10M</td></tr><tr><td><strong>Non-GAAP Diluted EPS</strong></td><td>~$4.76</td><td>~$4.68</td><td>Raised ~$0.08</td></tr></tbody></table></div>
 </div>
 <div class="content-section">
   <h3>Billings Guidance Change</h3>
@@ -413,8 +438,8 @@
 </div>
 <div class="content-section">
   <h3>FY2025 Guidance (Feb 2024 - Jan 2025)</h3>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Status</th><th>Value</th></tr></thead><tbody><tr><td><strong>Total Revenue</strong></td><td>Reiterated</td><td>At least $2,750M (prior Q2: at least $2,800M*)</td></tr><tr><td><strong>Non-GAAP Operating Income</strong></td><td>Reiterated</td><td>At least $1,000M</td></tr></tbody></table> *Note: At Q2 FY2024, FY25 total revenue guidance was "at least $2,800 million." At Q3 FY2024, it was reiterated as "at least $2,750 million" -- this represents a reduction from the prior $2,800M floor that was likely adjusted at the Investor Day (Oct 2023). Brent Bowman stated: "We reiterated the $2.75 billion and the visibility that we have... we have no less visibility than we had a year ago." And: "We contemplated in the billings that we are exiting fiscal year '24 in our reiterated fiscal year '25 total revenue number. So $2.75 billion, and we feel good about our ability to execute against that."</div>
   <ul>
-    <li>| Metric | Status | Value | |--------|--------|-------| | <strong>Total Revenue</strong> | Reiterated | At least $2,750M (prior Q2: at least $2,800M<em>) | | <strong>Non-GAAP Operating Income</strong> | Reiterated | At least $1,000M | </em>Note: At Q2 FY2024, FY25 total revenue guidance was "at least $2,800 million." At Q3 FY2024, it was reiterated as "at least $2,750 million" -- this represents a reduction from the prior $2,800M floor that was likely adjusted at the Investor Day (Oct 2023). Brent Bowman stated: "We reiterated the $2.75 billion and the visibility that we have... we have no less visibility than we had a year ago." And: "We contemplated in the billings that we are exiting fiscal year '24 in our reiterated fiscal year '25 total revenue number. So $2.75 billion, and we feel good about our ability to execute against that."</li>
     <li><strong>Visibility:</strong> "Every day you move forward you have better visibility, and we have no less visibility than we had a year ago" (Brent Bowman)</li>
     <li><strong>Growth drivers:</strong> Multiyear ramping deals will contribute a larger amount next year</li>
     <li><strong>Traditional detailed FY25 metrics</strong> (operating income, margin, headcount) to be provided in ~90 days at Q4 earnings</li>
@@ -595,9 +620,7 @@
 </div>
 <div class="content-section">
   <h3>Implied Q4 FY2024 Calculations</h3>
-  <ul>
-    <li>| Metric | Q4 FY24 Implied | Calculation | |--------|----------------|-------------| | <strong>Total Revenue</strong> | $620M - $622M | Direct guidance | | <strong>Subscription Revenue (implied)</strong> | ~$509M - $511M | FY24 total rev midpoint $2,354M less 9-mo $1,733M = ~$621M Q4; subs ~82% of total in Q4 (est.) | | <strong>YTD Revenue (9 months)</strong> | $1,733.1M | Reported | | <strong>FY24 Implied Total</strong> | $2,353M - $2,355M | Direct guidance | <em>Data sourced from Veeva Systems Q3 FY2024 earnings press release (filed December 6, 2023), earnings call transcript, and SEC 10-Q filing.</em></li>
-  </ul>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>Q4 FY24 Implied</th><th>Calculation</th></tr></thead><tbody><tr><td><strong>Total Revenue</strong></td><td>$620M - $622M</td><td>Direct guidance</td></tr><tr><td><strong>Subscription Revenue (implied)</strong></td><td>~$509M - $511M</td><td>FY24 total rev midpoint $2,354M less 9-mo $1,733M = ~$621M Q4; subs ~82% of total in Q4 (est.)</td></tr><tr><td><strong>YTD Revenue (9 months)</strong></td><td>$1,733.1M</td><td>Reported</td></tr><tr><td><strong>FY24 Implied Total</strong></td><td>$2,353M - $2,355M</td><td>Direct guidance</td></tr></tbody></table> *Data sourced from Veeva Systems Q3 FY2024 earnings press release (filed December 6, 2023), earnings call transcript, and SEC 10-Q filing.*</div>
 </div>
 <div class="content-section">
   <h3>Q3 FY2024 Actuals (Reported)</h3>

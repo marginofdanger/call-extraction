@@ -319,6 +319,31 @@
     .comp-table th, .comp-table td { padding: 6px 8px; }
   }
 
+  /* Inline markdown tables within content sections */
+  .content-section .md-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 0.85rem;
+  }
+  .content-section .md-table th {
+    background: var(--light-bg);
+    color: var(--company-dark);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .content-section .md-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .content-section .md-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+  .content-section .md-table tr:hover { background: #e8f4fd; }
+
   @media print {
     .nav-bar { display: none; }
     .header { background: #333; }
@@ -339,6 +364,8 @@
   <div class="nav-center">
     <a href="../comparison.html" class="nav-back">Overview</a>
     <a href="../results.html" class="nav-back">Results</a>
+    <a href="intermittent_kpis.html" class="nav-back">KPIs</a>
+    <a href="Q4_FY2026.html" class="qbtn">4Q2026</a>
     <a href="Q3_FY2026.html" class="qbtn">3Q2026</a>
     <a href="Q2_FY2026.html" class="qbtn">2Q2026</a>
     <a href="Q1_FY2026.html" class="qbtn">1Q2026</a>
@@ -716,12 +743,13 @@
 </div>
 <div class="content-section">
   <h3>S&P Global Consensus Estimates (as of March 2, 2023)</h3>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Metric</th><th>FQ4 2023 Consensus</th><th>FQ4 2023 Actual</th><th>Beat</th></tr></thead><tbody><tr><td><strong>EPS (Normalized)</strong></td><td>$1.05</td><td>$1.15 (Non-GAAP)</td><td>+$0.10</td></tr><tr><td><strong>Revenue</strong></td><td>$552.9M</td><td>$563.4M</td><td>+$10.5M</td></tr></tbody></table> **Additional Consensus Figures:**</div>
   <ul>
-    <li>| Metric | FQ4 2023 Consensus | FQ4 2023 Actual | Beat | |--------|-------------------|-----------------|------| | <strong>EPS (Normalized)</strong> | $1.05 | $1.15 (Non-GAAP) | +$0.10 | | <strong>Revenue</strong> | $552.9M | $563.4M | +$10.5M | <strong>Additional Consensus Figures:</strong></li>
     <li>FY 2023 EPS Consensus: $4.19 | Actual Non-GAAP: $4.28</li>
     <li>FY 2024 EPS Consensus: $4.46 (vs. company guide of ~$4.33)</li>
-    <li>FY 2024 Revenue Consensus: $2,398.8M (vs. company guide of $2,350M - $2,360M) <strong>Historical EPS Track Record (Normalized):</strong> | Quarter | Consensus | Actual | Surprise | |---------|-----------|--------|----------| | FQ4 2022 | $0.88 | $0.90 | +2.27% | | FQ1 2023 | $0.92 | $0.99 | +7.61% | | FQ2 2023 | $1.01 | $1.03 | +1.98% | | FQ3 2023 | $1.07 | $1.13 | +5.61% |</li>
+    <li>FY 2024 Revenue Consensus: $2,398.8M (vs. company guide of $2,350M - $2,360M) <strong>Historical EPS Track Record (Normalized):</strong></li>
   </ul>
+  <div style="padding: 4px 18px 8px;"><table class="md-table"><thead><tr><th>Quarter</th><th>Consensus</th><th>Actual</th><th>Surprise</th></tr></thead><tbody><tr><td>FQ4 2022</td><td>$0.88</td><td>$0.90</td><td>+2.27%</td></tr><tr><td>FQ1 2023</td><td>$0.92</td><td>$0.99</td><td>+7.61%</td></tr><tr><td>FQ2 2023</td><td>$1.01</td><td>$1.03</td><td>+1.98%</td></tr><tr><td>FQ3 2023</td><td>$1.07</td><td>$1.13</td><td>+5.61%</td></tr></tbody></table></div>
 </div>
 <div class="content-section">
   <h3>Q4 FY2023 Actuals (Reported)</h3>
